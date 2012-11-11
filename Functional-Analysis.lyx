@@ -1,0 +1,11046 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{tikz}
+%\usepackage{tikz-3dplot,polynom,cancel}
+\usetikzlibrary{matrix,arrows,calc,decorations}
+\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
+\usepackage{subfigure}
+\usepackage[explicit]{titlesec}
+
+% Inhaltsverzeichnis
+\usepackage[subfigure]{tocloft}
+\tocloftpagestyle{fancy}
+
+\renewcommand{\cftchapindent}{1 em}
+\renewcommand{\cftchapnumwidth}{1.5 em}
+
+\renewcommand{\cftsecindent}{2.7 em}
+\renewcommand{\cftsecnumwidth}{2.5em}
+
+\renewcommand{\cftsubsecindent}{5.2 em}
+\renewcommand{\cftsubsecnumwidth}{3.8 em}
+
+\renewcommand{\cftsubsubsecindent}{9 em}
+\renewcommand{\cftsubsubsecnumwidth}{4.5 em}
+
+% Mathe-Operatoren
+\DeclareMathOperator*{\exsop}{\exists}
+\DeclareMathOperator*{\exsgop}{\exists!}
+\DeclareMathOperator*{\fallop}{\forall}
+\DeclareMathOperator*{\bcupdop}{\dot{\bigcup}}
+\DeclareMathOperator*{\bcapdop}{\dot{\bigcap}}
+
+% Rotieren
+\newcommand{\Rotate}[1]{
+\begin{tikzpicture}
+\node[rotate=90] {\ensuremath{#1}};
+\end{tikzpicture}
+}
+
+%QED-Zeichen (Box)
+\newcommand{\qed}{\ensuremath{\Box}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\hspace*{1mm}\hfill\qed\ensuremath{_{\text{#1}}}}
+
+% Mengen Modulo
+\newcommand{\moduloT}[2]{
+\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large /}
+\raisebox{-0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
+
+% Links Modulo
+\newcommand{\lmoduloT}[2]{
+\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large \ensuremath{\backslash}}
+\raisebox{0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
+
+% Für Z/2Z, um nicht soviel schreiben zu müssen
+\newcommand{\modloT}[2]{\moduloT{ \mathbb{#1}}{#2\mathbb{#1}}}
+
+%Laplace-Beltrami-Operator
+\newcommand{\LBO}{
+\begin{minipage}{6mm}
+ \begin{tikzpicture}
+   \node at (0,0){$\Delta$};
+   \draw[line width=0.75] (0.25,-0.13) -- (0.1,0.15);
+ \end{tikzpicture}
+\end{minipage}
+}
+
+%Die Modulo-Kommandos in klein, für die Darstellungen unter Quantoren.
+\newcommand{\moduloScriptT}[2]{
+\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize /}
+\raisebox{-0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
+
+\newcommand{\lmoduloScriptT}[2]{
+\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize \ensuremath{\backslash}}
+\raisebox{0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
+
+\newcommand{\modloScriptT}[2]{\moduloScriptT{ \mathbb{#1}}{#2\mathbb{#1}}}
+
+% stehendes Winkelzeichen
+\newcommand{\winkel}{
+\begin{tikzpicture}[scale=0.25]
+\draw ({-2+3^(1/2)},0) -- (0,1) -- ({2-3^(1/2)},0);
+\draw ($(0,1) + ({cos(235)*0.7},{sin(315)*0.7})$) arc (235:315:0.7);
+\end{tikzpicture}}
+
+% Wurzel mit Häkchen
+\newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
+  \advance\dimen0-0.2\ht0
+  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
+  {\box0\lower0.4pt\box2}}
+
+% alphabetische Aufzählung
+\newcounter{ale}
+\newcommand{\abc}{\stepcounter{ale}\item[\alph{ale})]}
+\newenvironment{abclist}{\begin{itemize} \setcounter{ale}{0}}{\end{itemize}}
+
+%klein-römische Aufzählung
+\newcounter{ale2}
+\newcommand{\iii}{\stepcounter{ale2}\item[\textnormal{\roman{ale2})}]}
+\newenvironment{iiilist}{\begin{itemize} \setcounter{ale2}{0}}{\end{itemize}}
+
+% Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
+\titleformat{\chapter}
+  {\huge\bfseries}
+  {\textrm{\thechapter} }{0pt}
+  {\textrm{#1} \thispagestyle{fancy}
+  }
+
+% Neudefinition der Abschnittsmarker für die Kopfzeile
+\renewcommand\partmark[1]{\markboth{#1}{}}
+\renewcommand\chaptermark[1]{\markright{\arabic{chapter} #1}}
+\renewcommand\sectionmark[1]{}
+\renewcommand\subsectionmark[1]{}
+
+% Kopf- und Fußzeile
+% Höhe der Kopfzeile
+\setlength{\headheight}{14pt}
+% obere Trennlinie
+%\renewcommand{\headrulewidth}{0.4pt}
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\textbf{Functional Analysis}} %Kopfzeile links
+%\fancyhead[C]{\leftmark} %zentrierte Kopfzeile
+\fancyhead[R]{\rightmark} %Kopfzeile rechts
+\fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_title "Functional Analysis"
+\pdf_author "Andreas Völklein"
+\pdf_keywords "Functional Analysis, Mathematics"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 2
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.6cm
+\topmargin 2.6cm
+\rightmargin 2.6cm
+\bottommargin 3.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\bullet 0 0 0 -1
+\bullet 1 0 9 -1
+\bullet 2 0 15 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Vorlage: Kommutatives Diagramm
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+matrix (m) [matrix of math nodes, row sep=3em, column sep=2.5em, text height=1.5ex
+, text depth=0.25ex] { G & & G' 
+\backslash
+
+\backslash
+  & a & 
+\backslash
+
+\backslash
+ };
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+path[->,font=
+\backslash
+scriptsize] (m-1-1) edge node[auto] {$ 
+\backslash
+varphi $} (m-1-3) edge node[description] {$ 
+\backslash
+Psi $} (m-2-2) (m-1-3) edge node[auto] {$ 
+\backslash
+Phi $} (m-2-2); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Vorlage: Funktions-Plot
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[domain=0:4]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[color=red] plot (
+\backslash
+x,
+\backslash
+x) node[right] {$f(x) =x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[color=blue] plot (
+\backslash
+x,{sin(
+\backslash
+x r)}) node[right] {$f(x) = 
+\backslash
+sin x$}; 
+\backslash
+draw[color=orange] plot (
+\backslash
+x,{0.05*exp(
+\backslash
+x)}) node[right] {$f(x) = 
+\backslash
+frac{1}{20} 
+\backslash
+mathrm e^x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Vorlage: Bezier-Kurve
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+%Kreis
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-1,0) ..
+ controls (-1,0.555) and (-0.555,1) ..
+ (0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+               ..
+ controls (0.555,1) and (1,0.555) ..
+ (1,0)
+\end_layout
+
+\begin_layout Plain Layout
+
+               ..
+ controls (1,-0.555) and (0.555,-1) ..
+ (0,-1)
+\end_layout
+
+\begin_layout Plain Layout
+
+               ..
+ controls (-0.555,-1) and (-1,-0.555) ..
+ (-1,0); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Vorlage: Krumme geschlossene Kurve
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  %Kreis
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=1] coordinates{(0,-1) (1,0) (0,1) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  %Krumm
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7,yshift=-70] coordinates{(0,-1) (0.5,-0.3)
+ (1,0) (0.5,0.8) (0,1) (-0.3,0.3) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: 
+\backslash
+begin{iiilist} als LyX-Kommandos einbauen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert }
+{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert }
+{\left|#1\right|}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\mins}{-}
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\text{-}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\LB}{\LBO}
+{\Delta\backslash}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\exs}{\exsop}
+{\text{\exists}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\exsg}{\exsgop}
+{\text{\exists!}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\fall}{\fallop}
+{\text{\forall}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bcupd}{\bcupdop}
+{\text{\dot{\bigcup}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bcapd}{\bcapdop}
+{\text{\dot{\bigcap}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sr}[3]{\underset{#3}{\overset{#2}{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dd}{\textnormal{d}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\DD}{\textnormal{D}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\TT}{\textnormal{T}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ii}{\textbf{i}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\modulo}[2]{\moduloT{#1}{#2}}
+{#1/#2}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lmodulo}[2]{\lmoduloT{#1}{#2}}
+{#1\backslash#2}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\modlo}[2]{\modloT{#1}{#2}}
+{\mathbb{#1}/#2\mathbb{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\moduloScript}[2]{\moduloScriptT{#1}{#2}}
+{{\scriptstyle #1/#2}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lmoduloScript}[2]{\lmoduloScriptT{#1}{#2}}
+{{\scriptstyle #1\backslash#2}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\modloScript}[2]{\modloScriptT{#1}{#2}}
+{{\scriptstyle \mathbb{#1}/#2\mathbb{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\series bold
+\size giant
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{-30mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Functional Analysis
+\end_layout
+
+\begin_layout Author
+
+\shape italic
+\size small
+lecture by
+\begin_inset Newline newline
+\end_inset
+
+
+\noun on
+Prof.
+ Dr.
+ Felix Finster
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+during the winter semester 2012/13
+\begin_inset Newline newline
+\end_inset
+
+revision and layout in LyX by
+\begin_inset Newline newline
+\end_inset
+
+
+\noun on
+Andreas Völklein
+\begin_inset Newline newline
+\end_inset
+
+
+\shape default
+\noun default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{10mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename unir.png
+	lyxscale 50
+	width 15cm
+	clip
+
+\end_inset
+
+
+\shape italic
+\noun on
+
+\begin_inset Newline newline
+\end_inset
+
+
+\shape default
+\noun default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{3mm}
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+Last changed: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{License}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite
+ 1!?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{-15mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+ATTENTION
+\end_layout
+
+\begin_layout Standard
+This script does 
+\emph on
+not
+\emph default
+ replace the lecture.
+\begin_inset Newline newline
+\end_inset
+
+Therefore it is recommended 
+\emph on
+strongly
+\emph default
+ to attend the lecture.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Copyright Notice
+\end_layout
+
+\begin_layout Standard
+Copyright © 2012 
+\noun on
+Andreas Völklein
+\end_layout
+
+\begin_layout Standard
+Permission is granted to copy, distribute and/or modify this document under
+ the terms of the GNU Free Documentation License, Version 1.3 or any later
+ version published by the Free Software Foundation;
+\begin_inset Newline newline
+\end_inset
+
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+\begin_inset Newline newline
+\end_inset
+
+A copy of the license is included in the section entitled “GNU Free Documentatio
+n License”.
+\end_layout
+
+\begin_layout Subsubsection*
+Disclaimer of Warranty
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+Unless otherwise mutually agreed to by the parties in writing and to the
+ extent not prohibited by applicable law, 
+\series bold
+the Copyright Holders and any other party, who may distribute the Document
+ as permitted above,   provide the Document “as is
+\noun default
+”,
+\noun on
+ without warranty of any kind
+\series default
+, expressed, implied, statutory or otherwise, including, but not limited
+ to, the implied warranties of merchantability, fitness for a particular
+ purpose, non-infringement, the absence of latent or other defects, accuracy,
+ or the absence of errors, whether or not discoverable.
+\end_layout
+
+\begin_layout Subsubsection*
+Limitation of Liability
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\noun on
+In no event
+\series default
+ unless required by applicable law or agreed to in writing 
+\series bold
+will the Copyright Holders, or any other party, who may distribute the Document
+ as permitted above, be liable to you for any damages
+\series default
+, including, but not limited to, any general, special, incidental, consequential
+, punitive or exemplary damages, however caused, regardless of the theory
+ of liability, arising out of or related to this license or any use of or
+ inability to use the Document, even if they have been advised of the possibilit
+y of such damages.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\noun on
+In no event will the Copyright Holders'/Distributor's liability to you
+\series default
+, whether in contract, tort (including negligence), or otherwise, 
+\series bold
+exceed the amount you paid the Copyright Holders/Distributor
+\series default
+ for the document under this agreement.
+\end_layout
+
+\begin_layout Subsubsection*
+Links
+\end_layout
+
+\begin_layout Standard
+The text of the “GNU Free Documentation License” can also be read on the
+ following site:
+\end_layout
+
+\begin_layout Quote
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/licenses/fdl-1.3.en.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A transparent copy of the recent version of this document can be downloaded
+ from:
+\end_layout
+
+\begin_layout Quote
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/andiv/Functional-Analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{Literature}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Literature
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Peter D.
+ Lax: 
+\emph on
+\noun default
+Functional analysis
+\emph default
+; Wiley-Interscience, 2002; ISBN: 0-471-55604-1
+\emph on
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph default
+(good reference)
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Micheal Reed, Barry Simon
+\noun default
+: 
+\emph on
+Methods of Modern Mathematical Physics I - Functional Analysis; 
+\emph default
+Acad.
+ Press, 2010; ISBN: 978-0-12-585050-6
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Friedrich Hirzebruch, Winfried Scharlau
+\noun default
+: 
+\emph on
+\lang ngerman
+Einführung in die Funktionalanalysis
+\emph default
+\lang english
+; Spektrum Verlag, 1996; ISBN: 3-86025-429-4
+\begin_inset Newline newline
+\end_inset
+
+(paperback, small)
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Dirk Werner
+\noun default
+: 
+\emph on
+\lang ngerman
+Funktionalanalysis
+\emph default
+\lang english
+; Springer, 2011; ISBN: 978-3-642-21016-7
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Joachim Weidmann
+\noun default
+: 
+\emph on
+\lang ngerman
+Lineare Operatoren in Hilberträumen, Teil I: Grundlagen
+\emph default
+\lang english
+; Teubner, 2000; ISBN: 3-519-02236-2
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Walter Rudin
+\noun default
+: 
+\emph on
+Functional Analysis
+\emph default
+; McGraw-Hill, 1991; ISBN: 7-111-13415-X
+\end_layout
+
+\begin_layout Standard
+Zorn's Lemma:
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Hans-Joachim Kowalsky, Gerhard O.
+ Michler
+\noun default
+: 
+\emph on
+\lang ngerman
+Lineare Algebra
+\emph default
+\lang english
+; de Gruyter, 2003; ISBN: 3-11-017963-6
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Newpage newpage
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{Table of contents}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{END-front}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[C]{
+\backslash
+thepage
+\backslash
+quad
+\backslash
+!
+\backslash
+!
+\backslash
+!
+\backslash
+slash
+\backslash
+quad
+\backslash
+!
+\backslash
+!
+\backslash
+!
+\backslash
+pageref{END}} % Seitenzahl des Hauptteils
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 18.10.2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{Motivation}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Motivation
+\end_layout
+
+\begin_layout Standard
+In linear algebra one mainly considers finite-dimensional vector spaces
+ with additional structures like norm 
+\begin_inset Formula $\norm .$
+\end_inset
+
+ or scalar product 
+\begin_inset Formula $\left\langle .,.\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(V,\left\langle .,.\right\rangle \right)$
+\end_inset
+
+ be a finite-dimensional scalar product space and 
+\begin_inset Formula $A:V\to V$
+\end_inset
+
+ a linear map, which is self-adjoint, that means for all 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Av\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Theorem 
+\series medium
+(orthonormal eigenvector basis)
+\end_layout
+
+\begin_layout Standard
+There exists an orthonormal eigenvector basis 
+\begin_inset Formula $\left(u_{i}\right)_{i\in\left\{ 1,\ldots,n\right\} }$
+\end_inset
+
+, that means with the eigenvalues 
+\begin_inset Formula $\lambda_{i}\in\mathbb{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u_{i},u_{j}\right\rangle  & =\delta_{ij} & Au_{i} & =\lambda_{i}u_{i}
+\end{align*}
+
+\end_inset
+
+In infinite dimensions the generalization is the 
+\emph on
+spectral theorem
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+First reformulate the result from linear algebra:
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $E_{\lambda_{i}}$
+\end_inset
+
+ be the orthogonal projection operator on the eigenspace corresponding to
+ 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+.
+ If this eigenspace is one dimensional, this means:
+\begin_inset Formula 
+\begin{align*}
+E_{\lambda_{i}}v & =u_{i}\left\langle u_{i},v\right\rangle =\left|u_{i}\right>\left<u_{i}|v\right>
+\end{align*}
+
+\end_inset
+
+Then one can write 
+\begin_inset Formula $A$
+\end_inset
+
+ as:
+\begin_inset Formula 
+\begin{align*}
+A & =\sum_{i=1}^{n}\lambda_{i}E_{\lambda_{i}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Theorem 
+\series medium
+(spectral theorem)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be a self-adjoint (
+\lang ngerman
+selbstadjungiert
+\lang english
+) operator, then it holds:
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\sigma\left(A\right)\subseteq\mathbb{R}$
+\end_inset
+
+ is the spectrum of 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{\lambda}$
+\end_inset
+
+ the projection-valued measure (
+\lang ngerman
+Spektralmaß
+\lang english
+).
+\end_layout
+
+\begin_layout Standard
+Applications typically are differential operators, for example:
+\begin_inset Formula 
+\begin{align*}
+\Delta_{\mathbb{R}^{3}} & =\frac{\partial^{2}}{\partial x_{1}^{2}}+\frac{\partial^{2}}{\partial x_{2}^{2}}+\frac{\partial^{2}}{\partial x_{3}^{2}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Delta_{\mathbb{R}^{3}}:C_{0}^{\infty}\left(\mathbb{R}^{3}\right) & \to C^{\infty}\left(\mathbb{R}^{3}\right)\quad\text{linear operator}
+\end{align*}
+
+\end_inset
+
+Applications in more detail are studied in the lectures on partial differential
+ equations I + II.
+\end_layout
+
+\begin_layout Chapter
+Basic Notions
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+rightmark}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+fancyhead[C]{
+\backslash
+leftmark}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a vector space (
+\lang ngerman
+Vektorraum
+\lang english
+), for example the finite-dimensional vector space 
+\begin_inset Formula $E\simeq\mathbb{R}^{3}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+In the following list the later spaces are special cases of the previous
+ ones:
+\end_layout
+
+\begin_layout Itemize
+topological vector spaces
+\end_layout
+
+\begin_layout Itemize
+metric spaces with a metric 
+\begin_inset Formula $d\left(.,.\right)$
+\end_inset
+
+ (Polish spaces if complete)
+\end_layout
+
+\begin_layout Itemize
+normed spaces with norm 
+\begin_inset Formula $\norm .$
+\end_inset
+
+ (Banach spaces if complete)
+\end_layout
+
+\begin_layout Itemize
+scalar product spaces 
+\begin_inset Formula $\left\langle .,.\right\rangle $
+\end_inset
+
+ (Hilbert spaces if complete)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathbb{K}$
+\end_inset
+
+ be either 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ or 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(metric, 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-ball, Cauchy sequence, complete, Polish space)
+\end_layout
+
+\begin_layout Standard
+A map 
+\begin_inset Formula $d:E\times E\to\mathbb{R}$
+\end_inset
+
+ is called 
+\emph on
+metric
+\emph default
+, if for all 
+\begin_inset Formula $x,y,z\in E$
+\end_inset
+
+ holds:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $d\left(x,y\right)=d\left(y,x\right)$
+\end_inset
+
+ (symmetry)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $d\left(x,y\right)\ge0$
+\end_inset
+
+ and 
+\begin_inset Formula $d\left(x,y\right)=0$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $x=y$
+\end_inset
+
+ (positive definiteness)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $d\left(x,y\right)\le d\left(x,z\right)+d\left(z,y\right)$
+\end_inset
+
+ (triangle inequality)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{\varepsilon}\left(x\right):=\left\{ z\in E\big|d\left(x,z\right)<\varepsilon\right\} $
+\end_inset
+
+ is called 
+\emph on
+
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-ball
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+Consider the topology generated by 
+\begin_inset Formula $B_{\varepsilon}\left(x\right)$
+\end_inset
+
+: A set 
+\begin_inset Formula $\Omega\subseteq E$
+\end_inset
+
+ is open if and only if:
+\begin_inset Formula 
+\begin{align*}
+\fall_{x\in\Omega}\exs_{\varepsilon\in\mathbb{R}_{>0}} & :B_{\varepsilon}\left(x\right)\subseteq\Omega
+\end{align*}
+
+\end_inset
+
+
+\emph on
+Completeness
+\emph default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left(x_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ is a 
+\emph on
+Cauchy sequence
+\emph default
+ if and only if:
+\begin_inset Formula 
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\exs_{N\in\mathbb{N}}\fall_{n,m\in\mathbb{N}_{>N}} & :d\left(x_{n},x_{m}\right)<\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $E$
+\end_inset
+
+ is 
+\emph on
+complete
+\emph default
+ if and only if every Cauchy sequence has a limit.
+\begin_inset Newline newline
+\end_inset
+
+A complete metric space is also called a 
+\emph on
+Polish space
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(norm, Banach space)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(E,\norm .\right)$
+\end_inset
+
+ be a 
+\emph on
+normed space
+\emph default
+, i.e.
+ a 
+\begin_inset Formula $\mathbb{K}$
+\end_inset
+
+-vector space with a map 
+\begin_inset Formula $\norm .:E\to\mathbb{R}_{\ge0}$
+\end_inset
+
+ called 
+\emph on
+norm
+\emph default
+ with the following properties for 
+\begin_inset Formula $x,y\in E$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda\in\mathbb{K}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\norm x\ge0$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm x=0\Leftrightarrow x=0$
+\end_inset
+
+ (positive definiteness)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\norm{\lambda x}=\abs{\lambda}\cdot\norm x$
+\end_inset
+
+ (homogeneity)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\norm{u+v}\le\norm u+\norm v$
+\end_inset
+
+ (triangle inequality)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define the metric 
+\begin_inset Formula $d\left(x,y\right):=\norm{x-y}$
+\end_inset
+
+.
+ A complete normed spaces is called 
+\emph on
+Banach space
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:E\to F$
+\end_inset
+
+ be a linear map between the Banach spaces 
+\begin_inset Formula $\left(E,\norm ._{E}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(F,\norm ._{F}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(continuous, bounded)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+continuous
+\emph default
+ (
+\lang ngerman
+stetig
+\lang english
+) if 
+\begin_inset Formula $A^{-1}\left(\Omega\right)\subseteq E$
+\end_inset
+
+ is open for all open 
+\begin_inset Formula $\Omega\subseteq F$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+bounded
+\emph default
+ (
+\lang ngerman
+beschränkt
+\lang english
+) if there exists a 
+\begin_inset Formula $c\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{Au}_{F} & \le c\norm u_{E}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma 
+\series medium
+(continuous 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ bounded)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is continuous 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is bounded.
+\end_layout
+
+\begin_layout Subsubsection*
+(no proof)
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(dual space, sup-norm)
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+dual space
+\emph default
+ of 
+\begin_inset Formula $E$
+\end_inset
+
+ is the space of continuous linear mappings from 
+\begin_inset Formula $E$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathbb{K}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+E^{*} & =L\left(E,\mathbb{K}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+ is a vector space: For 
+\begin_inset Formula $A,B\in L\left(E,F\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda,\mu\in\mathbb{K}$
+\end_inset
+
+ and 
+\begin_inset Formula $u\in E$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+\left(\lambda A+\mu B\right)\left(u\right) & :=\lambda A\left(u\right)+\mu B\left(u\right)
+\end{align*}
+
+\end_inset
+
+Define also a norm on 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+, which is called 
+\emph on
+sup-norm
+\emph default
+:
+\begin_inset Formula 
+\begin{align*}
+\norm A & :=\sup_{u\in E,\norm u_{E}\le1}\norm{Au}_{F}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $F$
+\end_inset
+
+ is complete, so is 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+In particular 
+\begin_inset Formula $E^{*}$
+\end_inset
+
+ is a Banach space for every 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(no proof)
+\end_layout
+
+\begin_layout Chapter
+The Hahn-Banach Theorem and Applications
+\end_layout
+
+\begin_layout Standard
+As a preparation we need Zorn's lemma.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(partial ordering, chain, upper bound, maximal)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a set and 
+\begin_inset Formula $\le$
+\end_inset
+
+ a 
+\emph on
+partial ordering
+\emph default
+ (
+\lang ngerman
+Halbordnung
+\lang english
+), i.e.
+ for all 
+\begin_inset Formula $a,b,c\in A$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $a\le b$
+\end_inset
+
+ and 
+\begin_inset Formula $b\le c$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $a\le c$
+\end_inset
+
+ (transitivity)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $a\le a$
+\end_inset
+
+ (reflexivity)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $a\le b\wedge b\le a\Rightarrow a=b$
+\end_inset
+
+ (antisymmetry)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Note
+\emph default
+: We do 
+\emph on
+not
+\emph default
+ demand that for all 
+\begin_inset Formula $a,b\in A$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left(a\le b\right)\vee\left(b\le a\right)
+\end{align*}
+
+\end_inset
+
+This is a property of a ordering relation.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left(A,\le\right)$
+\end_inset
+
+ is called 
+\emph on
+partially ordered set
+\emph default
+ (
+\lang ngerman
+teilweise geordnete Menge
+\lang english
+).
+\begin_inset Newline newline
+\end_inset
+
+A subset 
+\begin_inset Formula $K\subseteq A$
+\end_inset
+
+ is called 
+\emph on
+chain
+\emph default
+ (
+\lang ngerman
+Kette, total geordnete Teilmenge
+\lang english
+) if for all 
+\begin_inset Formula $x,y\in K$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left(x\le y\right)\vee\left(y\le x\right)
+\end{align*}
+
+\end_inset
+
+An element 
+\begin_inset Formula $u\in A$
+\end_inset
+
+ is called 
+\emph on
+upper bound
+\emph default
+ (
+\lang ngerman
+obere Schranke
+\lang english
+) of 
+\begin_inset Formula $B\subseteq A$
+\end_inset
+
+ if 
+\begin_inset Formula $x\le u$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in B$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+An element 
+\begin_inset Formula $m\in A$
+\end_inset
+
+ is called 
+\emph on
+maximal
+\emph default
+ if 
+\begin_inset Formula $m\le a\in A\Rightarrow m=a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Zorn's lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(A,\le\right)$
+\end_inset
+
+ be a partially ordered set in which every chain has an upper bound.
+ Then there is a maximal element.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+This follows from the axiom of choice, see e.g.
+ Kowalsky: Linear algebra.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(sublinear)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a 
+\emph on
+real
+\emph default
+ vector space (without topology) and 
+\begin_inset Formula $l:X\to\mathbb{R}$
+\end_inset
+
+ linear.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p:X\to\mathbb{R}$
+\end_inset
+
+ is called 
+\emph on
+sublinear
+\emph default
+ if for all 
+\begin_inset Formula $x,y\in X$
+\end_inset
+
+ and 
+\begin_inset Formula $a\in\mathbb{R}_{>0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $p\left(ax\right)=ap\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A typical example is 
+\begin_inset Formula $p\left(x\right)=\norm x$
+\end_inset
+
+, but 
+\begin_inset Formula $p$
+\end_inset
+
+ does not need to be positive.
+ Another example is any linear mapping.
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(Hahn-Banach, real version, 1927/29)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-Hahn-Banach-real"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a real vector space and 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ a subspace (
+\lang ngerman
+Untervektorraum
+\lang english
+), 
+\begin_inset Formula $p:X\to\mathbb{R}$
+\end_inset
+
+ sublinear and 
+\begin_inset Formula $l:Y\to\mathbb{R}$
+\end_inset
+
+ linear with 
+\begin_inset Formula $l\left(y\right)\le p\left(y\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Then there is a linear extension (
+\lang ngerman
+Fortsetzung
+\lang english
+) 
+\begin_inset Formula $\tilde{l}:X\to\mathbb{R}$
+\end_inset
+
+ of 
+\begin_inset Formula $l$
+\end_inset
+
+ to 
+\begin_inset Formula $X$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\tilde{l}\big|_{Y}=l$
+\end_inset
+
+, such that for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\tilde{l}\left(x\right) & \le p\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Assume 
+\begin_inset Formula $Y\subsetneq X$
+\end_inset
+
+, since otherwise there is nothing to prove.
+ Choose a vector 
+\begin_inset Formula $z\in X\setminus Y$
+\end_inset
+
+.
+ We want to extend 
+\begin_inset Formula $l$
+\end_inset
+
+ to the span of 
+\begin_inset Formula $Y$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\langle z\right\rangle $
+\end_inset
+
+.
+ 
+\begin_inset Formula $\tilde{l}\left(z\right)$
+\end_inset
+
+ needs to be prescribed.
+ For all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+ and 
+\begin_inset Formula $a\in\mathbb{R}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\tilde{l}\left(y+az\right) & \stackrel{\text{linearity}}{=}l\left(y\right)+a\tilde{l}\left(z\right)\stackrel{\text{demand}}{\le}p\left(y+az\right)
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $a=0$
+\end_inset
+
+, the inequality is clear.
+ By homogeneity assumptions, it is sufficient to consider the case 
+\begin_inset Formula $a=\pm1$
+\end_inset
+
+.
+ We thus demand for all 
+\begin_inset Formula $y,y'\in Y$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+l\left(y\right)+\tilde{l}\left(z\right) & \le p\left(y+z\right)\\
+l\left(y'\right)-\tilde{l}\left(z\right) & \le p\left(y'-z\right)
+\end{align*}
+
+\end_inset
+
+This is equivalent to:
+\begin_inset Formula 
+\begin{align*}
+l\left(y'\right)-p\left(y'-z\right) & \le\tilde{l}\left(z\right)\le p\left(y+z\right)-l\left(y\right)
+\end{align*}
+
+\end_inset
+
+We can choose 
+\begin_inset Formula $\tilde{l}\left(z\right)$
+\end_inset
+
+ if and only if:
+\begin_inset Formula 
+\begin{align*}
+l\left(y'\right)-p\left(y'-z\right) & \le p\left(y+z\right)-l\left(y\right)
+\end{align*}
+
+\end_inset
+
+(For example set 
+\begin_inset Formula $\tilde{l}\left(z\right)=\sup_{y'\in Y}l\left(y'\right)-p\left(y'-z\right)$
+\end_inset
+
+.)
+\begin_inset Formula 
+\begin{align*}
+\Leftrightarrow\quad l\left(y'\right)+l\left(y\right)\stackrel{\text{lineariy}}{=}l\left(y'+y\right) & \le p\left(y+z\right)+p\left(y'-z\right)
+\end{align*}
+
+\end_inset
+
+Now prove this inequality:
+\begin_inset Newline newline
+\end_inset
+
+From 
+\begin_inset Formula $y'+y\in Y$
+\end_inset
+
+ follows that 
+\begin_inset Formula $l\left(y+y'\right)\le p\left(y+y'\right)$
+\end_inset
+
+ by hypothesis.
+ Moreover, as 
+\begin_inset Formula $p$
+\end_inset
+
+ is sublinear, it follows:
+\begin_inset Formula 
+\begin{align*}
+p\left(y+z-z+y'\right) & \le p\left(y'+z\right)+p\left(y'-z\right)
+\end{align*}
+
+\end_inset
+
+So the inequality is shown.
+ Thus 
+\begin_inset Formula $l$
+\end_inset
+
+ can be extended to 
+\begin_inset Formula $Y+\left\langle z\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Consider all extensions:
+\begin_inset Formula 
+\begin{align*}
+A & :=\left\{ \left(Z,l\right)|Y\subseteq Z\subseteq X\text{ subspace},\ l:Z\to\mathbb{R}\text{ extension of }l_{Y}:Y\to\mathbb{R}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 19.10.12
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This set has a partial ordering 
+\begin_inset Formula $\le$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\left(Z,l\right)\le\left(Z',l'\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $Z\subseteq Z'$
+\end_inset
+
+ and 
+\begin_inset Formula $l'\big|_{Z}=l$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+For an index set 
+\begin_inset Formula $I$
+\end_inset
+
+ (possibly infinite, uncountable) let 
+\begin_inset Formula $K=\left\{ \left(Z_{\nu},l_{\nu}\right)|\nu\in I\right\} $
+\end_inset
+
+ be a chain, i.e.
+ for all 
+\begin_inset Formula $\left(Z,l\right),\left(Z',l'\right)\in K$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z,l\right)\le\left(Z,l\right)\right)
+\end{align*}
+
+\end_inset
+
+Set 
+\begin_inset Formula $Z=\bigcup_{\nu\in I}Z_{\nu}$
+\end_inset
+
+ and define 
+\begin_inset Formula $l:Z\to\mathbb{R}$
+\end_inset
+
+ by 
+\begin_inset Formula $l\big|_{Z_{\nu}}=l_{\nu}$
+\end_inset
+
+.
+ (Thus suppose 
+\begin_inset Formula $u\in Z$
+\end_inset
+
+, so there is a 
+\begin_inset Formula $\nu\in I$
+\end_inset
+
+ with 
+\begin_inset Formula $u\in Z_{\nu}$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $l\left(u\right):=l_{\nu}\left(u\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\nu$
+\end_inset
+
+ need not be unique.
+ Suppose 
+\begin_inset Formula $u\in Z_{\nu'}$
+\end_inset
+
+, then we know that either 
+\begin_inset Formula $Z_{\nu'}\subseteq Z_{\nu}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{\nu}\big|_{Z_{\nu'}}=l_{\nu'}$
+\end_inset
+
+ or 
+\begin_inset Formula $Z_{\nu}\subseteq Z_{\nu'}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{\nu'}\big|_{Z_{\nu}}=l_{\nu}$
+\end_inset
+
+.
+ In both cases we have 
+\begin_inset Formula $l_{\nu}\left(u\right)=l_{\nu'}\left(u\right)$
+\end_inset
+
+, thus 
+\begin_inset Formula $l\left(u\right)$
+\end_inset
+
+ is well defined.)
+\begin_inset Newline newline
+\end_inset
+
+This 
+\begin_inset Formula $\left(Z,l\right)$
+\end_inset
+
+ is an upper bound, because for all 
+\begin_inset Formula $\nu\in I$
+\end_inset
+
+ we have 
+\begin_inset Formula $Z_{\nu}\subseteq Z=\bigcup_{\lambda\in I}Z_{\lambda}$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ is an extension of 
+\begin_inset Formula $l_{\nu}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+With Zorn's Lemma follows, that there exists an maximal element 
+\begin_inset Formula $\left(\tilde{Y},\tilde{l}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\tilde{Y}=X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Proof: Otherwise there would be a vector 
+\begin_inset Formula $u\in X\setminus\tilde{Y}$
+\end_inset
+
+, and 
+\begin_inset Formula $\tilde{l}$
+\end_inset
+
+ could be extended to 
+\begin_inset Formula $\tilde{Y}\oplus\left\langle u\right\rangle $
+\end_inset
+
+, as shown in i), in contradiction to the maximality of 
+\begin_inset Formula $\tilde{l}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\left(X=\tilde{Y},\tilde{l}\right)$
+\end_inset
+
+ is the desired extension.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(Hahn-Banach, complex version)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a complex vector space and 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ a subspace.
+ Before, we had 
+\begin_inset Formula $l\left(x\right)\le p\left(x\right)$
+\end_inset
+
+ as condition, which does not make sense in the complex case, since:
+\begin_inset Formula 
+\begin{align*}
+l\left(e^{\ii\varphi}x\right) & =e^{\ii\varphi}l\left(x\right)\stackrel{\text{in general}}{\not\in}\mathbb{R}
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $p:X\to\mathbb{R}$
+\end_inset
+
+ be a 
+\emph on
+seminorm
+\emph default
+, i.e.:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $p\left(ax\right)=\abs ap\left(x\right)$
+\end_inset
+
+ (homogeneity)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$
+\end_inset
+
+ (triangle inequality)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $l:Y\to\mathbb{C}$
+\end_inset
+
+ be a linear functional with 
+\begin_inset Formula $\abs{l\left(y\right)}\le p\left(y\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Then 
+\begin_inset Formula $l$
+\end_inset
+
+ can be extended to 
+\begin_inset Formula $X$
+\end_inset
+
+ such that 
+\begin_inset Formula $\abs{l\left(x\right)}\le p\left(x\right)$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+We also consider 
+\begin_inset Formula $X$
+\end_inset
+
+ as a real vector space.
+ (
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $\ii u$
+\end_inset
+
+ are then linearly independent vectors.) Decompose 
+\begin_inset Formula $l$
+\end_inset
+
+ into its real and imaginary parts.
+\begin_inset Formula 
+\begin{align*}
+l\left(y\right) & =l_{1}\left(y\right)+\ii l_{2}\left(y\right)\\
+l_{1} & :=\text{Re}\left(l\left(y\right)\right)\\
+l_{2} & :=\text{Im}\left(l\left(y\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{2}$
+\end_inset
+
+ are real-linear and:
+\begin_inset Formula 
+\begin{align*}
+l_{1}\left(\ii y\right) & =\text{Re}\left(l\left(\ii y\right)\right)=\text{Re}\left(\ii l\left(y\right)\right)=-\text{Im}\left(l\left(y\right)\right)=-l_{2}\left(y\right)
+\end{align*}
+
+\end_inset
+
+Conversely, suppose that 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ is real-linear.
+ Then
+\begin_inset Formula 
+\begin{align*}
+l\left(x\right) & :=l_{1}\left(x\right)-\ii\cdot l_{1}\left(\ii x\right)
+\end{align*}
+
+\end_inset
+
+this is indeed a complex-linear function.
+ We know that 
+\begin_inset Formula $\abs{l\left(y\right)}\le p\left(y\right)$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+l_{1}\left(y\right)=\text{Re}\left(l\left(y\right)\right) & \le\abs{l\left(y\right)}\\
+\Rightarrow\qquad l_{1}\left(y\right) & \le p\left(y\right)
+\end{align*}
+
+\end_inset
+
+Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-Hahn-Banach-real"
+
+\end_inset
+
+ yields an real-linear extension 
+\begin_inset Formula $\tilde{l}_{1}:X\to\mathbb{R}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\tilde{l}_{1}\left(x\right)\le p\left(x\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Set 
+\begin_inset Formula $\tilde{l}\left(x\right)=\tilde{l}_{1}\left(x\right)-\ii\,\tilde{l}_{1}\!\left(\ii x\right)$
+\end_inset
+
+, so that 
+\begin_inset Formula $\tilde{l}:X\to\mathbb{C}$
+\end_inset
+
+ is complex-linear.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\abs{\tilde{l}\left(x\right)}\le p\left(x\right)$
+\end_inset
+
+ 
+\begin_inset Formula $\fall_{x\in X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Proof: Polar decomposition:
+\begin_inset Formula 
+\begin{align*}
+\tilde{l}\left(x\right) & =re^{\ii\varphi}\\
+\abs{\tilde{l}\left(x\right)} & =r=e^{-\ii\varphi}\tilde{l}\left(x\right)\sr ={\tilde{l}\text{ is}}{\text{complex-linear}}\tilde{l}\left(e^{-\ii\varphi}x\right)=\text{Re}\left(\tilde{l}\left(e^{-\ii\varphi}x\right)\right)=\\
+ & =\tilde{l}_{1}\left(e^{-\ii\varphi}x\right)\le p\left(e^{-\ii\varphi}x\right)\stackrel{\text{homogeneity}}{=}p\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now to applications:
+\end_layout
+
+\begin_layout Section
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-HahnBanach-normedSpace"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(X,\norm .\right)$
+\end_inset
+
+ be a normed 
+\begin_inset Formula $\mathbb{K}$
+\end_inset
+
+-space (real or complex), 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+ a subspace.
+ Let 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ be a continuous linear functional from 
+\begin_inset Formula $Y$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathbb{K}$
+\end_inset
+
+, i.e.
+ for all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{\varphi\left(y\right)} & \le c\norm y
+\end{align*}
+
+\end_inset
+
+Then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ can be continued to all of 
+\begin_inset Formula $X$
+\end_inset
+
+ with the same supnorm, i.
+ e.:
+\begin_inset Formula 
+\begin{align*}
+\norm{\tilde{\varphi}} & :=\sup_{x\in X,\norm x\le1}\abs{\varphi\left(x\right)}=\norm{\varphi}:=\sup_{y\in Y,\norm y\le1}\abs{\varphi\left(y\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Apply the Hahn-Banach theorem with 
+\begin_inset Formula $\varphi:=c\norm x$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Corollary
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a normed space and 
+\begin_inset Formula $u_{0}\in X$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{u_{0}}=1$
+\end_inset
+
+.
+ Then there exists a linear functional 
+\begin_inset Formula $\varphi:X\to\mathbb{K}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u_{0}\right) & =1 & \norm{\varphi} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y:=\left\langle u_{0}\right\rangle $
+\end_inset
+
+ and define 
+\begin_inset Formula $\varphi_{0}:\left\langle u_{0}\right\rangle \to\mathbb{K}$
+\end_inset
+
+ by 
+\begin_inset Formula $\varphi_{0}\left(u_{0}\right)=1$
+\end_inset
+
+.
+ Extend 
+\begin_inset Formula $\varphi_{0}$
+\end_inset
+
+ by the Hahn-Banach theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-HahnBanach-normedSpace"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Hahn-Banach theorem also has a geometric formulation.
+ Consider only the real case:
+\begin_inset Newline newline
+\end_inset
+
+A set 
+\begin_inset Formula $K\subseteq X$
+\end_inset
+
+ is called 
+\emph on
+convex
+\emph default
+ if for all 
+\begin_inset Formula $x,y\in K$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau\in\left[0,1\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\tau x+\left(1-\tau\right)y & \in K
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+subfigure[konvex set]{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8)
+ (-0.3,0.5) (-0.5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,-0.5) -- (0.5,0.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,-0.5) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+subfigure[concave set]{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8)
+ (0,1) (0.2,-0.2) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-0.4,-0.3) -- (0.4,0.6);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-0.4,-0.3) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.4,0.6) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+convexity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Geometric question:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8)
+ (-0.3,0.5) (-0.5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick,red] (1,1.5) -- (2,-0.5) node[right]{$
+\backslash
+mathcal{H}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0.9,-0.7) {$K$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+not intersecting hyperplane
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Is there a hyperplane 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, which meets 
+\begin_inset Formula $y\not\in K$
+\end_inset
+
+, but does not intersect 
+\begin_inset Formula $K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(interior point)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}\in K$
+\end_inset
+
+ is an 
+\emph on
+interior point
+\emph default
+ (
+\lang ngerman
+innerer Punkt
+\lang english
+) 
+\emph on
+of 
+\begin_inset Formula $K$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $u\in X$
+\end_inset
+
+
+\emph default
+ if there exists an 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x_{0}+tu\in K$
+\end_inset
+
+ for all 
+\begin_inset Formula $t\in\left(-\varepsilon,\varepsilon\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{0}\in K$
+\end_inset
+
+ is an 
+\emph on
+interior point
+\emph default
+ if for all 
+\begin_inset Formula $u\in X$
+\end_inset
+
+ there is a 
+\begin_inset Formula $\varepsilon=\varepsilon\left(u\right)\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x_{0}+tu\in X$
+\end_inset
+
+ for all 
+\begin_inset Formula $t\in\left(-\varepsilon,\varepsilon\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(geometric Hahn-Banach)
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-HahnBanach-Geometric"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $K\not=\emptyset$
+\end_inset
+
+ be convex and all points of 
+\begin_inset Formula $K$
+\end_inset
+
+ be interior points.
+ Let 
+\begin_inset Formula $y\not\in K$
+\end_inset
+
+.
+ Then there is a linear functional 
+\begin_inset Formula $l:X\to\mathbb{R}$
+\end_inset
+
+ such that 
+\begin_inset Formula $l\left(x\right)<1$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ and 
+\begin_inset Formula $l\left(y\right)=1$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathcal{H}:=\left\{ x\in X\big|l\left(x\right)=1\right\} $
+\end_inset
+
+ defines a hyperplane.
+ Now 
+\begin_inset Formula $y\in\mathcal{H}$
+\end_inset
+
+ and 
+\begin_inset Formula $l\big|_{K}<1$
+\end_inset
+
+ mean that 
+\begin_inset Formula $K$
+\end_inset
+
+ lies in one half-space.
+\end_layout
+
+\begin_layout Standard
+First introduce a suitable sublinear functional.
+ Without loss of generality, assume 
+\begin_inset Formula $0\in K$
+\end_inset
+
+ (otherwise shift 
+\begin_inset Formula $K$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8)
+ (-0.3,0.5) (-0.5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05
+);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $0\in K$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The functional 
+\begin_inset Formula $p:K\to\mathbb{R}_{\ge0}$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+p\left(x\right) & :=\text{inf}\left\{ a\in\mathbb{R}_{>0}\bigg|\frac{x}{a}\in K\right\} 
+\end{align*}
+
+\end_inset
+
+is called gauge (
+\lang ngerman
+Eichung
+\lang english
+).
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $x$
+\end_inset
+
+ is an interior point, we know that 
+\begin_inset Formula $\frac{x}{a}\in K$
+\end_inset
+
+ if 
+\begin_inset Formula $a>1-\varepsilon\left(x\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $p$
+\end_inset
+
+ is even defined on all of 
+\begin_inset Formula $X$
+\end_inset
+
+, because for 
+\begin_inset Formula $x\in X$
+\end_inset
+
+, now 
+\begin_inset Formula $\tau x\in K$
+\end_inset
+
+ if 
+\begin_inset Formula $\abs{\tau}$
+\end_inset
+
+ is sufficiently small, because 
+\begin_inset Formula $0\in K$
+\end_inset
+
+ is an interior point.
+\begin_inset Formula 
+\begin{align*}
+p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in K
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8)
+ (-0.3,0.5) (-0.5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05
+);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1.5,0.8) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) --
+ +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.5,0.2666) node[below right]{$
+\backslash
+tau x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (1.5,0.8) -- (-0.75,-0.4);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\not\in K,\ \tau x\in K$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p$
+\end_inset
+
+ is sublinear.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+The homogeneity is clear from the definition.
+\end_layout
+
+\begin_layout Standard
+sub-additivity (triangle equation):
+\begin_inset Newline newline
+\end_inset
+
+Take 
+\begin_inset Formula $x,y\in K$
+\end_inset
+
+ and choose 
+\begin_inset Formula $a,b\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\frac{x}{a},\frac{y}{b}\in K$
+\end_inset
+
+.
+ The convexity of 
+\begin_inset Formula $K$
+\end_inset
+
+ implies for all 
+\begin_inset Formula $\tau\in\left[0,1\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\tau\frac{x}{a}+\left(1-\tau\right)\frac{y}{b} & \in K
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula ${\displaystyle \tau=\frac{a}{a+b}}$
+\end_inset
+
+, then holds 
+\begin_inset Formula ${\displaystyle 1-\tau=\frac{b}{a+b}}$
+\end_inset
+
+, which gives:
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\frac{1}{a+b}\left(x+y\right) & \in K
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+p\left(x+y\right) & \le a+b
+\end{align*}
+
+\end_inset
+
+Taking the infimum over 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ gives 
+\begin_inset Formula $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+p\left(x+y\right) & =\inf\underbrace{\left\{ c\in\mathbb{R}_{>0}\bigg|\frac{x+y}{c}\in K\right\} }_{\ni a+b}\le a+b
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+p\left(x\right) & =\inf\left\{ a\bigg|\frac{x}{a}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{a\in\mathbb{R}_{>0}}:p\left(x\right)\ge a-\varepsilon\\
+p\left(y\right) & =\inf\left\{ b\bigg|\frac{x}{b}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{b\in\mathbb{R}_{>0}}:p\left(y\right)\ge b-\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p\left(x\right)<1\Leftrightarrow x\in K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $x\not\in K$
+\end_inset
+
+ then 
+\begin_inset Formula $\frac{1}{a}x\not\in K$
+\end_inset
+
+ for all 
+\begin_inset Formula $0<a<1$
+\end_inset
+
+ and so 
+\begin_inset Formula $p\left(x\right)\ge1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For all 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ exists an 
+\begin_inset Formula $\varepsilon=\varepsilon\left(x\right)\in\mathbb{R}_{>0}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left(1+t\right)x\in K$
+\end_inset
+
+ for all 
+\begin_inset Formula $t\in\left(-\varepsilon,\varepsilon\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad & \left(1+\frac{\varepsilon}{2}\right)x\in K\\
+\Rightarrow\quad & p\left(x\right)\le\frac{1}{1+\frac{\varepsilon}{2}}<1
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof of Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-HahnBanach-Geometric"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Introduce 
+\begin_inset Formula $l$
+\end_inset
+
+ on 
+\begin_inset Formula $\left\langle y\right\rangle $
+\end_inset
+
+ by 
+\begin_inset Formula $l\left(y\right)=1$
+\end_inset
+
+.
+ (Assume again that 
+\begin_inset Formula $0\in K$
+\end_inset
+
+ and so 
+\begin_inset Formula $y\not=0$
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+Write 
+\begin_inset Formula $z=ay\in\left\langle y\right\rangle $
+\end_inset
+
+ with 
+\begin_inset Formula $a\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $a<0$
+\end_inset
+
+, then 
+\begin_inset Formula $l\left(z\right)=a\cdot l\left(y\right)=a<0$
+\end_inset
+
+ but 
+\begin_inset Formula $p\left(z\right)\ge0$
+\end_inset
+
+ and thus the inequality 
+\begin_inset Formula $l\left(z\right)\le p\left(z\right)$
+\end_inset
+
+ is trivially satisfied.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $a>0$
+\end_inset
+
+ it holds:
+\begin_inset Formula 
+\begin{align*}
+l\left(z\right) & =a\sr{\le}{y\not\in K}{\Rightarrow p\left(y\right)\ge1}a\cdot p\left(y\right)\sr ={\text{positive}}{\text{homogeneity}}p\left(ay\right)=p\left(z\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So for all 
+\begin_inset Formula $z\in\left\langle y\right\rangle $
+\end_inset
+
+ holds 
+\begin_inset Formula $l\left(z\right)\le p\left(z\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+The Hahn-Banach Theorem yields an extension 
+\begin_inset Formula $l:X\to\mathbb{R}$
+\end_inset
+
+ such that 
+\begin_inset Formula $l\left(x\right)\le p\left(x\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+.
+ Therefore for all 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ we have:
+\begin_inset Formula 
+\begin{align*}
+l\left(x\right) & \le p\left(x\right)<1
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+ref{sec:Thm-HahnBanach-Geometric}]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 25.10.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Normed Spaces
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(E,\norm .\right)$
+\end_inset
+
+ be a normed space and let the open balls 
+\begin_inset Formula $B_{\varepsilon}\left(x\right)=\left\{ y\big|\norm{x-y}<\varepsilon\right\} $
+\end_inset
+
+ generate the topology on 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(equivalent norms)
+\end_layout
+
+\begin_layout Standard
+Two norms 
+\begin_inset Formula $\norm ._{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm ._{2}$
+\end_inset
+
+ are 
+\emph on
+equivalent
+\emph default
+, if there exists a 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{C}\norm x_{1} & \le\norm x_{2}\le C\norm x_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Equivalent norms give rise to the same topology.
+\end_layout
+
+\begin_layout Subsubsection*
+(No proof)
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $E$
+\end_inset
+
+ is finite dimensional, then any two norms on 
+\begin_inset Formula $E$
+\end_inset
+
+ are equivalent.
+\end_layout
+
+\begin_layout Subsubsection*
+(No proof)
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Rest überarbeiten
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $F\subseteq E$
+\end_inset
+
+ be a 
+\emph on
+closed
+\emph default
+ subspace.
+ Define 
+\begin_inset Formula $\modulo EF$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\begin{align*}
+x\sim y & :\Leftrightarrow x-y\in F
+\end{align*}
+
+\end_inset
+
+defines an equivalence relation on 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\modulo EF & :=\modulo E{\sim}
+\end{align*}
+
+\end_inset
+
+is a vector space.
+\begin_inset Formula 
+\begin{align*}
+\norm u_{\moduloScript EF} & :=\inf_{\sr{}{\hat{u}\in E}{\hat{u}\text{ represents }u}}\norm{\hat{u}}_{E}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\modulo EF,\norm ._{\modulo EF}\right)$
+\end_inset
+
+ is a normed space.
+ The closedness is essential.
+ Suppose 
+\begin_inset Formula $F\subseteq E$
+\end_inset
+
+ is not closed.
+ Then there exists an 
+\begin_inset Formula $x\in\modulo EF$
+\end_inset
+
+ with 
+\begin_inset Formula $x\in\overline{F}$
+\end_inset
+
+, thus there is a 
+\begin_inset Formula $\left(x_{n}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $x_{n}\in F$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{n}\to x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left[x\right]\in\modulo EF$
+\end_inset
+
+ be the equivalence class.
+ Then 
+\begin_inset Formula $\left[x\right]\not=0$
+\end_inset
+
+ but 
+\begin_inset Formula $\norm{\left[x\right]}=\inf_{\hat{x}}\norm{\hat{x}}\le\inf\norm{x-x_{n}}=0$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $x-x_{n}\stackrel{\sim}{=}x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another operation.
+ Let 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ be normed spaces.
+\begin_inset Formula 
+\begin{align*}
+E\times F & =\left\{ \left(u,v\right)\Big|u\in E,v\in F\right\}  &  & \text{Cartesian product}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(u,v\right)}_{E\times F} & =\norm u_{E}+\norm v_{F}
+\end{align*}
+
+\end_inset
+
+is a norm on 
+\begin_inset Formula $E\times F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A complete normed space is called 
+\emph on
+Banach space
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A normed space is called 
+\emph on
+separable
+\emph default
+, if there is a countable dense subset.
+\end_layout
+
+\begin_layout Subsection
+Examples
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ell^{\infty}$
+\end_inset
+
+ bounded sequences 
+\begin_inset Formula $\left(a_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{n}\in\mathbb{R}$
+\end_inset
+
+ or 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{\left(a_{n}\right)}_{\infty}:=\sup_{n}\abs{a_{n}}$
+\end_inset
+
+ is a Banach space.
+\begin_inset Formula 
+\begin{align*}
+A & :=\left\{ \left(a_{n}\right)\big|a_{2n}=0\fall_{n\in\mathbb{N}}\right\} \subseteq\ell^{\infty}
+\end{align*}
+
+\end_inset
+
+is a closed subspace.
+\begin_inset Formula 
+\begin{align*}
+\modulo{\ell^{\infty}}A & \stackrel{\sim}{=}\left\{ \left(a_{n}\right)\big|a_{2n+1}=0\fall_{n\in\mathbb{N}}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B & =\left\{ \left(a_{n}\right)\text{ finite sequence}\right\} \subseteq\ell^{\infty}
+\end{align*}
+
+\end_inset
+
+is a subspace, but not closed in 
+\begin_inset Formula $\ell^{\infty}$
+\end_inset
+
+.
+ For example 
+\begin_inset Formula $a_{n}=\frac{1}{n}\in\ell^{\infty}\setminus B$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $x_{n}\in B$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{n}=\left(a_{n_{l}}\right)_{l\in\mathbb{N}}$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+a_{n_{l}} & =\begin{cases}
+\frac{1}{l} & \text{if }l\le n\\
+0 & \text{if }l>n
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Then 
+\begin_inset Formula $x_{n}\to x$
+\end_inset
+
+, 
+\begin_inset Formula $x=\left(a_{n}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\overline{B} & =\left\{ \left(a_{n}\right)\big|a\xrightarrow{n\to\infty}0\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\ell^{\infty}$
+\end_inset
+
+ is separable.
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $1\le p<\infty$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\ell^{p} & =\left\{ \text{sequences }\left(a_{n}\right)\big|\sum_{n=1}^{\infty}\abs{a_{n}}^{p}<\infty\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(a_{n}\right)}_{p} & :=\left(\sum_{n=1}^{\infty}\abs{a_{n}}^{p}\right)^{\frac{1}{p}} &  & \ell^{p}\text{-norm}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\ell^{p}$
+\end_inset
+
+ is a normed space (Hölder's inequality, Minkowski inequality).
+ It is separable (see exercises).
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(\Omega,\mu\right)$
+\end_inset
+
+ be a measure space.
+\begin_inset Formula 
+\begin{align*}
+L^{p}\left(\Omega\right) & 1\le p<\infty & \norm f_{p} & =\left(\int_{\Omega}\abs{f\left(x\right)}^{p}\dd\mu\right)^{\frac{1}{p}}\\
+L^{\infty}\left(\Omega\right) &  & \norm f_{\infty} & =\text{supess}_{\Omega}\abs{f\left(x\right)}=\sup\left\{ L\big|\mu\left(f^{-1}\left([L,\infty)\right)\right)>0\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Non-Compactness of the Unit Ball
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(E,\norm .\right)$
+\end_inset
+
+ be a normed vector space.
+\begin_inset Formula 
+\begin{align*}
+K & :=\overline{B_{1}\left(0\right)}=\left\{ x\in E\big|\norm x\le1\right\} 
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\dim\left(E\right)<\infty$
+\end_inset
+
+, 
+\begin_inset Formula $K$
+\end_inset
+
+ is compact by the Heine-Borel Theorem.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $E$
+\end_inset
+
+ is infinite-dimensional, then 
+\begin_inset Formula $K$
+\end_inset
+
+ is not sequentially compact (folgenkompakt).
+ Thus we want to construct a sequence 
+\begin_inset Formula $\left(y_{n}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $y_{n}\in K$
+\end_inset
+
+, which has no convergent subsequence.
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y\subsetneq E$
+\end_inset
+
+ be a proper (echter) closed subspace.
+ Then there is a vector 
+\begin_inset Formula $z\in\modulo EY$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\norm z & =1 & \norm{z-y} & >\frac{1}{2}\fall_{y\in Y}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Abb6
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\overline{B_{\frac{1}{2}}\left(z\right)}\cap Y & =\emptyset
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $x\in\modulo EY$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\modulo EY$
+\end_inset
+
+ is open, there is a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ with 
+\begin_inset Formula $B_{\delta}\left(x\right)\cap Y=\emptyset$
+\end_inset
+
+.
+ Thus:
+\begin_inset Formula 
+\begin{align*}
+\inf_{y\in Y}\norm{x-y}:=d & >0
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $y_{0}\in Y$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{x-y_{0}}<2d$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $z'=x-y_{0}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\norm{z'}<2d$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{z'-y}\ge d$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in Y$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $z:=\frac{z'}{\norm{z'}}$
+\end_inset
+
+ has the desired properties.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof of Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "a"
+
+\end_inset
+
+2.1.1
+\end_layout
+
+\begin_layout Standard
+Choose inductively a sequence 
+\begin_inset Formula $\left(y_{n}\right)$
+\end_inset
+
+: 
+\begin_inset Formula $y_{1}\in K$
+\end_inset
+
+ arbitrary.
+ 
+\begin_inset Formula $Y_{1}:=\left\langle y_{1}\right\rangle $
+\end_inset
+
+ is a one dimensional subspace, which is closed.
+ Choose 
+\begin_inset Formula $y_{2}\in K$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{y_{2}-y}>\frac{1}{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in Y_{1}$
+\end_inset
+
+.
+ (This is possible according to Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "a"
+
+\end_inset
+
+2.1.2)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $y_{1},\ldots,y_{n}$
+\end_inset
+
+ are given.
+ 
+\begin_inset Formula $Y_{n}:=\left\langle y_{1},\ldots,y_{n}\right\rangle $
+\end_inset
+
+ is closed.
+ So there exists a 
+\begin_inset Formula $y_{n+1}\in K$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\norm{y_{n+1}-y} & >\frac{1}{2}\quad\fall_{y\in Y_{n}}
+\end{align*}
+
+\end_inset
+
+This sequence has the following properties:
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $y_{k}\in K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\fall_{k,l,k\not=l}$
+\end_inset
+
+ then 
+\begin_inset Formula $\norm{y_{k}-y_{l}}>\frac{1}{2}$
+\end_inset
+
+, because: For example if 
+\begin_inset Formula $k<l$
+\end_inset
+
+, then 
+\begin_inset Formula $y_{k}\in Y_{l-1}=\left\langle y_{1},\ldots,y_{l-1}\right\rangle $
+\end_inset
+
+ and we know by construction that 
+\begin_inset Formula $\norm{y_{l}-y}>\frac{1}{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in Y_{l-1}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\norm{y_{l}-y_{k}}>\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This implies that 
+\begin_inset Formula $\left(y_{k}\right)$
+\end_inset
+
+ has no convergent subspace.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Spaces of linear Mappings, Dual Spaces
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E,F$
+\end_inset
+
+ be normed spaces.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A:E\to F$
+\end_inset
+
+ is continuous if and only if it is bounded, i.e.
+ there exists a 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\norm{Au}_{F} & \le C\norm u_{E}\quad\fall_{u\in E}
+\end{align*}
+
+\end_inset
+
+Denote by 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+ the normed space of all bounded linear maps from 
+\begin_inset Formula $E$
+\end_inset
+
+ to 
+\begin_inset Formula $F$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+\norm A & =\sup_{\norm u\le1}\norm{Au}=\sup_{\norm u=1}\norm{Au}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $B\in L\left(E,F\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in L\left(F,G\right)$
+\end_inset
+
+ then:
+\begin_inset Formula 
+\begin{align*}
+\norm{A\cdot B} & \le\norm A\cdot\norm B\\
+\norm{Au} & \le\norm A\cdot\norm u
+\end{align*}
+
+\end_inset
+
+Scharz inequality or Kato inequality.
+\end_layout
+
+\begin_layout Subsubsection*
+(no proof)
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $F$
+\end_inset
+
+ is complete, so is 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Special case: 
+\begin_inset Formula $F=\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\norm x_{\mathbb{R}}=\abs x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E^{*}:=L\left(E,\mathbb{R}\right)$
+\end_inset
+
+ is the dual space.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $u\in E$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u\right) & =\left(\varphi,u\right) &  & \text{dual pairing (dt. duale Paarung)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(.,.\right):E^{*}\times E & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+is a continuous bilinear map.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $u\in E$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\left(.,u\right):E^{*} & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+defines an element of 
+\begin_inset Formula $E^{**}=L\left(E^{*},\mathbb{R}\right)$
+\end_inset
+
+.
+ This gives rise to a linear mapping:
+\begin_inset Formula 
+\begin{align*}
+\iota:E & \to E^{**}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\iota$
+\end_inset
+
+ is an isometric embedding of 
+\begin_inset Formula $E$
+\end_inset
+
+ into 
+\begin_inset Formula $E^{**}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\norm{\iota\left(u\right)} & :=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\left(\iota\left(u\right)\right)\left(\varphi\right)}=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)}\stackrel{?}{=}\norm u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\varphi} & =\sup_{v\in E,\norm v=1}\abs{\varphi\left(v\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\varphi\left(u\right)} & \le\norm{\varphi}\cdot\norm u\stackrel{\norm{\varphi}=1}{=}\norm u\\
+\Rightarrow\quad\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)} & \le\norm u
+\end{align*}
+
+\end_inset
+
+To prove 
+\begin_inset Formula $\norm{\iota\left(u\right)}\ge\norm u$
+\end_inset
+
+ apply the Hahn-Banach theorem.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $l:\left\langle u\right\rangle \to\mathbb{R}$
+\end_inset
+
+ be the linear map with 
+\begin_inset Formula $l\left(u\right)=\norm u$
+\end_inset
+
+, thus:
+\begin_inset Formula 
+\begin{align*}
+\norm l & =\sup_{v\in\left\langle u\right\rangle ,\norm v=1}\left(l\left(v\right)\right)=\sup\left(l\left(\pm\frac{u}{\norm u}\right)\right)=1
+\end{align*}
+
+\end_inset
+
+By the Hahn-Banach theorem we can extend 
+\begin_inset Formula $l$
+\end_inset
+
+ to
+\begin_inset Formula 
+\begin{align*}
+\tilde{l}:E & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\norm{\tilde{l}}=1$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{align*}
+\sup_{\varphi\in E^{*},\norm{\varphi}=1}\varphi\left(u\right) & \ge\tilde{l}\left(u\right)=\norm u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\iota:E\hookrightarrow E^{*}$
+\end_inset
+
+ is an isometric embedding.
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A Banach space is called 
+\emph on
+reflexive
+\emph default
+ (reflexiv), if 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is bijective, i.e.
+ 
+\begin_inset Formula $E=E^{**}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E=\ell_{1}$
+\end_inset
+
+be the space of absolutely convergent functions with 
+\begin_inset Formula $\norm{\left(a_{n}\right)}_{1}=\sum_{n=1}^{\infty}\abs{a_{n}}<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(\lambda_{n}\right)\in\ell_{\infty}$
+\end_inset
+
+ be a bounded sequence.
+\begin_inset Formula 
+\begin{align*}
+\Lambda:E & \to\mathbb{R}\\
+\Lambda\left(\left(a_{n}\right)\right) & =\sum_{n=1}^{\infty}\lambda_{n}a_{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{\Lambda\left(\left(a_{n}\right)\right)} & =\abs{\sum_{n=1}^{\infty}\lambda_{n}a_{n}}\le\sum_{n=1}^{\infty}\abs{\lambda_{n}}\cdot\abs{a_{n}}\le\norm{\left(\lambda_{n}\right)}_{\infty}\sum_{n=1}^{\infty}\abs{a_{n}}=\norm{\left(\lambda_{n}\right)}_{\infty}\cdot\norm{\left(a_{n}\right)}_{1}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is bounded and:
+\begin_inset Formula 
+\begin{align*}
+\norm{\Lambda} & \le\sup_{k\in\mathbb{N}}\abs{\lambda_{k}}
+\end{align*}
+
+\end_inset
+
+It is even 
+\begin_inset Formula $\norm{\Lambda}=\sup_{k\in\mathbb{N}}\abs{\lambda_{k}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 26.10.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E,F$
+\end_inset
+
+ be Banach spaces.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm A=\sup_{\norm u=1}\norm{Au}$
+\end_inset
+
+ is again a Banach space.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E^{*}=L\left(E,\mathbb{R}\right)$
+\end_inset
+
+ dual space
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L:E\to E^{**}$
+\end_inset
+
+ is norm preserving 
+\begin_inset Formula $\norm{Lu}\stackrel{E^{**}}{=}\norm u_{E}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $L$
+\end_inset
+
+ is injective, because if 
+\begin_inset Formula $Lu=0$
+\end_inset
+
+, then 
+\begin_inset Formula $\norm u_{E}=\norm{Lu}=0$
+\end_inset
+
+ and therefore 
+\begin_inset Formula $u=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E=\ell_{1}$
+\end_inset
+
+; 
+\begin_inset Formula $\left(\lambda_{k}\right)\in\ell_{\infty}$
+\end_inset
+
+ defines a linear Functional 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ on 
+\begin_inset Formula $\ell_{1}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Lambda\left(\left(a_{k}\right)\right) & :=\sum_{k=1}^{\infty}\lambda_{k}a_{k}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is bounded, 
+\begin_inset Formula $\Lambda\in\ell_{1}^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Claim
+\emph default
+: Every bounded linear functional on 
+\begin_inset Formula $\ell_{1}$
+\end_inset
+
+ is of this form, i.
+ e.
+ 
+\begin_inset Formula $\ell_{1}^{*}=\ell_{\infty}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Proof
+\emph default
+: Let 
+\begin_inset Formula $\Lambda\in\ell_{1}^{*}$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $u_{l}\in\ell_{1}$
+\end_inset
+
+ by 
+\begin_inset Formula $u_{l}=\left(0,\ldots,1,0,\ldots\right)$
+\end_inset
+
+ with a one at the 
+\begin_inset Formula $l$
+\end_inset
+
+-th position.
+\end_layout
+
+\begin_layout Standard
+Set 
+\begin_inset Formula $\lambda_{l}=\Lambda\left(u_{l}\right)$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{align*}
+\abs{\lambda_{l}} & =\abs{\Lambda\left(u_{l}\right)}\le\underbrace{\norm{\Lambda}}_{<\infty}\cdot\underbrace{\norm{u_{l}}}_{=1}\le\norm{\Lambda}<\infty
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\left(\lambda_{l}\right)\in\ell_{\infty}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(a_{k}\right)$
+\end_inset
+
+ be a finite sequence, with only zeros after 
+\begin_inset Formula $k=K$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{align*}
+\Lambda\left(\left(a_{k}\right)\right) & =\Lambda\left(\sum_{k=1}^{K}a_{k}u_{k}\right)=\sum a_{k}\Lambda\left(u_{k}\right)=\sum\lambda_{k}a_{k}
+\end{align*}
+
+\end_inset
+
+Since the finite sequences are dense in 
+\begin_inset Formula $\ell_{1}$
+\end_inset
+
+, the claim follows.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $\ell_{1}^{*}=\ell_{\infty}$
+\end_inset
+
+ and one could assume 
+\begin_inset Formula $\ell_{\infty}^{*}=\ell_{1}$
+\end_inset
+
+, but this is not the case (see exercises).
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula $\ell_{1}^{**}\not=\ell_{1}$
+\end_inset
+
+, which means, that 
+\begin_inset Formula $\ell_{1}$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ reflexive.
+\end_layout
+
+\begin_layout Section
+Weak Convergence (Schwache Konvergenz)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a Banach space and
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ a sequence in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Normal convergenz: 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\norm{u-u_{k}}\xrightarrow{k\to\infty}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A sequence 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $E$
+\end_inset
+
+ 
+\emph on
+converges weakly
+\emph default
+ to 
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $u_{n}\rightharpoondown u$
+\end_inset
+
+, if for all 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+ the sequence 
+\begin_inset Formula $\varphi\left(u_{n}\right)$
+\end_inset
+
+ converges to 
+\begin_inset Formula $\varphi\left(u\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi\left(u_{n}\right)\to\varphi\left(u\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ is a 
+\emph on
+weak Cauchy sequence
+\emph default
+, if for all 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+ the sequence 
+\begin_inset Formula $\varphi\left(u_{n}\right)$
+\end_inset
+
+ is Cauchy.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+The weak limit is unique.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ be a sequence in 
+\begin_inset Formula $E$
+\end_inset
+
+ which converges 
+\begin_inset Formula $u_{n}\rightharpoondown u$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{n}\rightharpoondown u'$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u_{n}\right) & \to\varphi\left(u\right) & \varphi\left(u_{n}\right) & \to\varphi\left(u'\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0 & \to\varphi\left(u-u'\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\varphi\left(u-u'\right)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Claim
+\emph default
+: 
+\begin_inset Formula $v:=u-u'=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Proof
+\emph default
+: Assume convertly that 
+\begin_inset Formula $v\not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $\varphi:\left\langle v\right\rangle \to\mathbb{R}$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(v\right)=1$
+\end_inset
+
+.
+ By the Hahn-Banach theorem 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ can be extended continuously to 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Therefore there exists a 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(v\right)=1$
+\end_inset
+
+, which is a contradiction to 
+\begin_inset Formula $\varphi\left(v\right)=0$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Every convergent sequence converges weakly.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Suppose that 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+, so:
+\begin_inset Formula 
+\begin{align*}
+\abs{\varphi\left(u_{n}\right)-\varphi\left(u\right)} & =\abs{\varphi\left(u_{n}-u\right)}\le\underbrace{\norm{\varphi}}_{\in\mathbb{R}}\cdot\norm{u_{n}-u}\to0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\varphi\left(u_{n}\right) & \to\varphi\left(u\right)\\
+\Rightarrow\quad u_{n} & \rightharpoondown u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E=\left\{ \left(a_{n}\right)\big|a_{n}\xrightarrow{n\to\infty}0\right\} \subsetneq\ell_{\infty}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{\left(a_{n}\right)}=\sup_{n}\abs{a_{n}}$
+\end_inset
+
+ is a Banach space.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $u_{n}=\left(0,\ldots,0,1,0,\ldots\right)$
+\end_inset
+
+ be the sequence with a one at the 
+\begin_inset Formula $n$
+\end_inset
+
+-th position and zeros elsewhere.
+ For 
+\begin_inset Formula $n\not=m$
+\end_inset
+
+ we have:
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{n}-u_{m}} & =\sup\left\{ 0,\abs 1,\abs{-1}\right\} =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ a Cauchy sequence.
+ Let 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ can be represented as (see exercises):
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(\left(a_{n}\right)\right) & =\sum_{k}\lambda_{k}a_{k} &  & \text{with }\left(\lambda_{k}\right)\in\ell_{1}\\
+\norm{\varphi} & =\sum_{k=1}^{\infty}\abs{\lambda_{k}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u_{n}\right) & =\sum_{k=1}^{\infty}\lambda_{k}\delta_{kn}=\lambda_{n}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\left(\lambda_{n}\right)\in\ell_{1}$
+\end_inset
+
+ we know that 
+\begin_inset Formula $\lambda_{n}\to0$
+\end_inset
+
+.
+ This means, that 
+\begin_inset Formula $u_{k}\rightharpoondown0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is used in Partial Differential Equations.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\mathscr{S}\left(u_{n}\right)\to\inf\mathscr{S}$
+\end_inset
+
+, then not necessarily 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+, but 
+\begin_inset Formula $u_{n}\rightharpoondown u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $A_{n}\in L\left(E,F\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{n}\to A$
+\end_inset
+
+ in 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+, meaning that 
+\begin_inset Formula $\norm{A_{n}-A}\to0$
+\end_inset
+
+.
+ norm convergence
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{n}u\to Au$
+\end_inset
+
+ in 
+\begin_inset Formula $F$
+\end_inset
+
+ for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+.
+ strong convergence
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{n}u\rightharpoondown Au$
+\end_inset
+
+ for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+.
+ weak convergence
+\end_layout
+
+\begin_layout Section
+The Baire Category Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a metric space (e.g.
+ a normed space).
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A subset 
+\begin_inset Formula $A\subseteq E$
+\end_inset
+
+ is called 
+\emph on
+nowhere dense
+\emph default
+ (nirgends dicht), if 
+\begin_inset Formula $\stackrel{\circ}{\overline{A}}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is called 
+\emph on
+of first category
+\emph default
+ (or meagre) it it can be written as a countable union of nowhere dense
+ sets.
+\end_layout
+
+\begin_layout Standard
+Otherwise it is 
+\emph on
+of second category
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Example
+\emph default
+: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{N}\subseteq\mathbb{R}$
+\end_inset
+
+ is nowhere dense, 
+\begin_inset Formula $\overline{\mathbb{N}}=\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $\stackrel{\circ}{\mathbb{N}}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{Q}\subseteq\mathbb{R}$
+\end_inset
+
+: 
+\begin_inset Formula $\overline{\mathbb{Q}}=\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\stackrel{\circ}{\overline{\mathbb{Q}}}=\stackrel{\circ}{\mathbb{R}}=\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem (Baire)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E\not=\emptyset$
+\end_inset
+
+ be a complete metric space (Polish space).
+ Then 
+\begin_inset Formula $E$
+\end_inset
+
+ is of second category.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Assume conversely that 
+\begin_inset Formula $E=\bigcup_{n\in\mathbb{N}}M_{n}$
+\end_inset
+
+ and the sets 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ are nowhere dense.
+\end_layout
+
+\begin_layout Standard
+Without loss of generality assume that 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ are closed, otherwise replace 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ by 
+\begin_inset Formula $\overline{M_{n}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We shall construct inductively balls 
+\begin_inset Formula $\overline{B_{n}}=\overline{B_{r_{n}}\left(x_{n}\right)}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\overline{B_{n+1}}\subseteq\overline{B_{n}}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{n}<2^{-n}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{n}\cap M_{n}=\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb7
+\end_layout
+
+\begin_layout Standard
+Then the points 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ form a Cauchy sequence, because for all 
+\begin_inset Formula $n<m$
+\end_inset
+
+ we have 
+\begin_inset Formula $x_{n+1}\in B_{n}$
+\end_inset
+
+ and so 
+\begin_inset Formula $\norm{x_{n}-x_{n+1}}<r_{n}<2^{-n}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{x_{n}-x_{m}} & \le\norm{x_{n}-x_{n+1}}+\norm{x_{n+1}-x_{m}}\le\ldots\le\\
+ & \le2^{-n}+2^{-\left(n+1\right)}+\ldots+2^{-\left(m-1\right)}\le2^{-n}\left(1+\frac{1}{2}+\frac{1}{4}+\ldots\right)\le2\cdot2^{-n}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $E$
+\end_inset
+
+ is complete, 
+\begin_inset Formula $x_{n}\to x_{0}\in E$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x_{0}\in\overline{B_{n}}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+, which implies 
+\begin_inset Formula $x_{0}\not\in M_{n}$
+\end_inset
+
+ and thus the contradiction 
+\begin_inset Formula $x_{0}\not\in\bigcup_{n}M_{n}=E$
+\end_inset
+
+ follows.
+\end_layout
+
+\begin_layout Standard
+Construction of the balls 
+\begin_inset Formula $\overline{B_{n}}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ is nowhere dense 
+\begin_inset Formula $\Rightarrow B_{1}\left(0\right)\not\subseteq M_{1}$
+\end_inset
+
+.
+ So there exists a 
+\begin_inset Formula $x_{1}\in B_{1}\left(0\right)\setminus M_{1}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ is closed, 
+\begin_inset Formula $B_{1}\left(0\right)\setminus M_{1}$
+\end_inset
+
+ is open and therefore there exists a radius 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $B_{2r_{1}}\left(x_{1}\right)$
+\end_inset
+
+ is contained in 
+\begin_inset Formula $B_{1}\left(0\right)\setminus M_{1}$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\overline{B_{r_{1}}\left(x_{1}\right)}\cap M_{1}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\overline{B_{n}}$
+\end_inset
+
+ has been constructed.
+ 
+\begin_inset Formula $M_{n+1}$
+\end_inset
+
+ is nowhere dense and closed and so there is a 
+\begin_inset Formula $x_{n+1}\in\overline{B_{n}}\setminus M_{n+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{n+1}<2^{-\left(n+1\right)}$
+\end_inset
+
+ such that 
+\begin_inset Formula $B_{2r_{n+1}}\left(x_{n+1}\right)\subseteq\overline{B_{n}}\setminus M_{n+1}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\overline{B_{r_{n+1}}}\cap M_{n+1}=\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Uniform boundedness principle, Prinzip der gleichmäßigen Beschränktheit)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a Banach space and 
+\begin_inset Formula $F$
+\end_inset
+
+ a normed space.
+ Let 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ be a sequence in 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+ which is point-wise bounded, i.e.
+ for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sup_{i}\norm{T_{i}u} & \le C\left(u\right)<\infty
+\end{align*}
+
+\end_inset
+
+Then sup-norms of 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ are bounded:
+\begin_inset Formula 
+\begin{align*}
+\sup_{i}\norm{T_{i}} & =\sup_{i}\sup_{\norm u=1}\norm{T_{i}u}\le C<\infty
+\end{align*}
+
+\end_inset
+
+(Thus there exists a constant 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{T_{i}u}\le C$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ and for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm u=1$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $M_{n}=\left\{ u\in E\big|\sup_{i}\norm{T_{i}u}\le n\right\} $
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ are closed (by continuity of 
+\begin_inset Formula $T_{i}\in L\left(E,F\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\norm{T_{i}u_{k}}\xrightarrow{k\to\infty}\norm{T_{i}u}$
+\end_inset
+
+ if 
+\begin_inset Formula $u_{k}\to u$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E=\bigcup_{n}M_{n}$
+\end_inset
+
+, because for any 
+\begin_inset Formula $u\in E$
+\end_inset
+
+, 
+\begin_inset Formula $\sup\norm{T_{i}u}<\infty$
+\end_inset
+
+ and thus 
+\begin_inset Formula $u\in M_{n}$
+\end_inset
+
+ if 
+\begin_inset Formula $n>\norm{T_{1}u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If all the sets 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ had empty interior, we would get a contradiction to Baire's theorem.
+\end_layout
+
+\begin_layout Standard
+So there exists an 
+\begin_inset Formula $n_{0}\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\stackrel{\circ}{M_{n}}\not=\emptyset$
+\end_inset
+
+ and thus there are 
+\begin_inset Formula $u_{0}\in E$
+\end_inset
+
+ and 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb8
+\end_layout
+
+\begin_layout Standard
+For all 
+\begin_inset Formula $v\in B_{r}\left(u_{0}\right)$
+\end_inset
+
+ we know that 
+\begin_inset Formula $\sup_{i}\norm{T_{i}v}\le n_{0}$
+\end_inset
+
+ which is equivalent to:
+\begin_inset Formula 
+\begin{align*}
+\sup_{v\in B_{r}\left(u_{0}\right)}\norm{T_{i}v} & \le n_{0}\qquad\fall_{i\in\mathbb{N}}
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $w\in B_{r}\left(0\right)$
+\end_inset
+
+ be arbitrary.
+ Then 
+\begin_inset Formula $v:=u_{0}+w\in B_{r}\left(u_{0}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+T_{i}w & \stackrel{T_{i}\text{ linear}}{=}T_{i}v-T_{i}u_{0}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{T_{i}w} & \le\norm{T_{i}v}+\norm{T_{i}u_{0}}\le n_{0}+\underbrace{\sup_{i}\norm{T_{i}u_{0}}}_{<\infty\text{, because }T_{i}\text{point-wise bounded}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\norm{T_{i}w} & \le C\qquad\fall_{w\in B_{r}\left(0\right)}\\
+\Rightarrow\quad\norm{T_{i}\tilde{w}} & \le\tilde{C}=\frac{C}{r}\qquad\fall_{\tilde{w}\in\overline{B_{1}\left(0\right)}}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\norm{T_{i}}\le\tilde{C}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ and so 
+\begin_inset Formula $\norm{T_{i}}$
+\end_inset
+
+ is bounded.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corollory
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a normed space, not necessarily complete, and 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ a weak Cauchy sequence.
+ Then 
+\begin_inset Formula $\norm{u_{n}}$
+\end_inset
+
+ is a bounded sequence.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E^{*}=L\left(E,\mathbb{R}\right)$
+\end_inset
+
+ is a Banach space.
+ For all 
+\begin_inset Formula $\varphi\in E^{*}$
+\end_inset
+
+ we know, that 
+\begin_inset Formula $\varphi\left(u_{n}\right)$
+\end_inset
+
+ is a Cauchy sequence.
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\abs{\varphi\left(u_{n}\right)} & <C\left(\varphi\right)
+\end{align*}
+
+\end_inset
+
+Applying Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "a"
+
+\end_inset
+
+2.4.3 yields:
+\begin_inset Formula 
+\begin{align*}
+\abs{\varphi\left(u_{n}\right)} & <C\quad\fall_{\varphi\text{ with }\norm{\varphi}=1}\\
+\Leftrightarrow\quad\sup_{n\in\mathbb{N}}\sup_{\varphi,\norm{\varphi}=1}\abs{\varphi\left(u_{n}\right)} & <C
+\end{align*}
+
+\end_inset
+
+For any 
+\begin_inset Formula $v\in E$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\sup_{\varphi\in E^{*},\norm{\varphi}=1}\abs{\varphi\left(v\right)} & =\norm v
+\end{align*}
+
+\end_inset
+
+by the Hahn-Banach theorem:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\abs{\varphi\left(v\right)}\le\norm{\varphi}\cdot\norm v=\norm v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choose 
+\begin_inset Formula $\varphi:\left\langle v\right\rangle \to\mathbb{R}$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(v\right)=\norm v$
+\end_inset
+
+, then 
+\begin_inset Formula $\norm{\varphi}$
+\end_inset
+
+.
+ By Hahn-Banach theorem we can extend 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ to 
+\begin_inset Formula $\tilde{\varphi}:E\to\mathbb{R}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{\tilde{\varphi}}=1$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\tilde{\varphi}=\norm v$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\sup_{\norm{\varphi}=1}\abs{\varphi\left(v\right)}\ge\norm v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula $\sup_{n}\norm{u_{n}}<C$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Rest
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 8.11.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Spring School ...
+ Woche vor Vorlesungsbeginn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consequences of Baire's category theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ open mapping theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E,F$
+\end_inset
+
+ Banach spaces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\in L\left(E,F\right)$
+\end_inset
+
+ surjective 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is open
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\in L\left(E,F\right)$
+\end_inset
+
+ bijective 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A^{-}$
+\end_inset
+
+ is continuous
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Closed Graph theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A:E\to F$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\text{graph}\left(A\right) & :=\left\{ \left(u,Au\right)\big|u\in E\right\} \subseteq E\times F
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is linear and 
+\begin_inset Formula $\text{graph}\left(A\right)$
+\end_inset
+
+ is closed, then 
+\begin_inset Formula $A$
+\end_inset
+
+ is continuous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{graph}\left(A\right)$
+\end_inset
+
+ closed means: for all 
+\begin_inset Formula $u_{n}\in E$
+\end_inset
+
+, assume 
+\begin_inset Formula $\left(u_{n},Au_{n}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $E\times F$
+\end_inset
+
+, this is equivalent to 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+ and 
+\begin_inset Formula $Au_{n}\to v$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{graph}\left(A\right)$
+\end_inset
+
+ closed means: for all 
+\begin_inset Formula $u_{n}\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+ and 
+\begin_inset Formula $Au_{n}\to v$
+\end_inset
+
+, the point 
+\begin_inset Formula $\left(u,v\right)\in\text{graph}\left(A\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Au=v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is continuous means: for all 
+\begin_inset Formula $u_{n}\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+, the sequence 
+\begin_inset Formula $Au_{n}\to v$
+\end_inset
+
+ converges and 
+\begin_inset Formula $Au=v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Neumann series:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A,B,C,\ldots\in L\left(E,E\right)=L\left(E\right)$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+ Banach space.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\norm B<1$
+\end_inset
+
+, then
+\begin_inset Formula 
+\begin{align*}
+C:= & \sum_{n=0}^{\infty}B^{n}
+\end{align*}
+
+\end_inset
+
+defines an element of 
+\begin_inset Formula $L\left(E\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The series converges absolutely, because:
+\begin_inset Formula 
+\begin{align*}
+\norm{B^{n}} & =\norm{B\cdot B^{n-1}}\le\norm B\norm{B^{n-1}}\le\ldots\le\norm B^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+2.5.2 Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C & =\left(\mathbbm{1}-B\right)^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left(\mathbbm{1}-B\right)C & =\left(\mathbbm{1}-B\right)\sum_{n=0}^{\infty}B^{n}=\left(\mathbbm{1}+B+B^{2}+\ldots\right)-\left(B+B^{2}+\ldots\right)=\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+The set of all continuously invertible mappings is open in 
+\begin_inset Formula $L\left(E\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Assume that 
+\begin_inset Formula $A\in L\left(E\right)$
+\end_inset
+
+ is continuously invertible, i.e.
+ 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ exists and 
+\begin_inset Formula $A^{-1}\in L\left(E\right)$
+\end_inset
+
+.
+ Set:
+\begin_inset Formula 
+\begin{align*}
+\varepsilon & =\frac{1}{2\norm{A^{-1}}}
+\end{align*}
+
+\end_inset
+
+Let us show, that every element of 
+\begin_inset Formula $B_{\varepsilon}\left(A\right)\subseteq L\left(E\right)$
+\end_inset
+
+ is continuously invertible.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $C\in B_{\varepsilon}\left(A\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\norm{A-C}<\varepsilon$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+C & =A-\left(A-C\right)=A\big(\mathbbm{1}-\underbrace{A^{-1}\left(A-C\right)}_{=:B}\big)
+\end{align*}
+
+\end_inset
+
+Then:
+\begin_inset Formula 
+\begin{align*}
+\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}=\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+Hence 
+\begin_inset Formula $\mathbbm{1}-B$
+\end_inset
+
+ is continuously invertible by the Neumann series.
+ Therefore:
+\begin_inset Formula 
+\begin{align*}
+C^{-1} & =\left(\mathbbm{1}-B\right)^{-1}\cdot A^{-1}
+\end{align*}
+
+\end_inset
+
+is continuous.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Hilbert spaces
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a real (
+\begin_inset Formula $\mathbb{K}:=\mathbb{R}$
+\end_inset
+
+) or complex (
+\begin_inset Formula $\mathbb{K}:=\mathbb{C}$
+\end_inset
+
+) vector space with 
+\emph on
+scalar product
+\emph default
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle .,.\right\rangle :H\times H & \to\mathbb{K}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left\langle u,u\right\rangle \ge0$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\langle u,u\right\rangle =0$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $u=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Linear in the second and anti-linear in the first argument:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \lambda u,v\right\rangle  & =\overline{\lambda}\left\langle u,v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Symmetry: 
+\begin_inset Formula $\overline{\left\langle u,v\right\rangle }=\left\langle u,v\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define corresponding norm:
+\begin_inset Formula 
+\begin{align*}
+\norm u & :=\sqrt{\left\langle u,u\right\rangle }
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A complete scalar product space is called 
+\emph on
+Hilbert space
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Schwarz inequality:
+\begin_inset Formula 
+\begin{align*}
+\abs{\left\langle u,v\right\rangle } & \le\norm u\cdot\norm v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma 
+\series medium
+(parallelogram equality 
+\lang ngerman
+(Parallelogramm-Gleichung)
+\lang english
+)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-parallelogram-equality"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\norm{u+v}^{2}+\norm{u-v}^{2} & =2\left(\norm u^{2}+\norm v^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TODO: Abb9
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\norm{u+v}^{2} & =\left\langle u+v,u+v\right\rangle =\left\langle u,u\right\rangle +\left\langle u,v\right\rangle +\left\langle v,u\right\rangle +\left\langle v,v\right\rangle \\
+\norm{u-v}^{2} & =\left\langle u-v,u-v\right\rangle =\left\langle u,u\right\rangle -\left\langle u,v\right\rangle -\left\langle v,u\right\rangle +\left\langle v,v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Vectors 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+ are called 
+\emph on
+orthogonal
+\emph default
+, 
+\begin_inset Formula $u\perp v$
+\end_inset
+
+, if 
+\begin_inset Formula $\left\langle u,v\right\rangle =0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ Subspaces 
+\begin_inset Formula $M_{1},M_{2}\subseteq H$
+\end_inset
+
+ are orthogonal, 
+\begin_inset Formula $M_{1}\perp M_{2}$
+\end_inset
+
+, if 
+\begin_inset Formula $\left\langle u,v\right\rangle =0$
+\end_inset
+
+ for all 
+\begin_inset Formula $u\in M_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in M_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ A family 
+\begin_inset Formula $\left(u_{i}\right)_{i\in I}$
+\end_inset
+
+ of vectors 
+\begin_inset Formula $u_{i}\in H$
+\end_inset
+
+ is called 
+\emph on
+orthonormal
+\emph default
+, if:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u_{i},u_{j}\right\rangle  & =\delta_{ij}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Bessel's inequality)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(u_{i}\right)_{1\le i\le N}$
+\end_inset
+
+ be an orthonormal family.
+ Then for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm u^{2} & =\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2}\\
+\norm u^{2} & \ge\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+It remains to prove the equality.
+\begin_inset Formula 
+\begin{align*}
+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2} & =\left\langle u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle ,u-\sum_{j=1}^{N}u_{j}\left\langle u_{j},u\right\rangle \right\rangle =\\
+ & =\left\langle u,u\right\rangle -\sum_{j=1}^{N}\left\langle u_{j},u\right\rangle \left\langle u,u_{j}\right\rangle -\sum_{i=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{i},u\right\rangle +\sum_{i=1}^{N}\sum_{j=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{j},u\right\rangle \underbrace{\left\langle u_{i},u_{j}\right\rangle }_{=\delta_{ij}}=\\
+ & =\left\langle u,u\right\rangle -2\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}+\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}=\\
+ & =\left\langle u,u\right\rangle -\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Isomorphism
+\emph default
+ of Hilbert spaces: Let 
+\begin_inset Formula $\left(H_{1},\left\langle .,.\right\rangle _{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(H_{2},\left\langle .,.\right\rangle _{2}\right)$
+\end_inset
+
+ be Hilbert spaces.
+\end_layout
+
+\begin_layout Standard
+An isomorphism is a mapping 
+\begin_inset Formula $U:H_{1}\to H_{2}$
+\end_inset
+
+ which is linear, bijective and isometric (
+\lang ngerman
+isometrisch
+\lang english
+), i.e.
+ for all 
+\begin_inset Formula $u,v\in H_{1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,v\right\rangle _{1} & =\left\langle Uu,Uv\right\rangle _{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Direct sum
+\emph default
+ of Hilbert spaces: 
+\begin_inset Formula $H_{1}\oplus H_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define:
+\begin_inset Formula 
+\begin{align*}
+H: & =\left\{ \left(u,v\right)\big|u\in H_{1},v\in H_{2}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(u_{1},v_{1}\right)+\left(u_{2},v_{2}\right) & :=\left(u_{1}+u_{2},v_{1}+v_{2}\right)\\
+\lambda\left(u,v\right) & :=\left(\lambda u,\lambda v\right)\\
+\left\langle \left(u_{1},v_{1}\right),\left(u_{2},v_{2}\right)\right\rangle  & :=\left\langle u_{1},u_{2}\right\rangle +\left\langle v_{1},v_{2}\right\rangle 
+\end{align*}
+
+\end_inset
+
+This makes 
+\begin_inset Formula $H=H_{1}\oplus H_{2}$
+\end_inset
+
+ a Hilbert space, sometimes called orthogonal due to:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(u,0\right),\left(0,v\right)\right\rangle  & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\ell_{2} & =\left\{ \left(a_{n}\right)_{n\in\mathbb{N}}\big|a_{n}\in\mathbb{K},\sum_{n=1}^{\infty}\abs{a_{n}}^{2}<\infty\right\} 
+\end{align*}
+
+\end_inset
+
+Define a scalar product:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(b_{n}\right)\right\rangle  & :=\sum_{n=1}^{\infty}\overline{a}_{n}\cdot b_{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(a_{n}\right)\right\rangle  & =\sum_{n=1}^{\infty}\abs{a_{n}}^{2}=\norm{a_{n}}_{2}^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left(\ell^{2},\norm ._{2}\right)$
+\end_inset
+
+ is a Banach space.
+ Thus 
+\begin_inset Formula $\left(\ell^{2},\left\langle .,.\right\rangle \right)$
+\end_inset
+
+ is a Hilbert space.
+\end_layout
+
+\begin_layout Section
+Projection on closed convex subsets
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(H,\left\langle .,.\right\rangle \right)$
+\end_inset
+
+ be a Hilbert space and 
+\begin_inset Formula $K\subseteq H$
+\end_inset
+
+ a closed convex subset.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb10
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u,v & \in K & w & \in H\setminus K
+\end{align*}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+We want to find a vector 
+\begin_inset Formula $v$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{v-w}=\inf_{u\in K}\norm{u-w}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $K$
+\end_inset
+
+ were compact, then choose minimizing sequence (
+\lang ngerman
+Minimalfolge
+\lang english
+), i.e.:
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{i}-w} & \to\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+Choose a convergent subsequence 
+\begin_inset Formula $u_{i_{l}}\to v$
+\end_inset
+
+.
+ Then by continuity:
+\begin_inset Formula 
+\begin{align*}
+\norm{v-w} & =\lim_{i\to\infty}\norm{u_{i}-w}=\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Main application:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $K\subseteq H$
+\end_inset
+
+ be a closed subspace.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb11
+\end_layout
+
+\begin_layout Standard
+In this case 
+\begin_inset Formula $v-w$
+\end_inset
+
+ will be called orthogonal to 
+\begin_inset Formula $K$
+\end_inset
+
+ motivating the name 
+\emph on
+orthogonal projection
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Hilbert)
+\end_layout
+
+\begin_layout Standard
+There is a unique 
+\begin_inset Formula $v\in K$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+\norm{v-w} & =\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Consider a minimizing sequence 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{i}-w} & \to\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+Show that 
+\begin_inset Formula $\left(u_{i}\right)$
+\end_inset
+
+ is a Cauchy sequence.
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}=\\
+ & \stackrel{\ref{sub:Lem-parallelogram-equality}}{=}2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{\left(u_{i}-w\right)-\left(w-u_{j}\right)}^{2}=\\
+ & =2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{-2\left(w-\frac{u_{i}+u_{j}}{2}\right)}^{2}=\\
+ & =2\left(\underbrace{\norm{u_{i}-w}^{2}}_{\to d^{2}}+\underbrace{\norm{w-u_{j}}^{2}}_{\to d^{2}}-2\norm{\frac{u_{i}+u_{j}}{2}-w}^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{i}-w} & \xrightarrow{i\to\infty}d:=\inf_{u\in K}\norm{u-w}\\
+\norm{u_{j}-w} & \xrightarrow{j\to\infty}d:=\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $K$
+\end_inset
+
+ is convex and 
+\begin_inset Formula $u_{i},u_{j}\in K$
+\end_inset
+
+, we know:
+\begin_inset Formula 
+\begin{align*}
+\frac{u_{i}+u_{j}}{2} & \in K
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\norm{\frac{u_{i}+u_{j}}{2}-w} & \ge d
+\end{align*}
+
+\end_inset
+
+Thus:
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{i}-u_{j}}^{2} & \le2\left(\norm{u_{i}-w}^{2}+\norm{w-u_{j}}^{2}-2d^{2}\right)\xrightarrow{i,j\to\infty}2\left(d^{2}+d^{2}-2d^{2}\right)=0
+\end{align*}
+
+\end_inset
+
+So there exists a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{u_{i}-u_{j}}<\varepsilon$
+\end_inset
+
+ for all 
+\begin_inset Formula $i,j>N$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\left(u_{i}\right)$
+\end_inset
+
+ is a Cauchy sequence.
+ Since 
+\begin_inset Formula $H$
+\end_inset
+
+ is complete, we know that 
+\begin_inset Formula $u_{i}\to u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+By continuity:
+\begin_inset Formula 
+\begin{align*}
+\norm{u-w} & =\lim_{i\to\infty}\norm{u_{i}-w}=d
+\end{align*}
+
+\end_inset
+
+Uniqueness follows from the fact, that 
+\emph on
+every
+\emph default
+ minimizing sequence converges.
+\end_layout
+
+\begin_layout Standard
+Namely: Let 
+\begin_inset Formula $u,\tilde{u}$
+\end_inset
+
+ be both minimizers.
+ The sequence 
+\begin_inset Formula $\left(u,\tilde{u},u,\tilde{u},\ldots\right)$
+\end_inset
+
+ is a minimizing sequence.
+ It converges, so 
+\begin_inset Formula $u=\tilde{u}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corollary
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $M\subseteq H$
+\end_inset
+
+ be a closed subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then a 
+\begin_inset Formula $w\in H$
+\end_inset
+
+ can be decomposed uniquely in the form
+\begin_inset Formula 
+\begin{align*}
+w & =v+x
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $v\in M$
+\end_inset
+
+ and 
+\begin_inset Formula $x\in M^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We write 
+\begin_inset Formula $H=M\oplus M^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+TODO: Abb12
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $v\in M$
+\end_inset
+
+ be as in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "d"
+
+\end_inset
+
+3.1.1.
+\begin_inset Formula 
+\begin{align*}
+\norm{v-w} & =\inf_{u\in M}\norm{u-w}
+\end{align*}
+
+\end_inset
+
+Define 
+\begin_inset Formula $x:=w-v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Claim
+\emph default
+: 
+\begin_inset Formula $x\perp M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Proof
+\emph default
+: Let 
+\begin_inset Formula $u\in M$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $\tilde{u}\left(\tau\right)=v+\tau u\in M$
+\end_inset
+
+ with an arbitrary 
+\begin_inset Formula $\tau\in\mathbb{K}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{v-w}^{2} & \stackrel{\text{by minimality}}{\le}\norm{\tilde{u}-w}^{2}=\left\langle v+\tau u-w,v+\tau u-w\right\rangle =\\
+ & =\norm{v-w}^{2}+2\text{Re}\left(\tau\left\langle w-v,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2}\\
+\Rightarrow\quad0 & \le2\text{Re}\left(\tau\left\langle x,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2}
+\end{align*}
+
+\end_inset
+
+So assume conversely that 
+\begin_inset Formula $\left\langle x,u\right\rangle \not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then set 
+\begin_inset Formula $\tau=re^{\ii\varphi}$
+\end_inset
+
+, 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Choose the phase 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\text{Re}\left(\tau\left\langle x,u\right\rangle \right) & =-r\abs{\left\langle x,u\right\rangle }
+\end{align*}
+
+\end_inset
+
+Then:
+\begin_inset Formula 
+\begin{align*}
+2\text{Re}\left(\tau\left\langle x,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2} & =-2r\abs{\left\langle x,u\right\rangle }+r^{2}\norm u^{2}
+\end{align*}
+
+\end_inset
+
+This can be smaller than zero for sufficiently small 
+\begin_inset Formula $r\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+ This is a contradiction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 9.11.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H$
+\end_inset
+
+ real: Let 
+\begin_inset Formula $u\in M$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{u}\left(\tau\right)=v+\tau u$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\tilde{u}-w}^{2} & =\norm x^{2}+2\tau\left\langle u,x\right\rangle +\tau^{2}\norm u^{2}\ge\norm x^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $f\left(\tau\right)$
+\end_inset
+
+ has a minimum at 
+\begin_inset Formula $\tau=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad f'\left(0\right) & =0\\
+f'\left(0\right) & =2\left\langle u,x\right\rangle \\
+\Rightarrow\quad2\left\langle u,x\right\rangle  & =0\quad\fall_{u\in M}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $x\in M^{\perp}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H$
+\end_inset
+
+ complex: 
+\begin_inset Formula $\tilde{u}\left(\tau\right)=v+\tau u$
+\end_inset
+
+, 
+\begin_inset Formula $\tau=re^{\ii\varphi}$
+\end_inset
+
+ with 
+\begin_inset Formula $r\ge0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{\tilde{u}-w}^{2} & =\norm x^{2}+2\text{Re}\left(re^{-\ii\varphi}\left\langle u,x\right\rangle \right)+r^{2}\norm u^{2}=:f\left(r,\varphi\right)
+\end{align*}
+
+\end_inset
+
+This has a minimum at 
+\begin_inset Formula $r=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad0 & =\partial_{r}f\left(0,\varphi\right)=2\text{Re}\left(e^{-\ii\varphi}\left\langle u,x\right\rangle \right)\\
+\stackrel{\varphi\text{ arbitrary}}{\Rightarrow}\quad\left\langle u,x\right\rangle  & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Uniqueness
+\emph default
+: Assume that 
+\begin_inset Formula $w=v_{1}+x_{1}=v_{2}+x_{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $v_{1},v_{2}\in M$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1},x_{2}\in M^{\perp}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\underbrace{v_{1}-v_{2}}_{\in M} & =\underbrace{x_{2}-x_{1}}_{\in M^{\perp}}\in M\cap M^{\perp}=\left\{ 0\right\} 
+\end{align*}
+
+\end_inset
+
+Because from 
+\begin_inset Formula $u\in M\cap M^{\perp}$
+\end_inset
+
+ follows 
+\begin_inset Formula $\left\langle u,u\right\rangle =0$
+\end_inset
+
+ and so 
+\begin_inset Formula $u=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For Banach spaces 
+\begin_inset Formula $E$
+\end_inset
+
+ we have 
+\begin_inset Formula $E,E^{*},E^{**}$
+\end_inset
+
+ and a natural injection 
+\begin_inset Formula $\iota:E\hookrightarrow E^{**}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Hilbert space 
+\begin_inset Formula $H$
+\end_inset
+
+: Suppose 
+\begin_inset Formula $u\in H$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+\varphi:H & \to\mathbb{K}\\
+\varphi\left(v\right) & :=\left\langle u,v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous, because:
+\begin_inset Formula 
+\begin{align*}
+\abs{\varphi\left(v\right)} & \le\norm u\cdot\norm v\le C\norm v
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\iota:H & \hookrightarrow H^{*}\\
+\iota\left(u\right) & =\varphi
+\end{align*}
+
+\end_inset
+
+is a linear mapping, which is injective.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Fréchet-Riesz)
+\end_layout
+
+\begin_layout Standard
+For any 
+\begin_inset Formula $\varphi\in H^{*}$
+\end_inset
+
+ there is a unique 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $x\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(x\right) & =\left\langle v,x\right\rangle 
+\end{align*}
+
+\end_inset
+
+In other words: 
+\begin_inset Formula $\iota:H\to H^{*}$
+\end_inset
+
+ is a Banach space isomorphism.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\varphi\in H^{*}$
+\end_inset
+
+, without loss of generality 
+\begin_inset Formula $\varphi\not=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+M & :=\ker\varphi
+\end{align*}
+
+\end_inset
+
+is a subspace.
+ It is closed by continuity:
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $u_{n}\in\ker\varphi$
+\end_inset
+
+, 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u\right) & \stackrel{\text{continuity}}{=}\lim_{n\to\infty}\varphi\left(u_{n}\right)=0
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $u\in\ker\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M^{\perp}$
+\end_inset
+
+ is a one-dimensional subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $M^{\perp}\not=\left\{ 0\right\} $
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $\varphi\not=0$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(u\right)\not=0$
+\end_inset
+
+, thus 
+\begin_inset Formula $u\not\in M$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Now decompose 
+\begin_inset Formula $u=v+x$
+\end_inset
+
+, 
+\begin_inset Formula $v\in M$
+\end_inset
+
+, 
+\begin_inset Formula $u\in M^{\perp}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+TODO: Abb13
+\begin_inset Newline newline
+\end_inset
+
+So 
+\begin_inset Formula $x\not=0$
+\end_inset
+
+ thus there is a 
+\begin_inset Formula $x\not=0$
+\end_inset
+
+ with 
+\begin_inset Formula $x\in M^{\perp}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $M^{\perp}$
+\end_inset
+
+ is one-dimensional: Take 
+\begin_inset Formula $u,v\in M^{\perp}$
+\end_inset
+
+, 
+\begin_inset Formula $u,v\not=0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\varphi\left(u\right)\not=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi\left(v\right)\not=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(\varphi\left(v\right)u-\varphi\left(u\right)v\right) & =0
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\varphi\left(v\right)u-\varphi\left(u\right)v\in M\cap M^{\perp}=\left\{ 0\right\} $
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\varphi\left(v\right)u-\varphi\left(u\right)v=0$
+\end_inset
+
+, implying that 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are linearly dependent.
+\end_layout
+
+\begin_layout Itemize
+Choose 
+\begin_inset Formula $u\in M^{\perp}$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(u\right)=1$
+\end_inset
+
+ which is always possible by rescaling.
+\begin_inset Formula 
+\begin{align*}
+v & :=\frac{u}{\norm u^{2}}\\
+\Rightarrow\quad\varphi\left(v\right) & =\frac{1}{\norm u^{2}}\underbrace{\varphi\left(u\right)}_{=1}=\frac{1}{\norm u^{2}}\\
+\left\langle v,v\right\rangle  & =\frac{\left\langle u,u\right\rangle }{\norm u^{4}}=\frac{1}{\norm u^{2}}=\varphi\left(v\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This 
+\begin_inset Formula $v$
+\end_inset
+
+ has the desired properties:
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $x\in H$
+\end_inset
+
+, decompose:
+\begin_inset Formula 
+\begin{align*}
+x & =\underbrace{m}_{\in M}+\underbrace{\alpha v}_{\in M^{\perp}=\left\langle v\right\rangle }
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\varphi\left(x\right) & =\underbrace{\varphi\left(m\right)}_{=0}+\alpha\varphi\left(v\right)=\alpha\left\langle v,v\right\rangle =\\
+ & =\left\langle v,\alpha v\right\rangle =\left\langle v,m+\alpha v\right\rangle =\left\langle v,x\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Lax-Milgram)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a Hilbert space and 
+\begin_inset Formula $B:H\times H\to\mathbb{K}$
+\end_inset
+
+ be a mapping with the following properties:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $B\left(x,y\right)$
+\end_inset
+
+ is linear in the second an anti-linear in the first argument.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\abs{B\left(x,y\right)}\le C\norm x\cdot\norm y$
+\end_inset
+
+ (continuity)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+iii
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ is symmetric (
+\begin_inset Formula $\overline{B\left(x,y\right)}=B\left(y,x\right)$
+\end_inset
+
+) and positive definite, i.e.
+ 
+\begin_inset Formula $B\left(x,x\right)\ge b\norm x^{2}$
+\end_inset
+
+ with 
+\begin_inset Formula $b\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item[iii')]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\abs{B\left(x,x\right)}\ge b\norm x^{2}$
+\end_inset
+
+ with 
+\begin_inset Formula $b\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{iiilist}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then every 
+\begin_inset Formula $l\in H^{*}$
+\end_inset
+
+ can be represented uniquely as:
+\begin_inset Formula 
+\begin{align*}
+l\left(x\right) & =B\left(v,x\right)\qquad\fall_{x\in H}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u\right) & =\left\langle v,u\right\rangle \\
+\leadsto\varphi\left(u\right) & =B\left(v,u\right)
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $B$
+\end_inset
+
+ is a given bilinear form.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+First the easy case iii):
+\end_layout
+
+\begin_layout Standard
+We introduce a new scalar product 
+\begin_inset Formula $\left\langle .,.\right\rangle _{B}$
+\end_inset
+
+ by:
+\begin_inset Formula 
+\begin{align*}
+\left\langle x,y\right\rangle _{B} & :=B\left(x,y\right)
+\end{align*}
+
+\end_inset
+
+Using ii) and iii) one sees that 
+\begin_inset Formula $\norm ._{B}$
+\end_inset
+
+ is equivalent to 
+\begin_inset Formula $\norm .$
+\end_inset
+
+, i.e.
+ there exists a 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{C}\norm x & \le\norm x_{B}\le C\norm x
+\end{align*}
+
+\end_inset
+
+According to the Fréchet-Riesz theorem, there exists a unique 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(x\right)=\left\langle v,x\right\rangle _{B}=B\left(v,x\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+More difficult case iii'): Given 
+\begin_inset Formula $x\in H$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B\left(x,.\right):H & \to\mathbb{K}
+\end{align*}
+
+\end_inset
+
+is a linear bounded functional according to i) and ii), i.e.
+ 
+\begin_inset Formula $B\left(x,.\right)\in H^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+According to the Fréchet-Riesz theorem there exists a unique 
+\begin_inset Formula $z\in H$
+\end_inset
+
+ such that 
+\begin_inset Formula $B\left(x,y\right)=\left\langle z,y\right\rangle $
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in H$
+\end_inset
+
+.
+ This yields a mapping:
+\begin_inset Formula 
+\begin{align*}
+\varphi:H & \to H\\
+x & \mapsto z
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B\left(x,y\right) & =\left\langle \varphi\left(x\right),y\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is linear, because both 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\langle .,.\right\rangle $
+\end_inset
+
+ are anti-linear in their first arguments.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\left(H\right)\subseteq H$
+\end_inset
+
+ is closed:
+\begin_inset Formula 
+\begin{align}
+b\norm x^{2}\stackrel{\text{iii')}}{=}\abs{B\left(x,x\right)} & =\abs{\left\langle z,x\right\rangle }\le\norm z\cdot\norm x\nonumber \\
+b\norm x & \le\norm z\label{eq:bx<z}
+\end{align}
+
+\end_inset
+
+Let 
+\begin_inset Formula $z_{n}\in\varphi\left(H\right)$
+\end_inset
+
+ be a sequence with 
+\begin_inset Formula $z_{n}\to z\in H$
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi\left(x_{n}\right)=z_{n}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $B\left(x_{n},y\right)=\left\langle z_{n},y\right\rangle $
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in H$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Due to the anti-linearity it follows that:
+\begin_inset Formula 
+\begin{align*}
+B\left(x_{n}-x_{m}\right) & =\left\langle z_{n}-z_{m},y\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:bx<z"
+
+\end_inset
+
+ yields that 
+\begin_inset Formula $\norm{x_{n}-x_{m}}\le\norm{z_{n}-z_{m}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Hence 
+\begin_inset Formula $\left(x_{n}\right)$
+\end_inset
+
+ is a Cauchy sequence 
+\begin_inset Formula $x_{n}\to x\in H$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $B$
+\end_inset
+
+ is continuous according to ii), we get:
+\begin_inset Formula 
+\begin{align*}
+\underbrace{B\left(x_{n},y\right)}_{\to B\left(x,y\right)} & =\underbrace{\left\langle z_{n},y\right\rangle }_{\to\left\langle z,y\right\rangle }
+\end{align*}
+
+\end_inset
+
+So:
+\begin_inset Formula 
+\begin{align*}
+B\left(x,y\right) & =\left\langle z,y\right\rangle \\
+\varphi\left(x\right) & =z
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $z\in\varphi\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi\left(H\right)=H$
+\end_inset
+
+: Otherwise there would be a vector 
+\begin_inset Formula $y\not=0$
+\end_inset
+
+, 
+\begin_inset Formula $y\in\varphi\left(H\right)^{\perp}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad B\left(x,y\right) & =\left\langle \varphi\left(x\right),y\right\rangle =0\quad\fall_{x\in H}
+\end{align*}
+
+\end_inset
+
+In particular:
+\begin_inset Formula 
+\begin{align*}
+0 & =\abs{B\left(y,y\right)}\ge b\norm y^{2}\\
+\Rightarrow\quad y & =0
+\end{align*}
+
+\end_inset
+
+This is a contradiction.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $l\in H^{*}$
+\end_inset
+
+.
+ According to Fréchet-Riesz there exists a unique 
+\begin_inset Formula $z\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $l\left(y\right)=\left\langle z,y\right\rangle $
+\end_inset
+
+ for all 
+\begin_inset Formula $y\in H$
+\end_inset
+
+.
+ Now:
+\begin_inset Formula 
+\begin{align*}
+\left\langle z,y\right\rangle  & =B\left(x,y\right)
+\end{align*}
+
+\end_inset
+
+
+\emph on
+Claim
+\emph default
+: 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is injective.
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Proof
+\emph default
+: Suppose 
+\begin_inset Formula $x,x'$
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi\left(x\right)=\varphi\left(x'\right)$
+\end_inset
+
+.
+ Then follows:
+\begin_inset Formula 
+\begin{align*}
+B\left(x-x',y\right) & =\left\langle \underbrace{\varphi\left(x\right)-\varphi\left(x'\right)}_{=0},y\right\rangle =0
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $y=x-x'$
+\end_inset
+
+ so we get:
+\begin_inset Formula 
+\begin{align*}
+B\left(x-x',x-x'\right) & =0\\
+\Rightarrow\quad & x=x'
+\end{align*}
+
+\end_inset
+
+If we choose 
+\begin_inset Formula $x$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi\left(x\right)=z$
+\end_inset
+
+, 
+\begin_inset Formula $x=\varphi^{-1}\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corollary
+\end_layout
+
+\begin_layout Standard
+Every Hilbert space is reflexive.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Recall 
+\begin_inset Formula $\iota:H\hookrightarrow H^{**}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ is 
+\emph on
+reflexive
+\emph default
+, if and only if 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is surjective, i.e.
+ a Banach space isomorphism.
+\begin_inset Formula 
+\begin{align*}
+\tilde{\iota}:H & \to H^{*}\\
+\left(\iota\left(u\right)\right)\left(v\right) & =\left\langle u,v\right\rangle 
+\end{align*}
+
+\end_inset
+
+is bijective by Fréchet-Riesz.
+ This holds also for 
+\begin_inset Formula $\overline{\iota}:H^{*}\to H^{**}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+H\stackrel{\tilde{\iota}}{\to}H^{*}\stackrel{\overline{\iota}}{\to}H^{**}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\iota=\overline{\iota}\circ\tilde{\iota}$
+\end_inset
+
+ is bijective as composition of bijective maps.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Orthonormal Bases in Separable Hilbert Spaces
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ell_{2}=\left\{ \left(a_{n}\right)_{n\in\mathbb{N}}\bigg|\sum_{n}\abs{a_{n}}^{2}<\infty\right\} $
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(b_{n}\right)\right\rangle  & :=\sum_{n}\overline{a}_{n}b_{n}
+\end{align*}
+
+\end_inset
+
+is a Hilbert space.
+\end_layout
+
+\begin_layout Standard
+Idea: Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be an abstract Hilbert space.
+ Choose 
+\begin_inset Quotes eld
+\end_inset
+
+orthonormal basis
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\left(e_{i}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+H\ni u & =\sum_{i=1}^{\infty}\lambda_{i}e_{i}\\
+v & =\sum_{i=1}^{\infty}\nu_{i}e_{i}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,v\right\rangle  & =\sum_{i,j=1}^{\infty}\left\langle \lambda_{i}e_{i},\nu_{j}e_{j}\right\rangle =\sum_{i,j=1}^{\infty}\overline{\lambda_{i}}\nu_{j}\delta_{ij}=\sum_{i}\overline{\lambda_{i}}\nu_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+A system 
+\begin_inset Formula $\left(e_{i}\right)_{i\in J}$
+\end_inset
+
+ is an 
+\emph on
+orthonormal system
+\emph default
+, if 
+\begin_inset Formula $\left\langle e_{i},e_{j}\right\rangle =\delta_{ij}$
+\end_inset
+
+.
+ The algebraic span is the vector space of 
+\emph on
+finite
+\emph default
+ linear combinations:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(e_{i}\right)\right\rangle  & =\left\{ \sum_{i=1}^{N}\lambda_{i}e_{i}\big|N\in\mathbb{N},\lambda_{i}\in\mathbb{K}\right\} 
+\end{align*}
+
+\end_inset
+
+This is a subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Now the subspace 
+\begin_inset Formula $\overline{\left\langle \left(e_{i}\right)\right\rangle }\subseteq H$
+\end_inset
+
+ is called 
+\emph on
+Hilbert space span
+\emph default
+ (
+\lang ngerman
+Hilbertraumerzeugnis
+\lang english
+).
+\end_layout
+
+\begin_layout Standard
+An orthonormal system 
+\begin_inset Formula $\left(e_{i}\right)$
+\end_inset
+
+ is called a 
+\emph on
+orthonormal Hilbert space basis
+\emph default
+, if 
+\begin_inset Formula $\overline{\left\langle \left(e_{i}\right)\right\rangle }=H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There always exists an orthonormal Hilbert space basis.
+ (see exercises)
+\end_layout
+
+\begin_layout Standard
+Any two Hilbert space bases have the same cardinality (
+\lang ngerman
+Mächtigkeit
+\lang english
+).
+ (see exercises)
+\end_layout
+
+\begin_layout Subsection*
+Bernstein-Schröder Theorem
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Definition
+\emph default
+: Sets 
+\begin_inset Formula $A,B$
+\end_inset
+
+ have the same cardinality, if there exists an bijective map 
+\begin_inset Formula $\varphi:A\to B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Theorem (Bernstein-Schröder):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A,B$
+\end_inset
+
+ have the same cardinality, if and only if there exists an injective map
+ from 
+\begin_inset Formula $A$
+\end_inset
+
+ to 
+\begin_inset Formula $B$
+\end_inset
+
+ and an injective map from 
+\begin_inset Formula $B\to A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part*
+Appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{Appendix}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{Appendix}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{
+\backslash
+hspace*{2.7em}Acknowledgements}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{Acknowledgements}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+My special thanks goes to Professor Finster, who gave this lecture and allowed
+ me to publish this script of the lecture.
+\end_layout
+
+\begin_layout Standard
+I would also like to thank all those, who found errors by careful reading
+ and told me of them.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+Andreas Völklein
+\end_layout
+
+\begin_layout Chapter*
+GNU Free Documentation License
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{
+\backslash
+hspace*{2.7em}GNU Free Documentation License}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{GNU Free Documentation License}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Version 1.3, 3 November 2008
+\begin_inset Newline newline
+\end_inset
+
+Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family typewriter
+<
+\family default
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://fsf.org/
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+>
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Everyone is permitted to copy and distribute verbatim copies of this license
+ document,
+\begin_inset Newline newline
+\end_inset
+
+but changing it is not allowed
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+0.
+ Preamble
+\end_layout
+
+\begin_layout Standard
+\noindent
+The purpose of this License is to make a manual, textbook, or other functional
+ and useful document “free” in the sense of freedom: to assure everyone
+ the effective freedom to copy and redistribute it, with or without modifying
+ it, either commercially or noncommercially.
+ Secondarily, this License preserves for the author and publisher a way
+ to get credit for their work, while not being considered responsible for
+ modifications made by others.
+\end_layout
+
+\begin_layout Standard
+\noindent
+This License is a kind of “copyleft”, which means that derivative works
+ of the document must themselves be free in the same sense.
+ It complements the GNU General Public License, which is a copyleft license
+ designed for free software.
+\end_layout
+
+\begin_layout Standard
+\noindent
+We have designed this License in order to use it for manuals for free software,
+ because free software needs free documentation: a free program should come
+ with manuals providing the same freedoms that the software does.
+ But this License is not limited to software manuals; it can be used for
+ any textual work, regardless of subject matter or whether it is published
+ as a printed book.
+ We recommend this License principally for works whose purpose is instruction
+ or reference.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+1.
+ Applicability and definitions
+\end_layout
+
+\begin_layout Standard
+This License applies to any manual or other work, in any medium, that contains
+ a notice placed by the copyright holder saying it can be distributed under
+ the terms of this License.
+ Such a notice grants a world-wide, royalty-free license, unlimited in duration,
+ to use that work under the conditions stated herein.
+ The “
+\series bold
+Document
+\series default
+”, below, refers to any such manual or work.
+ Any member of the public is a licensee, and is addressed as “
+\series bold
+you
+\series default
+”.
+ You accept the license if you copy, modify or distribute the work in a
+ way requiring permission under copyright law.
+\end_layout
+
+\begin_layout Standard
+A “
+\series bold
+Modified Version
+\series default
+” of the Document means any work containing the Document or a portion of
+ it, either copied verbatim, or with modifications and/or translated into
+ another language.
+\end_layout
+
+\begin_layout Standard
+A “
+\series bold
+Secondary Section
+\series default
+” is a named appendix or a front-matter section of the Document that deals
+ exclusively with the relationship of the publishers or authors of the Document
+ to the Document's overall subject (or to related matters) and contains
+ nothing that could fall directly within that overall subject.
+ (Thus, if the Document is in part a textbook of mathematics, a Secondary
+ Section may not explain any mathematics.) The relationship could be a matter
+ of historical connection with the subject or with related matters, or of
+ legal, commercial, philosophical, ethical or political position regarding
+ them.
+\end_layout
+
+\begin_layout Standard
+The “
+\series bold
+Invariant Sections
+\series default
+” are certain Secondary Sections whose titles are designated, as being those
+ of Invariant Sections, in the notice that says that the Document is released
+ under this License.
+ If a section does not fit the above definition of Secondary then it is
+ not allowed to be designated as Invariant.
+ The Document may contain zero Invariant Sections.
+ If the Document does not identify any Invariant Sections then there are
+ none.
+\end_layout
+
+\begin_layout Standard
+The “
+\series bold
+Cover Texts
+\series default
+” are certain short passages of text that are listed, as Front-Cover Texts
+ or Back-Cover Texts, in the notice that says that the Document is released
+ under this License.
+ A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be
+ at most 25 words.
+\end_layout
+
+\begin_layout Standard
+A “
+\series bold
+Transparent
+\series default
+” copy of the Document means a machine-readable copy, represented in a format
+ whose specification is available to the general public, that is suitable
+ for revising the document straightforwardly with generic text editors or
+ (for images composed of pixels) generic paint programs or (for drawings)
+ some widely available drawing editor, and that is suitable for input to
+ text formatters or for automatic translation to a variety of formats suitable
+ for input to text formatters.
+ A copy made in an otherwise Transparent file format whose markup, or absence
+ of markup, has been arranged to thwart or discourage subsequent modification
+ by readers is not Transparent.
+ An image format is not Transparent if used for any substantial amount of
+ text.
+ A copy that is not “Transparent” is called “
+\series bold
+Opaque
+\series default
+”.
+\end_layout
+
+\begin_layout Standard
+Examples of suitable formats for Transparent copies include plain ASCII
+ without markup, Texinfo input format, LaTeX input format, SGML or XML using
+ a publicly available DTD, and standard-conforming simple HTML, PostScript
+ or PDF designed for human modification.
+ Examples of transparent image formats include PNG, XCF and JPG.
+ Opaque formats include proprietary formats that can be read and edited
+ only by proprietary word processors, SGML or XML for which the DTD and/or
+ processing tools are not generally available, and the machine-generated
+ HTML, PostScript or PDF produced by some word processors for output purposes
+ only.
+\end_layout
+
+\begin_layout Standard
+The “
+\series bold
+Title Page
+\series default
+” means, for a printed book, the title page itself, plus such following
+ pages as are needed to hold, legibly, the material this License requires
+ to appear in the title page.
+ For works in formats which do not have any title page as such, “Title Page”
+ means the text near the most prominent appearance of the work's title,
+ preceding the beginning of the body of the text.
+\end_layout
+
+\begin_layout Standard
+The “
+\series bold
+publisher
+\series default
+” means any person or entity that distributes copies of the Document to
+ the public.
+\end_layout
+
+\begin_layout Standard
+A section “
+\series bold
+Entitled XYZ
+\series default
+” means a named subunit of the Document whose title either is precisely
+ XYZ or contains XYZ in parentheses following text that translates XYZ in
+ another language.
+ (Here XYZ stands for a specific section name mentioned below, such as “
+\series bold
+Acknowledgements
+\series default
+”, “
+\series bold
+Dedications
+\series default
+”, “
+\series bold
+Endorsements
+\series default
+”, or “
+\series bold
+History
+\series default
+”.) To “
+\series bold
+Preserve the Title
+\series default
+” of such a section when you modify the Document means that it remains a
+ section “Entitled XYZ” according to this definition.
+\end_layout
+
+\begin_layout Standard
+The Document may include Warranty Disclaimers next to the notice which states
+ that this License applies to the Document.
+ These Warranty Disclaimers are considered to be included by reference in
+ this License, but only as regards disclaiming warranties: any other implication
+ that these Warranty Disclaimers may have is void and has no effect on the
+ meaning of this License.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+2.
+ Verbatim copying
+\end_layout
+
+\begin_layout Standard
+You may copy and distribute the Document in any medium, either commercially
+ or noncommercially, provided that this License, the copyright notices,
+ and the license notice saying this License applies to the Document are
+ reproduced in all copies, and that you add no other conditions whatsoever
+ to those of this License.
+ You may not use technical measures to obstruct or control the reading or
+ further copying of the copies you make or distribute.
+ However, you may accept compensation in exchange for copies.
+ If you distribute a large enough number of copies you must also follow
+ the conditions in section 3.
+\end_layout
+
+\begin_layout Standard
+You may also lend copies, under the same conditions stated above, and you
+ may publicly display copies.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+3.
+ Copying in quantity
+\end_layout
+
+\begin_layout Standard
+If you publish printed copies (or copies in media that commonly have printed
+ covers) of the Document, numbering more than 100, and the Document's license
+ notice requires Cover Texts, you must enclose the copies in covers that
+ carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on
+ the front cover, and Back-Cover Texts on the back cover.
+ Both covers must also clearly and legibly identify you as the publisher
+ of these copies.
+ The front cover must present the full title with all words of the title
+ equally prominent and visible.
+ You may add other material on the covers in addition.
+ Copying with changes limited to the covers, as long as they preserve the
+ title of the Document and satisfy these conditions, can be treated as verbatim
+ copying in other respects.
+\end_layout
+
+\begin_layout Standard
+If the required texts for either cover are too voluminous to fit legibly,
+ you should put the first ones listed (as many as fit reasonably) on the
+ actual cover, and continue the rest onto adjacent pages.
+\end_layout
+
+\begin_layout Standard
+If you publish or distribute Opaque copies of the Document numbering more
+ than 100, you must either include a machine-readable Transparent copy along
+ with each Opaque copy, or state in or with each Opaque copy a computer-network
+ location from which the general network-using public has access to download
+ using public-standard network protocols a complete Transparent copy of
+ the Document, free of added material.
+ If you use the latter option, you must take reasonably prudent steps, when
+ you begin distribution of Opaque copies in quantity, to ensure that this
+ Transparent copy will remain thus accessible at the stated location until
+ at least one year after the last time you distribute an Opaque copy (directly
+ or through your agents or retailers) of that edition to the public.
+\end_layout
+
+\begin_layout Standard
+It is requested, but not required, that you contact the authors of the Document
+ well before redistributing any large number of copies, to give them a chance
+ to provide you with an updated version of the Document.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+4.
+ Modifications
+\end_layout
+
+\begin_layout Standard
+You may copy and distribute a Modified Version of the Document under the
+ conditions of sections 2 and 3 above, provided that you release the Modified
+ Version under precisely this License, with the Modified Version filling
+ the role of the Document, thus licensing distribution and modification
+ of the Modified Version to whoever possesses a copy of it.
+ In addition, you must do these things in the Modified Version:
+\end_layout
+
+\begin_layout Description
+A.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.2mm}
+\end_layout
+
+\end_inset
+
+ Use in the Title Page (and on the covers, if any) a title distinct from
+ that of the Document, and from those of previous versions (which should,
+ if there were any, be listed in the History section of the Document).
+ You may use the same title as a previous version if the original publisher
+ of that version gives permission.
+\end_layout
+
+\begin_layout Description
+B.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ List on the Title Page, as authors, one or more persons or entities responsible
+ for authorship of the modifications in the Modified Version, together with
+ at least five of the principal authors of the Document (all of its principal
+ authors, if it has fewer than five), unless they release you from this
+ requirement.
+\end_layout
+
+\begin_layout Description
+C.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ State on the Title page the name of the publisher of the Modified Version,
+ as the publisher.
+\end_layout
+
+\begin_layout Description
+D.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ Preserve all the copyright notices of the Document.
+\end_layout
+
+\begin_layout Description
+E.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ Add an appropriate copyright notice for your modifications adjacent to
+ the other copyright notices.
+\end_layout
+
+\begin_layout Description
+F.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.8mm}
+\end_layout
+
+\end_inset
+
+ Include, immediately after the copyright notices, a license notice giving
+ the public permission to use the Modified Version under the terms of this
+ License, in the form shown in the Addendum below.
+\end_layout
+
+\begin_layout Description
+G.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.1mm}
+\end_layout
+
+\end_inset
+
+ Preserve in that license notice the full lists of Invariant Sections and
+ required Cover Texts given in the Document's license notice.
+\end_layout
+
+\begin_layout Description
+H.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.2mm}
+\end_layout
+
+\end_inset
+
+ Include an unaltered copy of this License.
+\end_layout
+
+\begin_layout Description
+I.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{5.0mm}
+\end_layout
+
+\end_inset
+
+ Preserve the section Entitled “History”, Preserve its Title, and add to
+ it an item stating at least the title, year, new authors, and publisher
+ of the Modified Version as given on the Title Page.
+ If there is no section Entitled “History” in the Document, create one stating
+ the title, year, authors, and publisher of the Document as given on its
+ Title Page, then add an item describing the Modified Version as stated
+ in the previous sentence.
+\end_layout
+
+\begin_layout Description
+J.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4.3mm}
+\end_layout
+
+\end_inset
+
+ Preserve the network location, if any, given in the Document for public
+ access to a Transparent copy of the Document, and likewise the network
+ locations given in the Document for previous versions it was based on.
+ These may be placed in the “History” section.
+ You may omit a network location for a work that was published at least
+ four years before the Document itself, or if the original publisher of
+ the version it refers to gives permission.
+\end_layout
+
+\begin_layout Description
+K.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.3mm}
+\end_layout
+
+\end_inset
+
+ For any section Entitled “Acknowledgements” or “Dedications”, Preserve
+ the Title of the section, and preserve in the section all the substance
+ and tone of each of the contributor acknowledgements and/or dedications
+ given therein.
+\end_layout
+
+\begin_layout Description
+L.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{4.1mm}
+\end_layout
+
+\end_inset
+
+ Preserve all the Invariant Sections of the Document, unaltered in their
+ text and in their titles.
+ Section numbers or the equivalent are not considered part of the section
+ titles.
+\end_layout
+
+\begin_layout Description
+M.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3mm}
+\end_layout
+
+\end_inset
+
+ Delete any section Entitled “Endorsements”.
+ Such a section may not be included in the Modified Version.
+\end_layout
+
+\begin_layout Description
+N.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ Do not retitle any existing section to be Entitled “Endorsements” or to
+ conflict in title with any Invariant Section.
+\end_layout
+
+\begin_layout Description
+O.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{3.4mm}
+\end_layout
+
+\end_inset
+
+ Preserve any Warranty Disclaimers.
+\end_layout
+
+\begin_layout Standard
+If the Modified Version includes new front-matter sections or appendices
+ that qualify as Secondary Sections and contain no material copied from
+ the Document, you may at your option designate some or all of these sections
+ as invariant.
+ To do this, add their titles to the list of Invariant Sections in the Modified
+ Version's license notice.
+ These titles must be distinct from any other section titles.
+\end_layout
+
+\begin_layout Standard
+You may add a section Entitled “Endorsements”, provided it contains nothing
+ but endorsements of your Modified Version by various parties—for example,
+ statements of peer review or that the text has been approved by an organization
+ as the authoritative definition of a standard.
+\end_layout
+
+\begin_layout Standard
+You may add a passage of up to five words as a Front-Cover Text, and a passage
+ of up to 25 words as a Back-Cover Text, to the end of the list of Cover
+ Texts in the Modified Version.
+ Only one passage of Front-Cover Text and one of Back-Cover Text may be
+ added by (or through arrangements made by) any one entity.
+ If the Document already includes a cover text for the same cover, previously
+ added by you or by arrangement made by the same entity you are acting on
+ behalf of, you may not add another; but you may replace the old one, on
+ explicit permission from the previous publisher that added the old one.
+\end_layout
+
+\begin_layout Standard
+The author(s) and publisher(s) of the Document do not by this License give
+ permission to use their names for publicity for or to assert or imply endorseme
+nt of any Modified Version.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+5.
+ Combining documents
+\end_layout
+
+\begin_layout Standard
+You may combine the Document with other documents released under this License,
+ under the terms defined in section 4 above for modified versions, provided
+ that you include in the combination all of the Invariant Sections of all
+ of the original documents, unmodified, and list them all as Invariant Sections
+ of your combined work in its license notice, and that you preserve all
+ their Warranty Disclaimers.
+\end_layout
+
+\begin_layout Standard
+The combined work need only contain one copy of this License, and multiple
+ identical Invariant Sections may be replaced with a single copy.
+ If there are multiple Invariant Sections with the same name but different
+ contents, make the title of each such section unique by adding at the end
+ of it, in parentheses, the name of the original author or publisher of
+ that section if known, or else a unique number.
+ Make the same adjustment to the section titles in the list of Invariant
+ Sections in the license notice of the combined work.
+\end_layout
+
+\begin_layout Standard
+In the combination, you must combine any sections Entitled “History” in
+ the various original documents, forming one section Entitled “History”;
+ likewise combine any sections Entitled “Acknowledgements”, and any sections
+ Entitled “Dedications”.
+ You must delete all sections Entitled “Endorsements”.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+6.
+ Collections of documents
+\end_layout
+
+\begin_layout Standard
+You may make a collection consisting of the Document and other documents
+ released under this License, and replace the individual copies of this
+ License in the various documents with a single copy that is included in
+ the collection, provided that you follow the rules of this License for
+ verbatim copying of each of the documents in all other respects.
+\end_layout
+
+\begin_layout Standard
+You may extract a single document from such a collection, and distribute
+ it individually under this License, provided you insert a copy of this
+ License into the extracted document, and follow this License in all other
+ respects regarding verbatim copying of that document.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+7.
+ Aggregation with independent works
+\end_layout
+
+\begin_layout Standard
+A compilation of the Document or its derivatives with other separate and
+ independent documents or works, in or on a volume of a storage or distribution
+ medium, is called an “aggregate” if the copyright resulting from the compilatio
+n is not used to limit the legal rights of the compilation's users beyond
+ what the individual works permit.
+ When the Document is included in an aggregate, this License does not apply
+ to the other works in the aggregate which are not themselves derivative
+ works of the Document.
+\end_layout
+
+\begin_layout Standard
+If the Cover Text requirement of section 3 is applicable to these copies
+ of the Document, then if the Document is less than one half of the entire
+ aggregate, the Document's Cover Texts may be placed on covers that bracket
+ the Document within the aggregate, or the electronic equivalent of covers
+ if the Document is in electronic form.
+ Otherwise they must appear on printed covers that bracket the whole aggregate.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+8.
+ Translation
+\end_layout
+
+\begin_layout Standard
+Translation is considered a kind of modification, so you may distribute
+ translations of the Document under the terms of section 4.
+ Replacing Invariant Sections with translations requires special permission
+ from their copyright holders, but you may include translations of some
+ or all Invariant Sections in addition to the original versions of these
+ Invariant Sections.
+ You may include a translation of this License, and all the license notices
+ in the Document, and any Warranty Disclaimers, provided that you also include
+ the original English version of this License and the original versions
+ of those notices and disclaimers.
+ In case of a disagreement between the translation and the original version
+ of this License or a notice or disclaimer, the original version will prevail.
+\end_layout
+
+\begin_layout Standard
+If a section in the Document is Entitled “Acknowledgements”, “Dedications”,
+ or “History”, the requirement (section 4) to Preserve its Title (section
+ 1) will typically require changing the actual title.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+9.
+ Termination
+\end_layout
+
+\begin_layout Standard
+You may not copy, modify, sublicense, or distribute the Document except
+ as expressly provided under this License.
+ Any attempt otherwise to copy, modify, sublicense, or distribute it is
+ void, and will automatically terminate your rights under this License.
+\end_layout
+
+\begin_layout Standard
+However, if you cease all violation of this License, then your license from
+ a particular copyright holder is reinstated (a) provisionally, unless and
+ until the copyright holder explicitly and finally terminates your license,
+ and (b) permanently, if the copyright holder fails to notify you of the
+ violation by some reasonable means prior to 60 days after the cessation.
+\end_layout
+
+\begin_layout Standard
+Moreover, your license from a particular copyright holder is reinstated
+ permanently if the copyright holder notifies you of the violation by some
+ reasonable means, this is the first time you have received notice of violation
+ of this License (for any work) from that copyright holder, and you cure
+ the violation prior to 30 days after your receipt of the notice.
+\end_layout
+
+\begin_layout Standard
+Termination of your rights under this section does not terminate the licenses
+ of parties who have received copies or rights from you under this License.
+ If your rights have been terminated and not permanently reinstated, receipt
+ of a copy of some or all of the same material does not give you any rights
+ to use it.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+10.
+ Future revisions of this license
+\end_layout
+
+\begin_layout Standard
+The Free Software Foundation may publish new, revised versions of the GNU
+ Free Documentation License from time to time.
+ Such new versions will be similar in spirit to the present version, but
+ may differ in detail to address new problems or concerns.
+ See 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/copyleft/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Each version of the License is given a distinguishing version number.
+ If the Document specifies that a particular numbered version of this License
+ "or any later version" applies to it, you have the option of following
+ the terms and conditions either of that specified version or of any later
+ version that has been published (not as a draft) by the Free Software Foundatio
+n.
+ If the Document does not specify a version number of this License, you
+ may choose any version ever published (not as a draft) by the Free Software
+ Foundation.
+ If the Document specifies that a proxy can decide which future versions
+ of this License can be used, that proxy's public statement of acceptance
+ of a version permanently authorizes you to choose that version for the
+ Document.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+11.
+ Relicensing
+\end_layout
+
+\begin_layout Standard
+“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any World
+ Wide Web server that publishes copyrightable works and also provides prominent
+ facilities for anybody to edit those works.
+ A public wiki that anybody can edit is an example of such a server.
+ A “Massive Multiauthor Collaboration” (or “MMC”) contained in the site
+ means any set of copyrightable works thus published on the MMC site.
+\end_layout
+
+\begin_layout Standard
+“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0 license
+ published by Creative Commons Corporation, a not-for-profit corporation
+ with a principal place of business in San Francisco, California, as well
+ as future copyleft versions of that license published by that same organization.
+\end_layout
+
+\begin_layout Standard
+“Incorporate” means to publish or republish a Document, in whole or in part,
+ as part of another Document.
+\end_layout
+
+\begin_layout Standard
+An MMC is “eligible for relicensing” if it is licensed under this License,
+ and if all works that were first published under this License somewhere
+ other than this MMC, and subsequently incorporated in whole or in part
+ into the MMC, (1) had no cover texts or invariant sections, and (2) were
+ thus incorporated prior to November 1, 2008.
+\end_layout
+
+\begin_layout Standard
+The operator of an MMC Site may republish an MMC contained in the site under
+ CC-BY-SA on the same site at any time before August 1, 2009, provided the
+ MMC is eligible for relicensing.
+\end_layout
+
+\begin_layout Section*
+
+\noun on
+Addendum
+\noun default
+: How to use this License for your documents
+\end_layout
+
+\begin_layout Standard
+To use this License in a document you have written, include a copy of the
+ License in the document and put the following copyright and license notices
+ just after the title page:
+\end_layout
+
+\begin_layout Quote
+Copyright © YEAR YOUR NAME.
+\begin_inset Newline newline
+\end_inset
+
+Permission is granted to copy, distribute and/or modify this document under
+ the terms of the GNU Free Documentation License, Version 1.3 or any later
+ version published by the Free Software Foundation;
+\end_layout
+
+\begin_layout Quote
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+\end_layout
+
+\begin_layout Quote
+A copy of the license is included in the section entitled "GNU Free Documentatio
+n License".
+\end_layout
+
+\begin_layout Standard
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+ replace the "with 
+\begin_inset Formula $\ldots$
+\end_inset
+
+ Texts." line with this:
+\end_layout
+
+\begin_layout Quote
+with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover
+ Texts being LIST, and with the Back-Cover Texts being LIST.
+\end_layout
+
+\begin_layout Standard
+If you have Invariant Sections without Cover Texts, or some other combination
+ of the three, merge those two alternatives to suit the situation.
+\end_layout
+
+\begin_layout Standard
+If your document contains nontrivial examples of program code, we recommend
+ releasing these examples in parallel under your choice of free software
+ license, such as the GNU General Public License, to permit their use in
+ free software.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "END"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

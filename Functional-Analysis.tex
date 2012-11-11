@@ -1,0 +1,2837 @@
+%% LyX 2.0.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,ngerman,english]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2.6cm,bmargin=3.5cm,lmargin=2.6cm,rmargin=2.6cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{color}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={Functional Analysis},
+ pdfauthor={Andreas Völklein},
+ pdfkeywords={Functional Analysis, Mathematics}}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{\texorpdfstring%
+  {L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\newcommand{\noun}[1]{\textsc{#1}}
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{tikz}
+%\usepackage{tikz-3dplot,polynom,cancel}
+\usetikzlibrary{matrix,arrows,calc,decorations}
+\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
+\usepackage{subfigure}
+\usepackage[explicit]{titlesec}
+
+% Inhaltsverzeichnis
+\usepackage[subfigure]{tocloft}
+\tocloftpagestyle{fancy}
+
+\renewcommand{\cftchapindent}{1 em}
+\renewcommand{\cftchapnumwidth}{1.5 em}
+
+\renewcommand{\cftsecindent}{2.7 em}
+\renewcommand{\cftsecnumwidth}{2.5em}
+
+\renewcommand{\cftsubsecindent}{5.2 em}
+\renewcommand{\cftsubsecnumwidth}{3.8 em}
+
+\renewcommand{\cftsubsubsecindent}{9 em}
+\renewcommand{\cftsubsubsecnumwidth}{4.5 em}
+
+% Mathe-Operatoren
+\DeclareMathOperator*{\exsop}{\exists}
+\DeclareMathOperator*{\exsgop}{\exists!}
+\DeclareMathOperator*{\fallop}{\forall}
+\DeclareMathOperator*{\bcupdop}{\dot{\bigcup}}
+\DeclareMathOperator*{\bcapdop}{\dot{\bigcap}}
+
+% Rotieren
+\newcommand{\Rotate}[1]{
+\begin{tikzpicture}
+\node[rotate=90] {\ensuremath{#1}};
+\end{tikzpicture}
+}
+
+%QED-Zeichen (Box)
+\newcommand{\qed}{\ensuremath{\Box}}
+\newcommand{\qqed}[1][\arabic{chapter}.\arabic{section}\ifnum\arabic{subsection}>0{.\arabic{subsection}}\fi]{\hspace*{1mm}\hfill\qed\ensuremath{_{\text{#1}}}}
+
+% Mengen Modulo
+\newcommand{\moduloT}[2]{
+\mbox{\raisebox{0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large /}
+\raisebox{-0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
+
+% Links Modulo
+\newcommand{\lmoduloT}[2]{
+\mbox{\raisebox{-0.6ex}{\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\Large \ensuremath{\backslash}}
+\raisebox{0.6ex}{\hspace*{-1.5mm}\ensuremath{\displaystyle #2}}
+}}
+
+% Für Z/2Z, um nicht soviel schreiben zu müssen
+\newcommand{\modloT}[2]{\moduloT{ \mathbb{#1}}{#2\mathbb{#1}}}
+
+%Laplace-Beltrami-Operator
+\newcommand{\LBO}{
+\begin{minipage}{6mm}
+ \begin{tikzpicture}
+   \node at (0,0){$\Delta$};
+   \draw[line width=0.75] (0.25,-0.13) -- (0.1,0.15);
+ \end{tikzpicture}
+\end{minipage}
+}
+
+%Die Modulo-Kommandos in klein, für die Darstellungen unter Quantoren.
+\newcommand{\moduloScriptT}[2]{
+\mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize /}
+\raisebox{-0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
+
+\newcommand{\lmoduloScriptT}[2]{
+\mbox{\raisebox{-0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
+{\hspace*{-1.5mm}\footnotesize \ensuremath{\backslash}}
+\raisebox{0.4ex}{\hspace*{-1.5mm}\scriptsize\ensuremath{\displaystyle #2}}
+}}
+
+\newcommand{\modloScriptT}[2]{\moduloScriptT{ \mathbb{#1}}{#2\mathbb{#1}}}
+
+% stehendes Winkelzeichen
+\newcommand{\winkel}{
+\begin{tikzpicture}[scale=0.25]
+\draw ({-2+3^(1/2)},0) -- (0,1) -- ({2-3^(1/2)},0);
+\draw ($(0,1) + ({cos(235)*0.7},{sin(315)*0.7})$) arc (235:315:0.7);
+\end{tikzpicture}}
+
+% Wurzel mit Häkchen
+\newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
+  \advance\dimen0-0.2\ht0
+  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
+  {\box0\lower0.4pt\box2}}
+
+% alphabetische Aufzählung
+\newcounter{ale}
+\newcommand{\abc}{\stepcounter{ale}\item[\alph{ale})]}
+\newenvironment{abclist}{\begin{itemize} \setcounter{ale}{0}}{\end{itemize}}
+
+%klein-römische Aufzählung
+\newcounter{ale2}
+\newcommand{\iii}{\stepcounter{ale2}\item[\textnormal{\roman{ale2})}]}
+\newenvironment{iiilist}{\begin{itemize} \setcounter{ale2}{0}}{\end{itemize}}
+
+% Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
+\titleformat{\chapter}
+  {\huge\bfseries}
+  {\textrm{\thechapter} }{0pt}
+  {\textrm{#1} \thispagestyle{fancy}
+  }
+
+% Neudefinition der Abschnittsmarker für die Kopfzeile
+\renewcommand\partmark[1]{\markboth{#1}{}}
+\renewcommand\chaptermark[1]{\markright{\arabic{chapter} #1}}
+\renewcommand\sectionmark[1]{}
+\renewcommand\subsectionmark[1]{}
+
+% Kopf- und Fußzeile
+% Höhe der Kopfzeile
+\setlength{\headheight}{14pt}
+% obere Trennlinie
+%\renewcommand{\headrulewidth}{0.4pt}
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\textbf{Functional Analysis}} %Kopfzeile links
+%\fancyhead[C]{\leftmark} %zentrierte Kopfzeile
+\fancyhead[R]{\rightmark} %Kopfzeile rechts
+\fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END-front}} %Seitenzahl der Front-Matter
+
+\AtBeginDocument{
+  \def\labelitemi{\normalfont\bfseries{--}}
+  \def\labelitemii{\(\circ\)}
+  \def\labelitemiii{\(\triangleright\)}
+}
+
+\makeatother
+
+\begin{document}
+
+
+
+
+\global\long\def\norm#1{\left\lVert #1\right\rVert }
+
+
+\global\long\def\abs#1{\left\lvert #1\right\rvert }
+
+
+\global\long\def\mins{-}
+
+
+\global\long\def\LB{\LBO}
+
+
+\global\long\def\exs{\exsop}
+
+
+\global\long\def\exsg{\exsgop}
+
+
+\global\long\def\fall{\fallop}
+
+
+\global\long\def\bcupd{\bcupdop}
+
+
+\global\long\def\bcapd{\bcapdop}
+
+
+\global\long\def\sr#1#2#3{\underset{#3}{\overset{#2}{#1}}}
+
+
+\global\long\def\dd{\textnormal{d}}
+
+
+\global\long\def\DD{\textnormal{D}}
+
+
+\global\long\def\TT{\textnormal{T}}
+
+
+\global\long\def\ii{\textbf{i}}
+
+
+\global\long\def\modulo#1#2{\moduloT{#1}{#2}}
+
+
+\global\long\def\lmodulo#1#2{\lmoduloT{#1}{#2}}
+
+
+\global\long\def\modlo#1#2{\modloT{#1}{#2}}
+
+
+\global\long\def\moduloScript#1#2{\moduloScriptT{#1}{#2}}
+
+
+\global\long\def\lmoduloScript#1#2{\lmoduloScriptT{#1}{#2}}
+
+
+\global\long\def\modloScript#1#2{\modloScriptT{#1}{#2}}
+
+
+\pagenumbering{roman}
+
+
+\title{\textbf{\Huge \vspace*{-30mm}}\\
+\textbf{\Huge Functional Analysis}}
+
+
+\author{\textit{\small lecture by}\\
+\textit{\noun{\small Prof. Dr. Felix Finster}}\textit{\small }\\
+\textit{\small during the winter semester 2012/13}\\
+\textit{\small revision and layout in \LyX{} by}\\
+\textit{\noun{\small Andreas Völklein}}\\
+{\small \vspace*{10mm}}\\
+{\small \includegraphics[clip,width=15cm]{unir}}\textit{\noun{\small }}\\
+{\small \vspace*{3mm}}\\
+Last changed: \today}
+
+\maketitle
+\fancyhead[R]{License}
+\setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite 1!?
+
+\vspace*{-15mm}
+
+
+\subsubsection*{ATTENTION}
+
+This script does \emph{not} replace the lecture.\\
+Therefore it is recommended \emph{strongly} to attend the lecture.
+
+\vfill{}
+
+
+
+\subsubsection*{Copyright Notice}
+
+Copyright © 2012 \noun{Andreas Völklein}
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;\\
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.\\
+A copy of the license is included in the section entitled “GNU Free
+Documentation License”.
+
+
+\subsubsection*{Disclaimer of Warranty}
+
+\noun{Unless otherwise mutually agreed to by the parties in writing
+and to the extent not prohibited by applicable law, }\textbf{\noun{the
+Copyright Holders and any other party, who may distribute the Document
+as permitted above,   provide the Document “as is}}\textbf{”,}\textbf{\noun{
+without warranty of any kind}}\noun{, expressed, implied, statutory
+or otherwise, including, but not limited to, the implied warranties
+of merchantability, fitness for a particular purpose, non-infringement,
+the absence of latent or other defects, accuracy, or the absence of
+errors, whether or not discoverable.}
+
+
+\subsubsection*{Limitation of Liability}
+
+\textbf{\noun{In no event}}\noun{ unless required by applicable law
+or agreed to in writing }\textbf{\noun{will the Copyright Holders,
+or any other party, who may distribute the Document as permitted above,
+be liable to you for any damages}}\noun{, including, but not limited
+to, any general, special, incidental, consequential, punitive or exemplary
+damages, however caused, regardless of the theory of liability, arising
+out of or related to this license or any use of or inability to use
+the Document, even if they have been advised of the possibility of
+such damages.}
+
+\textbf{\noun{In no event will the Copyright Holders'/Distributor's
+liability to you}}\noun{, whether in contract, tort (including negligence),
+or otherwise, }\textbf{\noun{exceed the amount you paid the Copyright
+Holders/Distributor}}\noun{ for the document under this agreement.}
+
+
+\subsubsection*{Links}
+
+The text of the “GNU Free Documentation License” can also be read
+on the following site:
+\begin{quote}
+\url{https://www.gnu.org/licenses/fdl-1.3.en.html}
+\end{quote}
+A transparent copy of the recent version of this document can be downloaded
+from:
+\begin{quote}
+\url{https://github.com/andiv/Functional-Analysis}
+\end{quote}
+\newpage{}
+
+\fancyhead[R]{Literature}
+
+
+\subsection*{Literature}
+\begin{itemize}
+\item \noun{Peter D. Lax: }\emph{Functional analysis}; Wiley-Interscience,
+2002; ISBN: 0-471-55604-1\emph{}\\
+(good reference)
+\item \noun{Micheal Reed, Barry Simon}: \emph{Methods of Modern Mathematical
+Physics I - Functional Analysis; }Acad. Press, 2010; ISBN: 978-0-12-585050-6
+\item \noun{Friedrich Hirzebruch, Winfried Scharlau}: \foreignlanguage{ngerman}{\emph{Einführung
+in die Funktionalanalysis}}; Spektrum Verlag, 1996; ISBN: 3-86025-429-4\\
+(paperback, small)
+\item \noun{Dirk Werner}: \foreignlanguage{ngerman}{\emph{Funktionalanalysis}};
+Springer, 2011; ISBN: 978-3-642-21016-7
+\item \noun{Joachim Weidmann}: \foreignlanguage{ngerman}{\emph{Lineare Operatoren
+in Hilberträumen, Teil I: Grundlagen}}; Teubner, 2000; ISBN: 3-519-02236-2
+\item \noun{Walter Rudin}: \emph{Functional Analysis}; McGraw-Hill, 1991;
+ISBN: 7-111-13415-X
+\end{itemize}
+Zorn's Lemma:
+\begin{itemize}
+\item \noun{Hans-Joachim Kowalsky, Gerhard O. Michler}: \foreignlanguage{ngerman}{\emph{Lineare
+Algebra}}; de Gruyter, 2003; ISBN: 3-11-017963-6
+\end{itemize}
+{\small \newpage{}}\fancyhead[R]{Table of contents}
+\fancyhead[C]{}
+
+\tableofcontents{}\label{END-front}\newpage{}\pagenumbering{arabic}
+\fancyfoot[C]{\thepage\quad\!\!\!\slash\quad\!\!\!\pageref{END}} % Seitenzahl des Hauptteils%DATE: Do 18.10.2012
+
+\setcounter{chapter}{-1}
+
+\fancyhead[R]{Motivation}
+\fancyhead[C]{}
+
+
+\chapter*{Motivation}
+
+In linear algebra one mainly considers finite-dimensional vector spaces
+with additional structures like norm $\norm .$ or scalar product
+$\left\langle .,.\right\rangle $.
+
+Let $\left(V,\left\langle .,.\right\rangle \right)$ be a finite-dimensional
+scalar product space and $A:V\to V$ a linear map, which is self-adjoint,
+that means for all $u,v\in V$:
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Av\right\rangle 
+\end{align*}
+
+
+
+\section*{Theorem \textmd{(orthonormal eigenvector basis)}}
+
+There exists an orthonormal eigenvector basis $\left(u_{i}\right)_{i\in\left\{ 1,\ldots,n\right\} }$,
+that means with the eigenvalues $\lambda_{i}\in\mathbb{R}$:
+\begin{align*}
+\left\langle u_{i},u_{j}\right\rangle  & =\delta_{ij} & Au_{i} & =\lambda_{i}u_{i}
+\end{align*}
+In infinite dimensions the generalization is the \emph{spectral theorem}.
+
+First reformulate the result from linear algebra:\\
+Let $E_{\lambda_{i}}$ be the orthogonal projection operator on the
+eigenspace corresponding to $\lambda_{i}$. If this eigenspace is
+one dimensional, this means:
+\begin{align*}
+E_{\lambda_{i}}v & =u_{i}\left\langle u_{i},v\right\rangle =\left|u_{i}\right>\left<u_{i}|v\right>
+\end{align*}
+Then one can write $A$ as:
+\begin{align*}
+A & =\sum_{i=1}^{n}\lambda_{i}E_{\lambda_{i}}
+\end{align*}
+
+
+
+\section*{Theorem \textmd{(spectral theorem)}}
+
+Let $A\in L\left(H\right)$ be a self-adjoint (\foreignlanguage{ngerman}{selbstadjungiert})
+operator, then it holds:
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+$\sigma\left(A\right)\subseteq\mathbb{R}$ is the spectrum of $A$
+and $E_{\lambda}$ the projection-valued measure (\foreignlanguage{ngerman}{Spektralmaß}).
+
+Applications typically are differential operators, for example:
+\begin{align*}
+\Delta_{\mathbb{R}^{3}} & =\frac{\partial^{2}}{\partial x_{1}^{2}}+\frac{\partial^{2}}{\partial x_{2}^{2}}+\frac{\partial^{2}}{\partial x_{3}^{2}}
+\end{align*}
+\begin{align*}
+\Delta_{\mathbb{R}^{3}}:C_{0}^{\infty}\left(\mathbb{R}^{3}\right) & \to C^{\infty}\left(\mathbb{R}^{3}\right)\quad\text{linear operator}
+\end{align*}
+Applications in more detail are studied in the lectures on partial
+differential equations I + II.
+
+
+\chapter{Basic Notions}
+
+\fancyhead[R]{\rightmark}
+%\fancyhead[C]{\leftmark}
+
+Let $E$ be a vector space (\foreignlanguage{ngerman}{Vektorraum}),
+for example the finite-dimensional vector space $E\simeq\mathbb{R}^{3}$.\\
+In the following list the later spaces are special cases of the previous
+ones:
+\begin{itemize}
+\item topological vector spaces
+\item metric spaces with a metric $d\left(.,.\right)$ (Polish spaces if
+complete)
+\item normed spaces with norm $\norm .$ (Banach spaces if complete)
+\item scalar product spaces $\left\langle .,.\right\rangle $ (Hilbert spaces
+if complete)
+\end{itemize}
+Let $\mathbb{K}$ be either $\mathbb{R}$ or $\mathbb{C}$.
+
+
+\section{Definition \textmd{(metric, $\varepsilon$-ball, Cauchy sequence,
+complete, Polish space)}}
+
+A map $d:E\times E\to\mathbb{R}$ is called \emph{metric}, if for
+all $x,y,z\in E$ holds:
+
+\begin{iiilist}
+
+\iii $d\left(x,y\right)=d\left(y,x\right)$ (symmetry)
+
+\iii $d\left(x,y\right)\ge0$ and $d\left(x,y\right)=0$ $\Leftrightarrow$
+$x=y$ (positive definiteness)
+
+\iii $d\left(x,y\right)\le d\left(x,z\right)+d\left(z,y\right)$
+(triangle inequality)
+
+\end{iiilist}
+
+$B_{\varepsilon}\left(x\right):=\left\{ z\in E\big|d\left(x,z\right)<\varepsilon\right\} $
+is called \emph{$\varepsilon$-ball}.\\
+Consider the topology generated by $B_{\varepsilon}\left(x\right)$:
+A set $\Omega\subseteq E$ is open if and only if:
+\begin{align*}
+\fall_{x\in\Omega}\exs_{\varepsilon\in\mathbb{R}_{>0}} & :B_{\varepsilon}\left(x\right)\subseteq\Omega
+\end{align*}
+\emph{Completeness}:\\
+$\left(x_{n}\right)_{n\in\mathbb{N}}$ is a \emph{Cauchy sequence}
+if and only if:
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\exs_{N\in\mathbb{N}}\fall_{n,m\in\mathbb{N}_{>N}} & :d\left(x_{n},x_{m}\right)<\varepsilon
+\end{align*}
+$E$ is \emph{complete} if and only if every Cauchy sequence has a
+limit.\\
+A complete metric space is also called a \emph{Polish space}.
+
+
+\section{Definition \textmd{(norm, Banach space)}}
+
+Let $\left(E,\norm .\right)$ be a \emph{normed space}, i.e. a $\mathbb{K}$-vector
+space with a map $\norm .:E\to\mathbb{R}_{\ge0}$ called \emph{norm}
+with the following properties for $x,y\in E$ and $\lambda\in\mathbb{K}$:
+
+\begin{iiilist}
+
+\iii $\norm x\ge0$ and $\norm x=0\Leftrightarrow x=0$ (positive
+definiteness)
+
+\iii $\norm{\lambda x}=\abs{\lambda}\cdot\norm x$ (homogeneity)
+
+\iii $\norm{u+v}\le\norm u+\norm v$ (triangle inequality)
+
+\end{iiilist}
+
+Define the metric $d\left(x,y\right):=\norm{x-y}$. A complete normed
+spaces is called \emph{Banach space}.
+
+Let $A:E\to F$ be a linear map between the Banach spaces $\left(E,\norm ._{E}\right)$
+and $\left(F,\norm ._{F}\right)$.
+
+
+\section{Definition \textmd{(continuous, bounded)}}
+
+$A$ is \emph{continuous} (\foreignlanguage{ngerman}{stetig}) if $A^{-1}\left(\Omega\right)\subseteq E$
+is open for all open $\Omega\subseteq F$.\\
+$A$ is \emph{bounded} (\foreignlanguage{ngerman}{beschränkt}) if
+there exists a $c\in\mathbb{R}_{>0}$ such that for all $u\in E$
+holds:
+\begin{align*}
+\norm{Au}_{F} & \le c\norm u_{E}
+\end{align*}
+
+
+
+\section{Lemma \textmd{(continuous $\Leftrightarrow$ bounded)}}
+
+$A$ is continuous $\Leftrightarrow$ $A$ is bounded.
+
+
+\subsubsection*{(no proof)}
+
+
+\section{Definition \textmd{(dual space, sup-norm)}}
+
+The \emph{dual space} of $E$ is the space of continuous linear mappings
+from $E$ to $\mathbb{K}$:
+\begin{align*}
+E^{*} & =L\left(E,\mathbb{K}\right)
+\end{align*}
+$L\left(E,F\right)$ is a vector space: For $A,B\in L\left(E,F\right)$,
+$\lambda,\mu\in\mathbb{K}$ and $u\in E$ define:
+\begin{align*}
+\left(\lambda A+\mu B\right)\left(u\right) & :=\lambda A\left(u\right)+\mu B\left(u\right)
+\end{align*}
+Define also a norm on $L\left(E,F\right)$, which is called \emph{sup-norm}:
+\begin{align*}
+\norm A & :=\sup_{u\in E,\norm u_{E}\le1}\norm{Au}_{F}
+\end{align*}
+
+
+
+\section{Theorem}
+
+If $F$ is complete, so is $L\left(E,F\right)$.\\
+In particular $E^{*}$ is a Banach space for every $E$.
+
+
+\subsubsection*{(no proof)}
+
+
+\chapter{The Hahn-Banach Theorem and Applications}
+
+As a preparation we need Zorn's lemma.
+
+
+\section{Definition \textmd{(partial ordering, chain, upper bound, maximal)}}
+
+Let $A$ be a set and $\le$ a \emph{partial ordering} (\foreignlanguage{ngerman}{Halbordnung}),
+i.e. for all $a,b,c\in A$:
+
+\begin{iiilist}
+
+\iii $a\le b$ and $b\le c$ $\Rightarrow$ $a\le c$ (transitivity)
+
+\iii $a\le a$ (reflexivity)
+
+\iii $a\le b\wedge b\le a\Rightarrow a=b$ (antisymmetry)
+
+\end{iiilist}
+
+\emph{Note}: We do \emph{not} demand that for all $a,b\in A$ holds:
+\begin{align*}
+\left(a\le b\right)\vee\left(b\le a\right)
+\end{align*}
+This is a property of a ordering relation.\\
+$\left(A,\le\right)$ is called \emph{partially ordered set} (\foreignlanguage{ngerman}{teilweise
+geordnete Menge}).\\
+A subset $K\subseteq A$ is called \emph{chain} (\foreignlanguage{ngerman}{Kette,
+total geordnete Teilmenge}) if for all $x,y\in K$ holds:
+\begin{align*}
+\left(x\le y\right)\vee\left(y\le x\right)
+\end{align*}
+An element $u\in A$ is called \emph{upper bound} (\foreignlanguage{ngerman}{obere
+Schranke}) of $B\subseteq A$ if $x\le u$ for all $x\in B$.\\
+An element $m\in A$ is called \emph{maximal} if $m\le a\in A\Rightarrow m=a$.
+
+
+\section{Zorn's lemma}
+
+Let $\left(A,\le\right)$ be a partially ordered set in which every
+chain has an upper bound. Then there is a maximal element.
+
+
+\subsubsection*{Proof}
+
+This follows from the axiom of choice, see e.g. Kowalsky: Linear algebra.
+
+
+\section{Definition \textmd{(sublinear)}}
+
+Let $X$ be a \emph{real} vector space (without topology) and $l:X\to\mathbb{R}$
+linear.\\
+$p:X\to\mathbb{R}$ is called \emph{sublinear} if for all $x,y\in X$
+and $a\in\mathbb{R}_{>0}$:
+
+\begin{iiilist}
+
+\iii $p\left(ax\right)=ap\left(x\right)$
+
+\iii $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$
+
+\end{iiilist}
+
+A typical example is $p\left(x\right)=\norm x$, but $p$ does not
+need to be positive. Another example is any linear mapping.
+
+
+\section{Theorem \textmd{(Hahn-Banach, real version, 1927/29)\label{sec:Thm-Hahn-Banach-real}}}
+
+Let $X$ be a real vector space and $Y\subseteq X$ a subspace (\foreignlanguage{ngerman}{Untervektorraum}),
+$p:X\to\mathbb{R}$ sublinear and $l:Y\to\mathbb{R}$ linear with
+$l\left(y\right)\le p\left(y\right)$ for all $y\in Y$.\\
+Then there is a linear extension (\foreignlanguage{ngerman}{Fortsetzung})
+$\tilde{l}:X\to\mathbb{R}$ of $l$ to $X$, i.e. $\tilde{l}\big|_{Y}=l$,
+such that for all $x\in X$ holds:
+\begin{align*}
+\tilde{l}\left(x\right) & \le p\left(x\right)
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+\begin{iiilist}
+
+\iii Assume $Y\subsetneq X$, since otherwise there is nothing to
+prove. Choose a vector $z\in X\setminus Y$. We want to extend $l$
+to the span of $Y$ and $\left\langle z\right\rangle $. $\tilde{l}\left(z\right)$
+needs to be prescribed. For all $y\in Y$ and $a\in\mathbb{R}$ holds:
+\begin{align*}
+\tilde{l}\left(y+az\right) & \stackrel{\text{linearity}}{=}l\left(y\right)+a\tilde{l}\left(z\right)\stackrel{\text{demand}}{\le}p\left(y+az\right)
+\end{align*}
+If $a=0$, the inequality is clear. By homogeneity assumptions, it
+is sufficient to consider the case $a=\pm1$. We thus demand for all
+$y,y'\in Y$:
+\begin{align*}
+l\left(y\right)+\tilde{l}\left(z\right) & \le p\left(y+z\right)\\
+l\left(y'\right)-\tilde{l}\left(z\right) & \le p\left(y'-z\right)
+\end{align*}
+This is equivalent to:
+\begin{align*}
+l\left(y'\right)-p\left(y'-z\right) & \le\tilde{l}\left(z\right)\le p\left(y+z\right)-l\left(y\right)
+\end{align*}
+We can choose $\tilde{l}\left(z\right)$ if and only if:
+\begin{align*}
+l\left(y'\right)-p\left(y'-z\right) & \le p\left(y+z\right)-l\left(y\right)
+\end{align*}
+(For example set $\tilde{l}\left(z\right)=\sup_{y'\in Y}l\left(y'\right)-p\left(y'-z\right)$.)
+\begin{align*}
+\Leftrightarrow\quad l\left(y'\right)+l\left(y\right)\stackrel{\text{lineariy}}{=}l\left(y'+y\right) & \le p\left(y+z\right)+p\left(y'-z\right)
+\end{align*}
+Now prove this inequality:\\
+From $y'+y\in Y$ follows that $l\left(y+y'\right)\le p\left(y+y'\right)$
+by hypothesis. Moreover, as $p$ is sublinear, it follows:
+\begin{align*}
+p\left(y+z-z+y'\right) & \le p\left(y'+z\right)+p\left(y'-z\right)
+\end{align*}
+So the inequality is shown. Thus $l$ can be extended to $Y+\left\langle z\right\rangle $.
+
+\iii Consider all extensions:
+\begin{align*}
+A & :=\left\{ \left(Z,l\right)|Y\subseteq Z\subseteq X\text{ subspace},\ l:Z\to\mathbb{R}\text{ extension of }l_{Y}:Y\to\mathbb{R}\right\} 
+\end{align*}
+%DATE: Fr 19.10.12\\
+This set has a partial ordering $\le$ defined by $\left(Z,l\right)\le\left(Z',l'\right)$
+if $Z\subseteq Z'$ and $l'\big|_{Z}=l$.\\
+For an index set $I$ (possibly infinite, uncountable) let $K=\left\{ \left(Z_{\nu},l_{\nu}\right)|\nu\in I\right\} $
+be a chain, i.e. for all $\left(Z,l\right),\left(Z',l'\right)\in K$:
+\begin{align*}
+\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z,l\right)\le\left(Z,l\right)\right)
+\end{align*}
+Set $Z=\bigcup_{\nu\in I}Z_{\nu}$ and define $l:Z\to\mathbb{R}$
+by $l\big|_{Z_{\nu}}=l_{\nu}$. (Thus suppose $u\in Z$, so there
+is a $\nu\in I$ with $u\in Z_{\nu}$. Set $l\left(u\right):=l_{\nu}\left(u\right)$.
+$\nu$ need not be unique. Suppose $u\in Z_{\nu'}$, then we know
+that either $Z_{\nu'}\subseteq Z_{\nu}$ and $l_{\nu}\big|_{Z_{\nu'}}=l_{\nu'}$
+or $Z_{\nu}\subseteq Z_{\nu'}$ and $l_{\nu'}\big|_{Z_{\nu}}=l_{\nu}$.
+In both cases we have $l_{\nu}\left(u\right)=l_{\nu'}\left(u\right)$,
+thus $l\left(u\right)$ is well defined.)\\
+This $\left(Z,l\right)$ is an upper bound, because for all $\nu\in I$
+we have $Z_{\nu}\subseteq Z=\bigcup_{\lambda\in I}Z_{\lambda}$ and
+$l$ is an extension of $l_{\nu}$.\\
+With Zorn's Lemma follows, that there exists an maximal element $\left(\tilde{Y},\tilde{l}\right)$.
+\begin{description}
+\item [{Claim:}] $\tilde{Y}=X$
+\item [{Proof:}] Otherwise there would be a vector $u\in X\setminus\tilde{Y}$,
+and $\tilde{l}$ could be extended to $\tilde{Y}\oplus\left\langle u\right\rangle $,
+as shown in i), in contradiction to the maximality of $\tilde{l}$.
+Thus $\left(X=\tilde{Y},\tilde{l}\right)$ is the desired extension.
+\end{description}
+\end{iiilist}
+
+\qqed
+
+
+\section{Theorem \textmd{(Hahn-Banach, complex version)}}
+
+Let $X$ be a complex vector space and $Y\subseteq X$ a subspace.
+Before, we had $l\left(x\right)\le p\left(x\right)$ as condition,
+which does not make sense in the complex case, since:
+\begin{align*}
+l\left(e^{\ii\varphi}x\right) & =e^{\ii\varphi}l\left(x\right)\stackrel{\text{in general}}{\not\in}\mathbb{R}
+\end{align*}
+Let $p:X\to\mathbb{R}$ be a \emph{seminorm}, i.e.:
+
+\begin{iiilist}
+
+\iii $p\left(ax\right)=\abs ap\left(x\right)$ (homogeneity)
+
+\iii $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$ (triangle
+inequality)
+
+\end{iiilist}
+
+Let $l:Y\to\mathbb{C}$ be a linear functional with $\abs{l\left(y\right)}\le p\left(y\right)$
+for all $y\in Y$.\\
+Then $l$ can be extended to $X$ such that $\abs{l\left(x\right)}\le p\left(x\right)$
+holds for all $x\in X$.
+
+
+\subsubsection*{Proof}
+
+We also consider $X$ as a real vector space. ($u$ and $\ii u$ are
+then linearly independent vectors.) Decompose $l$ into its real and
+imaginary parts.
+\begin{align*}
+l\left(y\right) & =l_{1}\left(y\right)+\ii l_{2}\left(y\right)\\
+l_{1} & :=\text{Re}\left(l\left(y\right)\right)\\
+l_{2} & :=\text{Im}\left(l\left(y\right)\right)
+\end{align*}
+$l_{1}$ and $l_{2}$ are real-linear and:
+\begin{align*}
+l_{1}\left(\ii y\right) & =\text{Re}\left(l\left(\ii y\right)\right)=\text{Re}\left(\ii l\left(y\right)\right)=-\text{Im}\left(l\left(y\right)\right)=-l_{2}\left(y\right)
+\end{align*}
+Conversely, suppose that $l_{1}$ is real-linear. Then
+\begin{align*}
+l\left(x\right) & :=l_{1}\left(x\right)-\ii\cdot l_{1}\left(\ii x\right)
+\end{align*}
+this is indeed a complex-linear function. We know that $\abs{l\left(y\right)}\le p\left(y\right)$
+holds for all $y\in Y$.
+\begin{align*}
+l_{1}\left(y\right)=\text{Re}\left(l\left(y\right)\right) & \le\abs{l\left(y\right)}\\
+\Rightarrow\qquad l_{1}\left(y\right) & \le p\left(y\right)
+\end{align*}
+Theorem \ref{sec:Thm-Hahn-Banach-real} yields an real-linear extension
+$\tilde{l}_{1}:X\to\mathbb{R}$ such that $\tilde{l}_{1}\left(x\right)\le p\left(x\right)$
+for all $x\in X$.\\
+Set $\tilde{l}\left(x\right)=\tilde{l}_{1}\left(x\right)-\ii\,\tilde{l}_{1}\!\left(\ii x\right)$,
+so that $\tilde{l}:X\to\mathbb{C}$ is complex-linear.
+\begin{description}
+\item [{Claim:}] $\abs{\tilde{l}\left(x\right)}\le p\left(x\right)$ $\fall_{x\in X}$
+\item [{Proof:}] Polar decomposition:
+\begin{align*}
+\tilde{l}\left(x\right) & =re^{\ii\varphi}\\
+\abs{\tilde{l}\left(x\right)} & =r=e^{-\ii\varphi}\tilde{l}\left(x\right)\sr ={\tilde{l}\text{ is}}{\text{complex-linear}}\tilde{l}\left(e^{-\ii\varphi}x\right)=\text{Re}\left(\tilde{l}\left(e^{-\ii\varphi}x\right)\right)=\\
+ & =\tilde{l}_{1}\left(e^{-\ii\varphi}x\right)\le p\left(e^{-\ii\varphi}x\right)\stackrel{\text{homogeneity}}{=}p\left(x\right)
+\end{align*}
+\qqed[Claim]
+\end{description}
+Now to applications:
+
+
+\section{Theorem\label{sec:Thm-HahnBanach-normedSpace}}
+
+Let $\left(X,\norm .\right)$ be a normed $\mathbb{K}$-space (real
+or complex), $Y\subseteq X$ a subspace. Let $\varphi$ be a continuous
+linear functional from $Y$ to $\mathbb{K}$, i.e. for all $y\in Y$
+holds:
+\begin{align*}
+\abs{\varphi\left(y\right)} & \le c\norm y
+\end{align*}
+Then $\varphi$ can be continued to all of $X$ with the same supnorm,
+i. e.:
+\begin{align*}
+\norm{\tilde{\varphi}} & :=\sup_{x\in X,\norm x\le1}\abs{\varphi\left(x\right)}=\norm{\varphi}:=\sup_{y\in Y,\norm y\le1}\abs{\varphi\left(y\right)}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Apply the Hahn-Banach theorem with $\varphi:=c\norm x$.\qqed
+
+
+\section{Corollary}
+
+Let $X$ be a normed space and $u_{0}\in X$ with $\norm{u_{0}}=1$.
+Then there exists a linear functional $\varphi:X\to\mathbb{K}$ such
+that:
+\begin{align*}
+\varphi\left(u_{0}\right) & =1 & \norm{\varphi} & =1
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Let $Y:=\left\langle u_{0}\right\rangle $ and define $\varphi_{0}:\left\langle u_{0}\right\rangle \to\mathbb{K}$
+by $\varphi_{0}\left(u_{0}\right)=1$. Extend $\varphi_{0}$ by the
+Hahn-Banach theorem \ref{sec:Thm-HahnBanach-normedSpace}.\qqed
+
+The Hahn-Banach theorem also has a geometric formulation. Consider
+only the real case:\\
+A set $K\subseteq X$ is called \emph{convex} if for all $x,y\in K$
+and $\tau\in\left[0,1\right]$:
+\begin{align*}
+\tau x+\left(1-\tau\right)y & \in K
+\end{align*}
+
+
+\begin{figure}[H]
+\hfill{}\subfigure[konvex set]{\begin{tikzpicture}[scale=2]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
+  \draw (0,-0.5) -- (0.5,0.5);
+  \draw (0,-0.5) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw (0.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+\end{tikzpicture}}\hfill{}\subfigure[concave set]{\begin{tikzpicture}[scale=2]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (0.2,-0.2) (-1,0)};
+  \draw (-0.4,-0.3) -- (0.4,0.6);
+  \draw (-0.4,-0.3) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw (0.4,0.6) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+\end{tikzpicture}}\hfill{}\hspace*{1mm}\caption{convexity}
+
+
+\end{figure}
+
+
+Geometric question:
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
+  \draw (1.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw[thick,red] (1,1.5) -- (2,-0.5) node[right]{$\mathcal{H}$};
+  \node at (0.9,-0.7) {$K$};
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{not intersecting hyperplane}
+\end{figure}
+
+
+Is there a hyperplane $\mathcal{H}$, which meets $y\not\in K$, but
+does not intersect $K$.
+
+
+\section{Definition \textmd{(interior point)}}
+
+$x_{0}\in K$ is an \emph{interior point} (\foreignlanguage{ngerman}{innerer
+Punkt}) \emph{of $K$ with respect to $u\in X$} if there exists an
+$\varepsilon\in\mathbb{R}_{>0}$ such that $x_{0}+tu\in K$ for all
+$t\in\left(-\varepsilon,\varepsilon\right)$.\\
+$x_{0}\in K$ is an \emph{interior point} if for all $u\in X$ there
+is a $\varepsilon=\varepsilon\left(u\right)\in\mathbb{R}_{>0}$ such
+that $x_{0}+tu\in X$ for all $t\in\left(-\varepsilon,\varepsilon\right)$.
+
+
+\section{Theorem \textmd{(geometric Hahn-Banach)}\label{sec:Thm-HahnBanach-Geometric}}
+
+Let $K\not=\emptyset$ be convex and all points of $K$ be interior
+points. Let $y\not\in K$. Then there is a linear functional $l:X\to\mathbb{R}$
+such that $l\left(x\right)<1$ for all $x\in K$ and $l\left(y\right)=1$.\\
+$\mathcal{H}:=\left\{ x\in X\big|l\left(x\right)=1\right\} $ defines
+a hyperplane. Now $y\in\mathcal{H}$ and $l\big|_{K}<1$ mean that
+$K$ lies in one half-space.
+
+First introduce a suitable sublinear functional. Without loss of generality,
+assume $0\in K$ (otherwise shift $K$).
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
+  \draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$0\in K$}
+\end{figure}
+
+
+The functional $p:K\to\mathbb{R}_{\ge0}$ with
+\begin{align*}
+p\left(x\right) & :=\text{inf}\left\{ a\in\mathbb{R}_{>0}\bigg|\frac{x}{a}\in K\right\} 
+\end{align*}
+is called gauge (\foreignlanguage{ngerman}{Eichung}).\\
+Since $x$ is an interior point, we know that $\frac{x}{a}\in K$
+if $a>1-\varepsilon\left(x\right)$.\\
+$p$ is even defined on all of $X$, because for $x\in X$, now $\tau x\in K$
+if $\abs{\tau}$ is sufficiently small, because $0\in K$ is an interior
+point.
+\begin{align*}
+p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in K
+\end{align*}
+
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
+  \draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw (1.5,0.8) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw (0.5,0.2666) node[below right]{$\tau x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \draw[dashed] (1.5,0.8) -- (-0.75,-0.4);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$x\not\in K,\ \tau x\in K$}
+\end{figure}
+
+
+
+\section{Lemma}
+
+$p$ is sublinear.
+
+
+\subsubsection*{Proof}
+
+The homogeneity is clear from the definition.
+
+sub-additivity (triangle equation):\\
+Take $x,y\in K$ and choose $a,b\in\mathbb{R}_{>0}$ such that $\frac{x}{a},\frac{y}{b}\in K$.
+The convexity of $K$ implies for all $\tau\in\left[0,1\right]$:
+\begin{align*}
+\tau\frac{x}{a}+\left(1-\tau\right)\frac{y}{b} & \in K
+\end{align*}
+Choose ${\displaystyle \tau=\frac{a}{a+b}}$, then holds ${\displaystyle 1-\tau=\frac{b}{a+b}}$,
+which gives:
+\begin{align*}
+\Rightarrow\quad\frac{1}{a+b}\left(x+y\right) & \in K
+\end{align*}
+\begin{align*}
+p\left(x+y\right) & \le a+b
+\end{align*}
+Taking the infimum over $a$ and $b$ gives $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$:
+\begin{align*}
+p\left(x+y\right) & =\inf\underbrace{\left\{ c\in\mathbb{R}_{>0}\bigg|\frac{x+y}{c}\in K\right\} }_{\ni a+b}\le a+b
+\end{align*}
+\begin{align*}
+p\left(x\right) & =\inf\left\{ a\bigg|\frac{x}{a}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{a\in\mathbb{R}_{>0}}:p\left(x\right)\ge a-\varepsilon\\
+p\left(y\right) & =\inf\left\{ b\bigg|\frac{x}{b}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{b\in\mathbb{R}_{>0}}:p\left(y\right)\ge b-\varepsilon
+\end{align*}
+\qqed
+
+
+\section{Lemma}
+
+$p\left(x\right)<1\Leftrightarrow x\in K$
+
+
+\subsubsection*{Proof}
+
+If $x\not\in K$ then $\frac{1}{a}x\not\in K$ for all $0<a<1$ and
+so $p\left(x\right)\ge1$.
+
+For all $x\in K$ exists an $\varepsilon=\varepsilon\left(x\right)\in\mathbb{R}_{>0}$
+with $\left(1+t\right)x\in K$ for all $t\in\left(-\varepsilon,\varepsilon\right)$.
+\begin{align*}
+\Rightarrow\quad & \left(1+\frac{\varepsilon}{2}\right)x\in K\\
+\Rightarrow\quad & p\left(x\right)\le\frac{1}{1+\frac{\varepsilon}{2}}<1
+\end{align*}
+\qqed
+
+
+\subsubsection*{Proof of Theorem \ref{sec:Thm-HahnBanach-Geometric}}
+
+Introduce $l$ on $\left\langle y\right\rangle $ by $l\left(y\right)=1$.
+(Assume again that $0\in K$ and so $y\not=0$.)\\
+Write $z=ay\in\left\langle y\right\rangle $ with $a\in\mathbb{R}$.
+\begin{itemize}
+\item If $a<0$, then $l\left(z\right)=a\cdot l\left(y\right)=a<0$ but
+$p\left(z\right)\ge0$ and thus the inequality $l\left(z\right)\le p\left(z\right)$
+is trivially satisfied.
+\item If $a>0$ it holds:
+\begin{align*}
+l\left(z\right) & =a\sr{\le}{y\not\in K}{\Rightarrow p\left(y\right)\ge1}a\cdot p\left(y\right)\sr ={\text{positive}}{\text{homogeneity}}p\left(ay\right)=p\left(z\right)
+\end{align*}
+
+\end{itemize}
+So for all $z\in\left\langle y\right\rangle $ holds $l\left(z\right)\le p\left(z\right)$.\\
+The Hahn-Banach Theorem yields an extension $l:X\to\mathbb{R}$ such
+that $l\left(x\right)\le p\left(x\right)$ for all $x\in X$. Therefore
+for all $x\in K$ we have:
+\begin{align*}
+l\left(x\right) & \le p\left(x\right)<1
+\end{align*}
+\qqed[\ref{sec:Thm-HahnBanach-Geometric}]
+
+%DATE: Do 25.10.12
+
+
+\chapter{Normed Spaces}
+
+Let $\left(E,\norm .\right)$ be a normed space and let the open balls
+$B_{\varepsilon}\left(x\right)=\left\{ y\big|\norm{x-y}<\varepsilon\right\} $
+generate the topology on $E$.
+
+
+\subsection{Definition \textmd{(equivalent norms)}}
+
+Two norms $\norm ._{1}$ and $\norm ._{2}$ are \emph{equivalent},
+if there exists a $C\in\mathbb{R}_{>0}$ such that:
+\begin{align*}
+\frac{1}{C}\norm x_{1} & \le\norm x_{2}\le C\norm x_{2}
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+Equivalent norms give rise to the same topology.
+
+
+\subsubsection*{(No proof)}
+
+
+\subsection{Theorem}
+
+If $E$ is finite dimensional, then any two norms on $E$ are equivalent.
+
+
+\subsubsection*{(No proof)}
+
+\textcolor{green}{TODO: Rest überarbeiten}
+
+Let $F\subseteq E$ be a \emph{closed} subspace. Define $\modulo EF$
+as follows:
+\begin{align*}
+x\sim y & :\Leftrightarrow x-y\in F
+\end{align*}
+defines an equivalence relation on $E$.
+\begin{align*}
+\modulo EF & :=\modulo E{\sim}
+\end{align*}
+is a vector space.
+\begin{align*}
+\norm u_{\moduloScript EF} & :=\inf_{\sr{}{\hat{u}\in E}{\hat{u}\text{ represents }u}}\norm{\hat{u}}_{E}
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+$\left(\modulo EF,\norm ._{\modulo EF}\right)$ is a normed space.
+The closedness is essential. Suppose $F\subseteq E$ is not closed.
+Then there exists an $x\in\modulo EF$ with $x\in\overline{F}$, thus
+there is a $\left(x_{n}\right)$, $x_{n}\in F$ with $x_{n}\to x$.
+
+Let $\left[x\right]\in\modulo EF$ be the equivalence class. Then
+$\left[x\right]\not=0$ but $\norm{\left[x\right]}=\inf_{\hat{x}}\norm{\hat{x}}\le\inf\norm{x-x_{n}}=0$.
+Choose $x-x_{n}\stackrel{\sim}{=}x$.
+
+Another operation. Let $E$ and $F$ be normed spaces.
+\begin{align*}
+E\times F & =\left\{ \left(u,v\right)\Big|u\in E,v\in F\right\}  &  & \text{Cartesian product}
+\end{align*}
+\begin{align*}
+\norm{\left(u,v\right)}_{E\times F} & =\norm u_{E}+\norm v_{F}
+\end{align*}
+is a norm on $E\times F$.
+
+A complete normed space is called \emph{Banach space}.
+
+
+\subsection{Definition}
+
+A normed space is called \emph{separable}, if there is a countable
+dense subset.
+
+
+\subsection{Examples}
+
+$\ell^{\infty}$ bounded sequences $\left(a_{n}\right)_{n\in\mathbb{N}}$,
+$a_{n}\in\mathbb{R}$ or $\mathbb{C}$ with $\norm{\left(a_{n}\right)}_{\infty}:=\sup_{n}\abs{a_{n}}$
+is a Banach space.
+\begin{align*}
+A & :=\left\{ \left(a_{n}\right)\big|a_{2n}=0\fall_{n\in\mathbb{N}}\right\} \subseteq\ell^{\infty}
+\end{align*}
+is a closed subspace.
+\begin{align*}
+\modulo{\ell^{\infty}}A & \stackrel{\sim}{=}\left\{ \left(a_{n}\right)\big|a_{2n+1}=0\fall_{n\in\mathbb{N}}\right\} 
+\end{align*}
+\begin{align*}
+B & =\left\{ \left(a_{n}\right)\text{ finite sequence}\right\} \subseteq\ell^{\infty}
+\end{align*}
+is a subspace, but not closed in $\ell^{\infty}$. For example $a_{n}=\frac{1}{n}\in\ell^{\infty}\setminus B$.
+Consider $x_{n}\in B$ with $x_{n}=\left(a_{n_{l}}\right)_{l\in\mathbb{N}}$
+and:
+\begin{align*}
+a_{n_{l}} & =\begin{cases}
+\frac{1}{l} & \text{if }l\le n\\
+0 & \text{if }l>n
+\end{cases}
+\end{align*}
+Then $x_{n}\to x$, $x=\left(a_{n}\right)$.
+\begin{align*}
+\overline{B} & =\left\{ \left(a_{n}\right)\big|a\xrightarrow{n\to\infty}0\right\} 
+\end{align*}
+$\ell^{\infty}$ is separable.
+
+
+\subsection{Example}
+
+Let $1\le p<\infty$.
+\begin{align*}
+\ell^{p} & =\left\{ \text{sequences }\left(a_{n}\right)\big|\sum_{n=1}^{\infty}\abs{a_{n}}^{p}<\infty\right\} 
+\end{align*}
+\begin{align*}
+\norm{\left(a_{n}\right)}_{p} & :=\left(\sum_{n=1}^{\infty}\abs{a_{n}}^{p}\right)^{\frac{1}{p}} &  & \ell^{p}\text{-norm}
+\end{align*}
+$\ell^{p}$ is a normed space (Hölder's inequality, Minkowski inequality).
+It is separable (see exercises).
+
+
+\subsection{Example}
+
+Let $\left(\Omega,\mu\right)$ be a measure space.
+\begin{align*}
+L^{p}\left(\Omega\right) & 1\le p<\infty & \norm f_{p} & =\left(\int_{\Omega}\abs{f\left(x\right)}^{p}\dd\mu\right)^{\frac{1}{p}}\\
+L^{\infty}\left(\Omega\right) &  & \norm f_{\infty} & =\text{supess}_{\Omega}\abs{f\left(x\right)}=\sup\left\{ L\big|\mu\left(f^{-1}\left([L,\infty)\right)\right)>0\right\} 
+\end{align*}
+
+
+
+\section{Non-Compactness of the Unit Ball}
+
+Let $\left(E,\norm .\right)$ be a normed vector space.
+\begin{align*}
+K & :=\overline{B_{1}\left(0\right)}=\left\{ x\in E\big|\norm x\le1\right\} 
+\end{align*}
+If $\dim\left(E\right)<\infty$, $K$ is compact by the Heine-Borel
+Theorem.
+
+
+\subsection{Theorem}
+
+If $E$ is infinite-dimensional, then $K$ is not sequentially compact
+(folgenkompakt). Thus we want to construct a sequence $\left(y_{n}\right)$,
+$y_{n}\in K$, which has no convergent subsequence.
+
+
+\subsection{Lemma}
+
+Let $Y\subsetneq E$ be a proper (echter) closed subspace. Then there
+is a vector $z\in\modulo EY$ such that:
+\begin{align*}
+\norm z & =1 & \norm{z-y} & >\frac{1}{2}\fall_{y\in Y}
+\end{align*}
+
+
+TODO: Abb6
+
+\begin{align*}
+\overline{B_{\frac{1}{2}}\left(z\right)}\cap Y & =\emptyset
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Choose $x\in\modulo EY$. As $\modulo EY$ is open, there is a $\delta\in\mathbb{R}_{>0}$
+with $B_{\delta}\left(x\right)\cap Y=\emptyset$. Thus:
+\begin{align*}
+\inf_{y\in Y}\norm{x-y}:=d & >0
+\end{align*}
+Choose $y_{0}\in Y$ such that $\norm{x-y_{0}}<2d$. Set $z'=x-y_{0}$.
+Then $\norm{z'}<2d$ and $\norm{z'-y}\ge d$ for all $y\in Y$. Thus
+$z:=\frac{z'}{\norm{z'}}$ has the desired properties. \qqed
+
+
+\subsubsection*{Proof of Theorem \ref{a}2.1.1}
+
+Choose inductively a sequence $\left(y_{n}\right)$: $y_{1}\in K$
+arbitrary. $Y_{1}:=\left\langle y_{1}\right\rangle $ is a one dimensional
+subspace, which is closed. Choose $y_{2}\in K$ such that $\norm{y_{2}-y}>\frac{1}{2}$
+for all $y\in Y_{1}$. (This is possible according to Lemma \ref{a}2.1.2)
+
+\medskip{}
+
+
+Suppose $y_{1},\ldots,y_{n}$ are given. $Y_{n}:=\left\langle y_{1},\ldots,y_{n}\right\rangle $
+is closed. So there exists a $y_{n+1}\in K$ such that:
+\begin{align*}
+\norm{y_{n+1}-y} & >\frac{1}{2}\quad\fall_{y\in Y_{n}}
+\end{align*}
+This sequence has the following properties:
+\begin{itemize}
+\item $y_{k}\in K$
+\item $\fall_{k,l,k\not=l}$ then $\norm{y_{k}-y_{l}}>\frac{1}{2}$, because:
+For example if $k<l$, then $y_{k}\in Y_{l-1}=\left\langle y_{1},\ldots,y_{l-1}\right\rangle $
+and we know by construction that $\norm{y_{l}-y}>\frac{1}{2}$ for
+all $y\in Y_{l-1}$. $\Rightarrow$ $\norm{y_{l}-y_{k}}>\frac{1}{2}$
+\end{itemize}
+This implies that $\left(y_{k}\right)$ has no convergent subspace.
+\qqed
+
+
+\section{Spaces of linear Mappings, Dual Spaces}
+
+Let $E,F$ be normed spaces.
+
+$A:E\to F$ is continuous if and only if it is bounded, i.e. there
+exists a $C\in\mathbb{R}_{>0}$ such that:
+\begin{align*}
+\norm{Au}_{F} & \le C\norm u_{E}\quad\fall_{u\in E}
+\end{align*}
+Denote by $L\left(E,F\right)$ the normed space of all bounded linear
+maps from $E$ to $F$ with:
+\begin{align*}
+\norm A & =\sup_{\norm u\le1}\norm{Au}=\sup_{\norm u=1}\norm{Au}
+\end{align*}
+
+
+
+\subsection{Lemma}
+
+If $B\in L\left(E,F\right)$ and $A\in L\left(F,G\right)$ then:
+\begin{align*}
+\norm{A\cdot B} & \le\norm A\cdot\norm B\\
+\norm{Au} & \le\norm A\cdot\norm u
+\end{align*}
+Scharz inequality or Kato inequality.
+
+
+\subsubsection*{(no proof)}
+
+
+\subsection{Theorem}
+
+If $F$ is complete, so is $L\left(E,F\right)$.
+
+Special case: $F=\mathbb{R}$, $\norm x_{\mathbb{R}}=\abs x$
+
+$E^{*}:=L\left(E,\mathbb{R}\right)$ is the dual space.
+
+If $\varphi\in E^{*}$ and $u\in E$.
+\begin{align*}
+\varphi\left(u\right) & =\left(\varphi,u\right) &  & \text{dual pairing (dt. duale Paarung)}
+\end{align*}
+\begin{align*}
+\left(.,.\right):E^{*}\times E & \to\mathbb{R}
+\end{align*}
+is a continuous bilinear map.
+
+For $u\in E$, 
+\begin{align*}
+\left(.,u\right):E^{*} & \to\mathbb{R}
+\end{align*}
+defines an element of $E^{**}=L\left(E^{*},\mathbb{R}\right)$. This
+gives rise to a linear mapping:
+\begin{align*}
+\iota:E & \to E^{**}
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+$\iota$ is an isometric embedding of $E$ into $E^{**}$.
+
+
+\subsubsection*{Proof}
+
+\begin{align*}
+\norm{\iota\left(u\right)} & :=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\left(\iota\left(u\right)\right)\left(\varphi\right)}=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)}\stackrel{?}{=}\norm u
+\end{align*}
+\begin{align*}
+\norm{\varphi} & =\sup_{v\in E,\norm v=1}\abs{\varphi\left(v\right)}
+\end{align*}
+\begin{align*}
+\norm{\varphi\left(u\right)} & \le\norm{\varphi}\cdot\norm u\stackrel{\norm{\varphi}=1}{=}\norm u\\
+\Rightarrow\quad\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)} & \le\norm u
+\end{align*}
+To prove $\norm{\iota\left(u\right)}\ge\norm u$ apply the Hahn-Banach
+theorem.
+
+Let $l:\left\langle u\right\rangle \to\mathbb{R}$ be the linear map
+with $l\left(u\right)=\norm u$, thus:
+\begin{align*}
+\norm l & =\sup_{v\in\left\langle u\right\rangle ,\norm v=1}\left(l\left(v\right)\right)=\sup\left(l\left(\pm\frac{u}{\norm u}\right)\right)=1
+\end{align*}
+By the Hahn-Banach theorem we can extend $l$ to
+\begin{align*}
+\tilde{l}:E & \to\mathbb{R}
+\end{align*}
+with $\norm{\tilde{l}}=1$. Then:
+\begin{align*}
+\sup_{\varphi\in E^{*},\norm{\varphi}=1}\varphi\left(u\right) & \ge\tilde{l}\left(u\right)=\norm u
+\end{align*}
+\qqed
+
+$\iota:E\hookrightarrow E^{*}$ is an isometric embedding.
+
+
+\subsection{Definition}
+
+A Banach space is called \emph{reflexive} (reflexiv), if $\iota$
+is bijective, i.e. $E=E^{**}$.
+
+
+\subsection{Example}
+
+Let $E=\ell_{1}$be the space of absolutely convergent functions with
+$\norm{\left(a_{n}\right)}_{1}=\sum_{n=1}^{\infty}\abs{a_{n}}<\infty$.
+
+Let $\left(\lambda_{n}\right)\in\ell_{\infty}$ be a bounded sequence.
+\begin{align*}
+\Lambda:E & \to\mathbb{R}\\
+\Lambda\left(\left(a_{n}\right)\right) & =\sum_{n=1}^{\infty}\lambda_{n}a_{n}
+\end{align*}
+\begin{align*}
+\abs{\Lambda\left(\left(a_{n}\right)\right)} & =\abs{\sum_{n=1}^{\infty}\lambda_{n}a_{n}}\le\sum_{n=1}^{\infty}\abs{\lambda_{n}}\cdot\abs{a_{n}}\le\norm{\left(\lambda_{n}\right)}_{\infty}\sum_{n=1}^{\infty}\abs{a_{n}}=\norm{\left(\lambda_{n}\right)}_{\infty}\cdot\norm{\left(a_{n}\right)}_{1}
+\end{align*}
+Thus $\Lambda$ is bounded and:
+\begin{align*}
+\norm{\Lambda} & \le\sup_{k\in\mathbb{N}}\abs{\lambda_{k}}
+\end{align*}
+It is even $\norm{\Lambda}=\sup_{k\in\mathbb{N}}\abs{\lambda_{k}}$.
+
+%DATE: Fr 26.10.12
+
+Let $E,F$ be Banach spaces.
+
+$L\left(E,F\right)$ with $\norm A=\sup_{\norm u=1}\norm{Au}$ is
+again a Banach space.
+
+$E^{*}=L\left(E,\mathbb{R}\right)$ dual space
+
+$L:E\to E^{**}$ is norm preserving $\norm{Lu}\stackrel{E^{**}}{=}\norm u_{E}$.
+Therefore $L$ is injective, because if $Lu=0$, then $\norm u_{E}=\norm{Lu}=0$
+and therefore $u=0$.
+
+
+\subsubsection*{Example}
+
+$E=\ell_{1}$; $\left(\lambda_{k}\right)\in\ell_{\infty}$ defines
+a linear Functional $\Lambda$ on $\ell_{1}$.
+\begin{align*}
+\Lambda\left(\left(a_{k}\right)\right) & :=\sum_{k=1}^{\infty}\lambda_{k}a_{k}
+\end{align*}
+$\Lambda$ is bounded, $\Lambda\in\ell_{1}^{*}$.
+
+\emph{Claim}: Every bounded linear functional on $\ell_{1}$ is of
+this form, i. e. $\ell_{1}^{*}=\ell_{\infty}$.
+
+\emph{Proof}: Let $\Lambda\in\ell_{1}^{*}$. Choose $u_{l}\in\ell_{1}$
+by $u_{l}=\left(0,\ldots,1,0,\ldots\right)$ with a one at the $l$-th
+position.
+
+Set $\lambda_{l}=\Lambda\left(u_{l}\right)$. Then:
+\begin{align*}
+\abs{\lambda_{l}} & =\abs{\Lambda\left(u_{l}\right)}\le\underbrace{\norm{\Lambda}}_{<\infty}\cdot\underbrace{\norm{u_{l}}}_{=1}\le\norm{\Lambda}<\infty
+\end{align*}
+So $\left(\lambda_{l}\right)\in\ell_{\infty}$.
+
+Let $\left(a_{k}\right)$ be a finite sequence, with only zeros after
+$k=K$. Then:
+\begin{align*}
+\Lambda\left(\left(a_{k}\right)\right) & =\Lambda\left(\sum_{k=1}^{K}a_{k}u_{k}\right)=\sum a_{k}\Lambda\left(u_{k}\right)=\sum\lambda_{k}a_{k}
+\end{align*}
+Since the finite sequences are dense in $\ell_{1}$, the claim follows.
+\qqed
+
+So $\ell_{1}^{*}=\ell_{\infty}$ and one could assume $\ell_{\infty}^{*}=\ell_{1}$,
+but this is not the case (see exercises).
+
+Thus $\ell_{1}^{**}\not=\ell_{1}$, which means, that $\ell_{1}$
+is \emph{not} reflexive.
+
+
+\section{Weak Convergence (Schwache Konvergenz)}
+
+Let $E$ be a Banach space and$\left(u_{n}\right)$ a sequence in
+$E$.
+
+Normal convergenz: $u_{n}\to u$ if and only if $\norm{u-u_{k}}\xrightarrow{k\to\infty}0$.
+
+
+\subsection{Definition}
+
+A sequence $\left(u_{n}\right)$ in $E$ \emph{converges weakly} to
+$u$, $u_{n}\rightharpoondown u$, if for all $\varphi\in E^{*}$
+the sequence $\varphi\left(u_{n}\right)$ converges to $\varphi\left(u\right)$,
+$\varphi\left(u_{n}\right)\to\varphi\left(u\right)$.
+
+$\left(u_{n}\right)$ is a \emph{weak Cauchy sequence}, if for all
+$\varphi\in E^{*}$ the sequence $\varphi\left(u_{n}\right)$ is Cauchy.
+
+
+\subsection{Theorem}
+
+The weak limit is unique.
+
+
+\subsubsection*{Proof}
+
+Let $\left(u_{n}\right)$ be a sequence in $E$ which converges $u_{n}\rightharpoondown u$
+and $u_{n}\rightharpoondown u'$. For $\varphi\in E^{*}$:
+\begin{align*}
+\varphi\left(u_{n}\right) & \to\varphi\left(u\right) & \varphi\left(u_{n}\right) & \to\varphi\left(u'\right)
+\end{align*}
+\begin{align*}
+0 & \to\varphi\left(u-u'\right)
+\end{align*}
+So $\varphi\left(u-u'\right)=0$ for all $\varphi\in E^{*}$.
+
+\emph{Claim}: $v:=u-u'=0$
+
+\emph{Proof}: Assume convertly that $v\not=0$.
+
+Choose $\varphi:\left\langle v\right\rangle \to\mathbb{R}$ with $\varphi\left(v\right)=1$.
+By the Hahn-Banach theorem $\varphi$ can be extended continuously
+to $E$.
+
+Therefore there exists a $\varphi\in E^{*}$ with $\varphi\left(v\right)=1$,
+which is a contradiction to $\varphi\left(v\right)=0$. \qqed
+
+
+\subsection{Theorem}
+
+Every convergent sequence converges weakly.
+
+
+\subsubsection{Proof}
+
+Suppose that $u_{n}\to u$. Let $\varphi\in E^{*}$, so:
+\begin{align*}
+\abs{\varphi\left(u_{n}\right)-\varphi\left(u\right)} & =\abs{\varphi\left(u_{n}-u\right)}\le\underbrace{\norm{\varphi}}_{\in\mathbb{R}}\cdot\norm{u_{n}-u}\to0
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\varphi\left(u_{n}\right) & \to\varphi\left(u\right)\\
+\Rightarrow\quad u_{n} & \rightharpoondown u
+\end{align*}
+
+
+
+\subsection{Example}
+
+$E=\left\{ \left(a_{n}\right)\big|a_{n}\xrightarrow{n\to\infty}0\right\} \subsetneq\ell_{\infty}$
+with $\norm{\left(a_{n}\right)}=\sup_{n}\abs{a_{n}}$ is a Banach
+space.
+
+Let $u_{n}=\left(0,\ldots,0,1,0,\ldots\right)$ be the sequence with
+a one at the $n$-th position and zeros elsewhere. For $n\not=m$
+we have:
+\begin{align*}
+\norm{u_{n}-u_{m}} & =\sup\left\{ 0,\abs 1,\abs{-1}\right\} =1
+\end{align*}
+
+
+Thus $\left(u_{n}\right)$ is \emph{not} a Cauchy sequence. Let $\varphi\in E^{*}$.
+Then $\varphi$ can be represented as (see exercises):
+\begin{align*}
+\varphi\left(\left(a_{n}\right)\right) & =\sum_{k}\lambda_{k}a_{k} &  & \text{with }\left(\lambda_{k}\right)\in\ell_{1}\\
+\norm{\varphi} & =\sum_{k=1}^{\infty}\abs{\lambda_{k}}
+\end{align*}
+\begin{align*}
+\varphi\left(u_{n}\right) & =\sum_{k=1}^{\infty}\lambda_{k}\delta_{kn}=\lambda_{n}\xrightarrow{n\to\infty}0
+\end{align*}
+Because $\left(\lambda_{n}\right)\in\ell_{1}$ we know that $\lambda_{n}\to0$.
+This means, that $u_{k}\rightharpoondown0$.\qqed
+
+This is used in Partial Differential Equations.
+
+If $\mathscr{S}\left(u_{n}\right)\to\inf\mathscr{S}$, then not necessarily
+$u_{n}\to u$, but $u_{n}\rightharpoondown u$.
+
+\medskip{}
+
+
+Consider $A_{n}\in L\left(E,F\right)$.
+\begin{itemize}
+\item $A_{n}\to A$ in $L\left(E,F\right)$, meaning that $\norm{A_{n}-A}\to0$.
+norm convergence
+\item $A_{n}u\to Au$ in $F$ for all $u\in E$. strong convergence
+\item $A_{n}u\rightharpoondown Au$ for all $u\in E$. weak convergence
+\end{itemize}
+
+\section{The Baire Category Theorem}
+
+Let $E$ be a metric space (e.g. a normed space).
+
+
+\subsection{Definition}
+
+A subset $A\subseteq E$ is called \emph{nowhere dense} (nirgends
+dicht), if $\stackrel{\circ}{\overline{A}}=\emptyset$.
+
+$A$ is called \emph{of first category} (or meagre) it it can be written
+as a countable union of nowhere dense sets.
+
+Otherwise it is \emph{of second category}.
+
+\emph{Example}: 
+\begin{itemize}
+\item $\mathbb{N}\subseteq\mathbb{R}$ is nowhere dense, $\overline{\mathbb{N}}=\mathbb{N}$,
+$\stackrel{\circ}{\mathbb{N}}=\emptyset$.
+\item $\mathbb{Q}\subseteq\mathbb{R}$: $\overline{\mathbb{Q}}=\mathbb{R}$,
+$\stackrel{\circ}{\overline{\mathbb{Q}}}=\stackrel{\circ}{\mathbb{R}}=\mathbb{R}$
+\end{itemize}
+
+\subsection{Theorem (Baire)}
+
+Let $E\not=\emptyset$ be a complete metric space (Polish space).
+Then $E$ is of second category.
+
+
+\subsubsection*{Proof}
+
+Assume conversely that $E=\bigcup_{n\in\mathbb{N}}M_{n}$ and the
+sets $M_{n}$ are nowhere dense.
+
+Without loss of generality assume that $M_{n}$ are closed, otherwise
+replace $M_{n}$ by $\overline{M_{n}}$.
+
+We shall construct inductively balls $\overline{B_{n}}=\overline{B_{r_{n}}\left(x_{n}\right)}$
+such that $\overline{B_{n+1}}\subseteq\overline{B_{n}}$, $r_{n}<2^{-n}$
+and $B_{n}\cap M_{n}=\emptyset$ for all $n$.
+
+TODO: Abb7
+
+Then the points $x_{n}$ form a Cauchy sequence, because for all $n<m$
+we have $x_{n+1}\in B_{n}$ and so $\norm{x_{n}-x_{n+1}}<r_{n}<2^{-n}$:
+\begin{align*}
+\norm{x_{n}-x_{m}} & \le\norm{x_{n}-x_{n+1}}+\norm{x_{n+1}-x_{m}}\le\ldots\le\\
+ & \le2^{-n}+2^{-\left(n+1\right)}+\ldots+2^{-\left(m-1\right)}\le2^{-n}\left(1+\frac{1}{2}+\frac{1}{4}+\ldots\right)\le2\cdot2^{-n}
+\end{align*}
+Since $E$ is complete, $x_{n}\to x_{0}\in E$. Then $x_{0}\in\overline{B_{n}}$
+for all $n$, which implies $x_{0}\not\in M_{n}$ and thus the contradiction
+$x_{0}\not\in\bigcup_{n}M_{n}=E$ follows.
+
+Construction of the balls $\overline{B_{n}}$:
+
+$M_{1}$ is nowhere dense $\Rightarrow B_{1}\left(0\right)\not\subseteq M_{1}$.
+So there exists a $x_{1}\in B_{1}\left(0\right)\setminus M_{1}$.
+Since $M_{1}$ is closed, $B_{1}\left(0\right)\setminus M_{1}$ is
+open and therefore there exists a radius $r_{1}$ such that $B_{2r_{1}}\left(x_{1}\right)$
+is contained in $B_{1}\left(0\right)\setminus M_{1}$ and thus $\overline{B_{r_{1}}\left(x_{1}\right)}\cap M_{1}=\emptyset$.
+
+Suppose $\overline{B_{n}}$ has been constructed. $M_{n+1}$ is nowhere
+dense and closed and so there is a $x_{n+1}\in\overline{B_{n}}\setminus M_{n+1}$
+and $r_{n+1}<2^{-\left(n+1\right)}$ such that $B_{2r_{n+1}}\left(x_{n+1}\right)\subseteq\overline{B_{n}}\setminus M_{n+1}$.
+Then $\overline{B_{r_{n+1}}}\cap M_{n+1}=\emptyset$.
+
+
+\subsection{Theorem \textmd{(Uniform boundedness principle, Prinzip der gleichmäßigen
+Beschränktheit)}}
+
+Let $E$ be a Banach space and $F$ a normed space. Let $T_{i}$ be
+a sequence in $L\left(E,F\right)$ which is point-wise bounded, i.e.
+for all $u\in E$:
+\begin{align*}
+\sup_{i}\norm{T_{i}u} & \le C\left(u\right)<\infty
+\end{align*}
+Then sup-norms of $T_{i}$ are bounded:
+\begin{align*}
+\sup_{i}\norm{T_{i}} & =\sup_{i}\sup_{\norm u=1}\norm{T_{i}u}\le C<\infty
+\end{align*}
+(Thus there exists a constant $C\in\mathbb{R}_{>0}$ such that $\norm{T_{i}u}\le C$
+for all $i\in\mathbb{N}$ and for all $u\in E$ with $\norm u=1$.)
+
+
+\subsubsection*{Proof}
+
+Let $M_{n}=\left\{ u\in E\big|\sup_{i}\norm{T_{i}u}\le n\right\} $.
+Then $M_{n}$ are closed (by continuity of $T_{i}\in L\left(E,F\right)$,
+$\norm{T_{i}u_{k}}\xrightarrow{k\to\infty}\norm{T_{i}u}$ if $u_{k}\to u$).
+
+$E=\bigcup_{n}M_{n}$, because for any $u\in E$, $\sup\norm{T_{i}u}<\infty$
+and thus $u\in M_{n}$ if $n>\norm{T_{1}u}$.
+
+If all the sets $M_{n}$ had empty interior, we would get a contradiction
+to Baire's theorem.
+
+So there exists an $n_{0}\in\mathbb{N}$ such that $\stackrel{\circ}{M_{n}}\not=\emptyset$
+and thus there are $u_{0}\in E$ and $r\in\mathbb{R}_{>0}$ such that
+$B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$.
+
+TODO: Abb8
+
+For all $v\in B_{r}\left(u_{0}\right)$ we know that $\sup_{i}\norm{T_{i}v}\le n_{0}$
+which is equivalent to:
+\begin{align*}
+\sup_{v\in B_{r}\left(u_{0}\right)}\norm{T_{i}v} & \le n_{0}\qquad\fall_{i\in\mathbb{N}}
+\end{align*}
+Let $w\in B_{r}\left(0\right)$ be arbitrary. Then $v:=u_{0}+w\in B_{r}\left(u_{0}\right)$.
+\begin{align*}
+T_{i}w & \stackrel{T_{i}\text{ linear}}{=}T_{i}v-T_{i}u_{0}
+\end{align*}
+\begin{align*}
+\norm{T_{i}w} & \le\norm{T_{i}v}+\norm{T_{i}u_{0}}\le n_{0}+\underbrace{\sup_{i}\norm{T_{i}u_{0}}}_{<\infty\text{, because }T_{i}\text{point-wise bounded}}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\norm{T_{i}w} & \le C\qquad\fall_{w\in B_{r}\left(0\right)}\\
+\Rightarrow\quad\norm{T_{i}\tilde{w}} & \le\tilde{C}=\frac{C}{r}\qquad\fall_{\tilde{w}\in\overline{B_{1}\left(0\right)}}
+\end{align*}
+So $\norm{T_{i}}\le\tilde{C}$ for all $i\in\mathbb{N}$ and so $\norm{T_{i}}$
+is bounded.\qqed
+
+
+\subsection{Corollory}
+
+Let $E$ be a normed space, not necessarily complete, and $\left(u_{n}\right)$
+a weak Cauchy sequence. Then $\norm{u_{n}}$ is a bounded sequence.
+
+
+\subsubsection*{Proof}
+
+$E^{*}=L\left(E,\mathbb{R}\right)$ is a Banach space. For all $\varphi\in E^{*}$
+we know, that $\varphi\left(u_{n}\right)$ is a Cauchy sequence.
+\begin{align*}
+\Rightarrow\quad\abs{\varphi\left(u_{n}\right)} & <C\left(\varphi\right)
+\end{align*}
+Applying Theorem \ref{a}2.4.3 yields:
+\begin{align*}
+\abs{\varphi\left(u_{n}\right)} & <C\quad\fall_{\varphi\text{ with }\norm{\varphi}=1}\\
+\Leftrightarrow\quad\sup_{n\in\mathbb{N}}\sup_{\varphi,\norm{\varphi}=1}\abs{\varphi\left(u_{n}\right)} & <C
+\end{align*}
+For any $v\in E$:
+\begin{align*}
+\sup_{\varphi\in E^{*},\norm{\varphi}=1}\abs{\varphi\left(v\right)} & =\norm v
+\end{align*}
+by the Hahn-Banach theorem:
+\begin{itemize}
+\item $\abs{\varphi\left(v\right)}\le\norm{\varphi}\cdot\norm v=\norm v$
+\item Choose $\varphi:\left\langle v\right\rangle \to\mathbb{R}$ with $\varphi\left(v\right)=\norm v$,
+then $\norm{\varphi}$. By Hahn-Banach theorem we can extend $\varphi$
+to $\tilde{\varphi}:E\to\mathbb{R}$ such that $\norm{\tilde{\varphi}}=1$.
+Then $\tilde{\varphi}=\norm v$ $\Rightarrow$ $\sup_{\norm{\varphi}=1}\abs{\varphi\left(v\right)}\ge\norm v$.
+\end{itemize}
+Thus $\sup_{n}\norm{u_{n}}<C$.\qqed
+
+TODO: Rest
+
+%DATE: Do 8.11.12
+
+%Spring School ... Woche vor Vorlesungsbeginn
+
+Consequences of Baire's category theorem
+
+$\rightarrow$ open mapping theorem
+
+$E,F$ Banach spaces:
+
+$A\in L\left(E,F\right)$ surjective $\Rightarrow$ $A$ is open
+
+$A\in L\left(E,F\right)$ bijective $\Rightarrow$ $A^{-}$ is continuous
+
+$\Rightarrow$ Closed Graph theorem
+
+$A:E\to F$,
+\begin{align*}
+\text{graph}\left(A\right) & :=\left\{ \left(u,Au\right)\big|u\in E\right\} \subseteq E\times F
+\end{align*}
+If $A$ is linear and $\text{graph}\left(A\right)$ is closed, then
+$A$ is continuous.
+
+
+
+$\text{graph}\left(A\right)$ closed means: for all $u_{n}\in E$
+with $u_{n}\to u$ and $Au_{n}\to v$, the point $\left(u,v\right)\in\text{graph}\left(A\right)$,
+i.e. $Au=v$.
+
+$A$ is continuous means: for all $u_{n}\in E$ with $u_{n}\to u$,
+the sequence $Au_{n}\to v$ converges and $Au=v$.
+
+Neumann series:
+
+$A,B,C,\ldots\in L\left(E,E\right)=L\left(E\right)$, $E$ Banach
+space.
+
+If $\norm B<1$, then
+\begin{align*}
+C:= & \sum_{n=0}^{\infty}B^{n}
+\end{align*}
+defines an element of $L\left(E\right)$.
+
+The series converges absolutely, because:
+\begin{align*}
+\norm{B^{n}} & =\norm{B\cdot B^{n-1}}\le\norm B\norm{B^{n-1}}\le\ldots\le\norm B^{n}
+\end{align*}
+
+
+
+\subsection{2.5.2 Theorem}
+
+\begin{align*}
+C & =\left(\mathbbm{1}-B\right)^{-1}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+\begin{align*}
+\left(\mathbbm{1}-B\right)C & =\left(\mathbbm{1}-B\right)\sum_{n=0}^{\infty}B^{n}=\left(\mathbbm{1}+B+B^{2}+\ldots\right)-\left(B+B^{2}+\ldots\right)=\mathbbm{1}
+\end{align*}
+
+
+\qqed
+
+
+\subsection{Theorem}
+
+The set of all continuously invertible mappings is open in $L\left(E\right)$.
+
+
+\subsubsection*{Proof}
+
+Assume that $A\in L\left(E\right)$ is continuously invertible, i.e.
+$A^{-1}$ exists and $A^{-1}\in L\left(E\right)$. Set:
+\begin{align*}
+\varepsilon & =\frac{1}{2\norm{A^{-1}}}
+\end{align*}
+Let us show, that every element of $B_{\varepsilon}\left(A\right)\subseteq L\left(E\right)$
+is continuously invertible.
+
+Let $C\in B_{\varepsilon}\left(A\right)$, i.e. $\norm{A-C}<\varepsilon$.
+\begin{align*}
+C & =A-\left(A-C\right)=A\big(\mathbbm{1}-\underbrace{A^{-1}\left(A-C\right)}_{=:B}\big)
+\end{align*}
+Then:
+\begin{align*}
+\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}=\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}
+\end{align*}
+Hence $\mathbbm{1}-B$ is continuously invertible by the Neumann series.
+Therefore:
+\begin{align*}
+C^{-1} & =\left(\mathbbm{1}-B\right)^{-1}\cdot A^{-1}
+\end{align*}
+is continuous.\qqed
+
+
+\chapter{Hilbert spaces}
+
+\setcounter{subsection}{0}
+
+Let $H$ be a real ($\mathbb{K}:=\mathbb{R}$) or complex ($\mathbb{K}:=\mathbb{C}$)
+vector space with \emph{scalar product}:
+\begin{align*}
+\left\langle .,.\right\rangle :H\times H & \to\mathbb{K}
+\end{align*}
+
+
+\begin{iiilist}
+
+\iii $\left\langle u,u\right\rangle \ge0$ and $\left\langle u,u\right\rangle =0$
+$\Rightarrow$ $u=0$.
+
+\iii Linear in the second and anti-linear in the first argument:
+\begin{align*}
+\left\langle \lambda u,v\right\rangle  & =\overline{\lambda}\left\langle u,v\right\rangle 
+\end{align*}
+
+
+\iii Symmetry: $\overline{\left\langle u,v\right\rangle }=\left\langle u,v\right\rangle $
+
+\end{iiilist}
+
+Define corresponding norm:
+\begin{align*}
+\norm u & :=\sqrt{\left\langle u,u\right\rangle }
+\end{align*}
+
+
+
+\subsection{Definition}
+
+A complete scalar product space is called \emph{Hilbert space}.
+
+Schwarz inequality:
+\begin{align*}
+\abs{\left\langle u,v\right\rangle } & \le\norm u\cdot\norm v
+\end{align*}
+
+
+
+\subsection{Lemma \textmd{(parallelogram equality }\foreignlanguage{ngerman}{\textmd{(Parallelogramm-Gleichung)}}\textmd{)\label{sub:Lem-parallelogram-equality}}}
+
+\begin{align*}
+\norm{u+v}^{2}+\norm{u-v}^{2} & =2\left(\norm u^{2}+\norm v^{2}\right)
+\end{align*}
+
+
+TODO: Abb9
+
+
+\subsubsection*{Proof}
+
+\begin{align*}
+\norm{u+v}^{2} & =\left\langle u+v,u+v\right\rangle =\left\langle u,u\right\rangle +\left\langle u,v\right\rangle +\left\langle v,u\right\rangle +\left\langle v,v\right\rangle \\
+\norm{u-v}^{2} & =\left\langle u-v,u-v\right\rangle =\left\langle u,u\right\rangle -\left\langle u,v\right\rangle -\left\langle v,u\right\rangle +\left\langle v,v\right\rangle 
+\end{align*}
+\qqed
+
+
+\subsection{Definition}
+
+\begin{iiilist}
+
+\iii Vectors $u,v\in H$ are called \emph{orthogonal}, $u\perp v$,
+if $\left\langle u,v\right\rangle =0$.
+
+\iii Subspaces $M_{1},M_{2}\subseteq H$ are orthogonal, $M_{1}\perp M_{2}$,
+if $\left\langle u,v\right\rangle =0$ for all $u\in M_{1}$ and $v\in M_{2}$.
+
+\iii A family $\left(u_{i}\right)_{i\in I}$ of vectors $u_{i}\in H$
+is called \emph{orthonormal}, if:
+\begin{align*}
+\left\langle u_{i},u_{j}\right\rangle  & =\delta_{ij}
+\end{align*}
+
+
+\end{iiilist}
+
+
+\subsection{Theorem \textmd{(Bessel's inequality)}}
+
+Let $\left(u_{i}\right)_{1\le i\le N}$ be an orthonormal family.
+Then for all $u\in H$:
+\begin{align*}
+\norm u^{2} & =\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2}\\
+\norm u^{2} & \ge\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+It remains to prove the equality.
+\begin{align*}
+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2} & =\left\langle u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle ,u-\sum_{j=1}^{N}u_{j}\left\langle u_{j},u\right\rangle \right\rangle =\\
+ & =\left\langle u,u\right\rangle -\sum_{j=1}^{N}\left\langle u_{j},u\right\rangle \left\langle u,u_{j}\right\rangle -\sum_{i=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{i},u\right\rangle +\sum_{i=1}^{N}\sum_{j=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{j},u\right\rangle \underbrace{\left\langle u_{i},u_{j}\right\rangle }_{=\delta_{ij}}=\\
+ & =\left\langle u,u\right\rangle -2\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}+\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}=\\
+ & =\left\langle u,u\right\rangle -\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}
+\end{align*}
+\qqed
+
+\emph{Isomorphism} of Hilbert spaces: Let $\left(H_{1},\left\langle .,.\right\rangle _{1}\right)$
+and $\left(H_{2},\left\langle .,.\right\rangle _{2}\right)$ be Hilbert
+spaces.
+
+An isomorphism is a mapping $U:H_{1}\to H_{2}$ which is linear, bijective
+and isometric (\foreignlanguage{ngerman}{isometrisch}), i.e. for all
+$u,v\in H_{1}$:
+\begin{align*}
+\left\langle u,v\right\rangle _{1} & =\left\langle Uu,Uv\right\rangle _{2}
+\end{align*}
+
+
+\emph{Direct sum} of Hilbert spaces: $H_{1}\oplus H_{2}$
+
+Define:
+\begin{align*}
+H: & =\left\{ \left(u,v\right)\big|u\in H_{1},v\in H_{2}\right\} 
+\end{align*}
+\begin{align*}
+\left(u_{1},v_{1}\right)+\left(u_{2},v_{2}\right) & :=\left(u_{1}+u_{2},v_{1}+v_{2}\right)\\
+\lambda\left(u,v\right) & :=\left(\lambda u,\lambda v\right)\\
+\left\langle \left(u_{1},v_{1}\right),\left(u_{2},v_{2}\right)\right\rangle  & :=\left\langle u_{1},u_{2}\right\rangle +\left\langle v_{1},v_{2}\right\rangle 
+\end{align*}
+This makes $H=H_{1}\oplus H_{2}$ a Hilbert space, sometimes called
+orthogonal due to:
+\begin{align*}
+\left\langle \left(u,0\right),\left(0,v\right)\right\rangle  & =0
+\end{align*}
+
+
+
+\subsection{Example}
+
+\begin{align*}
+\ell_{2} & =\left\{ \left(a_{n}\right)_{n\in\mathbb{N}}\big|a_{n}\in\mathbb{K},\sum_{n=1}^{\infty}\abs{a_{n}}^{2}<\infty\right\} 
+\end{align*}
+Define a scalar product:
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(b_{n}\right)\right\rangle  & :=\sum_{n=1}^{\infty}\overline{a}_{n}\cdot b_{n}
+\end{align*}
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(a_{n}\right)\right\rangle  & =\sum_{n=1}^{\infty}\abs{a_{n}}^{2}=\norm{a_{n}}_{2}^{2}
+\end{align*}
+$\left(\ell^{2},\norm ._{2}\right)$ is a Banach space. Thus $\left(\ell^{2},\left\langle .,.\right\rangle \right)$
+is a Hilbert space.
+
+
+\section{Projection on closed convex subsets}
+
+Let $\left(H,\left\langle .,.\right\rangle \right)$ be a Hilbert
+space and $K\subseteq H$ a closed convex subset.
+
+TODO: Abb10
+
+\begin{align*}
+u,v & \in K & w & \in H\setminus K
+\end{align*}
+We want to find a vector $v$ such that $\norm{v-w}=\inf_{u\in K}\norm{u-w}$.
+
+If $K$ were compact, then choose minimizing sequence (\foreignlanguage{ngerman}{Minimalfolge}),
+i.e.:
+\begin{align*}
+\norm{u_{i}-w} & \to\inf_{u\in K}\norm{u-w}
+\end{align*}
+Choose a convergent subsequence $u_{i_{l}}\to v$. Then by continuity:
+\begin{align*}
+\norm{v-w} & =\lim_{i\to\infty}\norm{u_{i}-w}=\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+
+Main application:
+
+$K\subseteq H$ be a closed subspace.
+
+TODO: Abb11
+
+In this case $v-w$ will be called orthogonal to $K$ motivating the
+name \emph{orthogonal projection}.
+
+
+\subsection{Theorem \textmd{(Hilbert)}}
+
+There is a unique $v\in K$ with:
+\begin{align*}
+\norm{v-w} & =\inf_{u\in K}\norm{u-w}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Consider a minimizing sequence $u_{i}$:
+\begin{align*}
+\norm{u_{i}-w} & \to\inf_{u\in K}\norm{u-w}
+\end{align*}
+Show that $\left(u_{i}\right)$ is a Cauchy sequence.
+\begin{align*}
+\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}=\\
+ & \stackrel{\ref{sub:Lem-parallelogram-equality}}{=}2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{\left(u_{i}-w\right)-\left(w-u_{j}\right)}^{2}=\\
+ & =2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{-2\left(w-\frac{u_{i}+u_{j}}{2}\right)}^{2}=\\
+ & =2\left(\underbrace{\norm{u_{i}-w}^{2}}_{\to d^{2}}+\underbrace{\norm{w-u_{j}}^{2}}_{\to d^{2}}-2\norm{\frac{u_{i}+u_{j}}{2}-w}^{2}\right)
+\end{align*}
+\begin{align*}
+\norm{u_{i}-w} & \xrightarrow{i\to\infty}d:=\inf_{u\in K}\norm{u-w}\\
+\norm{u_{j}-w} & \xrightarrow{j\to\infty}d:=\inf_{u\in K}\norm{u-w}
+\end{align*}
+Since $K$ is convex and $u_{i},u_{j}\in K$, we know:
+\begin{align*}
+\frac{u_{i}+u_{j}}{2} & \in K
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\norm{\frac{u_{i}+u_{j}}{2}-w} & \ge d
+\end{align*}
+Thus:
+\begin{align*}
+\norm{u_{i}-u_{j}}^{2} & \le2\left(\norm{u_{i}-w}^{2}+\norm{w-u_{j}}^{2}-2d^{2}\right)\xrightarrow{i,j\to\infty}2\left(d^{2}+d^{2}-2d^{2}\right)=0
+\end{align*}
+So there exists a $N\in\mathbb{N}$ such that $\norm{u_{i}-u_{j}}<\varepsilon$
+for all $i,j>N$. Therefore $\left(u_{i}\right)$ is a Cauchy sequence.
+Since $H$ is complete, we know that $u_{i}\to u$.
+
+By continuity:
+\begin{align*}
+\norm{u-w} & =\lim_{i\to\infty}\norm{u_{i}-w}=d
+\end{align*}
+Uniqueness follows from the fact, that \emph{every} minimizing sequence
+converges.
+
+Namely: Let $u,\tilde{u}$ be both minimizers. The sequence $\left(u,\tilde{u},u,\tilde{u},\ldots\right)$
+is a minimizing sequence. It converges, so $u=\tilde{u}$.\qqed
+
+
+\subsection{Corollary}
+
+Let $M\subseteq H$ be a closed subspace of $H$.
+
+Then a $w\in H$ can be decomposed uniquely in the form
+\begin{align*}
+w & =v+x
+\end{align*}
+with $v\in M$ and $x\in M^{\perp}$.
+
+We write $H=M\oplus M^{\perp}$.
+
+TODO: Abb12
+
+
+\subsubsection*{Proof}
+
+Let $v\in M$ be as in Theorem \ref{d}3.1.1.
+\begin{align*}
+\norm{v-w} & =\inf_{u\in M}\norm{u-w}
+\end{align*}
+Define $x:=w-v$.
+
+\emph{Claim}: $x\perp M$
+
+\emph{Proof}: Let $u\in M$. Choose $\tilde{u}\left(\tau\right)=v+\tau u\in M$
+with an arbitrary $\tau\in\mathbb{K}$.
+\begin{align*}
+\norm{v-w}^{2} & \stackrel{\text{by minimality}}{\le}\norm{\tilde{u}-w}^{2}=\left\langle v+\tau u-w,v+\tau u-w\right\rangle =\\
+ & =\norm{v-w}^{2}+2\text{Re}\left(\tau\left\langle w-v,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2}\\
+\Rightarrow\quad0 & \le2\text{Re}\left(\tau\left\langle x,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2}
+\end{align*}
+So assume conversely that $\left\langle x,u\right\rangle \not=0$.
+
+Then set $\tau=re^{\ii\varphi}$, $r\in\mathbb{R}_{>0}$ and $\varphi\in\mathbb{R}$.
+
+Choose the phase $\varphi$ such that:
+\begin{align*}
+\text{Re}\left(\tau\left\langle x,u\right\rangle \right) & =-r\abs{\left\langle x,u\right\rangle }
+\end{align*}
+Then:
+\begin{align*}
+2\text{Re}\left(\tau\left\langle x,u\right\rangle \right)+\abs{\tau}^{2}\norm u^{2} & =-2r\abs{\left\langle x,u\right\rangle }+r^{2}\norm u^{2}
+\end{align*}
+This can be smaller than zero for sufficiently small $r\in\mathbb{R}_{>0}$.
+This is a contradiction.
+
+%DATE: Fr 9.11.12
+\begin{itemize}
+\item $H$ real: Let $u\in M$, $\tilde{u}\left(\tau\right)=v+\tau u$
+\begin{align*}
+\norm{\tilde{u}-w}^{2} & =\norm x^{2}+2\tau\left\langle u,x\right\rangle +\tau^{2}\norm u^{2}\ge\norm x^{2}
+\end{align*}
+$f\left(\tau\right)$ has a minimum at $\tau=0$.
+\begin{align*}
+\Rightarrow\quad f'\left(0\right) & =0\\
+f'\left(0\right) & =2\left\langle u,x\right\rangle \\
+\Rightarrow\quad2\left\langle u,x\right\rangle  & =0\quad\fall_{u\in M}
+\end{align*}
+So $x\in M^{\perp}$.
+\item $H$ complex: $\tilde{u}\left(\tau\right)=v+\tau u$, $\tau=re^{\ii\varphi}$
+with $r\ge0$.
+\begin{align*}
+\norm{\tilde{u}-w}^{2} & =\norm x^{2}+2\text{Re}\left(re^{-\ii\varphi}\left\langle u,x\right\rangle \right)+r^{2}\norm u^{2}=:f\left(r,\varphi\right)
+\end{align*}
+This has a minimum at $r=0$.
+\begin{align*}
+\Rightarrow\quad0 & =\partial_{r}f\left(0,\varphi\right)=2\text{Re}\left(e^{-\ii\varphi}\left\langle u,x\right\rangle \right)\\
+\stackrel{\varphi\text{ arbitrary}}{\Rightarrow}\quad\left\langle u,x\right\rangle  & =0
+\end{align*}
+
+\end{itemize}
+\emph{Uniqueness}: Assume that $w=v_{1}+x_{1}=v_{2}+x_{2}$ where
+$v_{1},v_{2}\in M$, $x_{1},x_{2}\in M^{\perp}$.
+\begin{align*}
+\underbrace{v_{1}-v_{2}}_{\in M} & =\underbrace{x_{2}-x_{1}}_{\in M^{\perp}}\in M\cap M^{\perp}=\left\{ 0\right\} 
+\end{align*}
+Because from $u\in M\cap M^{\perp}$ follows $\left\langle u,u\right\rangle =0$
+and so $u=0$.\qqed
+
+For Banach spaces $E$ we have $E,E^{*},E^{**}$ and a natural injection
+$\iota:E\hookrightarrow E^{**}$.
+
+In Hilbert space $H$: Suppose $u\in H$. Define:
+\begin{align*}
+\varphi:H & \to\mathbb{K}\\
+\varphi\left(v\right) & :=\left\langle u,v\right\rangle 
+\end{align*}
+$\varphi$ is continuous, because:
+\begin{align*}
+\abs{\varphi\left(v\right)} & \le\norm u\cdot\norm v\le C\norm v
+\end{align*}
+\begin{align*}
+\iota:H & \hookrightarrow H^{*}\\
+\iota\left(u\right) & =\varphi
+\end{align*}
+is a linear mapping, which is injective.
+
+
+\subsection{Theorem \textmd{(Fréchet-Riesz)}}
+
+For any $\varphi\in H^{*}$ there is a unique $v\in H$ such that
+for all $x\in H$:
+\begin{align*}
+\varphi\left(x\right) & =\left\langle v,x\right\rangle 
+\end{align*}
+In other words: $\iota:H\to H^{*}$ is a Banach space isomorphism.
+
+
+\subsubsection*{Proof}
+
+Let $\varphi\in H^{*}$, without loss of generality $\varphi\not=0$.
+\begin{align*}
+M & :=\ker\varphi
+\end{align*}
+is a subspace. It is closed by continuity:
+
+Suppose $u_{n}\in\ker\varphi$, $u_{n}\to u$. Then:
+\begin{align*}
+\varphi\left(u\right) & \stackrel{\text{continuity}}{=}\lim_{n\to\infty}\varphi\left(u_{n}\right)=0
+\end{align*}
+So $u\in\ker\varphi$.
+\begin{itemize}
+\item $M^{\perp}$ is a one-dimensional subspace of $H$:\\
+$M^{\perp}\not=\left\{ 0\right\} $:\\
+Since $\varphi\not=0$ there exists a $u\in H$ with $\varphi\left(u\right)\not=0$,
+thus $u\not\in M$.\\
+Now decompose $u=v+x$, $v\in M$, $u\in M^{\perp}$.\\
+TODO: Abb13\\
+So $x\not=0$ thus there is a $x\not=0$ with $x\in M^{\perp}$.\\
+$M^{\perp}$ is one-dimensional: Take $u,v\in M^{\perp}$, $u,v\not=0$.
+Then $\varphi\left(u\right)\not=0$ and $\varphi\left(v\right)\not=0$.
+\begin{align*}
+\varphi\left(\varphi\left(v\right)u-\varphi\left(u\right)v\right) & =0
+\end{align*}
+So $\varphi\left(v\right)u-\varphi\left(u\right)v\in M\cap M^{\perp}=\left\{ 0\right\} $.
+Thus $\varphi\left(v\right)u-\varphi\left(u\right)v=0$, implying
+that $u$ and $v$ are linearly dependent.
+\item Choose $u\in M^{\perp}$ with $\varphi\left(u\right)=1$ which is
+always possible by rescaling.
+\begin{align*}
+v & :=\frac{u}{\norm u^{2}}\\
+\Rightarrow\quad\varphi\left(v\right) & =\frac{1}{\norm u^{2}}\underbrace{\varphi\left(u\right)}_{=1}=\frac{1}{\norm u^{2}}\\
+\left\langle v,v\right\rangle  & =\frac{\left\langle u,u\right\rangle }{\norm u^{4}}=\frac{1}{\norm u^{2}}=\varphi\left(v\right)
+\end{align*}
+
+\item This $v$ has the desired properties:\\
+Let $x\in H$, decompose:
+\begin{align*}
+x & =\underbrace{m}_{\in M}+\underbrace{\alpha v}_{\in M^{\perp}=\left\langle v\right\rangle }
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\varphi\left(x\right) & =\underbrace{\varphi\left(m\right)}_{=0}+\alpha\varphi\left(v\right)=\alpha\left\langle v,v\right\rangle =\\
+ & =\left\langle v,\alpha v\right\rangle =\left\langle v,m+\alpha v\right\rangle =\left\langle v,x\right\rangle 
+\end{align*}
+
+\end{itemize}
+\qqed
+
+
+\subsection{Theorem \textmd{(Lax-Milgram)}}
+
+Let $H$ be a Hilbert space and $B:H\times H\to\mathbb{K}$ be a mapping
+with the following properties:
+
+\begin{iiilist}
+
+\iii $B\left(x,y\right)$ is linear in the second an anti-linear
+in the first argument.
+
+\iii $\abs{B\left(x,y\right)}\le C\norm x\cdot\norm y$ (continuity)
+
+\iii $B$ is symmetric ($\overline{B\left(x,y\right)}=B\left(y,x\right)$)
+and positive definite, i.e. $B\left(x,x\right)\ge b\norm x^{2}$ with
+$b\in\mathbb{R}_{>0}$.
+
+\item[iii')] $\abs{B\left(x,x\right)}\ge b\norm x^{2}$ with $b\in\mathbb{R}_{>0}$.
+
+\end{iiilist}
+
+Then every $l\in H^{*}$ can be represented uniquely as:
+\begin{align*}
+l\left(x\right) & =B\left(v,x\right)\qquad\fall_{x\in H}
+\end{align*}
+
+
+
+
+
+\subsubsection*{Proof}
+
+First the easy case iii):
+
+We introduce a new scalar product $\left\langle .,.\right\rangle _{B}$
+by:
+\begin{align*}
+\left\langle x,y\right\rangle _{B} & :=B\left(x,y\right)
+\end{align*}
+Using ii) and iii) one sees that $\norm ._{B}$ is equivalent to $\norm .$,
+i.e. there exists a $C\in\mathbb{R}_{>0}$ such that:
+\begin{align*}
+\frac{1}{C}\norm x & \le\norm x_{B}\le C\norm x
+\end{align*}
+According to the Fréchet-Riesz theorem, there exists a unique $v\in H$
+with $\varphi\left(x\right)=\left\langle v,x\right\rangle _{B}=B\left(v,x\right)$
+for all $x\in H$.
+
+More difficult case iii'): Given $x\in H$
+\begin{align*}
+B\left(x,.\right):H & \to\mathbb{K}
+\end{align*}
+is a linear bounded functional according to i) and ii), i.e. $B\left(x,.\right)\in H^{*}$.
+
+According to the Fréchet-Riesz theorem there exists a unique $z\in H$
+such that $B\left(x,y\right)=\left\langle z,y\right\rangle $ for
+all $y\in H$. This yields a mapping:
+\begin{align*}
+\varphi:H & \to H\\
+x & \mapsto z
+\end{align*}
+\begin{align*}
+B\left(x,y\right) & =\left\langle \varphi\left(x\right),y\right\rangle 
+\end{align*}
+
+\begin{itemize}
+\item $\varphi$ is linear, because both $B$ and $\left\langle .,.\right\rangle $
+are anti-linear in their first arguments.
+\item $\varphi\left(H\right)\subseteq H$ is closed:
+\begin{align}
+b\norm x^{2}\stackrel{\text{iii')}}{=}\abs{B\left(x,x\right)} & =\abs{\left\langle z,x\right\rangle }\le\norm z\cdot\norm x\nonumber \\
+b\norm x & \le\norm z\label{eq:bx<z}
+\end{align}
+Let $z_{n}\in\varphi\left(H\right)$ be a sequence with $z_{n}\to z\in H$.
+Choose $x_{n}$ such that $\varphi\left(x_{n}\right)=z_{n}$, i.e.
+$B\left(x_{n},y\right)=\left\langle z_{n},y\right\rangle $ for all
+$y\in H$.\\
+Due to the anti-linearity it follows that:
+\begin{align*}
+B\left(x_{n}-x_{m}\right) & =\left\langle z_{n}-z_{m},y\right\rangle 
+\end{align*}
+\eqref{eq:bx<z} yields that $\norm{x_{n}-x_{m}}\le\norm{z_{n}-z_{m}}$.\\
+Hence $\left(x_{n}\right)$ is a Cauchy sequence $x_{n}\to x\in H$.
+Since $B$ is continuous according to ii), we get:
+\begin{align*}
+\underbrace{B\left(x_{n},y\right)}_{\to B\left(x,y\right)} & =\underbrace{\left\langle z_{n},y\right\rangle }_{\to\left\langle z,y\right\rangle }
+\end{align*}
+So:
+\begin{align*}
+B\left(x,y\right) & =\left\langle z,y\right\rangle \\
+\varphi\left(x\right) & =z
+\end{align*}
+Thus $z\in\varphi\left(H\right)$.
+\item $\varphi\left(H\right)=H$: Otherwise there would be a vector $y\not=0$,
+$y\in\varphi\left(H\right)^{\perp}$.
+\begin{align*}
+\Rightarrow\quad B\left(x,y\right) & =\left\langle \varphi\left(x\right),y\right\rangle =0\quad\fall_{x\in H}
+\end{align*}
+In particular:
+\begin{align*}
+0 & =\abs{B\left(y,y\right)}\ge b\norm y^{2}\\
+\Rightarrow\quad y & =0
+\end{align*}
+This is a contradiction.
+\item Let $l\in H^{*}$. According to Fréchet-Riesz there exists a unique
+$z\in H$ with $l\left(y\right)=\left\langle z,y\right\rangle $ for
+all $y\in H$. Now:
+\begin{align*}
+\left\langle z,y\right\rangle  & =B\left(x,y\right)
+\end{align*}
+\emph{Claim}: $\varphi$ is injective.\\
+\emph{Proof}: Suppose $x,x'$ with $\varphi\left(x\right)=\varphi\left(x'\right)$.
+Then follows:
+\begin{align*}
+B\left(x-x',y\right) & =\left\langle \underbrace{\varphi\left(x\right)-\varphi\left(x'\right)}_{=0},y\right\rangle =0
+\end{align*}
+Choose $y=x-x'$ so we get:
+\begin{align*}
+B\left(x-x',x-x'\right) & =0\\
+\Rightarrow\quad & x=x'
+\end{align*}
+If we choose $x$ such that $\varphi\left(x\right)=z$, $x=\varphi^{-1}\left(z\right)$.
+\end{itemize}
+\qqed
+
+
+\subsection{Corollary}
+
+Every Hilbert space is reflexive.
+
+
+\subsubsection*{Proof}
+
+Recall $\iota:H\hookrightarrow H^{**}$. $H$ is \emph{reflexive},
+if and only if $\iota$ is surjective, i.e. a Banach space isomorphism.
+\begin{align*}
+\tilde{\iota}:H & \to H^{*}\\
+\left(\iota\left(u\right)\right)\left(v\right) & =\left\langle u,v\right\rangle 
+\end{align*}
+is bijective by Fréchet-Riesz. This holds also for $\overline{\iota}:H^{*}\to H^{**}$.
+\begin{align*}
+H\stackrel{\tilde{\iota}}{\to}H^{*}\stackrel{\overline{\iota}}{\to}H^{**}
+\end{align*}
+So $\iota=\overline{\iota}\circ\tilde{\iota}$ is bijective as composition
+of bijective maps.\qqed
+
+
+\section{Orthonormal Bases in Separable Hilbert Spaces}
+
+
+\subsection{Example}
+
+$\ell_{2}=\left\{ \left(a_{n}\right)_{n\in\mathbb{N}}\bigg|\sum_{n}\abs{a_{n}}^{2}<\infty\right\} $
+\begin{align*}
+\left\langle \left(a_{n}\right),\left(b_{n}\right)\right\rangle  & :=\sum_{n}\overline{a}_{n}b_{n}
+\end{align*}
+is a Hilbert space.
+
+Idea: Let $H$ be an abstract Hilbert space. Choose ``orthonormal
+basis'' $\left(e_{i}\right)$.
+\begin{align*}
+H\ni u & =\sum_{i=1}^{\infty}\lambda_{i}e_{i}\\
+v & =\sum_{i=1}^{\infty}\nu_{i}e_{i}
+\end{align*}
+\begin{align*}
+\left\langle u,v\right\rangle  & =\sum_{i,j=1}^{\infty}\left\langle \lambda_{i}e_{i},\nu_{j}e_{j}\right\rangle =\sum_{i,j=1}^{\infty}\overline{\lambda_{i}}\nu_{j}\delta_{ij}=\sum_{i}\overline{\lambda_{i}}\nu_{i}
+\end{align*}
+
+
+
+\subsection{Definition}
+
+A system $\left(e_{i}\right)_{i\in J}$ is an \emph{orthonormal system},
+if $\left\langle e_{i},e_{j}\right\rangle =\delta_{ij}$. The algebraic
+span is the vector space of \emph{finite} linear combinations:
+\begin{align*}
+\left\langle \left(e_{i}\right)\right\rangle  & =\left\{ \sum_{i=1}^{N}\lambda_{i}e_{i}\big|N\in\mathbb{N},\lambda_{i}\in\mathbb{K}\right\} 
+\end{align*}
+This is a subspace of $H$. Now the subspace $\overline{\left\langle \left(e_{i}\right)\right\rangle }\subseteq H$
+is called \emph{Hilbert space span} (\foreignlanguage{ngerman}{Hilbertraumerzeugnis}).
+
+An orthonormal system $\left(e_{i}\right)$ is called a \emph{orthonormal
+Hilbert space basis}, if $\overline{\left\langle \left(e_{i}\right)\right\rangle }=H$.
+
+There always exists an orthonormal Hilbert space basis. (see exercises)
+
+Any two Hilbert space bases have the same cardinality (\foreignlanguage{ngerman}{Mächtigkeit}).
+(see exercises)
+
+
+\subsection*{Bernstein-Schröder Theorem}
+
+\emph{Definition}: Sets $A,B$ have the same cardinality, if there
+exists an bijective map $\varphi:A\to B$.
+
+Theorem (Bernstein-Schröder):
+
+$A,B$ have the same cardinality, if and only if there exists an injective
+map from $A$ to $B$ and an injective map from $B\to A$.
+
+
+\part*{Appendix\thispagestyle{empty}}
+
+\addcontentsline{toc}{part}{Appendix}
+
+\fancyhead[R]{}
+\fancyhead[C]{Appendix}
+
+
+\chapter*{Acknowledgements}
+
+\addcontentsline{toc}{section}{\hspace*{2.7em}Acknowledgements}
+
+\fancyhead[R]{Acknowledgements}
+
+My special thanks goes to Professor Finster, who gave this lecture
+and allowed me to publish this script of the lecture.
+
+I would also like to thank all those, who found errors by careful
+reading and told me of them.
+
+\vspace{1cm}
+
+
+\hfill{}Andreas Völklein
+
+
+\chapter*{GNU Free Documentation License}
+
+\addcontentsline{toc}{section}{\hspace*{2.7em}GNU Free Documentation License}
+
+\fancyhead[R]{GNU Free Documentation License}
+
+\noindent \begin{center}
+Version 1.3, 3 November 2008\\
+Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation,
+Inc. 
+\par\end{center}
+
+\noindent \begin{center}
+\texttt{<}\url{https://fsf.org/}\texttt{>}
+\par\end{center}
+
+\noindent \begin{center}
+Everyone is permitted to copy and distribute verbatim copies of this
+license document,\\
+but changing it is not allowed
+\par\end{center}
+
+
+\section*{\noun{0. Preamble}}
+
+\noindent The purpose of this License is to make a manual, textbook,
+or other functional and useful document “free” in the sense of freedom:
+to assure everyone the effective freedom to copy and redistribute
+it, with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a
+way to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+\noindent This License is a kind of “copyleft”, which means that derivative
+works of the document must themselves be free in the same sense. It
+complements the GNU General Public License, which is a copyleft license
+designed for free software.
+
+\noindent We have designed this License in order to use it for manuals
+for free software, because free software needs free documentation:
+a free program should come with manuals providing the same freedoms
+that the software does. But this License is not limited to software
+manuals; it can be used for any textual work, regardless of subject
+matter or whether it is published as a printed book. We recommend
+this License principally for works whose purpose is instruction or
+reference.
+
+
+\section*{\noun{1. Applicability and definitions}}
+
+This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License. Such a notice grants
+a world-wide, royalty-free license, unlimited in duration, to use
+that work under the conditions stated herein. The “\textbf{Document}”,
+below, refers to any such manual or work. Any member of the public
+is a licensee, and is addressed as “\textbf{you}”. You accept the
+license if you copy, modify or distribute the work in a way requiring
+permission under copyright law.
+
+A “\textbf{Modified Version}” of the Document means any work containing
+the Document or a portion of it, either copied verbatim, or with modifications
+and/or translated into another language.
+
+A “\textbf{Secondary Section}” is a named appendix or a front-matter
+section of the Document that deals exclusively with the relationship
+of the publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject. (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.) The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+The “\textbf{Invariant Sections}” are certain Secondary Sections whose
+titles are designated, as being those of Invariant Sections, in the
+notice that says that the Document is released under this License.
+If a section does not fit the above definition of Secondary then it
+is not allowed to be designated as Invariant. The Document may contain
+zero Invariant Sections. If the Document does not identify any Invariant
+Sections then there are none.
+
+The “\textbf{Cover Texts}” are certain short passages of text that
+are listed, as Front-Cover Texts or Back-Cover Texts, in the notice
+that says that the Document is released under this License. A Front-Cover
+Text may be at most 5 words, and a Back-Cover Text may be at most
+25 words.
+
+A “\textbf{Transparent}” copy of the Document means a machine-readable
+copy, represented in a format whose specification is available to
+the general public, that is suitable for revising the document straightforwardly
+with generic text editors or (for images composed of pixels) generic
+paint programs or (for drawings) some widely available drawing editor,
+and that is suitable for input to text formatters or for automatic
+translation to a variety of formats suitable for input to text formatters.
+A copy made in an otherwise Transparent file format whose markup,
+or absence of markup, has been arranged to thwart or discourage subsequent
+modification by readers is not Transparent. An image format is not
+Transparent if used for any substantial amount of text. A copy that
+is not “Transparent” is called “\textbf{Opaque}”.
+
+Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, \LaTeX{} input format,
+SGML or XML using a publicly available DTD, and standard-conforming
+simple HTML, PostScript or PDF designed for human modification. Examples
+of transparent image formats include PNG, XCF and JPG. Opaque formats
+include proprietary formats that can be read and edited only by proprietary
+word processors, SGML or XML for which the DTD and/or processing tools
+are not generally available, and the machine-generated HTML, PostScript
+or PDF produced by some word processors for output purposes only.
+
+The “\textbf{Title Page}” means, for a printed book, the title page
+itself, plus such following pages as are needed to hold, legibly,
+the material this License requires to appear in the title page. For
+works in formats which do not have any title page as such, “Title
+Page” means the text near the most prominent appearance of the work's
+title, preceding the beginning of the body of the text.
+
+The “\textbf{publisher}” means any person or entity that distributes
+copies of the Document to the public.
+
+A section “\textbf{Entitled XYZ}” means a named subunit of the Document
+whose title either is precisely XYZ or contains XYZ in parentheses
+following text that translates XYZ in another language. (Here XYZ
+stands for a specific section name mentioned below, such as “\textbf{Acknowledgements}”,
+“\textbf{Dedications}”, “\textbf{Endorsements}”, or “\textbf{History}”.)
+To “\textbf{Preserve the Title}” of such a section when you modify
+the Document means that it remains a section “Entitled XYZ” according
+to this definition.
+
+The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document. These Warranty Disclaimers
+are considered to be included by reference in this License, but only
+as regards disclaiming warranties: any other implication that these
+Warranty Disclaimers may have is void and has no effect on the meaning
+of this License.
+
+
+\section*{\noun{2. Verbatim copying}}
+
+You may copy and distribute the Document in any medium, either commercially
+or noncommercially, provided that this License, the copyright notices,
+and the license notice saying this License applies to the Document
+are reproduced in all copies, and that you add no other conditions
+whatsoever to those of this License. You may not use technical measures
+to obstruct or control the reading or further copying of the copies
+you make or distribute. However, you may accept compensation in exchange
+for copies. If you distribute a large enough number of copies you
+must also follow the conditions in section 3.
+
+You may also lend copies, under the same conditions stated above,
+and you may publicly display copies.
+
+
+\section*{\noun{3. Copying in quantity}}
+
+If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts
+on the back cover. Both covers must also clearly and legibly identify
+you as the publisher of these copies. The front cover must present
+the full title with all words of the title equally prominent and visible.
+You may add other material on the covers in addition. Copying with
+changes limited to the covers, as long as they preserve the title
+of the Document and satisfy these conditions, can be treated as verbatim
+copying in other respects.
+
+If the required texts for either cover are too voluminous to fit legibly,
+you should put the first ones listed (as many as fit reasonably) on
+the actual cover, and continue the rest onto adjacent pages.
+
+If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque
+copy a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute
+an Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+It is requested, but not required, that you contact the authors of
+the Document well before redistributing any large number of copies,
+to give them a chance to provide you with an updated version of the
+Document.
+
+
+\section*{\noun{4. Modifications}}
+
+You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it. In addition, you must do these things in the Modified Version:
+\begin{description}
+\item [{A.\hspace*{3.2mm}}] Use in the Title Page (and on the covers,
+if any) a title distinct from that of the Document, and from those
+of previous versions (which should, if there were any, be listed in
+the History section of the Document). You may use the same title as
+a previous version if the original publisher of that version gives
+permission.
+\item [{B.\hspace*{3.4mm}}] List on the Title Page, as authors, one or
+more persons or entities responsible for authorship of the modifications
+in the Modified Version, together with at least five of the principal
+authors of the Document (all of its principal authors, if it has fewer
+than five), unless they release you from this requirement.
+\item [{C.\hspace*{3.4mm}}] State on the Title page the name of the publisher
+of the Modified Version, as the publisher.
+\item [{D.\hspace*{3.4mm}}] Preserve all the copyright notices of the
+Document.
+\item [{E.\hspace*{3.4mm}}] Add an appropriate copyright notice for your
+modifications adjacent to the other copyright notices.
+\item [{F.\hspace*{3.8mm}}] Include, immediately after the copyright notices,
+a license notice giving the public permission to use the Modified
+Version under the terms of this License, in the form shown in the
+Addendum below.
+\item [{G.\hspace*{3.1mm}}] Preserve in that license notice the full lists
+of Invariant Sections and required Cover Texts given in the Document's
+license notice.
+\item [{H.\hspace*{3.2mm}}] Include an unaltered copy of this License.
+\item [{I.\hspace*{5.0mm}}] Preserve the section Entitled “History”, Preserve
+its Title, and add to it an item stating at least the title, year,
+new authors, and publisher of the Modified Version as given on the
+Title Page. If there is no section Entitled “History” in the Document,
+create one stating the title, year, authors, and publisher of the
+Document as given on its Title Page, then add an item describing the
+Modified Version as stated in the previous sentence.
+\item [{J.\hspace*{4.3mm}}] Preserve the network location, if any, given
+in the Document for public access to a Transparent copy of the Document,
+and likewise the network locations given in the Document for previous
+versions it was based on. These may be placed in the “History” section.
+You may omit a network location for a work that was published at least
+four years before the Document itself, or if the original publisher
+of the version it refers to gives permission.
+\item [{K.\hspace*{3.3mm}}] For any section Entitled “Acknowledgements”
+or “Dedications”, Preserve the Title of the section, and preserve
+in the section all the substance and tone of each of the contributor
+acknowledgements and/or dedications given therein.
+\item [{L.\hspace*{4.1mm}}] Preserve all the Invariant Sections of the
+Document, unaltered in their text and in their titles. Section numbers
+or the equivalent are not considered part of the section titles.
+\item [{M.\hspace*{3mm}}] Delete any section Entitled “Endorsements”.
+Such a section may not be included in the Modified Version.
+\item [{N.\hspace*{3.4mm}}] Do not retitle any existing section to be
+Entitled “Endorsements” or to conflict in title with any Invariant
+Section.
+\item [{O.\hspace*{3.4mm}}] Preserve any Warranty Disclaimers.
+\end{description}
+If the Modified Version includes new front-matter sections or appendices
+that qualify as Secondary Sections and contain no material copied
+from the Document, you may at your option designate some or all of
+these sections as invariant. To do this, add their titles to the list
+of Invariant Sections in the Modified Version's license notice. These
+titles must be distinct from any other section titles.
+
+You may add a section Entitled “Endorsements”, provided it contains
+nothing but endorsements of your Modified Version by various parties—for
+example, statements of peer review or that the text has been approved
+by an organization as the authoritative definition of a standard.
+
+You may add a passage of up to five words as a Front-Cover Text, and
+a passage of up to 25 words as a Back-Cover Text, to the end of the
+list of Cover Texts in the Modified Version. Only one passage of Front-Cover
+Text and one of Back-Cover Text may be added by (or through arrangements
+made by) any one entity. If the Document already includes a cover
+text for the same cover, previously added by you or by arrangement
+made by the same entity you are acting on behalf of, you may not add
+another; but you may replace the old one, on explicit permission from
+the previous publisher that added the old one.
+
+The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert
+or imply endorsement of any Modified Version.
+
+
+\section*{\noun{5. Combining documents}}
+
+You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified versions,
+provided that you include in the combination all of the Invariant
+Sections of all of the original documents, unmodified, and list them
+all as Invariant Sections of your combined work in its license notice,
+and that you preserve all their Warranty Disclaimers.
+
+The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy. If there are multiple Invariant Sections with the same name
+but different contents, make the title of each such section unique
+by adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of Invariant
+Sections in the license notice of the combined work.
+
+In the combination, you must combine any sections Entitled “History”
+in the various original documents, forming one section Entitled “History”;
+likewise combine any sections Entitled “Acknowledgements”, and any
+sections Entitled “Dedications”. You must delete all sections Entitled
+“Endorsements”.
+
+
+\section*{\noun{6. Collections of documents}}
+
+You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of
+this License in the various documents with a single copy that is included
+in the collection, provided that you follow the rules of this License
+for verbatim copying of each of the documents in all other respects.
+
+You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of
+this License into the extracted document, and follow this License
+in all other respects regarding verbatim copying of that document.
+
+
+\section*{\noun{7. Aggregation with independent works}}
+
+A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage
+or distribution medium, is called an “aggregate” if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half
+of the entire aggregate, the Document's Cover Texts may be placed
+on covers that bracket the Document within the aggregate, or the electronic
+equivalent of covers if the Document is in electronic form. Otherwise
+they must appear on printed covers that bracket the whole aggregate.
+
+
+\section*{\noun{8. Translation}}
+
+Translation is considered a kind of modification, so you may distribute
+translations of the Document under the terms of section 4. Replacing
+Invariant Sections with translations requires special permission from
+their copyright holders, but you may include translations of some
+or all Invariant Sections in addition to the original versions of
+these Invariant Sections. You may include a translation of this License,
+and all the license notices in the Document, and any Warranty Disclaimers,
+provided that you also include the original English version of this
+License and the original versions of those notices and disclaimers.
+In case of a disagreement between the translation and the original
+version of this License or a notice or disclaimer, the original version
+will prevail.
+
+If a section in the Document is Entitled “Acknowledgements”, “Dedications”,
+or “History”, the requirement (section 4) to Preserve its Title (section
+1) will typically require changing the actual title.
+
+
+\section*{\noun{9. Termination}}
+
+You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided under this License. Any attempt otherwise to
+copy, modify, sublicense, or distribute it is void, and will automatically
+terminate your rights under this License.
+
+However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally terminates
+your license, and (b) permanently, if the copyright holder fails to
+notify you of the violation by some reasonable means prior to 60 days
+after the cessation.
+
+Moreover, your license from a particular copyright holder is reinstated
+permanently if the copyright holder notifies you of the violation
+by some reasonable means, this is the first time you have received
+notice of violation of this License (for any work) from that copyright
+holder, and you cure the violation prior to 30 days after your receipt
+of the notice.
+
+Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License. If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material
+does not give you any rights to use it.
+
+
+\section*{\noun{10. Future revisions of this license}}
+
+The Free Software Foundation may publish new, revised versions of
+the GNU Free Documentation License from time to time. Such new versions
+will be similar in spirit to the present version, but may differ in
+detail to address new problems or concerns. See \url{https://www.gnu.org/copyleft/}.
+
+Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License \textquotedbl{}or any later version\textquotedbl{} applies
+to it, you have the option of following the terms and conditions either
+of that specified version or of any later version that has been published
+(not as a draft) by the Free Software Foundation. If the Document
+does not specify a version number of this License, you may choose
+any version ever published (not as a draft) by the Free Software Foundation.
+If the Document specifies that a proxy can decide which future versions
+of this License can be used, that proxy's public statement of acceptance
+of a version permanently authorizes you to choose that version for
+the Document.
+
+
+\section*{\noun{11. Relicensing}}
+
+“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works. A public
+wiki that anybody can edit is an example of such a server. A “Massive
+Multiauthor Collaboration” (or “MMC”) contained in the site means
+any set of copyrightable works thus published on the MMC site.
+
+“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0
+license published by Creative Commons Corporation, a not-for-profit
+corporation with a principal place of business in San Francisco, California,
+as well as future copyleft versions of that license published by that
+same organization.
+
+“Incorporate” means to publish or republish a Document, in whole or
+in part, as part of another Document.
+
+An MMC is “eligible for relicensing” if it is licensed under this
+License, and if all works that were first published under this License
+somewhere other than this MMC, and subsequently incorporated in whole
+or in part into the MMC, (1) had no cover texts or invariant sections,
+and (2) were thus incorporated prior to November 1, 2008.
+
+The operator of an MMC Site may republish an MMC contained in the
+site under CC-BY-SA on the same site at any time before August 1,
+2009, provided the MMC is eligible for relicensing.
+
+
+\section*{\noun{Addendum}: How to use this License for your documents}
+
+To use this License in a document you have written, include a copy
+of the License in the document and put the following copyright and
+license notices just after the title page:
+\begin{quote}
+Copyright © YEAR YOUR NAME.\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.
+
+A copy of the license is included in the section entitled \textquotedbl{}GNU
+Free Documentation License\textquotedbl{}.
+\end{quote}
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the \textquotedbl{}with $\ldots$ Texts.\textquotedbl{} line
+with this:
+\begin{quote}
+with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover
+Texts being LIST, and with the Back-Cover Texts being LIST.
+\end{quote}
+If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License, to
+permit their use in free software.
+
+\label{END}
+\end{document}
