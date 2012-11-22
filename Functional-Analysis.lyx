@@ -8877,6 +8877,13 @@ Theorem
 Satz vom abgeschlossenen Graphen
 \lang english
 )
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Closed-graph"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9346,6 +9353,13 @@ qqed
 
 \begin_layout Subsection
 Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-set-cont-invertible-->open"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14434,12 +14448,6 @@ Definition
 \end_layout
 
 \begin_layout Standard
-
-\color green
-TODO: Rest einfügen
-\end_layout
-
-\begin_layout Standard
 A operator 
 \begin_inset Formula $V:\mathcal{D}\left(V\right)\to H$
 \end_inset
@@ -14452,11 +14460,11 @@ A operator
 \emph on
 isometric
 \emph default
-, if for all 
+ if for all 
 \begin_inset Formula $u\in\mathcal{D}\left(V\right)$
 \end_inset
 
-:
+ holds:
 \begin_inset Formula 
 \begin{align*}
 \left\langle Vu,Vu\right\rangle  & =\left\langle u,u\right\rangle 
@@ -14467,17 +14475,12 @@ isometric
 This operator is bounded, because:
 \begin_inset Formula 
 \begin{align*}
-\norm{Vu} & =\sqrt{\left\langle Vu,Vu\right\rangle }=\sqrt{\left\langle u,u\right\rangle }=\norm u\le C\norm u
+\norm{Vu} & =\sqrt{\left\langle Vu,Vu\right\rangle }=\sqrt{\left\langle u,u\right\rangle }=\norm u\stackrel{C:=1}{\le}C\norm u
 \end{align*}
 
 \end_inset
 
-Here choose 
-\begin_inset Formula $C:=1$
-\end_inset
-
-.
- Therefore, we can extend it by continuity to 
+Therefore we can extend it by continuity to 
 \begin_inset Formula $H$
 \end_inset
 
@@ -14534,11 +14537,11 @@ Suppose you have a hotel with an infinite number of rooms and an infinite
 \begin_inset Newline newline
 \end_inset
 
-If a new guest arrives, just move every guest from room 
+If a new guest arrives, just move the guest from room 
 \begin_inset Formula $n$
 \end_inset
 
- to 
+ to room 
 \begin_inset Formula $n+1$
 \end_inset
 
@@ -14566,7 +14569,7 @@ Proof
 \end_layout
 
 \begin_layout Standard
-Let 
+Consider 
 \begin_inset Formula $y\in\overline{V\left(H\right)}$
 \end_inset
 
@@ -14664,14 +14667,24 @@ unitary
 unitär
 \lang english
 ).
-\begin_inset Newline newline
-\end_inset
+\begin_inset Note Note
+status collapsed
 
-This works similarly for 
+\begin_layout Plain Layout
+This is defined similarly for 
 \begin_inset Formula $V:H_{1}\to H_{2}$
 \end_inset
 
+ with 
+\begin_inset Formula $V\left(H_{1}\right)=H_{2}$
+\end_inset
+
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -14712,7 +14725,7 @@ Try to realize this as the graph of a new operator
 
 \end_inset
 
-If 
+For 
 \begin_inset Formula $u\in\mathcal{D}\left(\overline{A}\right)$
 \end_inset
 
@@ -14720,7 +14733,7 @@ If
 \begin_inset Formula $\left(u,v\right)\in\overline{\text{graph}A}$
 \end_inset
 
-, then define:
+ define:
 \begin_inset Formula 
 \begin{align*}
 \overline{A}u & :=v
@@ -14809,7 +14822,7 @@ Definition
 \end_layout
 
 \begin_layout Standard
-The operator 
+A densely defined operator 
 \begin_inset Formula $A$
 \end_inset
 
@@ -14883,7 +14896,7 @@ Theorem
 Reformulation of 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "closed graph"
+reference "sub:Thm-Closed-graph"
 
 \end_inset
 
@@ -14911,17 +14924,18 @@ Example
 \end_layout
 
 \begin_layout Standard
+Consider 
 \begin_inset Formula $E=C^{0}\left(\left[0,1\right]\right)$
 \end_inset
 
-, 
+ with the norm 
 \begin_inset Formula $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$
 \end_inset
 
 .
 \begin_inset Formula 
 \begin{align*}
-\mathcal{D}\left(A\right) & =C^{1}\left(\left[0,1\right]\right)
+\mathcal{D}\left(A\right) & =C^{1}\left(\left[0,1\right]\right)\subseteq E
 \end{align*}
 
 \end_inset
@@ -14939,16 +14953,16 @@ f & \mapsto f'
 \begin_inset Formula $A$
 \end_inset
 
- is a densely defined unbounded operator.
+ is a densely defined, unbounded operator.
  Is 
 \begin_inset Formula $A$
 \end_inset
 
  closed?
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-Let 
+\begin_layout Standard
+Consider 
 \begin_inset Formula $\left(u,v\right)\in\overline{\text{graph}A}$
 \end_inset
 
@@ -14973,11 +14987,11 @@ Let
 \begin_inset Formula $u_{n}\to u$
 \end_inset
 
- means 
+ means uniform convergence of 
 \begin_inset Formula $u_{n}\rightrightarrows u$
 \end_inset
 
- uniform convergence, so 
+, so 
 \begin_inset Formula $u$
 \end_inset
 
@@ -14986,14 +15000,14 @@ Let
 \end_inset
 
 
-\begin_inset Formula $u_{n}'\to u$
+\begin_inset Formula $Au_{n}\to u$
 \end_inset
 
- means 
-\begin_inset Formula $u_{n}'\rightrightarrows u$
+ means uniform convergence of 
+\begin_inset Formula $Au_{n}\rightrightarrows v$
 \end_inset
 
- uniform convergence, so 
+, so 
 \begin_inset Formula $v$
 \end_inset
 
@@ -15054,7 +15068,18 @@ This is obvious, because
 \end_layout
 
 \begin_layout Subsection
-Theorem
+Theorem 
+\series medium
+(Criterion for closable)
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Criterion-closable"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15141,7 +15166,7 @@ Suppose that
 \begin_inset Quotes erd
 \end_inset
 
-: Suppose that implication
+: Suppose that the implication
 \begin_inset Formula 
 \begin{align*}
 \left(u_{n}\in\mathcal{D}\left(A\right)\right)\wedge\left(u_{n}\to0\right)\wedge\left(Au_{n}\to v\right) & \quad\Rightarrow\quad v=0
@@ -15150,7 +15175,10 @@ Suppose that
 \end_inset
 
 holds.
- Set 
+\begin_inset Newline newline
+\end_inset
+
+Define 
 \begin_inset Formula $\mathcal{D}\left(\overline{A}\right)$
 \end_inset
 
@@ -15167,11 +15195,11 @@ holds.
 \end_inset
 
 .
- Then 
+ Then for 
 \begin_inset Formula $u\in\mathcal{D}\left(\overline{A}\right)$
 \end_inset
 
- and set 
+ set 
 \begin_inset Formula $\overline{A}\left(u\right)=v$
 \end_inset
 
@@ -15203,6 +15231,1258 @@ This is well-defined: Suppose
 .
  By assumption follows 
 \begin_inset Formula $v-\tilde{v}=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 22.11.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The adjoint of a densely defined operator
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ be a linear operator with 
+\begin_inset Formula $\overline{\mathcal{D}\left(A\right)}=H$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+In finite-dimensional linear algebra the definition of the adjoint 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,Av\right\rangle  & =:\left\langle A^{*}u,v\right\rangle \quad\fall_{u,v\in H}
+\end{align*}
+
+\end_inset
+
+Here it is more complicated, since in general 
+\begin_inset Formula $\mathcal{D}\left(A\right)\not=H$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+M & :=\left\{ \left(u,w\right)\in H\times H\bigg|\fall_{v\in\mathcal{D}\left(A\right)}:\left\langle u,Av\right\rangle =\left\langle w,v\right\rangle \right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $M$
+\end_inset
+
+ is the graph of a linear map 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Proof: 
+\begin_inset Formula $M\not=\emptyset$
+\end_inset
+
+ since 
+\begin_inset Formula $\left(0,0\right)\in M$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The image is unique: 
+\begin_inset Formula $u\to w$
+\end_inset
+
+ is well-defined, as from 
+\begin_inset Formula $\left(u,w\right),\left(u,w'\right)\in M$
+\end_inset
+
+ follows for all 
+\begin_inset Formula $v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle w-w',v\right\rangle =\left\langle u-u,Av\right\rangle  & =0
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+ is dense, 
+\begin_inset Formula $w-w'=0$
+\end_inset
+
+ follows.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is linear: For 
+\begin_inset Formula $\left(u,w\right),\left(u',w'\right)\in M$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda\in\mathbb{K}$
+\end_inset
+
+ follows 
+\begin_inset Formula $\left(u+\lambda u',w+\lambda w'\right)\in M$
+\end_inset
+
+ which is obvious from the definition of 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is closed.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Proof from exercises
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is the maximal, i.e.
+ not extensible, operator 
+\begin_inset Formula $S$
+\end_inset
+
+ with the property that for all 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in\mathcal{D}\left(S\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Sv\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+
+\color green
+TODO: Proof from exercises
+\end_layout
+
+\begin_layout Section
+Symmetric and self-adjoint densely defined operators
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(symmetric, (essentially) self-adjoint)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+symmetric
+\emph default
+ 
+\begin_inset Formula $:\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\fall_{u,v\in\mathcal{D}\left(A\right)}:$
+\end_inset
+
+ 
+\begin_inset Formula $\left\langle Au,v\right\rangle =\left\langle u,Av\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+self-adjoint
+\emph default
+ 
+\begin_inset Formula $:\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $A^{*}=A$
+\end_inset
+
+ (in particular, 
+\begin_inset Formula $\mathcal{D}\left(A^{*}\right)=\mathcal{D}\left(A\right)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+essentially self-adjoint
+\emph default
+ 
+\begin_inset Formula $:\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ is self-adjoint
+\end_layout
+
+\begin_layout Standard
+For bounded 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{D}\left(A\right)=H$
+\end_inset
+
+ all these notions coincide.
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $A:=\Delta=\sum_{i=1}^{n}\partial_{i}^{2}$
+\end_inset
+
+ on 
+\begin_inset Formula $L^{2}\left(\Omega\right)$
+\end_inset
+
+ for a bounded open region 
+\begin_inset Formula $\mbox{\Omega\subseteq}\mathbb{R}^{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{D}\left(A\right)=C_{0}^{\infty}\left(\Omega\right)\stackrel{\text{dense}}{\subseteq}L^{2}\left(\Omega\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric:
+\begin_inset Formula 
+\begin{align*}
+\left\langle Af,g\right\rangle  & \stackrel{\text{integration by parts}}{=}\left\langle f,Ag\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Adjoint of 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ on 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\int\dd^{n}r\left(\Delta f\right)\cdot g & =\int\dd^{n}rf\cdot\underbrace{h}_{\in L^{2}}
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $h:=A^{*}g$
+\end_inset
+
+.
+ It is sufficient to consider 
+\begin_inset Formula $g\in H^{2,2}\left(\Omega\right)$
+\end_inset
+
+ (Sobolev space).
+ 
+\begin_inset Formula $\mathcal{D}\left(A^{*}\right)\supsetneq\mathcal{D}\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a symmetric operator.
+ Then 
+\begin_inset Formula $A$
+\end_inset
+
+ is closable and 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ are extensions of 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{D}\left(A\right)\stackrel{\text{i)}}{\subseteq}\mathcal{D}\left(\overline{A}\right)\stackrel{\text{ii)}}{\subseteq}\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $u_{n}\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $u_{n}\to0$
+\end_inset
+
+ and 
+\begin_inset Formula $Au_{n}\to w$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Av\right\rangle \quad\fall_{u,v\in\mathcal{D}\left(A\right)}\\
+\left\langle w,v\right\rangle \leftarrow\left\langle Au_{n},v\right\rangle  & =\left\langle u_{n},Av\right\rangle \to\left\langle 0,Av\right\rangle =0
+\end{align*}
+
+\end_inset
+
+Since this holds for all 
+\begin_inset Formula $v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ now 
+\begin_inset Formula $w=0$
+\end_inset
+
+ follows.
+ From the criterion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Criterion-closable"
+
+\end_inset
+
+ follows that 
+\begin_inset Formula $A$
+\end_inset
+
+ is closable.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+is obvious from the definition of 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Take 
+\begin_inset Formula $u\in\mathcal{D}\left(\overline{A}\right)$
+\end_inset
+
+.
+ Then there is a sequence 
+\begin_inset Formula $u_{n}\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+ and 
+\begin_inset Formula $Au_{n}\to\overline{A}u$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+For all 
+\begin_inset Formula $v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \overline{A}u,v\right\rangle \leftarrow\left\langle Au_{n},v\right\rangle  & =\left\langle u_{n},Av\right\rangle \to\left\langle u,Av\right\rangle 
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $u\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{*}u=\overline{A}u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+„The smaller one chooses 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+, the larger becomes 
+\begin_inset Formula $\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+.“
+\begin_inset Formula 
+\begin{align*}
+B\subseteq\mathcal{D}\left(A\right) & \quad\Rightarrow\quad\mathcal{D}\left(\left(A\big|_{B}\right)^{*}\right)\supseteq\mathcal{D}\left(A^{*}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Difficulty:
+\emph default
+ Construct 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathcal{D}\left(A\right)=\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+.
+ (More on this later in the lecture.)
+\end_layout
+
+\begin_layout Section
+Heisenberg's uncertainty principle
+\end_layout
+
+\begin_layout Standard
+In quantum mechanics:
+\begin_inset Newline newline
+\end_inset
+
+The Hilbert space for one dimensional problems is usually 
+\begin_inset Formula $H=L^{2}\left(\mathbb{R}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+The position operator is 
+\begin_inset Formula $x=:B$
+\end_inset
+
+ and the momentum operator is 
+\begin_inset Formula $\frac{\hbar}{\ii}\frac{\dd}{\dd x}=:A$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left[A,B\right] & :=AB-BA=\frac{\hbar}{\ii}\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Winter-Wieland)
+\end_layout
+
+\begin_layout Standard
+For two continuous operators 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ with 
+\begin_inset Formula $\left[A,B\right]=c\cdot\mathbbm{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $B^{n}=B$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}_{\ge1}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ is idempotent, follows 
+\begin_inset Formula $c=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Consider:
+\begin_inset Formula 
+\begin{align*}
+B^{k}AB^{n-k} & =B^{k}\left(AB\right)B^{n-k-1}=B^{k}\left(BA+c\mathbbm{1}\right)B^{n-k-1}=B^{k+1}AB^{n-k-1}+cB^{n-1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad cB^{n-1} & =B^{k}AB^{n-k}-B^{k+1}AB^{n-k-1}
+\end{align*}
+
+\end_inset
+
+Sum this from 
+\begin_inset Formula $k=0$
+\end_inset
+
+ to 
+\begin_inset Formula $k=n-1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+ncB^{n-1} & =\sum_{k=0}^{n-1}B^{k}AB^{n-k}-B^{k+1}AB^{n-k-1}\sr ={\text{telescope}}{\text{sum}}AB^{n}-B^{n}A
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+n\abs c\opnorm{B^{n-1}} & =\opnorm{AB^{n}-B^{n}A}\stackrel{\Delta\text{-inequality}}{\le}\norm{AB^{n}}+\norm{B^{n}A}\le\left(\norm{AB}+\norm{BA}\right)\cdot\norm{B^{n-1}}
+\end{align*}
+
+\end_inset
+
+Since this must hold for all 
+\begin_inset Formula $n$
+\end_inset
+
+ either 
+\begin_inset Formula $c=0$
+\end_inset
+
+ or there exists a 
+\begin_inset Formula $n\in\mathbb{N}_{>1}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{B^{n-1}}=0$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $B^{n-1}=0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $B$
+\end_inset
+
+ is idempotent follows 
+\begin_inset Formula $B=0$
+\end_inset
+
+ and therefore 
+\begin_inset Formula $\left[A,B\right]=0$
+\end_inset
+
+ and also 
+\begin_inset Formula $c=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm u=1$
+\end_inset
+
+, which represents a quantum mechanical state.
+\begin_inset Newline newline
+\end_inset
+
+The
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ expectation value of 
+\begin_inset Formula $A$
+\end_inset
+
+ in 
+\begin_inset Formula $u$
+\end_inset
+
+ is after the probabilistic interpretation:
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+E_{u}\left(A\right) & :=\left\langle u,Au\right\rangle 
+\end{align*}
+
+\end_inset
+
+The “uncertainty”, i.e.
+ the variance, is:
+\begin_inset Formula 
+\begin{align*}
+\Delta_{u}\left(A\right) & :=\norm{\left(A-E_{u}\left(A\right)\mathbbm{1}\right)u}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Heisenberg's uncertainty principle)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+-Hilbert space and 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+, 
+\begin_inset Formula $B:\mathcal{D}\left(B\right)\to H$
+\end_inset
+
+ be two symmetric operators with 
+\begin_inset Formula $\overline{\mathcal{D}\left(A\right)}=H=\overline{\mathcal{D}\left(B\right)}$
+\end_inset
+
+.
+ Assume for the image domains 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}\left(A\right) & \subseteq\mathcal{D}\left(B\right) & \mathcal{R}\left(B\right) & \subseteq\mathcal{D}\left(A\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\left[A,B\right]$
+\end_inset
+
+ is well-defined on 
+\begin_inset Formula $\mathcal{D}\left(A\right)\cap\mathcal{D}\left(B\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Assume furthermore that 
+\begin_inset Formula $\left[A,B\right]=\frac{\hbar}{\ii}\mathbbm{1}$
+\end_inset
+
+ with 
+\begin_inset Formula $\hbar>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then for all 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)\cap\mathcal{D}\left(B\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm u=1$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\Delta_{u}\left(A\right)\cdot\Delta_{u}\left(B\right) & \ge\frac{\hbar}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Replace 
+\begin_inset Formula $A$
+\end_inset
+
+ by 
+\begin_inset Formula $\tilde{A}:=A-E_{u}\left(A\right)\cdot\mathbbm{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{B}:=B-E_{u}\left(B\right)\cdot\mathbbm{1}$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\left[\tilde{A},\tilde{B}\right] & =\frac{\hbar}{\ii}\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Delta_{u}\left(A\right) & =\norm{\tilde{A}u}\\
+\Delta_{u}\left(B\right) & =\norm{\tilde{B}u}
+\end{align*}
+
+\end_inset
+
+We have to show:
+\begin_inset Formula 
+\begin{align*}
+\Delta_{u}\left(A\right)\cdot\Delta_{u}\left(B\right)=\norm{\tilde{A}u}\cdot\norm{\tilde{B}u} & \ge\frac{\hbar}{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{\hbar}{2} & =\frac{\hbar}{2}\left\langle u,u\right\rangle =\frac{\ii}{2}\left\langle u,\left(\tilde{A}\tilde{B}-\tilde{B}\tilde{A}\right)u\right\rangle \stackrel{\text{symmetry}}{=}\frac{\ii}{2}\left(\left\langle \tilde{A}u,\tilde{B}u\right\rangle -\left\langle \tilde{B}u,\tilde{A}u\right\rangle \right)=\\
+ & =-\text{Im}\left(\left\langle \tilde{A}u,\tilde{B}u\right\rangle \right)\sr{\le}{\text{Cauchy-Schwarz}}{}\norm{\tilde{A}u}\cdot\norm{\tilde{B}u}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Spectrum and resolvent
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ be a closed, densely defined operator.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(continuously invertible, resolvent, spectrum)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+continuously invertible
+\emph default
+ if and only if 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ is bijective and 
+\begin_inset Formula $A^{-1}:H\to\mathcal{D}\left(A\right)$
+\end_inset
+
+ is continuous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{C}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
+\end{align*}
+
+\end_inset
+
+The 
+\emph on
+resolvent
+\emph default
+ is defined as
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}
+\end{align*}
+
+\end_inset
+
+and the 
+\emph on
+spectrum
+\emph default
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ as:
+\begin_inset Formula 
+\begin{align*}
+\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varrho\left(A\right)$
+\end_inset
+
+ is open and 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is closed.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+For bounded operators cf.
+ Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-set-cont-invertible-->open"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It's method works even for unbounded operators:
+\end_layout
+
+\begin_layout Standard
+Take 
+\begin_inset Formula $\lambda,\mu\in\varrho\left(A\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left(A-\mu\right) & =\left(A-\lambda\right)+\left(\lambda-\mu\right)=\\
+ & =\underbrace{\left(A-\lambda\right)}_{\text{continuously invertible}}\cdot\left(\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\mathbbm{1}+\left(1-\lambda\right)^{-1}\left(\lambda-\mu\right)$
+\end_inset
+
+ is continously invertible using the Neumann series if:
+\begin_inset Formula 
+\begin{align*}
+\abs{\lambda-\mu} & <\frac{1}{\norm{\left(A-\lambda\right)^{-1}}}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\varrho\left(A\right)$
+\end_inset
+
+ is open and therefore the complement 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is closed.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(resolvent equation)
+\end_layout
+
+\begin_layout Standard
+The map 
+\begin_inset Formula $\lambda\mapsto\mathcal{R}_{\lambda}\left(A\right)$
+\end_inset
+
+ is complex analytic on 
+\begin_inset Formula $\varrho\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have the 
+\emph on
+resolvent equation
+\emph default
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =-\left(\lambda-\mu\right)\mathcal{R}_{\lambda}\cdot\mathcal{R}_{\mu}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Analogy with 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+-numbers:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\lambda-x}-\frac{1}{\mu-x} & =\frac{\mu-\lambda}{\left(\lambda-x\right)\left(\mu-x\right)}\\
+\left(\mu-x\right)-\left(\lambda-x\right) & =\mu-\lambda
+\end{align*}
+
+\end_inset
+
+Same thing for operators:
+\begin_inset Formula 
+\begin{align*}
+\left(\mu-A\right)-\left(\lambda-A\right) & =\mu-\lambda\\
+\mathcal{R}_{\mu}^{-1}-\mathcal{R}_{\lambda}^{-1} & =\mu-\lambda\qquad/\mathcal{R}_{\mu}\cdot\quad/\cdot\mathcal{R}_{\lambda}\\
+\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =\left(\mu-\lambda\right)\mathcal{R}_{\mu}\mathcal{R}_{\lambda}\\
+\mathcal{R}_{\lambda} & =\mathcal{R}_{\mu}+\left(\mu-\lambda\right)\mathcal{R}_{\mu}\mathcal{R}_{\lambda}
+\end{align*}
+
+\end_inset
+
+Assume 
+\begin_inset Formula $\abs{\mu-\lambda}<\frac{1}{\opnorm{\mathcal{R}_{\lambda}}}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\mu} & =\mathcal{R}_{\lambda}\left(1+\left(\mu-\lambda\right)\mathcal{R}_{\lambda}\right)^{-1}=\mathcal{R}_{\lambda}\sum_{n=0}^{\infty}\left(-1\right)^{n}\left(\mu-\lambda\right)^{n}\mathcal{R}_{\lambda}
+\end{align*}
+
+\end_inset
+
+This series converges absolutely and so the map is analytic in 
+\begin_inset Formula $L\left(H\right)$
 \end_inset
 
 .

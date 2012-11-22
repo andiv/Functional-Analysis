@@ -1864,7 +1864,7 @@ in $\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\times\mathbb{R}$.
 
 
 \subsection{Theorem \textmd{(Closed graph theorem, }\foreignlanguage{ngerman}{\textmd{Satz
-vom abgeschlossenen Graphen}}\textmd{)}}
+vom abgeschlossenen Graphen}}\textmd{)\label{sub:Thm-Closed-graph}}}
 
 Suppose a linear map $A:E\to F$ between Banach spaces $E$ and $F$
 has a closed graph. Then $A$ is continuous.
@@ -1985,7 +1985,7 @@ C & =\left(\mathbbm{1}-B\right)^{-1}
 \qqed
 
 
-\subsection{Theorem}
+\subsection{Theorem\label{sub:Thm-set-cont-invertible-->open}}
 
 The set of all continuously invertible mappings is open in $L\left(E\right)$.
 
@@ -3165,19 +3165,17 @@ $u\in H$ and therefore $A\in L\left(H\right)$.\qqed
 
 \subsection{Definition \textmd{(isometric operator)}}
 
-\textcolor{green}{TODO: Rest einfügen}
-
 A operator $V:\mathcal{D}\left(V\right)\to H$ with dense domain $\mathcal{D}\left(V\right)\subseteq H$
-is called \emph{isometric}, if for all $u\in\mathcal{D}\left(V\right)$:
+is called \emph{isometric} if for all $u\in\mathcal{D}\left(V\right)$
+holds:
 \begin{align*}
 \left\langle Vu,Vu\right\rangle  & =\left\langle u,u\right\rangle 
 \end{align*}
 This operator is bounded, because:
 \begin{align*}
-\norm{Vu} & =\sqrt{\left\langle Vu,Vu\right\rangle }=\sqrt{\left\langle u,u\right\rangle }=\norm u\le C\norm u
+\norm{Vu} & =\sqrt{\left\langle Vu,Vu\right\rangle }=\sqrt{\left\langle u,u\right\rangle }=\norm u\stackrel{C:=1}{\le}C\norm u
 \end{align*}
-Here choose $C:=1$. Therefore, we can extend it by continuity to
-$H$ and
+Therefore we can extend it by continuity to $H$ and
 \begin{align*}
 V:H & \to H
 \end{align*}
@@ -3194,8 +3192,9 @@ $A$ is isometric, but it is no bijection.
 
 Suppose you have a hotel with an infinite number of rooms and an infinite
 number of guest, in every room one guest.\\
-If a new guest arrives, just move every guest from room $n$ to $n+1$
-and the first room gets unoccupied, so the new guest can use it.
+If a new guest arrives, just move the guest from room $n$ to room
+$n+1$ and the first room gets unoccupied, so the new guest can use
+it.
 
 
 \subsection{Proposition}
@@ -3206,7 +3205,7 @@ is closed.
 
 \subsubsection*{Proof}
 
-Let $y\in\overline{V\left(H\right)}$ and show $y\in V\left(H\right)$:\\
+Consider $y\in\overline{V\left(H\right)}$ and show $y\in V\left(H\right)$:\\
 There exists a $\left(y_{n}\right)$ with $y_{n}\in V\left(H\right)$
 and $y_{n}\to y$ and a $\left(x_{n}\right)$ with $V\left(x_{n}\right)=y_{n}$.
 Then holds:
@@ -3223,8 +3222,7 @@ V\left(x\right) & =\lim_{i\to\infty}V\left(x_{i}\right)=\lim_{i\to\infty}y_{i}=y
 \subsection{Definition \textmd{(unitary operator)}}
 
 If $V:H\to H$ is an isometric operator and $V\left(H\right)=H$,
-then $V$ is called \emph{unitary} (\foreignlanguage{ngerman}{unitär}).\\
-This works similarly for $V:H_{1}\to H_{2}$.
+then $V$ is called \emph{unitary} (\foreignlanguage{ngerman}{unitär}).
 
 
 \section{The Closure of an Operator}
@@ -3239,8 +3237,8 @@ Try to realize this as the graph of a new operator $\overline{A}$.
 \begin{align*}
 \mathcal{D}\left(\overline{A}\right) & :=\text{pr}_{1}\left(\overline{\text{graph}A}\right)=\left\{ u\bigg|\exs_{v\in F}:\left(u,v\right)\in\overline{\text{graph}A}\right\} 
 \end{align*}
-If $u\in\mathcal{D}\left(\overline{A}\right)$ and $\left(u,v\right)\in\overline{\text{graph}A}$,
-then define:
+For $u\in\mathcal{D}\left(\overline{A}\right)$ and $\left(u,v\right)\in\overline{\text{graph}A}$
+define:
 \begin{align*}
 \overline{A}u & :=v
 \end{align*}
@@ -3261,7 +3259,7 @@ $Au_{n}\to v$ and $A\tilde{u}_{n}\to\tilde{v}\not=v$.
 
 \subsection{Definition \textmd{(closable operator)}}
 
-The operator $A$ is called closable (\foreignlanguage{ngerman}{abschließbar})
+A densely defined operator $A$ is called closable (\foreignlanguage{ngerman}{abschließbar})
 if $\overline{\text{graph}A}$ is the graph of an operator $B$.\\
 $B$ is called the \emph{closure} of $A$, symbolically $B=\overline{A}$.
 
@@ -3274,7 +3272,7 @@ of $E\times F$.
 
 \subsection{Theorem \textmd{(closed graph theorem)}}
 
-Reformulation of \ref{closed graph}:
+Reformulation of \ref{sub:Thm-Closed-graph}:
 
 If $\mathcal{D}\left(A\right)=E$, then $A$ is closed if and only
 if $A$ is bounded.
@@ -3282,21 +3280,22 @@ if $A$ is bounded.
 
 \subsection{Example}
 
-$E=C^{0}\left(\left[0,1\right]\right)$, $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$.
+Consider $E=C^{0}\left(\left[0,1\right]\right)$ with the norm $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$.
 \begin{align*}
-\mathcal{D}\left(A\right) & =C^{1}\left(\left[0,1\right]\right)
+\mathcal{D}\left(A\right) & =C^{1}\left(\left[0,1\right]\right)\subseteq E
 \end{align*}
 \begin{align*}
 A:\mathcal{D}\left(A\right) & \to E\\
 f & \mapsto f'
 \end{align*}
-$A$ is a densely defined unbounded operator. Is $A$ closed?\\
-Let $\left(u,v\right)\in\overline{\text{graph}A}$, i.e. there exists
-a sequence $\left(u_{n}\right)\subseteq\mathcal{D}\left(A\right)$
+$A$ is a densely defined, unbounded operator. Is $A$ closed?
+
+Consider $\left(u,v\right)\in\overline{\text{graph}A}$, i.e. there
+exists a sequence $\left(u_{n}\right)\subseteq\mathcal{D}\left(A\right)$
 with $u_{n}\to u$ and $Au_{n}\to v$.\\
-$u_{n}\to u$ means $u_{n}\rightrightarrows u$ uniform convergence,
+$u_{n}\to u$ means uniform convergence of $u_{n}\rightrightarrows u$,
 so $u$ is continuous as a uniform limit of continuous functions.\\
-$u_{n}'\to u$ means $u_{n}'\rightrightarrows u$ uniform convergence,
+$Au_{n}\to u$ means uniform convergence of $Au_{n}\rightrightarrows v$,
 so $v$ is also continuous.\\
 It follows that $u\in C^{1}$ and $u'=v$.\\
 So $\left(u,v\right)\in\text{graph}A$ and therefore $A$ is closed.
@@ -3312,7 +3311,7 @@ This is obvious, because $\text{graph}\overline{A}:=\overline{\text{graph}A}$,
 which is closed.
 
 
-\subsection{Theorem}
+\subsection{Theorem \textmd{(Criterion for closable)}\label{sub:Thm-Criterion-closable}}
 
 $A$ is closable if and only if:
 \begin{align*}
@@ -3329,17 +3328,330 @@ Suppose that $u_{n}\in\mathcal{D}\left(A\right)$, $u_{n}\to0$ and
 $Au_{n}\to v$. Then $\left(u_{n},Au_{n}\right)\to\left(0,v\right)\in\overline{\text{graph}A}=\text{graph}\overline{A}$
 and thus $v=\overline{A}\left(0\right)=0$.
 
-``$\Leftarrow$'': Suppose that implication
+``$\Leftarrow$'': Suppose that the implication
 \begin{align*}
 \left(u_{n}\in\mathcal{D}\left(A\right)\right)\wedge\left(u_{n}\to0\right)\wedge\left(Au_{n}\to v\right) & \quad\Rightarrow\quad v=0
 \end{align*}
-holds. Set $\mathcal{D}\left(\overline{A}\right)$ by: $u_{n}\in\mathcal{D}\left(A\right)$
-with $u_{n}\to u$ and $Au_{n}\to v$. Then $u\in\mathcal{D}\left(\overline{A}\right)$
-and set $\overline{A}\left(u\right)=v$.\\
+holds.\\
+Define $\mathcal{D}\left(\overline{A}\right)$ by: $u_{n}\in\mathcal{D}\left(A\right)$
+with $u_{n}\to u$ and $Au_{n}\to v$. Then for $u\in\mathcal{D}\left(\overline{A}\right)$
+set $\overline{A}\left(u\right)=v$.\\
 This is well-defined: Suppose $u_{n},\tilde{u}_{n}\to u$, $Au_{n}\to v$
 and $A\tilde{u}_{n}\to\tilde{v}$. Then $u_{n}-\tilde{u}_{n}\to0$
 and $A\left(u_{n}-\tilde{u}_{n}\right)\to v-\tilde{v}$. By assumption
 follows $v-\tilde{v}=0$.\qqed
+
+%DATE: Do 22.11.12
+
+
+\section{The adjoint of a densely defined operator}
+
+Let $A:\mathcal{D}\left(A\right)\to H$ be a linear operator with
+$\overline{\mathcal{D}\left(A\right)}=H$.\\
+In finite-dimensional linear algebra the definition of the adjoint
+$A^{*}$ is:
+\begin{align*}
+\left\langle u,Av\right\rangle  & =:\left\langle A^{*}u,v\right\rangle \quad\fall_{u,v\in H}
+\end{align*}
+Here it is more complicated, since in general $\mathcal{D}\left(A\right)\not=H$.
+\begin{align*}
+M & :=\left\{ \left(u,w\right)\in H\times H\bigg|\fall_{v\in\mathcal{D}\left(A\right)}:\left\langle u,Av\right\rangle =\left\langle w,v\right\rangle \right\} 
+\end{align*}
+
+\begin{description}
+\item [{Claim:}] $M$ is the graph of a linear map $A^{*}$.
+\item [{Proof:}] $M\not=\emptyset$ since $\left(0,0\right)\in M$.
+
+\begin{itemize}
+\item The image is unique: $u\to w$ is well-defined, as from $\left(u,w\right),\left(u,w'\right)\in M$
+follows for all $v\in\mathcal{D}\left(A\right)$:
+\begin{align*}
+\left\langle w-w',v\right\rangle =\left\langle u-u,Av\right\rangle  & =0
+\end{align*}
+Since $\mathcal{D}\left(A\right)$ is dense, $w-w'=0$ follows.
+\item $A^{*}$ is linear: For $\left(u,w\right),\left(u',w'\right)\in M$
+and $\lambda\in\mathbb{K}$ follows $\left(u+\lambda u',w+\lambda w'\right)\in M$
+which is obvious from the definition of $M$.\qqed[Claim]
+\end{itemize}
+\end{description}
+
+\subsection{Theorem}
+
+$A^{*}$ is closed.
+
+
+\subsubsection*{Proof}
+
+\textcolor{green}{TODO: Proof from exercises}
+
+
+\subsection{Theorem}
+
+$A^{*}$ is the maximal, i.e. not extensible, operator $S$ with the
+property that for all $u\in\mathcal{D}\left(A\right)$ and $v\in\mathcal{D}\left(S\right)$:
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Sv\right\rangle 
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+\textcolor{green}{TODO: Proof from exercises}
+
+
+\section{Symmetric and self-adjoint densely defined operators}
+
+
+\subsection{Definition \textmd{(symmetric, (essentially) self-adjoint)}}
+\begin{enumerate}[label=\roman*)]
+\item $A$ is \emph{symmetric} $:\Leftrightarrow$ $\fall_{u,v\in\mathcal{D}\left(A\right)}:$
+$\left\langle Au,v\right\rangle =\left\langle u,Av\right\rangle $
+\item $A$ is \emph{self-adjoint} $:\Leftrightarrow$ $A^{*}=A$ (in particular,
+$\mathcal{D}\left(A^{*}\right)=\mathcal{D}\left(A\right)$)
+\item $A$ is \emph{essentially self-adjoint} $:\Leftrightarrow$ $\overline{A}$
+is self-adjoint
+\end{enumerate}
+For bounded $A$ with $\mathcal{D}\left(A\right)=H$ all these notions
+coincide.
+
+
+\subsection{Example}
+
+Consider the operator $A:=\Delta=\sum_{i=1}^{n}\partial_{i}^{2}$
+on $L^{2}\left(\Omega\right)$ for a bounded open region $\mbox{\ensuremath{\Omega\subseteq}}\mathbb{R}^{n}$
+with $\mathcal{D}\left(A\right)=C_{0}^{\infty}\left(\Omega\right)\stackrel{\text{dense}}{\subseteq}L^{2}\left(\Omega\right)$.
+\begin{itemize}
+\item $A$ is symmetric:
+\begin{align*}
+\left\langle Af,g\right\rangle  & \stackrel{\text{integration by parts}}{=}\left\langle f,Ag\right\rangle 
+\end{align*}
+
+\item Adjoint of $\Delta$ on $L^{2}$:
+\begin{align*}
+\int\dd^{n}r\left(\Delta f\right)\cdot g & =\int\dd^{n}rf\cdot\underbrace{h}_{\in L^{2}}
+\end{align*}
+Here $h:=A^{*}g$. It is sufficient to consider $g\in H^{2,2}\left(\Omega\right)$
+(Sobolev space). $\mathcal{D}\left(A^{*}\right)\supsetneq\mathcal{D}\left(A\right)$
+\end{itemize}
+
+\subsection{Lemma}
+
+Let $A$ be a symmetric operator. Then $A$ is closable and $\overline{A}$
+and $A^{*}$ are extensions of $A$ and $\mathcal{D}\left(A\right)\stackrel{\text{i)}}{\subseteq}\mathcal{D}\left(\overline{A}\right)\stackrel{\text{ii)}}{\subseteq}\mathcal{D}\left(A^{*}\right)$.
+
+
+\subsubsection{Proof}
+
+Let $u_{n}\in\mathcal{D}\left(A\right)$ with $u_{n}\to0$ and $Au_{n}\to w$.
+\begin{align*}
+\left\langle Au,v\right\rangle  & =\left\langle u,Av\right\rangle \quad\fall_{u,v\in\mathcal{D}\left(A\right)}\\
+\left\langle w,v\right\rangle \leftarrow\left\langle Au_{n},v\right\rangle  & =\left\langle u_{n},Av\right\rangle \to\left\langle 0,Av\right\rangle =0
+\end{align*}
+Since this holds for all $v\in\mathcal{D}\left(A\right)$ now $w=0$
+follows. From the criterion \ref{sub:Thm-Criterion-closable} follows
+that $A$ is closable.
+\begin{enumerate}[label=\roman*)]
+\item is obvious from the definition of $\overline{A}$.
+\item Take $u\in\mathcal{D}\left(\overline{A}\right)$. Then there is a
+sequence $u_{n}\in\mathcal{D}\left(A\right)$ with $u_{n}\to u$ and
+$Au_{n}\to\overline{A}u$.\\
+For all $v\in\mathcal{D}\left(A\right)$ holds:
+\begin{align*}
+\left\langle \overline{A}u,v\right\rangle \leftarrow\left\langle Au_{n},v\right\rangle  & =\left\langle u_{n},Av\right\rangle \to\left\langle u,Av\right\rangle 
+\end{align*}
+So $u\in\mathcal{D}\left(A^{*}\right)$ and $A^{*}u=\overline{A}u$.
+\end{enumerate}
+\qqed
+
+„The smaller one chooses $\mathcal{D}\left(A\right)$, the larger
+becomes $\mathcal{D}\left(A^{*}\right)$.“
+\begin{align*}
+B\subseteq\mathcal{D}\left(A\right) & \quad\Rightarrow\quad\mathcal{D}\left(\left(A\big|_{B}\right)^{*}\right)\supseteq\mathcal{D}\left(A^{*}\right)
+\end{align*}
+
+
+\emph{Difficulty:} Construct $\mathcal{D}\left(A\right)$ such that
+$\mathcal{D}\left(A\right)=\mathcal{D}\left(A^{*}\right)$. (More
+on this later in the lecture.)
+
+
+\section{Heisenberg's uncertainty principle}
+
+In quantum mechanics:\\
+The Hilbert space for one dimensional problems is usually $H=L^{2}\left(\mathbb{R}\right)$.\\
+The position operator is $x=:B$ and the momentum operator is $\frac{\hbar}{\ii}\frac{\dd}{\dd x}=:A$.
+\begin{align*}
+\left[A,B\right] & :=AB-BA=\frac{\hbar}{\ii}\mathbbm{1}
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(Winter-Wieland)}}
+
+For two continuous operators $A$ and $B$ with $\left[A,B\right]=c\cdot\mathbbm{1}$
+and $B^{n}=B$ for all $n\in\mathbb{N}_{\ge1}$, i.e. $B$ is idempotent,
+follows $c=0$.
+
+
+\subsubsection{Proof}
+
+Consider:
+\begin{align*}
+B^{k}AB^{n-k} & =B^{k}\left(AB\right)B^{n-k-1}=B^{k}\left(BA+c\mathbbm{1}\right)B^{n-k-1}=B^{k+1}AB^{n-k-1}+cB^{n-1}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad cB^{n-1} & =B^{k}AB^{n-k}-B^{k+1}AB^{n-k-1}
+\end{align*}
+Sum this from $k=0$ to $k=n-1$:
+\begin{align*}
+ncB^{n-1} & =\sum_{k=0}^{n-1}B^{k}AB^{n-k}-B^{k+1}AB^{n-k-1}\sr ={\text{telescope}}{\text{sum}}AB^{n}-B^{n}A
+\end{align*}
+\begin{align*}
+n\abs c\opnorm{B^{n-1}} & =\opnorm{AB^{n}-B^{n}A}\stackrel{\Delta\text{-inequality}}{\le}\norm{AB^{n}}+\norm{B^{n}A}\le\left(\norm{AB}+\norm{BA}\right)\cdot\norm{B^{n-1}}
+\end{align*}
+Since this must hold for all $n$ either $c=0$ or there exists a
+$n\in\mathbb{N}_{>1}$ with $\norm{B^{n-1}}=0$, i.e. $B^{n-1}=0$.
+Since $B$ is idempotent follows $B=0$ and therefore $\left[A,B\right]=0$
+and also $c=0$.\qqed
+
+Consider $u\in\mathcal{D}\left(A\right)$ with $\norm u=1$, which
+represents a quantum mechanical state.\\
+The expectation value of $A$ in $u$ is after the probabilistic interpretation:
+\begin{align*}
+E_{u}\left(A\right) & :=\left\langle u,Au\right\rangle 
+\end{align*}
+The “uncertainty”, i.e. the variance, is:
+\begin{align*}
+\Delta_{u}\left(A\right) & :=\norm{\left(A-E_{u}\left(A\right)\mathbbm{1}\right)u}
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(Heisenberg's uncertainty principle)}}
+
+Let $H$ be a $\mathbb{C}$-Hilbert space and $A:\mathcal{D}\left(A\right)\to H$,
+$B:\mathcal{D}\left(B\right)\to H$ be two symmetric operators with
+$\overline{\mathcal{D}\left(A\right)}=H=\overline{\mathcal{D}\left(B\right)}$.
+Assume for the image domains $\mathcal{R}$:
+\begin{align*}
+\mathcal{R}\left(A\right) & \subseteq\mathcal{D}\left(B\right) & \mathcal{R}\left(B\right) & \subseteq\mathcal{D}\left(A\right)
+\end{align*}
+So $\left[A,B\right]$ is well-defined on $\mathcal{D}\left(A\right)\cap\mathcal{D}\left(B\right)$.\\
+Assume furthermore that $\left[A,B\right]=\frac{\hbar}{\ii}\mathbbm{1}$
+with $\hbar>0$.
+
+Then for all $u\in\mathcal{D}\left(A\right)\cap\mathcal{D}\left(B\right)$
+with $\norm u=1$ holds:
+\begin{align*}
+\Delta_{u}\left(A\right)\cdot\Delta_{u}\left(B\right) & \ge\frac{\hbar}{2}
+\end{align*}
+
+
+
+\subsubsection{Proof}
+
+Replace $A$ by $\tilde{A}:=A-E_{u}\left(A\right)\cdot\mathbbm{1}$
+and $\tilde{B}:=B-E_{u}\left(B\right)\cdot\mathbbm{1}$. Then holds:
+\begin{align*}
+\left[\tilde{A},\tilde{B}\right] & =\frac{\hbar}{\ii}\mathbbm{1}
+\end{align*}
+\begin{align*}
+\Delta_{u}\left(A\right) & =\norm{\tilde{A}u}\\
+\Delta_{u}\left(B\right) & =\norm{\tilde{B}u}
+\end{align*}
+We have to show:
+\begin{align*}
+\Delta_{u}\left(A\right)\cdot\Delta_{u}\left(B\right)=\norm{\tilde{A}u}\cdot\norm{\tilde{B}u} & \ge\frac{\hbar}{2}
+\end{align*}
+\begin{align*}
+\frac{\hbar}{2} & =\frac{\hbar}{2}\left\langle u,u\right\rangle =\frac{\ii}{2}\left\langle u,\left(\tilde{A}\tilde{B}-\tilde{B}\tilde{A}\right)u\right\rangle \stackrel{\text{symmetry}}{=}\frac{\ii}{2}\left(\left\langle \tilde{A}u,\tilde{B}u\right\rangle -\left\langle \tilde{B}u,\tilde{A}u\right\rangle \right)=\\
+ & =-\text{Im}\left(\left\langle \tilde{A}u,\tilde{B}u\right\rangle \right)\sr{\le}{\text{Cauchy-Schwarz}}{}\norm{\tilde{A}u}\cdot\norm{\tilde{B}u}
+\end{align*}
+\qqed
+
+
+\section{Spectrum and resolvent}
+
+Let $A:\mathcal{D}\left(A\right)\to H$ be a closed, densely defined
+operator.
+
+
+\subsection{Definition \textmd{(continuously invertible, resolvent, spectrum)}}
+
+$A$ is \emph{continuously invertible} if and only if $A:\mathcal{D}\left(A\right)\to H$
+is bijective and $A^{-1}:H\to\mathcal{D}\left(A\right)$ is continuous.
+
+\begin{align*}
+\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{C}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
+\end{align*}
+The \emph{resolvent} is defined as
+\begin{align*}
+\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}
+\end{align*}
+and the \emph{spectrum} of $A$ as:
+\begin{align*}
+\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\end{align*}
+
+
+
+\subsection{Lemma}
+
+$\varrho\left(A\right)$ is open and $\sigma\left(A\right)$ is closed.
+
+
+\subsubsection{Proof}
+
+For bounded operators cf. Theorem \ref{sub:Thm-set-cont-invertible-->open}.
+
+It's method works even for unbounded operators:
+
+Take $\lambda,\mu\in\varrho\left(A\right)$.
+\begin{align*}
+\left(A-\mu\right) & =\left(A-\lambda\right)+\left(\lambda-\mu\right)=\\
+ & =\underbrace{\left(A-\lambda\right)}_{\text{continuously invertible}}\cdot\left(\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)\right)
+\end{align*}
+$\mathbbm{1}+\left(1-\lambda\right)^{-1}\left(\lambda-\mu\right)$
+is continously invertible using the Neumann series if:
+\begin{align*}
+\abs{\lambda-\mu} & <\frac{1}{\norm{\left(A-\lambda\right)^{-1}}}
+\end{align*}
+So $\varrho\left(A\right)$ is open and therefore the complement $\sigma\left(A\right)$
+is closed.\qqed
+
+
+\subsection{Theorem \textmd{(resolvent equation)}}
+
+The map $\lambda\mapsto\mathcal{R}_{\lambda}\left(A\right)$ is complex
+analytic on $\varrho\left(A\right)$.
+
+We have the \emph{resolvent equation}:
+\begin{align*}
+\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =-\left(\lambda-\mu\right)\mathcal{R}_{\lambda}\cdot\mathcal{R}_{\mu}
+\end{align*}
+
+
+
+\subsubsection{Proof}
+
+Analogy with $\mathbb{C}$-numbers:
+\begin{align*}
+\frac{1}{\lambda-x}-\frac{1}{\mu-x} & =\frac{\mu-\lambda}{\left(\lambda-x\right)\left(\mu-x\right)}\\
+\left(\mu-x\right)-\left(\lambda-x\right) & =\mu-\lambda
+\end{align*}
+Same thing for operators:
+\begin{align*}
+\left(\mu-A\right)-\left(\lambda-A\right) & =\mu-\lambda\\
+\mathcal{R}_{\mu}^{-1}-\mathcal{R}_{\lambda}^{-1} & =\mu-\lambda\qquad/\mathcal{R}_{\mu}\cdot\quad/\cdot\mathcal{R}_{\lambda}\\
+\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =\left(\mu-\lambda\right)\mathcal{R}_{\mu}\mathcal{R}_{\lambda}\\
+\mathcal{R}_{\lambda} & =\mathcal{R}_{\mu}+\left(\mu-\lambda\right)\mathcal{R}_{\mu}\mathcal{R}_{\lambda}
+\end{align*}
+Assume $\abs{\mu-\lambda}<\frac{1}{\opnorm{\mathcal{R}_{\lambda}}}$.
+\begin{align*}
+\mathcal{R}_{\mu} & =\mathcal{R}_{\lambda}\left(1+\left(\mu-\lambda\right)\mathcal{R}_{\lambda}\right)^{-1}=\mathcal{R}_{\lambda}\sum_{n=0}^{\infty}\left(-1\right)^{n}\left(\mu-\lambda\right)^{n}\mathcal{R}_{\lambda}
+\end{align*}
+This series converges absolutely and so the map is analytic in $L\left(H\right)$.\qqed
 
 
 \part*{Appendix\thispagestyle{empty}}
