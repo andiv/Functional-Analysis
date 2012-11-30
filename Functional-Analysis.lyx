@@ -212,8 +212,6 @@ enumitem
 \begin_body
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset Note Note
 status collapsed
 
@@ -597,8 +595,6 @@ end{tikzpicture}
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset Note Note
 status collapsed
 
@@ -684,8 +680,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert }
 {\left\Vert #1\right\Vert }
@@ -695,8 +689,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert }
 {\left|#1\right|}
@@ -706,8 +698,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\opnorm}[1]{\opnor{#1}}
 {\abs{\norm{#1}}}
@@ -744,8 +734,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\mins}{\text{-}}
 \end_inset
@@ -754,8 +742,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\LB}{\LBO}
 {\Delta\backslash}
@@ -765,8 +751,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\exs}{\exsop}
 {\text{\exists}}
@@ -776,8 +760,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\exsg}{\exsgop}
 {\text{\exists!}}
@@ -787,8 +769,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\fall}{\fallop}
 {\text{\forall}}
@@ -798,8 +778,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\bcupd}{\bcupdop}
 {\text{\dot{\bigcup}}}
@@ -809,8 +787,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\bcapd}{\bcapdop}
 {\text{\dot{\bigcap}}}
@@ -820,8 +796,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\sr}[3]{\underset{#3}{\overset{#2}{#1}}}
 \end_inset
@@ -830,8 +804,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\dd}{\textnormal{d}}
 \end_inset
@@ -840,8 +812,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\DD}{\textnormal{D}}
 \end_inset
@@ -850,8 +820,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\TT}{\textnormal{T}}
 \end_inset
@@ -860,8 +828,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\ii}{\textbf{i}}
 \end_inset
@@ -870,8 +836,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\modulo}[2]{\moduloT{#1}{#2}}
 {#1/#2}
@@ -881,8 +845,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\lmodulo}[2]{\lmoduloT{#1}{#2}}
 {#1\backslash#2}
@@ -892,8 +854,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\modlo}[2]{\modloT{#1}{#2}}
 {\mathbb{#1}/#2\mathbb{#1}}
@@ -903,8 +863,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\moduloScript}[2]{\moduloScriptT{#1}{#2}}
 {{\scriptstyle #1/#2}}
@@ -914,8 +872,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\lmoduloScript}[2]{\lmoduloScriptT{#1}{#2}}
 {{\scriptstyle #1\backslash#2}}
@@ -925,8 +881,6 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
 \begin_inset FormulaMacro
 \newcommand{\modloScript}[2]{\modloScriptT{#1}{#2}}
 {{\scriptstyle \mathbb{#1}/#2\mathbb{#1}}}
@@ -971,7 +925,6 @@ vspace*{-15mm}
 \end_inset
 
 
-\series bold
 \size giant
 Functional Analysis
 \end_layout
@@ -1097,13 +1050,11 @@ today
 \end_inset
 
 
-
 \begin_inset Newline newline
 \end_inset
 
 
 \size small
-\lang english
 
 \begin_inset ERT
 status open
@@ -2936,7 +2887,7 @@ For an index set
 :
 \begin_inset Formula 
 \begin{align*}
-\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z,l\right)\le\left(Z,l\right)\right)
+\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z',l'\right)\le\left(Z,l\right)\right)
 \end{align*}
 
 \end_inset
@@ -3073,6 +3024,19 @@ Proof: Otherwise there would be a vector
 \end_inset
 
  is the desired extension.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -3340,9 +3304,22 @@ Proof: Polar decomposition:
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
 \end_layout
 
-\begin_layout Description
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -3407,7 +3384,7 @@ Let
  holds:
 \begin_inset Formula 
 \begin{align*}
-\abs{\varphi\left(y\right)} & \le c\norm y
+\abs{\varphi\left(y\right)} & \le\underbrace{\norm{\varphi}}_{=:c}\cdot\norm y
 \end{align*}
 
 \end_inset
@@ -3898,20 +3875,7 @@ Is there a hyperplane
 \begin_inset Formula $K$
 \end_inset
 
-.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-qqed
-\end_layout
-
-\end_inset
-
-
+?
 \end_layout
 
 \begin_layout Section
@@ -5031,7 +4995,7 @@ is a closed subspace.
 
 \begin_inset Formula 
 \begin{align*}
-d & :=\left\{ \left(a_{n}\right)\bigg|\exs_{N\in\mathbb{N}}\fall_{n\in\mathbb{N}_{>0}}a_{n}=0\right\} \subseteq\ell^{\infty}
+d & :=\left\{ \left(a_{n}\right)\bigg|\exs_{N\in\mathbb{N}}\fall_{n\in\mathbb{N}_{>N}}a_{n}=0\right\} \subseteq\ell^{\infty}
 \end{align*}
 
 \end_inset
@@ -5616,7 +5580,9 @@ status open
 
 
 \backslash
-qqed
+qqed[
+\backslash
+ref{sub:Thm-NonCompactUnitBall}]
 \end_layout
 
 \end_inset
@@ -6370,6 +6336,19 @@ Therefore there exists a
 \end_inset
 
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13084,7 +13063,60 @@ Theorem
 \end_layout
 
 \begin_layout Standard
-Any two Hilbert space bases have the same cardinality (
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a Hilbert space.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+For any 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ and for any orthonormal system 
+\begin_inset Formula $\left\{ e_{j}\big|j\in J\right\} $
+\end_inset
+
+, the set of elements 
+\begin_inset Formula $j\in J$
+\end_inset
+
+ for which 
+\begin_inset Formula $\left\langle e_{j},v\right\rangle =0$
+\end_inset
+
+ is finite or countable.
+\end_layout
+
+\begin_layout Enumerate
+Any two Hilbert space bases of 
+\begin_inset Formula $H$
+\end_inset
+
+ have the same cardinality (
 \lang ngerman
 Mächtigkeit
 \lang english
@@ -13095,10 +13127,298 @@ Mächtigkeit
 Proof
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
+\begin_inset Argument
+status open
 
-\color green
-TODO: Proof from exercises
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Consider 
+\begin_inset Formula $v\in J$
+\end_inset
+
+.
+ First we show that every 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, the set 
+\begin_inset Formula $J_{n}:=\left\{ j\in J\big|\left\langle e_{j},v\right\rangle >\frac{1}{n}\right\} $
+\end_inset
+
+ is finite.
+ Indeed, by Bessel’s inequality, for every finite number of elements 
+\begin_inset Formula $e_{j_{1}},\ldots,e_{j_{N}}$
+\end_inset
+
+ of the given orthonormal system, we have:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{N}\abs{\left\langle e_{j_{k}},v\right\rangle }^{2} & \le\norm v^{2}
+\end{align*}
+
+\end_inset
+
+Now suppose that for some 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, the set 
+\begin_inset Formula $J_{n}$
+\end_inset
+
+ were not finite.
+ Then for any 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ we could find elements 
+\begin_inset Formula $e_{j_{1}},\ldots,e_{j_{N}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left\langle e_{j_{k}},v\right\rangle >\frac{1}{n}$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\in\left\{ 1,\ldots,N\right\} $
+\end_inset
+
+.
+ Hence, for these elements holds:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=1}^{N}\abs{\left\langle e_{j_{k}},v\right\rangle }^{2} & >N\cdot\frac{1}{n}
+\end{align*}
+
+\end_inset
+
+Clearly these becomes larger than 
+\begin_inset Formula $\norm v$
+\end_inset
+
+ if we make 
+\begin_inset Formula $N$
+\end_inset
+
+ sufficiently large.
+ Hence all the sets 
+\begin_inset Formula $J_{n}$
+\end_inset
+
+ must be finite.
+ But then, we see that the set
+\begin_inset Formula 
+\begin{align*}
+\left\{ j\in J\big|\left\langle e_{j},v\right\rangle \not=0\right\}  & =\bigcup_{n\in\mathbb{N}}J_{n}
+\end{align*}
+
+\end_inset
+
+is a countable union of finite sets, and as such can be at most countable.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $H$
+\end_inset
+
+ has is finite-dimensional, every Hilbert basis is a Hamel basis of 
+\begin_inset Formula $H$
+\end_inset
+
+ and thus the claim follows from linear algebra.
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $H$
+\end_inset
+
+ is infinite-dimensional, let 
+\begin_inset Formula $\left(e_{i}\right)_{i\in I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(b_{j}\right)_{j\in J}$
+\end_inset
+
+ be two Hilbert bases of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ (
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $J$
+\end_inset
+
+ have infinitely many elements.)
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $x\in H=\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }=\overline{\left\langle \left(b_{j}\right)_{j\in J}\right\rangle }$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+B_{x} & :=\left\{ j\in J\big|\left\langle x,b_{j}\right\rangle \not=0\right\} 
+\end{align*}
+
+\end_inset
+
+By i), the set 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+ is at most countable for any 
+\begin_inset Formula $x\in H$
+\end_inset
+
+.
+ Next, let 
+\begin_inset Formula $j\in J$
+\end_inset
+
+ be given.
+ Since 
+\begin_inset Formula $\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }=H$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\left\langle b_{j},e_{i}\right\rangle \not=0$
+\end_inset
+
+ for some 
+\begin_inset Formula $i\in I$
+\end_inset
+
+.
+ Otherwise, 
+\begin_inset Formula $b_{j}\in\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }^{\perp}=\left\{ 0\right\} $
+\end_inset
+
+, which is not possible since 
+\begin_inset Formula $b_{j}\not=0$
+\end_inset
+
+.
+ Therefore, we have 
+\begin_inset Formula $j\in B_{e_{i}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $i\in I$
+\end_inset
+
+, and since 
+\begin_inset Formula $j\in J$
+\end_inset
+
+ was arbitrary, it follows that 
+\begin_inset Formula $J\subseteq\bigcup_{i\in I}B_{e_{i}}\subseteq I\times\mathbb{N}$
+\end_inset
+
+.
+ Here the second inclusion uses that all the sets 
+\begin_inset Formula $B_{e_{j}}$
+\end_inset
+
+ are at most countable.
+ It follows:
+\begin_inset Formula 
+\begin{align*}
+\abs J & \le\abs I\cdot\abs{\mathbb{N}}=\abs I
+\end{align*}
+
+\end_inset
+
+If we exchange the roles of 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $J$
+\end_inset
+
+ above, we also obtain 
+\begin_inset Formula $\abs I\le\abs J$
+\end_inset
+
+.
+ By the Schröder-Bernstein theorem, we can combine both estimates to obtain
+ that 
+\begin_inset Formula $\abs I=\abs J$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -13748,7 +14068,7 @@ status open
 
 
 \backslash
-qqed
+qqed[Claim]
 \end_layout
 
 \end_inset
@@ -13757,6 +14077,22 @@ qqed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -14095,7 +14431,7 @@ addplot[domain=-2.99:-1.01] {exp(-1/(3+x)^2)/(exp(-1/(3+x)^2)+exp(-1/(-x-1)^2))}
 
    
 \backslash
-addplot[domain=-1:1] {1};
+addplot[domain=-1.01:1.01] {1};
 \end_layout
 
 \begin_layout Plain Layout
@@ -15258,6 +15594,13 @@ status open
 %DATE: Do 22.11.12
 \end_layout
 
+\begin_layout Plain Layout
+
+%Prof.
+ Finster vertreten durch Dr.
+ Müller
+\end_layout
+
 \end_inset
 
 
@@ -16280,12 +16623,9 @@ continuously invertible
 \end_inset
 
  is continuous.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{C}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
+\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{K}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
 \end{align*}
 
 \end_inset
@@ -16294,10 +16634,18 @@ The
 \emph on
 resolvent
 \emph default
- is defined as
+ (
+\lang ngerman
+Resolvente
+\lang english
+) is defined for 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)$
+\end_inset
+
+ as
 \begin_inset Formula 
 \begin{align*}
-\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}
+\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}\in L\left(H\right)
 \end{align*}
 
 \end_inset
@@ -16313,7 +16661,7 @@ spectrum
  as:
 \begin_inset Formula 
 \begin{align*}
-\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\sigma\left(A\right) & =\mathbb{K}\setminus\varrho\left(A\right)
 \end{align*}
 
 \end_inset
@@ -16410,6 +16758,13 @@ qqed
 Theorem 
 \series medium
 (resolvent equation)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-resolvent-equation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16429,7 +16784,11 @@ We have the
 \emph on
 resolvent equation
 \emph default
-:
+ (
+\lang ngerman
+Resolventengleichung
+\lang english
+):
 \begin_inset Formula 
 \begin{align*}
 \mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =-\left(\lambda-\mu\right)\mathcal{R}_{\lambda}\cdot\mathcal{R}_{\mu}
@@ -16495,6 +16854,3955 @@ status open
 \backslash
 qqed
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 23.11.12
+\end_layout
+
+\begin_layout Plain Layout
+
+%Prof.
+ Finster vertreten durch Dr.
+ Müller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Compact Operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ be Banach spaces and 
+\begin_inset Formula $A\in L\left(E,F\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Remember: There exists a 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u\in E$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{Au} & \le C\norm u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+ maps bounded sets in 
+\begin_inset Formula $E$
+\end_inset
+
+ to bounded sets in 
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+But: Bounded sets are not precompact in general.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(compact operator)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A$
+\end_inset
+
+ is called 
+\emph on
+compact
+\emph default
+ operator if and only if 
+\begin_inset Formula $A$
+\end_inset
+
+ maps bounded sets to relatively compact sets, i.e.
+ the closure is compact.
+\begin_inset Newline newline
+\end_inset
+
+(In complete spaces relatively compact is equivalent to precompact.)
+\end_layout
+
+\begin_layout Section
+Example 
+\series medium
+(integral operator)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E=\left(C^{0}\left(\left[0,1\right]\right),\norm ._{\infty}\right)$
+\end_inset
+
+ and consider an integral kernel 
+\begin_inset Formula $K\in C^{0}\left(\left[0,1\right]\times\left[0,1\right]\right)$
+\end_inset
+
+, 
+\begin_inset Formula $K:E\to E$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left(K\varphi\right)\left(x\right) & :=\int_{0}^{1}K\left(x,y\right)\varphi\left(y\right)\dd y
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{\left(K\varphi\right)\left(x\right)} & \le\sup_{y}\abs{K\left(x,y\right)}\norm{\varphi}\qquad/\sup_{x}\\
+\norm{K\varphi} & \le C\norm{\varphi}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $K\in L\left(E\right)$
+\end_inset
+
+.
+ Furthermore the integral kernel 
+\begin_inset Formula $K$
+\end_inset
+
+ is continuous and defined on a compact set.
+ Therefore 
+\begin_inset Formula $K$
+\end_inset
+
+ is uniformly continuous after the Heine-Cantor theorem.
+\begin_inset Formula 
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\exs_{\delta\in\mathbb{R}_{>0}}:\abs{K\left(x,y\right)-K\left(x',y\right)} & <\varepsilon\qquad\fall_{\abs{x-x'}<\delta,\ y\in\left[0,1\right]}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{\left(K\varphi\right)\left(x\right)-\left(K\varphi\right)\left(x'\right)} & =\abs{\int_{0}^{1}\left(K\left(x,y\right)-K\left(x',y\right)\right)\varphi\left(y\right)\dd y}\le\varepsilon\norm{\varphi}_{\infty}
+\end{align*}
+
+\end_inset
+
+Let now 
+\begin_inset Formula $B:=B_{M}\left(0\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $M\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $K\left(B\right)\subseteq E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+uniformly bounded 
+\begin_inset Formula $\left(\norm{\varphi}<CM\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+uniformly continuous
+\end_layout
+
+\begin_layout Standard
+The Arzela-Ascoli theorem yields, that 
+\begin_inset Formula $K\left(B\right)$
+\end_inset
+
+ is precompact and so 
+\begin_inset Formula $K$
+\end_inset
+
+ is a compact operator.
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a Hilbert space.
+\begin_inset Newline newline
+\end_inset
+
+A compact operator 
+\begin_inset Formula $A:H\to H$
+\end_inset
+
+ maps weakly convergent sequences to convergent sequences.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $x_{n}\rightharpoondown x$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(x_{n}\right)$
+\end_inset
+
+ is bounded, i.e.
+ there is a 
+\begin_inset Formula $C\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{x_{n}}<C$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $y_{n}:=Ax_{n}$
+\end_inset
+
+.
+ For all 
+\begin_inset Formula $z\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle z,y_{n}-y\right\rangle  & =\left\langle z,A\left(x_{n}-x\right)\right\rangle =\left\langle A^{*}z,x_{n}-x\right\rangle \to0
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $y_{n}\rightharpoondown y$
+\end_inset
+
+ converges weakly.
+ Because 
+\begin_inset Formula $A$
+\end_inset
+
+ is compact, every subsequence of 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ contains a convergent subsequence with limes 
+\begin_inset Formula $\tilde{y}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $z=\tilde{y}-y$
+\end_inset
+
+ converges:
+\begin_inset Formula 
+\begin{align*}
+0\leftarrow\left\langle z,y_{n}-y\right\rangle  & \to\left\langle \tilde{y}-y,\tilde{y}-y\right\rangle =\norm{\tilde{y}-y}
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $\tilde{y}=y$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Since this holds for every subsequence of 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ follows 
+\begin_inset Formula $y_{n}\to y$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma
+\end_layout
+
+\begin_layout Standard
+Consider operators 
+\begin_inset Formula $A,B:E\to F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are compact, so are 
+\begin_inset Formula $A+B$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda A$
+\end_inset
+
+ for all 
+\begin_inset Formula $\lambda\in\mathbb{K}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A:E\to F$
+\end_inset
+
+ is compact (continuous) and 
+\begin_inset Formula $B:F\to E$
+\end_inset
+
+ continuous (compact), than 
+\begin_inset Formula $B\circ A$
+\end_inset
+
+ is compact.
+\begin_inset Newline newline
+\end_inset
+
+(In particular 
+\begin_inset Formula $A^{n}$
+\end_inset
+
+ is compact for 
+\begin_inset Formula $A:E\to E$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+The compact operators form a closed subspace of 
+\begin_inset Formula $L\left(E,F\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+is obvious.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+follows, since a continuous operator is bounded.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\left(x_{n}\right)$
+\end_inset
+
+ be bounded and 
+\begin_inset Formula $T_{k}$
+\end_inset
+
+ a convergent sequence of compact operators.
+ By diagonal choice get a subsequence, also written 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+, such that 
+\begin_inset Formula $T_{k}x_{n}$
+\end_inset
+
+ converges for all 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{Tx_{n}-Tx_{m}} & \le\underbrace{\norm{Tx_{n}-T_{k}x_{n}}}_{\le\norm{T-T_{k}}\cdot\norm{x_{n}}}+\norm{T_{k}x_{n}-T_{k}x_{m}}+\underbrace{\norm{T_{k}x_{m}-Tx_{m}}}_{\le\norm{T-T_{k}}\cdot\norm{x_{m}}}\le\\
+ & \le\norm{T-T_{k}}\cdot\norm{x_{n}}+\norm{T_{k}x_{n}-T_{k}x_{m}}+\norm{T-T_{k}}\cdot\norm{x_{m}}\xrightarrow{n,m,k\to\infty}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma 
+\series medium
+(Fredholm operator)
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Lem-Ker-Im"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:E\to E$
+\end_inset
+
+ be compact and define 
+\begin_inset Formula $T:=\mathbbm{1}-A$
+\end_inset
+
+.
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ is called 
+\emph on
+Fredholm operator
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\text{ker}\left(T\right)$
+\end_inset
+
+ is finite-dimensional.
+\end_layout
+
+\begin_layout Enumerate
+There exists a 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\text{ker}\left(T^{k}\right)=\text{ker}\left(T^{i}\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\in\mathbb{N}_{>i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The image of 
+\begin_inset Formula $T$
+\end_inset
+
+ is closed.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\text{ker}\left(T\right)=:Z=\left\{ u\big|u=Au\right\} $
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $Z\cap B_{1}\left(0\right)$
+\end_inset
+
+ is bounded
+\begin_inset Formula 
+\begin{align*}
+A\left(Z\cap B_{1}\left(0\right)\right) & =Z\cap B_{1}\left(0\right)
+\end{align*}
+
+\end_inset
+
+is precompact and therefore 
+\begin_inset Formula $Z$
+\end_inset
+
+ is finite-dimensional.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Define 
+\begin_inset Formula $N_{i}:=\text{ker}\left(T^{i}\right)$
+\end_inset
+
+, which are closed subspaces of 
+\begin_inset Formula $E$
+\end_inset
+
+, since the 
+\begin_inset Formula $T^{i}$
+\end_inset
+
+ are continuous.
+\begin_inset Newline newline
+\end_inset
+
+Suppose the claim is wrong, then 
+\begin_inset Formula $N_{j}\subsetneq N_{j+1}\subsetneq\ldots$
+\end_inset
+
+, so in particular all 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ are proper subspaces.
+ Choose 
+\begin_inset Formula $y_{j}\in N_{j}$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+\norm{y_{j}} & =1 & d\left(y_{j},N_{j-1}\right) & >\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+This is possible after Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-d>0.5"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+For all 
+\begin_inset Formula $m<n$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+Ay_{n}-Ay_{m} & =y_{n}-\underbrace{T_{y_{n}}-y_{m}+T_{y_{m}}}_{\in N_{n-1}}
+\end{align*}
+
+\end_inset
+
+Therefore follows:
+\begin_inset Formula 
+\begin{align*}
+\norm{Ay_{n}-Ay_{m}} & >\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\left(Ay_{n}\right)$
+\end_inset
+
+ has no accumulation value in contradiction to the compactness of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $y_{k}\in\text{im}\left(T\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $y_{k}\to y$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{k}=Tx_{k}$
+\end_inset
+
+.
+ We want to show 
+\begin_inset Formula $y\in\text{im}\left(T\right)$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+d_{k} & :=d\left(x_{k},\text{ker}\left(T\right)\right)=\inf_{z\in\text{ker}\left(T\right)}\norm{x_{k}-z}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\left(d_{k}\right)$
+\end_inset
+
+ is bounded.
+ Equivalently 
+\begin_inset Formula $\left(D_{k}\right)=\abs{\max\left\{ 1,d_{k}\right\} }$
+\end_inset
+
+ is bounded.
+\end_layout
+
+\begin_layout Description
+Proof: Choose 
+\begin_inset Formula $z_{k}\in\text{ker}\left(T\right)$
+\end_inset
+
+, 
+\begin_inset Formula $w_{k}:=x_{k}-z_{k}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{w_{k}}<2d_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $Tw_{k}=y_{k}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Assume 
+\begin_inset Formula $D_{k}$
+\end_inset
+
+ is unbounded.
+ Since 
+\begin_inset Formula $y_{k}$
+\end_inset
+
+ is convergent and thus bounded, follows:
+\begin_inset Formula 
+\begin{align*}
+T\left(\frac{w_{k}}{D_{k}}\right) & =\frac{y_{k}}{D_{k}}\xrightarrow{k\to\infty}0
+\end{align*}
+
+\end_inset
+
+Now consider 
+\begin_inset Formula $u_{k}:=\frac{w_{k}}{D_{k}}$
+\end_inset
+
+.
+ We know 
+\begin_inset Formula $\norm{u_{k}}<2$
+\end_inset
+
+ and 
+\begin_inset Formula $T\left(u_{k}\right)\to0$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Thus 
+\begin_inset Formula $u_{k}-Au_{k}\to0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is compact, every subsequence of 
+\begin_inset Formula $Au_{k}$
+\end_inset
+
+ has a convergent subsequence, and therefore 
+\begin_inset Formula $u_{k}\to0$
+\end_inset
+
+ converges.
+\begin_inset Newline newline
+\end_inset
+
+The continuity of 
+\begin_inset Formula $T$
+\end_inset
+
+ gives:
+\begin_inset Formula 
+\begin{align*}
+T\left(u\right) & =\lim_{k\to\infty}T\left(u_{k}\right)=0
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $u\in\text{ker}\left(T\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+On the other hand we have for all 
+\begin_inset Formula $z\in\text{ker}\left(T\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{w_{k}-z} & \ge D_{k}\\
+\Rightarrow\quad\norm{u_{k}-\frac{z}{D_{k}}} & \ge1
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $T$
+\end_inset
+
+ is a subspace this means, that for all 
+\begin_inset Formula $z\in\text{ker}\left(T\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{u_{k}-z} & \ge1
+\end{align*}
+
+\end_inset
+
+This is a contradiction to 
+\begin_inset Formula $u\in\text{ker}\left(T\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $u_{k}$
+\end_inset
+
+ is bounded and 
+\begin_inset Formula $T\left(w_{k}\right)=T\left(x_{k}\right)=y_{k}\to y$
+\end_inset
+
+.
+ So we get:
+\begin_inset Formula 
+\begin{align*}
+w_{k}-Aw_{k} & \to y
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is compact 
+\begin_inset Formula $Aw_{k}$
+\end_inset
+
+ converges and with this follows, that 
+\begin_inset Formula $w_{k}\to w$
+\end_inset
+
+ also converges.
+\begin_inset Newline newline
+\end_inset
+
+By continuity we get:
+\begin_inset Formula 
+\begin{align*}
+T\left(w\right) & =\lim_{k\to\infty}T\left(w_{k}\right)=y
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $w\in\text{im}\left(T\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Theorem 
+\series medium
+(Fredholm Alternative)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-Fredholm-Alternative"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:E\to E$
+\end_inset
+
+ be compact and define 
+\begin_inset Formula $T:=\mathbbm{1}-A$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+If the kernel 
+\begin_inset Formula $\ker\left(T\right)=\left\{ 0\right\} $
+\end_inset
+
+ is trivial, then 
+\begin_inset Formula $T$
+\end_inset
+
+ is continuously invertible.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{ker}\left(T\right)=\left\{ 0\right\} $
+\end_inset
+
+ means, that 
+\begin_inset Formula $T$
+\end_inset
+
+ is injective.
+ We only need to show, that 
+\begin_inset Formula $T$
+\end_inset
+
+ is surjective, because then 
+\begin_inset Formula $T$
+\end_inset
+
+ is invertible and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Open-mapping"
+
+\end_inset
+
+ yields then, that 
+\begin_inset Formula $T$
+\end_inset
+
+ is open and therefore 
+\begin_inset Formula $T^{-1}$
+\end_inset
+
+ continuous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{im}\left(T\right)$
+\end_inset
+
+ is closed following 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Lem-Ker-Im"
+
+\end_inset
+
+ iii).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\text{im}\left(T\right)=E$
+\end_inset
+
+, since otherwise 
+\begin_inset Formula $T\left(E\right)\subsetneq E$
+\end_inset
+
+.
+ Then the injectivity implies for all 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+T^{k+1}\left(E\right) & \subsetneq\underbrace{T^{k}\left(E\right)}_{=E_{k}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ is closed for all 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+E_{k} & =\left(\mathbbm{1}-A\right)^{k}\left(E\right)=\bigg(\mathbbm{1}+\underbrace{\sum_{l=1}^{k}\left(-1\right)^{l}\left(\begin{array}{c}
+k\\
+l
+\end{array}\right)A^{l}}_{A:=A_{k}}\bigg)\left(E\right)
+\end{align*}
+
+\end_inset
+
+Now 
+\begin_inset Formula $A_{k}$
+\end_inset
+
+ is compact, as the compact operators form a (closed) ideal subalgebra 
+\begin_inset Formula $\text{CP}\left(E\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Choose 
+\begin_inset Formula $x_{k}\in E_{k}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{x_{k}}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $d\left(x_{k},E_{k}\right)>\frac{1}{2}$
+\end_inset
+
+, which is possible after Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-d>0.5"
+
+\end_inset
+
+.
+ Then holds for all 
+\begin_inset Formula $m<n$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+Ax_{m}-Ax_{n} & =x_{m}-\underbrace{Tx_{m}-x_{n}+Tx_{n}}_{\in H_{m+1}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\norm{Ax_{m}-Ax_{n}} & >\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+This is a contradiction to the compactness of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Therefore 
+\begin_inset Formula $T$
+\end_inset
+
+ is surjective and the theorem follows.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(Riesz-Schauder)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be compact.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ consists of a a finite or countable set of complex numbers and 
+\begin_inset Formula $0$
+\end_inset
+
+ is the only possible accumulation point.
+\end_layout
+
+\begin_layout Enumerate
+Every 
+\begin_inset Formula $0\not=\lambda\in\sigma\left(A\right)$
+\end_inset
+
+ is an eigenvalue of finite multiplicity, i.e.
+ 
+\begin_inset Formula $\text{ker}\left(A-\lambda\right)$
+\end_inset
+
+ is finite-dimensional.
+ That means, there exists a 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $k>i$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\text{ker}\left(A-\lambda\right)^{k} & =\text{ker}\left(A-\lambda\right)^{i}
+\end{align*}
+
+\end_inset
+
+One says also that the Jordan chains are finite.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[ii)]
+\end_layout
+
+\end_inset
+
+is an immediate consequence of the Lemmas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Lem-Ker-Im"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-Fredholm-Alternative"
+
+\end_inset
+
+.
+ (Divide 
+\begin_inset Formula $A$
+\end_inset
+
+ by 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[i)]
+\end_layout
+
+\end_inset
+
+Assume 
+\begin_inset Formula $\lambda_{n}\not=0$
+\end_inset
+
+ are pairwise different eigenvalues.
+ Choose eigenvectors 
+\begin_inset Formula $x_{n}\in H$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+Ax_{n} & =\lambda_{n}x_{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+Y_{n} & :=\left\langle x_{1},\ldots,x_{n}\right\rangle 
+\end{align*}
+
+\end_inset
+
+Since the eigenvalues are pairwise different 
+\begin_inset Formula $Y_{n}\subsetneq Y_{n+1}$
+\end_inset
+
+ must hold, because the 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ are linearly independent.
+\begin_inset Newline newline
+\end_inset
+
+Assume 
+\begin_inset Formula $Y_{n}\subsetneq H$
+\end_inset
+
+, since otherwise 
+\begin_inset Formula $H$
+\end_inset
+
+ would be finite-dimensional and therefore 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ a finite set.
+\begin_inset Newline newline
+\end_inset
+
+So following Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-d>0.5"
+
+\end_inset
+
+ we can choose 
+\begin_inset Formula $y_{n}\in Y_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{y_{n}}=1$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+d\left(y_{n},Y_{n+1}\right) & >\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $y_{n}\in Y_{n}$
+\end_inset
+
+ one can find 
+\begin_inset Formula $\alpha_{j}\in\mathbb{K}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+y_{n} & =\sum_{j}\alpha_{j}x_{j}
+\end{align*}
+
+\end_inset
+
+Then follows:
+\begin_inset Formula 
+\begin{align*}
+\left(A-\lambda_{n}\right)y_{n} & =\sum_{i=1}^{n-1}\left(\lambda_{j}-\lambda_{n}\right)\alpha_{j}x_{j}=:\tilde{y}_{n}\in Y_{n-1}
+\end{align*}
+
+\end_inset
+
+For all 
+\begin_inset Formula $n>m$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+Ay_{n}-Ay_{m} & =\lambda_{n}y_{n}-\underbrace{\tilde{y}_{n}-Ay_{m}}_{\in Y_{n-1}}
+\end{align*}
+
+\end_inset
+
+So we get:
+\begin_inset Formula 
+\begin{align*}
+\norm{Ay_{n}-Ay_{m}} & \ge\frac{\abs{\lambda_{n}}}{2}
+\end{align*}
+
+\end_inset
+
+But 
+\begin_inset Formula $\left(Ay_{n}\right)$
+\end_inset
+
+ is precompact and thus for all 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ exist only finitely many 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $\abs{\lambda_{n}}>\delta$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Therefore 0 is the only accumulation point and 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is a countable union of finite sets and thus countable.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 29.11.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jordan decomposition:
+\begin_inset Formula 
+\begin{align*}
+A & =\left(\begin{array}{ccccccc}
+\lambda_{1} &  &  &  &  &  & 0\\
+1 & \ddots\\
+ & 1 & \lambda_{1}\\
+ &  &  & \lambda_{2}\\
+ &  &  & 1 & \ddots\\
+ &  &  &  & 1 & \lambda_{2}\\
+0 &  &  &  &  &  & \ddots
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lambda_{1}-A & =\left(\begin{array}{ccccccc}
+0 &  &  &  &  &  & 0\\
+-1 & \ddots\\
+ & -1 & 0\\
+ &  &  & -\lambda_{2}\\
+ &  &  & -1 & \ddots\\
+ &  &  &  & -1 & -\lambda_{2}\\
+0 &  &  &  &  &  & \ddots
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+So the first block is nilpotent.
+ If it has 
+\begin_inset Formula $k$
+\end_inset
+
+ dimensions this means:
+\begin_inset Formula 
+\begin{align*}
+\left(\lambda_{1}-A\right)^{k} & =\left(\begin{array}{ccc}
+0 &  & 0\\
+ & *\\
+0 &  & *
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $k$
+\end_inset
+
+ is the length of the Jordan chain.
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be compact and 
+\begin_inset Formula $H$
+\end_inset
+
+ be a separable Hilbert space.
+\begin_inset Newline newline
+\end_inset
+
+Then 
+\begin_inset Formula $A$
+\end_inset
+
+ can be approximated in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+ by operators of finite rank.
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+Choose a countable orthonormal Hilbert basis 
+\begin_inset Formula $\left(\varphi_{j}\right)_{j\in\mathbb{N}}$
+\end_inset
+
+ of 
+\begin_inset Formula $H$
+\end_inset
+
+, which is possible, since 
+\begin_inset Formula $H$
+\end_inset
+
+ is separable.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+\lambda_{n} & :=\sup_{\psi\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp},\norm{\psi}=1}\norm{A\psi}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is bounded, this supremum exists.
+ Obviously 
+\begin_inset Formula $\lambda_{1}\ge\lambda_{2}\ge\ldots$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\lambda_{n}\searrow\lambda\ge0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Proof: Choose 
+\begin_inset Formula $\psi_{n}\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{\psi_{n}}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{A\psi_{n}}\ge\frac{\lambda}{2}$
+\end_inset
+
+ which is possible after Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-d>0.5"
+
+\end_inset
+
+, since 
+\begin_inset Formula $\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle $
+\end_inset
+
+ is a proper closed subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Write:
+\begin_inset Formula 
+\begin{align*}
+\psi_{n} & =\sum_{j=1}^{\infty}\nu_{j}\varphi_{j}=\left(\nu_{1},\nu_{2},\ldots\right)
+\end{align*}
+
+\end_inset
+
+Due to 
+\begin_inset Formula $\psi_{n}\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\psi_{n} & =\left(0,\ldots0,\nu_{n+1},\nu_{n+2},\ldots\right)
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\psi_{n}\right\rangle  & =\sum_{j=n+1}^{\infty}\nu_{j}\cdot\overline{u}_{j}\sr{\le}{\text{Schwarz }}{\text{inequality}}\underbrace{\left(\sum_{j=n+1}^{\infty}\abs{\nu_{j}}^{2}\right)^{\frac{1}{2}}}_{=\norm{\psi_{n}}}\cdot\left(\sum_{j=n+1}^{\infty}\abs{u_{j}}^{2}\right)^{\frac{1}{2}}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+So by construction 
+\begin_inset Formula $\psi_{n}\rightharpoondown0$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $A\psi_{n}\to0$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\norm{A\lambda_{n}}\to0$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+On the other hand we have 
+\begin_inset Formula $\norm{A\psi_{n}}\ge\frac{\lambda}{2}$
+\end_inset
+
+ and so 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ be the orthogonal projection on 
+\begin_inset Formula $\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle $
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+P_{n}u & =\sum_{j=1}^{n}\varphi_{j}\left\langle \varphi_{j},u\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $AP_{n}$
+\end_inset
+
+ is an operator of finite rank 
+\begin_inset Formula $r\le n$
+\end_inset
+
+, since 
+\begin_inset Formula $\text{rank}\left(P_{n}\right)=n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $AP_{n}\xrightarrow{n\to\infty}A$
+\end_inset
+
+ in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Proof: Consider:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A-AP_{n}} & =\sup_{u\in H,\,\norm u=1}\norm{A\left(\mathbbm{1}-P_{n}\right)u}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mathbbm{1}-P_{n}\right)u\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{\left(\mathbbm{1}-P_{n}\right)u}\le\norm u=1$
+\end_inset
+
+.
+ (
+\begin_inset Formula $\mathbbm{1}-P_{n}=P_{\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}}$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+Thus we get:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A-AP_{n}} & \le\sup_{v\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp},\,\norm v\le1}\norm{Av}=\lambda_{n}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be compact and symmetric.
+ (This implies that 
+\begin_inset Formula $A$
+\end_inset
+
+ is bounded and self-adjoint.)
+\begin_inset Newline newline
+\end_inset
+
+Then 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\mathbb{R}$
+\end_inset
+
+ and if 
+\begin_inset Formula $u$
+\end_inset
+
+ is an eigenvector, 
+\begin_inset Formula $Au=\lambda u$
+\end_inset
+
+, then its orthogonal is invariant under 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\lambda\in\sigma\left(A\right)$
+\end_inset
+
+ holds 
+\begin_inset Formula $\text{ker}\left(A-\lambda\right)\not=\left\{ 0\right\} $
+\end_inset
+
+.
+ Thus there exists a 
+\begin_inset Formula $u\in\text{ker}\left(\lambda-A\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\lambda\left\langle u,u\right\rangle  & =\left\langle u,Au\right\rangle =\left\langle Au,u\right\rangle =\overline{\lambda}\left\langle u,u\right\rangle 
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\norm u\not=0$
+\end_inset
+
+ follows 
+\begin_inset Formula $\lambda=\overline{\lambda}$
+\end_inset
+
+, which means that 
+\begin_inset Formula $\lambda\in\mathbb{R}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $v\in\left\langle u\right\rangle ^{\perp}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle Av,u\right\rangle  & =\left\langle v,Au\right\rangle =\lambda\left\langle v,u\right\rangle =0
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $Av\in\left\langle u\right\rangle ^{\perp}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(Hilbert-Schmidt)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be a symmetric compact operator on the separable Hilbert space 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Then there exists an orthonormal Hilbert space basis of eigenvectors 
+\begin_inset Formula $\left(u_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+, so with the eigenvalues 
+\begin_inset Formula $\lambda_{n}\in\mathbb{R}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+Au_{n} & =\lambda_{n}u_{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+First proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is countable and therefore we can write 
+\begin_inset Formula $\sigma\left(A\right)\setminus\left\{ 0\right\} =\left\{ \lambda_{1},\lambda_{2},\ldots\right\} \subseteq\mathbb{R}$
+\end_inset
+
+ with 
+\begin_inset Formula $\lambda_{i}\not=\lambda_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\text{ker}\left(\lambda_{j}-A\right)$
+\end_inset
+
+ is finite-dimensional.
+ So we choose a (finite) orthonormal basis of the eigenspace.
+ Taking these eigenvectors for all eigenvalues, we obtain a countable orthonorma
+l system 
+\begin_inset Formula $\left(u_{n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+M & :=\overline{\left\langle u_{n}\right\rangle }\stackrel{\text{closed}}{\subseteq}H
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $M^{\perp}$
+\end_inset
+
+ is an invariant subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+ under 
+\begin_inset Formula $A$
+\end_inset
+
+, i.e.:
+\begin_inset Formula 
+\begin{align*}
+\tilde{A}:=A\big|_{M^{\perp}}:M^{\perp} & \to M^{\perp}
+\end{align*}
+
+\end_inset
+
+This is again symmetric and compact.
+ We know that 
+\begin_inset Formula $\sigma\left(\tilde{A}\right)=\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Question: Why is 
+\begin_inset Formula $\tilde{A}=0$
+\end_inset
+
+?
+\begin_inset Newline newline
+\end_inset
+
+This is not true for a general operator, e.g.:
+\begin_inset Formula 
+\begin{align*}
+A & =\left(\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right) & \sigma\left(A\right) & =\left\{ 0\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Answer: If 
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric and 
+\begin_inset Formula $\sigma\left(A\right)=\left\{ 0\right\} $
+\end_inset
+
+, then one can show 
+\begin_inset Formula $A=0$
+\end_inset
+
+ using the following theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-SpectralRadiusFinite"
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+From 
+\begin_inset Formula $\sigma\left(\tilde{A}\right)=0$
+\end_inset
+
+ follows 
+\begin_inset Formula $r\left(\tilde{A}\right)=0$
+\end_inset
+
+ and since 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ is self-adjoint theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-SpectralRadiusFinite"
+
+\end_inset
+
+ gives 
+\begin_inset Formula $\norm{\tilde{A}}=0$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\tilde{A}=0$
+\end_inset
+
+.
+ In other words 
+\begin_inset Formula $A\big|_{M^{\perp}}=0$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Now choose an orthonormal Hilbert basis 
+\begin_inset Formula $\left(v_{n}\right)_{n\in\mathbb{N}_{\le N}}$
+\end_inset
+
+ of 
+\begin_inset Formula $M^{\perp}$
+\end_inset
+
+ for an 
+\begin_inset Formula $N\in\mathbb{N}\cup\left\{ \infty\right\} $
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\left\{ u_{n}\right\} \cup\left\{ v_{n}\right\} $
+\end_inset
+
+ is the desired orthonormal Hilbert basis of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(spectral radius)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\subset H\to H$
+\end_inset
+
+ be a densely defined operator.
+ Then the 
+\emph on
+spectral radius
+\emph default
+ 
+\begin_inset Formula $r\left(A\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ is defined by:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with
+ {
+\backslash
+arrow[thick]{>}}},postaction={decorate}}]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (0,0) circle (3);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,-1) (0.5,-0.3)
+ (1,0) (0.5,0.8) (0,1) (-0.3,0.3) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (0.5,1) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma\left(A\right)\subseteq\overline{B_{r\left(A\right)}\left(0\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-SpectralRadiusFinite"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & =\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric, then:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & =\opnorm A
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 30.11.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall for a power series
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=0}^{\infty}a_{n}z^{n}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $a_{n},z\in\mathbb{K}$
+\end_inset
+
+ the root test (
+\lang ngerman
+Wurzelkriterium
+\lang english
+):
+\end_layout
+
+\begin_layout Itemize
+If
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =:c<1
+\end{align*}
+
+\end_inset
+
+then 
+\begin_inset Formula $\abs{a_{n}z^{n}}<c^{n}$
+\end_inset
+
+ and therefore is
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=0}^{\infty}c^{n}
+\end{align*}
+
+\end_inset
+
+a convergent dominating sequence.
+ Thus 
+\begin_inset Formula $\sum_{n=0}^{\infty}a_{n}z^{n}$
+\end_inset
+
+ converges as well.
+\end_layout
+
+\begin_layout Itemize
+If
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =:c>1
+\end{align*}
+
+\end_inset
+
+then 
+\begin_inset Formula $\abs{a_{n}z^{n}}>c^{n}>1$
+\end_inset
+
+ for an infinite number of 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $a_{n}z^{n}$
+\end_inset
+
+ does 
+\emph on
+not
+\emph default
+ converge to zero, which implies that 
+\begin_inset Formula $\sum_{n=0}^{\infty}a_{n}z^{n}$
+\end_inset
+
+ does not converge as well.
+\end_layout
+
+\begin_layout Itemize
+If
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =1
+\end{align*}
+
+\end_inset
+
+no conclusion is possible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =\abs z\cdot\limsup_{n\to\infty}\abs{a_{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+The Radius of convergence (
+\lang ngerman
+Konvergenzradius
+\lang english
+) is thus defined by:
+\begin_inset Formula 
+\begin{align*}
+R & :=\frac{1}{\limsup_{n\to\infty}\abs{a_{n}}^{\frac{1}{n}}}
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\abs z<R$
+\end_inset
+
+ the sum converges absolutely and if 
+\begin_inset Formula $\abs z>R$
+\end_inset
+
+ the sum diverges.
+\color green
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Therefore, if the resolvent 
+\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
+\end_inset
+
+ exists, then for 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)\subseteq\mathbb{C}$
+\end_inset
+
+ holds 
+\begin_inset Formula $\frac{1}{\abs{\lambda}}\ge R$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\abs{\lambda}\le\frac{1}{R}$
+\end_inset
+
+ (
+\begin_inset Formula $\abs{\lambda}<R$
+\end_inset
+
+).
+ The Neumann series does 
+\emph on
+not
+\emph default
+ (necessarily) converge.
+ But 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
+\end_inset
+
+ exists.
+ As the resolvent is analytic in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+ it can be written as a power series in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+, which is a contradiction.
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with
+ {
+\backslash
+arrow[thick]{>}}},postaction={decorate}}]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (3);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (4);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node [left]{$R$} (0,-4);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[yshift=60,xshift=33] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,
+-0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0.7,1) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.2,3.5) node[right]{$x$} circle (0.4);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.2,3.5) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $R>r\left(A\right)$
+\end_inset
+
+ ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $A=0$
+\end_inset
+
+ nothing is to prove.
+ For 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda-A\right)^{-1}=\frac{1}{\lambda}\left(\mathbbm{1}-\frac{A}{\lambda}\right)^{-1}=\frac{1}{\lambda}\sum_{n=0}^{\infty}\left(\frac{A}{\lambda}\right)^{n}
+\end{align*}
+
+\end_inset
+
+The Neumann series is a power series in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+.
+ Its radius of convergence is:
+\begin_inset Formula 
+\begin{align*}
+R & =\frac{1}{{\displaystyle \limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}}}
+\end{align*}
+
+\end_inset
+
+This is just like the root criterion (
+\lang ngerman
+Wurzelkriterium
+\lang english
+) for a real or complex series.
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $\frac{1}{\abs{\lambda}}<R$
+\end_inset
+
+, then the series converges absolutely and the resolvent exists and thus:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & \le\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If the resolvent 
+\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
+\end_inset
+
+ exists there exists a 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)\subseteq\mathbb{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $\abs{\lambda}\le R$
+\end_inset
+
+.
+ The Neumann series does 
+\emph on
+not
+\emph default
+ converge.
+ But 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
+\end_inset
+
+ exists.
+ As the resolvent is analytic in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+ it can be written as a power series in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+, which is a contradiction.
+ Thus:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & =\lim_{n\to\infty}\norm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $A^{*}=A$
+\end_inset
+
+ holds:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\norm{A^{2}}=\norm A^{2}$
+\end_inset
+
+.
+ From Schwarz inequality follows 
+\begin_inset Formula $\norm{A^{2}}\le\norm A^{2}$
+\end_inset
+
+.
+ Conversely:
+\begin_inset Formula 
+\begin{align*}
+\norm A^{2} & =\sup_{u\in H,\norm u=1}\norm{Au}^{2}=\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{2}u\right\rangle \le\\
+ & \le\sup_{\norm u=1}\norm u\cdot\norm{A^{2}u}=\norm{A^{2}}
+\end{align*}
+
+\end_inset
+
+More generally: 
+\begin_inset Formula $\norm{A^{p}}=\norm A^{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our setting for 
+\begin_inset Formula $A=0$
+\end_inset
+
+ is nothing to prove.
+ For 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+ we make a formal expansion:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda} & =\left(\lambda-A\right)^{-1}=\frac{1}{\lambda}\left(\mathbbm{1}-\frac{A}{\lambda}\right)^{-1}=\frac{1}{\lambda}\sum_{n=0}^{\infty}A^{n}\cdot\left(\frac{1}{\lambda}\right)^{n}
+\end{align*}
+
+\end_inset
+
+This is a power series in 
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+, but the coefficients are operators.
+\begin_inset Formula 
+\begin{align*}
+R & :=\frac{1}{\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}}
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $\frac{1}{\abs{\lambda}}<R$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}} & \le\sum_{n=0}^{\infty}\opnorm{A^{n}}\frac{1}{\lambda^{n}}
+\end{align*}
+
+\end_inset
+
+converges absolutely and so
+\begin_inset Formula 
+\begin{align*}
+\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}
+\end{align*}
+
+\end_inset
+
+converges in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+ Thus the resolvent 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda} & =\left(\lambda-A\right)^{-1}
+\end{align*}
+
+\end_inset
+
+exists and 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\overline{B_{\frac{1}{R}}\left(0\right)}$
+\end_inset
+
+, i.e.:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & \le\frac{1}{R}=\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\frac{1}{\abs{\lambda}}>R$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}}
+\end{align*}
+
+\end_inset
+
+diverges.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with
+ {
+\backslash
+arrow[thick]{>}}},postaction={decorate}}]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (3);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node [left]{$
+\backslash
+frac{1}{R}$} (0,-5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[yshift=60,xshift=33] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,
+-0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0.7,1) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.7,4) node[below]{$
+\backslash
+lambda$} circle (0.7);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.7,4) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.7,4) -- node[above]{$
+\backslash
+delta$} (0,4);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1,4.1) node[above]{$
+\backslash
+nu$} +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{R}>r\left(A\right)$
+\end_inset
+
+ ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Why is 
+\begin_inset Formula $r$
+\end_inset
+
+ not smaller than 
+\begin_inset Formula $\frac{1}{R}$
+\end_inset
+
+?
+\begin_inset Newline newline
+\end_inset
+
+Assume that 
+\begin_inset Formula $r<\frac{1}{R}$
+\end_inset
+
+ and choose 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ with 
+\begin_inset Formula $r<\abs{\lambda}<\frac{1}{R}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\mathcal{R}_{\lambda}$
+\end_inset
+
+ exists and is analytic.
+ Consider a 
+\begin_inset Formula $\nu\in B_{\delta}\left(\lambda\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\nu} & =\left(\nu-A\right)^{-1}=\left(\left(\nu-\lambda\right)+\left(\lambda-A\right)\right)^{-1}=\\
+ & =\left(\left(\left(\nu-\lambda\right)\mathcal{R}_{\lambda}+\mathbbm{1}\right)\left(\lambda-A\right)\right)^{-1}=\\
+ & =\mathcal{R}_{\lambda}\left(\mathbbm{1}+\left(\nu-\lambda\right)\mathcal{R}_{\lambda}\right)^{-1}=\\
+ & =\mathcal{R}_{\lambda}\sum_{n=0}^{\infty}\left(-\left(\nu-\lambda\right)\right)^{n}\mathcal{R}_{\lambda}^{n}
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $\abs{\nu-\lambda}<\delta:=\frac{1}{\opnorm{\mathcal{R}_{\lambda}}}$
+\end_inset
+
+ the Neumann series converges.
+\begin_inset Newline newline
+\end_inset
+
+Thus 
+\begin_inset Formula $\mathcal{R}_{\lambda}$
+\end_inset
+
+ can be expanded locally in a power series, i.e.
+ 
+\begin_inset Formula $\mathcal{R}_{\lambda}$
+\end_inset
+
+ is complex analytic or holomorphic.
+\begin_inset Newline newline
+\end_inset
+
+Furthermore for 
+\begin_inset Formula $\abs{\lambda}>\frac{1}{R}$
+\end_inset
+
+ holds: 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{R}_{\lambda} & =\sum_{n=0}^{\infty}A^{n}\frac{1}{\lambda^{n+1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with
+ {
+\backslash
+arrow[thick]{>}}},postaction={decorate}}]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (3.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (2.33);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node[left]{r(A)} (0,-2.33);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[arr] (0,0) -- node [below]{$
+\backslash
+frac{1}{R}$} (-3.5,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[yshift=33,xshift=23] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(-0.
+1,-0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-0.9,-0.1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0.7,1) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red,thick] (0,0) circle (3) node[above=86]{$
+\backslash
+Gamma$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red,thick,arr] (0,3) -- (-0.1,3);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (0,0) circle (4) node[above=115]{$C$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick,arr] (0,4) -- (-0.1,4);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red] (2.25,0.5) -- node[above]{$
+\backslash
+delta$} (2.92,0.65);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Contours 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ for integration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrate along the contour 
+\begin_inset Formula $C$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{C}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =\sum_{k=0}^{\infty}A^{k}\underbrace{\frac{1}{2\pi\ii}\oint_{C}\frac{\lambda^{n}}{\lambda^{k+1}}\dd\lambda}_{=:I}
+\end{align*}
+
+\end_inset
+
+Since the geometric series converges absolutely, the summation and the integrati
+on can be interchanged.
+ The residue theorem gives:
+\begin_inset Formula 
+\begin{alignat*}{1}
+I & =\begin{cases}
+1 & \text{if }k=n\\
+0 & \text{otherwise}
+\end{cases}
+\end{alignat*}
+
+\end_inset
+
+Therefore we get:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{C}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =A^{n}
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $\Gamma=\partial B_{r+\delta}\left(0\right)$
+\end_inset
+
+.
+ We know, that 
+\begin_inset Formula $\mathcal{R}_{\lambda}$
+\end_inset
+
+ is holomorphic outside 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
+ Thus we may continuously deform the contour to obtain:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\Gamma}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =A^{n}
+\end{align*}
+
+\end_inset
+
+Thus we have:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A^{n}} & =\opnorm{\frac{1}{2\pi\ii}\oint_{\Gamma}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda}\le C\left(r+\delta\right)^{n}\left(r+\delta\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+C & :=\frac{1}{2\pi}\sup_{\lambda\in\Gamma}\opnorm{\mathcal{R}_{\lambda}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\opnorm{A^{n}}^{\frac{1}{n}} & \le\left(r+\delta\right)\left(C^{\frac{1}{n}}\left(r+\delta\right)^{\frac{1}{n}}\right)\xrightarrow{n\to\infty}r+\delta
+\end{align*}
+
+\end_inset
+
+Therefore:
+\begin_inset Formula 
+\begin{align*}
+\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}} & \le r+\delta
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is arbitrary, it follows that:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{R}=\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}} & =r
+\end{align*}
+
+\end_inset
+
+We even conclude:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A^{n}}^{\frac{1}{n}} & \xrightarrow{n\to\infty}r\left(A\right)
+\end{align*}
+
+\end_inset
+
+Assume that 
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+symmetric
+\emph default
+ (to show 
+\begin_inset Formula $\opnorm{A^{n}}^{\frac{1}{n}}=\opnorm A$
+\end_inset
+
+).
+ The Schwarz inequality gives:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A^{2}} & \le\opnorm A\cdot\opnorm A=\opnorm A^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,Au^{2}\right\rangle \le\sup_{\norm u=1}\underbrace{\norm u}_{=1}\cdot\norm{A^{2}u}
+\end{align*}
+
+\end_inset
+
+Iteratively for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A^{2^{n}}} & =\opnorm A^{2^{n}}
+\end{align*}
+
+\end_inset
+
+For arbitrary 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ the Schwarz inequality gives:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{A^{m}} & \le\opnorm A^{m}
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $n$
+\end_inset
+
+ such that 
+\begin_inset Formula $2^{n}>m$
+\end_inset
+
+.
+ THen:
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2^{n}} & =\opnorm{A^{2^{n}}}=\opnorm{A^{m}\cdot A^{2^{n}-m}}\le\opnorm{A^{m}}\cdot\opnorm A^{2^{n}-m}\\
+\Rightarrow\quad\opnorm A^{m} & \le\opnorm A^{m}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ritz method
+\end_layout
+
+\begin_layout Standard
+Assume that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a compact symmetric operator.
+ Consider the 
+\begin_inset Quotes eld
+\end_inset
+
+expectation value
+\begin_inset Quotes erd
+\end_inset
+
+ functional:
+\begin_inset Formula 
+\begin{align*}
+S:H & \to\mathbb{R}\\
+u & \mapsto\left\langle u,Au\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\overline{S\left(u\right)} & =\overline{\left\langle u,Au\right\rangle }=\left\langle Au,u\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $S$
+\end_inset
+
+ is bounded, because:
+\begin_inset Formula 
+\begin{align*}
+\abs{S\left(u\right)} & =\abs{\left\langle u,Au\right\rangle }\le\opnorm A\cdot\norm u^{2}\stackrel{\norm u\le1}{\le}\opnorm A
+\end{align*}
+
+\end_inset
+
+Maximize 
+\begin_inset Formula $S\left(u\right)$
+\end_inset
+
+ on 
+\begin_inset Formula $\left\{ u\in H\big|\norm u=1\right\} $
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Choose a maximizing sequence 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\norm{u_{n}}=1$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+S\left(u_{n}\right) & \xrightarrow{n\to\infty}\sup_{\norm u=1}S\left(u\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\overline{B_{1}\left(0\right)}$
+\end_inset
+
+ is weakly compact, there is a subsequence 
+\begin_inset Formula $u_{k_{l}}$
+\end_inset
+
+, which converges weakly 
+\begin_inset Formula $u_{k_{l}}\rightharpoondown u$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is compact, the sequence
+\begin_inset Formula 
+\begin{align*}
+v_{k_{l}} & :=Au_{k_{l}}\to v
+\end{align*}
+
+\end_inset
+
+converges and 
+\begin_inset Formula $Au=v$
+\end_inset
+
+.
+ As a consequence:
+\begin_inset Formula 
+\begin{align*}
+S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{\left\langle u_{k_{l}},v_{k_{l}}\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $S\left(u_{k_{l}}\right)\xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $S$
+\end_inset
+
+ is weakly continuous, i.e.
+ for any 
+\begin_inset Formula $u_{k}\rightharpoondown u$
+\end_inset
+
+ converges 
+\begin_inset Formula $S\left(u_{k}\right)\to S\left(u\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+S\left(u\right) & =\sup_{\norm{\tilde{u}}=1}S\left(\tilde{u}\right)
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $u$
+\end_inset
+
+ is the desired maximizer.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u$
+\end_inset
+
+ is on the unit sphere:
+\begin_inset Newline newline
+\end_inset
+
+The simple approach
+\begin_inset Formula 
+\begin{align*}
+\norm u^{2} & \not=\lim_{l\to\infty}\norm{u_{k_{l}}}^{2}
+\end{align*}
+
+\end_inset
+
+does not work, because 
+\begin_inset Formula $u_{k_{l}}$
+\end_inset
+
+ only converges weakly.
+\begin_inset Newline newline
+\end_inset
+
+Example: If 
+\begin_inset Formula $\left(e_{l}\right)$
+\end_inset
+
+ is an orthonormal Hilbert basis in a separable Hilbert space, then 
+\begin_inset Formula $e_{l}\rightharpoondown0$
+\end_inset
+
+, but:
+\begin_inset Formula 
+\begin{align*}
+\lim_{l\to\infty}\norm{e_{l}} & =1\not=0=\norm 0
+\end{align*}
+
+\end_inset
+
+But it holds:
+\begin_inset Formula 
+\begin{align*}
+\norm u^{2} & =\lim_{l\to\infty}\abs{\left\langle u,u_{k_{l}}\right\rangle }\le\lim_{l\to\infty}\norm{u_{k_{l}}}\cdot\norm u=\norm u\\
+\Rightarrow\quad\norm u & \le1
+\end{align*}
+
+\end_inset
+
+Assume 
+\begin_inset Formula $\norm u<1$
+\end_inset
+
+, then the vector 
+\begin_inset Formula $\hat{u}:=\frac{u}{\norm u}$
+\end_inset
+
+ would satisfy the equation:
+\begin_inset Formula 
+\begin{align*}
+S\left(\hat{u}\right) & =\left\langle \hat{u},A\hat{u}\right\rangle =\frac{1}{\norm u^{2}}\left\langle u,Au\right\rangle =\frac{1}{\norm u^{2}}\sup_{\norm v=1}S\left(v\right)\stackrel{\norm u<1}{>}\sup_{\norm v=1}S\left(v\right)
+\end{align*}
+
+\end_inset
+
+This is a contradiction.
+ Therefore 
+\begin_inset Formula $u$
+\end_inset
+
+ is in fact a unit vector.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u$
+\end_inset
+
+ is an eigenvector corresponding to the eigenvalue 
+\begin_inset Formula $\norm A$
+\end_inset
+
+: Consider the variation for 
+\begin_inset Formula $v\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\tilde{u}\left(\tau\right) & =\frac{u+\tau v}{\norm{u+\tau v}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+S\left(\tilde{u}\left(\tau\right)\right) & =\left\langle \tilde{u}\left(\tau\right),A\tilde{u}\left(\tau\right)\right\rangle =\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
+\end{align*}
+
+\end_inset
+
+This is called 
+\emph on
+Rayleigh quotient
+\emph default
+, usually written with 
+\begin_inset Formula $w=u+\tau v$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\frac{\left\langle w,Aw\right\rangle }{\left\langle w,w\right\rangle }
+\end{align*}
+
+\end_inset
+
+We know that 
+\begin_inset Formula $S\left(\tilde{u}\left(\tau\right)\right)$
+\end_inset
+
+ is maximal at 
+\begin_inset Formula $\tau=0$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=2\frac{\text{Re}\left(\left\langle u,Av\right\rangle \right)}{\left\langle u,u\right\rangle }-\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}\cdot2\text{Re}\left(\left\langle u,v\right\rangle \right)\\
+0 & =\left\langle u,u\right\rangle \text{Re}\left(\left\langle u,Av\right\rangle \right)-\left\langle u,Au\right\rangle \text{Re}\left(\left\langle u,v\right\rangle \right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\left\langle u,u\right\rangle =1$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,Au\right\rangle  & =\sup_{\norm v=1}\left\langle v,Av\right\rangle =r\left(A\right)=\opnorm A
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+0 & =2\text{Re}\left(\left\langle Au,v\right\rangle -\opnorm A\left\langle u,v\right\rangle \right)
+\end{align*}
 
 \end_inset
 

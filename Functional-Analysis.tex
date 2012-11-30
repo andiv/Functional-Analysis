@@ -178,7 +178,6 @@
 \makeatother
 
 \begin{document}
-\selectlanguage{ngerman}%
 
 
 
@@ -192,7 +191,6 @@
 \global\long\def\opnorm#1{\opnor{#1}}
 
 
-\selectlanguage{english}%
 \global\long\def\BRA#1{\Bra{#1}}
 
 
@@ -202,7 +200,6 @@
 \global\long\def\BraKet#1{\Braket{#1}}
 
 
-\selectlanguage{ngerman}%
 \global\long\def\mins{\text{-}}
 
 
@@ -257,7 +254,6 @@
 \global\long\def\modloScript#1#2{\modloScriptT{#1}{#2}}
 
 
-\selectlanguage{english}%
 \pagenumbering{roman}
 
 
@@ -274,7 +270,7 @@
 {\small \vspace*{5mm}}\\
 {\small \includegraphics[clip,width=15cm]{unir}}\textit{\noun{\small }}\\
 {\small \vspace*{3mm}}\\
-Last changed: \today{}\\
+Last changed: \today\\
 {\small \vspace*{-30mm}}}
 
 \maketitle
@@ -676,7 +672,7 @@ if $Z\subseteq Z'$ and $l'\big|_{Z}=l$.\\
 For an index set $I$ (possibly infinite, uncountable) let $K=\left\{ \left(Z_{\nu},l_{\nu}\right)|\nu\in I\right\} $
 be a chain, i.e. for all $\left(Z,l\right),\left(Z',l'\right)\in K$:
 \begin{align*}
-\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z,l\right)\le\left(Z,l\right)\right)
+\left(\left(Z,l\right)\le\left(Z',l'\right)\right) & \vee\left(\left(Z',l'\right)\le\left(Z,l\right)\right)
 \end{align*}
 Set $Z=\bigcup_{\nu\in I}Z_{\nu}$ and define $l:Z\to\mathbb{R}$
 by $l\big|_{Z_{\nu}}=l_{\nu}$. (Thus suppose $u\in Z$, so there
@@ -696,7 +692,7 @@ With Zorn's Lemma follows, that there exists an maximal element $\left(\tilde{Y}
 \item [{Proof:}] Otherwise there would be a vector $u\in X\setminus\tilde{Y}$,
 and $\tilde{l}$ could be extended to $\tilde{Y}\oplus\left\langle u\right\rangle $,
 as shown in i), in contradiction to the maximality of $\tilde{l}$.
-Thus $\left(X=\tilde{Y},\tilde{l}\right)$ is the desired extension.
+Thus $\left(X=\tilde{Y},\tilde{l}\right)$ is the desired extension.\qqed[Claim]
 \end{description}
 \end{enumerate}
 \qqed
@@ -759,9 +755,10 @@ so that $\tilde{l}:X\to\mathbb{C}$ is complex-linear.
 \abs{\tilde{l}\left(x\right)} & =r=e^{-\ii\varphi}\tilde{l}\left(x\right)\sr ={\tilde{l}\text{ is}}{\text{complex-linear}}\tilde{l}\left(e^{-\ii\varphi}x\right)=\text{Re}\left(\tilde{l}\left(e^{-\ii\varphi}x\right)\right)=\\
  & =\tilde{l}_{1}\left(e^{-\ii\varphi}x\right)\le p\left(e^{-\ii\varphi}x\right)\stackrel{\text{homogeneity}}{=}p\left(x\right)
 \end{align*}
-
-\item [{\qqed}]~
+\qqed[Claim]
 \end{description}
+\qqed
+
 Now to applications:
 
 
@@ -772,7 +769,7 @@ or complex), $Y\subseteq X$ a subspace. Let $\varphi$ be a continuous
 linear functional from $Y$ to $\mathbb{K}$, i.e. for all $y\in Y$
 holds:
 \begin{align*}
-\abs{\varphi\left(y\right)} & \le c\norm y
+\abs{\varphi\left(y\right)} & \le\underbrace{\norm{\varphi}}_{=:c}\cdot\norm y
 \end{align*}
 Then $\varphi$ can be continued to all of $X$ with the same supnorm,
 i. e.:
@@ -843,7 +840,7 @@ Geometric question:
 
 
 Is there a hyperplane $\mathcal{H}$, which meets $y\not\in K$, but
-does not intersect $K$.\qqed
+does not intersect $K$?
 
 
 \section{Definition \textmd{(interior point)}}
@@ -1077,7 +1074,7 @@ is a closed subspace.
 \modulo{\ell^{\infty}}A & \stackrel{\sim}{=}\left\{ \left(a_{n}\right)\bigg|a_{2n+1}=0\fall_{n\in\mathbb{N}}\right\} 
 \end{align*}
 \begin{align*}
-d & :=\left\{ \left(a_{n}\right)\bigg|\exs_{N\in\mathbb{N}}\fall_{n\in\mathbb{N}_{>0}}a_{n}=0\right\} \subseteq\ell^{\infty}
+d & :=\left\{ \left(a_{n}\right)\bigg|\exs_{N\in\mathbb{N}}\fall_{n\in\mathbb{N}_{>N}}a_{n}=0\right\} \subseteq\ell^{\infty}
 \end{align*}
 is a subspace, but not closed in $\ell^{\infty}$. Consider for example
 $\left(a_{n}=\frac{1}{n}\right)=:x\in\ell^{\infty}\setminus d$, $x_{n}\in d$
@@ -1198,7 +1195,7 @@ and we know by construction that $\norm{y_{l}-y}>\frac{1}{2}$ for
 all $y\in Y_{l-1}$ so especially for $y_{k}\in Y_{l-1}$.
 \end{itemize}
 This implies that $\left(y_{k}\right)$ has no convergent subspace.
-\qqed
+\qqed[\ref{sub:Thm-NonCompactUnitBall}]
 
 
 \section{Spaces of linear Mappings, Dual Spaces}
@@ -1394,7 +1391,7 @@ Choose $\varphi:\left\langle v\right\rangle \to\mathbb{R}$ with $\varphi\left(v\
 By the Hahn-Banach theorem $\varphi$ can be extended continuously
 to $E$.\\
 Therefore there exists a $\varphi\in E^{*}$ with $\varphi\left(v\right)=1$,
-which is a contradiction to $\varphi\left(v\right)=0$.
+which is a contradiction to $\varphi\left(v\right)=0$.\qqed[Claim]
 \end{description}
 \qqed
 
@@ -2842,12 +2839,66 @@ Hilbert space basis of $H$.\qqed
 
 \subsection{Theorem}
 
-Any two Hilbert space bases have the same cardinality (\foreignlanguage{ngerman}{Mächtigkeit}).
-
+Let $H$ be a Hilbert space.
+\begin{enumerate}[label=\roman*)]
+\item For any $v\in H$ and for any orthonormal system $\left\{ e_{j}\big|j\in J\right\} $,
+the set of elements $j\in J$ for which $\left\langle e_{j},v\right\rangle =0$
+is finite or countable.
+\item Any two Hilbert space bases of $H$ have the same cardinality (\foreignlanguage{ngerman}{Mächtigkeit}).
+\end{enumerate}
 
 \subsubsection*{Proof}
-
-\textcolor{green}{TODO: Proof from exercises}
+\begin{enumerate}[label=\roman*)]
+\item Consider $v\in J$. First we show that every $n\in\mathbb{N}$, the
+set $J_{n}:=\left\{ j\in J\big|\left\langle e_{j},v\right\rangle >\frac{1}{n}\right\} $
+is finite. Indeed, by Bessel’s inequality, for every finite number
+of elements $e_{j_{1}},\ldots,e_{j_{N}}$ of the given orthonormal
+system, we have:
+\begin{align*}
+\sum_{k=1}^{N}\abs{\left\langle e_{j_{k}},v\right\rangle }^{2} & \le\norm v^{2}
+\end{align*}
+Now suppose that for some $n\in\mathbb{N}$, the set $J_{n}$ were
+not finite. Then for any $N\in\mathbb{N}$ we could find elements
+$e_{j_{1}},\ldots,e_{j_{N}}$ such that $\left\langle e_{j_{k}},v\right\rangle >\frac{1}{n}$
+for all $k\in\left\{ 1,\ldots,N\right\} $. Hence, for these elements
+holds:
+\begin{align*}
+\sum_{k=1}^{N}\abs{\left\langle e_{j_{k}},v\right\rangle }^{2} & >N\cdot\frac{1}{n}
+\end{align*}
+Clearly these becomes larger than $\norm v$ if we make $N$ sufficiently
+large. Hence all the sets $J_{n}$ must be finite. But then, we see
+that the set
+\begin{align*}
+\left\{ j\in J\big|\left\langle e_{j},v\right\rangle \not=0\right\}  & =\bigcup_{n\in\mathbb{N}}J_{n}
+\end{align*}
+is a countable union of finite sets, and as such can be at most countable.\qqed[\roman{enumi})]
+\item If $H$ has is finite-dimensional, every Hilbert basis is a Hamel
+basis of $H$ and thus the claim follows from linear algebra.\\
+If $H$ is infinite-dimensional, let $\left(e_{i}\right)_{i\in I}$
+and $\left(b_{j}\right)_{j\in J}$ be two Hilbert bases of $H$. ($I$
+and $J$ have infinitely many elements.)\\
+For $x\in H=\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }=\overline{\left\langle \left(b_{j}\right)_{j\in J}\right\rangle }$
+define:
+\begin{align*}
+B_{x} & :=\left\{ j\in J\big|\left\langle x,b_{j}\right\rangle \not=0\right\} 
+\end{align*}
+By i), the set $B_{x}$ is at most countable for any $x\in H$. Next,
+let $j\in J$ be given. Since $\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }=H$,
+we must have $\left\langle b_{j},e_{i}\right\rangle \not=0$ for some
+$i\in I$. Otherwise, $b_{j}\in\overline{\left\langle \left(e_{i}\right)_{i\in I}\right\rangle }^{\perp}=\left\{ 0\right\} $,
+which is not possible since $b_{j}\not=0$. Therefore, we have $j\in B_{e_{i}}$
+for some $i\in I$, and since $j\in J$ was arbitrary, it follows
+that $J\subseteq\bigcup_{i\in I}B_{e_{i}}\subseteq I\times\mathbb{N}$.
+Here the second inclusion uses that all the sets $B_{e_{j}}$ are
+at most countable. It follows:
+\begin{align*}
+\abs J & \le\abs I\cdot\abs{\mathbb{N}}=\abs I
+\end{align*}
+If we exchange the roles of $I$ and $J$ above, we also obtain $\abs I\le\abs J$.
+By the Schröder-Bernstein theorem, we can combine both estimates to
+obtain that $\abs I=\abs J$.\qqed[\roman{enumi})]
+\end{enumerate}
+\qqed
 
 
 \subsection{Theorem}
@@ -3015,9 +3066,11 @@ large $L\left(\varepsilon\right)$ and therefore:
 \abs{\left\langle y,w_{l}-v\right\rangle } & \le\varepsilon\qquad\fall_{l>L\left(\varepsilon\right)}
 \end{align*}
 Therefore $\left\langle y,w_{l}\right\rangle \to\left\langle y,v\right\rangle $
-converges, which means $w_{l}\rightharpoondown v$.\qqed
+converges, which means $w_{l}\rightharpoondown v$.\qqed[Claim]
 \end{enumerate}
 \end{description}
+\qqed
+
 %DATE: Fr 16.11.12
 
 The corresponding statement in Banach spaces is the \emph{Banach-Alaoglu
@@ -3100,7 +3153,7 @@ Then $\norm{u_{n}}<\infty$ and $\norm{Au_{n}}\xrightarrow{n\to\infty}\infty$.
  \begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
 			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2]
    \addplot[domain=-2.99:-1.01] {exp(-1/(3+x)^2)/(exp(-1/(3+x)^2)+exp(-1/(-x-1)^2))};
-   \addplot[domain=-1:1] {1};
+   \addplot[domain=-1.01:1.01] {1};
    \addplot[domain=1.01:2.99] {exp(-1/(3-x)^2)/(exp(-1/(3-x)^2)+exp(-1/(x-1)^2))};
   \addlegendentry{$\eta$}
  \end{axis}
@@ -3342,6 +3395,7 @@ and $A\left(u_{n}-\tilde{u}_{n}\right)\to v-\tilde{v}$. By assumption
 follows $v-\tilde{v}=0$.\qqed
 
 %DATE: Do 22.11.12
+%Prof. Finster vertreten durch Dr. Müller
 
 
 \section{The adjoint of a densely defined operator}
@@ -3581,17 +3635,17 @@ operator.
 
 $A$ is \emph{continuously invertible} if and only if $A:\mathcal{D}\left(A\right)\to H$
 is bijective and $A^{-1}:H\to\mathcal{D}\left(A\right)$ is continuous.
-
 \begin{align*}
-\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{C}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
+\varrho\left(A\right) & :=\left\{ \lambda\in\mathbb{K}\big|\left(\lambda\mathbbm{1}-A\right)\text{ is continously invertible}\right\} 
 \end{align*}
-The \emph{resolvent} is defined as
+The \emph{resolvent} (\foreignlanguage{ngerman}{Resolvente}) is defined
+for $\lambda\in\varrho\left(A\right)$ as
 \begin{align*}
-\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}
+\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda\mathbbm{1}-A\right)^{-1}\in L\left(H\right)
 \end{align*}
 and the \emph{spectrum} of $A$ as:
 \begin{align*}
-\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\sigma\left(A\right) & =\mathbb{K}\setminus\varrho\left(A\right)
 \end{align*}
 
 
@@ -3621,12 +3675,12 @@ So $\varrho\left(A\right)$ is open and therefore the complement $\sigma\left(A\r
 is closed.\qqed
 
 
-\subsection{Theorem \textmd{(resolvent equation)}}
+\subsection{Theorem \textmd{(resolvent equation)\label{sub:Thm-resolvent-equation}}}
 
 The map $\lambda\mapsto\mathcal{R}_{\lambda}\left(A\right)$ is complex
 analytic on $\varrho\left(A\right)$.
 
-We have the \emph{resolvent equation}:
+We have the \emph{resolvent equation} (\foreignlanguage{ngerman}{Resolventengleichung}):
 \begin{align*}
 \mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =-\left(\lambda-\mu\right)\mathcal{R}_{\lambda}\cdot\mathcal{R}_{\mu}
 \end{align*}
@@ -3653,6 +3707,802 @@ Assume $\abs{\mu-\lambda}<\frac{1}{\opnorm{\mathcal{R}_{\lambda}}}$.
 \end{align*}
 This series converges absolutely and so the map is analytic in $L\left(H\right)$.\qqed
 
+%DATE: Fr 23.11.12
+%Prof. Finster vertreten durch Dr. Müller
+
+
+\chapter{Compact Operators}
+
+Let $E$ and $F$ be Banach spaces and $A\in L\left(E,F\right)$.
+\begin{description}
+\item [{Remember:}] There exists a $C\in\mathbb{R}_{>0}$ such that for
+all $u\in E$ holds:
+\begin{align*}
+\norm{Au} & \le C\norm u
+\end{align*}
+$A$ maps bounded sets in $E$ to bounded sets in $F$.
+\item [{But:}] Bounded sets are not precompact in general.
+\end{description}
+
+\section{Definition \textmd{(compact operator)}}
+
+$A$ is called \emph{compact} operator if and only if $A$ maps bounded
+sets to relatively compact sets, i.e. the closure is compact.\\
+(In complete spaces relatively compact is equivalent to precompact.)
+
+
+\section{Example \textmd{(integral operator)}}
+
+Let $E=\left(C^{0}\left(\left[0,1\right]\right),\norm ._{\infty}\right)$
+and consider an integral kernel $K\in C^{0}\left(\left[0,1\right]\times\left[0,1\right]\right)$,
+$K:E\to E$.
+\begin{align*}
+\left(K\varphi\right)\left(x\right) & :=\int_{0}^{1}K\left(x,y\right)\varphi\left(y\right)\dd y
+\end{align*}
+\begin{align*}
+\abs{\left(K\varphi\right)\left(x\right)} & \le\sup_{y}\abs{K\left(x,y\right)}\norm{\varphi}\qquad/\sup_{x}\\
+\norm{K\varphi} & \le C\norm{\varphi}
+\end{align*}
+So $K\in L\left(E\right)$. Furthermore the integral kernel $K$ is
+continuous and defined on a compact set. Therefore $K$ is uniformly
+continuous after the Heine-Cantor theorem.
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\exs_{\delta\in\mathbb{R}_{>0}}:\abs{K\left(x,y\right)-K\left(x',y\right)} & <\varepsilon\qquad\fall_{\abs{x-x'}<\delta,\ y\in\left[0,1\right]}
+\end{align*}
+\begin{align*}
+\abs{\left(K\varphi\right)\left(x\right)-\left(K\varphi\right)\left(x'\right)} & =\abs{\int_{0}^{1}\left(K\left(x,y\right)-K\left(x',y\right)\right)\varphi\left(y\right)\dd y}\le\varepsilon\norm{\varphi}_{\infty}
+\end{align*}
+Let now $B:=B_{M}\left(0\right)$ with $M\in\mathbb{R}_{>0}$. Then
+$K\left(B\right)\subseteq E$.
+\begin{itemize}
+\item uniformly bounded $\left(\norm{\varphi}<CM\right)$
+\item uniformly continuous
+\end{itemize}
+The Arzela-Ascoli theorem yields, that $K\left(B\right)$ is precompact
+and so $K$ is a compact operator.
+
+
+\section{Theorem}
+
+Let $H$ be a Hilbert space.\\
+A compact operator $A:H\to H$ maps weakly convergent sequences to
+convergent sequences.
+
+
+\subsubsection*{Proof}
+
+Let $x_{n}\rightharpoondown x$, then $\left(x_{n}\right)$ is bounded,
+i.e. there is a $C\in\mathbb{R}_{>0}$ such that $\norm{x_{n}}<C$
+for all $n\in\mathbb{N}$. Define $y_{n}:=Ax_{n}$. For all $z\in H$
+holds:
+\begin{align*}
+\left\langle z,y_{n}-y\right\rangle  & =\left\langle z,A\left(x_{n}-x\right)\right\rangle =\left\langle A^{*}z,x_{n}-x\right\rangle \to0
+\end{align*}
+Therefore $y_{n}\rightharpoondown y$ converges weakly. Because $A$
+is compact, every subsequence of $y_{n}$ contains a convergent subsequence
+with limes $\tilde{y}$. For $z=\tilde{y}-y$ converges:
+\begin{align*}
+0\leftarrow\left\langle z,y_{n}-y\right\rangle  & \to\left\langle \tilde{y}-y,\tilde{y}-y\right\rangle =\norm{\tilde{y}-y}
+\end{align*}
+Therefore $\tilde{y}=y$.\\
+Since this holds for every subsequence of $y_{n}$ follows $y_{n}\to y$.\qqed
+
+
+\section{Lemma}
+
+Consider operators $A,B:E\to F$.
+\begin{enumerate}[label=\roman*)]
+\item If $A$ and $B$ are compact, so are $A+B$ and $\lambda A$ for
+all $\lambda\in\mathbb{K}$.
+\item If $A:E\to F$ is compact (continuous) and $B:F\to E$ continuous
+(compact), than $B\circ A$ is compact.\\
+(In particular $A^{n}$ is compact for $A:E\to E$.)
+\item The compact operators form a closed subspace of $L\left(E,F\right)$.
+\end{enumerate}
+
+\subsubsection{Proof}
+\begin{enumerate}[label=\roman*)]
+\item is obvious.\qqed[\roman{enumi})]
+\item follows, since a continuous operator is bounded.\qqed[\roman{enumi})]
+\item Let $\left(x_{n}\right)$ be bounded and $T_{k}$ a convergent sequence
+of compact operators. By diagonal choice get a subsequence, also written
+$x_{n}$, such that $T_{k}x_{n}$ converges for all $k\in\mathbb{N}$.
+\begin{align*}
+\norm{Tx_{n}-Tx_{m}} & \le\underbrace{\norm{Tx_{n}-T_{k}x_{n}}}_{\le\norm{T-T_{k}}\cdot\norm{x_{n}}}+\norm{T_{k}x_{n}-T_{k}x_{m}}+\underbrace{\norm{T_{k}x_{m}-Tx_{m}}}_{\le\norm{T-T_{k}}\cdot\norm{x_{m}}}\le\\
+ & \le\norm{T-T_{k}}\cdot\norm{x_{n}}+\norm{T_{k}x_{n}-T_{k}x_{m}}+\norm{T-T_{k}}\cdot\norm{x_{m}}\xrightarrow{n,m,k\to\infty}0
+\end{align*}
+\qqed
+\end{enumerate}
+
+\section{Lemma \textmd{(Fredholm operator)}\label{sec:Lem-Ker-Im}}
+
+Let $A:E\to E$ be compact and define $T:=\mathbbm{1}-A$. $T$ is
+called \emph{Fredholm operator}.
+\begin{enumerate}[label=\roman*)]
+\item $\text{ker}\left(T\right)$ is finite-dimensional.
+\item There exists a $i\in\mathbb{N}$ such that $\text{ker}\left(T^{k}\right)=\text{ker}\left(T^{i}\right)$
+for all $k\in\mathbb{N}_{>i}$.
+\item The image of $T$ is closed.
+\end{enumerate}
+
+\subsubsection*{Proof}
+\begin{enumerate}[label=\roman*)]
+\item $\text{ker}\left(T\right)=:Z=\left\{ u\big|u=Au\right\} $. Since
+$Z\cap B_{1}\left(0\right)$ is bounded
+\begin{align*}
+A\left(Z\cap B_{1}\left(0\right)\right) & =Z\cap B_{1}\left(0\right)
+\end{align*}
+is precompact and therefore $Z$ is finite-dimensional.\qqed[\roman{enumi})]
+\item Define $N_{i}:=\text{ker}\left(T^{i}\right)$, which are closed subspaces
+of $E$, since the $T^{i}$ are continuous.\\
+Suppose the claim is wrong, then $N_{j}\subsetneq N_{j+1}\subsetneq\ldots$,
+so in particular all $N_{j}$ are proper subspaces. Choose $y_{j}\in N_{j}$
+with:
+\begin{align*}
+\norm{y_{j}} & =1 & d\left(y_{j},N_{j-1}\right) & >\frac{1}{2}
+\end{align*}
+This is possible after Lemma \ref{sub:Lem-d>0.5}.\\
+For all $m<n$ holds:
+\begin{align*}
+Ay_{n}-Ay_{m} & =y_{n}-\underbrace{T_{y_{n}}-y_{m}+T_{y_{m}}}_{\in N_{n-1}}
+\end{align*}
+Therefore follows:
+\begin{align*}
+\norm{Ay_{n}-Ay_{m}} & >\frac{1}{2}
+\end{align*}
+So $\left(Ay_{n}\right)$ has no accumulation value in contradiction
+to the compactness of $A$.\qqed[\roman{enumi})]
+\item Let $y_{k}\in\text{im}\left(T\right)$ with $y_{k}\to y$ and $y_{k}=Tx_{k}$.
+We want to show $y\in\text{im}\left(T\right)$. Define:
+\begin{align*}
+d_{k} & :=d\left(x_{k},\text{ker}\left(T\right)\right)=\inf_{z\in\text{ker}\left(T\right)}\norm{x_{k}-z}
+\end{align*}
+
+
+\begin{description}
+\item [{Claim:}] $\left(d_{k}\right)$ is bounded. Equivalently $\left(D_{k}\right)=\abs{\max\left\{ 1,d_{k}\right\} }$
+is bounded.
+\item [{Proof:}] Choose $z_{k}\in\text{ker}\left(T\right)$, $w_{k}:=x_{k}-z_{k}$
+with $\norm{w_{k}}<2d_{k}$ and $Tw_{k}=y_{k}$.\\
+Assume $D_{k}$ is unbounded. Since $y_{k}$ is convergent and thus
+bounded, follows:
+\begin{align*}
+T\left(\frac{w_{k}}{D_{k}}\right) & =\frac{y_{k}}{D_{k}}\xrightarrow{k\to\infty}0
+\end{align*}
+Now consider $u_{k}:=\frac{w_{k}}{D_{k}}$. We know $\norm{u_{k}}<2$
+and $T\left(u_{k}\right)\to0$.\\
+Thus $u_{k}-Au_{k}\to0$. Since $A$ is compact, every subsequence
+of $Au_{k}$ has a convergent subsequence, and therefore $u_{k}\to0$
+converges.\\
+The continuity of $T$ gives:
+\begin{align*}
+T\left(u\right) & =\lim_{k\to\infty}T\left(u_{k}\right)=0
+\end{align*}
+So $u\in\text{ker}\left(T\right)$.\\
+On the other hand we have for all $z\in\text{ker}\left(T\right)$:
+\begin{align*}
+\norm{w_{k}-z} & \ge D_{k}\\
+\Rightarrow\quad\norm{u_{k}-\frac{z}{D_{k}}} & \ge1
+\end{align*}
+Since $T$ is a subspace this means, that for all $z\in\text{ker}\left(T\right)$
+holds:
+\begin{align*}
+\norm{u_{k}-z} & \ge1
+\end{align*}
+This is a contradiction to $u\in\text{ker}\left(T\right)$.\qqed[Claim]
+\end{description}
+
+So $u_{k}$ is bounded and $T\left(w_{k}\right)=T\left(x_{k}\right)=y_{k}\to y$.
+So we get:
+\begin{align*}
+w_{k}-Aw_{k} & \to y
+\end{align*}
+Since $A$ is compact $Aw_{k}$ converges and with this follows, that
+$w_{k}\to w$ also converges.\\
+By continuity we get:
+\begin{align*}
+T\left(w\right) & =\lim_{k\to\infty}T\left(w_{k}\right)=y
+\end{align*}
+So $w\in\text{im}\left(T\right)$.\qqed
+
+\end{enumerate}
+
+\section{Theorem \textmd{(Fredholm Alternative)\label{sec:Thm-Fredholm-Alternative}}}
+
+Let $A:E\to E$ be compact and define $T:=\mathbbm{1}-A$.\\
+If the kernel $\ker\left(T\right)=\left\{ 0\right\} $ is trivial,
+then $T$ is continuously invertible.
+
+
+\subsubsection*{Proof}
+
+$\text{ker}\left(T\right)=\left\{ 0\right\} $ means, that $T$ is
+injective. We only need to show, that $T$ is surjective, because
+then $T$ is invertible and \ref{sub:Thm-Open-mapping} yields then,
+that $T$ is open and therefore $T^{-1}$ continuous.
+
+$\text{im}\left(T\right)$ is closed following \ref{sec:Lem-Ker-Im}
+iii).\\
+$\text{im}\left(T\right)=E$, since otherwise $T\left(E\right)\subsetneq E$.
+Then the injectivity implies for all $k\in\mathbb{N}$:
+\begin{align*}
+T^{k+1}\left(E\right) & \subsetneq\underbrace{T^{k}\left(E\right)}_{=E_{k}}
+\end{align*}
+$E_{k}$ is closed for all $k\in\mathbb{N}$:
+\begin{align*}
+E_{k} & =\left(\mathbbm{1}-A\right)^{k}\left(E\right)=\bigg(\mathbbm{1}+\underbrace{\sum_{l=1}^{k}\left(-1\right)^{l}\left(\begin{array}{c}
+k\\
+l
+\end{array}\right)A^{l}}_{A:=A_{k}}\bigg)\left(E\right)
+\end{align*}
+Now $A_{k}$ is compact, as the compact operators form a (closed)
+ideal subalgebra $\text{CP}\left(E\right)$.\\
+Choose $x_{k}\in E_{k}$ with $\norm{x_{k}}=1$ and $d\left(x_{k},E_{k}\right)>\frac{1}{2}$,
+which is possible after Lemma \ref{sub:Lem-d>0.5}. Then holds for
+all $m<n$:
+\begin{align*}
+Ax_{m}-Ax_{n} & =x_{m}-\underbrace{Tx_{m}-x_{n}+Tx_{n}}_{\in H_{m+1}}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\norm{Ax_{m}-Ax_{n}} & >\frac{1}{2}
+\end{align*}
+This is a contradiction to the compactness of $A$.\\
+Therefore $T$ is surjective and the theorem follows.\qqed
+
+
+\section{Theorem \textmd{(Riesz-Schauder)}}
+
+Let $A\in L\left(H\right)$ be compact.
+\begin{enumerate}[label=\roman*)]
+\item $\sigma\left(A\right)$ consists of a a finite or countable set of
+complex numbers and $0$ is the only possible accumulation point.
+\item Every $0\not=\lambda\in\sigma\left(A\right)$ is an eigenvalue of
+finite multiplicity, i.e. $\text{ker}\left(A-\lambda\right)$ is finite-dimensional.
+That means, there exists a $i\in\mathbb{N}$ such that for all $k>i$
+holds:
+\begin{align*}
+\text{ker}\left(A-\lambda\right)^{k} & =\text{ker}\left(A-\lambda\right)^{i}
+\end{align*}
+One says also that the Jordan chains are finite.
+\end{enumerate}
+
+\subsubsection*{Proof}
+\begin{enumerate}
+\item [ii)]is an immediate consequence of the Lemmas \ref{sec:Lem-Ker-Im}
+and \ref{sec:Thm-Fredholm-Alternative}. (Divide $A$ by $\lambda$.)
+\item [i)]Assume $\lambda_{n}\not=0$ are pairwise different eigenvalues.
+Choose eigenvectors $x_{n}\in H$ such that:
+\begin{align*}
+Ax_{n} & =\lambda_{n}x_{n}
+\end{align*}
+\begin{align*}
+Y_{n} & :=\left\langle x_{1},\ldots,x_{n}\right\rangle 
+\end{align*}
+Since the eigenvalues are pairwise different $Y_{n}\subsetneq Y_{n+1}$
+must hold, because the $x_{k}$ are linearly independent.\\
+Assume $Y_{n}\subsetneq H$, since otherwise $H$ would be finite-dimensional
+and therefore $\sigma\left(A\right)$ a finite set.\\
+So following Lemma \ref{sub:Lem-d>0.5} we can choose $y_{n}\in Y_{n}$
+with $\norm{y_{n}}=1$ and:
+\begin{align*}
+d\left(y_{n},Y_{n+1}\right) & >\frac{1}{2}
+\end{align*}
+Since $y_{n}\in Y_{n}$ one can find $\alpha_{j}\in\mathbb{K}$ such
+that:
+\begin{align*}
+y_{n} & =\sum_{j}\alpha_{j}x_{j}
+\end{align*}
+Then follows:
+\begin{align*}
+\left(A-\lambda_{n}\right)y_{n} & =\sum_{i=1}^{n-1}\left(\lambda_{j}-\lambda_{n}\right)\alpha_{j}x_{j}=:\tilde{y}_{n}\in Y_{n-1}
+\end{align*}
+For all $n>m$ holds:
+\begin{align*}
+Ay_{n}-Ay_{m} & =\lambda_{n}y_{n}-\underbrace{\tilde{y}_{n}-Ay_{m}}_{\in Y_{n-1}}
+\end{align*}
+So we get:
+\begin{align*}
+\norm{Ay_{n}-Ay_{m}} & \ge\frac{\abs{\lambda_{n}}}{2}
+\end{align*}
+But $\left(Ay_{n}\right)$ is precompact and thus for all $\delta\in\mathbb{R}_{>0}$
+exist only finitely many $\lambda_{n}$ with $\abs{\lambda_{n}}>\delta$.\\
+Therefore 0 is the only accumulation point and $\sigma\left(A\right)$
+is a countable union of finite sets and thus countable.\qqed
+\end{enumerate}
+%DATE: Do 29.11.12
+
+Jordan decomposition:
+\begin{align*}
+A & =\left(\begin{array}{ccccccc}
+\lambda_{1} &  &  &  &  &  & 0\\
+1 & \ddots\\
+ & 1 & \lambda_{1}\\
+ &  &  & \lambda_{2}\\
+ &  &  & 1 & \ddots\\
+ &  &  &  & 1 & \lambda_{2}\\
+0 &  &  &  &  &  & \ddots
+\end{array}\right)
+\end{align*}
+\begin{align*}
+\lambda_{1}-A & =\left(\begin{array}{ccccccc}
+0 &  &  &  &  &  & 0\\
+-1 & \ddots\\
+ & -1 & 0\\
+ &  &  & -\lambda_{2}\\
+ &  &  & -1 & \ddots\\
+ &  &  &  & -1 & -\lambda_{2}\\
+0 &  &  &  &  &  & \ddots
+\end{array}\right)
+\end{align*}
+So the first block is nilpotent. If it has $k$ dimensions this means:
+\begin{align*}
+\left(\lambda_{1}-A\right)^{k} & =\left(\begin{array}{ccc}
+0 &  & 0\\
+ & *\\
+0 &  & *
+\end{array}\right)
+\end{align*}
+So $k$ is the length of the Jordan chain.
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be compact and $H$ be a separable Hilbert
+space.\\
+Then $A$ can be approximated in $L\left(H\right)$ by operators of
+finite rank.
+
+
+\subsubsection{Proof}
+
+Choose a countable orthonormal Hilbert basis $\left(\varphi_{j}\right)_{j\in\mathbb{N}}$
+of $H$, which is possible, since $H$ is separable. Define:
+\begin{align*}
+\lambda_{n} & :=\sup_{\psi\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp},\norm{\psi}=1}\norm{A\psi}
+\end{align*}
+Since $A$ is bounded, this supremum exists. Obviously $\lambda_{1}\ge\lambda_{2}\ge\ldots$.
+Thus $\lambda_{n}\searrow\lambda\ge0$.
+\begin{description}
+\item [{Claim:}] $\lambda=0$
+\item [{Proof:}] Choose $\psi_{n}\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+with $\norm{\psi_{n}}=1$ and $\norm{A\psi_{n}}\ge\frac{\lambda}{2}$
+which is possible after Lemma \ref{sub:Lem-d>0.5}, since $\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle $
+is a proper closed subspace of $H$. Write:
+\begin{align*}
+\psi_{n} & =\sum_{j=1}^{\infty}\nu_{j}\varphi_{j}=\left(\nu_{1},\nu_{2},\ldots\right)
+\end{align*}
+Due to $\psi_{n}\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+follows:
+\begin{align*}
+\psi_{n} & =\left(0,\ldots0,\nu_{n+1},\nu_{n+2},\ldots\right)
+\end{align*}
+For $u\in H$ holds:
+\begin{align*}
+\left\langle u,\psi_{n}\right\rangle  & =\sum_{j=n+1}^{\infty}\nu_{j}\cdot\overline{u}_{j}\sr{\le}{\text{Schwarz }}{\text{inequality}}\underbrace{\left(\sum_{j=n+1}^{\infty}\abs{\nu_{j}}^{2}\right)^{\frac{1}{2}}}_{=\norm{\psi_{n}}}\cdot\left(\sum_{j=n+1}^{\infty}\abs{u_{j}}^{2}\right)^{\frac{1}{2}}\xrightarrow{n\to\infty}0
+\end{align*}
+So by construction $\psi_{n}\rightharpoondown0$. Therefore $A\psi_{n}\to0$
+and thus $\norm{A\lambda_{n}}\to0$.\\
+On the other hand we have $\norm{A\psi_{n}}\ge\frac{\lambda}{2}$
+and so $\lambda=0$.\qqed[Claim]
+\end{description}
+Let $P_{n}$ be the orthogonal projection on $\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle $.
+\begin{align*}
+P_{n}u & =\sum_{j=1}^{n}\varphi_{j}\left\langle \varphi_{j},u\right\rangle 
+\end{align*}
+$AP_{n}$ is an operator of finite rank $r\le n$, since $\text{rank}\left(P_{n}\right)=n$.
+\begin{description}
+\item [{Claim:}] $AP_{n}\xrightarrow{n\to\infty}A$ in $L\left(H\right)$.
+\item [{Proof:}] Consider:
+\begin{align*}
+\opnorm{A-AP_{n}} & =\sup_{u\in H,\,\norm u=1}\norm{A\left(\mathbbm{1}-P_{n}\right)u}
+\end{align*}
+$\left(\mathbbm{1}-P_{n}\right)u\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}$
+and $\norm{\left(\mathbbm{1}-P_{n}\right)u}\le\norm u=1$. ($\mathbbm{1}-P_{n}=P_{\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp}}$)\\
+Thus we get:
+\begin{align*}
+\opnorm{A-AP_{n}} & \le\sup_{v\in\left\langle \varphi_{1},\ldots,\varphi_{n}\right\rangle ^{\perp},\,\norm v\le1}\norm{Av}=\lambda_{n}\xrightarrow{n\to\infty}0
+\end{align*}
+\qqed[Claim]
+\end{description}
+\qqed
+
+
+\section{Lemma}
+
+Let $A\in L\left(H\right)$ be compact and symmetric. (This implies
+that $A$ is bounded and self-adjoint.)\\
+Then $\sigma\left(A\right)\subseteq\mathbb{R}$ and if $u$ is an
+eigenvector, $Au=\lambda u$, then its orthogonal is invariant under
+$A$.
+
+
+\subsubsection*{Proof}
+
+For $\lambda\in\sigma\left(A\right)$ holds $\text{ker}\left(A-\lambda\right)\not=\left\{ 0\right\} $.
+Thus there exists a $u\in\text{ker}\left(\lambda-A\right)\setminus\left\{ 0\right\} $.
+\begin{align*}
+\lambda\left\langle u,u\right\rangle  & =\left\langle u,Au\right\rangle =\left\langle Au,u\right\rangle =\overline{\lambda}\left\langle u,u\right\rangle 
+\end{align*}
+Since $\norm u\not=0$ follows $\lambda=\overline{\lambda}$, which
+means that $\lambda\in\mathbb{R}$.\\
+For $v\in\left\langle u\right\rangle ^{\perp}$ holds:
+\begin{align*}
+\left\langle Av,u\right\rangle  & =\left\langle v,Au\right\rangle =\lambda\left\langle v,u\right\rangle =0
+\end{align*}
+Therefore $Av\in\left\langle u\right\rangle ^{\perp}$.\qqed
+
+
+\section{Theorem \textmd{(Hilbert-Schmidt)}}
+
+Let $A\in L\left(H\right)$ be a symmetric compact operator on the
+separable Hilbert space $H$.\\
+Then there exists an orthonormal Hilbert space basis of eigenvectors
+$\left(u_{n}\right)_{n\in\mathbb{N}}$, so with the eigenvalues $\lambda_{n}\in\mathbb{R}$
+holds:
+\begin{align*}
+Au_{n} & =\lambda_{n}u_{n}
+\end{align*}
+
+
+
+\subsubsection*{First proof}
+
+$\sigma\left(A\right)$ is countable and therefore we can write $\sigma\left(A\right)\setminus\left\{ 0\right\} =\left\{ \lambda_{1},\lambda_{2},\ldots\right\} \subseteq\mathbb{R}$
+with $\lambda_{i}\not=\lambda_{j}$ for $i\not=j$. $\text{ker}\left(\lambda_{j}-A\right)$
+is finite-dimensional. So we choose a (finite) orthonormal basis of
+the eigenspace. Taking these eigenvectors for all eigenvalues, we
+obtain a countable orthonormal system $\left(u_{n}\right)_{n\in\mathbb{N}}$.
+\begin{align*}
+M & :=\overline{\left\langle u_{n}\right\rangle }\stackrel{\text{closed}}{\subseteq}H
+\end{align*}
+$M^{\perp}$ is an invariant subspace of $H$ under $A$, i.e.:
+\begin{align*}
+\tilde{A}:=A\big|_{M^{\perp}}:M^{\perp} & \to M^{\perp}
+\end{align*}
+This is again symmetric and compact. We know that $\sigma\left(\tilde{A}\right)=\left\{ 0\right\} $.
+\begin{description}
+\item [{Question:}] Why is $\tilde{A}=0$?\\
+This is not true for a general operator, e.g.:
+\begin{align*}
+A & =\left(\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right) & \sigma\left(A\right) & =\left\{ 0\right\} 
+\end{align*}
+
+\item [{Answer:}] If $A$ is symmetric and $\sigma\left(A\right)=\left\{ 0\right\} $,
+then one can show $A=0$ using the following theorem \ref{sec:Thm-SpectralRadiusFinite}:\\
+From $\sigma\left(\tilde{A}\right)=0$ follows $r\left(\tilde{A}\right)=0$
+and since $\tilde{A}$ is self-adjoint theorem \ref{sec:Thm-SpectralRadiusFinite}
+gives $\norm{\tilde{A}}=0$ and thus $\tilde{A}=0$. In other words
+$A\big|_{M^{\perp}}=0$.\\
+Now choose an orthonormal Hilbert basis $\left(v_{n}\right)_{n\in\mathbb{N}_{\le N}}$
+of $M^{\perp}$ for an $N\in\mathbb{N}\cup\left\{ \infty\right\} $.
+Therefore $\left\{ u_{n}\right\} \cup\left\{ v_{n}\right\} $ is the
+desired orthonormal Hilbert basis of $H$.\qqed
+\end{description}
+
+\section{Definition \textmd{(spectral radius)}}
+
+Let $A:\mathcal{D}\left(A\right)\subset H\to H$ be a densely defined
+operator. Then the \emph{spectral radius} $r\left(A\right)$ of $A$
+is defined by:
+\begin{align*}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\end{align*}
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\draw (0,0) circle (3);
+\draw plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (-0.3,0.3) (-1,0)};
+\node at (0.5,1) {$\sigma(A)$};
+\draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\sigma\left(A\right)\subseteq\overline{B_{r\left(A\right)}\left(0\right)}$}
+\end{figure}
+
+
+
+\section{Theorem\label{sec:Thm-SpectralRadiusFinite}}
+
+For $A\in L\left(H\right)$ holds:
+\begin{align*}
+r\left(A\right) & =\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+If $A$ is symmetric, then:
+\begin{align*}
+r\left(A\right) & =\opnorm A
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+%DATE: Fr 30.11.12
+
+Recall for a power series
+\begin{align*}
+\sum_{n=0}^{\infty}a_{n}z^{n}
+\end{align*}
+with $a_{n},z\in\mathbb{K}$ the root test (\foreignlanguage{ngerman}{Wurzelkriterium}):
+\begin{itemize}
+\item If
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =:c<1
+\end{align*}
+then $\abs{a_{n}z^{n}}<c^{n}$ and therefore is
+\begin{align*}
+\sum_{n=0}^{\infty}c^{n}
+\end{align*}
+a convergent dominating sequence. Thus $\sum_{n=0}^{\infty}a_{n}z^{n}$
+converges as well.
+\item If
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =:c>1
+\end{align*}
+then $\abs{a_{n}z^{n}}>c^{n}>1$ for an infinite number of $n$. Therefore
+$a_{n}z^{n}$ does \emph{not} converge to zero, which implies that
+$\sum_{n=0}^{\infty}a_{n}z^{n}$ does not converge as well.
+\item If
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =1
+\end{align*}
+no conclusion is possible.
+\end{itemize}
+\begin{align*}
+\limsup_{n\to\infty}\abs{a_{n}z^{n}}^{\frac{1}{n}} & =\abs z\cdot\limsup_{n\to\infty}\abs{a_{n}}^{\frac{1}{n}}
+\end{align*}
+The Radius of convergence (\foreignlanguage{ngerman}{Konvergenzradius})
+is thus defined by:
+\begin{align*}
+R & :=\frac{1}{\limsup_{n\to\infty}\abs{a_{n}}^{\frac{1}{n}}}
+\end{align*}
+If $\abs z<R$ the sum converges absolutely and if $\abs z>R$ the
+sum diverges.\textcolor{green}{}
+
+In our setting for $A=0$ is nothing to prove. For $\lambda\in\varrho\left(A\right)\setminus\left\{ 0\right\} $
+we make a formal expansion:
+\begin{align*}
+\mathcal{R}_{\lambda} & =\left(\lambda-A\right)^{-1}=\frac{1}{\lambda}\left(\mathbbm{1}-\frac{A}{\lambda}\right)^{-1}=\frac{1}{\lambda}\sum_{n=0}^{\infty}A^{n}\cdot\left(\frac{1}{\lambda}\right)^{n}
+\end{align*}
+This is a power series in $\frac{1}{\lambda}$, but the coefficients
+are operators.
+\begin{align*}
+R & :=\frac{1}{\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}}
+\end{align*}
+For $\frac{1}{\abs{\lambda}}<R$
+\begin{align*}
+\opnorm{\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}} & \le\sum_{n=0}^{\infty}\opnorm{A^{n}}\frac{1}{\lambda^{n}}
+\end{align*}
+converges absolutely and so
+\begin{align*}
+\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}
+\end{align*}
+converges in $L\left(H\right)$. Thus the resolvent 
+\begin{align*}
+\mathcal{R}_{\lambda} & =\left(\lambda-A\right)^{-1}
+\end{align*}
+exists and $\sigma\left(A\right)\subseteq\overline{B_{\frac{1}{R}}\left(0\right)}$,
+i.e.:
+\begin{align*}
+r\left(A\right) & \le\frac{1}{R}=\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
+\end{align*}
+If $\frac{1}{\abs{\lambda}}>R$
+\begin{align*}
+\opnorm{\sum_{n=0}^{\infty}A^{n}\left(\frac{1}{\lambda}\right)^{n}}
+\end{align*}
+diverges.
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+  \draw (0,0) circle (3);
+  \draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
+  \draw (0,0) circle (5);
+  \draw[arr] (0,0) -- node [left]{$\frac{1}{R}$} (0,-5);
+  \draw[yshift=60,xshift=33] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,-0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-1,0)};
+  \node at (0.7,1) {$\sigma(A)$};
+  \draw (0.7,4) node[below]{$\lambda$} circle (0.7);
+  \draw (0.7,4) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw (0.7,4) -- node[above]{$\delta$} (0,4);
+  \draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw (1,4.1) node[above]{$\nu$} +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\frac{1}{R}>r\left(A\right)$ ?}
+\end{figure}
+Why is $r$ not smaller than $\frac{1}{R}$?\\
+Assume that $r<\frac{1}{R}$ and choose $\lambda$ with $r<\abs{\lambda}<\frac{1}{R}$.
+Then $\mathcal{R}_{\lambda}$ exists and is analytic. Consider a $\nu\in B_{\delta}\left(\lambda\right)$.
+\begin{align*}
+\mathcal{R}_{\nu} & =\left(\nu-A\right)^{-1}=\left(\left(\nu-\lambda\right)+\left(\lambda-A\right)\right)^{-1}=\\
+ & =\left(\left(\left(\nu-\lambda\right)\mathcal{R}_{\lambda}+\mathbbm{1}\right)\left(\lambda-A\right)\right)^{-1}=\\
+ & =\mathcal{R}_{\lambda}\left(\mathbbm{1}+\left(\nu-\lambda\right)\mathcal{R}_{\lambda}\right)^{-1}=\\
+ & =\mathcal{R}_{\lambda}\sum_{n=0}^{\infty}\left(-\left(\nu-\lambda\right)\right)^{n}\mathcal{R}_{\lambda}^{n}
+\end{align*}
+For $\abs{\nu-\lambda}<\delta:=\frac{1}{\opnorm{\mathcal{R}_{\lambda}}}$
+the Neumann series converges.\\
+Thus $\mathcal{R}_{\lambda}$ can be expanded locally in a power series,
+i.e. $\mathcal{R}_{\lambda}$ is complex analytic or holomorphic.\\
+Furthermore for $\abs{\lambda}>\frac{1}{R}$ holds: 
+\begin{align*}
+\mathcal{R}_{\lambda} & =\sum_{n=0}^{\infty}A^{n}\frac{1}{\lambda^{n+1}}
+\end{align*}
+
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+  \draw (0,0) circle (3.5);
+  \draw (0,0) circle (2.33);
+  \draw[arr] (0,0) -- node[left]{r(A)} (0,-2.33);
+  \draw[arr] (0,0) -- node [below]{$\frac{1}{R}$} (-3.5,0);
+  \draw[yshift=33,xshift=23] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(-0.1,-0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-0.9,-0.1)};
+  \node at (0.7,1) {$\sigma(A)$};
+  \draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw[red,thick] (0,0) circle (3) node[above=86]{$\Gamma$};
+  \draw[red,thick,arr] (0,3) -- (-0.1,3);
+  \draw[thick] (0,0) circle (4) node[above=115]{$C$};
+  \draw[thick,arr] (0,4) -- (-0.1,4);
+  \draw[red] (2.25,0.5) -- node[above]{$\delta$} (2.92,0.65);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Contours $\Gamma$ and $C$ for integration}
+\end{figure}
+
+
+Integrate along the contour $C$:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{C}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =\sum_{k=0}^{\infty}A^{k}\underbrace{\frac{1}{2\pi\ii}\oint_{C}\frac{\lambda^{n}}{\lambda^{k+1}}\dd\lambda}_{=:I}
+\end{align*}
+Since the geometric series converges absolutely, the summation and
+the integration can be interchanged. The residue theorem gives:
+\begin{alignat*}{1}
+I & =\begin{cases}
+1 & \text{if }k=n\\
+0 & \text{otherwise}
+\end{cases}
+\end{alignat*}
+Therefore we get:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{C}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =A^{n}
+\end{align*}
+Choose $\Gamma=\partial B_{r+\delta}\left(0\right)$. We know, that
+$\mathcal{R}_{\lambda}$ is holomorphic outside $\Gamma$. Thus we
+may continuously deform the contour to obtain:
+\begin{align*}
+\frac{1}{2\pi\ii}\oint_{\Gamma}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda & =A^{n}
+\end{align*}
+Thus we have:
+\begin{align*}
+\opnorm{A^{n}} & =\opnorm{\frac{1}{2\pi\ii}\oint_{\Gamma}\lambda^{n}\mathcal{R}_{\lambda}\dd\lambda}\le C\left(r+\delta\right)^{n}\left(r+\delta\right)
+\end{align*}
+\begin{align*}
+C & :=\frac{1}{2\pi}\sup_{\lambda\in\Gamma}\opnorm{\mathcal{R}_{\lambda}}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\opnorm{A^{n}}^{\frac{1}{n}} & \le\left(r+\delta\right)\left(C^{\frac{1}{n}}\left(r+\delta\right)^{\frac{1}{n}}\right)\xrightarrow{n\to\infty}r+\delta
+\end{align*}
+Therefore:
+\begin{align*}
+\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}} & \le r+\delta
+\end{align*}
+Since $\delta$ is arbitrary, it follows that:
+\begin{align*}
+\frac{1}{R}=\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}} & =r
+\end{align*}
+We even conclude:
+\begin{align*}
+\opnorm{A^{n}}^{\frac{1}{n}} & \xrightarrow{n\to\infty}r\left(A\right)
+\end{align*}
+Assume that $A$ is \emph{symmetric} (to show $\opnorm{A^{n}}^{\frac{1}{n}}=\opnorm A$).
+The Schwarz inequality gives:
+\begin{align*}
+\opnorm{A^{2}} & \le\opnorm A\cdot\opnorm A=\opnorm A^{2}
+\end{align*}
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,Au^{2}\right\rangle \le\sup_{\norm u=1}\underbrace{\norm u}_{=1}\cdot\norm{A^{2}u}
+\end{align*}
+Iteratively for $n\in\mathbb{N}$:
+\begin{align*}
+\opnorm{A^{2^{n}}} & =\opnorm A^{2^{n}}
+\end{align*}
+For arbitrary $m\in\mathbb{N}$ the Schwarz inequality gives:
+\begin{align*}
+\opnorm{A^{m}} & \le\opnorm A^{m}
+\end{align*}
+Choose $n$ such that $2^{n}>m$. THen:
+\begin{align*}
+\opnorm A^{2^{n}} & =\opnorm{A^{2^{n}}}=\opnorm{A^{m}\cdot A^{2^{n}-m}}\le\opnorm{A^{m}}\cdot\opnorm A^{2^{n}-m}\\
+\Rightarrow\quad\opnorm A^{m} & \le\opnorm A^{m}
+\end{align*}
+\qqed
+
+
+\subsubsection{Ritz method}
+
+Assume that $A$ is a compact symmetric operator. Consider the ``expectation
+value'' functional:
+\begin{align*}
+S:H & \to\mathbb{R}\\
+u & \mapsto\left\langle u,Au\right\rangle 
+\end{align*}
+\begin{align*}
+\overline{S\left(u\right)} & =\overline{\left\langle u,Au\right\rangle }=\left\langle Au,u\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
+\end{align*}
+$S$ is bounded, because:
+\begin{align*}
+\abs{S\left(u\right)} & =\abs{\left\langle u,Au\right\rangle }\le\opnorm A\cdot\norm u^{2}\stackrel{\norm u\le1}{\le}\opnorm A
+\end{align*}
+Maximize $S\left(u\right)$ on $\left\{ u\in H\big|\norm u=1\right\} $.\\
+Choose a maximizing sequence $\left(u_{n}\right)$, i.e. $\norm{u_{n}}=1$
+and:
+\begin{align*}
+S\left(u_{n}\right) & \xrightarrow{n\to\infty}\sup_{\norm u=1}S\left(u\right)
+\end{align*}
+Since $\overline{B_{1}\left(0\right)}$ is weakly compact, there is
+a subsequence $u_{k_{l}}$, which converges weakly $u_{k_{l}}\rightharpoondown u$.\\
+Since $A$ is compact, the sequence
+\begin{align*}
+v_{k_{l}} & :=Au_{k_{l}}\to v
+\end{align*}
+converges and $Au=v$. As a consequence:
+\begin{align*}
+S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}\right\rangle 
+\end{align*}
+\begin{align*}
+\abs{\left\langle u_{k_{l}},v_{k_{l}}\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
+\end{align*}
+Therefore $S\left(u_{k_{l}}\right)\xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)$.
+Thus $S$ is weakly continuous, i.e. for any $u_{k}\rightharpoondown u$
+converges $S\left(u_{k}\right)\to S\left(u\right)$.
+\begin{align*}
+S\left(u\right) & =\sup_{\norm{\tilde{u}}=1}S\left(\tilde{u}\right)
+\end{align*}
+Therefore $u$ is the desired maximizer.
+\begin{itemize}
+\item $u$ is on the unit sphere:\\
+The simple approach
+\begin{align*}
+\norm u^{2} & \not=\lim_{l\to\infty}\norm{u_{k_{l}}}^{2}
+\end{align*}
+does not work, because $u_{k_{l}}$ only converges weakly.\\
+Example: If $\left(e_{l}\right)$ is an orthonormal Hilbert basis
+in a separable Hilbert space, then $e_{l}\rightharpoondown0$, but:
+\begin{align*}
+\lim_{l\to\infty}\norm{e_{l}} & =1\not=0=\norm 0
+\end{align*}
+But it holds:
+\begin{align*}
+\norm u^{2} & =\lim_{l\to\infty}\abs{\left\langle u,u_{k_{l}}\right\rangle }\le\lim_{l\to\infty}\norm{u_{k_{l}}}\cdot\norm u=\norm u\\
+\Rightarrow\quad\norm u & \le1
+\end{align*}
+Assume $\norm u<1$, then the vector $\hat{u}:=\frac{u}{\norm u}$
+would satisfy the equation:
+\begin{align*}
+S\left(\hat{u}\right) & =\left\langle \hat{u},A\hat{u}\right\rangle =\frac{1}{\norm u^{2}}\left\langle u,Au\right\rangle =\frac{1}{\norm u^{2}}\sup_{\norm v=1}S\left(v\right)\stackrel{\norm u<1}{>}\sup_{\norm v=1}S\left(v\right)
+\end{align*}
+This is a contradiction. Therefore $u$ is in fact a unit vector.
+\item $u$ is an eigenvector corresponding to the eigenvalue $\norm A$:
+Consider the variation for $v\in H$:
+\begin{align*}
+\tilde{u}\left(\tau\right) & =\frac{u+\tau v}{\norm{u+\tau v}}
+\end{align*}
+\begin{align*}
+S\left(\tilde{u}\left(\tau\right)\right) & =\left\langle \tilde{u}\left(\tau\right),A\tilde{u}\left(\tau\right)\right\rangle =\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
+\end{align*}
+This is called \emph{Rayleigh quotient}, usually written with $w=u+\tau v$:
+\begin{align*}
+\frac{\left\langle w,Aw\right\rangle }{\left\langle w,w\right\rangle }
+\end{align*}
+We know that $S\left(\tilde{u}\left(\tau\right)\right)$ is maximal
+at $\tau=0$:
+\begin{align*}
+0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=2\frac{\text{Re}\left(\left\langle u,Av\right\rangle \right)}{\left\langle u,u\right\rangle }-\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}\cdot2\text{Re}\left(\left\langle u,v\right\rangle \right)\\
+0 & =\left\langle u,u\right\rangle \text{Re}\left(\left\langle u,Av\right\rangle \right)-\left\langle u,Au\right\rangle \text{Re}\left(\left\langle u,v\right\rangle \right)
+\end{align*}
+$\left\langle u,u\right\rangle =1$ and:
+\begin{align*}
+\left\langle u,Au\right\rangle  & =\sup_{\norm v=1}\left\langle v,Av\right\rangle =r\left(A\right)=\opnorm A
+\end{align*}
+This gives:
+\begin{align*}
+0 & =2\text{Re}\left(\left\langle Au,v\right\rangle -\opnorm A\left\langle u,v\right\rangle \right)
+\end{align*}
+
+\end{itemize}
 
 \part*{Appendix\thispagestyle{empty}}
 
