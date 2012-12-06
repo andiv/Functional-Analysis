@@ -7,6 +7,8 @@
 \usepackage{tikz,pgfplots}
 %\usepackage{tikz-3dplot,cancel,polynom}
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
+\usetikzlibrary{external}
+\tikzexternalize % activate!
 \usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
 \usepackage[explicit]{titlesec}
 \usepackage{subfigure}
@@ -672,6 +674,23 @@ iiilist-1
 
 \lang ngerman
 iiilist-2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Shell-Kommando für Tikz-Externalize:
+\end_layout
+
+\begin_layout Plain Layout
+pdflatex -shell-escape Functional-Analysis.tex 
 \end_layout
 
 \end_inset
@@ -14417,7 +14436,8 @@ begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
 
 \begin_layout Plain Layout
 
-			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2]
+			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2, ymin=-0.07
+]
 \end_layout
 
 \begin_layout Plain Layout
@@ -18876,6 +18896,13 @@ qqed
 Theorem 
 \series medium
 (Hilbert-Schmidt)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-Hilbert-Schmidt"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18911,7 +18938,7 @@ Au_{n} & =\lambda_{n}u_{n}
 \end_layout
 
 \begin_layout Subsubsection*
-First proof
+Proof
 \end_layout
 
 \begin_layout Standard
@@ -20494,17 +20521,56 @@ qqed
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Section
 Ritz method
 \end_layout
 
 \begin_layout Standard
-Assume that 
-\begin_inset Formula $A$
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
 \end_inset
 
- is a compact symmetric operator.
- Consider the 
+ be a symmetric compact operator on the separable Hilbert space 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+From the Hilbert-Schmidt theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-Hilbert-Schmidt"
+
+\end_inset
+
+ we know that there exists an orthonormal eigenvalue basis 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+Au_{n} & =\lambda_{n}u_{n}
+\end{align*}
+
+\end_inset
+
+We now want to construct the 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Consider the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20521,7 +20587,7 @@ u & \mapsto\left\langle u,Au\right\rangle
 
 \end_inset
 
-
+This is well defined, since:
 \begin_inset Formula 
 \begin{align*}
 \overline{S\left(u\right)} & =\overline{\left\langle u,Au\right\rangle }=\left\langle Au,u\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
@@ -20542,14 +20608,14 @@ u & \mapsto\left\langle u,Au\right\rangle
 \end_inset
 
 Maximize 
-\begin_inset Formula $S\left(u\right)$
+\begin_inset Formula $\abs{S\left(u\right)}$
 \end_inset
 
  on 
 \begin_inset Formula $\left\{ u\in H\big|\norm u=1\right\} $
 \end_inset
 
-.
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -20557,15 +20623,14 @@ Choose a maximizing sequence
 \begin_inset Formula $\left(u_{n}\right)$
 \end_inset
 
-, i.e.
- 
+ with 
 \begin_inset Formula $\norm{u_{n}}=1$
 \end_inset
 
  and:
 \begin_inset Formula 
 \begin{align*}
-S\left(u_{n}\right) & \xrightarrow{n\to\infty}\sup_{\norm u=1}S\left(u\right)
+\abs{S\left(u_{n}\right)} & \xrightarrow{n\to\infty}\sup_{\norm u=1}\abs{S\left(u\right)}
 \end{align*}
 
 \end_inset
@@ -20606,25 +20671,20 @@ converges and
  As a consequence:
 \begin_inset Formula 
 \begin{align*}
-S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}\right\rangle 
+S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}-v\right\rangle \xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
 \end{align*}
 
 \end_inset
 
-
+This follows, because:
 \begin_inset Formula 
 \begin{align*}
-\abs{\left\langle u_{k_{l}},v_{k_{l}}\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
+\abs{\left\langle u_{k_{l}},v_{k_{l}}-v\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
 \end{align*}
 
 \end_inset
 
-Therefore 
-\begin_inset Formula $S\left(u_{k_{l}}\right)\xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)$
-\end_inset
-
-.
- Thus 
+Thus 
 \begin_inset Formula $S$
 \end_inset
 
@@ -20638,9 +20698,17 @@ Therefore
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+Because 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ is a maximizing sequence, we get:
 \begin_inset Formula 
 \begin{align*}
-S\left(u\right) & =\sup_{\norm{\tilde{u}}=1}S\left(\tilde{u}\right)
+\abs{S\left(u\right)} & =\sup_{\norm{\tilde{u}}=1}\abs{S\left(\tilde{u}\right)}
 \end{align*}
 
 \end_inset
@@ -20676,7 +20744,11 @@ does not work, because
 \begin_inset Newline newline
 \end_inset
 
-Example: If 
+Example:
+\begin_inset Newline newline
+\end_inset
+
+If 
 \begin_inset Formula $\left(e_{l}\right)$
 \end_inset
 
@@ -20712,7 +20784,7 @@ Assume
  would satisfy the equation:
 \begin_inset Formula 
 \begin{align*}
-S\left(\hat{u}\right) & =\left\langle \hat{u},A\hat{u}\right\rangle =\frac{1}{\norm u^{2}}\left\langle u,Au\right\rangle =\frac{1}{\norm u^{2}}\sup_{\norm v=1}S\left(v\right)\stackrel{\norm u<1}{>}\sup_{\norm v=1}S\left(v\right)
+\abs{S\left(\hat{u}\right)} & =\abs{\left\langle \hat{u},A\hat{u}\right\rangle }=\frac{1}{\norm u^{2}}\abs{\left\langle u,Au\right\rangle }=\frac{1}{\norm u^{2}}\sup_{\norm v=1}\abs{S\left(v\right)}\stackrel{\norm u<1}{>}\sup_{\norm v=1}\abs{S\left(v\right)}
 \end{align*}
 
 \end_inset
@@ -20723,6 +20795,17 @@ This is a contradiction.
 \end_inset
 
  is in fact a unit vector.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 6.12.12
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -20730,7 +20813,7 @@ This is a contradiction.
 \end_inset
 
  is an eigenvector corresponding to the eigenvalue 
-\begin_inset Formula $\norm A$
+\begin_inset Formula $\lambda=\left\langle u,Au\right\rangle \in\mathbb{R}$
 \end_inset
 
 : Consider the variation for 
@@ -20740,7 +20823,7 @@ This is a contradiction.
 :
 \begin_inset Formula 
 \begin{align*}
-\tilde{u}\left(\tau\right) & =\frac{u+\tau v}{\norm{u+\tau v}}
+\tilde{u}\left(\tau\right) & =u+\tau v
 \end{align*}
 
 \end_inset
@@ -20748,7 +20831,7 @@ This is a contradiction.
 
 \begin_inset Formula 
 \begin{align*}
-S\left(\tilde{u}\left(\tau\right)\right) & =\left\langle \tilde{u}\left(\tau\right),A\tilde{u}\left(\tau\right)\right\rangle =\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
+S\left(\frac{\tilde{u}}{\norm{\tilde{u}}}\right) & =\frac{\left\langle \tilde{u},A\tilde{u}\right\rangle }{\left\langle \tilde{u},\tilde{u}\right\rangle }=\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
 \end{align*}
 
 \end_inset
@@ -20757,56 +20840,1832 @@ This is called
 \emph on
 Rayleigh quotient
 \emph default
-, usually written with 
-\begin_inset Formula $w=u+\tau v$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align*}
-\frac{\left\langle w,Aw\right\rangle }{\left\langle w,w\right\rangle }
-\end{align*}
-
-\end_inset
-
-We know that 
+.
+ We know that 
 \begin_inset Formula $S\left(\tilde{u}\left(\tau\right)\right)$
 \end_inset
 
- is maximal at 
+ is extremal at 
 \begin_inset Formula $\tau=0$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{align*}
-0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=2\frac{\text{Re}\left(\left\langle u,Av\right\rangle \right)}{\left\langle u,u\right\rangle }-\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}\cdot2\text{Re}\left(\left\langle u,v\right\rangle \right)\\
-0 & =\left\langle u,u\right\rangle \text{Re}\left(\left\langle u,Av\right\rangle \right)-\left\langle u,Au\right\rangle \text{Re}\left(\left\langle u,v\right\rangle \right)
+0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=\\
+ & =\frac{\left\langle u,Av\right\rangle +\left\langle v,Au\right\rangle +2\tau\left\langle v,v\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }-\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle ^{2}}\cdot\left(\left\langle v,u\right\rangle +\left\langle u,v\right\rangle +\tau\left\langle v,v\right\rangle \right)\bigg|_{\tau=0}=\\
+ & \stackrel{A\text{ symmetric}}{=}2\frac{\text{Re}\left(\left\langle v,Au\right\rangle \right)}{\left\langle u,u\right\rangle }-2\text{Re}\left(\left\langle v,u\right\rangle \right)\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}=\\
+ & \sr ={\lambda=\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle =1}2\left(\text{Re}\left(\left\langle v,Au\right\rangle \right)-\lambda\text{Re}\left(\left\langle v,u\right\rangle \right)\right)=2\text{Re}\left(\left\langle v,\left(A-\lambda\right)u\right\rangle \right)
+\end{align*}
+
+\end_inset
+
+Set 
+\begin_inset Formula $v=e^{\ii\varphi}w$
+\end_inset
+
+ for any 
+\begin_inset Formula $\varphi\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $w\in H$
+\end_inset
+
+.
+ So:
+\begin_inset Formula 
+\begin{align*}
+0 & =\text{Re}\left(\left\langle v,\left(A-\lambda\right)u\right\rangle \right)=\text{Re}\left(e^{-\ii\varphi}\left\langle w,\left(A-\lambda\right)u\right\rangle \right)\qquad\fall_{\varphi\in\mathbb{R}}
 \end{align*}
 
 \end_inset
 
 
-\begin_inset Formula $\left\langle u,u\right\rangle =1$
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\left\langle w,\left(A-\lambda\right)u\right\rangle  & =0\qquad\fall_{w\in H}\\
+\left(A-\lambda\right)u & =0\\
+Au & =\lambda u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It holds 
+\begin_inset Formula $\abs{\lambda}=\opnorm A$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+There is no point 
+\begin_inset Formula $\nu$
+\end_inset
+
+ in the spectrum of 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $\abs{\nu}>\abs{\lambda}$
+\end_inset
+
+, because otherwise for all 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $Av=\nu v$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\frac{\abs{\left\langle v,Av\right\rangle }}{\left\langle v,v\right\rangle } & =\abs{\nu}>\abs{\lambda}=\abs{\left\langle u,Au\right\rangle }=\sup_{w\in H}\frac{\abs{\left\langle w,Aw\right\rangle }}{\left\langle w,w\right\rangle }
+\end{align*}
+
+\end_inset
+
+This is a contradiction.
+ Thus we get:
+\begin_inset Formula 
+\begin{align*}
+\abs{\lambda} & =\sup_{\nu\in\sigma\left(A\right)}\abs{\nu}\stackrel{\text{by definition}}{=}r\left(A\right)\stackrel{\ref{sec:Thm-SpectralRadiusFinite}}{=}\opnorm A
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we have 
+\emph on
+constructed
+\emph default
+ a 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm u=1$
+\end_inset
+
+, 
+\begin_inset Formula $Au=\lambda u$
+\end_inset
+
+ and 
+\begin_inset Formula $\abs{\lambda}=\opnorm A$
+\end_inset
+
+.
+ Now one can proceed inductively:
+\begin_inset Formula 
+\begin{align*}
+H_{1} & :=\left\langle u\right\rangle ^{\perp}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+A\big|_{H_{1}}:H_{1} & \to H_{1}
+\end{align*}
+
+\end_inset
+
+(We saw that 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ is invariant under 
+\begin_inset Formula $A$
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+Repeat the above procedure to maximize 
+\begin_inset Formula $\abs{\left\langle v,Av\right\rangle }$
+\end_inset
+
+ on 
+\begin_inset Formula $H_{1}\cap\left\{ v\in H\big|\norm v=1\right\} $
+\end_inset
+
+.
+ This gives 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm u_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $Au_{1}=\lambda_{1}u_{1}$
 \end_inset
 
  and:
 \begin_inset Formula 
 \begin{align*}
-\left\langle u,Au\right\rangle  & =\sup_{\norm v=1}\left\langle v,Av\right\rangle =r\left(A\right)=\opnorm A
+\abs{\lambda_{1}} & =\opnorm{A\big|_{H_{1}}}\le\opnorm{A\big|_{H}}=\abs{\lambda}
 \end{align*}
 
 \end_inset
 
-This gives:
+Now set 
+\begin_inset Formula $H_{2}=\left\langle u,u_{1}\right\rangle ^{\perp}$
+\end_inset
+
+ and proceed inductively.
+\begin_inset Newline newline
+\end_inset
+
+This gives a sequence 
+\begin_inset Formula $u_{0}:=u,\ u_{1},\ u_{2},\ \ldots$
+\end_inset
+
+ of orthonormal eigenvectors, i.e.
+ 
+\begin_inset Formula $Au_{j}=\lambda_{j}u_{j}$
+\end_inset
+
+, with decreasing eigenvalues
+\begin_inset Formula $\abs{\lambda_{j}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+These 
+\begin_inset Formula $\left(u_{j}\right)$
+\end_inset
+
+ are an orthonormal basis.
+ (Proof as in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-Hilbert-Schmidt"
+
+\end_inset
+
+)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ritz, Galerkin: Finite element method
+\begin_inset Newline newline
+\end_inset
+
+Example: Helium molecule wave function in 
+\begin_inset Formula $H=L^{2}\left(\mathbb{R}^{3},\mathbb{C}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[fill=black] (-1,0) circle (0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[fill=black] (1,0) circle (0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-2,-0.3) -- (-2.5,-0.8) -- (-2.75,1) -- (-2,-0.3) -- (-1.8,2) -- (-2.75,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-1.8,2) -- (-0.8,1) -- (-2,-0.3) -- (-1.5,-0.8) -- (-0.8,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-1.5,-0.8) -- (-2.5,-0.8);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-1.5,-0.8) -- (-0.5,0) -- (-0.8,1) -- (0.5,0.7) -- (-0.5,0) -- (0.8,-0.8) --
+ (2,-0.3) -- (0.5,0.7);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.5,0.7) -- (0.8,-0.8);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+finite lattice for numerical approximation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
-0 & =2\text{Re}\left(\left\langle Au,v\right\rangle -\opnorm A\left\langle u,v\right\rangle \right)
+A & =-\frac{\hbar^{2}}{2m}\Delta-\frac{ze^{2}}{\norm{x-x_{1}}}-\frac{ze^{2}}{\norm{x-x_{2}}}
+\end{align*}
+
+\end_inset
+
+Now minimize
+\begin_inset Formula 
+\begin{align*}
+\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle }
+\end{align*}
+
+\end_inset
+
+on a finite subspace of 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+A few (technical) results
+\end_layout
+
+\begin_layout Section
+Dini's theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a metric space and 
+\begin_inset Formula $f_{n}:E\to\mathbb{R}$
+\end_inset
+
+ a sequence of real valued functions.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(point-wise/uniform convergence)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ 
+\emph on
+converges point-wise
+\emph default
+ to 
+\begin_inset Formula $f$
+\end_inset
+
+ if 
+\begin_inset Formula $f_{n}\left(x\right)\to f\left(x\right)$
+\end_inset
+
+ converges for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+, i.e.:
+\begin_inset Formula 
+\begin{align*}
+\fall_{x\in E}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{N\left(\varepsilon,x\right)}\ \fall_{n\in\mathbb{N}_{\ge N}}:\  & \abs{f_{n}\left(x\right)-f\left(x\right)}<\varepsilon
 \end{align*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ 
+\emph on
+converges uniformly
+\emph default
+ to 
+\begin_inset Formula $f$
+\end_inset
+
+, in symbols 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+, if for all 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ exists a 
+\begin_inset Formula $N\left(\varepsilon\right)$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n\ge N$
+\end_inset
+
+ and all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+With quantifiers this is:
+\begin_inset Formula 
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{N\left(\varepsilon\right)}\ \fall_{n\in\mathbb{N}_{\ge N}}\ \fall_{x\in E}:\  & \abs{f_{n}\left(x\right)-f\left(x\right)}<\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\left(f_{n}\right)$
+\end_inset
+
+ is a sequence of continuous functions with 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+, then 
+\begin_inset Formula $f$
+\end_inset
+
+ is also continuous.
+\begin_inset Newline newline
+\end_inset
+
+This is not true in general for point wise convergence:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(x\right) & =\begin{cases}
+1 & \text{for }0\le x\le\frac{1}{2}\left(1-\frac{1}{n}\right)\\
+0 & \text{for }x\ge\frac{1}{2}\\
+n\left(1-2x\right) & \text{for }\frac{1}{2}\left(1-\frac{1}{n}\right)<x<\frac{1}{2}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ converges pointwise to:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =\begin{cases}
+1 & x<\frac{1}{2}\\
+0 & x\ge\frac{1}{2}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+This 
+\begin_inset Formula $f$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ continuous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle, xmax=1.15, ymax=1.15,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xlabel=$x$, ylabel=$y$,samples=300]
+\end_layout
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+addplot[domain=0:0.25] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0.25:0.5] {1-4*(x-0.25)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f_2(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:0.5,red,thick] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0.5:1.15,red,thick] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+draw[red, thick, dashed,scale=7.34] (0.5,0) -- (0.5,0.83);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{n}\left(x\right)$
+\end_inset
+
+ is continuous, but not 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Show that for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ the 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-
+\begin_inset Formula $\delta$
+\end_inset
+
+-criterion is satisfied:
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+ converges uniformly, there is a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ and all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+Because the 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ are continuous, there exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $y\in B_{\delta}\left(x\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{N}\left(x\right)-f_{N}\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+Now follows for all 
+\begin_inset Formula $y\in B_{\delta}\left(x\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\abs{f\left(y\right)-f\left(x\right)} & \le\underbrace{\abs{f\left(y\right)-f_{N}\left(y\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\abs{f_{N}\left(y\right)-f_{N}\left(x\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\abs{f_{N}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{3}}<\varepsilon
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $f$
+\end_inset
+
+ is continuous.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(monotonically increasing/decreasing)
+\end_layout
+
+\begin_layout Standard
+The sequence of functions 
+\begin_inset Formula $\left(f_{n}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $f_{n}:E\to\mathbb{R}$
+\end_inset
+
+ is called 
+\emph on
+monotonically increasing (decreasing)
+\emph default
+ if for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ the real sequence 
+\begin_inset Formula $f_{n}\left(x\right)$
+\end_inset
+
+ is monotonically increasing (decreasing).
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Dini)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a 
+\emph on
+compact
+\emph default
+ metric space, 
+\begin_inset Formula $\left(f_{n}\right)$
+\end_inset
+
+ monotone and 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $f$
+\end_inset
+
+ are continuous, then the convergence 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+ is uniform.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Without loss of generality we assume 
+\begin_inset Formula $\left(f_{n}\right)$
+\end_inset
+
+ is a monotonically increasing sequence (otherwise consider 
+\begin_inset Formula $-f_{n}$
+\end_inset
+
+), i.e.
+ 
+\begin_inset Formula $f_{n}\left(x\right)\le f_{n+1}\left(x\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ and all 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Given 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ we want to show:
+\begin_inset Formula 
+\begin{align*}
+\exs_{N\in\mathbb{N}}\ \fall_{x\in E}\ \fall_{\in\mathbb{N}_{\ge N}}:\  & \abs{f\left(x\right)-f_{n}\left(x\right)}<\varepsilon
+\end{align*}
+
+\end_inset
+
+For any 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ there exists an 
+\begin_inset Formula $N\left(x\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\abs{f_{n}\left(x\right)-f\left(x\right)}<\frac{\varepsilon}{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ (point-wise convergence).
+ Since both 
+\begin_inset Formula $f_{N\left(x\right)}$
+\end_inset
+
+ and 
+\begin_inset Formula $f$
+\end_inset
+
+ are continuous functions, there exists a neighborhood 
+\begin_inset Formula $U\left(x\right)=B_{\delta\left(x\right)}\left(x\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $x$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $z\in U\left(x\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{N\left(x\right)}\left(z\right)-f_{N\left(x\right)}\left(x\right)} & \le\frac{\varepsilon}{4}\\
+\abs{f\left(z\right)-f\left(x\right)} & \le\frac{\varepsilon}{4}
+\end{align*}
+
+\end_inset
+
+Then follows:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{N\left(x\right)}\left(z\right)-f\left(z\right)} & \le\underbrace{\abs{f_{N\left(x\right)}\left(z\right)-f_{N\left(x\right)}\left(x\right)}}_{\le\frac{\varepsilon}{4}}+\underbrace{\abs{f_{N\left(x\right)}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{2}}+\underbrace{\abs{f\left(x\right)-f\left(z\right)}}_{\le\frac{\varepsilon}{4}}<\varepsilon
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f_{n}\left(z\right)$
+\end_inset
+
+ is monotonically increasing, it follows that 
+\begin_inset Formula $\abs{f_{n}\left(z\right)-f\left(z\right)}<\varepsilon$
+\end_inset
+
+ for all 
+\begin_inset Formula $z\in B_{\delta\left(x\right)}\left(x\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Now use a standard compactness argument: Since 
+\begin_inset Formula $E$
+\end_inset
+
+ is compact, it can be covered by a finite number of these balls 
+\begin_inset Formula $B_{\delta\left(x_{1}\right)}\left(x_{1}\right),\ldots,B_{\delta\left(x_{n}\right)}\left(x_{n}\right)$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+N & =\max\left\{ N\left(x_{1}\right),\ldots,N\left(x_{n}\right)\right\} 
+\end{align*}
+
+\end_inset
+
+So for all 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Stone-Weierstraß theorem
+\end_layout
+
+\begin_layout Standard
+We follow the nice (since constructive) proof by Bernstein.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(polynomials)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E=C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+ be the Banach space of real valued functions with norm 
+\begin_inset Formula $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathcal{P}\left(\left[0,1\right]\right)$
+\end_inset
+
+ are the 
+\emph on
+real polynomials
+\emph default
+, i.e.
+ for 
+\begin_inset Formula $f\in\mathcal{P}\left(\left[0,1\right]\right)$
+\end_inset
+
+ there are 
+\begin_inset Formula $a_{j}\in\mathbb{R}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots+a_{0}
+\end{align*}
+
+\end_inset
+
+Clearly 
+\begin_inset Formula $\mathcal{P}\left(\left[0,1\right]\right)\subseteq C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+ forms a subspace.
+\end_layout
+
+\begin_layout Standard
+We want to show that 
+\begin_inset Formula $\mathcal{P}\left(\left[0,1\right]\right)$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+ holds:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =\left(x+1-x\right)^{n}=1
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+ holds:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =nx\left(1-x\right)\le\frac{n}{4}
+\end{align*}
+
+\end_inset
+
+Obviously holds
+\begin_inset Formula 
+\begin{align*}
+\left(nx-k\right)^{2} & \le4n^{2}
+\end{align*}
+
+\end_inset
+
+and therefore:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le4n^{2}\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=4n^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proof
+\end_layout
+
+\begin_layout Standard
+It holds:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}k\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =\sum_{k=0}^{n}k\frac{n!}{k!\left(n-k\right)!}x^{k}\left(1-x\right)^{n-k}=\\
+ & =0+\sum_{k=1}^{n}\frac{n\cdot\left(n-1\right)!}{\left(k-1\right)!\left(n-k\right)!}x^{k}\left(1-x\right)^{n-k}=\\
+ & =n\sum_{k=1}^{n}\left(\begin{array}{c}
+n-1\\
+k-1
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \sr ={j:=k-1}{}n\sum_{j=0}^{n-1}\left(\begin{array}{c}
+n-1\\
+j
+\end{array}\right)x^{j+1}\left(1-x\right)^{n-j-1}=\\
+ & =nx\sum_{j=0}^{n-1}\left(\begin{array}{c}
+n-1\\
+j
+\end{array}\right)x^{j}\left(1-x\right)^{\left(n-1\right)-j}=nx\left(x+1-x\right)^{n-1}=nx
+\end{align*}
+
+\end_inset
+
+Similarly one gets:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}k\left(k-1\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =n\left(n-1\right)\sum_{k=2}\left(\begin{array}{c}
+n-2\\
+k-2
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=n\left(n-1\right)x^{2}
+\end{align*}
+
+\end_inset
+
+Together this gives:
+\begin_inset Formula 
+\begin{align*}
+ & \sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\sum_{k=0}^{n}\left(n^{2}x^{2}-2nxk+k^{2}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \qquad=\sum_{k=0}^{n}\left(n^{2}x^{2}-2nxk+k\left(k-1\right)+k\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \qquad=n^{2}x^{2}-2nx\cdot nx+n\left(n-1\right)x^{2}+nx=\\
+ & \qquad=-n^{2}x^{2}+n^{2}x^{2}-nx^{2}+nx=nx\left(1-x\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A more elegant method is to use derivatives:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =\left(x+y\right)^{n}\\
+\sum_{k=0}^{n}k\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =x\cdot\frac{\dd}{\dd x}\left(\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k}\right)\\
+\sum_{k=0}^{n}k^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =\left(x\cdot\frac{\dd}{\dd x}\right)^{2}\left(\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+B_{n}f\left(x\right) & :=\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Bernstein)
+\end_layout
+
+\begin_layout Standard
+For any 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+, 
+\begin_inset Formula $B_{n}f\rightrightarrows f$
+\end_inset
+
+ converges uniformly.
+\end_layout
+
+\begin_layout Standard
+Example: 
+\begin_inset Formula $f\left(x\right)=10x\cdot e^{-3x}+\frac{1}{5}\cos\left(\left(4x\right)^{2}\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B_{4}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{4}+5,2\cdot x\cdot\left(1-x\right)^{3}+5,9\cdot x^{2}\cdot\left(1-x\right)^{2}+2,4\cdot x^{3}\cdot\left(1-x\right)+0,3\cdot x^{4}\\
+B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+\\
+ & \qquad+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+\\
+ & \qquad+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+\\
+ & \qquad+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xlabel=$x$, ylabel=$y$,samples=300,domain=0:1]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:1] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red,dotted,thick] {0.2*(1-x)^4+5.1559073721*x*(1-x)^3+5.90953245942*x^2*(1-
+x)^2 +2.43307252735*x^3*(1-x)+0.306338787614*x^4};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$B_4f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[green,dashed,thick] {0.2*(1-x)^10 + 9.38263677357*x*(1-x)^9 + 56.6119090694
+*x^2*(1-x)^8 +
+\end_layout
+
+\begin_layout Plain Layout
+
+			149.495246516*x^3*(1-x)^7 + 217.908409367*x^4*(1-x)^6 + 248.200363295*x^5*(1-x)^
+5 +
+\end_layout
+
+\begin_layout Plain Layout
+
+			244.658345846*x^6*(1-x)^4 + 103.198948015*x^7*(1-x)^3 + 26.4871020479*x^8*(1-x)^
+2 +
+\end_layout
+
+\begin_layout Plain Layout
+
+			7.89554238831*x^9*(1-x) + 0.306338787614 *x^10};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$B_{10}f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[blue,thick] {0.2*(x - 1)^100 - 29.7044297355*(x - 1)^99*x + 1922.32661312*(
+x - 1)^98*x^2 - 76671.4488442*(x - 1)^97*x^3 + 2175113.86842*(x - 1)^96*x^4
+ - 47445744.0975*(x - 1)^95*x^5 + 835426611.054*(x - 1)^94*x^6 - 12274511676.0*(x
+ - 1)^93*x^7 + (1.54128159816e+11)*(x - 1)^92*x^8 - (1.68416809261e+12)*(x
+ - 1)^91*x^9 + (1.62416346068e+13)*(x - 1)^90*x^10 - (1.39799905505e+14)*(x
+ - 1)^89*x^11 + (1.08395744118e+15)*(x - 1)^88*x^12 - (7.62894913085e+15)*(x
+ - 1)^87*x^13 + (4.90524281676e+16)*(x - 1)^86*x^14 - (2.89723345963e+17)*(x
+ - 1)^85*x^15 + (1.57938018746e+18)*(x - 1)^84*x^16 - (7.97909365281e+18)*(x
+ - 1)^83*x^17 + (3.74925611597e+19)*(x - 1)^82*x^18 - (1.64375304991e+20)*(x
+ - 1)^81*x^19 + (6.742898184e+20)*(x - 1)^80*x^20 - (2.59454195168e+21)*(x
+ - 1)^79*x^21 + (9.38534683558e+21)*(x - 1)^78*x^22 - (3.19807571697e+22)*(x
+ - 1)^77*x^23 + (1.02840511571e+23)*(x - 1)^76*x^24 - (3.12601722657e+23)*(x
+ - 1)^75*x^25 + (8.99540551127e+23)*(x - 1)^74*x^26 - (2.45384693521e+24)*(x
+ - 1)^73*x^27 + (6.3535833129e+24)*(x - 1)^72*x^28 - (1.56329402068e+25)*(x
+ - 1)^71*x^29 + (3.65918765199e+25)*(x - 1)^70*x^30 - (8.15630256136e+25)*(x
+ - 1)^69*x^31 + (1.7329494044e+26)*(x - 1)^68*x^32 - (3.51288267659e+26)*(x
+ - 1)^67*x^33 + (6.80009456156e+26)*(x - 1)^66*x^34 - (1.25811363872e+27)*(x
+ - 1)^65*x^35 + (2.22666269336e+27)*(x - 1)^64*x^36 - (3.7730643047e+27)*(x
+ - 1)^63*x^37 + (6.12656303633e+27)*(x - 1)^62*x^38 - (9.54121434063e+27)*(x
+ - 1)^61*x^39 + (1.42639048452e+28)*(x - 1)^60*x^40 - (2.04882695285e+28)*(x
+ - 1)^59*x^41 + (2.82997586185e+28)*(x - 1)^58*x^42 - (3.76214352396e+28)*(x
+ - 1)^57*x^43 + (4.81728554268e+28)*(x - 1)^56*x^44 - (5.94543941083e+28)*(x
+ - 1)^55*x^45 + (7.0766223624e+28)*(x - 1)^54*x^46 - (8.12653547869e+28)*(x
+ - 1)^53*x^47 + (9.0056905284e+28)*(x - 1)^52*x^48 - (9.6308442906e+28)*(x
+ - 1)^51*x^49 + (9.93701125777e+28)*(x - 1)^50*x^50 - (9.88794489827e+28)*(x
+ - 1)^49*x^51 + (9.48295145921e+28)*(x - 1)^48*x^52 - (8.75834176186e+28)*(x
+ - 1)^47*x^53 + (7.78277250071e+28)*(x - 1)^46*x^54 - (6.64705004092e+28)*(x
+ - 1)^45*x^55 + (5.45033587088e+28)*(x - 1)^44*x^56 - (4.28565344267e+28)*(x
+ - 1)^43*x^57 + (3.22776989136e+28)*(x - 1)^42*x^58 - (2.32579971336e+28)*(x
+ - 1)^41*x^59 + (1.60149090844e+28)*(x - 1)^40*x^60 - (1.05260827225e+28)*(x
+ - 1)^39*x^61 + (6.59659001145e+27)*(x - 1)^38*x^62 - (3.93748270015e+27)*(x
+ - 1)^37*x^63 + (2.23625120007e+27)*(x - 1)^36*x^64 - (1.2072827702e+27)*(x
+ - 1)^35*x^65 + (6.19022488168e+26)*(x - 1)^34*x^66 - (3.01225494685e+26)*(x
+ - 1)^33*x^67 + (1.39035634551e+26)*(x - 1)^32*x^68 - (6.08541276274e+25)*(x
+ - 1)^31*x^69 + (2.52599547528e+25)*(x - 1)^30*x^70 - (9.95022718871e+24)*(x
+ - 1)^29*x^71 + (3.72450252857e+24)*(x - 1)^28*x^72 - (1.32760664266e+24)*(x
+ - 1)^27*x^73 + (4.51994903095e+23)*(x - 1)^26*x^74 - (1.47516743127e+23)*(x
+ - 1)^25*x^75 + (4.63264469906e+22)*(x - 1)^24*x^76 - (1.40412004325e+22)*(x
+ - 1)^23*x^77 + (4.11230568962e+21)*(x - 1)^22*x^78 - (1.16208158162e+21)*(x
+ - 1)^21*x^79 + (3.15481027286e+20)*(x - 1)^20*x^80 - (8.17300500354e+19)*(x
+ - 1)^19*x^81 + (2.00415639672e+19)*(x - 1)^18*x^82 - (4.6119830604e+18)*(x
+ - 1)^17*x^83 + (9.87622406444e+17)*(x - 1)^16*x^84 - (1.95242968902e+17)*(x
+ - 1)^15*x^85 + (3.53637476861e+16)*(x - 1)^14*x^86 - (5.82579078166e+15)*(x
+ - 1)^13*x^87 + (8.66482439273e+14)*(x - 1)^12*x^88 - (1.15456063319e+14)*(x
+ - 1)^11*x^89 + (1.36674282068e+13)*(x - 1)^10*x^90 - (1.4240167171e+12)*(x
+ - 1)^9*x^91 + (1.29209648425e+11)*(x - 1)^8*x^92 - 10086134970.2*(x - 1)^7*x^93
+ + 667798780.604*(x - 1)^6*x^94 - 36881544.6299*(x - 1)^5*x^95 + 1664862.88706*(x
+ - 1)^4*x^96 - 59769.1901049*(x - 1)^3*x^97 + 1631.70663884*(x - 1)^2*x^98
+ - 30.797227045*(x - 1)*x^99 + 0.306338787614*x^100};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$B_{100}f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[mark=x, samples=100, only marks, blue] {10*exp(-3*x)*x+0.2*cos(16*x^2
+ r)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[mark=*, samples=10, only marks, green] {10*exp(-3*x)*x+0.2*cos(16*x^2
+ r)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[mark=triangle*, samples=4, only marks, red] {10*exp(-3*x)*x+0.2*cos(16*x^
+2 r)};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+draw[red, thick, scale=7.34] (0.5,0) -- (0.5,0.83);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Approximation of 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ by 
+\begin_inset Formula $B_{n}f\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Without loss of generality assume 
+\begin_inset Formula $f\not=0$
+\end_inset
+
+ (otherwise 
+\begin_inset Formula $B_{n}f=0=f$
+\end_inset
+
+).
+\begin_inset Formula 
+\begin{align*}
+M & :=\norm f>0
+\end{align*}
+
+\end_inset
+
+Consider an arbitrary 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ is continuous on the compact set 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ and thus uniformly continuous, i.e.
+ there exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\abs{x-y} & <\delta\quad\Rightarrow\qquad\abs{f\left(x\right)-f\left(y\right)}<\frac{\varepsilon}{2}
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $\mathbb{N}\ni N\ge\frac{M}{\varepsilon\delta^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\abs{B_{n}f\left(x\right)-f\left(x\right)}<\varepsilon$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+ and all 
+\begin_inset Formula $n\ge N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Proof: It holds:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =\sum_{k=0}^{n}f\left(x\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\\
+f_{n}\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+
+\end_inset
+
+Define:
+\begin_inset Formula 
+\begin{align*}
+A & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}<\delta\right\} \\
+B & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
+\end{align*}
+
+\end_inset
+
+We have:
+\begin_inset Formula 
+\begin{align*}
+\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le\frac{\varepsilon}{2}}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\frac{\varepsilon}{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{B_{n}f\left(x\right)-f\left(x\right)} & \le\sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le2M\sum_{k\in B}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
+ & \sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}}_{\le\frac{n}{4}}\le\\
+ & \stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore 
+\begin_inset Formula $B_{n}f\rightrightarrows f$
+\end_inset
+
+ converges uniformly.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Arzelà-Ascoli theorem
+\end_layout
+
+\begin_layout Section
+Riesz representation theorem
 \end_layout
 
 \begin_layout Part*

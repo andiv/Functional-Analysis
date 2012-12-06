@@ -44,6 +44,8 @@
 \usepackage{tikz,pgfplots}
 %\usepackage{tikz-3dplot,cancel,polynom}
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
+\usetikzlibrary{external}
+\tikzexternalize % activate!
 \usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
 \usepackage[explicit]{titlesec}
 \usepackage{subfigure}
@@ -178,6 +180,8 @@
 \makeatother
 
 \begin{document}
+
+
 
 
 
@@ -3151,7 +3155,7 @@ Then $\norm{u_{n}}<\infty$ and $\norm{Au_{n}}\xrightarrow{n\to\infty}\infty$.
 \begin{figure}[H]
 \hspace*{1mm}\hfill{}\begin{tikzpicture}
  \begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
-			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2]
+			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2, ymin=-0.07]
    \addplot[domain=-2.99:-1.01] {exp(-1/(3+x)^2)/(exp(-1/(3+x)^2)+exp(-1/(-x-1)^2))};
    \addplot[domain=-1.01:1.01] {1};
    \addplot[domain=1.01:2.99] {exp(-1/(3-x)^2)/(exp(-1/(3-x)^2)+exp(-1/(x-1)^2))};
@@ -4132,7 +4136,7 @@ For $v\in\left\langle u\right\rangle ^{\perp}$ holds:
 Therefore $Av\in\left\langle u\right\rangle ^{\perp}$.\qqed
 
 
-\section{Theorem \textmd{(Hilbert-Schmidt)}}
+\section{Theorem \textmd{(Hilbert-Schmidt)\label{sec:Thm-Hilbert-Schmidt}}}
 
 Let $A\in L\left(H\right)$ be a symmetric compact operator on the
 separable Hilbert space $H$.\\
@@ -4145,7 +4149,7 @@ Au_{n} & =\lambda_{n}u_{n}
 
 
 
-\subsubsection*{First proof}
+\subsubsection*{Proof}
 
 $\sigma\left(A\right)$ is countable and therefore we can write $\sigma\left(A\right)\setminus\left\{ 0\right\} =\left\{ \lambda_{1},\lambda_{2},\ldots\right\} \subseteq\mathbb{R}$
 with $\lambda_{i}\not=\lambda_{j}$ for $i\not=j$. $\text{ker}\left(\lambda_{j}-A\right)$
@@ -4411,14 +4415,24 @@ Choose $n$ such that $2^{n}>m$. THen:
 \qqed
 
 
-\subsubsection{Ritz method}
+\section{Ritz method}
 
-Assume that $A$ is a compact symmetric operator. Consider the ``expectation
-value'' functional:
+Let $A\in L\left(H\right)$ be a symmetric compact operator on the
+separable Hilbert space $H$.\\
+From the Hilbert-Schmidt theorem \ref{sec:Thm-Hilbert-Schmidt} we
+know that there exists an orthonormal eigenvalue basis $\left(u_{n}\right)$
+of $H$. 
+\begin{align*}
+Au_{n} & =\lambda_{n}u_{n}
+\end{align*}
+We now want to construct the $u_{n}$:
+
+Consider the ``expectation value'' functional:
 \begin{align*}
 S:H & \to\mathbb{R}\\
 u & \mapsto\left\langle u,Au\right\rangle 
 \end{align*}
+This is well defined, since:
 \begin{align*}
 \overline{S\left(u\right)} & =\overline{\left\langle u,Au\right\rangle }=\left\langle Au,u\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
 \end{align*}
@@ -4426,11 +4440,11 @@ $S$ is bounded, because:
 \begin{align*}
 \abs{S\left(u\right)} & =\abs{\left\langle u,Au\right\rangle }\le\opnorm A\cdot\norm u^{2}\stackrel{\norm u\le1}{\le}\opnorm A
 \end{align*}
-Maximize $S\left(u\right)$ on $\left\{ u\in H\big|\norm u=1\right\} $.\\
-Choose a maximizing sequence $\left(u_{n}\right)$, i.e. $\norm{u_{n}}=1$
+Maximize $\abs{S\left(u\right)}$ on $\left\{ u\in H\big|\norm u=1\right\} $:\\
+Choose a maximizing sequence $\left(u_{n}\right)$ with $\norm{u_{n}}=1$
 and:
 \begin{align*}
-S\left(u_{n}\right) & \xrightarrow{n\to\infty}\sup_{\norm u=1}S\left(u\right)
+\abs{S\left(u_{n}\right)} & \xrightarrow{n\to\infty}\sup_{\norm u=1}\abs{S\left(u\right)}
 \end{align*}
 Since $\overline{B_{1}\left(0\right)}$ is weakly compact, there is
 a subsequence $u_{k_{l}}$, which converges weakly $u_{k_{l}}\rightharpoondown u$.\\
@@ -4440,16 +4454,17 @@ v_{k_{l}} & :=Au_{k_{l}}\to v
 \end{align*}
 converges and $Au=v$. As a consequence:
 \begin{align*}
-S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}\right\rangle 
+S\left(u_{k_{l}}\right) & =\left\langle u_{k_{l}},Au_{k_{l}}\right\rangle =\left\langle u_{k_{l}},v_{k_{l}}\right\rangle =\underbrace{\left\langle u_{k_{l}},v\right\rangle }_{\to\left\langle u,v\right\rangle }+\left\langle u_{k_{l}},v_{k_{l}}-v\right\rangle \xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)
 \end{align*}
+This follows, because:
 \begin{align*}
-\abs{\left\langle u_{k_{l}},v_{k_{l}}\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
+\abs{\left\langle u_{k_{l}},v_{k_{l}}-v\right\rangle } & \le\underbrace{\norm{u_{k_{l}}}}_{=1}\cdot\underbrace{\norm{v_{k_{l}}-v}}_{\to0}\xrightarrow{l\to\infty}0
 \end{align*}
-Therefore $S\left(u_{k_{l}}\right)\xrightarrow{l\to\infty}\left\langle u,v\right\rangle =\left\langle u,Au\right\rangle =S\left(u\right)$.
 Thus $S$ is weakly continuous, i.e. for any $u_{k}\rightharpoondown u$
-converges $S\left(u_{k}\right)\to S\left(u\right)$.
+converges $S\left(u_{k}\right)\to S\left(u\right)$.\\
+Because $\left(u_{n}\right)$ is a maximizing sequence, we get:
 \begin{align*}
-S\left(u\right) & =\sup_{\norm{\tilde{u}}=1}S\left(\tilde{u}\right)
+\abs{S\left(u\right)} & =\sup_{\norm{\tilde{u}}=1}\abs{S\left(\tilde{u}\right)}
 \end{align*}
 Therefore $u$ is the desired maximizer.
 \begin{itemize}
@@ -4459,8 +4474,9 @@ The simple approach
 \norm u^{2} & \not=\lim_{l\to\infty}\norm{u_{k_{l}}}^{2}
 \end{align*}
 does not work, because $u_{k_{l}}$ only converges weakly.\\
-Example: If $\left(e_{l}\right)$ is an orthonormal Hilbert basis
-in a separable Hilbert space, then $e_{l}\rightharpoondown0$, but:
+Example:\\
+If $\left(e_{l}\right)$ is an orthonormal Hilbert basis in a separable
+Hilbert space, then $e_{l}\rightharpoondown0$, but:
 \begin{align*}
 \lim_{l\to\infty}\norm{e_{l}} & =1\not=0=\norm 0
 \end{align*}
@@ -4472,37 +4488,508 @@ But it holds:
 Assume $\norm u<1$, then the vector $\hat{u}:=\frac{u}{\norm u}$
 would satisfy the equation:
 \begin{align*}
-S\left(\hat{u}\right) & =\left\langle \hat{u},A\hat{u}\right\rangle =\frac{1}{\norm u^{2}}\left\langle u,Au\right\rangle =\frac{1}{\norm u^{2}}\sup_{\norm v=1}S\left(v\right)\stackrel{\norm u<1}{>}\sup_{\norm v=1}S\left(v\right)
+\abs{S\left(\hat{u}\right)} & =\abs{\left\langle \hat{u},A\hat{u}\right\rangle }=\frac{1}{\norm u^{2}}\abs{\left\langle u,Au\right\rangle }=\frac{1}{\norm u^{2}}\sup_{\norm v=1}\abs{S\left(v\right)}\stackrel{\norm u<1}{>}\sup_{\norm v=1}\abs{S\left(v\right)}
 \end{align*}
-This is a contradiction. Therefore $u$ is in fact a unit vector.
-\item $u$ is an eigenvector corresponding to the eigenvalue $\norm A$:
+This is a contradiction. Therefore $u$ is in fact a unit vector.%DATE: Do 6.12.12
+\item $u$ is an eigenvector corresponding to the eigenvalue $\lambda=\left\langle u,Au\right\rangle \in\mathbb{R}$:
 Consider the variation for $v\in H$:
 \begin{align*}
-\tilde{u}\left(\tau\right) & =\frac{u+\tau v}{\norm{u+\tau v}}
+\tilde{u}\left(\tau\right) & =u+\tau v
 \end{align*}
 \begin{align*}
-S\left(\tilde{u}\left(\tau\right)\right) & =\left\langle \tilde{u}\left(\tau\right),A\tilde{u}\left(\tau\right)\right\rangle =\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
+S\left(\frac{\tilde{u}}{\norm{\tilde{u}}}\right) & =\frac{\left\langle \tilde{u},A\tilde{u}\right\rangle }{\left\langle \tilde{u},\tilde{u}\right\rangle }=\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }
 \end{align*}
-This is called \emph{Rayleigh quotient}, usually written with $w=u+\tau v$:
+This is called \emph{Rayleigh quotient}. We know that $S\left(\tilde{u}\left(\tau\right)\right)$
+is extremal at $\tau=0$:
 \begin{align*}
-\frac{\left\langle w,Aw\right\rangle }{\left\langle w,w\right\rangle }
+0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=\\
+ & =\frac{\left\langle u,Av\right\rangle +\left\langle v,Au\right\rangle +2\tau\left\langle v,v\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle }-\frac{\left\langle u+\tau v,A\left(u+\tau v\right)\right\rangle }{\left\langle u+\tau v,u+\tau v\right\rangle ^{2}}\cdot\left(\left\langle v,u\right\rangle +\left\langle u,v\right\rangle +\tau\left\langle v,v\right\rangle \right)\bigg|_{\tau=0}=\\
+ & \stackrel{A\text{ symmetric}}{=}2\frac{\text{Re}\left(\left\langle v,Au\right\rangle \right)}{\left\langle u,u\right\rangle }-2\text{Re}\left(\left\langle v,u\right\rangle \right)\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}=\\
+ & \sr ={\lambda=\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle =1}2\left(\text{Re}\left(\left\langle v,Au\right\rangle \right)-\lambda\text{Re}\left(\left\langle v,u\right\rangle \right)\right)=2\text{Re}\left(\left\langle v,\left(A-\lambda\right)u\right\rangle \right)
 \end{align*}
-We know that $S\left(\tilde{u}\left(\tau\right)\right)$ is maximal
-at $\tau=0$:
+Set $v=e^{\ii\varphi}w$ for any $\varphi\in\mathbb{R}$ and $w\in H$.
+So:
 \begin{align*}
-0 & =\frac{\dd}{\dd\tau}S\left(\tilde{u}\left(\tau\right)\right)\bigg|_{\tau=0}=2\frac{\text{Re}\left(\left\langle u,Av\right\rangle \right)}{\left\langle u,u\right\rangle }-\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle ^{2}}\cdot2\text{Re}\left(\left\langle u,v\right\rangle \right)\\
-0 & =\left\langle u,u\right\rangle \text{Re}\left(\left\langle u,Av\right\rangle \right)-\left\langle u,Au\right\rangle \text{Re}\left(\left\langle u,v\right\rangle \right)
+0 & =\text{Re}\left(\left\langle v,\left(A-\lambda\right)u\right\rangle \right)=\text{Re}\left(e^{-\ii\varphi}\left\langle w,\left(A-\lambda\right)u\right\rangle \right)\qquad\fall_{\varphi\in\mathbb{R}}
 \end{align*}
-$\left\langle u,u\right\rangle =1$ and:
 \begin{align*}
-\left\langle u,Au\right\rangle  & =\sup_{\norm v=1}\left\langle v,Av\right\rangle =r\left(A\right)=\opnorm A
+\Rightarrow\quad\left\langle w,\left(A-\lambda\right)u\right\rangle  & =0\qquad\fall_{w\in H}\\
+\left(A-\lambda\right)u & =0\\
+Au & =\lambda u
 \end{align*}
-This gives:
+
+\item It holds $\abs{\lambda}=\opnorm A$:\\
+There is no point $\nu$ in the spectrum of $A$ with $\abs{\nu}>\abs{\lambda}$,
+because otherwise for all $v\in H$ with $Av=\nu v$ follows:
 \begin{align*}
-0 & =2\text{Re}\left(\left\langle Au,v\right\rangle -\opnorm A\left\langle u,v\right\rangle \right)
+\frac{\abs{\left\langle v,Av\right\rangle }}{\left\langle v,v\right\rangle } & =\abs{\nu}>\abs{\lambda}=\abs{\left\langle u,Au\right\rangle }=\sup_{w\in H}\frac{\abs{\left\langle w,Aw\right\rangle }}{\left\langle w,w\right\rangle }
+\end{align*}
+This is a contradiction. Thus we get:
+\begin{align*}
+\abs{\lambda} & =\sup_{\nu\in\sigma\left(A\right)}\abs{\nu}\stackrel{\text{by definition}}{=}r\left(A\right)\stackrel{\ref{sec:Thm-SpectralRadiusFinite}}{=}\opnorm A
 \end{align*}
 
 \end{itemize}
+Thus we have \emph{constructed} a $u\in H$ with $\norm u=1$, $Au=\lambda u$
+and $\abs{\lambda}=\opnorm A$. Now one can proceed inductively:
+\begin{align*}
+H_{1} & :=\left\langle u\right\rangle ^{\perp}
+\end{align*}
+\begin{align*}
+A\big|_{H_{1}}:H_{1} & \to H_{1}
+\end{align*}
+(We saw that $H_{1}$ is invariant under $A$.)\\
+Repeat the above procedure to maximize $\abs{\left\langle v,Av\right\rangle }$
+on $H_{1}\cap\left\{ v\in H\big|\norm v=1\right\} $. This gives $u_{1}$
+with $\norm u_{1}=1$, $Au_{1}=\lambda_{1}u_{1}$ and:
+\begin{align*}
+\abs{\lambda_{1}} & =\opnorm{A\big|_{H_{1}}}\le\opnorm{A\big|_{H}}=\abs{\lambda}
+\end{align*}
+Now set $H_{2}=\left\langle u,u_{1}\right\rangle ^{\perp}$ and proceed
+inductively.\\
+This gives a sequence $u_{0}:=u,\ u_{1},\ u_{2},\ \ldots$ of orthonormal
+eigenvectors, i.e. $Au_{j}=\lambda_{j}u_{j}$, with decreasing eigenvalues$\abs{\lambda_{j}}$.\\
+These $\left(u_{j}\right)$ are an orthonormal basis. (Proof as in
+Theorem \ref{sec:Thm-Hilbert-Schmidt})\qqed
+
+Ritz, Galerkin: Finite element method\\
+Example: Helium molecule wave function in $H=L^{2}\left(\mathbb{R}^{3},\mathbb{C}\right)$
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+  \draw[fill=black] (-1,0) circle (0.1);
+  \draw[fill=black] (1,0) circle (0.1);
+  \draw (-2,-0.3) -- (-2.5,-0.8) -- (-2.75,1) -- (-2,-0.3) -- (-1.8,2) -- (-2.75,1);
+  \draw (-1.8,2) -- (-0.8,1) -- (-2,-0.3) -- (-1.5,-0.8) -- (-0.8,1);
+  \draw (-1.5,-0.8) -- (-2.5,-0.8);
+  \draw (-1.5,-0.8) -- (-0.5,0) -- (-0.8,1) -- (0.5,0.7) -- (-0.5,0) -- (0.8,-0.8) -- (2,-0.3) -- (0.5,0.7);
+  \draw (0.5,0.7) -- (0.8,-0.8);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{finite lattice for numerical approximation}
+\end{figure}
+\begin{align*}
+A & =-\frac{\hbar^{2}}{2m}\Delta-\frac{ze^{2}}{\norm{x-x_{1}}}-\frac{ze^{2}}{\norm{x-x_{2}}}
+\end{align*}
+Now minimize
+\begin{align*}
+\frac{\left\langle u,Au\right\rangle }{\left\langle u,u\right\rangle }
+\end{align*}
+on a finite subspace of $H$.
+
+
+\chapter{A few (technical) results}
+
+
+\section{Dini's theorem}
+
+Let $E$ be a metric space and $f_{n}:E\to\mathbb{R}$ a sequence
+of real valued functions.
+
+
+\subsection{Definition \textmd{(point-wise/uniform convergence)}}
+
+$f_{n}$ \emph{converges point-wise} to $f$ if $f_{n}\left(x\right)\to f\left(x\right)$
+converges for all $x\in E$, i.e.:
+\begin{align*}
+\fall_{x\in E}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{N\left(\varepsilon,x\right)}\ \fall_{n\in\mathbb{N}_{\ge N}}:\  & \abs{f_{n}\left(x\right)-f\left(x\right)}<\varepsilon
+\end{align*}
+
+
+$f_{n}$ \emph{converges uniformly} to $f$, in symbols $f_{n}\rightrightarrows f$,
+if for all $\varepsilon\in\mathbb{R}_{>0}$ exists a $N\left(\varepsilon\right)$
+such that for all $n\ge N$ and all $x\in E$ holds:
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\varepsilon
+\end{align*}
+With quantifiers this is:
+\begin{align*}
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{N\left(\varepsilon\right)}\ \fall_{n\in\mathbb{N}_{\ge N}}\ \fall_{x\in E}:\  & \abs{f_{n}\left(x\right)-f\left(x\right)}<\varepsilon
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+If $\left(f_{n}\right)$ is a sequence of continuous functions with
+$f_{n}\rightrightarrows f$, then $f$ is also continuous.\\
+This is not true in general for point wise convergence:
+\begin{align*}
+f_{n}\left(x\right) & =\begin{cases}
+1 & \text{for }0\le x\le\frac{1}{2}\left(1-\frac{1}{n}\right)\\
+0 & \text{for }x\ge\frac{1}{2}\\
+n\left(1-2x\right) & \text{for }\frac{1}{2}\left(1-\frac{1}{n}\right)<x<\frac{1}{2}
+\end{cases}
+\end{align*}
+$f_{n}\to f$ converges pointwise to:
+\begin{align*}
+f\left(x\right) & =\begin{cases}
+1 & x<\frac{1}{2}\\
+0 & x\ge\frac{1}{2}
+\end{cases}
+\end{align*}
+This $f$ is \emph{not} continuous.
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymax=1.15,
+			xlabel=$x$, ylabel=$y$,samples=300]
+%  \addplot[domain=0:0.25] {1};
+  \addplot[domain=0.25:0.5] {1-4*(x-0.25)};
+  \addlegendentry{$f_2(x)$}
+  \addplot[domain=0:0.5,red,thick] {1};
+  \addlegendentry{$f(x)$}
+  \addplot[domain=0.5:1.15,red,thick] {0};
+ \end{axis}
+ \draw[red, thick, dashed,scale=7.34] (0.5,0) -- (0.5,0.83);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$f_{n}\left(x\right)$ is continuous, but not $f\left(x\right)$}
+\end{figure}
+
+
+
+\subsubsection*{Proof}
+
+Show that for all $x\in E$ the $\varepsilon$-$\delta$-criterion
+is satisfied:\\
+Since $f_{n}\rightrightarrows f$ converges uniformly, there is a
+$N\in\mathbb{N}$ such that for all $n\in\mathbb{N}_{\ge N}$ and
+all $x\in E$ holds:
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+Because the $f_{n}$ are continuous, there exists a $\delta\in\mathbb{R}_{>0}$
+such that for all $y\in B_{\delta}\left(x\right)$ holds:
+\begin{align*}
+\abs{f_{N}\left(x\right)-f_{N}\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+Now follows for all $y\in B_{\delta}\left(x\right)$:
+\begin{align*}
+\abs{f\left(y\right)-f\left(x\right)} & \le\underbrace{\abs{f\left(y\right)-f_{N}\left(y\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\abs{f_{N}\left(y\right)-f_{N}\left(x\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\abs{f_{N}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{3}}<\varepsilon
+\end{align*}
+Therefore $f$ is continuous.\qqed
+
+
+\subsection{Definition \textmd{(monotonically increasing/decreasing)}}
+
+The sequence of functions $\left(f_{n}\right)$, $f_{n}:E\to\mathbb{R}$
+is called \emph{monotonically increasing (decreasing)} if for all
+$x\in E$ the real sequence $f_{n}\left(x\right)$ is monotonically
+increasing (decreasing).
+
+
+\subsection{Theorem \textmd{(Dini)}}
+
+Let $E$ be a \emph{compact} metric space, $\left(f_{n}\right)$ monotone
+and $f_{n}\to f$.\\
+If $f_{n}$ and $f$ are continuous, then the convergence $f_{n}\rightrightarrows f$
+is uniform.
+
+
+\subsubsection*{Proof}
+
+Without loss of generality we assume $\left(f_{n}\right)$ is a monotonically
+increasing sequence (otherwise consider $-f_{n}$), i.e. $f_{n}\left(x\right)\le f_{n+1}\left(x\right)$
+for all $x\in E$ and all $n\in\mathbb{N}$.\\
+Given $\varepsilon>0$ we want to show:
+\begin{align*}
+\exs_{N\in\mathbb{N}}\ \fall_{x\in E}\ \fall_{\in\mathbb{N}_{\ge N}}:\  & \abs{f\left(x\right)-f_{n}\left(x\right)}<\varepsilon
+\end{align*}
+For any $x\in E$ there exists an $N\left(x\right)$ such that $\abs{f_{n}\left(x\right)-f\left(x\right)}<\frac{\varepsilon}{2}$
+for all $n\in\mathbb{N}_{\ge N}$ (point-wise convergence). Since
+both $f_{N\left(x\right)}$ and $f$ are continuous functions, there
+exists a neighborhood $U\left(x\right)=B_{\delta\left(x\right)}\left(x\right)$
+of $x$ such that for all $z\in U\left(x\right)$ holds:
+\begin{align*}
+\abs{f_{N\left(x\right)}\left(z\right)-f_{N\left(x\right)}\left(x\right)} & \le\frac{\varepsilon}{4}\\
+\abs{f\left(z\right)-f\left(x\right)} & \le\frac{\varepsilon}{4}
+\end{align*}
+Then follows:
+\begin{align*}
+\abs{f_{N\left(x\right)}\left(z\right)-f\left(z\right)} & \le\underbrace{\abs{f_{N\left(x\right)}\left(z\right)-f_{N\left(x\right)}\left(x\right)}}_{\le\frac{\varepsilon}{4}}+\underbrace{\abs{f_{N\left(x\right)}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{2}}+\underbrace{\abs{f\left(x\right)-f\left(z\right)}}_{\le\frac{\varepsilon}{4}}<\varepsilon
+\end{align*}
+Since $f_{n}\left(z\right)$ is monotonically increasing, it follows
+that $\abs{f_{n}\left(z\right)-f\left(z\right)}<\varepsilon$ for
+all $z\in B_{\delta\left(x\right)}\left(x\right)$.\\
+Now use a standard compactness argument: Since $E$ is compact, it
+can be covered by a finite number of these balls $B_{\delta\left(x_{1}\right)}\left(x_{1}\right),\ldots,B_{\delta\left(x_{n}\right)}\left(x_{n}\right)$.
+Define:
+\begin{align*}
+N & =\max\left\{ N\left(x_{1}\right),\ldots,N\left(x_{n}\right)\right\} 
+\end{align*}
+So for all $n\in\mathbb{N}_{\ge N}$ holds:
+\begin{align*}
+\abs{f_{n}\left(x\right)-f\left(x\right)} & <\varepsilon
+\end{align*}
+
+
+\qqed
+
+
+\section{Stone-Weierstraß theorem}
+
+We follow the nice (since constructive) proof by Bernstein.
+
+
+\subsection{Definition \textmd{(polynomials)}}
+
+Let $E=C^{0}\left(\left[0,1\right]\right)$ be the Banach space of
+real valued functions with norm $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$.
+$\mathcal{P}\left(\left[0,1\right]\right)$ are the \emph{real polynomials},
+i.e. for $f\in\mathcal{P}\left(\left[0,1\right]\right)$ there are
+$a_{j}\in\mathbb{R}$ such that:
+\begin{align*}
+f\left(x\right) & =a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots+a_{0}
+\end{align*}
+Clearly $\mathcal{P}\left(\left[0,1\right]\right)\subseteq C^{0}\left(\left[0,1\right]\right)$
+forms a subspace.
+
+We want to show that $\mathcal{P}\left(\left[0,1\right]\right)$ is
+dense in $C^{0}\left(\left[0,1\right]\right)$.
+
+
+\subsection{Lemma}
+
+For $x\in\left[0,1\right]$ holds:
+
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =1
+\end{align*}
+
+
+
+\subsubsection{Proof}
+
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =\left(x+1-x\right)^{n}=1
+\end{align*}
+\qqed
+
+
+\subsection{Lemma}
+
+For $x\in\left[0,1\right]$ holds:
+
+\begin{align*}
+\sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =nx\left(1-x\right)\le\frac{n}{4}
+\end{align*}
+Obviously holds
+\begin{align*}
+\left(nx-k\right)^{2} & \le4n^{2}
+\end{align*}
+and therefore:
+\begin{align*}
+\sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le4n^{2}\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=4n^{2}
+\end{align*}
+
+
+
+\subsubsection{Proof}
+
+It holds:
+\begin{align*}
+\sum_{k=0}^{n}k\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =\sum_{k=0}^{n}k\frac{n!}{k!\left(n-k\right)!}x^{k}\left(1-x\right)^{n-k}=\\
+ & =0+\sum_{k=1}^{n}\frac{n\cdot\left(n-1\right)!}{\left(k-1\right)!\left(n-k\right)!}x^{k}\left(1-x\right)^{n-k}=\\
+ & =n\sum_{k=1}^{n}\left(\begin{array}{c}
+n-1\\
+k-1
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \sr ={j:=k-1}{}n\sum_{j=0}^{n-1}\left(\begin{array}{c}
+n-1\\
+j
+\end{array}\right)x^{j+1}\left(1-x\right)^{n-j-1}=\\
+ & =nx\sum_{j=0}^{n-1}\left(\begin{array}{c}
+n-1\\
+j
+\end{array}\right)x^{j}\left(1-x\right)^{\left(n-1\right)-j}=nx\left(x+1-x\right)^{n-1}=nx
+\end{align*}
+Similarly one gets:
+\begin{align*}
+\sum_{k=0}^{n}k\left(k-1\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & =n\left(n-1\right)\sum_{k=2}\left(\begin{array}{c}
+n-2\\
+k-2
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=n\left(n-1\right)x^{2}
+\end{align*}
+Together this gives:
+\begin{align*}
+ & \sum_{k=0}^{n}\left(nx-k\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\sum_{k=0}^{n}\left(n^{2}x^{2}-2nxk+k^{2}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \qquad=\sum_{k=0}^{n}\left(n^{2}x^{2}-2nxk+k\left(k-1\right)+k\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}=\\
+ & \qquad=n^{2}x^{2}-2nx\cdot nx+n\left(n-1\right)x^{2}+nx=\\
+ & \qquad=-n^{2}x^{2}+n^{2}x^{2}-nx^{2}+nx=nx\left(1-x\right)
+\end{align*}
+\qqed
+
+A more elegant method is to use derivatives:
+\begin{align*}
+\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =\left(x+y\right)^{n}\\
+\sum_{k=0}^{n}k\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =x\cdot\frac{\dd}{\dd x}\left(\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k}\right)\\
+\sum_{k=0}^{n}k^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k} & =\left(x\cdot\frac{\dd}{\dd x}\right)^{2}\left(\sum_{k=0}^{n}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}y^{n-k}\right)
+\end{align*}
+
+
+
+\subsection{Definition}
+
+For $f\in C^{0}\left(\left[0,1\right]\right)$ define:
+\begin{align*}
+B_{n}f\left(x\right) & :=\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(Bernstein)}}
+
+For any $f\in C^{0}\left(\left[0,1\right]\right)$, $B_{n}f\rightrightarrows f$
+converges uniformly.
+
+Example: $f\left(x\right)=10x\cdot e^{-3x}+\frac{1}{5}\cos\left(\left(4x\right)^{2}\right)$
+\begin{align*}
+B_{4}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{4}+5,2\cdot x\cdot\left(1-x\right)^{3}+5,9\cdot x^{2}\cdot\left(1-x\right)^{2}+2,4\cdot x^{3}\cdot\left(1-x\right)+0,3\cdot x^{4}\\
+B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+\\
+ & \qquad+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+\\
+ & \qquad+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+\\
+ & \qquad+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
+\end{align*}
+
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0,
+			xlabel=$x$, ylabel=$y$,samples=300,domain=0:1]
+  \addplot[domain=0:1] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
+  \addlegendentry{$f(x)$}
+  \addplot[red,dotted,thick] {0.2*(1-x)^4+5.1559073721*x*(1-x)^3+5.90953245942*x^2*(1-x)^2 +2.43307252735*x^3*(1-x)+0.306338787614*x^4};
+  \addlegendentry{$B_4f(x)$}
+  \addplot[green,dashed,thick] {0.2*(1-x)^10 + 9.38263677357*x*(1-x)^9 + 56.6119090694*x^2*(1-x)^8 +
+			149.495246516*x^3*(1-x)^7 + 217.908409367*x^4*(1-x)^6 + 248.200363295*x^5*(1-x)^5 +
+			244.658345846*x^6*(1-x)^4 + 103.198948015*x^7*(1-x)^3 + 26.4871020479*x^8*(1-x)^2 +
+			7.89554238831*x^9*(1-x) + 0.306338787614 *x^10};
+  \addlegendentry{$B_{10}f(x)$}
+  \addplot[blue,thick] {0.2*(x - 1)^100 - 29.7044297355*(x - 1)^99*x + 1922.32661312*(x - 1)^98*x^2 - 76671.4488442*(x - 1)^97*x^3 + 2175113.86842*(x - 1)^96*x^4 - 47445744.0975*(x - 1)^95*x^5 + 835426611.054*(x - 1)^94*x^6 - 12274511676.0*(x - 1)^93*x^7 + (1.54128159816e+11)*(x - 1)^92*x^8 - (1.68416809261e+12)*(x - 1)^91*x^9 + (1.62416346068e+13)*(x - 1)^90*x^10 - (1.39799905505e+14)*(x - 1)^89*x^11 + (1.08395744118e+15)*(x - 1)^88*x^12 - (7.62894913085e+15)*(x - 1)^87*x^13 + (4.90524281676e+16)*(x - 1)^86*x^14 - (2.89723345963e+17)*(x - 1)^85*x^15 + (1.57938018746e+18)*(x - 1)^84*x^16 - (7.97909365281e+18)*(x - 1)^83*x^17 + (3.74925611597e+19)*(x - 1)^82*x^18 - (1.64375304991e+20)*(x - 1)^81*x^19 + (6.742898184e+20)*(x - 1)^80*x^20 - (2.59454195168e+21)*(x - 1)^79*x^21 + (9.38534683558e+21)*(x - 1)^78*x^22 - (3.19807571697e+22)*(x - 1)^77*x^23 + (1.02840511571e+23)*(x - 1)^76*x^24 - (3.12601722657e+23)*(x - 1)^75*x^25 + (8.99540551127e+23)*(x - 1)^74*x^26 - (2.45384693521e+24)*(x - 1)^73*x^27 + (6.3535833129e+24)*(x - 1)^72*x^28 - (1.56329402068e+25)*(x - 1)^71*x^29 + (3.65918765199e+25)*(x - 1)^70*x^30 - (8.15630256136e+25)*(x - 1)^69*x^31 + (1.7329494044e+26)*(x - 1)^68*x^32 - (3.51288267659e+26)*(x - 1)^67*x^33 + (6.80009456156e+26)*(x - 1)^66*x^34 - (1.25811363872e+27)*(x - 1)^65*x^35 + (2.22666269336e+27)*(x - 1)^64*x^36 - (3.7730643047e+27)*(x - 1)^63*x^37 + (6.12656303633e+27)*(x - 1)^62*x^38 - (9.54121434063e+27)*(x - 1)^61*x^39 + (1.42639048452e+28)*(x - 1)^60*x^40 - (2.04882695285e+28)*(x - 1)^59*x^41 + (2.82997586185e+28)*(x - 1)^58*x^42 - (3.76214352396e+28)*(x - 1)^57*x^43 + (4.81728554268e+28)*(x - 1)^56*x^44 - (5.94543941083e+28)*(x - 1)^55*x^45 + (7.0766223624e+28)*(x - 1)^54*x^46 - (8.12653547869e+28)*(x - 1)^53*x^47 + (9.0056905284e+28)*(x - 1)^52*x^48 - (9.6308442906e+28)*(x - 1)^51*x^49 + (9.93701125777e+28)*(x - 1)^50*x^50 - (9.88794489827e+28)*(x - 1)^49*x^51 + (9.48295145921e+28)*(x - 1)^48*x^52 - (8.75834176186e+28)*(x - 1)^47*x^53 + (7.78277250071e+28)*(x - 1)^46*x^54 - (6.64705004092e+28)*(x - 1)^45*x^55 + (5.45033587088e+28)*(x - 1)^44*x^56 - (4.28565344267e+28)*(x - 1)^43*x^57 + (3.22776989136e+28)*(x - 1)^42*x^58 - (2.32579971336e+28)*(x - 1)^41*x^59 + (1.60149090844e+28)*(x - 1)^40*x^60 - (1.05260827225e+28)*(x - 1)^39*x^61 + (6.59659001145e+27)*(x - 1)^38*x^62 - (3.93748270015e+27)*(x - 1)^37*x^63 + (2.23625120007e+27)*(x - 1)^36*x^64 - (1.2072827702e+27)*(x - 1)^35*x^65 + (6.19022488168e+26)*(x - 1)^34*x^66 - (3.01225494685e+26)*(x - 1)^33*x^67 + (1.39035634551e+26)*(x - 1)^32*x^68 - (6.08541276274e+25)*(x - 1)^31*x^69 + (2.52599547528e+25)*(x - 1)^30*x^70 - (9.95022718871e+24)*(x - 1)^29*x^71 + (3.72450252857e+24)*(x - 1)^28*x^72 - (1.32760664266e+24)*(x - 1)^27*x^73 + (4.51994903095e+23)*(x - 1)^26*x^74 - (1.47516743127e+23)*(x - 1)^25*x^75 + (4.63264469906e+22)*(x - 1)^24*x^76 - (1.40412004325e+22)*(x - 1)^23*x^77 + (4.11230568962e+21)*(x - 1)^22*x^78 - (1.16208158162e+21)*(x - 1)^21*x^79 + (3.15481027286e+20)*(x - 1)^20*x^80 - (8.17300500354e+19)*(x - 1)^19*x^81 + (2.00415639672e+19)*(x - 1)^18*x^82 - (4.6119830604e+18)*(x - 1)^17*x^83 + (9.87622406444e+17)*(x - 1)^16*x^84 - (1.95242968902e+17)*(x - 1)^15*x^85 + (3.53637476861e+16)*(x - 1)^14*x^86 - (5.82579078166e+15)*(x - 1)^13*x^87 + (8.66482439273e+14)*(x - 1)^12*x^88 - (1.15456063319e+14)*(x - 1)^11*x^89 + (1.36674282068e+13)*(x - 1)^10*x^90 - (1.4240167171e+12)*(x - 1)^9*x^91 + (1.29209648425e+11)*(x - 1)^8*x^92 - 10086134970.2*(x - 1)^7*x^93 + 667798780.604*(x - 1)^6*x^94 - 36881544.6299*(x - 1)^5*x^95 + 1664862.88706*(x - 1)^4*x^96 - 59769.1901049*(x - 1)^3*x^97 + 1631.70663884*(x - 1)^2*x^98 - 30.797227045*(x - 1)*x^99 + 0.306338787614*x^100};
+  \addlegendentry{$B_{100}f(x)$}
+  \addplot[mark=x, samples=100, only marks, blue] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
+  \addplot[mark=*, samples=10, only marks, green] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
+  \addplot[mark=triangle*, samples=4, only marks, red] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
+ \end{axis}
+% \draw[red, thick, scale=7.34] (0.5,0) -- (0.5,0.83);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Approximation of $f\left(x\right)$ by $B_{n}f\left(x\right)$}
+\end{figure}
+
+
+
+\subsubsection*{Proof}
+
+Without loss of generality assume $f\not=0$ (otherwise $B_{n}f=0=f$).
+\begin{align*}
+M & :=\norm f>0
+\end{align*}
+Consider an arbitrary $\varepsilon\in\mathbb{R}_{>0}$. $f$ is continuous
+on the compact set $\left[0,1\right]$ and thus uniformly continuous,
+i.e. there exists a $\delta\in\mathbb{R}_{>0}$ such that:
+\begin{align*}
+\abs{x-y} & <\delta\quad\Rightarrow\qquad\abs{f\left(x\right)-f\left(y\right)}<\frac{\varepsilon}{2}
+\end{align*}
+Choose $\mathbb{N}\ni N\ge\frac{M}{\varepsilon\delta^{2}}$.
+\begin{description}
+\item [{Claim:}] $\abs{B_{n}f\left(x\right)-f\left(x\right)}<\varepsilon$
+for all $x\in\left[0,1\right]$ and all $n\ge N$.
+\item [{Proof:}] It holds:
+\begin{align*}
+f\left(x\right) & =\sum_{k=0}^{n}f\left(x\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\\
+f_{n}\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+Define:
+\begin{align*}
+A & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}<\delta\right\} \\
+B & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
+\end{align*}
+We have:
+\begin{align*}
+\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le\frac{\varepsilon}{2}}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\frac{\varepsilon}{2}
+\end{align*}
+\begin{align*}
+\abs{B_{n}f\left(x\right)-f\left(x\right)} & \le\sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le2M\sum_{k\in B}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
+ & \sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}}_{\le\frac{n}{4}}\le\\
+ & \stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+\end{align*}
+\qqed[Claim]
+\end{description}
+Therefore $B_{n}f\rightrightarrows f$ converges uniformly.\qqed
+
+
+\section{Arzelà-Ascoli theorem}
+
+
+\section{Riesz representation theorem}
+
 
 \part*{Appendix\thispagestyle{empty}}
 
