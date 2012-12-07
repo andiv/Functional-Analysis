@@ -45,10 +45,13 @@
 %\usepackage{tikz-3dplot,cancel,polynom}
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
 \usetikzlibrary{external}
-\tikzexternalize % activate!
+\tikzexternalize
 \usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
 \usepackage[explicit]{titlesec}
+\usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
 \usepackage{subfigure}
+
+\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
@@ -184,7 +187,8 @@
 
 
 
-
+%Shell-Kommando für Tikz-Externalize:
+%pdflatex -shell-escape Functional-Analysis.tex 
 
 \global\long\def\norm#1{\left\lVert #1\right\rVert }
 
@@ -773,7 +777,7 @@ or complex), $Y\subseteq X$ a subspace. Let $\varphi$ be a continuous
 linear functional from $Y$ to $\mathbb{K}$, i.e. for all $y\in Y$
 holds:
 \begin{align*}
-\abs{\varphi\left(y\right)} & \le\underbrace{\norm{\varphi}}_{=:c}\cdot\norm y
+\abs{\varphi\left(y\right)} & \le\norm{\varphi}\cdot\norm y
 \end{align*}
 Then $\varphi$ can be continued to all of $X$ with the same supnorm,
 i. e.:
@@ -785,7 +789,7 @@ i. e.:
 
 \subsubsection*{Proof}
 
-Apply the Hahn-Banach theorem with $\varphi:=c\norm x$.\qqed
+Apply the Hahn-Banach theorem with $\tilde{\varphi}:=\norm{\varphi}\cdot\norm x$.\qqed
 
 
 \section{Corollary}
@@ -1220,7 +1224,7 @@ maps from $E$ to $F$ and define:
 
 \subsection{Lemma}
 
-If $B\in L\left(E,F\right)$ and $A\in L\left(F,G\right)$ then Scharz
+If $B\in L\left(E,F\right)$ and $A\in L\left(F,G\right)$ then Schwarz
 inequality or Kato inequality holds:
 \begin{align*}
 \norm{A\cdot B} & \le\norm A\cdot\norm B\\
@@ -1232,7 +1236,7 @@ inequality or Kato inequality holds:
 \subsubsection*{(no proof)}
 
 
-\subsection{Theorem and Definition \textmd{(dual pairing)}}
+\subsection{Theorem and Definition \textmd{(dual pairing)\label{sub:TuD-dual-pairing}}}
 
 If $F$ is complete, so is $L\left(E,F\right)$.\\
 Special case $F=\mathbb{R}$ and $\norm x_{\mathbb{R}}=\abs x$: $E^{*}:=L\left(E,\,\mathbb{R}\right)$
@@ -1385,7 +1389,7 @@ to $u$ and $u'$, i.e. for all $\varphi\in E^{*}$ holds:
 \varphi\left(u_{n}\right) & \to\varphi\left(u\right) & \varphi\left(u_{n}\right) & \to\varphi\left(u'\right)
 \end{align*}
 \begin{align*}
-\Rightarrow\quad0 & \to\varphi\left(u-u'\right)
+\Rightarrow\quad0=\varphi\left(u_{n}-u_{n}\right) & \to\varphi\left(u-u'\right)
 \end{align*}
 So $\varphi\left(u-u'\right)=0$ for all $\varphi\in E^{*}$.
 \begin{description}
@@ -1394,7 +1398,7 @@ So $\varphi\left(u-u'\right)=0$ for all $\varphi\in E^{*}$.
 Choose $\varphi:\left\langle v\right\rangle \to\mathbb{R}$ with $\varphi\left(v\right)=1$.
 By the Hahn-Banach theorem $\varphi$ can be extended continuously
 to $E$.\\
-Therefore there exists a $\varphi\in E^{*}$ with $\varphi\left(v\right)=1$,
+Therefore exists a $\varphi\in E^{*}$ with $\varphi\left(v\right)=1$,
 which is a contradiction to $\varphi\left(v\right)=0$.\qqed[Claim]
 \end{description}
 \qqed
@@ -1511,7 +1515,7 @@ that the $M_{n}$ are closed, since otherwise one can replace $M_{n}$
 by $\overline{M_{n}}$.\\
 We shall construct inductively balls $\overline{B_{n}}=\overline{B_{r_{n}}\left(x_{n}\right)}$
 such that $\overline{B_{n+1}}\subseteq\overline{B_{n}}$, $r_{n}<2^{-n}$
-and $B_{n}\cap M_{n}=\emptyset$ for all $n$.
+and $\overline{B_{n}}\cap M_{n}=\emptyset$ for all $n$.
 
 Then the points $x_{n}$ form a Cauchy sequence, because for all $n<m\in\mathbb{N}$
 we have $x_{n+1}\in B_{n}$ and so $\norm{x_{n}-x_{n+1}}<r_{n}<2^{-n}$:
@@ -1533,7 +1537,7 @@ is contained in $B_{1}\left(0\right)\setminus M_{1}$ and thus $\overline{B_{r_{1
 Suppose $\overline{B_{n}}$ has been constructed. $M_{n+1}$ is nowhere
 dense and closed and so there exists a $x_{n+1}\in\overline{B_{n}}\setminus M_{n+1}$
 and $r_{n+1}<2^{-\left(n+1\right)}$ such that $B_{2r_{n+1}}\left(x_{n+1}\right)\subseteq\overline{B_{n}}\setminus M_{n+1}$.
-Then follows $\overline{B_{r_{n+1}}}\cap M_{n+1}=\emptyset$.\qqed
+Then follows $\overline{B_{r_{n+1}}\left(x_{n+1}\right)}\cap M_{n+1}=\emptyset$.\qqed
 
 
 \subsection{Theorem \textmd{(Uniform boundedness principle, }\foreignlanguage{ngerman}{\textmd{Prinzip
@@ -1607,8 +1611,16 @@ a weak Cauchy sequence. Then $\norm{u_{n}}$ is a bounded sequence.
 
 \subsubsection*{Proof}
 
-$E^{*}=L\left(E,\mathbb{R}\right)$ is a Banach space. For all $\varphi\in E^{*}$
-we know that $\varphi\left(u_{n}\right)$ is a Cauchy sequence.
+$E^{*}=L\left(E,\mathbb{R}\right)$ is a Banach space after theorem
+\ref{sub:TuD-dual-pairing}, since $\mathbb{R}$ is complete. Now
+we can view every $u_{n}$ as operator:
+\begin{align*}
+u_{n}:E^{*} & \to\mathbb{R}\\
+\varphi & \mapsto\varphi\left(u_{n}\right)
+\end{align*}
+So $\left(u_{n}\right)$ is a sequence in $L\left(E^{*},\mathbb{R}\right)$.
+For all $\varphi\in E^{*}$ we know that $\varphi\left(u_{n}\right)$
+is a Cauchy sequence and thus bounded:
 \begin{align*}
 \Rightarrow\quad\abs{\varphi\left(u_{n}\right)} & <C\left(\varphi\right)
 \end{align*}
@@ -1766,7 +1778,7 @@ a $\varepsilon\in\mathbb{R}_{>0}$ such that $B_{\varepsilon}\left(y_{0}\right)\s
 Since $A$ is surjective, there is a $x_{0}\in B_{n}\left(0\right)$
 with $y_{0}=A\left(x_{0}\right)$.
 \begin{align*}
-\Rightarrow\quad\overline{A\left(B_{n}\left(0\right)-x_{0}\right)} & =\overline{A\left(B_{n}\left(0\right)\right)-y_{0}}=\overline{A\left(B_{n}\left(0\right)\right)}-y_{0}\supseteq B_{\varepsilon}\left(0\right)
+\Rightarrow\quad\overline{A\left(B_{n}\left(0\right)-x_{0}\right)} & =\overline{A\left(B_{n}\left(0\right)\right)-y_{0}}=\overline{A\left(B_{n}\left(0\right)\right)}-y_{0}\supseteq B_{\varepsilon}\left(y_{0}\right)-y_{0}=B_{\varepsilon}\left(0\right)
 \end{align*}
 If $n'$ is large enough, then $B_{n}\left(-x_{0}\right)\subseteq B_{n'}\left(0\right)$
 and so $\overline{A\left(B_{n'}\left(0\right)\right)}\supseteq B_{\varepsilon}\left(0\right)$.\\
@@ -2006,7 +2018,7 @@ C & =A-\left(A-C\right)=A\big(\mathbbm{1}-\underbrace{A^{-1}\left(A-C\right)}_{=
 \end{align*}
 Then holds:
 \begin{align*}
-\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}=\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}<1
+\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}<\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}<1
 \end{align*}
 Hence $\mathbbm{1}-B$ is continuously invertible by the Neumann series
 and therefore
@@ -2092,7 +2104,7 @@ is:
 \subsection{Definition \textmd{(orthogonal, orthonormal)}}
 \begin{enumerate}[label=\roman*)]
 \item Vectors $u,v\in H$ are called \emph{orthogonal}, symbolically $u\perp v$,
-if $\left\langle u,v\right\rangle =0$.\#
+if $\left\langle u,v\right\rangle =0$.
 \item Subspaces $M_{1},M_{2}\subseteq H$ are orthogonal, symbolically $M_{1}\perp M_{2}$,
 if $\left\langle u,v\right\rangle =0$ for all $u\in M_{1}$ and $v\in M_{2}$.
 \item A family $\left(u_{i}\right)_{i\in I}$ of vectors $u_{i}\in H$ is
@@ -2247,7 +2259,7 @@ Consider a minimizing sequence $u_{i}$:
 \end{align*}
 We show that $\left(u_{i}\right)$ is a Cauchy sequence:
 \begin{align*}
-\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}=\\
+\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}^{2}=\\
  & \stackrel{\ref{sub:Lem-parallelogram-equality}}{=}2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{\left(u_{i}-w\right)-\left(w-u_{j}\right)}^{2}=\\
  & =2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{-2\left(w-\frac{u_{i}+u_{j}}{2}\right)}^{2}=\\
  & =2\left(\underbrace{\norm{u_{i}-w}^{2}}_{\to d^{2}}+\underbrace{\norm{w-u_{j}}^{2}}_{\to d^{2}}-2\norm{\frac{u_{i}+u_{j}}{2}-w}^{2}\right)
@@ -3155,6 +3167,7 @@ Then $\norm{u_{n}}<\infty$ and $\norm{Au_{n}}\xrightarrow{n\to\infty}\infty$.
 \begin{figure}[H]
 \hspace*{1mm}\hfill{}\begin{tikzpicture}
  \begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
+			x tick label style={/pgf/number format/dec sep={,}},
 			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2, ymin=-0.07]
    \addplot[domain=-2.99:-1.01] {exp(-1/(3+x)^2)/(exp(-1/(3+x)^2)+exp(-1/(-x-1)^2))};
    \addplot[domain=-1.01:1.01] {1};
@@ -3364,7 +3377,7 @@ This is a Banach space.
 \subsubsection*{Remark}
 
 The closure of a closable operator is always closed.\\
-This is obvious, because $\text{graph}\overline{A}:=\overline{\text{graph}A}$,
+This is obvious, because $\text{graph}\overline{A}\stackrel{\text{def.}}{=}\overline{\text{graph}A}$,
 which is closed.
 
 
@@ -3670,7 +3683,7 @@ Take $\lambda,\mu\in\varrho\left(A\right)$.
 \left(A-\mu\right) & =\left(A-\lambda\right)+\left(\lambda-\mu\right)=\\
  & =\underbrace{\left(A-\lambda\right)}_{\text{continuously invertible}}\cdot\left(\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)\right)
 \end{align*}
-$\mathbbm{1}+\left(1-\lambda\right)^{-1}\left(\lambda-\mu\right)$
+$\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)$
 is continously invertible using the Neumann series if:
 \begin{align*}
 \abs{\lambda-\mu} & <\frac{1}{\norm{\left(A-\lambda\right)^{-1}}}
@@ -4885,7 +4898,7 @@ k
 
 \subsection{Theorem \textmd{(Bernstein)}}
 
-For any $f\in C^{0}\left(\left[0,1\right]\right)$, $B_{n}f\rightrightarrows f$
+For any $f\in C^{0}\left(\left[0,1\right],\mathbb{R}\right)$, $B_{n}f\rightrightarrows f$
 converges uniformly.
 
 Example: $f\left(x\right)=10x\cdot e^{-3x}+\frac{1}{5}\cos\left(\left(4x\right)^{2}\right)$
@@ -4918,7 +4931,6 @@ B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\lef
   \addplot[mark=*, samples=10, only marks, green] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
   \addplot[mark=triangle*, samples=4, only marks, red] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
  \end{axis}
-% \draw[red, thick, scale=7.34] (0.5,0) -- (0.5,0.83);
 \end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Approximation of $f\left(x\right)$ by $B_{n}f\left(x\right)$}
 \end{figure}
 
@@ -4946,47 +4958,382 @@ f\left(x\right) & =\sum_{k=0}^{n}f\left(x\right)\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\\
-f_{n}\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+B_{n}f\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+\begin{align*}
+\left(B_{n}f-f\right)\left(x\right) & =\sum_{k=0}^{\infty}\left(f\left(\frac{k}{n}\right)-f\left(x\right)\right)\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}
 \end{align*}
 Define:
 \begin{align*}
-A & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}<\delta\right\} \\
-B & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
+A & :=\left\{ k\Bigg|\abs{\frac{k}{n}-x}<\delta\right\}  & B & :=\left\{ k\Bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
 \end{align*}
 We have:
 \begin{align*}
-\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le\frac{\varepsilon}{2}}\left(\begin{array}{c}
+\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{<\frac{\varepsilon}{2}}\left(\begin{array}{c}
 n\\
 k
-\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & <\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\frac{\varepsilon}{2}
 \end{align*}
 \begin{align*}
-\abs{B_{n}f\left(x\right)-f\left(x\right)} & \le\sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
-n\\
-k
-\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le2M\sum_{k\in B}\left(\begin{array}{c}
+ & \sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
- & \sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
+ & \qquad\le2M\sum_{k\in B}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
+ & \qquad\sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}}_{\le\frac{n}{4}}\le\\
- & \stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+ & \qquad\stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+\end{align*}
+Therefore holds for all $x\in\left[0,1\right]$.
+\begin{align*}
+\abs{B_{n}f\left(x\right)-f\left(x\right)} & <\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
 \end{align*}
 \qqed[Claim]
 \end{description}
 Therefore $B_{n}f\rightrightarrows f$ converges uniformly.\qqed
 
+%DATE: Fr 07.12.12
+
+Now generalize: Let $E$ be a compact metric space. $C^{0}\left(E,\mathbb{R}\right)$
+with
+\begin{align*}
+\norm f & =\sup_{x\in E}\abs{f\left(x\right)}
+\end{align*}
+is a Banach space. Moreover, it is an algebra with the point-wise
+multiplication:
+\begin{align*}
+\left(f\cdot g\right)\left(x\right) & :=f\left(x\right)\cdot g\left(x\right)
+\end{align*}
+The multiplication is continuous:
+\begin{align*}
+\norm{f\cdot g} & \le\norm f\cdot\norm g
+\end{align*}
+In summary $\left(C^{0}\left(E,\mathbb{R}\right),\norm .,+,\cdot\right)$
+is a \emph{Banach algebra}.
+
+
+\subsection{Theorem \textmd{(Weierstraß)\label{sub:Thm-Weierstra=0000DF}}}
+
+The polynomials are dense in $C^{0}\left(\left[0,1\right],\mathbb{R}\right)$.
+
+
+\subsubsection*{Proof}
+
+For any $f\in C^{0}\left(\left[0,1\right],\mathbb{R}\right)$, $B_{n}f\rightrightarrows f$
+converges uniformly and since the $B_{n}f$ are polynomials, these
+are dense.\qqed
+
+
+\subsection{Theorem \textmd{(Stone-Weierstraß)\label{sub:Thm-Stone-Weierstra=0000DF}}}
+
+Let $\mathcal{A}\subseteq C^{0}\left(E,\mathbb{R}\right)$ be a subalgebra
+with the following properties:
+\begin{enumerate}
+\item $\mathcal{A}$ contains $f=1$ and so by scalar multiplication all
+the constant functions.
+\item $\mathcal{A}$ separates the points of $E$, i.e. for all $x,y\in E$
+with $x\not=y$ there exists a $f\in\mathcal{A}$ such that $f\left(x\right)\not=f\left(y\right)$.
+\end{enumerate}
+Then $\mathcal{A}$ is dense in $C^{0}\left(E,\mathbb{R}\right)$.
+
+
+\subsubsection*{Proof}
+\begin{enumerate}[label=\roman*)]
+\item There is a sequence of polynomials $u_{n}$ on $\left[0,1\right]$
+such that $u_{n}\rightrightarrows f$ with $f\left(t\right)=\sqrt{t}$.
+This follows immediately from theorem \ref{sub:Thm-Weierstra=0000DF}.
+\item If $f\in\mathcal{A}$, then $\abs f$ defined by $\abs f\left(x\right):=\abs{f\left(x\right)}$
+is in the closure $\overline{\mathcal{A}}$ of $\mathcal{A}$:\\
+For $f\in\mathcal{A}$ define:
+\begin{align*}
+a & :=\norm f=\max_{x\in E}\abs{f\left(x\right)}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\frac{f^{2}\left(x\right)}{a^{2}} & \in\left[0,1\right]
+\end{align*}
+Then converges:
+\begin{align*}
+u_{n}\left(\frac{f^{2}\left(x\right)}{a^{2}}\right) & \xrightarrow{n\to\infty}\sqrt{\frac{f^{2}\left(x\right)}{a^{2}}}=\frac{\abs{f\left(x\right)}}{a}
+\end{align*}
+The functions $u_{n}\left(\frac{f^{2}}{a^{2}}\right)$ lie in $\mathcal{A}$,
+since these are a polynomials of $f$ and thus again elements of the
+algebra $\mathcal{A}$. Moreover $u_{n}\left(\frac{f^{2}}{a^{2}}\right)$
+converges uniformly to $\frac{\abs f}{a}$, because for a given $\varepsilon\in\mathbb{R}_{>0}$
+exists a $N\in\mathbb{N}$ such that for all $n\in\mathbb{N}_{\ge N}$
+and all $t\in\left[0,1\right]$ holds:
+\begin{align*}
+\abs{u_{n}\left(t\right)-\sqrt{t}} & <\varepsilon
+\end{align*}
+Then follows with $t=\frac{f^{2}\left(x\right)}{a^{2}}$:
+\begin{align*}
+\abs{u_{n}\left(\frac{f^{2}\left(x\right)}{a^{2}}\right)-\frac{\abs f}{a}} & <\varepsilon
+\end{align*}
+Thus $\frac{\abs f}{a}\in\overline{\mathcal{A}}$ and therefore also
+$\abs f\in\overline{\mathcal{A}}$.
+\item For $f,g\in\overline{\mathcal{A}}$ also $\min\left(f,g\right)$ and
+$\max\left(f,g\right)$ (defined point-wise) are again in $\overline{\mathcal{A}}$:
+\begin{align*}
+\min\left(f,g\right) & =\frac{1}{2}\left(f+g-\abs{f-g}\right)\\
+\max\left(f,g\right) & =\frac{1}{2}\left(f+g+\abs{f-g}\right)
+\end{align*}
+Choose $f_{n},g_{n}\in\mathcal{A}$ such that $f_{n}\rightrightarrows f$
+and $g_{n}\rightrightarrows g$. By ii) follows $\abs{f_{n}-g_{n}}\in\overline{\mathcal{A}}$
+and $\abs{f_{n}-g_{n}}\rightrightarrows\abs{f-g}$. Therefore holds:
+\begin{align*}
+\overline{\mathcal{A}}\ni\min\left(f_{n},g_{n}\right) & \rightrightarrows\min\left(f,g\right)\in\overline{\mathcal{A}}
+\end{align*}
+Similarly the claim follows for $\max$.
+\item For all $x,y\in E$ with $x\not=y$ and $\alpha,\beta\in\mathbb{R}$
+exists a $f\in\mathcal{A}$ such that $f\left(x\right)=\alpha$ and
+$f\left(y\right)=\beta$:\\
+For $\alpha=\beta$ we choose $f=\alpha$ as constant function.\\
+For $\alpha\not=\beta$ there exists, since $\mathcal{A}$ separates
+points of $E$, a $g\in\mathcal{A}$ with $g\left(x\right)\not=g\left(y\right)$.
+Set $f=c_{0}+c_{1}g$ and choose:
+\begin{align*}
+\alpha & =c_{0}+c_{1}g\left(x\right)\\
+\beta & =c_{0}+c_{1}g\left(y\right)\\
+\Rightarrow\quad c_{1} & =\frac{\alpha-\beta}{g\left(x\right)-g\left(y\right)}\\
+\Rightarrow\quad c_{0} & =\alpha-\frac{\alpha-\beta}{g\left(x\right)-g\left(y\right)}g\left(x\right)=\frac{\alpha g\left(x\right)-\alpha g\left(y\right)-\alpha g\left(x\right)+\beta g\left(x\right)}{g\left(x\right)-g\left(y\right)}=\\
+ & =\frac{\beta g\left(x\right)-\alpha g\left(y\right)}{g\left(x\right)-g\left(y\right)}
+\end{align*}
+
+\item For all $f\in C^{0}$, $x\in E$ and $\varepsilon\in\mathbb{R}_{>0}$
+there is a $g\in\overline{\mathcal{A}}$ such that
+\begin{align*}
+g\left(x\right) & =f\left(x\right)
+\end{align*}
+and for all $y\in\overline{\mathcal{A}}$ holds:
+\begin{align*}
+g\left(y\right) & \le f\left(y\right)+\varepsilon
+\end{align*}
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick=0,
+			samples=300,domain=0:1]
+  \addplot[domain=0:1] {0.5+0.3*sin(x*180)};
+  \addlegendentry{$f(x)$}
+  \addplot[red,dashed,thick] {0.6+0.3*sin(x*180)};
+  \addlegendentry{$f(x)+\varepsilon$}
+  \addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.07*exp(-x)*cos(10*x^2 r)};
+  \addlegendentry{$g(x)$}
+ \end{axis}
+  \draw[dashed] (5.05,0) -- (5.05,4.42);
+  \draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$g\left(x\right)\le f\left(x\right)+\varepsilon$}
+\end{figure}
+To show this, choose for any $z\in E$ a $h_{z}\in\overline{\mathcal{A}}$
+with $h_{z}\left(x\right)=f\left(x\right)$ and $h_{z}\left(z\right)\le f\left(z\right)+\frac{\varepsilon}{2}$,
+which is possible after iv).\\
+Since $h_{z}$ is continuous, there is a neighborhood $U_{z}$ of
+$z$ such that $h_{z}\le f+\varepsilon$ on $U_{z}$.
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick={}, xtick={0,0.5,1},
+			samples=300,domain=0:1]
+  \addplot[domain=0:1] {0.5+0.3*sin(x*180)};
+  \addlegendentry{$f(x)$}
+  \addplot[red,dashed,thick] {0.6+0.3*sin(x*180)};
+  \addlegendentry{$f(x)+\varepsilon$}
+  \addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.1*(exp(-x)*cos(10*x^2 r)-1) + 0.05 + 0.5*x*sin(x^2*360)};
+  \addlegendentry{$h_z(x)$}
+ \end{axis}
+  \draw[dashed] (5.05,0) -- (5.05,4.42);
+  \draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
+  \draw[dashed] (0.8,0) -- (0.8,3.5);
+  \draw (0.8,0) -- (0.8,-0.1) node[below] {$z$};
+  \draw[red,thick] (0.2,0) -- node[above right]{$U_z$} (1.6,0);
+  \draw[red,thick] (0.2,0.1) -- (0.2,-0.1) (1.6,0.1) -- (1.6,-0.1);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$h_{z}\le f+\varepsilon$ on $U_{z}$}
+\end{figure}
+Since $E$ is compact, we can cover it by a finite number of such
+neighborhoods $U_{z_{1}},\ldots,U_{z_{N}}$. Define:
+\begin{align*}
+g & :=\min\left\{ h_{z_{1}},\ldots,h_{z_{N}}\right\} \in\overline{\mathcal{A}}
+\end{align*}
+It holds $g\left(x\right)=f\left(x\right)$, because $h_{z_{i}}\left(x\right)=f\left(x\right)$.
+We also know:
+\begin{align*}
+g\big|_{U_{j}} & \le h_{z_{j}}\big|_{U_{j}}\le f+\varepsilon
+\end{align*}
+
+\item $\overline{\mathcal{A}}=C^{0}$: Denote the function $g$ constructed
+in step v) by $g_{x}$.
+\begin{align*}
+g_{x}\left(x\right) & =f\left(x\right)\\
+g_{x} & \le f+\varepsilon
+\end{align*}
+By continuity of $g_{x}$ there exists a neighborhood $U_{x}$ of
+$x$ such that $g_{x}\ge f-\varepsilon$ on $U_{x}$. By compactness
+we can cover $E$ by a finite number of such neighborhoods $U_{x_{1}},\ldots,U_{x_{k}}$
+and define:
+\begin{align*}
+g & :=\max\left\{ g_{x_{1}},\ldots,g_{x_{k}}\right\} 
+\end{align*}
+Then follows:
+\begin{align*}
+f-\varepsilon\le & g\le f+\varepsilon\\
+\norm{f-g} & <\varepsilon
+\end{align*}
+\qqed
+\end{enumerate}
+Counterexample in the complex case:
+\begin{align*}
+E & =\left[0,1\right]\times\left[0,1\right]\subseteq\mathbb{C}
+\end{align*}
+Consider the set $\mathcal{A}=\mathcal{P}\left(z\right)$ of polynomials
+in $z$.
+\begin{itemize}
+\item The constant functions are in $\mathcal{A}$.
+\item $\mathcal{A}$ separates points:\\
+If $z_{1}\not=z_{2}$ take $f\left(z\right)=z$ then $f\left(z_{1}\right)\not=f\left(z_{2}\right)$.
+\begin{align*}
+\overline{\mathcal{A}} & =?
+\end{align*}
+By Morera's theorem we get:
+\begin{align*}
+\overline{\mathcal{A}} & =\left\{ f\in C^{0}\left(\left[0,1\right]^{2}\right)\bigg|\big|f\big|_{\left(0,1\right)^{2}}\text{ is holomorphic}\right\} \not=C^{0}\left(\left[0,1\right]^{2}\right)
+\end{align*}
+For example $f\left(x+\ii y\right)=x-\ii y$. We have $f\in C^{0}\left(\left[0,1\right]^{2}\right)$,
+but $f\not\in\overline{\mathcal{A}}$.
+\end{itemize}
+
+\subsection{Theorem \textmd{(Stone-Weierstraß, complex version)}}
+
+Let $\mathcal{A}\subseteq C^{0}\left(E,\mathbb{C}\right)$ be a subalgebra
+with the properties 1. and 2. from theorem \ref{sub:Thm-Stone-Weierstra=0000DF}
+and additionally:
+\begin{enumerate}
+\item [3.]$f\in\mathcal{A}\Rightarrow\overline{f}\in\mathcal{A}$
+\end{enumerate}
+Then $\mathcal{A}$ is dense in $C^{0}\left(E,\mathbb{C}\right)$.
+
+
+\subsubsection*{Proof}
+
+Consider the algebras:
+\begin{align*}
+\text{Re}\left(\mathcal{A}\right) & =\left\{ f+\overline{f}\Big|f\in\mathcal{A}\right\} \subseteq\mathcal{A}\\
+\text{Im}\left(\mathcal{A}\right) & =\left\{ \frac{1}{\ii}\left(f-\overline{f}\right)\bigg|f\in\mathcal{A}\right\} \subseteq\mathcal{A}
+\end{align*}
+These are subalgebras of $C^{0}\left(E,\mathbb{R}\right)$. By the
+real Stone-Weierstraß theorem we get:
+\begin{align*}
+\overline{\text{Re}\left(\mathcal{A}\right)} & =\overline{\text{Im}\left(\mathcal{A}\right)}=C^{0}\left(E,\mathbb{R}\right)
+\end{align*}
+For given $f\in C^{0}\left(E,\mathbb{C}\right)$ approximate $\text{Re}\left(f\right)$
+and $\text{Im}\left(f\right)$.\qqed
+
 
 \section{Arzelà-Ascoli theorem}
 
+Let $K$ be a compact metric space and $E$ a Banach space.
+
+$C^{0}\left(K,E\right)$ is the Banach space of continuous functions
+$f:K\to E$ with norm:
+\begin{align*}
+\norm f & :=\sup_{x\in K}\norm{f\left(x\right)}_{E}
+\end{align*}
+Let $\mathcal{F}\subseteq C^{0}\left(K,E\right)$ be a subset. Is
+$\mathcal{F}$ compact?
+
+
+\subsection{Definition \textmd{(relatively compact)}}
+
+A subset $A$ of a metric space is called \emph{relatively compact},
+if $\overline{A}$ is compact.
+
+
+\subsection{Definition \textmd{(equicontinuous)}}
+
+A family $\mathcal{F}\subseteq C^{0}\left(K,E\right)$ is called \emph{equicontinuous}
+(\foreignlanguage{ngerman}{gleichgradig stetig}) if for all $x\in K$
+and all $\varepsilon\in\mathbb{R}_{>0}$ there exists a $\delta\in\mathbb{R}_{>0}$
+such that for all $y\in B_{\delta}\left(x\right)$ and for all $f\in\mathcal{F}$
+holds:
+\begin{align*}
+\norm{f\left(x\right)-f\left(y\right)} & <\varepsilon
+\end{align*}
+(Thus $\delta$ is independent of $f\in\mathcal{F}$.)
+
+
+\subsection{Theorem \textmd{(Arzelà-Ascoli)}}
+
+$\mathcal{F}\subseteq C^{0}\left(K,E\right)$ is relatively compact
+if and only if the following two conditions holds:
+\begin{enumerate}[label=\roman*)]
+\item $\mathcal{F}$ is equicontinuous.
+\item For every $x\in K$ the set
+\begin{align*}
+\mathcal{F}\left(x\right) & :=\left\{ f\left(x\right)\big|f\in\mathcal{F}\right\} 
+\end{align*}
+is relatively compact in $E$.
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+„$\Rightarrow$“: Assume that $\mathcal{F}\subseteq C^{0}\left(K,E\right)$
+is relatively compact.
+\begin{enumerate}[label=\roman*)]
+\item Assume that $\mathcal{F}$ is \emph{not} equicontinuous. Then there
+exists an $\varepsilon\in\mathbb{R}_{>0}$ and sequences $x_{n}\in K$,
+$f_{n}\in\mathcal{F}$ and $y_{n}\in B_{\frac{1}{n}}\left(x_{n}\right)$
+such that:
+\begin{align*}
+\norm{f_{n}\left(x_{n}\right)-f_{n}\left(y_{n}\right)} & \ge\varepsilon
+\end{align*}
+After choosing subsequences (with the same notation), we can arrange:
+\begin{align*}
+x_{n} & \to x & y_{n} & \to x &  & \left(\text{use that }K\text{ is compact}\right)\\
+f_{n} & \to f &  &  &  & \left(\text{use that }\mathcal{F}\text{ is relatively compact}\right)
+\end{align*}
+This means that there is a $N\in\mathbb{N}$ such that for all $n\in\mathbb{N}_{>N}$
+holds for all $y\in K$:
+\begin{align*}
+\norm{f_{n}\left(y\right)-f\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+(Since convergence in $C^{0}\left(K,E\right)$ is the same as uniform
+convergence $f_{n}\rightrightarrows f$.)\\
+Since $f$ is continuous there exists a $\delta\in\mathbb{R}_{>0}$
+such that for all $y\in B_{\delta}\left(x\right)$:
+\begin{align*}
+\norm{f\left(x\right)-f\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+With this we get:
+\begin{align*}
+\norm{f_{n}\left(x\right)-f_{n}\left(y\right)} & \le\underbrace{\norm{f_{n}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{f\left(x\right)-f\left(y\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{f\left(y\right)-f_{n}\left(y\right)}}_{<\frac{\varepsilon}{3}}<\varepsilon
+\end{align*}
+This is a contradiction to $\norm{f_{n}\left(x_{n}\right)-f_{n}\left(y_{n}\right)}\ge\varepsilon$.\qqed[\roman{enumi})]
+\item Consider $y_{n}\in\mathcal{F}\left(x\right)\subseteq E$ (to show
+that $y_{n}$ has a convergent subsequence in $E$).\\
+Then there are functions $f_{n}\in\mathcal{F}$ with $f_{n}\left(x\right)=y_{n}$.
+Since $\mathcal{F}$ is relatively compact, a subsequence is a Cauchy
+sequence in $C^{0}\left(K,E\right)$, i.e. $\norm{f_{n_{l}}\to f_{n_{l'}}}\xrightarrow{l,l'\to\infty}0$.
+\begin{align*}
+\norm{f_{n_{l}}-f_{n_{l'}}} & =\sup_{z\in K}\norm{f_{n_{l}}\left(z\right)-f_{n_{l'}}\left(z\right)}_{E}\ge\norm{f_{n_{l}}\left(x\right)-f_{n_{l'}}\left(x\right)}_{E}=\norm{y_{n_{l}}-y_{n_{l'}}}
+\end{align*}
+Therefore we get+:
+\begin{align*}
+\norm{y_{n_{l}}-y_{n_{l'}}} & \xrightarrow{l,l'\to\infty}0
+\end{align*}
+Thus $\left(y_{n_{l}}\right)$ is a Cauchy sequence in $E$.\qqed[\roman{enumi})]
+\end{enumerate}
 
 \section{Riesz representation theorem}
 

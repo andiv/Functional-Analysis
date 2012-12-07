@@ -8,10 +8,13 @@
 %\usepackage{tikz-3dplot,cancel,polynom}
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
 \usetikzlibrary{external}
-\tikzexternalize % activate!
+\tikzexternalize
 \usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
 \usepackage[explicit]{titlesec}
+\usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
 \usepackage{subfigure}
+
+\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
@@ -682,15 +685,17 @@ iiilist-2
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Shell-Kommando für Tikz-Externalize:
+
+%Shell-Kommando für Tikz-Externalize:
 \end_layout
 
 \begin_layout Plain Layout
-pdflatex -shell-escape Functional-Analysis.tex 
+
+%pdflatex -shell-escape Functional-Analysis.tex 
 \end_layout
 
 \end_inset
@@ -3403,7 +3408,7 @@ Let
  holds:
 \begin_inset Formula 
 \begin{align*}
-\abs{\varphi\left(y\right)} & \le\underbrace{\norm{\varphi}}_{=:c}\cdot\norm y
+\abs{\varphi\left(y\right)} & \le\norm{\varphi}\cdot\norm y
 \end{align*}
 
 \end_inset
@@ -3434,7 +3439,7 @@ Proof
 
 \begin_layout Standard
 Apply the Hahn-Banach theorem with 
-\begin_inset Formula $\varphi:=c\norm x$
+\begin_inset Formula $\tilde{\varphi}:=\norm{\varphi}\cdot\norm x$
 \end_inset
 
 .
@@ -5679,7 +5684,7 @@ If
 \begin_inset Formula $A\in L\left(F,G\right)$
 \end_inset
 
- then Scharz inequality or Kato inequality holds:
+ then Schwarz inequality or Kato inequality holds:
 \begin_inset Formula 
 \begin{align*}
 \norm{A\cdot B} & \le\norm A\cdot\norm B\\
@@ -5699,6 +5704,13 @@ If
 Theorem and Definition 
 \series medium
 (dual pairing)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TuD-dual-pairing"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6288,7 +6300,7 @@ Let
 
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad0 & \to\varphi\left(u-u'\right)
+\Rightarrow\quad0=\varphi\left(u_{n}-u_{n}\right) & \to\varphi\left(u-u'\right)
 \end{align*}
 
 \end_inset
@@ -6342,7 +6354,7 @@ Choose
 \begin_inset Newline newline
 \end_inset
 
-Therefore there exists a 
+Therefore exists a 
 \begin_inset Formula $\varphi\in E^{*}$
 \end_inset
 
@@ -6997,7 +7009,7 @@ We shall construct inductively balls
 \end_inset
 
  and 
-\begin_inset Formula $B_{n}\cap M_{n}=\emptyset$
+\begin_inset Formula $\overline{B_{n}}\cap M_{n}=\emptyset$
 \end_inset
 
  for all 
@@ -7135,7 +7147,7 @@ Suppose
 
 .
  Then follows 
-\begin_inset Formula $\overline{B_{r_{n+1}}}\cap M_{n+1}=\emptyset$
+\begin_inset Formula $\overline{B_{r_{n+1}}\left(x_{n+1}\right)}\cap M_{n+1}=\emptyset$
 \end_inset
 
 .
@@ -7552,7 +7564,40 @@ Proof
 \begin_inset Formula $E^{*}=L\left(E,\mathbb{R}\right)$
 \end_inset
 
- is a Banach space.
+ is a Banach space after theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TuD-dual-pairing"
+
+\end_inset
+
+, since 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ is complete.
+ Now we can view every 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ as operator:
+\begin_inset Formula 
+\begin{align*}
+u_{n}:E^{*} & \to\mathbb{R}\\
+\varphi & \mapsto\varphi\left(u_{n}\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\left(u_{n}\right)$
+\end_inset
+
+ is a sequence in 
+\begin_inset Formula $L\left(E^{*},\mathbb{R}\right)$
+\end_inset
+
+.
  For all 
 \begin_inset Formula $\varphi\in E^{*}$
 \end_inset
@@ -7561,7 +7606,7 @@ Proof
 \begin_inset Formula $\varphi\left(u_{n}\right)$
 \end_inset
 
- is a Cauchy sequence.
+ is a Cauchy sequence and thus bounded:
 \begin_inset Formula 
 \begin{align*}
 \Rightarrow\quad\abs{\varphi\left(u_{n}\right)} & <C\left(\varphi\right)
@@ -8400,7 +8445,7 @@ So there exists a
 .
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\quad\overline{A\left(B_{n}\left(0\right)-x_{0}\right)} & =\overline{A\left(B_{n}\left(0\right)\right)-y_{0}}=\overline{A\left(B_{n}\left(0\right)\right)}-y_{0}\supseteq B_{\varepsilon}\left(0\right)
+\Rightarrow\quad\overline{A\left(B_{n}\left(0\right)-x_{0}\right)} & =\overline{A\left(B_{n}\left(0\right)\right)-y_{0}}=\overline{A\left(B_{n}\left(0\right)\right)}-y_{0}\supseteq B_{\varepsilon}\left(y_{0}\right)-y_{0}=B_{\varepsilon}\left(0\right)
 \end{align*}
 
 \end_inset
@@ -9423,7 +9468,7 @@ C & =A-\left(A-C\right)=A\big(\mathbbm{1}-\underbrace{A^{-1}\left(A-C\right)}_{=
 Then holds:
 \begin_inset Formula 
 \begin{align*}
-\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}=\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}<1
+\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}<\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}<1
 \end{align*}
 
 \end_inset
@@ -9840,7 +9885,7 @@ orthogonal
 \begin_inset Formula $\left\langle u,v\right\rangle =0$
 \end_inset
 
-.#
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -10529,7 +10574,7 @@ We show that
  is a Cauchy sequence:
 \begin_inset Formula 
 \begin{align*}
-\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}=\\
+\norm{u_{i}-u_{j}}^{2} & =\norm{\left(u_{i}-w\right)+\left(w-u_{j}\right)}^{2}=\\
  & \stackrel{\ref{sub:Lem-parallelogram-equality}}{=}2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{\left(u_{i}-w\right)-\left(w-u_{j}\right)}^{2}=\\
  & =2\norm{u_{i}-w}^{2}+2\norm{w-u_{j}}^{2}-\norm{-2\left(w-\frac{u_{i}+u_{j}}{2}\right)}^{2}=\\
  & =2\left(\underbrace{\norm{u_{i}-w}^{2}}_{\to d^{2}}+\underbrace{\norm{w-u_{j}}^{2}}_{\to d^{2}}-2\norm{\frac{u_{i}+u_{j}}{2}-w}^{2}\right)
@@ -14436,6 +14481,11 @@ begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
 
 \begin_layout Plain Layout
 
+			x tick label style={/pgf/number format/dec sep={,}},
+\end_layout
+
+\begin_layout Plain Layout
+
 			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2, ymin=-0.07
 ]
 \end_layout
@@ -15417,7 +15467,7 @@ The closure of a closable operator is always closed.
 \end_inset
 
 This is obvious, because 
-\begin_inset Formula $\text{graph}\overline{A}:=\overline{\text{graph}A}$
+\begin_inset Formula $\text{graph}\overline{A}\stackrel{\text{def.}}{=}\overline{\text{graph}A}$
 \end_inset
 
 , which is closed.
@@ -16739,7 +16789,7 @@ Take
 \end_inset
 
 
-\begin_inset Formula $\mathbbm{1}+\left(1-\lambda\right)^{-1}\left(\lambda-\mu\right)$
+\begin_inset Formula $\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)$
 \end_inset
 
  is continously invertible using the Neumann series if:
@@ -22201,7 +22251,7 @@ Theorem
 
 \begin_layout Standard
 For any 
-\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]\right)$
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right],\mathbb{R}\right)$
 \end_inset
 
 , 
@@ -22439,13 +22489,6 @@ end{axis}
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-draw[red, thick, scale=7.34] (0.5,0) -- (0.5,0.83);
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 end{tikzpicture}
@@ -22573,7 +22616,18 @@ f\left(x\right) & =\sum_{k=0}^{n}f\left(x\right)\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\\
-f_{n}\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+B_{n}f\left(x\right) & =\sum_{k=0}^{n}f\left(\frac{k}{n}\right)\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(B_{n}f-f\right)\left(x\right) & =\sum_{k=0}^{\infty}\left(f\left(\frac{k}{n}\right)-f\left(x\right)\right)\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}
@@ -22584,8 +22638,7 @@ k
 Define:
 \begin_inset Formula 
 \begin{align*}
-A & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}<\delta\right\} \\
-B & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
+A & :=\left\{ k\Bigg|\abs{\frac{k}{n}-x}<\delta\right\}  & B & :=\left\{ k\Bigg|\abs{\frac{k}{n}-x}\ge\delta\right\} 
 \end{align*}
 
 \end_inset
@@ -22593,10 +22646,10 @@ B & :=\left\{ k\bigg|\abs{\frac{k}{n}-x}\ge\delta\right\}
 We have:
 \begin_inset Formula 
 \begin{align*}
-\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le\frac{\varepsilon}{2}}\left(\begin{array}{c}
+\sum_{k\in A}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{<\frac{\varepsilon}{2}}\left(\begin{array}{c}
 n\\
 k
-\end{array}\right)x^{k}\left(1-x\right)^{n-k} & \le\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
+\end{array}\right)x^{k}\left(1-x\right)^{n-k} & <\frac{\varepsilon}{2}\sum_{k\in A}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\frac{\varepsilon}{2}
@@ -22607,18 +22660,31 @@ k
 
 \begin_inset Formula 
 \begin{align*}
-\abs{B_{n}f\left(x\right)-f\left(x\right)} & \le\sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
-n\\
-k
-\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le2M\sum_{k\in B}\left(\begin{array}{c}
+ & \sum_{k\in B}\underbrace{\abs{f\left(\frac{k}{n}\right)-f\left(x\right)}}_{\le2\norm f=2M}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
- & \sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
+ & \qquad\le2M\sum_{k\in B}\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)x^{k}\left(1-x\right)^{n-k}\le\\
+ & \qquad\sr{\le}{k\in B}{\Rightarrow n^{2}\delta^{2}\le\left(k-nx\right)^{2}}\frac{2M}{n^{2}\delta^{2}}\sum_{k=0}^{n}\underbrace{\left(k-nx\right)^{2}\left(\begin{array}{c}
 n\\
 k
 \end{array}\right)x^{k}\left(1-x\right)^{n-k}}_{\le\frac{n}{4}}\le\\
- & \stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+ & \qquad\stackrel{n\ge N}{\le}\frac{M}{2n\delta^{2}}\le\frac{M}{2\frac{M}{\varepsilon\delta^{2}}\delta^{2}}=\frac{\varepsilon}{2}
+\end{align*}
+
+\end_inset
+
+Therefore holds for all 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\abs{B_{n}f\left(x\right)-f\left(x\right)} & <\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
 \end{align*}
 
 \end_inset
@@ -22660,8 +22726,1704 @@ qqed
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 07.12.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now generalize: Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a compact metric space.
+ 
+\begin_inset Formula $C^{0}\left(E,\mathbb{R}\right)$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+\norm f & =\sup_{x\in E}\abs{f\left(x\right)}
+\end{align*}
+
+\end_inset
+
+is a Banach space.
+ Moreover, it is an algebra with the point-wise multiplication:
+\begin_inset Formula 
+\begin{align*}
+\left(f\cdot g\right)\left(x\right) & :=f\left(x\right)\cdot g\left(x\right)
+\end{align*}
+
+\end_inset
+
+The multiplication is continuous:
+\begin_inset Formula 
+\begin{align*}
+\norm{f\cdot g} & \le\norm f\cdot\norm g
+\end{align*}
+
+\end_inset
+
+In summary 
+\begin_inset Formula $\left(C^{0}\left(E,\mathbb{R}\right),\norm .,+,\cdot\right)$
+\end_inset
+
+ is a 
+\emph on
+Banach algebra
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Weierstraß)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Weierstraß"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The polynomials are dense in 
+\begin_inset Formula $C^{0}\left(\left[0,1\right],\mathbb{R}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For any 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right],\mathbb{R}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $B_{n}f\rightrightarrows f$
+\end_inset
+
+ converges uniformly and since the 
+\begin_inset Formula $B_{n}f$
+\end_inset
+
+ are polynomials, these are dense.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Stone-Weierstraß)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Stone-Weierstraß"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{A}\subseteq C^{0}\left(E,\mathbb{R}\right)$
+\end_inset
+
+ be a subalgebra with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ contains 
+\begin_inset Formula $f=1$
+\end_inset
+
+ and so by scalar multiplication all the constant functions.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ separates the points of 
+\begin_inset Formula $E$
+\end_inset
+
+, i.e.
+ for all 
+\begin_inset Formula $x,y\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $x\not=y$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $f\in\mathcal{A}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f\left(x\right)\not=f\left(y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $C^{0}\left(E,\mathbb{R}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+There is a sequence of polynomials 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ on 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ such that 
+\begin_inset Formula $u_{n}\rightrightarrows f$
+\end_inset
+
+ with 
+\begin_inset Formula $f\left(t\right)=\sqrt{t}$
+\end_inset
+
+.
+ This follows immediately from theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Weierstraß"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f\in\mathcal{A}$
+\end_inset
+
+, then 
+\begin_inset Formula $\abs f$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\abs f\left(x\right):=\abs{f\left(x\right)}$
+\end_inset
+
+ is in the closure 
+\begin_inset Formula $\overline{\mathcal{A}}$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $f\in\mathcal{A}$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+a & :=\norm f=\max_{x\in E}\abs{f\left(x\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\frac{f^{2}\left(x\right)}{a^{2}} & \in\left[0,1\right]
+\end{align*}
+
+\end_inset
+
+Then converges:
+\begin_inset Formula 
+\begin{align*}
+u_{n}\left(\frac{f^{2}\left(x\right)}{a^{2}}\right) & \xrightarrow{n\to\infty}\sqrt{\frac{f^{2}\left(x\right)}{a^{2}}}=\frac{\abs{f\left(x\right)}}{a}
+\end{align*}
+
+\end_inset
+
+The functions 
+\begin_inset Formula $u_{n}\left(\frac{f^{2}}{a^{2}}\right)$
+\end_inset
+
+ lie in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+, since these are a polynomials of 
+\begin_inset Formula $f$
+\end_inset
+
+ and thus again elements of the algebra 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+ Moreover 
+\begin_inset Formula $u_{n}\left(\frac{f^{2}}{a^{2}}\right)$
+\end_inset
+
+ converges uniformly to 
+\begin_inset Formula $\frac{\abs f}{a}$
+\end_inset
+
+, because for a given 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ exists a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n\in\mathbb{N}_{\ge N}$
+\end_inset
+
+ and all 
+\begin_inset Formula $t\in\left[0,1\right]$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{u_{n}\left(t\right)-\sqrt{t}} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+Then follows with 
+\begin_inset Formula $t=\frac{f^{2}\left(x\right)}{a^{2}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\abs{u_{n}\left(\frac{f^{2}\left(x\right)}{a^{2}}\right)-\frac{\abs f}{a}} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\frac{\abs f}{a}\in\overline{\mathcal{A}}$
+\end_inset
+
+ and therefore also 
+\begin_inset Formula $\abs f\in\overline{\mathcal{A}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $f,g\in\overline{\mathcal{A}}$
+\end_inset
+
+ also 
+\begin_inset Formula $\min\left(f,g\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\max\left(f,g\right)$
+\end_inset
+
+ (defined point-wise) are again in 
+\begin_inset Formula $\overline{\mathcal{A}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\min\left(f,g\right) & =\frac{1}{2}\left(f+g-\abs{f-g}\right)\\
+\max\left(f,g\right) & =\frac{1}{2}\left(f+g+\abs{f-g}\right)
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $f_{n},g_{n}\in\mathcal{A}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{n}\rightrightarrows g$
+\end_inset
+
+.
+ By ii) follows 
+\begin_inset Formula $\abs{f_{n}-g_{n}}\in\overline{\mathcal{A}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\abs{f_{n}-g_{n}}\rightrightarrows\abs{f-g}$
+\end_inset
+
+.
+ Therefore holds:
+\begin_inset Formula 
+\begin{align*}
+\overline{\mathcal{A}}\ni\min\left(f_{n},g_{n}\right) & \rightrightarrows\min\left(f,g\right)\in\overline{\mathcal{A}}
+\end{align*}
+
+\end_inset
+
+Similarly the claim follows for 
+\begin_inset Formula $\max$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For all 
+\begin_inset Formula $x,y\in E$
+\end_inset
+
+ with 
+\begin_inset Formula $x\not=y$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+ exists a 
+\begin_inset Formula $f\in\mathcal{A}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f\left(x\right)=\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(y\right)=\beta$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $\alpha=\beta$
+\end_inset
+
+ we choose 
+\begin_inset Formula $f=\alpha$
+\end_inset
+
+ as constant function.
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $\alpha\not=\beta$
+\end_inset
+
+ there exists, since 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ separates points of 
+\begin_inset Formula $E$
+\end_inset
+
+, a 
+\begin_inset Formula $g\in\mathcal{A}$
+\end_inset
+
+ with 
+\begin_inset Formula $g\left(x\right)\not=g\left(y\right)$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $f=c_{0}+c_{1}g$
+\end_inset
+
+ and choose:
+\begin_inset Formula 
+\begin{align*}
+\alpha & =c_{0}+c_{1}g\left(x\right)\\
+\beta & =c_{0}+c_{1}g\left(y\right)\\
+\Rightarrow\quad c_{1} & =\frac{\alpha-\beta}{g\left(x\right)-g\left(y\right)}\\
+\Rightarrow\quad c_{0} & =\alpha-\frac{\alpha-\beta}{g\left(x\right)-g\left(y\right)}g\left(x\right)=\frac{\alpha g\left(x\right)-\alpha g\left(y\right)-\alpha g\left(x\right)+\beta g\left(x\right)}{g\left(x\right)-g\left(y\right)}=\\
+ & =\frac{\beta g\left(x\right)-\alpha g\left(y\right)}{g\left(x\right)-g\left(y\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For all 
+\begin_inset Formula $f\in C^{0}$
+\end_inset
+
+, 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ there is a 
+\begin_inset Formula $g\in\overline{\mathcal{A}}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\begin{align*}
+g\left(x\right) & =f\left(x\right)
+\end{align*}
+
+\end_inset
+
+and for all 
+\begin_inset Formula $y\in\overline{\mathcal{A}}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+g\left(y\right) & \le f\left(y\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+			samples=300,domain=0:1]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:1] {0.5+0.3*sin(x*180)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red,dashed,thick] {0.6+0.3*sin(x*180)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)+
+\backslash
+varepsilon$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.07*exp(-x)*cos(10*x^2 r)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$g(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (5.05,0) -- (5.05,4.42);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $g\left(x\right)\le f\left(x\right)+\varepsilon$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+To show this, choose for any 
+\begin_inset Formula $z\in E$
+\end_inset
+
+ a 
+\begin_inset Formula $h_{z}\in\overline{\mathcal{A}}$
+\end_inset
+
+ with 
+\begin_inset Formula $h_{z}\left(x\right)=f\left(x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $h_{z}\left(z\right)\le f\left(z\right)+\frac{\varepsilon}{2}$
+\end_inset
+
+, which is possible after iv).
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $h_{z}$
+\end_inset
+
+ is continuous, there is a neighborhood 
+\begin_inset Formula $U_{z}$
+\end_inset
+
+ of 
+\begin_inset Formula $z$
+\end_inset
+
+ such that 
+\begin_inset Formula $h_{z}\le f+\varepsilon$
+\end_inset
+
+ on 
+\begin_inset Formula $U_{z}$
+\end_inset
+
+.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick={},
+ xtick={0,0.5,1},
+\end_layout
+
+\begin_layout Plain Layout
+
+			samples=300,domain=0:1]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:1] {0.5+0.3*sin(x*180)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red,dashed,thick] {0.6+0.3*sin(x*180)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)+
+\backslash
+varepsilon$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.1*(exp(-x)*cos(10*x^2 r)-1)
+ + 0.05 + 0.5*x*sin(x^2*360)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$h_z(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (5.05,0) -- (5.05,4.42);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (0.8,0) -- (0.8,3.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0.8,0) -- (0.8,-0.1) node[below] {$z$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red,thick] (0.2,0) -- node[above right]{$U_z$} (1.6,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red,thick] (0.2,0.1) -- (0.2,-0.1) (1.6,0.1) -- (1.6,-0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{z}\le f+\varepsilon$
+\end_inset
+
+ on 
+\begin_inset Formula $U_{z}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Since 
+\begin_inset Formula $E$
+\end_inset
+
+ is compact, we can cover it by a finite number of such neighborhoods 
+\begin_inset Formula $U_{z_{1}},\ldots,U_{z_{N}}$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+g & :=\min\left\{ h_{z_{1}},\ldots,h_{z_{N}}\right\} \in\overline{\mathcal{A}}
+\end{align*}
+
+\end_inset
+
+It holds 
+\begin_inset Formula $g\left(x\right)=f\left(x\right)$
+\end_inset
+
+, because 
+\begin_inset Formula $h_{z_{i}}\left(x\right)=f\left(x\right)$
+\end_inset
+
+.
+ We also know:
+\begin_inset Formula 
+\begin{align*}
+g\big|_{U_{j}} & \le h_{z_{j}}\big|_{U_{j}}\le f+\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\overline{\mathcal{A}}=C^{0}$
+\end_inset
+
+: Denote the function 
+\begin_inset Formula $g$
+\end_inset
+
+ constructed in step v) by 
+\begin_inset Formula $g_{x}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+g_{x}\left(x\right) & =f\left(x\right)\\
+g_{x} & \le f+\varepsilon
+\end{align*}
+
+\end_inset
+
+By continuity of 
+\begin_inset Formula $g_{x}$
+\end_inset
+
+ there exists a neighborhood 
+\begin_inset Formula $U_{x}$
+\end_inset
+
+ of 
+\begin_inset Formula $x$
+\end_inset
+
+ such that 
+\begin_inset Formula $g_{x}\ge f-\varepsilon$
+\end_inset
+
+ on 
+\begin_inset Formula $U_{x}$
+\end_inset
+
+.
+ By compactness we can cover 
+\begin_inset Formula $E$
+\end_inset
+
+ by a finite number of such neighborhoods 
+\begin_inset Formula $U_{x_{1}},\ldots,U_{x_{k}}$
+\end_inset
+
+ and define:
+\begin_inset Formula 
+\begin{align*}
+g & :=\max\left\{ g_{x_{1}},\ldots,g_{x_{k}}\right\} 
+\end{align*}
+
+\end_inset
+
+Then follows:
+\begin_inset Formula 
+\begin{align*}
+f-\varepsilon\le & g\le f+\varepsilon\\
+\norm{f-g} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Counterexample in the complex case:
+\begin_inset Formula 
+\begin{align*}
+E & =\left[0,1\right]\times\left[0,1\right]\subseteq\mathbb{C}
+\end{align*}
+
+\end_inset
+
+Consider the set 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{A}=\mathcal{P}\left(z\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ of polynomials in 
+\begin_inset Formula $z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The constant functions are in 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ separates points:
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $z_{1}\not=z_{2}$
+\end_inset
+
+ take 
+\begin_inset Formula $f\left(z\right)=z$
+\end_inset
+
+ then 
+\begin_inset Formula $f\left(z_{1}\right)\not=f\left(z_{2}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\overline{\mathcal{A}} & =?
+\end{align*}
+
+\end_inset
+
+By Morera's theorem we get:
+\begin_inset Formula 
+\begin{align*}
+\overline{\mathcal{A}} & =\left\{ f\in C^{0}\left(\left[0,1\right]^{2}\right)\bigg|\big|f\big|_{\left(0,1\right)^{2}}\text{ is holomorphic}\right\} \not=C^{0}\left(\left[0,1\right]^{2}\right)
+\end{align*}
+
+\end_inset
+
+For example 
+\begin_inset Formula $f\left(x+\ii y\right)=x-\ii y$
+\end_inset
+
+.
+ We have 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]^{2}\right)$
+\end_inset
+
+, but 
+\begin_inset Formula $f\not\in\overline{\mathcal{A}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Stone-Weierstraß, complex version)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{A}\subseteq C^{0}\left(E,\mathbb{C}\right)$
+\end_inset
+
+ be a subalgebra with the properties 1.
+ and 2.
+ from theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Stone-Weierstraß"
+
+\end_inset
+
+ and additionally:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[3.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $f\in\mathcal{A}\Rightarrow\overline{f}\in\mathcal{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $C^{0}\left(E,\mathbb{C}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Consider the algebras:
+\begin_inset Formula 
+\begin{align*}
+\text{Re}\left(\mathcal{A}\right) & =\left\{ f+\overline{f}\Big|f\in\mathcal{A}\right\} \subseteq\mathcal{A}\\
+\text{Im}\left(\mathcal{A}\right) & =\left\{ \frac{1}{\ii}\left(f-\overline{f}\right)\bigg|f\in\mathcal{A}\right\} \subseteq\mathcal{A}
+\end{align*}
+
+\end_inset
+
+These are subalgebras of 
+\begin_inset Formula $C^{0}\left(E,\mathbb{R}\right)$
+\end_inset
+
+.
+ By the real Stone-Weierstraß theorem we get:
+\begin_inset Formula 
+\begin{align*}
+\overline{\text{Re}\left(\mathcal{A}\right)} & =\overline{\text{Im}\left(\mathcal{A}\right)}=C^{0}\left(E,\mathbb{R}\right)
+\end{align*}
+
+\end_inset
+
+For given 
+\begin_inset Formula $f\in C^{0}\left(E,\mathbb{C}\right)$
+\end_inset
+
+ approximate 
+\begin_inset Formula $\text{Re}\left(f\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{Im}\left(f\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Arzelà-Ascoli theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $K$
+\end_inset
+
+ be a compact metric space and 
+\begin_inset Formula $E$
+\end_inset
+
+ a Banach space.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+ is the Banach space of continuous functions 
+\begin_inset Formula $f:K\to E$
+\end_inset
+
+ with norm:
+\begin_inset Formula 
+\begin{align*}
+\norm f & :=\sup_{x\in K}\norm{f\left(x\right)}_{E}
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\mathcal{F}\subseteq C^{0}\left(K,E\right)$
+\end_inset
+
+ be a subset.
+ Is 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ compact?
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(relatively compact)
+\end_layout
+
+\begin_layout Standard
+A subset 
+\begin_inset Formula $A$
+\end_inset
+
+ of a metric space is called 
+\emph on
+relatively compact
+\emph default
+, if 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ is compact.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(equicontinuous)
+\end_layout
+
+\begin_layout Standard
+A family 
+\begin_inset Formula $\mathcal{F}\subseteq C^{0}\left(K,E\right)$
+\end_inset
+
+ is called 
+\emph on
+equicontinuous
+\emph default
+ (
+\lang ngerman
+gleichgradig stetig
+\lang english
+) if for all 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ and all 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $y\in B_{\delta}\left(x\right)$
+\end_inset
+
+ and for all 
+\begin_inset Formula $f\in\mathcal{F}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{f\left(x\right)-f\left(y\right)} & <\varepsilon
+\end{align*}
+
+\end_inset
+
+(Thus 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $f\in\mathcal{F}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Arzelà-Ascoli)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{F}\subseteq C^{0}\left(K,E\right)$
+\end_inset
+
+ is relatively compact if and only if the following two conditions holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is equicontinuous.
+\end_layout
+
+\begin_layout Enumerate
+For every 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ the set
+\begin_inset Formula 
+\begin{align*}
+\mathcal{F}\left(x\right) & :=\left\{ f\left(x\right)\big|f\in\mathcal{F}\right\} 
+\end{align*}
+
+\end_inset
+
+is relatively compact in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Assume that 
+\begin_inset Formula $\mathcal{F}\subseteq C^{0}\left(K,E\right)$
+\end_inset
+
+ is relatively compact.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Assume that 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ equicontinuous.
+ Then there exists an 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ and sequences 
+\begin_inset Formula $x_{n}\in K$
+\end_inset
+
+, 
+\begin_inset Formula $f_{n}\in\mathcal{F}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{n}\in B_{\frac{1}{n}}\left(x_{n}\right)$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}\left(x_{n}\right)-f_{n}\left(y_{n}\right)} & \ge\varepsilon
+\end{align*}
+
+\end_inset
+
+After choosing subsequences (with the same notation), we can arrange:
+\begin_inset Formula 
+\begin{align*}
+x_{n} & \to x & y_{n} & \to x &  & \left(\text{use that }K\text{ is compact}\right)\\
+f_{n} & \to f &  &  &  & \left(\text{use that }\mathcal{F}\text{ is relatively compact}\right)
+\end{align*}
+
+\end_inset
+
+This means that there is a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n\in\mathbb{N}_{>N}$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $y\in K$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}\left(y\right)-f\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+(Since convergence in 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+ is the same as uniform convergence 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $f$
+\end_inset
+
+ is continuous there exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $y\in B_{\delta}\left(x\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{f\left(x\right)-f\left(y\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+With this we get:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}\left(x\right)-f_{n}\left(y\right)} & \le\underbrace{\norm{f_{n}\left(x\right)-f\left(x\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{f\left(x\right)-f\left(y\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{f\left(y\right)-f_{n}\left(y\right)}}_{<\frac{\varepsilon}{3}}<\varepsilon
+\end{align*}
+
+\end_inset
+
+This is a contradiction to 
+\begin_inset Formula $\norm{f_{n}\left(x_{n}\right)-f_{n}\left(y_{n}\right)}\ge\varepsilon$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Consider 
+\begin_inset Formula $y_{n}\in\mathcal{F}\left(x\right)\subseteq E$
+\end_inset
+
+ (to show that 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ has a convergent subsequence in 
+\begin_inset Formula $E$
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+Then there are functions 
+\begin_inset Formula $f_{n}\in\mathcal{F}$
+\end_inset
+
+ with 
+\begin_inset Formula $f_{n}\left(x\right)=y_{n}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is relatively compact, a subsequence is a Cauchy sequence in 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\norm{f_{n_{l}}\to f_{n_{l'}}}\xrightarrow{l,l'\to\infty}0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n_{l}}-f_{n_{l'}}} & =\sup_{z\in K}\norm{f_{n_{l}}\left(z\right)-f_{n_{l'}}\left(z\right)}_{E}\ge\norm{f_{n_{l}}\left(x\right)-f_{n_{l'}}\left(x\right)}_{E}=\norm{y_{n_{l}}-y_{n_{l'}}}
+\end{align*}
+
+\end_inset
+
+Therefore we get+:
+\begin_inset Formula 
+\begin{align*}
+\norm{y_{n_{l}}-y_{n_{l'}}} & \xrightarrow{l,l'\to\infty}0
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\left(y_{n_{l}}\right)$
+\end_inset
+
+ is a Cauchy sequence in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
