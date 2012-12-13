@@ -51,10 +51,11 @@
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
 \usepackage{subfigure}
 
-\pgfkeys{/pgf/number format/dec sep={\text{,}}}
-
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
+\usepackage{tocbasic,scrhack}
+
+\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 \tocloftpagestyle{fancy}
 
@@ -378,6 +379,11 @@ Zorn's Lemma:
 \item \noun{Hans-Joachim Kowalsky, Gerhard O. Michler}: \foreignlanguage{ngerman}{\emph{Lineare
 Algebra}}; de Gruyter, 2003; ISBN: 3-11-017963-6
 \end{itemize}
+Measure theory for the Riesz representation theorem:
+\begin{itemize}
+\item \noun{Walter Rudin}: \emph{Real and complex analysis}; McGraw-Hill,
+2009; ISBN: 0-07-054234-1
+\end{itemize}
 {\small \newpage{}}\fancyhead[R]{Table of contents}
 \fancyhead[C]{}
 
@@ -469,8 +475,8 @@ if complete)
 Let $\mathbb{K}$ be either $\mathbb{R}$ or $\mathbb{C}$.
 
 
-\section{Definition \textmd{(metric, $\varepsilon$-ball, Cauchy sequence,
-complete, Polish space)}}
+\section{Definition \textmd{(metric, \texorpdfstring{$\varepsilon$}{epsilon}-ball,
+Cauchy sequence, complete, Polish space)}}
 
 A map $d:E\times E\to\mathbb{R}$ is called \emph{metric}, if for
 all $x,y,z\in E$ holds:
@@ -529,7 +535,8 @@ holds:
 
 
 
-\section{Lemma \textmd{(continuous $\Leftrightarrow$ bounded)}}
+\section{Lemma \textmd{(continuous \texorpdfstring{$\Leftrightarrow$}{equivalent to}
+bounded)}}
 
 $A$ is continuous $\Leftrightarrow$ $A$ is bounded.
 
@@ -1747,8 +1754,8 @@ is continuous.
 
 \subsubsection*{Proof}
 
-Since $A$ is surjective, from \ref{sub:Thm-Open-mapping} follows
-that $A$ is open, which means that $A^{-1}$ is continuous.\qqed
+$A$ is open following \ref{sub:Thm-Open-mapping}, since $A$ is
+surjective. This means that $A^{-1}$ is continuous.\qqed
 
 
 \subsubsection*{Proof of \ref{sub:Thm-Open-mapping}}
@@ -4745,7 +4752,10 @@ We follow the nice (since constructive) proof by Bernstein.
 \subsection{Definition \textmd{(polynomials)}}
 
 Let $E=C^{0}\left(\left[0,1\right]\right)$ be the Banach space of
-real valued functions with norm $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$.
+real valued functions with norm:
+\begin{align*}
+\norm f & =\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}
+\end{align*}
 $\mathcal{P}\left(\left[0,1\right]\right)$ are the \emph{real polynomials},
 i.e. for $f\in\mathcal{P}\left(\left[0,1\right]\right)$ there are
 $a_{j}\in\mathbb{R}$ such that:
@@ -5124,7 +5134,7 @@ g\left(y\right) & \le f\left(y\right)+\varepsilon
 \begin{figure}[H]
 \hspace*{1mm}\hfill{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
-			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick=0,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.15,
 			samples=300,domain=0:1]
   \addplot[domain=0:1] {0.5+0.3*sin(x*180)};
   \addlegendentry{$f(x)$}
@@ -5133,7 +5143,7 @@ g\left(y\right) & \le f\left(y\right)+\varepsilon
   \addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.07*exp(-x)*cos(10*x^2 r)};
   \addlegendentry{$g(x)$}
  \end{axis}
-  \draw[dashed] (5.05,0) -- (5.05,4.42);
+  \draw[dashed] (5.05,0) -- (5.05,4.6);
   \draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
 \end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$g\left(x\right)\le f\left(x\right)+\varepsilon$}
 \end{figure}
@@ -5145,7 +5155,8 @@ $z$ such that $h_{z}\le f+\varepsilon$ on $U_{z}$.
 \begin{figure}[H]
 \hspace*{1mm}\hfill{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
-			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick={}, xtick={0,0.5,1},
+			axis x line=middle, axis y line=middle,
+			xmax=1.15, ymin=0, ymax=1.15, xtick={0,0.5,1},
 			samples=300,domain=0:1]
   \addplot[domain=0:1] {0.5+0.3*sin(x*180)};
   \addlegendentry{$f(x)$}
@@ -5154,9 +5165,9 @@ $z$ such that $h_{z}\le f+\varepsilon$ on $U_{z}$.
   \addplot[blue,dotted,thick] {0.5+0.3*sin(x*180)+0.1*(exp(-x)*cos(10*x^2 r)-1) + 0.05 + 0.5*x*sin(x^2*360)};
   \addlegendentry{$h_z(x)$}
  \end{axis}
-  \draw[dashed] (5.05,0) -- (5.05,4.42);
+  \draw[dashed] (5.05,0) -- (5.05,4.6);
   \draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
-  \draw[dashed] (0.8,0) -- (0.8,3.5);
+  \draw[dashed] (0.8,0) -- (0.8,3.7);
   \draw (0.8,0) -- (0.8,-0.1) node[below] {$z$};
   \draw[red,thick] (0.2,0) -- node[above right]{$U_z$} (1.6,0);
   \draw[red,thick] (0.2,0.1) -- (0.2,-0.1) (1.6,0.1) -- (1.6,-0.1);
@@ -5334,8 +5345,342 @@ Therefore we get+:
 \end{align*}
 Thus $\left(y_{n_{l}}\right)$ is a Cauchy sequence in $E$.\qqed[\roman{enumi})]
 \end{enumerate}
+%DATE: Do 13.12.12
 
-\section{Riesz representation theorem}
+„$\Leftarrow$“: Let $\left(f_{l}\right)$ be a sequence in $\mathcal{F}$
+and show that a subsequence $\left(g_{l}\right)$ converges in $C^{0}\left(K,E\right)$:\\
+Since $K$ is compact, there is a countable dense subset $\left\{ x_{1},x_{2},\ldots\right\} \subseteq K$.
+Since $\mathcal{F}\left(x_{1}\right)$ is relatively compact, there
+is a subsequence $f_{l}^{\left(1\right)}\in\mathcal{F}$ of $\left(f_{l}\right)$
+such that $f_{l}^{\left(1\right)}\left(x_{1}\right)$ converges in
+$E$. Since $\mathcal{F}\left(x_{2}\right)$ is relatively compact,
+there is a subsequence $f_{l}^{\left(2\right)}$ of $f_{l}^{\left(1\right)}$
+such that $f_{l}^{\left(2\right)}\left(x_{2}\right)$ converges.\\
+Inductively choose a subsequence $\left(f_{l}^{\left(n+1\right)}\right)$
+of $\left(f_{l}^{\left(n\right)}\right)$ such that $f_{l}^{\left(n+1\right)}\left(x_{n+1}\right)$
+converges in $E$. Take the diagonal sequence $g_{l}:=f_{l}^{\left(l\right)}$.
+This is for $l\ge n$ a subsequence of $f_{l}^{\left(n\right)}$,
+so for all $n\in\mathbb{N}$ converges $g_{l}\left(x_{n}\right)\xrightarrow{l\to\infty}y_{n}$.
+\begin{description}
+\item [{Claim:}] $g_{n}$ is a Cauchy sequence in $C^{0}\left(K,E\right)$,
+i.e. for all $\varepsilon\in\mathbb{R}_{>0}$ exists a $N\in\mathbb{N}$
+such that for all $n,m\in\mathbb{N}_{>N}$ and all $x\in K$ holds:
+\begin{align*}
+\abs{g_{n}\left(x\right)-g_{m}\left(x\right)} & \le\varepsilon
+\end{align*}
+
+\item [{Proof:}] Since $\mathcal{F}$ is equicontinuous, for all $x\in E$
+exists a $\delta\in\mathbb{R}_{>0}$ such that for all $z,z'\in B_{\delta\left(x\right)}\left(x\right)$
+and all $f\in\mathcal{F}$ holds:
+\begin{align*}
+\norm{f\left(z\right)-f\left(z'\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+We cover $K$ by a finite number of such balls $B_{1},\ldots,B_{L}$.
+In every Ball $B_{l}$ there is at least one point of $\left\{ x_{1},x_{2},\ldots\right\} $.
+We choose such a point $\xi_{l}\in B_{l}$. Since $\left(g_{n}\left(\xi_{l}\right)\right)$
+converges for every $l\in\left\{ 1,\ldots,L\right\} $ we can choose
+a $N\in\mathbb{N}$ such that for all $l\in\left\{ 1,\ldots,L\right\} $
+and all $m,n\in\mathbb{N}_{>N}$ holds:
+\begin{align*}
+\norm{g_{n}\left(\xi_{l}\right)-g_{m}\left(\xi_{l}\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+For every $x\in K$ exists a $l\in\left\{ 1,\ldots,L\right\} $ with
+$x\in B_{l}$.
+\begin{align*}
+\norm{g_{n}\left(x\right)-g_{m}\left(x\right)} & \le\underbrace{\norm{g_{n}\left(x\right)-g_{n}\left(\xi_{l}\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{g_{n}\left(\xi_{l}\right)-g_{m}\left(\xi_{l}\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{g_{m}\left(\xi_{l}\right)-g_{m}\left(x\right)}}_{<\frac{\varepsilon}{3}}
+\end{align*}
+\qqed[Claim]
+\end{description}
+Therefore the subsequence $\left(g_{l}\right)$ for $\left(f_{l}\right)$
+converges in $C^{0}\left(K,E\right)$, since $C^{0}\left(K,E\right)$
+is complete, because $E$ is a Banach space.\qqed
+
+
+\subsubsection*{Application to integral operators}
+
+Let $K\subseteq\mathbb{R}^{n}$ be compact. Consider an integral operator
+$A:C^{0}\left(K,\mathbb{R}\right)\to C^{0}\left(K,\mathbb{R}\right)$,
+i.e.:
+\begin{align*}
+\left(Af\right)\left(x\right) & =\int_{K}A\left(x,y\right)f\left(y\right)\dd^{n}y
+\end{align*}
+$\mathcal{F}:=A\left(C^{0}\left(K,\mathbb{R}\right)\right)$ is equicontinuous
+provided that $A\left(.,y\right)$ is continuous. 
+
+
+\section{The Riesz representation theorem}
+
+Let $K$ again be a compact metric space. $E=C^{0}\left(K,\mathbb{R}\right)$
+with the sup-norm is a Banach space.
+\begin{description}
+\item [{Question:}] What is $E^{*}$?
+\end{description}
+Consider $l\in E^{*}$, i.e.
+\begin{align*}
+l:E & \to\mathbb{R}
+\end{align*}
+and for all $f\in C^{0}\left(K\right)$ holds:
+\begin{align*}
+\abs{l\left(f\right)} & \le C\norm f
+\end{align*}
+This means $f$ is bounded or equivalently continuous.
+
+
+\subsection{Examples}
+
+Consider $K=\left[0,1\right]\subseteq\mathbb{R}$. For any $\varphi\in L^{1}\left(\left[0,1\right]\right)$,
+the functional
+\begin{align*}
+l\left(f\right) & :=\int_{0}^{1}\varphi\left(x\right)f\left(x\right)\dd x
+\end{align*}
+is linear and bounded:
+\begin{align*}
+\abs{l\left(f\right)} & \le\int_{0}^{1}\abs{\varphi\left(x\right)}\cdot\abs{f\left(x\right)}\dd x\le\underbrace{\sup_{x\in\left[0,1\right]}\abs f}_{=\norm f}\cdot\underbrace{\int_{0}^{1}\abs{\varphi\left(x\right)}\dd x}_{=\norm{\varphi}_{L^{1}}}
+\end{align*}
+It is convenient to identify $l\in E^{*}$ with the function $\varphi\in L^{1}$.
+We have represented $l$ by an $L^{1}$-function $\varphi$.\\
+This can also be written as a \emph{signed measure} (\foreignlanguage{ngerman}{signiertes
+Maß}):
+\begin{align*}
+\dd\mu & :=\varphi\left(x\right)\dd x
+\end{align*}
+But not every $l\in E^{*}$ can be represented in this form.
+
+
+\subsubsection*{Example}
+
+\begin{align*}
+l\left(f\right) & :=f\left(\frac{1}{2}\right)
+\end{align*}
+is bounded:
+\begin{align*}
+\abs{l\left(f\right)} & =\abs{f\left(\frac{1}{2}\right)}\le\sup_{\left[0,1\right]}\abs f=\norm f
+\end{align*}
+It can be represented by the Dirac measure:
+\begin{align*}
+l\left(f\right) & =\int_{0}^{1}f\left(x\right)\delta\left(x-\frac{1}{2}\right)\dd x=\int_{0}^{1}f\left(x\right)\dd\mu
+\end{align*}
+Here $\delta\left(x\right)$ is the $\delta$-Distribution. $\mu=\delta_{\frac{1}{2}}$
+is the Dirac measure.
+\begin{align*}
+\delta_{x_{0}}\left(\Omega\right) & =\begin{cases}
+1 & \text{if }x_{0}\in\Omega\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+
+
+\subsection{Definition \textmd{(bounded, positive, regular measure)}}
+
+Let $X\not=\emptyset$ be a set. A $\sigma$-algebra $\mathcal{M}$
+over $X$ is a set of subsets of $X$ such that holds:
+\begin{enumerate}[label=\roman*)]
+\item $\emptyset\in\mathcal{M}$
+\item $A\in\mathcal{M}\ \Rightarrow\ \complement A:=X\setminus A\in\mathcal{M}$
+\item For a countable family $\left(A_{j}\right)_{j\in\mathbb{N}}$ holds:
+\begin{align*}
+\bigcup_{j=1}^{\infty}A_{j} & \in\mathcal{M}
+\end{align*}
+
+\end{enumerate}
+The elements of $\mathcal{M}$ are called \emph{measurable sets} (\foreignlanguage{ngerman}{messbare
+Mengen}).
+
+Let $K$ be a compact metric space. Denote by $\mathfrak{M}$ the
+\emph{Borel algebra}, i.e. the smallest $\sigma$-algebra over $K$,
+which contains all open and therefore all closed subsets of $K$.
+
+A \emph{bounded (signed) measure} is a mapping
+\begin{align*}
+\mu:\mathfrak{M} & \to\mathbb{R}
+\end{align*}
+(not $\mu:\mathfrak{M}\to\mathbb{R}^{+}\cup\left\{ 0\right\} \cup\left\{ \infty\right\} $
+as before in measure theory) with the following properties:
+\begin{itemize}
+\item The empty set measures zero:
+\begin{align*}
+\mu\left(\emptyset\right) & =0
+\end{align*}
+
+\item $\sigma$-additivity: For $M_{j}\in\mathfrak{M}$ with $M_{i}\cap M_{j}=\emptyset$
+for all $i\not=j$ holds:
+\begin{align*}
+\mu\left(\bcupd_{j=1}^{\infty}M_{j}\right) & =\sum_{j=1}^{\infty}\mu\left(M_{j}\right)
+\end{align*}
+
+\end{itemize}
+$\mu$ is \emph{positive}, if $\mu\left(M\right)\ge0$ for all $M\in\mathfrak{M}$.\\
+$\mu$ is \emph{regular}, if for all $A\in\mathfrak{M}$ holds:
+\begin{align*}
+\mu\left(A\right) & =\sup_{\sr{}{B\subseteq A}{B\text{ compact}}}\mu\left(B\right)=\inf_{\sr{}{\Omega\supseteq A}{\Omega\text{ open}}}\mu\left(\Omega\right)
+\end{align*}
+
+
+
+\subsubsection*{Example}
+
+The Lebesgue measure $\dd^{n}x$ restricted to the Borel algebra on
+$\left[0,1\right]^{n}$ is a bounded, positive and regular measure.
+
+
+\subsection{Theorem \textmd{(Riesz representation theorem)\label{sub:Thm-Riesz-representation}}}
+
+Consider $l\in C^{0}\left(K,\mathbb{R}\right)^{*}$. Then there is
+a unique bounded regular Borel measure $\mu$ (i.e. a measure on the
+Borel algebra $\mathfrak{M}$) such that for all $f\in C^{0}\left(K,\mathbb{R}\right)$
+holds:
+\begin{align*}
+l\left(f\right) & =\int_{K}f\dd\mu
+\end{align*}
+Here we only prove the case $K=\left[0,1\right]$. (We also need it
+for $K=\left[0,1\right]^{2}$.)
+
+How can one construct positive regular Borel measures on $\left[0,1\right]$?
+
+
+\subsubsection*{Lebesgue-Stieltjes integral}
+
+Let $\alpha:\left[0,1\right]\to\mathbb{R}$ be monotonically increasing
+(not necessarily continuous).
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle,
+			ymin=0, ymax=1.25,
+			xmin =0 , xmax=1.15]
+  \addplot[domain=0.2:0.5] {0.2+x^2};
+  \addlegendentry{$\alpha(x)$}
+  \addplot[domain=0.5:0.7] {0.1+x};
+  \addplot[domain=0.7:1,samples=70] {0.9+0.3*sqrt(x-0.7)};
+  \draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.24);
+  \draw[dashed] (axis cs:0.5,0.45) -- (axis cs:0.5,0.6);
+  \draw[dashed] (axis cs:0.7,0.8) -- (axis cs:0.7,0.9);
+ \end{axis}
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\alpha$ is monotonically increasing, but not continuous}
+\end{figure}
+
+
+The two one-sided limits
+\begin{align*}
+\lim_{x\nearrow x_{0}}\alpha\left(x\right),\ \lim_{x\searrow x_{0}}\alpha\left(x\right)
+\end{align*}
+exist. In general:
+\begin{align*}
+\lim_{x\nearrow x_{0}}\alpha\left(x\right) & \le\alpha\left(x_{0}\right)\le\lim_{x\searrow x_{0}}\alpha\left(x\right)
+\end{align*}
+But equality does not need to hold. Define:
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & :=\lim_{x\nearrow b}\alpha\left(x\right)-\lim_{x\searrow a}\alpha\left(x\right)
+\end{align*}
+By $\sigma$-additivity, this measure can be extended to a positive
+regular Borel measure. (This can be proved exactly as for the Lebesgue
+integral.)
+\begin{align*}
+\int_{0}^{1}f\dd\mu
+\end{align*}
+is called Lebesgue-Stieltjes integral. If $\alpha\left(x\right)=x+c$,
+the Lebesgue-Stieltjes integral reduces to the Lebesgue integral
+
+
+\subsection{Example}
+
+Let $\alpha\in C^{1}\left(\left[0,1\right]\right)$ be monotonically
+increasing. Then holds:
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & =\alpha\left(b\right)-\alpha\left(a\right)=\int_{a}^{b}\alpha'\left(x\right)\dd x=\int_{0}^{1}\chi_{\left(a,b\right)}\alpha'\left(x\right)\dd x
+\end{align*}
+The corresponding Lebesgue-Stieltjes integral is:
+\begin{align*}
+\int f\dd\mu & =\int_{0}^{1}f\left(x\right)\cdot\alpha'\left(x\right)\dd x
+\end{align*}
+The following short notation is used in general:
+\begin{align*}
+\dd\mu & =\alpha'\left(x\right)\dd x\\
+\dd\mu & =\dd\alpha
+\end{align*}
+If $\alpha\in C^{1}\left(\left[0,1\right]\right)$ is not monotone,
+we can still set:
+\begin{align*}
+\int_{0}^{1}f\dd\mu & :=\int_{0}^{1}f\cdot\alpha'\left(x\right)\dd x
+\end{align*}
+$\dd\mu$ is a signed measure.
+
+In order to extend the Lebesgue-Stieltjes construction to functions
+$\alpha$, which are \emph{not} monotone (such as to obtain signed
+measures), we need to assume, that $\alpha$ has bounded variation.
+
+
+\subsection{Definition \textmd{(total variation)}}
+
+Let $f:\left[0,1\right]\to\mathbb{R}$ be a function (not necessarily
+continuous).\\
+The \emph{total variation} (\foreignlanguage{ngerman}{Totalvariation})
+is defined by:
+\begin{align*}
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{1}\right)-f\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\end{align*}
+$f$ is of \emph{bounded variation} (\foreignlanguage{ngerman}{beschränkte
+Totalvariation}), $f\in\text{BV}\left(\left[0,1\right]\right)$, if
+$\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle,
+			ymin=-0.1, ymax=1.05, xtick=0,
+			xmin =-0.02, xmax=1.05, ytick=0, samples=100]
+  \addplot[domain=0:1] {0.7+0.3*exp(-2*x)*cos(700*x+20)};
+  \addlegendentry{$\alpha(x)$}
+  \draw[thick] (axis cs:0,0.025) -- (axis cs:0,-0.025) node[below right]{$x_0$};
+  \draw[thick] (axis cs:0.2,0.025) -- (axis cs:0.2,-0.025) node[below]{$x_1$};
+  \draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.51);
+  \draw[thick] (axis cs:0.4,0.025) -- (axis cs:0.4,-0.025) node[below]{$x_2$};
+  \draw[dashed] (axis cs:0.4,0) -- (axis cs:0.4,0.765);
+  \draw[thick] (axis cs:0.6,0.025) -- (axis cs:0.6,-0.025) node[below]{$x_3$};
+  \draw[dashed] (axis cs:0.6,0) -- (axis cs:0.6,0.715);
+  \draw[dashed] (axis cs:1,0) -- (axis cs:1,0.74);
+  \draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$x_N$};
+ \end{axis}
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{total variation of $\alpha$}
+\end{figure}
+
+
+\emph{Note:} If $f$ is monotonically increasing, then holds:
+\begin{align*}
+\left(\text{TV}\left(f\right)\right)\left(x\right) & =f\left(x\right)-f\left(0\right)<\infty
+\end{align*}
+Thus every monotonically function has bounded variation.
+
+But there are even continuous functions, which have unbounded variation,
+e.g. for large enough $p\in\mathbb{R}_{>0}$:
+\begin{align*}
+f\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
+\end{align*}
+
+
+For $f\in C^{1}\left(\left[0,1\right]\right)$ holds:
+\begin{align*}
+\text{TV}\left(f\right)\left(x\right) & =\int_{0}^{x}\abs{f'\left(\tau\right)}\dd\tau
+\end{align*}
+
+
+
+\subsubsection*{Properties of the total variation}
+
+$\text{TV}\left(f\right)\left(x\right)$ is monotonically increasing
+and:
+\begin{align*}
+\text{TV}\left(f\right)\left(0\right) & =0
+\end{align*}
+$\text{TV}\left(f\right)\left(x\right)\pm f\left(x\right)$ is also
+monotonically increasing, because:
+\begin{align*}
+\text{TV}\left(f\right)\left(x\right)-f\left(x\right) & =\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{i}\right)-f\left(x_{i-1}\right)}-\sum_{i=1}^{N}\left(f\left(x_{i}\right)-f\left(x_{i-1}\right)\right)-f\left(0\right)=\\
+ & =-f\left(0\right)+\underbrace{\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\left(-2\right)\cdot\underbrace{\min\left(f\left(x_{i}\right)-f\left(x_{i-1}\right),0\right)}_{\le0}}_{\text{positive terms}}
+\end{align*}
+
 
 
 \part*{Appendix\thispagestyle{empty}}

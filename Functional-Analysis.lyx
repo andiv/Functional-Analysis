@@ -14,10 +14,11 @@
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
 \usepackage{subfigure}
 
-\pgfkeys{/pgf/number format/dec sep={\text{,}}}
-
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
+\usepackage{tocbasic,scrhack}
+
+\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 \tocloftpagestyle{fancy}
 
@@ -1409,6 +1410,22 @@ Lineare Algebra
 \end_layout
 
 \begin_layout Standard
+Measure theory for the Riesz representation theorem:
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Walter Rudin
+\noun default
+: 
+\emph on
+Real and complex analysis
+\emph default
+; McGraw-Hill, 2009; ISBN: 0-07-054234-1
+\end_layout
+
+\begin_layout Standard
 
 \size small
 \begin_inset Newpage newpage
@@ -1829,7 +1846,31 @@ Let
 Definition 
 \series medium
 (metric, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\varepsilon$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{epsilon}
+\end_layout
+
 \end_inset
 
 -ball, Cauchy sequence, complete, Polish space)
@@ -2161,7 +2202,31 @@ beschränkt
 Lemma 
 \series medium
 (continuous 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{equivalent to}
+\end_layout
+
 \end_inset
 
  bounded)
@@ -8213,22 +8278,22 @@ Proof
 \end_layout
 
 \begin_layout Standard
-Since 
 \begin_inset Formula $A$
 \end_inset
 
- is surjective, from 
+ is open following 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Thm-Open-mapping"
 
 \end_inset
 
- follows that 
+, since 
 \begin_inset Formula $A$
 \end_inset
 
- is open, which means that 
+ is surjective.
+ This means that 
 \begin_inset Formula $A^{-1}$
 \end_inset
 
@@ -21958,12 +22023,15 @@ Let
 \begin_inset Formula $E=C^{0}\left(\left[0,1\right]\right)$
 \end_inset
 
- be the Banach space of real valued functions with norm 
-\begin_inset Formula $\norm f=\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}$
+ be the Banach space of real valued functions with norm:
+\begin_inset Formula 
+\begin{align*}
+\norm f & =\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}
+\end{align*}
+
 \end_inset
 
-.
- 
+
 \begin_inset Formula $\mathcal{P}\left(\left[0,1\right]\right)$
 \end_inset
 
@@ -23315,7 +23383,7 @@ begin{axis}[width=10cm,
 
 \begin_layout Plain Layout
 
-			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick=0,
+			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.15,
 \end_layout
 
 \begin_layout Plain Layout
@@ -23378,7 +23446,7 @@ end{axis}
 
   
 \backslash
-draw[dashed] (5.05,0) -- (5.05,4.42);
+draw[dashed] (5.05,0) -- (5.05,4.6);
 \end_layout
 
 \begin_layout Plain Layout
@@ -23515,8 +23583,12 @@ begin{axis}[width=10cm,
 
 \begin_layout Plain Layout
 
-			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.2, ytick={},
- xtick={0,0.5,1},
+			axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xmax=1.15, ymin=0, ymax=1.15, xtick={0,0.5,1},
 \end_layout
 
 \begin_layout Plain Layout
@@ -23580,7 +23652,7 @@ end{axis}
 
   
 \backslash
-draw[dashed] (5.05,0) -- (5.05,4.42);
+draw[dashed] (5.05,0) -- (5.05,4.6);
 \end_layout
 
 \begin_layout Plain Layout
@@ -23594,7 +23666,7 @@ draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
 
   
 \backslash
-draw[dashed] (0.8,0) -- (0.8,3.5);
+draw[dashed] (0.8,0) -- (0.8,3.7);
 \end_layout
 
 \begin_layout Plain Layout
@@ -24426,8 +24498,1488 @@ roman{enumi})]
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 13.12.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Let 
+\begin_inset Formula $\left(f_{l}\right)$
+\end_inset
+
+ be a sequence in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ and show that a subsequence 
+\begin_inset Formula $\left(g_{l}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $K$
+\end_inset
+
+ is compact, there is a countable dense subset 
+\begin_inset Formula $\left\{ x_{1},x_{2},\ldots\right\} \subseteq K$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mathcal{F}\left(x_{1}\right)$
+\end_inset
+
+ is relatively compact, there is a subsequence 
+\begin_inset Formula $f_{l}^{\left(1\right)}\in\mathcal{F}$
+\end_inset
+
+ of 
+\begin_inset Formula $\left(f_{l}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{l}^{\left(1\right)}\left(x_{1}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mathcal{F}\left(x_{2}\right)$
+\end_inset
+
+ is relatively compact, there is a subsequence 
+\begin_inset Formula $f_{l}^{\left(2\right)}$
+\end_inset
+
+ of 
+\begin_inset Formula $f_{l}^{\left(1\right)}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{l}^{\left(2\right)}\left(x_{2}\right)$
+\end_inset
+
+ converges.
+\begin_inset Newline newline
+\end_inset
+
+Inductively choose a subsequence 
+\begin_inset Formula $\left(f_{l}^{\left(n+1\right)}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $\left(f_{l}^{\left(n\right)}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{l}^{\left(n+1\right)}\left(x_{n+1}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Take the diagonal sequence 
+\begin_inset Formula $g_{l}:=f_{l}^{\left(l\right)}$
+\end_inset
+
+.
+ This is for 
+\begin_inset Formula $l\ge n$
+\end_inset
+
+ a subsequence of 
+\begin_inset Formula $f_{l}^{\left(n\right)}$
+\end_inset
+
+, so for all 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ converges 
+\begin_inset Formula $g_{l}\left(x_{n}\right)\xrightarrow{l\to\infty}y_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ is a Cauchy sequence in 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+, i.e.
+ for all 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ exists a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n,m\in\mathbb{N}_{>N}$
+\end_inset
+
+ and all 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{g_{n}\left(x\right)-g_{m}\left(x\right)} & \le\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Proof: Since 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is equicontinuous, for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $z,z'\in B_{\delta\left(x\right)}\left(x\right)$
+\end_inset
+
+ and all 
+\begin_inset Formula $f\in\mathcal{F}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{f\left(z\right)-f\left(z'\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+We cover 
+\begin_inset Formula $K$
+\end_inset
+
+ by a finite number of such balls 
+\begin_inset Formula $B_{1},\ldots,B_{L}$
+\end_inset
+
+.
+ In every Ball 
+\begin_inset Formula $B_{l}$
+\end_inset
+
+ there is at least one point of 
+\begin_inset Formula $\left\{ x_{1},x_{2},\ldots\right\} $
+\end_inset
+
+.
+ We choose such a point 
+\begin_inset Formula $\xi_{l}\in B_{l}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\left(g_{n}\left(\xi_{l}\right)\right)$
+\end_inset
+
+ converges for every 
+\begin_inset Formula $l\in\left\{ 1,\ldots,L\right\} $
+\end_inset
+
+ we can choose a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $l\in\left\{ 1,\ldots,L\right\} $
+\end_inset
+
+ and all 
+\begin_inset Formula $m,n\in\mathbb{N}_{>N}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{g_{n}\left(\xi_{l}\right)-g_{m}\left(\xi_{l}\right)} & <\frac{\varepsilon}{3}
+\end{align*}
+
+\end_inset
+
+For every 
+\begin_inset Formula $x\in K$
+\end_inset
+
+ exists a 
+\begin_inset Formula $l\in\left\{ 1,\ldots,L\right\} $
+\end_inset
+
+ with 
+\begin_inset Formula $x\in B_{l}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{g_{n}\left(x\right)-g_{m}\left(x\right)} & \le\underbrace{\norm{g_{n}\left(x\right)-g_{n}\left(\xi_{l}\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{g_{n}\left(\xi_{l}\right)-g_{m}\left(\xi_{l}\right)}}_{<\frac{\varepsilon}{3}}+\underbrace{\norm{g_{m}\left(\xi_{l}\right)-g_{m}\left(x\right)}}_{<\frac{\varepsilon}{3}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore the subsequence 
+\begin_inset Formula $\left(g_{l}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\left(f_{l}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+, since 
+\begin_inset Formula $C^{0}\left(K,E\right)$
+\end_inset
+
+ is complete, because 
+\begin_inset Formula $E$
+\end_inset
+
+ is a Banach space.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Application to integral operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $K\subseteq\mathbb{R}^{n}$
+\end_inset
+
+ be compact.
+ Consider an integral operator 
+\begin_inset Formula $A:C^{0}\left(K,\mathbb{R}\right)\to C^{0}\left(K,\mathbb{R}\right)$
+\end_inset
+
+, i.e.:
+\begin_inset Formula 
+\begin{align*}
+\left(Af\right)\left(x\right) & =\int_{K}A\left(x,y\right)f\left(y\right)\dd^{n}y
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{F}:=A\left(C^{0}\left(K,\mathbb{R}\right)\right)$
+\end_inset
+
+ is equicontinuous provided that 
+\begin_inset Formula $A\left(.,y\right)$
+\end_inset
+
+ is continuous.
+ 
+\end_layout
+
 \begin_layout Section
-Riesz representation theorem
+The Riesz representation theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $K$
+\end_inset
+
+ again be a compact metric space.
+ 
+\begin_inset Formula $E=C^{0}\left(K,\mathbb{R}\right)$
+\end_inset
+
+ with the sup-norm is a Banach space.
+\end_layout
+
+\begin_layout Description
+Question: What is 
+\begin_inset Formula $E^{*}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $l\in E^{*}$
+\end_inset
+
+, i.e.
+\begin_inset Formula 
+\begin{align*}
+l:E & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+and for all 
+\begin_inset Formula $f\in C^{0}\left(K\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{l\left(f\right)} & \le C\norm f
+\end{align*}
+
+\end_inset
+
+This means 
+\begin_inset Formula $f$
+\end_inset
+
+ is bounded or equivalently continuous.
+\end_layout
+
+\begin_layout Subsection
+Examples
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $K=\left[0,1\right]\subseteq\mathbb{R}$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $\varphi\in L^{1}\left(\left[0,1\right]\right)$
+\end_inset
+
+, the functional
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & :=\int_{0}^{1}\varphi\left(x\right)f\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+is linear and bounded:
+\begin_inset Formula 
+\begin{align*}
+\abs{l\left(f\right)} & \le\int_{0}^{1}\abs{\varphi\left(x\right)}\cdot\abs{f\left(x\right)}\dd x\le\underbrace{\sup_{x\in\left[0,1\right]}\abs f}_{=\norm f}\cdot\underbrace{\int_{0}^{1}\abs{\varphi\left(x\right)}\dd x}_{=\norm{\varphi}_{L^{1}}}
+\end{align*}
+
+\end_inset
+
+It is convenient to identify 
+\begin_inset Formula $l\in E^{*}$
+\end_inset
+
+ with the function 
+\begin_inset Formula $\varphi\in L^{1}$
+\end_inset
+
+.
+ We have represented 
+\begin_inset Formula $l$
+\end_inset
+
+ by an 
+\begin_inset Formula $L^{1}$
+\end_inset
+
+-function 
+\begin_inset Formula $\varphi$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+This can also be written as a 
+\emph on
+signed measure
+\emph default
+ (
+\lang ngerman
+signiertes Maß
+\lang english
+):
+\begin_inset Formula 
+\begin{align*}
+\dd\mu & :=\varphi\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+But not every 
+\begin_inset Formula $l\in E^{*}$
+\end_inset
+
+ can be represented in this form.
+\end_layout
+
+\begin_layout Subsubsection*
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & :=f\left(\frac{1}{2}\right)
+\end{align*}
+
+\end_inset
+
+is bounded:
+\begin_inset Formula 
+\begin{align*}
+\abs{l\left(f\right)} & =\abs{f\left(\frac{1}{2}\right)}\le\sup_{\left[0,1\right]}\abs f=\norm f
+\end{align*}
+
+\end_inset
+
+It can be represented by the Dirac measure:
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & =\int_{0}^{1}f\left(x\right)\delta\left(x-\frac{1}{2}\right)\dd x=\int_{0}^{1}f\left(x\right)\dd\mu
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $\delta\left(x\right)$
+\end_inset
+
+ is the 
+\begin_inset Formula $\delta$
+\end_inset
+
+-Distribution.
+ 
+\begin_inset Formula $\mu=\delta_{\frac{1}{2}}$
+\end_inset
+
+ is the Dirac measure.
+\begin_inset Formula 
+\begin{align*}
+\delta_{x_{0}}\left(\Omega\right) & =\begin{cases}
+1 & \text{if }x_{0}\in\Omega\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(bounded, positive, regular measure)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X\not=\emptyset$
+\end_inset
+
+ be a set.
+ A 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ over 
+\begin_inset Formula $X$
+\end_inset
+
+ is a set of subsets of 
+\begin_inset Formula $X$
+\end_inset
+
+ such that holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\emptyset\in\mathcal{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\in\mathcal{M}\ \Rightarrow\ \complement A:=X\setminus A\in\mathcal{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For a countable family 
+\begin_inset Formula $\left(A_{j}\right)_{j\in\mathbb{N}}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\bigcup_{j=1}^{\infty}A_{j} & \in\mathcal{M}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The elements of 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ are called 
+\emph on
+measurable sets
+\emph default
+ (
+\lang ngerman
+messbare Mengen
+\lang english
+).
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $K$
+\end_inset
+
+ be a compact metric space.
+ Denote by 
+\begin_inset Formula $\mathfrak{M}$
+\end_inset
+
+ the 
+\emph on
+Borel algebra
+\emph default
+, i.e.
+ the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra over 
+\begin_inset Formula $K$
+\end_inset
+
+, which contains all open and therefore all closed subsets of 
+\begin_inset Formula $K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+bounded (signed) measure
+\emph default
+ is a mapping
+\begin_inset Formula 
+\begin{align*}
+\mu:\mathfrak{M} & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+(not 
+\begin_inset Formula $\mu:\mathfrak{M}\to\mathbb{R}^{+}\cup\left\{ 0\right\} \cup\left\{ \infty\right\} $
+\end_inset
+
+ as before in measure theory) with the following properties:
+\end_layout
+
+\begin_layout Itemize
+The empty set measures zero:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\emptyset\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additivity: For 
+\begin_inset Formula $M_{j}\in\mathfrak{M}$
+\end_inset
+
+ with 
+\begin_inset Formula $M_{i}\cap M_{j}=\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+ holds:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\bcupd_{j=1}^{\infty}M_{j}\right) & =\sum_{j=1}^{\infty}\mu\left(M_{j}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\emph on
+positive
+\emph default
+, if 
+\begin_inset Formula $\mu\left(M\right)\ge0$
+\end_inset
+
+ for all 
+\begin_inset Formula $M\in\mathfrak{M}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\emph on
+regular
+\emph default
+, if for all 
+\begin_inset Formula $A\in\mathfrak{M}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(A\right) & =\sup_{\sr{}{B\subseteq A}{B\text{ compact}}}\mu\left(B\right)=\inf_{\sr{}{\Omega\supseteq A}{\Omega\text{ open}}}\mu\left(\Omega\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Example
+\end_layout
+
+\begin_layout Standard
+The Lebesgue measure 
+\begin_inset Formula $\dd^{n}x$
+\end_inset
+
+ restricted to the Borel algebra on 
+\begin_inset Formula $\left[0,1\right]^{n}$
+\end_inset
+
+ is a bounded, positive and regular measure.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Riesz representation theorem)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Riesz-representation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $l\in C^{0}\left(K,\mathbb{R}\right)^{*}$
+\end_inset
+
+.
+ Then there is a unique bounded regular Borel measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ (i.e.
+ a measure on the Borel algebra 
+\begin_inset Formula $\mathfrak{M}$
+\end_inset
+
+) such that for all 
+\begin_inset Formula $f\in C^{0}\left(K,\mathbb{R}\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & =\int_{K}f\dd\mu
+\end{align*}
+
+\end_inset
+
+Here we only prove the case 
+\begin_inset Formula $K=\left[0,1\right]$
+\end_inset
+
+.
+ (We also need it for 
+\begin_inset Formula $K=\left[0,1\right]^{2}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+How can one construct positive regular Borel measures on 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsubsection*
+Lebesgue-Stieltjes integral
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha:\left[0,1\right]\to\mathbb{R}$
+\end_inset
+
+ be monotonically increasing (not necessarily continuous).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+			ymin=0, ymax=1.25,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xmin =0 , xmax=1.15]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0.2:0.5] {0.2+x^2};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$
+\backslash
+alpha(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0.5:0.7] {0.1+x};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0.7:1,samples=70] {0.9+0.3*sqrt(x-0.7)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.24);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.5,0.45) -- (axis cs:0.5,0.6);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.7,0.8) -- (axis cs:0.7,0.9);
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is monotonically increasing, but not continuous
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The two one-sided limits
+\begin_inset Formula 
+\begin{align*}
+\lim_{x\nearrow x_{0}}\alpha\left(x\right),\ \lim_{x\searrow x_{0}}\alpha\left(x\right)
+\end{align*}
+
+\end_inset
+
+exist.
+ In general:
+\begin_inset Formula 
+\begin{align*}
+\lim_{x\nearrow x_{0}}\alpha\left(x\right) & \le\alpha\left(x_{0}\right)\le\lim_{x\searrow x_{0}}\alpha\left(x\right)
+\end{align*}
+
+\end_inset
+
+But equality does not need to hold.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & :=\lim_{x\nearrow b}\alpha\left(x\right)-\lim_{x\searrow a}\alpha\left(x\right)
+\end{align*}
+
+\end_inset
+
+By 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additivity, this measure can be extended to a positive regular Borel measure.
+ (This can be proved exactly as for the Lebesgue integral.)
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}f\dd\mu
+\end{align*}
+
+\end_inset
+
+is called Lebesgue-Stieltjes integral.
+ If 
+\begin_inset Formula $\alpha\left(x\right)=x+c$
+\end_inset
+
+, the Lebesgue-Stieltjes integral reduces to the Lebesgue integral
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha\in C^{1}\left(\left[0,1\right]\right)$
+\end_inset
+
+ be monotonically increasing.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & =\alpha\left(b\right)-\alpha\left(a\right)=\int_{a}^{b}\alpha'\left(x\right)\dd x=\int_{0}^{1}\chi_{\left(a,b\right)}\alpha'\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+The corresponding Lebesgue-Stieltjes integral is:
+\begin_inset Formula 
+\begin{align*}
+\int f\dd\mu & =\int_{0}^{1}f\left(x\right)\cdot\alpha'\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+The following short notation is used in general:
+\begin_inset Formula 
+\begin{align*}
+\dd\mu & =\alpha'\left(x\right)\dd x\\
+\dd\mu & =\dd\alpha
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\alpha\in C^{1}\left(\left[0,1\right]\right)$
+\end_inset
+
+ is not monotone, we can still set:
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}f\dd\mu & :=\int_{0}^{1}f\cdot\alpha'\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd\mu$
+\end_inset
+
+ is a signed measure.
+\end_layout
+
+\begin_layout Standard
+In order to extend the Lebesgue-Stieltjes construction to functions 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, which are 
+\emph on
+not
+\emph default
+ monotone (such as to obtain signed measures), we need to assume, that 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ has bounded variation.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(total variation)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f:\left[0,1\right]\to\mathbb{R}$
+\end_inset
+
+ be a function (not necessarily continuous).
+\begin_inset Newline newline
+\end_inset
+
+The 
+\emph on
+total variation
+\emph default
+ (
+\lang ngerman
+Totalvariation
+\lang english
+) is defined by:
+\begin_inset Formula 
+\begin{align*}
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{1}\right)-f\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $f$
+\end_inset
+
+ is of 
+\emph on
+bounded variation
+\emph default
+ (
+\lang ngerman
+beschränkte Totalvariation
+\lang english
+), 
+\begin_inset Formula $f\in\text{BV}\left(\left[0,1\right]\right)$
+\end_inset
+
+, if 
+\begin_inset Formula $\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+			ymin=-0.1, ymax=1.05, xtick=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xmin =-0.02, xmax=1.05, ytick=0, samples=100]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:1] {0.7+0.3*exp(-2*x)*cos(700*x+20)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$
+\backslash
+alpha(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0,0.025) -- (axis cs:0,-0.025) node[below right]{$x_0$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.2,0.025) -- (axis cs:0.2,-0.025) node[below]{$x_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.51);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.4,0.025) -- (axis cs:0.4,-0.025) node[below]{$x_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.4,0) -- (axis cs:0.4,0.765);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.6,0.025) -- (axis cs:0.6,-0.025) node[below]{$x_3$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.6,0) -- (axis cs:0.6,0.715);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:1,0) -- (axis cs:1,0.74);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$x_N$};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+total variation of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Note:
+\emph default
+ If 
+\begin_inset Formula $f$
+\end_inset
+
+ is monotonically increasing, then holds:
+\begin_inset Formula 
+\begin{align*}
+\left(\text{TV}\left(f\right)\right)\left(x\right) & =f\left(x\right)-f\left(0\right)<\infty
+\end{align*}
+
+\end_inset
+
+Thus every monotonically function has bounded variation.
+\end_layout
+
+\begin_layout Standard
+But there are even continuous functions, which have unbounded variation,
+ e.g.
+ for large enough 
+\begin_inset Formula $p\in\mathbb{R}_{>0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $f\in C^{1}\left(\left[0,1\right]\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\text{TV}\left(f\right)\left(x\right) & =\int_{0}^{x}\abs{f'\left(\tau\right)}\dd\tau
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Properties of the total variation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{TV}\left(f\right)\left(x\right)$
+\end_inset
+
+ is monotonically increasing and:
+\begin_inset Formula 
+\begin{align*}
+\text{TV}\left(f\right)\left(0\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\text{TV}\left(f\right)\left(x\right)\pm f\left(x\right)$
+\end_inset
+
+ is also monotonically increasing, because:
+\begin_inset Formula 
+\begin{align*}
+\text{TV}\left(f\right)\left(x\right)-f\left(x\right) & =\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{i}\right)-f\left(x_{i-1}\right)}-\sum_{i=1}^{N}\left(f\left(x_{i}\right)-f\left(x_{i-1}\right)\right)-f\left(0\right)=\\
+ & =-f\left(0\right)+\underbrace{\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\left(-2\right)\cdot\underbrace{\min\left(f\left(x_{i}\right)-f\left(x_{i-1}\right),0\right)}_{\le0}}_{\text{positive terms}}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
