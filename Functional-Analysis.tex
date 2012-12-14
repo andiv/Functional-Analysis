@@ -383,6 +383,8 @@ Measure theory for the Riesz representation theorem:
 \begin{itemize}
 \item \noun{Walter Rudin}: \emph{Real and complex analysis}; McGraw-Hill,
 2009; ISBN: 0-07-054234-1
+\item \noun{Michael Reed, Barry Simon}: \emph{Methods of modern mathematical
+physics 1: Functional analysis}; Academic Press, 2007; ISBN: 0-12-585050-6
 \end{itemize}
 {\small \newpage{}}\fancyhead[R]{Table of contents}
 \fancyhead[C]{}
@@ -1746,7 +1748,7 @@ der offenen Abbildung}}\textmd{)\label{sub:Thm-Open-mapping}}}
 If $A\in L\left(E,F\right)$ is surjective, then $A$ is open.
 
 
-\subsection{Corollary}
+\subsection{Corollary\label{sub:Cor-open-mapping}}
 
 If $A\in L\left(E,F\right)$ is bijective, then $A^{-1}\in L\left(F,E\right)$
 is continuous.
@@ -3441,14 +3443,14 @@ M & :=\left\{ \left(u,w\right)\in H\times H\bigg|\fall_{v\in\mathcal{D}\left(A\r
 \item [{Proof:}] $M\not=\emptyset$ since $\left(0,0\right)\in M$.
 
 \begin{itemize}
-\item The image is unique: $u\to w$ is well-defined, as from $\left(u,w\right),\left(u,w'\right)\in M$
+\item The image is unique: $u\mapsto w$ is well-defined, as from $\left(u,w\right),\left(u,w'\right)\in M$
 follows for all $v\in\mathcal{D}\left(A\right)$:
 \begin{align*}
 \left\langle w-w',v\right\rangle =\left\langle u-u,Av\right\rangle  & =0
 \end{align*}
 Since $\mathcal{D}\left(A\right)$ is dense, $w-w'=0$ follows.
 \item $A^{*}$ is linear: For $\left(u,w\right),\left(u',w'\right)\in M$
-and $\lambda\in\mathbb{K}$ follows $\left(u+\lambda u',w+\lambda w'\right)\in M$
+and $\lambda\in\mathbb{K}$ follows $\left(u+\lambda u',w+\lambda w'\right)\in M$,
 which is obvious from the definition of $M$.\qqed[Claim]
 \end{itemize}
 \end{description}
@@ -3782,7 +3784,7 @@ $K\left(B\right)\subseteq E$.
 \item uniformly bounded $\left(\norm{\varphi}<CM\right)$
 \item uniformly continuous
 \end{itemize}
-The Arzela-Ascoli theorem yields, that $K\left(B\right)$ is precompact
+The Arzelà-Ascoli theorem yields, that $K\left(B\right)$ is precompact
 and so $K$ is a compact operator.
 
 
@@ -5575,8 +5577,8 @@ But equality does not need to hold. Define:
 \mu\left(\left(a,b\right)\right) & :=\lim_{x\nearrow b}\alpha\left(x\right)-\lim_{x\searrow a}\alpha\left(x\right)
 \end{align*}
 By $\sigma$-additivity, this measure can be extended to a positive
-regular Borel measure. (This can be proved exactly as for the Lebesgue
-integral.)
+regular bounded Borel measure. (This can be proven exactly as for
+the Lebesgue integral.) The corresponding integral
 \begin{align*}
 \int_{0}^{1}f\dd\mu
 \end{align*}
@@ -5614,16 +5616,16 @@ measures), we need to assume, that $\alpha$ has bounded variation.
 
 \subsection{Definition \textmd{(total variation)}}
 
-Let $f:\left[0,1\right]\to\mathbb{R}$ be a function (not necessarily
+Let $\alpha:\left[0,1\right]\to\mathbb{R}$ be a function (not necessarily
 continuous).\\
 The \emph{total variation} (\foreignlanguage{ngerman}{Totalvariation})
 is defined by:
 \begin{align*}
-\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{1}\right)-f\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=x}}\sum_{i=1}^{N}\abs{\alpha\left(x_{1}\right)-\alpha\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
 \end{align*}
-$f$ is of \emph{bounded variation} (\foreignlanguage{ngerman}{beschränkte
-Totalvariation}), $f\in\text{BV}\left(\left[0,1\right]\right)$, if
-$\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
+$\alpha$ is of \emph{bounded variation} (\foreignlanguage{ngerman}{beschränkte
+Totalvariation}), $\alpha\in\mathcal{BV}\left(\left[0,1\right]\right)$,
+if $\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
 
 \begin{figure}[H]
 \hspace*{1mm}\hfill{}\begin{tikzpicture}
@@ -5647,40 +5649,358 @@ $\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
 \end{figure}
 
 
-\emph{Note:} If $f$ is monotonically increasing, then holds:
+\emph{Note:} If $\alpha$ is monotonically increasing, then holds:
 \begin{align*}
-\left(\text{TV}\left(f\right)\right)\left(x\right) & =f\left(x\right)-f\left(0\right)<\infty
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & =\alpha\left(x\right)-\alpha\left(0\right)<\infty
 \end{align*}
 Thus every monotonically function has bounded variation.
 
 But there are even continuous functions, which have unbounded variation,
 e.g. for large enough $p\in\mathbb{R}_{>0}$:
 \begin{align*}
-f\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
+\alpha\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
 \end{align*}
 
 
-For $f\in C^{1}\left(\left[0,1\right]\right)$ holds:
+For $\alpha\in C^{1}\left(\left[0,1\right]\right)$ holds:
 \begin{align*}
-\text{TV}\left(f\right)\left(x\right) & =\int_{0}^{x}\abs{f'\left(\tau\right)}\dd\tau
+\text{TV}\left(\alpha\right)\left(x\right) & =\int_{0}^{x}\abs{\alpha'\left(\tau\right)}\dd\tau
 \end{align*}
 
 
 
-\subsubsection*{Properties of the total variation}
+\subsubsection*{Lemma \textmd{(Properties of the total variation)}}
 
-$\text{TV}\left(f\right)\left(x\right)$ is monotonically increasing
+$\text{TV}\left(\alpha\right)\left(x\right)$ is monotonically increasing
 and:
 \begin{align*}
-\text{TV}\left(f\right)\left(0\right) & =0
+\text{TV}\left(\alpha\right)\left(0\right) & =0
 \end{align*}
-$\text{TV}\left(f\right)\left(x\right)\pm f\left(x\right)$ is also
-monotonically increasing, because:
+$\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right)$
+is also monotonically increasing.
+
+%DATE: Fr 14.12.12
+
+
+\subsubsection*{Proof}
+
+Assume that $y\in\mathbb{R}_{>x}$.
 \begin{align*}
-\text{TV}\left(f\right)\left(x\right)-f\left(x\right) & =\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{i}\right)-f\left(x_{i-1}\right)}-\sum_{i=1}^{N}\left(f\left(x_{i}\right)-f\left(x_{i-1}\right)\right)-f\left(0\right)=\\
- & =-f\left(0\right)+\underbrace{\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\left(-2\right)\cdot\underbrace{\min\left(f\left(x_{i}\right)-f\left(x_{i-1}\right),0\right)}_{\le0}}_{\text{positive terms}}
+\text{TV}\left(\alpha\right)\left(y\right) & =\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=y}}\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\ge\sup_{\sr{}{N\in\mathbb{N}_{\ge2}}{0=x_{0}<\ldots<x_{N-1}=x<x_{N}=y}}\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\ge\\
+ & \ge\sup_{\sr{}{N\in\mathbb{N}_{\ge2}}{0=x_{0}<\ldots<x_{N-1}=x<x_{N}=y}}\sum_{i=1}^{N-1}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}=\text{TV}\left(\alpha\right)\left(x\right)
+\end{align*}
+\begin{align*}
+\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right) & =\pm\alpha\left(0\right)+\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=x}}\sum_{i=1}^{N}\underbrace{\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\pm\left(\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\right)}_{\ge0}
+\end{align*}
+Just as before this implies that 
+\begin{align*}
+\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right)
+\end{align*}
+is monotonically increasing.\qqed
+
+Suppose that $f\in\mathcal{BV}\left(\left[0,1\right]\right)$. Then
+the functions
+\begin{align*}
+f_{+} & =\frac{1}{2}\left(\text{TV}\left(f\right)+f\right)\\
+f_{-} & =\frac{1}{2}\left(\text{TV}\left(f\right)-f\right)
+\end{align*}
+are monotonically increasing and:
+\begin{align*}
+f & =f_{+}-f_{-}
+\end{align*}
+Let $\dd\mu_{\pm}=\dd f_{\pm}$ be the bounded positive regular Borel
+measures of the corresponding Lebesgue-Stieltjes integrals. Then
+\begin{align*}
+\mu & :=\mu_{+}-\mu_{-}
+\end{align*}
+defines a bounded regular Borel measure with the property:
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & =\mu_{+}\left(\left(a,b\right)\right)-\mu_{-}\left(\left(a,b\right)\right)=\lim_{x\nearrow b}f_{+}\left(x\right)-\lim_{x\searrow a}f_{+}\left(x\right)-\lim_{x\nearrow b}f_{-}\left(x\right)+\lim_{x\searrow a}f_{-}\left(x\right)=\\
+ & =\lim_{x\nearrow b}f\left(x\right)-\lim_{x\searrow a}f\left(x\right)
 \end{align*}
 
+
+
+\subsection{Example}
+
+Consider the Heaviside function:
+\begin{align*}
+f & :=\begin{cases}
+0 & \text{if}\ x\le\frac{1}{2}\\
+1 & \text{if}\ x>\frac{1}{2}
+\end{cases}
+\end{align*}
+$\dd\mu:=\dd f$ has the form $\mu=\delta_{\frac{1}{2}}$.
+
+
+\subsubsection*{Proof of Theorem \ref{sub:Thm-Riesz-representation} in the case
+$K=\left[0,1\right]$}
+
+$\mathcal{PC}\left(\left[0,1\right]\right)$ are the piecewise continuous
+functions, i.e. for all $f\in\mathcal{PC}\left(\left[0,1\right]\right)$
+exists a $N\in\mathbb{N}$ and points $0=x_{0}<\ldots<x_{N}=1$ such
+that $f\big|_{\left(x_{i-1},x_{i}\right)}$ is continuous and has
+a continuous continuation to $\left[x_{i-1},x_{i}\right]$ for all
+$i\in\left\{ 1,\ldots,N\right\} $.\\
+On $\mathcal{PC}$ we introduce the norm:
+\begin{align*}
+\norm f & =\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}
+\end{align*}
+This makes $\mathcal{PC}\left(\left[0,1\right]\right)$ a Banach space.
+\begin{align*}
+C^{0}\left(\left[0,1\right]\right) & \subseteq\mathcal{PC}\left(\left[0,1\right]\right)
+\end{align*}
+is a subspace, which is closed, since it is complete.\\
+Consider $l\in C^{0}\left(\left[0,1\right]\right)^{*}$, i.e.
+\begin{align*}
+l:C^{0}\left(\left[0,1\right]\right) & \to\mathbb{R}
+\end{align*}
+with:
+\begin{align*}
+\abs{l\left(f\right)} & \le C\norm f_{C^{0}}
+\end{align*}
+According to the Hahn-Banach theorem, there is an extension
+\begin{align*}
+\tilde{l}:\mathcal{PC}\left(\left[0,1\right]\right) & \to\mathbb{R}
+\end{align*}
+with $\tilde{l}\big|_{C^{0}}=l$ and $\abs{l\left(f\right)}\le C\norm f_{\mathcal{PC}\left(\left[0,1\right]\right)}$.
+Define $\alpha:\left[0,1\right]\to\mathbb{R}$ by:
+\begin{align*}
+\alpha\left(x\right) & :=\begin{cases}
+\tilde{l}\left(\chi_{[0,x)}\right) & \text{if }x<1\\
+\tilde{l}\left(\chi_{\left[0,1\right]}\right) & \text{if }x=1
+\end{cases}
+\end{align*}
+
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=8cm,
+			axis x line=middle, axis y line=middle,
+			ymin=-0.1, ymax=1.15, xtick=0,
+			xmin =-0.02, xmax=1.05, ytick={1}, samples=100]
+  \addplot[domain=0:0.7] {1};
+  \addlegendentry{$\chi_{[0,x)}$}
+  \draw[dashed] (axis cs:0.7,0) -- (axis cs:0.7,1);
+  \draw[thick] (axis cs:0.7,0.025) -- (axis cs:0.7,-0.025) node[below]{$x$};
+ \end{axis}
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\chi_{[0,x)}$}
+\end{figure}
+
+
+$l\left(\chi_{[0,x)}\right)$ is ill-defined, because $\chi_{[0,x)}$
+is \emph{not} continuous.
+
+$\tilde{l}\left(\chi_{[0,x)}\right)$ is well-defined, because $\chi_{[0,x)}$
+is piecewise-continuous.
+\begin{itemize}
+\item $\alpha$ has bounded variation: Consider:
+\begin{align*}
+0=x_{0}<\ldots<x_{N}=1
+\end{align*}
+We need to show:
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & <C
+\end{align*}
+$C$ has to be independent of $N$ and the $\left(x_{i}\right)$.\\
+Define $s_{i}\in\left\{ \pm1\right\} $ by:
+\begin{align*}
+s_{i} & :=\begin{cases}
++1 & \text{if }\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\ge0\\
+-1 & \text{if }\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)<0
+\end{cases}
+\end{align*}
+Then holds:
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & =\sum_{i=1}^{N}s_{i}\left(\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\right)=\tilde{l}\left(\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}\right)
+\end{align*}
+Since $\tilde{l}$ is bounded by construction, we know:
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & \le\abs{\tilde{l}\left(\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}\right)}\le\\
+ & \le C\norm{\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}}=C
+\end{align*}
+Therefore we have $\alpha\in\mathcal{BV}\left(\left[0,1\right]\right)$.
+\item Consider $\dd\mu:=\dd\alpha_{+}-\dd\alpha_{-}$ for the corresponding
+bounded regular Borel measure, where $\alpha=\alpha_{+}-\alpha_{-}$
+and $\alpha_{\pm}$ are monotonically increasing.
+
+\begin{description}
+\item [{Claim:}] For all $f\in C^{0}\left(\left[0,1\right]\right)$ holds:
+\begin{align*}
+l\left(f\right) & =\int_{0}^{1}f\dd\mu
+\end{align*}
+
+\item [{Proof:}] Consider $f\in C^{0}\left(\left[0,1\right]\right)$. Set:
+\begin{align*}
+f_{n}\left(x\right) & :=\begin{cases}
+\sum_{i=1}^{n}f\left(\frac{i}{n}\right)\cdot\chi_{\big[\frac{i-1}{n},\frac{i}{n}\big)} & \text{if }x<1\\
+f\left(1\right) & \text{if }x=1
+\end{cases}
+\end{align*}
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+ \begin{axis}[width=10cm,
+			axis x line=middle, axis y line=middle,
+			ymin=-0.2, ymax=1.6, xtick=0,
+			xmin =-0.05, xmax=1.15, ytick=0, samples=100]
+  \addplot[domain=0:1] {-4*x^3+2*x^2+2*x+0.4};
+  \addlegendentry{$f(x)$}
+  \addplot[domain=0:0.2, dashed] {0.4};
+  \addlegendentry{$f_n(x)$}
+  \draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.85) -- (axis cs:0.4,0.85);
+  \draw[thick] (axis cs:0.2,0.025) -- (axis cs:0.2,-0.025) node[below]{$\frac{1}{n}$};
+  \draw[dashed] (axis cs:0.4,0) -- (axis cs:0.4,1.265) -- (axis cs:0.6,1.265);
+  \draw[thick] (axis cs:0.4,0.025) -- (axis cs:0.4,-0.025) node[below]{$\frac{2}{n}$};
+  \draw[dashed] (axis cs:0.6,0) -- (axis cs:0.6,1.45) -- (axis cs:0.8,1.45);
+  \draw[thick] (axis cs:0.6,0.025) -- (axis cs:0.6,-0.025) node[below]{$\frac{3}{n}$};
+  \draw[dashed] (axis cs:0.8,0) -- (axis cs:0.8,1.45) (axis cs:0.8,1.23) -- (axis cs:1,1.23);
+  \draw[thick] (axis cs:0.8,0.025) -- (axis cs:0.8,-0.025) node[below]{$\frac{4}{n}$};
+  \draw[dashed] (axis cs:1,0) -- (axis cs:1,1.23);
+  \draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$\frac{n}{n}=1$};
+ \end{axis}
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Approximation of $f$ by $f\left(\frac{i}{n}\right)$ for $n=5$}
+\end{figure}
+Since $f_{n}$ is uniformly continuous, i.e. $f_{n}\rightrightarrows f$,
+we get:
+\begin{align*}
+l\left(f\right) & =\tilde{l}\left(f\right)=\tilde{l}\left(\lim_{n\to\infty}f_{n}\right)\stackrel{\tilde{l}\text{ continuous}}{=}\lim_{n\to\infty}\tilde{l}\left(f_{n}\right)=\\
+ & \stackrel{\text{by construction}}{=}\lim_{n\to\infty}\int_{0}^{1}f_{n}\dd\mu\stackrel{\left(*\right)}{=}\int_{0}^{1}\lim_{n\to\infty}f_{n}\dd\mu=\int_{0}^{1}f\dd\mu
+\end{align*}
+For $\left(*\right)$ consider:
+\begin{align*}
+\abs{\int_{0}^{1}\left(f_{n}-f\right)\dd\mu} & \le\underbrace{\sup\abs{f-f_{n}}}_{\to0}\cdot\underbrace{\text{TV}\left(\alpha\right)\left(1\right)}_{<\infty}\xrightarrow{n\to\infty}0
+\end{align*}
+\qqed[Claim]
+\end{description}
+\end{itemize}
+\qqed
+
+
+\subsubsection*{Remarks}
+\begin{itemize}
+\item Our proof only works in the case $K=\left[a,b\right]\subseteq\mathbb{R}$.
+(see Reed, Simon: Appendix ``The Riesz-Markov Theorem'')
+\item In general dimension the idea would be:
+\begin{align*}
+\mu\left(\Omega\right) & :=\tilde{l}\left(\chi_{\Omega}\right)
+\end{align*}
+But how to extend $l$? So choose $f_{n}\to\chi_{\Omega}$ and define:
+\begin{align*}
+\mu\left(\Omega\right) & :=\lim_{n\to\infty}l\left(f_{n}\right)
+\end{align*}
+(see Rudin: \emph{Real and complex analysis})
+\item Total variation of a bounded Borel measure:
+\begin{align*}
+\abs{\mu}\left(\Omega\right) & :=\sup_{\sr{\Omega_{1},\ldots,\Omega_{N}}{N\in\mathbb{N}}{\text{with }\Omega_{1}\dot{\cup}\ldots\dot{\cup}\Omega_{N}=\Omega}}\sum_{i=1}^{N}\abs{\mu\left(\Omega_{i}\right)}
+\end{align*}
+$\abs{\mu}$ is a positive bounded Borel measure. (see Rudin)\\
+Then we can write:
+\begin{align*}
+\abs{\int_{K}\left(f-f_{n}\right)\dd\mu} & \le\int_{K}\abs{f-f_{n}}\cdot\dd\abs{\mu}\le\sup_{K}\abs{f-f_{n}}\cdot\abs{\mu}\left(K\right)
+\end{align*}
+
+\end{itemize}
+
+\chapter{The Spectral Theorem for symmetric bounded operators}
+
+Let $A\in L\left(H\right)$ be symmetric and $H$ be a separable Hilbert
+space. Let $p\left(A\right)$ be a polynomial in $A$, for example
+the characteristic polynomial for $A\in L\left(\mathbb{C}^{N}\right)$
+with $p\left(A\right)=0$.\\
+Extend this idea to functions $f\left(A\right)$ with $f\in C^{0}\left(\sigma\left(A\right)\right)$.
+(Stone-Weierstraß)\\
+Then for
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =:l\left(f\right)
+\end{align*}
+holds $l\in C^{0}\left(\sigma\left(A\right)\right)^{*}$. Using the
+Riesz representation theorem we can write:
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+\begin{align*}
+\dd\mu_{u}\left(\lambda\right) & =\left\langle u,\dd E_{\lambda}u\right\rangle 
+\end{align*}
+$\dd E_{\lambda}$ is the so-called \emph{spectral measure}. Then
+holds the spectral theorem:
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+
+
+
+\section{The Spectrum of symmetric bounded operators}
+
+Let $A\in L\left(H\right)$ be symmetric, i.e. $\left\langle u,Av\right\rangle =\left\langle Au,v\right\rangle $
+for all $u,v\in H$. The resolvent set is:
+\begin{align*}
+\varrho\left(A\right) & =\left\{ \lambda\in\mathbb{C}\big|\left(\lambda-A\right)\text{ has a continuous inverse}\right\} \\
+\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\end{align*}
+$\varrho\left(A\right)\subseteq\mathbb{C}$ is open and so the spectrum
+$\sigma\left(A\right)\subseteq\mathbb{C}$ is closed. The spectral
+radius is:
+\begin{align*}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
+\end{align*}
+
+
+
+\subsubsection*{Warning}
+
+Consider $\lambda\in\sigma\left(A\right)$, i.e. $\lambda-A$ has
+no continuous inverse. This does not mean $\ker\left(\lambda-A\right)$
+is non-trivial. Thus $\lambda$ does \emph{not} need to be an eigenvalue!
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be self-adjoint. Then $\sigma\left(A\right)\subseteq\mathbb{R}$.
+
+
+\subsubsection*{Proof}
+
+Consider $\lambda=\alpha+\ii\beta$ with $\alpha,\beta\in\mathbb{R}$
+and $\beta\not=0$. We need to show that $\lambda-A$ has a continuous
+inverse. Introduce the following bilinear form:
+\begin{align*}
+B\left(x,y\right) & =\left\langle x,\left(A-\overline{\lambda}\right)y\right\rangle =\left\langle \left(A-\lambda\right)x,y\right\rangle 
+\end{align*}
+This bilinear form satisfies the assumptions of the Lax-Milgram theorem:
+\begin{enumerate}[label=\roman*)]
+\item The sesquilinearity is clear, since the scalar product is sesquilinear.
+\item $B$ is bounded:
+\begin{align*}
+\abs{\left\langle x,\left(A-\overline{\lambda}\right)y\right\rangle } & \le\norm x\cdot\underbrace{\norm{A-\overline{\lambda}}}_{\le\norm A+\abs{\lambda}}\cdot\norm y\le C\norm x\norm y
+\end{align*}
+
+\item $B$ is bounded from below, i.e. there exists an $\varepsilon\in\mathbb{R}_{>0}$
+such that for all $x\in H$ holds:
+\begin{align*}
+\abs{B\left(x,x\right)} & \ge\varepsilon\norm x^{2}
+\end{align*}
+We know:
+\begin{align*}
+B\left(x,x\right) & =\left\langle x,\left(A-\overline{\lambda}\right)x\right\rangle =\underbrace{\left\langle x,Ax\right\rangle }_{\text{real}}-\underbrace{\text{Re}\left(\lambda\left\langle x,x\right\rangle \right)}_{\text{real}}-\underbrace{\ii\text{Im}\left(\lambda\left\langle x,x\right\rangle \right)}_{\text{imaginary}}
+\end{align*}
+\begin{align*}
+\abs{B\left(x,x\right)} & \ge\abs{\text{Im}\left(\lambda\left\langle x,x\right\rangle \right)}=\abs{\beta}\cdot\norm x^{2}
+\end{align*}
+Set $\varepsilon:=\abs{\beta}\not=0$.
+\end{enumerate}
+The Lax-Milgram theorem yields that the linear functional $l\left(x\right)=\left\langle z,x\right\rangle $
+can be represented as
+\begin{align*}
+l\left(x\right) & =B\left(y,x\right)
+\end{align*}
+with a unique $y=y\left(z\right)\in H$. Thus we get for all $x\in H$:
+\begin{align*}
+\left\langle z,x\right\rangle  & =\left\langle \left(A-\lambda\right)y,x\right\rangle \\
+\Rightarrow\quad z & =\left(A-\lambda\right)y
+\end{align*}
+Therefore, for all $z\in H$ exists a unique $y\in H$ such that $\left(A-\lambda\right)y=x$.
+Thus $A-\lambda$ is invertible. The inverse $\left(A-\lambda\right)^{-1}$
+is continuous due to the open mapping theorem (see Corollary \ref{sub:Cor-open-mapping}).
 
 
 \part*{Appendix\thispagestyle{empty}}

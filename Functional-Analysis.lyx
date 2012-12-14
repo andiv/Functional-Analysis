@@ -1425,6 +1425,18 @@ Real and complex analysis
 ; McGraw-Hill, 2009; ISBN: 0-07-054234-1
 \end_layout
 
+\begin_layout Itemize
+
+\noun on
+Michael Reed, Barry Simon
+\noun default
+: 
+\emph on
+Methods of modern mathematical physics 1: Functional analysis
+\emph default
+; Academic Press, 2007; ISBN: 0-12-585050-6
+\end_layout
+
 \begin_layout Standard
 
 \size small
@@ -8259,6 +8271,13 @@ If
 
 \begin_layout Subsection
 Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Cor-open-mapping"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15812,7 +15831,7 @@ Proof:
 \begin_deeper
 \begin_layout Itemize
 The image is unique: 
-\begin_inset Formula $u\to w$
+\begin_inset Formula $u\mapsto w$
 \end_inset
 
  is well-defined, as from 
@@ -15858,7 +15877,7 @@ Since
 \begin_inset Formula $\left(u+\lambda u',w+\lambda w'\right)\in M$
 \end_inset
 
- which is obvious from the definition of 
+, which is obvious from the definition of 
 \begin_inset Formula $M$
 \end_inset
 
@@ -17193,7 +17212,7 @@ uniformly continuous
 \end_layout
 
 \begin_layout Standard
-The Arzela-Ascoli theorem yields, that 
+The Arzelà-Ascoli theorem yields, that 
 \begin_inset Formula $K\left(B\right)$
 \end_inset
 
@@ -25565,8 +25584,10 @@ By
 \begin_inset Formula $\sigma$
 \end_inset
 
--additivity, this measure can be extended to a positive regular Borel measure.
- (This can be proved exactly as for the Lebesgue integral.)
+-additivity, this measure can be extended to a positive regular bounded
+ Borel measure.
+ (This can be proven exactly as for the Lebesgue integral.) The corresponding
+ integral
 \begin_inset Formula 
 \begin{align*}
 \int_{0}^{1}f\dd\mu
@@ -25660,7 +25681,7 @@ Definition
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $f:\left[0,1\right]\to\mathbb{R}$
+\begin_inset Formula $\alpha:\left[0,1\right]\to\mathbb{R}$
 \end_inset
 
  be a function (not necessarily continuous).
@@ -25678,13 +25699,13 @@ Totalvariation
 ) is defined by:
 \begin_inset Formula 
 \begin{align*}
-\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{1}\right)-f\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & :=\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=x}}\sum_{i=1}^{N}\abs{\alpha\left(x_{1}\right)-\alpha\left(x_{i-1}\right)}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
 \end{align*}
 
 \end_inset
 
 
-\begin_inset Formula $f$
+\begin_inset Formula $\alpha$
 \end_inset
 
  is of 
@@ -25696,7 +25717,7 @@ bounded variation
 beschränkte Totalvariation
 \lang english
 ), 
-\begin_inset Formula $f\in\text{BV}\left(\left[0,1\right]\right)$
+\begin_inset Formula $\alpha\in\mathcal{BV}\left(\left[0,1\right]\right)$
 \end_inset
 
 , if 
@@ -25902,13 +25923,13 @@ total variation of
 Note:
 \emph default
  If 
-\begin_inset Formula $f$
+\begin_inset Formula $\alpha$
 \end_inset
 
  is monotonically increasing, then holds:
 \begin_inset Formula 
 \begin{align*}
-\left(\text{TV}\left(f\right)\right)\left(x\right) & =f\left(x\right)-f\left(0\right)<\infty
+\left(\text{TV}\left(\alpha\right)\right)\left(x\right) & =\alpha\left(x\right)-\alpha\left(0\right)<\infty
 \end{align*}
 
 \end_inset
@@ -25926,7 +25947,7 @@ But there are even continuous functions, which have unbounded variation,
 :
 \begin_inset Formula 
 \begin{align*}
-f\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
+\alpha\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
 \end{align*}
 
 \end_inset
@@ -25936,13 +25957,13 @@ f\left(x\right) & =x\sin\left(\frac{1}{x^{p}}\right)
 
 \begin_layout Standard
 For 
-\begin_inset Formula $f\in C^{1}\left(\left[0,1\right]\right)$
+\begin_inset Formula $\alpha\in C^{1}\left(\left[0,1\right]\right)$
 \end_inset
 
  holds:
 \begin_inset Formula 
 \begin{align*}
-\text{TV}\left(f\right)\left(x\right) & =\int_{0}^{x}\abs{f'\left(\tau\right)}\dd\tau
+\text{TV}\left(\alpha\right)\left(x\right) & =\int_{0}^{x}\abs{\alpha'\left(\tau\right)}\dd\tau
 \end{align*}
 
 \end_inset
@@ -25951,35 +25972,1337 @@ For
 \end_layout
 
 \begin_layout Subsubsection*
-Properties of the total variation
+Lemma 
+\series medium
+(Properties of the total variation)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\text{TV}\left(f\right)\left(x\right)$
+\begin_inset Formula $\text{TV}\left(\alpha\right)\left(x\right)$
 \end_inset
 
  is monotonically increasing and:
 \begin_inset Formula 
 \begin{align*}
-\text{TV}\left(f\right)\left(0\right) & =0
+\text{TV}\left(\alpha\right)\left(0\right) & =0
 \end{align*}
 
 \end_inset
 
 
-\begin_inset Formula $\text{TV}\left(f\right)\left(x\right)\pm f\left(x\right)$
+\begin_inset Formula $\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right)$
 \end_inset
 
- is also monotonically increasing, because:
+ is also monotonically increasing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 14.12.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Assume that 
+\begin_inset Formula $y\in\mathbb{R}_{>x}$
+\end_inset
+
+.
 \begin_inset Formula 
 \begin{align*}
-\text{TV}\left(f\right)\left(x\right)-f\left(x\right) & =\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\abs{f\left(x_{i}\right)-f\left(x_{i-1}\right)}-\sum_{i=1}^{N}\left(f\left(x_{i}\right)-f\left(x_{i-1}\right)\right)-f\left(0\right)=\\
- & =-f\left(0\right)+\underbrace{\sup_{\sr{}{0=x_{0}<\ldots<x_{N}=x}{N\in\mathbb{N}}}\sum_{i=1}^{N}\left(-2\right)\cdot\underbrace{\min\left(f\left(x_{i}\right)-f\left(x_{i-1}\right),0\right)}_{\le0}}_{\text{positive terms}}
+\text{TV}\left(\alpha\right)\left(y\right) & =\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=y}}\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\ge\sup_{\sr{}{N\in\mathbb{N}_{\ge2}}{0=x_{0}<\ldots<x_{N-1}=x<x_{N}=y}}\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\ge\\
+ & \ge\sup_{\sr{}{N\in\mathbb{N}_{\ge2}}{0=x_{0}<\ldots<x_{N-1}=x<x_{N}=y}}\sum_{i=1}^{N-1}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}=\text{TV}\left(\alpha\right)\left(x\right)
 \end{align*}
 
 \end_inset
 
 
+\begin_inset Formula 
+\begin{align*}
+\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right) & =\pm\alpha\left(0\right)+\sup_{\sr{}{N\in\mathbb{N}}{0=x_{0}<\ldots<x_{N}=x}}\sum_{i=1}^{N}\underbrace{\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)}\pm\left(\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\right)}_{\ge0}
+\end{align*}
+
+\end_inset
+
+Just as before this implies that 
+\begin_inset Formula 
+\begin{align*}
+\text{TV}\left(\alpha\right)\left(x\right)\pm\alpha\left(x\right)
+\end{align*}
+
+\end_inset
+
+is monotonically increasing.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose that 
+\begin_inset Formula $f\in\mathcal{BV}\left(\left[0,1\right]\right)$
+\end_inset
+
+.
+ Then the functions
+\begin_inset Formula 
+\begin{align*}
+f_{+} & =\frac{1}{2}\left(\text{TV}\left(f\right)+f\right)\\
+f_{-} & =\frac{1}{2}\left(\text{TV}\left(f\right)-f\right)
+\end{align*}
+
+\end_inset
+
+are monotonically increasing and:
+\begin_inset Formula 
+\begin{align*}
+f & =f_{+}-f_{-}
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\dd\mu_{\pm}=\dd f_{\pm}$
+\end_inset
+
+ be the bounded positive regular Borel measures of the corresponding Lebesgue-St
+ieltjes integrals.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\mu & :=\mu_{+}-\mu_{-}
+\end{align*}
+
+\end_inset
+
+defines a bounded regular Borel measure with the property:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\left(a,b\right)\right) & =\mu_{+}\left(\left(a,b\right)\right)-\mu_{-}\left(\left(a,b\right)\right)=\lim_{x\nearrow b}f_{+}\left(x\right)-\lim_{x\searrow a}f_{+}\left(x\right)-\lim_{x\nearrow b}f_{-}\left(x\right)+\lim_{x\searrow a}f_{-}\left(x\right)=\\
+ & =\lim_{x\nearrow b}f\left(x\right)-\lim_{x\searrow a}f\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Consider the Heaviside function:
+\begin_inset Formula 
+\begin{align*}
+f & :=\begin{cases}
+0 & \text{if}\ x\le\frac{1}{2}\\
+1 & \text{if}\ x>\frac{1}{2}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd\mu:=\dd f$
+\end_inset
+
+ has the form 
+\begin_inset Formula $\mu=\delta_{\frac{1}{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof of Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Riesz-representation"
+
+\end_inset
+
+ in the case 
+\begin_inset Formula $K=\left[0,1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{PC}\left(\left[0,1\right]\right)$
+\end_inset
+
+ are the piecewise continuous functions, i.e.
+ for all 
+\begin_inset Formula $f\in\mathcal{PC}\left(\left[0,1\right]\right)$
+\end_inset
+
+ exists a 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ and points 
+\begin_inset Formula $0=x_{0}<\ldots<x_{N}=1$
+\end_inset
+
+ such that 
+\begin_inset Formula $f\big|_{\left(x_{i-1},x_{i}\right)}$
+\end_inset
+
+ is continuous and has a continuous continuation to 
+\begin_inset Formula $\left[x_{i-1},x_{i}\right]$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\in\left\{ 1,\ldots,N\right\} $
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+On 
+\begin_inset Formula $\mathcal{PC}$
+\end_inset
+
+ we introduce the norm:
+\begin_inset Formula 
+\begin{align*}
+\norm f & =\sup_{x\in\left[0,1\right]}\abs{f\left(x\right)}
+\end{align*}
+
+\end_inset
+
+This makes 
+\begin_inset Formula $\mathcal{PC}\left(\left[0,1\right]\right)$
+\end_inset
+
+ a Banach space.
+\begin_inset Formula 
+\begin{align*}
+C^{0}\left(\left[0,1\right]\right) & \subseteq\mathcal{PC}\left(\left[0,1\right]\right)
+\end{align*}
+
+\end_inset
+
+is a subspace, which is closed, since it is complete.
+\begin_inset Newline newline
+\end_inset
+
+Consider 
+\begin_inset Formula $l\in C^{0}\left(\left[0,1\right]\right)^{*}$
+\end_inset
+
+, i.e.
+\begin_inset Formula 
+\begin{align*}
+l:C^{0}\left(\left[0,1\right]\right) & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+with:
+\begin_inset Formula 
+\begin{align*}
+\abs{l\left(f\right)} & \le C\norm f_{C^{0}}
+\end{align*}
+
+\end_inset
+
+According to the Hahn-Banach theorem, there is an extension
+\begin_inset Formula 
+\begin{align*}
+\tilde{l}:\mathcal{PC}\left(\left[0,1\right]\right) & \to\mathbb{R}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\tilde{l}\big|_{C^{0}}=l$
+\end_inset
+
+ and 
+\begin_inset Formula $\abs{l\left(f\right)}\le C\norm f_{\mathcal{PC}\left(\left[0,1\right]\right)}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\alpha:\left[0,1\right]\to\mathbb{R}$
+\end_inset
+
+ by:
+\begin_inset Formula 
+\begin{align*}
+\alpha\left(x\right) & :=\begin{cases}
+\tilde{l}\left(\chi_{[0,x)}\right) & \text{if }x<1\\
+\tilde{l}\left(\chi_{\left[0,1\right]}\right) & \text{if }x=1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=8cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+			ymin=-0.1, ymax=1.15, xtick=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xmin =-0.02, xmax=1.05, ytick={1}, samples=100]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:0.7] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$
+\backslash
+chi_{[0,x)}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.7,0) -- (axis cs:0.7,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.7,0.025) -- (axis cs:0.7,-0.025) node[below]{$x$};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\chi_{[0,x)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l\left(\chi_{[0,x)}\right)$
+\end_inset
+
+ is ill-defined, because 
+\begin_inset Formula $\chi_{[0,x)}$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ continuous.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tilde{l}\left(\chi_{[0,x)}\right)$
+\end_inset
+
+ is well-defined, because 
+\begin_inset Formula $\chi_{[0,x)}$
+\end_inset
+
+ is piecewise-continuous.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ has bounded variation: Consider:
+\begin_inset Formula 
+\begin{align*}
+0=x_{0}<\ldots<x_{N}=1
+\end{align*}
+
+\end_inset
+
+We need to show:
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & <C
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $C$
+\end_inset
+
+ has to be independent of 
+\begin_inset Formula $N$
+\end_inset
+
+ and the 
+\begin_inset Formula $\left(x_{i}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Define 
+\begin_inset Formula $s_{i}\in\left\{ \pm1\right\} $
+\end_inset
+
+ by:
+\begin_inset Formula 
+\begin{align*}
+s_{i} & :=\begin{cases}
++1 & \text{if }\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\ge0\\
+-1 & \text{if }\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)<0
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Then holds:
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & =\sum_{i=1}^{N}s_{i}\left(\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)\right)=\tilde{l}\left(\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\tilde{l}$
+\end_inset
+
+ is bounded by construction, we know:
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{N}\abs{\alpha\left(x_{i}\right)-\alpha\left(x_{i-1}\right)} & \le\abs{\tilde{l}\left(\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}\right)}\le\\
+ & \le C\norm{\sum_{i=1}^{N-1}s_{i}\chi_{[x_{i-1},x_{i})}+s_{N}\chi_{\left[x_{N-1},1\right]}}=C
+\end{align*}
+
+\end_inset
+
+Therefore we have 
+\begin_inset Formula $\alpha\in\mathcal{BV}\left(\left[0,1\right]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Consider 
+\begin_inset Formula $\dd\mu:=\dd\alpha_{+}-\dd\alpha_{-}$
+\end_inset
+
+ for the corresponding bounded regular Borel measure, where 
+\begin_inset Formula $\alpha=\alpha_{+}-\alpha_{-}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{\pm}$
+\end_inset
+
+ are monotonically increasing.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Claim: For all 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & =\int_{0}^{1}f\dd\mu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Proof: Consider 
+\begin_inset Formula $f\in C^{0}\left(\left[0,1\right]\right)$
+\end_inset
+
+.
+ Set:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(x\right) & :=\begin{cases}
+\sum_{i=1}^{n}f\left(\frac{i}{n}\right)\cdot\chi_{\big[\frac{i-1}{n},\frac{i}{n}\big)} & \text{if }x<1\\
+f\left(1\right) & \text{if }x=1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=10cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+			axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+			ymin=-0.2, ymax=1.6, xtick=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+			xmin =-0.05, xmax=1.15, ytick=0, samples=100]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:1] {-4*x^3+2*x^2+2*x+0.4};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[domain=0:0.2, dashed] {0.4};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$f_n(x)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.2,0) -- (axis cs:0.2,0.85) -- (axis cs:0.4,0.85);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.2,0.025) -- (axis cs:0.2,-0.025) node[below]{$
+\backslash
+frac{1}{n}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.4,0) -- (axis cs:0.4,1.265) -- (axis cs:0.6,1.265);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.4,0.025) -- (axis cs:0.4,-0.025) node[below]{$
+\backslash
+frac{2}{n}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.6,0) -- (axis cs:0.6,1.45) -- (axis cs:0.8,1.45);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.6,0.025) -- (axis cs:0.6,-0.025) node[below]{$
+\backslash
+frac{3}{n}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:0.8,0) -- (axis cs:0.8,1.45) (axis cs:0.8,1.23) -- (axis
+ cs:1,1.23);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:0.8,0.025) -- (axis cs:0.8,-0.025) node[below]{$
+\backslash
+frac{4}{n}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[dashed] (axis cs:1,0) -- (axis cs:1,1.23);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$
+\backslash
+frac{n}{n}=1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Approximation of 
+\begin_inset Formula $f$
+\end_inset
+
+ by 
+\begin_inset Formula $f\left(\frac{i}{n}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Since 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ is uniformly continuous, i.e.
+ 
+\begin_inset Formula $f_{n}\rightrightarrows f$
+\end_inset
+
+, we get:
+\begin_inset Formula 
+\begin{align*}
+l\left(f\right) & =\tilde{l}\left(f\right)=\tilde{l}\left(\lim_{n\to\infty}f_{n}\right)\stackrel{\tilde{l}\text{ continuous}}{=}\lim_{n\to\infty}\tilde{l}\left(f_{n}\right)=\\
+ & \stackrel{\text{by construction}}{=}\lim_{n\to\infty}\int_{0}^{1}f_{n}\dd\mu\stackrel{\left(*\right)}{=}\int_{0}^{1}\lim_{n\to\infty}f_{n}\dd\mu=\int_{0}^{1}f\dd\mu
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $\left(*\right)$
+\end_inset
+
+ consider:
+\begin_inset Formula 
+\begin{align*}
+\abs{\int_{0}^{1}\left(f_{n}-f\right)\dd\mu} & \le\underbrace{\sup\abs{f-f_{n}}}_{\to0}\cdot\underbrace{\text{TV}\left(\alpha\right)\left(1\right)}_{<\infty}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Remarks
+\end_layout
+
+\begin_layout Itemize
+Our proof only works in the case 
+\begin_inset Formula $K=\left[a,b\right]\subseteq\mathbb{R}$
+\end_inset
+
+.
+ (see Reed, Simon: Appendix 
+\begin_inset Quotes eld
+\end_inset
+
+The Riesz-Markov Theorem
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+In general dimension the idea would be:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\Omega\right) & :=\tilde{l}\left(\chi_{\Omega}\right)
+\end{align*}
+
+\end_inset
+
+But how to extend 
+\begin_inset Formula $l$
+\end_inset
+
+? So choose 
+\begin_inset Formula $f_{n}\to\chi_{\Omega}$
+\end_inset
+
+ and define:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\Omega\right) & :=\lim_{n\to\infty}l\left(f_{n}\right)
+\end{align*}
+
+\end_inset
+
+(see Rudin: 
+\emph on
+Real and complex analysis
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Total variation of a bounded Borel measure:
+\begin_inset Formula 
+\begin{align*}
+\abs{\mu}\left(\Omega\right) & :=\sup_{\sr{\Omega_{1},\ldots,\Omega_{N}}{N\in\mathbb{N}}{\text{with }\Omega_{1}\dot{\cup}\ldots\dot{\cup}\Omega_{N}=\Omega}}\sum_{i=1}^{N}\abs{\mu\left(\Omega_{i}\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\abs{\mu}$
+\end_inset
+
+ is a positive bounded Borel measure.
+ (see Rudin)
+\begin_inset Newline newline
+\end_inset
+
+Then we can write:
+\begin_inset Formula 
+\begin{align*}
+\abs{\int_{K}\left(f-f_{n}\right)\dd\mu} & \le\int_{K}\abs{f-f_{n}}\cdot\dd\abs{\mu}\le\sup_{K}\abs{f-f_{n}}\cdot\abs{\mu}\left(K\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+The Spectral Theorem for symmetric bounded operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric and 
+\begin_inset Formula $H$
+\end_inset
+
+ be a separable Hilbert space.
+ Let 
+\begin_inset Formula $p\left(A\right)$
+\end_inset
+
+ be a polynomial in 
+\begin_inset Formula $A$
+\end_inset
+
+, for example the characteristic polynomial for 
+\begin_inset Formula $A\in L\left(\mathbb{C}^{N}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $p\left(A\right)=0$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Extend this idea to functions 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right)\right)$
+\end_inset
+
+.
+ (Stone-Weierstraß)
+\begin_inset Newline newline
+\end_inset
+
+Then for
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =:l\left(f\right)
+\end{align*}
+
+\end_inset
+
+holds 
+\begin_inset Formula $l\in C^{0}\left(\sigma\left(A\right)\right)^{*}$
+\end_inset
+
+.
+ Using the Riesz representation theorem we can write:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\dd\mu_{u}\left(\lambda\right) & =\left\langle u,\dd E_{\lambda}u\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd E_{\lambda}$
+\end_inset
+
+ is the so-called 
+\emph on
+spectral measure
+\emph default
+.
+ Then holds the spectral theorem:
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Spectrum of symmetric bounded operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric, i.e.
+ 
+\begin_inset Formula $\left\langle u,Av\right\rangle =\left\langle Au,v\right\rangle $
+\end_inset
+
+ for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+.
+ The resolvent set is:
+\begin_inset Formula 
+\begin{align*}
+\varrho\left(A\right) & =\left\{ \lambda\in\mathbb{C}\big|\left(\lambda-A\right)\text{ has a continuous inverse}\right\} \\
+\sigma\left(A\right) & =\mathbb{C}\setminus\varrho\left(A\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\varrho\left(A\right)\subseteq\mathbb{C}$
+\end_inset
+
+ is open and so the spectrum 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\mathbb{C}$
+\end_inset
+
+ is closed.
+ The spectral radius is:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Warning
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $\lambda\in\sigma\left(A\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\lambda-A$
+\end_inset
+
+ has no continuous inverse.
+ This does not mean 
+\begin_inset Formula $\ker\left(\lambda-A\right)$
+\end_inset
+
+ is non-trivial.
+ Thus 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ does 
+\emph on
+not
+\emph default
+ need to be an eigenvalue!
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be self-adjoint.
+ Then 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $\lambda=\alpha+\ii\beta$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta\not=0$
+\end_inset
+
+.
+ We need to show that 
+\begin_inset Formula $\lambda-A$
+\end_inset
+
+ has a continuous inverse.
+ Introduce the following bilinear form:
+\begin_inset Formula 
+\begin{align*}
+B\left(x,y\right) & =\left\langle x,\left(A-\overline{\lambda}\right)y\right\rangle =\left\langle \left(A-\lambda\right)x,y\right\rangle 
+\end{align*}
+
+\end_inset
+
+This bilinear form satisfies the assumptions of the Lax-Milgram theorem:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The sesquilinearity is clear, since the scalar product is sesquilinear.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B$
+\end_inset
+
+ is bounded:
+\begin_inset Formula 
+\begin{align*}
+\abs{\left\langle x,\left(A-\overline{\lambda}\right)y\right\rangle } & \le\norm x\cdot\underbrace{\norm{A-\overline{\lambda}}}_{\le\norm A+\abs{\lambda}}\cdot\norm y\le C\norm x\norm y
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $B$
+\end_inset
+
+ is bounded from below, i.e.
+ there exists an 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $x\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{B\left(x,x\right)} & \ge\varepsilon\norm x^{2}
+\end{align*}
+
+\end_inset
+
+We know:
+\begin_inset Formula 
+\begin{align*}
+B\left(x,x\right) & =\left\langle x,\left(A-\overline{\lambda}\right)x\right\rangle =\underbrace{\left\langle x,Ax\right\rangle }_{\text{real}}-\underbrace{\text{Re}\left(\lambda\left\langle x,x\right\rangle \right)}_{\text{real}}-\underbrace{\ii\text{Im}\left(\lambda\left\langle x,x\right\rangle \right)}_{\text{imaginary}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{B\left(x,x\right)} & \ge\abs{\text{Im}\left(\lambda\left\langle x,x\right\rangle \right)}=\abs{\beta}\cdot\norm x^{2}
+\end{align*}
+
+\end_inset
+
+Set 
+\begin_inset Formula $\varepsilon:=\abs{\beta}\not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The Lax-Milgram theorem yields that the linear functional 
+\begin_inset Formula $l\left(x\right)=\left\langle z,x\right\rangle $
+\end_inset
+
+ can be represented as
+\begin_inset Formula 
+\begin{align*}
+l\left(x\right) & =B\left(y,x\right)
+\end{align*}
+
+\end_inset
+
+with a unique 
+\begin_inset Formula $y=y\left(z\right)\in H$
+\end_inset
+
+.
+ Thus we get for all 
+\begin_inset Formula $x\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle z,x\right\rangle  & =\left\langle \left(A-\lambda\right)y,x\right\rangle \\
+\Rightarrow\quad z & =\left(A-\lambda\right)y
+\end{align*}
+
+\end_inset
+
+Therefore, for all 
+\begin_inset Formula $z\in H$
+\end_inset
+
+ exists a unique 
+\begin_inset Formula $y\in H$
+\end_inset
+
+ su ch that 
+\begin_inset Formula $\left(A-\lambda\right)y=x$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $A-\lambda$
+\end_inset
+
+ is invertible.
+ The inverse 
+\begin_inset Formula $\left(A-\lambda\right)^{-1}$
+\end_inset
+
+ is continuous due to the open mapping theorem (see Corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Cor-open-mapping"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Part*
