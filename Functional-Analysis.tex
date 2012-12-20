@@ -363,7 +363,7 @@ from:
 2002; ISBN: 0-471-55604-1\emph{}\\
 (good reference)
 \item \noun{Micheal Reed, Barry Simon}: \emph{Methods of Modern Mathematical
-Physics I - Functional Analysis; }Acad. Press, 2010; ISBN: 978-0-12-585050-6
+Physics I - Functional Analysis; }Academic Press, 2010; ISBN: 978-0-12-585050-6
 \item \noun{Friedrich Hirzebruch, Winfried Scharlau}: \foreignlanguage{ngerman}{\emph{Einführung
 in die Funktionalanalysis}}; Spektrum Verlag, 1996; ISBN: 3-86025-429-4\\
 (paperback, small)
@@ -383,8 +383,6 @@ Measure theory for the Riesz representation theorem:
 \begin{itemize}
 \item \noun{Walter Rudin}: \emph{Real and complex analysis}; McGraw-Hill,
 2009; ISBN: 0-07-054234-1
-\item \noun{Michael Reed, Barry Simon}: \emph{Methods of modern mathematical
-physics 1: Functional analysis}; Academic Press, 2007; ISBN: 0-12-585050-6
 \end{itemize}
 {\small \newpage{}}\fancyhead[R]{Table of contents}
 \fancyhead[C]{}
@@ -2386,7 +2384,7 @@ Now
 is a linear mapping, which is injective.
 
 
-\subsection{Theorem \textmd{(Fréchet-Riesz)}}
+\subsection{Theorem \textmd{(Fréchet-Riesz)\label{sub:Thm-Frechet-Riesz}}}
 
 For any $\varphi\in H^{*}$ there is a unique $v\in H$ such that
 for all $x\in H$:
@@ -5953,7 +5951,7 @@ no continuous inverse. This does not mean $\ker\left(\lambda-A\right)$
 is non-trivial. Thus $\lambda$ does \emph{not} need to be an eigenvalue!
 
 
-\section{Theorem}
+\subsection{Theorem}
 
 Let $A\in L\left(H\right)$ be self-adjoint. Then $\sigma\left(A\right)\subseteq\mathbb{R}$.
 
@@ -5998,10 +5996,357 @@ with a unique $y=y\left(z\right)\in H$. Thus we get for all $x\in H$:
 \left\langle z,x\right\rangle  & =\left\langle \left(A-\lambda\right)y,x\right\rangle \\
 \Rightarrow\quad z & =\left(A-\lambda\right)y
 \end{align*}
-Therefore, for all $z\in H$ exists a unique $y\in H$ such that $\left(A-\lambda\right)y=x$.
-Thus $A-\lambda$ is invertible. The inverse $\left(A-\lambda\right)^{-1}$
-is continuous due to the open mapping theorem (see Corollary \ref{sub:Cor-open-mapping}).
+Therefore, for all $z\in H$ exists a unique $y\in H$ su ch that
+$\left(A-\lambda\right)y=x$. Thus $A-\lambda$ is invertible. The
+inverse $\left(A-\lambda\right)^{-1}$ is continuous due to the open
+mapping theorem (see Corollary \ref{sub:Cor-open-mapping}).\qqed
 
+%DATE: Do 20.12.12
+
+
+\subsection{Theorem}
+
+It holds $\sigma\left(A\right)\subseteq\left[a,b\right]$ and $a,b\in\sigma\left(A\right)$
+with:
+\begin{align*}
+a & :=\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
+a & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+\end{align*}
+
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-1,0) -- (2,0) node[right] {$\lambda$};
+  \draw (-0.65,0.1) -- (-0.7,0.1) -- (-0.7,-0.1) node[below] {$a$} -- (-0.65,-0.1);
+  \draw (1.65,0.1) -- (1.7,0.1) -- (1.7,-0.1) node[below] {$b$} -- (1.65,-0.1);
+  \node[blue] at (0.5,0.15) {$\sigma(A)$};
+  \draw[blue, very thick] (1,0) -- (1.7,0) (-0.5,0) -- (0.5,0);
+  \draw[blue,fill=blue] (-0.7,0) circle (0.03);
+  \draw[blue,fill=blue] (1.7,0) circle (0.03);
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\sigma\left(A\right)\subseteq\left[a,b\right]$ and $a,b\in\sigma\left(A\right)$}
+\end{figure}
+
+
+
+\subsubsection*{Proof}
+
+For $\lambda\in\mathbb{R}_{<a}$ holds:
+\begin{align*}
+\left\langle x,\left(A-\lambda\right)x\right\rangle  & =\left\langle x,Ax\right\rangle -\lambda\norm x^{2}\ge a\norm x^{2}-\lambda\norm x^{2}=\underbrace{\left(a-\lambda\right)}_{>0}\norm x^{2}
+\end{align*}
+Thus
+\begin{align*}
+\left\langle .,.\right\rangle _{A} & :=\left\langle .,\left(A-\lambda\right).\right\rangle 
+\end{align*}
+is a scalar product on $H$. The corresponding norm
+\begin{align*}
+\norm u_{A} & :=\sqrt{\left\langle u,u\right\rangle _{A}}
+\end{align*}
+is equivalent to the norm $\norm .$, because it holds:
+\begin{align*}
+\left(a-\lambda\right)\norm u^{2} & \le\norm u_{A}=\left\langle u,\left(A-\lambda\right)u\right\rangle \le\left(\opnorm A-\lambda\right)\norm u^{2}
+\end{align*}
+For $u\in H$ and $l\left(w\right):=\left\langle u,w\right\rangle $
+is $l\in H^{*}$. According to the Fréchet-Riesz theorem \ref{sub:Thm-Frechet-Riesz}
+(for the scalar product $\left\langle .,.\right\rangle _{A}$) there
+is a unique vector $v\in H$, such that for all $w\in H$ holds:
+\begin{align*}
+l\left(w\right) & =\left\langle v,w\right\rangle _{A}
+\end{align*}
+Thus we get for all $w\in H$:
+\begin{align*}
+\left\langle u,w\right\rangle  & =l\left(w\right)=\left\langle v,w\right\rangle _{A}=\left\langle v,\left(A-\lambda\right)w\right\rangle \stackrel{A-\lambda\text{ symmetric}}{=}\left\langle \left(A-\lambda\right)v,w\right\rangle 
+\end{align*}
+\begin{align*}
+\Rightarrow\quad u & =\left(A-\lambda\right)v
+\end{align*}
+Thus there exists a
+\begin{align*}
+\varphi:H & \to H\\
+u & \mapsto v
+\end{align*}
+such that $u=\left(A-\lambda\right)\varphi\left(u\right)$, i.e. $A-\lambda\in L\left(H\right)$
+is surjective. $\varphi$ is linear and bounded according to the open
+mapping theorem \ref{sub:Cor-open-mapping}. Thus we have
+\begin{align*}
+\varphi & =\left(A-\lambda\right)^{-1}\in L\left(H\right)
+\end{align*}
+and therefore $\lambda\in\varrho\left(A\right)$.\\
+Applying the same argument to the operator $\left(-A\right)$, one
+sees that $\left(b,\infty\right)\subseteq\varrho\left(A\right)$.\\
+Therefore holds $\sigma\left(A\right)\subseteq\left[a,b\right]$.
+
+Using the transformations $A\to A-\mu$ with $\mu\in\mathbb{R}$ and
+$A\to-A$, it suffices to consider the case where $r\left(A\right)\le b\in\mathbb{R}_{>0}$:
+\begin{align*}
+b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle \le\sup_{\norm u=1}\norm{Au}\cdot\underbrace{\norm u}_{=1}=\opnorm A
+\end{align*}
+\begin{align*}
+r\left(A\right) & :=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
+\end{align*}
+Assuming $b<\opnorm A$ one gets:
+\begin{align*}
+r\left(A\right)\le b & <\opnorm A=r\left(A\right)
+\end{align*}
+This is a contradiction.\\
+Thus $b$ is a limit point of the spectrum of $A$. Since $\sigma\left(A\right)$
+is closed, it follows that $b\in\sigma\left(A\right)$.\qqed
+
+
+\section{The continuous functional calculus}
+
+
+\subsection{Theorem \textmd{(continuous functions of operators)}\label{sub:Thm-spectral-mapping-theorem}}
+
+Let $A\in L\left(H\right)$ be symmetric. Then there is a unique mapping
+$\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\to L\left(H\right)$
+(remember $\sigma\left(A\right)\subseteq\left[a,b\right]$) with the
+following properties:
+\begin{enumerate}[label=\roman*)]
+\item $\Phi$ is an involutive algebra homomorphism, i.e.:
+
+\begin{itemize}
+\item $\Phi$ is linear.
+\item $\Phi\left(f\cdot g\right)=\Phi\left(f\right)\cdot\Phi\left(g\right)$
+\item $\Phi\left(\overline{f}\right)=\left(\Phi\left(f\right)\right)^{*}$
+(involution)
+\end{itemize}
+\item $\Phi$ is continuous:
+\begin{align*}
+\norm{\Phi\left(f\right)}_{L\left(H\right)} & \le C\norm f_{\infty}
+\end{align*}
+
+\item If $f\left(t\right)=t$, then $\Phi\left(f\right)=A$.
+\item If $Au=\lambda u$, i.e. $u\in H$ is an eigenvector of $A$, then
+$\Phi\left(f\right)u=f\left(\lambda\right)u$.
+\item If $f\ge0$, then $\Phi\left(f\right)\ge0$, meaning that $\Phi\left(f\right)$
+is a positive semi-definite operator, i.e. $\left\langle u,\Phi\left(f\right)u\right\rangle \ge0$
+for all $u\in H$.
+\item $\sigma\left(\Phi\left(f\right)\right)=f\left(\sigma\left(A\right)\right)$
+(spectral mapping theorem (\foreignlanguage{ngerman}{spektraler Abbildungssatz}))
+\item $\norm{\Phi\left(f\right)}_{L\left(H\right)}=\norm f_{\infty}$
+\end{enumerate}
+Often we just write $\Phi\left(f\right)=f\left(A\right)$.
+
+What if $f\left(t\right)=p\left(t\right)=a_{n}t^{n}+a_{n-1}t^{n-1}+\ldots+a_{0}$
+is a polynomial?
+\begin{align*}
+\Phi\left(t\right) & \stackrel{\text{iii)}}{=}A
+\end{align*}
+From i) follows:
+\begin{align*}
+\Phi\left(1\right) & =\Phi\left(1\cdot1\right)=\Phi\left(1\right)\cdot\Phi\left(1\right)
+\end{align*}
+Therefore we get:
+\begin{align*}
+\Phi\left(1\right) & =\mathbbm{1}
+\end{align*}
+Now follows:
+\begin{align*}
+\Phi\left(t^{2}\right) & =\Phi\left(t\cdot t\right)=\Phi\left(t\right)\cdot\Phi\left(t\right)=A\cdot A=A^{2}\\
+\Phi\left(t^{l}\right) & =A^{l}\\
+\Phi\left(p\right) & =p\left(A\right)=a_{n}A^{n}+a_{n-1}A^{n-1}+\ldots+a_{0}\mathbbm{1}
+\end{align*}
+
+
+
+\subsection{Lemma \textmd{(spectral mapping theorem for polynomials)}\label{sub:Lem-spectral-mapping-thm_polynomials}}
+
+For $p\in\mathfrak{P}\left(\mathbb{C}\right)$, i.e. $p$ is a complex
+polynomial, holds:
+\begin{align*}
+\sigma\left(p\left(A\right)\right) & =p\left(\sigma\left(A\right)\right)
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+\begin{itemize}
+\item If $p=c\in\mathbb{C}$ is constant, then the lemma is trivial:
+\begin{align*}
+p\left(\sigma\left(A\right)\right) & =c=\sigma\left(c\mathbbm{1}\right)=\sigma\left(p\left(A\right)\right)
+\end{align*}
+So further on let $p$ be not constant.
+\item $p\left(\sigma\left(A\right)\right)\subseteq\sigma\left(p\left(A\right)\right)$:
+For $\lambda\in\sigma\left(A\right)$ and $z\in\mathbb{C}$ yields
+the fundamental theorem of algebra:
+\begin{align*}
+p\left(z\right)-p\left(\lambda\right) & =\left(z-\lambda\right)q\left(z\right)
+\end{align*}
+Here $q\left(z\right)$ is a new polynomial with $\deg\left(q\right)=\deg\left(p\right)-1$.
+This also holds if we set $z=A$:
+\begin{align*}
+p\left(A\right)-p\left(\lambda\right) & =\left(A-\lambda\right)q\left(A\right)
+\end{align*}
+Assume $p\left(\lambda\right)\in\varrho\left(p\left(A\right)\right)$,
+i.e. $p\left(A\right)-p\left(\lambda\right)$ has a bounded inverse.
+Then holds:
+\begin{align*}
+\mathbbm{1} & =\left(p\left(A\right)-p\left(\lambda\right)\right)\cdot\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}=\left(A-\lambda\right)\cdot q\left(A\right)\cdot\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}\\
+\Rightarrow\quad\left(A-\lambda\right)^{-1} & =\underbrace{q\left(A\right)}_{\in L\left(H\right)}\cdot\underbrace{\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}}_{\in L\left(H\right)}\in L\left(H\right)
+\end{align*}
+This gives $\lambda\in\varrho\left(A\right)$ in contradiction to
+$\lambda\in\sigma\left(A\right)$ and so $p\left(\lambda\right)\in\sigma\left(p\left(A\right)\right)$.
+\item $\sigma\left(p\left(A\right)\right)\subseteq p\left(\sigma\left(A\right)\right)$:
+Consider $\mu\in\sigma\left(p\left(A\right)\right)$ and set $n:=\text{deg}\left(p\right)$.
+Using the fundamental theorem of algebra we get:
+\begin{align*}
+q\left(z\right):=p\left(z\right)-\mu & =a\left(z-\lambda_{1}\right)\cdot\ldots\cdot\left(z-\lambda_{n}\right)\\
+q\left(A\right):=p\left(A\right)-\mu & =a\left(A-\lambda_{1}\right)\cdot\ldots\cdot\left(A-\lambda_{n}\right)
+\end{align*}
+If all the operators $A-\lambda_{i}$ had a continuous inverse, then
+this would hold also for their product in contradiction to the assumption
+$\mu\in\sigma\left(p\left(A\right)\right)$. Thus one of the $\lambda_{i}$
+is in the spectrum of $A$. Because one of the linear factors vanishes,
+follows:
+\begin{align*}
+0 & =q\left(\lambda_{i}\right)=p\left(\lambda_{i}\right)-\mu\\
+\Rightarrow\quad\mu & =p\left(\lambda_{i}\right)\in p\left(\sigma\left(A\right)\right)
+\end{align*}
+
+\end{itemize}
+\qqed
+
+Let $p\in\mathfrak{P}\left(\mathbb{C}\right)$ be a complex polynomial.
+\begin{align*}
+\left(p\left(A\right)\right)^{*} & =\overline{p}\left(A\right)
+\end{align*}
+Thus $p\left(A\right)$ is not symmetric.
+
+
+\subsection{Definition \textmd{(normal operator)}}
+
+$A\in L\left(H\right)$ is called \emph{normal}, if $\left[A,A^{*}\right]=0$.
+
+
+\subsection{Theorem\label{sub:Thm-normal-operator}}
+
+For a normal $A\in L\left(H\right)$ holds $r\left(A\right)=\opnorm A$.
+
+\begin{figure}[H]
+\hspace*{1mm}\hfill{}\begin{tikzpicture}
+  \draw (0,0) circle (2);
+  \draw[->] (0,0) -- node[above]{$r(A)$} (-2,0);
+  \draw plot[smooth cycle,tension=.7] coordinates{(1.2,-1.2) (1,-1.6) (0,-1.1) (0.2,0) (0.2,0.5) (-0.2,0.7) (-0.5,1.4) (1,1)};
+  \node at (0.7,-0.2) {$\sigma(A)$};
+\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$r\left(A\right)=\opnorm A$}
+\end{figure}
+
+
+
+\subsubsection*{Proof}
+
+We already proved for a general $A\in L\left(H\right)$:
+\begin{align}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\lim_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}\label{eq:rA_lim}
+\end{align}
+For symmetric operators, we know furthermore:
+\begin{align}
+r\left(A\right) & =\opnorm A=\sup_{\norm u=1}\abs{\left\langle u,Au\right\rangle }\label{eq:rA_normA}
+\end{align}
+For \emph{normal} operators, we conclude the following: $A^{*}A$
+is symmetric and thus:
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\norm{Au}^{2}=\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{\eqref{eq:rA_normA}}{=}\opnorm{A^{*}A}=\\
+ & \stackrel{\eqref{eq:rA_normA}}{=}r\left(A^{*}A\right)\stackrel{\eqref{eq:rA_lim}}{=}\lim_{n\to\infty}\opnorm{\left(A^{*}A\right)^{n}}^{\frac{1}{n}}
+\end{align*}
+\begin{align*}
+\left(A^{*}A\right)^{n} & =\underbrace{A^{*}A\cdot A^{*}A\cdot\ldots\cdot A^{*}A}_{n\text{-times}}\stackrel{A\text{ normal}}{=}\left(A^{*}\right)^{n}\cdot A^{n}
+\end{align*}
+With 
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{A\text{ normal}}{=}\sup_{\norm u=1}\left\langle u,AA^{*}u\right\rangle =\sup_{\norm u=1}\left\langle A^{*}u,A^{*}u\right\rangle =\opnorm{A^{*}}^{2}
+\end{align*}
+we get:
+\begin{align*}
+\opnorm{\left(A^{*}A\right)^{n}} & \le\opnorm{\left(A^{*}\right)^{n}}\cdot\opnorm{A^{n}}=\opnorm{A^{n}}^{2}
+\end{align*}
+It follows:
+\begin{align*}
+\opnorm A^{2} & =\lim_{n\to\infty}\opnorm{\left(A^{*}A\right)^{n}}^{\frac{1}{n}}\le\lim_{n\to\infty}\left(\opnorm{A^{n}}^{2}\right)^{\frac{1}{n}}\le\opnorm A^{2}
+\end{align*}
+This gives:
+\begin{align*}
+\opnorm A^{2} & =\lim_{n\to\infty}\left(\opnorm{A^{n}}^{\frac{1}{n}}\right)^{2}=\left(\lim_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}\right)^{2}=\left(r\left(A\right)\right)^{2}
+\end{align*}
+\begin{align*}
+\Rightarrow\quad r\left(A\right) & =\opnorm A
+\end{align*}
+\qqed
+
+
+\subsection{Lemma}
+
+Let $A\in L\left(H\right)$ be symmetric and $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+a complex polynomial. Then holds:
+\begin{align*}
+\opnorm{p\left(A\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+$p\left(A\right)$ is normal and thus, according to Theorem \ref{sub:Thm-normal-operator}
+holds:
+\begin{align*}
+\opnorm{p\left(A\right)} & =\sup_{\mu\in\sigma\left(p\left(A\right)\right)}\abs{\mu}\stackrel{\ref{sub:Lem-spectral-mapping-thm_polynomials}}{=}\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}
+\end{align*}
+\qqed
+
+
+\subsubsection*{Proof of theorem \ref{sub:Thm-spectral-mapping-theorem}}
+\begin{itemize}
+\item For complex polynomials, we set $\Phi\left(p\right)=p\left(A\right)$.
+Then holds:
+\begin{align*}
+\opnorm{\Phi\left(p\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{\sigma\left(A\right)}
+\end{align*}
+Thus $\Phi:\mathfrak{P}\left(\mathbb{C}\right)\to L\left(H\right)$
+is an isometry. ($\mathfrak{P}\left(\mathbb{C}\right)\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$)\\
+\emph{Remark:} If we had considered $C^{0}\left(\left[a,b\right],\mathbb{C}\right)$
+with
+\begin{align*}
+a & =\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
+b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+\end{align*}
+then we would only have an inequality:
+\begin{align*}
+\opnorm{\Phi\left(p\right)} & \le\norm p_{C^{0}\left(\left[a,b\right]\right)}
+\end{align*}
+
+\item Moreover holds:
+\begin{align*}
+\Phi\left(p\cdot q\right) & =\left(p\cdot q\right)\left(A\right)=p\left(A\right)\cdot q\left(A\right)=\Phi\left(p\right)\cdot\Phi\left(q\right)\\
+\left(\Phi\left(p\right)\right)^{*} & =\Phi\left(\overline{p}\right)
+\end{align*}
+
+\item Using the Stone-Weierstraß approximation theorem, $\Phi$ uniquely
+extends to an isometry:
+\begin{align*}
+\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+This yields i), ii), iii), vii).
+\item More specifically, consider $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$.
+Then there exist $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$ such
+that $p_{n}\rightrightarrows f$ on $\sigma\left(A\right)$. ($K=\sigma\left(A\right)$
+is a compact metric space.) This means:
+\begin{align*}
+\norm{p_{n}-f}_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)} & =\sup_{z\in\sigma\left(A\right)}\abs{p_{n}\left(z\right)-f\left(z\right)}\xrightarrow{n\to\infty}0
+\end{align*}
+\begin{align*}
+\opnorm{\Phi\left(p_{n}\right)-\Phi\left(p_{m}\right)} & \stackrel{\text{isometry}}{=}\norm{p_{n}-p_{m}}\xrightarrow{n,m\to\infty}0
+\end{align*}
+Thus the operators $\Phi\left(p_{n}\right)$ form a Cauchy sequence
+in $L\left(H\right)$ and since $L\left(H\right)$ is a Banach space,
+this sequence converges to:
+\begin{align*}
+\Phi\left(f\right) & :=\lim_{n\to\infty}\Phi\left(p_{n}\right)
+\end{align*}
+\end{itemize}
+\begin{enumerate}
+\item [iv)]If $f\left(\lambda\right)=\lambda$, then $\Phi\left(f\right)=f\left(A\right)=A$.
+\end{enumerate}
 
 \part*{Appendix\thispagestyle{empty}}
 

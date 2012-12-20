@@ -1328,8 +1328,7 @@ Micheal Reed, Barry Simon
 \emph on
 Methods of Modern Mathematical Physics I - Functional Analysis; 
 \emph default
-Acad.
- Press, 2010; ISBN: 978-0-12-585050-6
+Academic Press, 2010; ISBN: 978-0-12-585050-6
 \end_layout
 
 \begin_layout Itemize
@@ -1423,18 +1422,6 @@ Walter Rudin
 Real and complex analysis
 \emph default
 ; McGraw-Hill, 2009; ISBN: 0-07-054234-1
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Michael Reed, Barry Simon
-\noun default
-: 
-\emph on
-Methods of modern mathematical physics 1: Functional analysis
-\emph default
-; Academic Press, 2007; ISBN: 0-12-585050-6
 \end_layout
 
 \begin_layout Standard
@@ -11222,6 +11209,13 @@ is a linear mapping, which is injective.
 Theorem 
 \series medium
 (Fréchet-Riesz)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Frechet-Riesz"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27107,7 +27101,7 @@ not
  need to be an eigenvalue!
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Theorem
 \end_layout
 
@@ -27303,6 +27297,1435 @@ reference "sub:Cor-open-mapping"
 \end_inset
 
 ).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 20.12.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+It holds 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[a,b\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $a,b\in\sigma\left(A\right)$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+a & :=\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
+a & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=2]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (-1,0) -- (2,0) node[right] {$
+\backslash
+lambda$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (-0.65,0.1) -- (-0.7,0.1) -- (-0.7,-0.1) node[below] {$a$} -- (-0.65,-0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (1.65,0.1) -- (1.7,0.1) -- (1.7,-0.1) node[below] {$b$} -- (1.65,-0.1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[blue] at (0.5,0.15) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[blue, very thick] (1,0) -- (1.7,0) (-0.5,0) -- (0.5,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[blue,fill=blue] (-0.7,0) circle (0.03);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[blue,fill=blue] (1.7,0) circle (0.03);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[a,b\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $a,b\in\sigma\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\lambda\in\mathbb{R}_{<a}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle x,\left(A-\lambda\right)x\right\rangle  & =\left\langle x,Ax\right\rangle -\lambda\norm x^{2}\ge a\norm x^{2}-\lambda\norm x^{2}=\underbrace{\left(a-\lambda\right)}_{>0}\norm x^{2}
+\end{align*}
+
+\end_inset
+
+Thus
+\begin_inset Formula 
+\begin{align*}
+\left\langle .,.\right\rangle _{A} & :=\left\langle .,\left(A-\lambda\right).\right\rangle 
+\end{align*}
+
+\end_inset
+
+is a scalar product on 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ The corresponding norm
+\begin_inset Formula 
+\begin{align*}
+\norm u_{A} & :=\sqrt{\left\langle u,u\right\rangle _{A}}
+\end{align*}
+
+\end_inset
+
+is equivalent to the norm 
+\begin_inset Formula $\norm .$
+\end_inset
+
+, because it holds:
+\begin_inset Formula 
+\begin{align*}
+\left(a-\lambda\right)\norm u^{2} & \le\norm u_{A}=\left\langle u,\left(A-\lambda\right)u\right\rangle \le\left(\opnorm A-\lambda\right)\norm u^{2}
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ and 
+\begin_inset Formula $l\left(w\right):=\left\langle u,w\right\rangle $
+\end_inset
+
+ is 
+\begin_inset Formula $l\in H^{*}$
+\end_inset
+
+.
+ According to the Fréchet-Riesz theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Frechet-Riesz"
+
+\end_inset
+
+ (for the scalar product 
+\begin_inset Formula $\left\langle .,.\right\rangle _{A}$
+\end_inset
+
+) there is a unique vector 
+\begin_inset Formula $v\in H$
+\end_inset
+
+, such that for all 
+\begin_inset Formula $w\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+l\left(w\right) & =\left\langle v,w\right\rangle _{A}
+\end{align*}
+
+\end_inset
+
+Thus we get for all 
+\begin_inset Formula $w\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,w\right\rangle  & =l\left(w\right)=\left\langle v,w\right\rangle _{A}=\left\langle v,\left(A-\lambda\right)w\right\rangle \stackrel{A-\lambda\text{ symmetric}}{=}\left\langle \left(A-\lambda\right)v,w\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad u & =\left(A-\lambda\right)v
+\end{align*}
+
+\end_inset
+
+Thus there exists a
+\begin_inset Formula 
+\begin{align*}
+\varphi:H & \to H\\
+u & \mapsto v
+\end{align*}
+
+\end_inset
+
+such that 
+\begin_inset Formula $u=\left(A-\lambda\right)\varphi\left(u\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $A-\lambda\in L\left(H\right)$
+\end_inset
+
+ is surjective.
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is linear and bounded according to the open mapping theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Cor-open-mapping"
+
+\end_inset
+
+.
+ Thus we have
+\begin_inset Formula 
+\begin{align*}
+\varphi & =\left(A-\lambda\right)^{-1}\in L\left(H\right)
+\end{align*}
+
+\end_inset
+
+and therefore 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Applying the same argument to the operator 
+\begin_inset Formula $\left(-A\right)$
+\end_inset
+
+, one sees that 
+\begin_inset Formula $\left(b,\infty\right)\subseteq\varrho\left(A\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Therefore holds 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[a,b\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using the transformations 
+\begin_inset Formula $A\to A-\mu$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\to-A$
+\end_inset
+
+, it suffices to consider the case where 
+\begin_inset Formula $r\left(A\right)\le b\in\mathbb{R}_{>0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle \le\sup_{\norm u=1}\norm{Au}\cdot\underbrace{\norm u}_{=1}=\opnorm A
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right) & :=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
+\end{align*}
+
+\end_inset
+
+Assuming 
+\begin_inset Formula $b<\opnorm A$
+\end_inset
+
+ one gets:
+\begin_inset Formula 
+\begin{align*}
+r\left(A\right)\le b & <\opnorm A=r\left(A\right)
+\end{align*}
+
+\end_inset
+
+This is a contradiction.
+\begin_inset Newline newline
+\end_inset
+
+Thus 
+\begin_inset Formula $b$
+\end_inset
+
+ is a limit point of the spectrum of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is closed, it follows that 
+\begin_inset Formula $b\in\sigma\left(A\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The continuous functional calculus
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(continuous functions of operators)
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-spectral-mapping-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric.
+ Then there is a unique mapping 
+\begin_inset Formula $\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\to L\left(H\right)$
+\end_inset
+
+ (remember 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[a,b\right]$
+\end_inset
+
+) with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is an involutive algebra homomorphism, i.e.:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is linear.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Phi\left(f\cdot g\right)=\Phi\left(f\right)\cdot\Phi\left(g\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Phi\left(\overline{f}\right)=\left(\Phi\left(f\right)\right)^{*}$
+\end_inset
+
+ (involution)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is continuous:
+\begin_inset Formula 
+\begin{align*}
+\norm{\Phi\left(f\right)}_{L\left(H\right)} & \le C\norm f_{\infty}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f\left(t\right)=t$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f\right)=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $Au=\lambda u$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ is an eigenvector of 
+\begin_inset Formula $A$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f\right)u=f\left(\lambda\right)u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f\ge0$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f\right)\ge0$
+\end_inset
+
+, meaning that 
+\begin_inset Formula $\Phi\left(f\right)$
+\end_inset
+
+ is a positive semi-definite operator, i.e.
+ 
+\begin_inset Formula $\left\langle u,\Phi\left(f\right)u\right\rangle \ge0$
+\end_inset
+
+ for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\left(\Phi\left(f\right)\right)=f\left(\sigma\left(A\right)\right)$
+\end_inset
+
+ (spectral mapping theorem (
+\lang ngerman
+spektraler Abbildungssatz
+\lang english
+))
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\norm{\Phi\left(f\right)}_{L\left(H\right)}=\norm f_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Often we just write 
+\begin_inset Formula $\Phi\left(f\right)=f\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+What if 
+\begin_inset Formula $f\left(t\right)=p\left(t\right)=a_{n}t^{n}+a_{n-1}t^{n-1}+\ldots+a_{0}$
+\end_inset
+
+ is a polynomial?
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(t\right) & \stackrel{\text{iii)}}{=}A
+\end{align*}
+
+\end_inset
+
+From i) follows:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(1\right) & =\Phi\left(1\cdot1\right)=\Phi\left(1\right)\cdot\Phi\left(1\right)
+\end{align*}
+
+\end_inset
+
+Therefore we get:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(1\right) & =\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+Now follows:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(t^{2}\right) & =\Phi\left(t\cdot t\right)=\Phi\left(t\right)\cdot\Phi\left(t\right)=A\cdot A=A^{2}\\
+\Phi\left(t^{l}\right) & =A^{l}\\
+\Phi\left(p\right) & =p\left(A\right)=a_{n}A^{n}+a_{n-1}A^{n-1}+\ldots+a_{0}\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma 
+\series medium
+(spectral mapping theorem for polynomials)
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-spectral-mapping-thm_polynomials"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ is a complex polynomial, holds:
+\begin_inset Formula 
+\begin{align*}
+\sigma\left(p\left(A\right)\right) & =p\left(\sigma\left(A\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $p=c\in\mathbb{C}$
+\end_inset
+
+ is constant, then the lemma is trivial:
+\begin_inset Formula 
+\begin{align*}
+p\left(\sigma\left(A\right)\right) & =c=\sigma\left(c\mathbbm{1}\right)=\sigma\left(p\left(A\right)\right)
+\end{align*}
+
+\end_inset
+
+So further on let 
+\begin_inset Formula $p$
+\end_inset
+
+ be not constant.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p\left(\sigma\left(A\right)\right)\subseteq\sigma\left(p\left(A\right)\right)$
+\end_inset
+
+: For 
+\begin_inset Formula $\lambda\in\sigma\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $z\in\mathbb{C}$
+\end_inset
+
+ yields the fundamental theorem of algebra:
+\begin_inset Formula 
+\begin{align*}
+p\left(z\right)-p\left(\lambda\right) & =\left(z-\lambda\right)q\left(z\right)
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $q\left(z\right)$
+\end_inset
+
+ is a new polynomial with 
+\begin_inset Formula $\deg\left(q\right)=\deg\left(p\right)-1$
+\end_inset
+
+.
+ This also holds if we set 
+\begin_inset Formula $z=A$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+p\left(A\right)-p\left(\lambda\right) & =\left(A-\lambda\right)q\left(A\right)
+\end{align*}
+
+\end_inset
+
+Assume 
+\begin_inset Formula $p\left(\lambda\right)\in\varrho\left(p\left(A\right)\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $p\left(A\right)-p\left(\lambda\right)$
+\end_inset
+
+ has a bounded inverse.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\mathbbm{1} & =\left(p\left(A\right)-p\left(\lambda\right)\right)\cdot\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}=\left(A-\lambda\right)\cdot q\left(A\right)\cdot\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}\\
+\Rightarrow\quad\left(A-\lambda\right)^{-1} & =\underbrace{q\left(A\right)}_{\in L\left(H\right)}\cdot\underbrace{\left(p\left(A\right)-p\left(\lambda\right)\right)^{-1}}_{\in L\left(H\right)}\in L\left(H\right)
+\end{align*}
+
+\end_inset
+
+This gives 
+\begin_inset Formula $\lambda\in\varrho\left(A\right)$
+\end_inset
+
+ in contradiction to 
+\begin_inset Formula $\lambda\in\sigma\left(A\right)$
+\end_inset
+
+ and so 
+\begin_inset Formula $p\left(\lambda\right)\in\sigma\left(p\left(A\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\left(p\left(A\right)\right)\subseteq p\left(\sigma\left(A\right)\right)$
+\end_inset
+
+: Consider 
+\begin_inset Formula $\mu\in\sigma\left(p\left(A\right)\right)$
+\end_inset
+
+ and set 
+\begin_inset Formula $n:=\text{deg}\left(p\right)$
+\end_inset
+
+.
+ Using the fundamental theorem of algebra we get:
+\begin_inset Formula 
+\begin{align*}
+q\left(z\right):=p\left(z\right)-\mu & =a\left(z-\lambda_{1}\right)\cdot\ldots\cdot\left(z-\lambda_{n}\right)\\
+q\left(A\right):=p\left(A\right)-\mu & =a\left(A-\lambda_{1}\right)\cdot\ldots\cdot\left(A-\lambda_{n}\right)
+\end{align*}
+
+\end_inset
+
+If all the operators 
+\begin_inset Formula $A-\lambda_{i}$
+\end_inset
+
+ had a continuous inverse, then this would hold also for their product in
+ contradiction to the assumption 
+\begin_inset Formula $\mu\in\sigma\left(p\left(A\right)\right)$
+\end_inset
+
+.
+ Thus one of the 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ is in the spectrum of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Because one of the linear factors vanishes, follows:
+\begin_inset Formula 
+\begin{align*}
+0 & =q\left(\lambda_{i}\right)=p\left(\lambda_{i}\right)-\mu\\
+\Rightarrow\quad\mu & =p\left(\lambda_{i}\right)\in p\left(\sigma\left(A\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+\end_inset
+
+ be a complex polynomial.
+\begin_inset Formula 
+\begin{align*}
+\left(p\left(A\right)\right)^{*} & =\overline{p}\left(A\right)
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $p\left(A\right)$
+\end_inset
+
+ is not symmetric.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(normal operator)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ is called 
+\emph on
+normal
+\emph default
+, if 
+\begin_inset Formula $\left[A,A^{*}\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-normal-operator"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a normal 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ holds 
+\begin_inset Formula $r\left(A\right)=\opnorm A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) circle (2);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (0,0) -- node[above]{$r(A)$} (-2,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(1.2,-1.2) (1,-1.6) (0,-1.1) (0.2,0)
+ (0.2,0.5) (-0.2,0.7) (-0.5,1.4) (1,1)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0.7,-0.2) {$
+\backslash
+sigma(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $r\left(A\right)=\opnorm A$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+We already proved for a general 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\lim_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}\label{eq:rA_lim}
+\end{align}
+
+\end_inset
+
+For symmetric operators, we know furthermore:
+\begin_inset Formula 
+\begin{align}
+r\left(A\right) & =\opnorm A=\sup_{\norm u=1}\abs{\left\langle u,Au\right\rangle }\label{eq:rA_normA}
+\end{align}
+
+\end_inset
+
+For 
+\emph on
+normal
+\emph default
+ operators, we conclude the following: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $A^{*}A$
+\end_inset
+
+ is symmetric and thus:
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\norm{Au}^{2}=\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{\eqref{eq:rA_normA}}{=}\opnorm{A^{*}A}=\\
+ & \stackrel{\eqref{eq:rA_normA}}{=}r\left(A^{*}A\right)\stackrel{\eqref{eq:rA_lim}}{=}\lim_{n\to\infty}\opnorm{\left(A^{*}A\right)^{n}}^{\frac{1}{n}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(A^{*}A\right)^{n} & =\underbrace{A^{*}A\cdot A^{*}A\cdot\ldots\cdot A^{*}A}_{n\text{-times}}\stackrel{A\text{ normal}}{=}\left(A^{*}\right)^{n}\cdot A^{n}
+\end{align*}
+
+\end_inset
+
+With 
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{A\text{ normal}}{=}\sup_{\norm u=1}\left\langle u,AA^{*}u\right\rangle =\sup_{\norm u=1}\left\langle A^{*}u,A^{*}u\right\rangle =\opnorm{A^{*}}^{2}
+\end{align*}
+
+\end_inset
+
+we get:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\left(A^{*}A\right)^{n}} & \le\opnorm{\left(A^{*}\right)^{n}}\cdot\opnorm{A^{n}}=\opnorm{A^{n}}^{2}
+\end{align*}
+
+\end_inset
+
+It follows:
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2} & =\lim_{n\to\infty}\opnorm{\left(A^{*}A\right)^{n}}^{\frac{1}{n}}\le\lim_{n\to\infty}\left(\opnorm{A^{n}}^{2}\right)^{\frac{1}{n}}\le\opnorm A^{2}
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+\opnorm A^{2} & =\lim_{n\to\infty}\left(\opnorm{A^{n}}^{\frac{1}{n}}\right)^{2}=\left(\lim_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}\right)^{2}=\left(r\left(A\right)\right)^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad r\left(A\right) & =\opnorm A
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric and 
+\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+\end_inset
+
+ a complex polynomial.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{p\left(A\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p\left(A\right)$
+\end_inset
+
+ is normal and thus, according to Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-normal-operator"
+
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{p\left(A\right)} & =\sup_{\mu\in\sigma\left(p\left(A\right)\right)}\abs{\mu}\stackrel{\ref{sub:Lem-spectral-mapping-thm_polynomials}}{=}\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof of theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-spectral-mapping-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For complex polynomials, we set 
+\begin_inset Formula $\Phi\left(p\right)=p\left(A\right)$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\Phi\left(p\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{\sigma\left(A\right)}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\Phi:\mathfrak{P}\left(\mathbb{C}\right)\to L\left(H\right)$
+\end_inset
+
+ is an isometry.
+ (
+\begin_inset Formula $\mathfrak{P}\left(\mathbb{C}\right)\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Remark:
+\emph default
+ If we had considered 
+\begin_inset Formula $C^{0}\left(\left[a,b\right],\mathbb{C}\right)$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+a & =\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
+b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+\end{align*}
+
+\end_inset
+
+then we would only have an inequality:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\Phi\left(p\right)} & \le\norm p_{C^{0}\left(\left[a,b\right]\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Moreover holds:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(p\cdot q\right) & =\left(p\cdot q\right)\left(A\right)=p\left(A\right)\cdot q\left(A\right)=\Phi\left(p\right)\cdot\Phi\left(q\right)\\
+\left(\Phi\left(p\right)\right)^{*} & =\Phi\left(\overline{p}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using the Stone-Weierstraß approximation theorem, 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ uniquely extends to an isometry:
+\begin_inset Formula 
+\begin{align*}
+\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+This yields i), ii), iii), vii).
+\end_layout
+
+\begin_layout Itemize
+More specifically, consider 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+.
+ Then there exist 
+\begin_inset Formula $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{n}\rightrightarrows f$
+\end_inset
+
+ on 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+.
+ (
+\begin_inset Formula $K=\sigma\left(A\right)$
+\end_inset
+
+ is a compact metric space.) This means:
+\begin_inset Formula 
+\begin{align*}
+\norm{p_{n}-f}_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)} & =\sup_{z\in\sigma\left(A\right)}\abs{p_{n}\left(z\right)-f\left(z\right)}\xrightarrow{n\to\infty}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\opnorm{\Phi\left(p_{n}\right)-\Phi\left(p_{m}\right)} & \stackrel{\text{isometry}}{=}\norm{p_{n}-p_{m}}\xrightarrow{n,m\to\infty}0
+\end{align*}
+
+\end_inset
+
+Thus the operators 
+\begin_inset Formula $\Phi\left(p_{n}\right)$
+\end_inset
+
+ form a Cauchy sequence in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+ and since 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+ is a Banach space, this sequence converges to:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f\right) & :=\lim_{n\to\infty}\Phi\left(p_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[iv)]
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $f\left(\lambda\right)=\lambda$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f\right)=f\left(A\right)=A$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Part*
