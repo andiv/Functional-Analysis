@@ -6010,7 +6010,7 @@ It holds $\sigma\left(A\right)\subseteq\left[a,b\right]$ and $a,b\in\sigma\left(
 with:
 \begin{align*}
 a & :=\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
-a & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+b & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
 \end{align*}
 
 
@@ -6076,20 +6076,19 @@ Applying the same argument to the operator $\left(-A\right)$, one
 sees that $\left(b,\infty\right)\subseteq\varrho\left(A\right)$.\\
 Therefore holds $\sigma\left(A\right)\subseteq\left[a,b\right]$.
 
-Using the transformations $A\to A-\mu$ with $\mu\in\mathbb{R}$ and
-$A\to-A$, it suffices to consider the case where $r\left(A\right)\le b\in\mathbb{R}_{>0}$:
+Only prove that $b\in\sigma\left(A\right)$. For $a\in\sigma\left(A\right)$
+consider similarly the operator $-A$. Furthermore replace $A\to A-a$
+to get $\sigma\left(A\right)\subseteq\left[0,b\right]$. We know:
+\begin{align*}
+\opnorm A & =r\left(A\right)=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\sup_{\lambda\in\sigma\left(A\right)}\lambda=\sup\sigma\left(A\right)
+\end{align*}
+As a consequence we get $\opnorm A\le b$. On the other hand we have:
+
 \begin{align*}
 b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle \le\sup_{\norm u=1}\norm{Au}\cdot\underbrace{\norm u}_{=1}=\opnorm A
 \end{align*}
-\begin{align*}
-r\left(A\right) & :=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
-\end{align*}
-Assuming $b<\opnorm A$ one gets:
-\begin{align*}
-r\left(A\right)\le b & <\opnorm A=r\left(A\right)
-\end{align*}
-This is a contradiction.\\
-Thus $b$ is a limit point of the spectrum of $A$. Since $\sigma\left(A\right)$
+Thus we have $b=\opnorm A=r\left(A\right)$, especially $b$ is a
+limit point of the spectrum of $A$. Since $\sigma\left(A\right)$
 is closed, it follows that $b\in\sigma\left(A\right)$.\qqed
 
 
@@ -6300,7 +6299,7 @@ holds:
 \item For complex polynomials, we set $\Phi\left(p\right)=p\left(A\right)$.
 Then holds:
 \begin{align*}
-\opnorm{\Phi\left(p\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{\sigma\left(A\right)}
+\opnorm{\Phi\left(p\right)}=\opnorm{p\left(A\right)} & =r\left(p\left(A\right)\right)=\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}
 \end{align*}
 Thus $\Phi:\mathfrak{P}\left(\mathbb{C}\right)\to L\left(H\right)$
 is an isometry. ($\mathfrak{P}\left(\mathbb{C}\right)\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$)\\
@@ -6345,8 +6344,224 @@ this sequence converges to:
 \end{align*}
 \end{itemize}
 \begin{enumerate}
-\item [iv)]If $f\left(\lambda\right)=\lambda$, then $\Phi\left(f\right)=f\left(A\right)=A$.
+\item [iv)]For $Au=\lambda u$ holds:
+\begin{align*}
+\Phi\left(f\right)u & =\lim_{n\to\infty}\Phi\left(p_{n}\right)u=\lim_{n\to\infty}p_{n}\left(A\right)u=\lim_{n\to\infty}p_{n}\left(\lambda\right)u=f\left(\lambda\right)u
+\end{align*}
+%DATE: Fr 21.12.12
+\item [vi)]Now we prove the spectral mapping theorem:\\
+„$\subseteq$“: Assume $\mu\in\sigma\left(f\left(A\right)\right)$,
+but $\mu\not\in f\left(\sigma\left(A\right)\right).$ Then holds $f-\mu\not=0$
+on $\sigma\left(A\right)$ and we can invert:
+\begin{align*}
+\frac{1}{f-\mu} & \in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)
+\end{align*}
+Now follows:
+\begin{align*}
+\mathbbm{1} & =\Phi\left(1\right)=\Phi\left(\frac{1}{f-\mu}\left(f-\mu\right)\right)=\underbrace{\Phi\left(\frac{1}{f-\mu}\right)}_{\in L\left(H\right)}\cdot\underbrace{\Phi\left(f-\mu\right)}_{=f\left(A\right)-\mu\mathbbm{1}}
+\end{align*}
+So $f\left(A\right)-\mu\mathbbm{1}$ has a bounded inverse in contradiction
+to the assumption $\mu\in\sigma\left(f\left(A\right)\right)$.\\
+„$\supseteq$“: Consider $\lambda\in\sigma\left(A\right)$. Choose
+polynomials $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$ with $p_{n}\rightrightarrows f$.
+Then converges in $L\left(H\right)$:
+\begin{align*}
+p_{n}\left(A\right)-p_{n}\left(\lambda\right)\mathbbm{1} & \xrightarrow{n\to\infty}f\left(A\right)-f\left(\lambda\right)\mathbbm{1}
+\end{align*}
+Assume that $f\left(\lambda\right)\not\in\sigma\left(f\left(A\right)\right)$.
+Then $f\left(A\right)-f\left(\lambda\right)\mathbbm{1}$ has a bounded
+inverse.\\
+According to Theorem \ref{sub:Thm-set-cont-invertible-->open}, the
+invertible operators are open in $L\left(H\right)$. Therefore there
+exists a $\delta\in\mathbb{R}_{>0}$ such that $B$ has a bounded
+inverse for all $B\in B_{\delta}\left(f\left(A\right)-f\left(\lambda\right)\mathbbm{1}\right)$.
+In particular, the operators $p_{n}\left(A\right)-p_{n}\left(\lambda\right)\mathbbm{1}$
+have a bounded inverse for sufficiently large $n$.\\
+This is a contradiction to the spectral mapping theorem for polynomials
+\ref{sub:Lem-spectral-mapping-thm_polynomials}.
+\item [v)]Claim: $f\ge0\quad\Rightarrow\quad\Phi\left(f\right)\ge0$\\
+Let $f\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$ be real-valued
+and $f\ge0$. Then $g:=\sqrt{f}\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+and $f=g^{2}$.
+\begin{align*}
+\left\langle u,\Phi\left(f\right)u\right\rangle  & =\left\langle u,\Phi\left(g^{2}\right)u\right\rangle =\left\langle u,\Phi\left(g\right)\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(\overline{g}\right)u,\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(g\right)u,\Phi\left(g\right)u\right\rangle \ge0
+\end{align*}
+\qqed
 \end{enumerate}
+$\chi_{\Omega}\left(A\right)$ would be the projector onto the invariant
+subspace corresponding to the spectrum in~$\Omega$. Formally we
+can compute:
+\begin{align*}
+\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi}_{\Omega}\left(A\right)=\chi_{\Omega}\left(A\right)\\
+\chi_{\Omega}\left(A\right)\chi_{\Omega}\left(A\right) & =\chi_{\Omega}^{2}\left(A\right)=\chi_{\Omega}\left(A\right)
+\end{align*}
+This motivates, why we would like to form $f\left(A\right)$ for a
+bounded Borel function $f$ on $\sigma\left(A\right)$.
+
+
+\section{Spectral Measures}
+
+Let $A\in L\left(H\right)$ be symmetric. Choose a $u\in H$ (fixed).
+\begin{align*}
+\Phi_{u}:C^{0}\left(\sigma\left(A\right),\mathbb{R}\right) & \to\mathbb{R}\subseteq\mathbb{C}\\
+f & \mapsto\left\langle u,\Phi\left(f\right)u\right\rangle 
+\end{align*}
+\begin{align*}
+\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\norm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
+\end{align*}
+Thus $\phi_{u}$ is a bounded linear functional on $C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$.
+According to the Riesz representation theorem there exists a unique
+regular bounded Borel measure such that:
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+The measure $\dd\mu_{u}$ is even positive, because if $f\ge0$, set
+$g=\sqrt{f}$ to get:
+\begin{align*}
+\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)=\left\langle u,f\left(A\right)u\right\rangle  & =\left\langle g\left(A\right)u,g\left(A\right)u\right\rangle \ge0\qquad\fall_{f\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right),\ f\ge0}
+\end{align*}
+Hence by approximation follows $\mu_{u}\left(\Omega\right)\ge0$ for
+all Borel sets $\Omega\subseteq\sigma\left(A\right)$. So $\mu_{u}$
+is a positive measure.\\
+The resulting integral can be defined for a more general class of
+functions.\\
+A \emph{Borel function} $f$ is a function, which is measurable for
+the Borel algebra, i.e. $f^{-1}\left(\Omega\right)$ is a Borel function
+for all open $\Omega\subseteq\mathbb{C}$.\\
+We use the following notation: $\mathfrak{M}$ is the set of all Borel
+sets in $\sigma\left(A\right)$.\\
+$\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right)=L^{\infty}\left(\dd\mu_{u}\right)$
+are the bounded Borel functions on $\sigma\left(A\right)$. We always
+assume:
+\begin{align*}
+\sup_{\sigma\left(A\right)}\abs f & <\infty
+\end{align*}
+We define:
+\begin{align*}
+\phi_{u}:\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right) & \to\mathbb{R}\\
+\phi_{u}\left(f\right) & :=\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+
+
+
+\subsection{Lemma\label{sub:Lem-phiu}}
+
+\begin{align*}
+\abs{\phi_{u}\left(f\right)} & \le\norm f_{L^{\infty}}\cdot\norm u^{2}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+For $f\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right)$
+choose $\varphi_{n}\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+such that $\varphi_{n}\to f$ converges point-wise and $\norm{\varphi_{n}}_{\infty}\le\norm f_{\infty}$.
+(Approximate $f$ by step-functions and then approximate the step
+functions by continuous functions.)\\
+Due to $\abs{\varphi_{n}}\le C$ and 
+\begin{align*}
+\int_{\sigma\left(A\right)}C\dd\mu_{u} & =C\mu_{u}\left(\sigma\left(A\right)\right)=C\left\langle u,\Phi\left(1\right)u\right\rangle =C\left\langle u,\mathbbm{1}u\right\rangle =C\norm u^{2}<\infty
+\end{align*}
+we can use the dominated convergence theorem: 
+\begin{align*}
+\abs{\int_{\sigma\left(A\right)}f\dd\mu_{u}} & \sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\abs{\int_{\sigma\left(A\right)}^{\infty}\varphi_{n}\dd\mu_{n}}=\lim_{n\to\infty}\abs{\left\langle u,\Phi\left(\varphi_{n}\right)u\right\rangle }\le\\
+ & \le\lim_{n\to\infty}\norm u^{2}\cdot\norm{\Phi\left(\varphi_{n}\right)}=\lim_{n\to\infty}\norm u^{2}\cdot\norm{\varphi_{n}}\le\norm f\cdot\norm u^{2}
+\end{align*}
+\qqed
+
+Define:
+
+\begin{align*}
+\Phi_{u}\left(f\right) & :=\left\langle u,\Phi\left(f\right)u\right\rangle 
+\end{align*}
+By polarization we get: 
+\begin{align*}
+B_{f}\left(u,v\right) & =\Phi_{\frac{u+v}{2}}\left(f\right)-\Phi_{\frac{u-v}{2}}\left(f\right)-\ii\Phi_{\frac{u+\ii v}{2}}\left(f\right)+\ii\Phi_{\frac{u-\ii v}{2}}\left(f\right)
+\end{align*}
+Alternatively define for $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$:
+\begin{align*}
+\Phi_{u,v}\left(f\right) & :=\left\langle u,\Phi\left(f\right)v\right\rangle =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u,v}\left(\lambda\right)
+\end{align*}
+\begin{align*}
+B_{f}\left(u,v\right) & :=\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u,v}\left(\lambda\right)
+\end{align*}
+$\dd\mu_{u,v}$ is a only a \emph{complex-valued,} bounded, regular
+Borel measure.
+
+
+\subsection{Lemma}
+
+$B_{f}\left(u,v\right)$ is a \emph{sesquilinear form}, i.e. linear
+in the second and anti-linear in the first argument, and it holds:
+\begin{align*}
+\abs{B_{f}\left(u,v\right)} & \le\norm f\cdot\norm u\cdot\norm v
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+This follows from the polarization formula and Lemma \ref{sub:Lem-phiu}.\qqed
+
+
+\subsection{Theorem}
+
+Let $B$ be a bounded sesquilinear form, i.e.:
+\begin{align*}
+\abs{B\left(u,v\right)} & \le C\cdot\norm u\cdot\norm v\qquad\fall_{u,v\in H}
+\end{align*}
+Then there is a unique operator $D\in L\left(H\right)$ with $\opnorm D\le C$
+such that:
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Dv\right\rangle 
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+For $v\in H$ the map
+\begin{align*}
+\psi & :=\overline{B\left(.,v\right)}
+\end{align*}
+is a bounded linear form. According to the Fréchet-Riesz theorem \ref{sub:Thm-Frechet-Riesz}
+there exists a $w\in H$ such that for all $u\in H$ holds:
+\begin{align*}
+\psi\left(u\right) & =\left\langle w,u\right\rangle 
+\end{align*}
+Then follows:
+\begin{align*}
+B\left(u,v\right) & =\overline{\left\langle w,u\right\rangle }=\left\langle u,w\right\rangle 
+\end{align*}
+Thus $D$ is uniquely determined by $Dv=w$. So $D:H\to H$ is linear
+and bounded by the open mapping principle \ref{sub:Thm-Open-mapping},
+i.e. $D\in L\left(H\right)$ and for all $v\in H$ holds:
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Dv\right\rangle 
+\end{align*}
+Choose $u=Dv$ to get:
+\begin{align*}
+B\left(Dv,v\right) & =\left\langle Dv,Dv\right\rangle =\norm{Dv}^{2}\\
+ & \le C\cdot\norm{Dv}\cdot\norm v
+\end{align*}
+Therefore we have for all $v\in H$:
+\begin{align*}
+\norm{Dv} & \le C\cdot\norm v\\
+\opnorm D & \le C
+\end{align*}
+\qqed
+
+We conclude: For $f\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$
+we construct $B_{f}\left(u,v\right)$. Then there exists a $\Phi\left(f\right)\in L\left(H\right)$
+such that for all $u,v\in H$ holds:
+\begin{align*}
+\left\langle u,\Phi\left(f\right)v\right\rangle  & =B_{f}\left(u,v\right)
+\end{align*}
+So $\Phi:\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)\to L\left(H\right)$
+gives a functional calculus on $\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$,
+i.e. we can calculate $f\left(A\right)$ for an arbitrary Borel function.
+
 
 \part*{Appendix\thispagestyle{empty}}
 

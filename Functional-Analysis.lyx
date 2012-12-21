@@ -27343,7 +27343,7 @@ It holds
 \begin_inset Formula 
 \begin{align*}
 a & :=\inf_{\norm u=1}\left\langle u,Au\right\rangle \\
-a & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
+b & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle 
 \end{align*}
 
 \end_inset
@@ -27666,23 +27666,46 @@ Therefore holds
 \end_layout
 
 \begin_layout Standard
-Using the transformations 
-\begin_inset Formula $A\to A-\mu$
+Only prove that 
+\begin_inset Formula $b\in\sigma\left(A\right)$
 \end_inset
 
- with 
-\begin_inset Formula $\mu\in\mathbb{R}$
+.
+ For 
+\begin_inset Formula $a\in\sigma\left(A\right)$
 \end_inset
 
- and 
-\begin_inset Formula $A\to-A$
+ consider similarly the operator 
+\begin_inset Formula $-A$
 \end_inset
 
-, it suffices to consider the case where 
-\begin_inset Formula $r\left(A\right)\le b\in\mathbb{R}_{>0}$
+.
+ Furthermore replace 
+\begin_inset Formula $A\to A-a$
 \end_inset
 
-:
+ to get 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[0,b\right]$
+\end_inset
+
+.
+ We know:
+\begin_inset Formula 
+\begin{align*}
+\opnorm A & =r\left(A\right)=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\sup_{\lambda\in\sigma\left(A\right)}\lambda=\sup\sigma\left(A\right)
+\end{align*}
+
+\end_inset
+
+As a consequence we get 
+\begin_inset Formula $\opnorm A\le b$
+\end_inset
+
+.
+ On the other hand we have:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle \le\sup_{\norm u=1}\norm{Au}\cdot\underbrace{\norm u}_{=1}=\opnorm A
@@ -27690,31 +27713,11 @@ b & =\sup_{\norm u=1}\left\langle u,Au\right\rangle \le\sup_{\norm u=1}\norm{Au}
 
 \end_inset
 
-
-\begin_inset Formula 
-\begin{align*}
-r\left(A\right) & :=\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=\opnorm A
-\end{align*}
-
+Thus we have 
+\begin_inset Formula $b=\opnorm A=r\left(A\right)$
 \end_inset
 
-Assuming 
-\begin_inset Formula $b<\opnorm A$
-\end_inset
-
- one gets:
-\begin_inset Formula 
-\begin{align*}
-r\left(A\right)\le b & <\opnorm A=r\left(A\right)
-\end{align*}
-
-\end_inset
-
-This is a contradiction.
-\begin_inset Newline newline
-\end_inset
-
-Thus 
+, especially 
 \begin_inset Formula $b$
 \end_inset
 
@@ -28464,17 +28467,6 @@ status open
 
 \begin_layout Plain Layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 
 \backslash
 qqed
@@ -28569,7 +28561,7 @@ For complex polynomials, we set
  Then holds:
 \begin_inset Formula 
 \begin{align*}
-\opnorm{\Phi\left(p\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{\sigma\left(A\right)}
+\opnorm{\Phi\left(p\right)}=\opnorm{p\left(A\right)} & =r\left(p\left(A\right)\right)=\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}
 \end{align*}
 
 \end_inset
@@ -28717,15 +28709,845 @@ status open
 
 \end_inset
 
-If 
-\begin_inset Formula $f\left(\lambda\right)=\lambda$
+For 
+\begin_inset Formula $Au=\lambda u$
 \end_inset
 
-, then 
-\begin_inset Formula $\Phi\left(f\right)=f\left(A\right)=A$
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f\right)u & =\lim_{n\to\infty}\Phi\left(p_{n}\right)u=\lim_{n\to\infty}p_{n}\left(A\right)u=\lim_{n\to\infty}p_{n}\left(\lambda\right)u=f\left(\lambda\right)u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 21.12.12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[vi)]
+\end_layout
+
+\end_inset
+
+Now we prove the spectral mapping theorem:
+\begin_inset Newline newline
+\end_inset
+
+„
+\begin_inset Formula $\subseteq$
+\end_inset
+
+“: Assume 
+\begin_inset Formula $\mu\in\sigma\left(f\left(A\right)\right)$
+\end_inset
+
+, but 
+\begin_inset Formula $\mu\not\in f\left(\sigma\left(A\right)\right).$
+\end_inset
+
+ Then holds 
+\begin_inset Formula $f-\mu\not=0$
+\end_inset
+
+ on 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ and we can invert:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{f-\mu} & \in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)
+\end{align*}
+
+\end_inset
+
+Now follows:
+\begin_inset Formula 
+\begin{align*}
+\mathbbm{1} & =\Phi\left(1\right)=\Phi\left(\frac{1}{f-\mu}\left(f-\mu\right)\right)=\underbrace{\Phi\left(\frac{1}{f-\mu}\right)}_{\in L\left(H\right)}\cdot\underbrace{\Phi\left(f-\mu\right)}_{=f\left(A\right)-\mu\mathbbm{1}}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $f\left(A\right)-\mu\mathbbm{1}$
+\end_inset
+
+ has a bounded inverse in contradiction to the assumption 
+\begin_inset Formula $\mu\in\sigma\left(f\left(A\right)\right)$
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+„
+\begin_inset Formula $\supseteq$
+\end_inset
+
+“: Consider 
+\begin_inset Formula $\lambda\in\sigma\left(A\right)$
+\end_inset
+
+.
+ Choose polynomials 
+\begin_inset Formula $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $p_{n}\rightrightarrows f$
+\end_inset
+
+.
+ Then converges in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+p_{n}\left(A\right)-p_{n}\left(\lambda\right)\mathbbm{1} & \xrightarrow{n\to\infty}f\left(A\right)-f\left(\lambda\right)\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+Assume that 
+\begin_inset Formula $f\left(\lambda\right)\not\in\sigma\left(f\left(A\right)\right)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $f\left(A\right)-f\left(\lambda\right)\mathbbm{1}$
+\end_inset
+
+ has a bounded inverse.
+\begin_inset Newline newline
+\end_inset
+
+According to Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-set-cont-invertible-->open"
+
+\end_inset
+
+, the invertible operators are open in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+ Therefore there exists a 
+\begin_inset Formula $\delta\in\mathbb{R}_{>0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $B$
+\end_inset
+
+ has a bounded inverse for all 
+\begin_inset Formula $B\in B_{\delta}\left(f\left(A\right)-f\left(\lambda\right)\mathbbm{1}\right)$
+\end_inset
+
+.
+ In particular, the operators 
+\begin_inset Formula $p_{n}\left(A\right)-p_{n}\left(\lambda\right)\mathbbm{1}$
+\end_inset
+
+ have a bounded inverse for sufficiently large 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+This is a contradiction to the spectral mapping theorem for polynomials
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-spectral-mapping-thm_polynomials"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[v)]
+\end_layout
+
+\end_inset
+
+Claim: 
+\begin_inset Formula $f\ge0\quad\Rightarrow\quad\Phi\left(f\right)\ge0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+\end_inset
+
+ be real-valued and 
+\begin_inset Formula $f\ge0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $g:=\sqrt{f}\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $f=g^{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\Phi\left(f\right)u\right\rangle  & =\left\langle u,\Phi\left(g^{2}\right)u\right\rangle =\left\langle u,\Phi\left(g\right)\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(\overline{g}\right)u,\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(g\right)u,\Phi\left(g\right)u\right\rangle \ge0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\chi_{\Omega}\left(A\right)$
+\end_inset
+
+ would be the projector onto the invariant subspace corresponding to the
+ spectrum in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Formally we can compute:
+\begin_inset Formula 
+\begin{align*}
+\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi}_{\Omega}\left(A\right)=\chi_{\Omega}\left(A\right)\\
+\chi_{\Omega}\left(A\right)\chi_{\Omega}\left(A\right) & =\chi_{\Omega}^{2}\left(A\right)=\chi_{\Omega}\left(A\right)
+\end{align*}
+
+\end_inset
+
+This motivates, why we would like to form 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ for a bounded Borel function 
+\begin_inset Formula $f$
+\end_inset
+
+ on 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Spectral Measures
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric.
+ Choose a 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ (fixed).
+\begin_inset Formula 
+\begin{align*}
+\Phi_{u}:C^{0}\left(\sigma\left(A\right),\mathbb{R}\right) & \to\mathbb{R}\subseteq\mathbb{C}\\
+f & \mapsto\left\langle u,\Phi\left(f\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\norm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\phi_{u}$
+\end_inset
+
+ is a bounded linear functional on 
+\begin_inset Formula $C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+\end_inset
+
+.
+ According to the Riesz representation theorem there exists a unique regular
+ bounded Borel measure such that:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+The measure 
+\begin_inset Formula $\dd\mu_{u}$
+\end_inset
+
+ is even positive, because if 
+\begin_inset Formula $f\ge0$
+\end_inset
+
+, set 
+\begin_inset Formula $g=\sqrt{f}$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\begin{align*}
+\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)=\left\langle u,f\left(A\right)u\right\rangle  & =\left\langle g\left(A\right)u,g\left(A\right)u\right\rangle \ge0\qquad\fall_{f\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right),\ f\ge0}
+\end{align*}
+
+\end_inset
+
+Hence by approximation follows 
+\begin_inset Formula $\mu_{u}\left(\Omega\right)\ge0$
+\end_inset
+
+ for all Borel sets 
+\begin_inset Formula $\Omega\subseteq\sigma\left(A\right)$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\mu_{u}$
+\end_inset
+
+ is a positive measure.
+\begin_inset Newline newline
+\end_inset
+
+The resulting integral can be defined for a more general class of functions.
+\begin_inset Newline newline
+\end_inset
+
+A 
+\emph on
+Borel function
+\emph default
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ is a function, which is measurable for the Borel algebra, i.e.
+ 
+\begin_inset Formula $f^{-1}\left(\Omega\right)$
+\end_inset
+
+ is a Borel function for all open 
+\begin_inset Formula $\Omega\subseteq\mathbb{C}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+We use the following notation: 
+\begin_inset Formula $\mathfrak{M}$
+\end_inset
+
+ is the set of all 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Borel sets in 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right)=L^{\infty}\left(\dd\mu_{u}\right)$
+\end_inset
+
+ are the bounded Borel functions on 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+.
+ We always assume:
+\begin_inset Formula 
+\begin{align*}
+\sup_{\sigma\left(A\right)}\abs f & <\infty
+\end{align*}
+
+\end_inset
+
+We define:
+\begin_inset Formula 
+\begin{align*}
+\phi_{u}:\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right) & \to\mathbb{R}\\
+\phi_{u}\left(f\right) & :=\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-phiu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\abs{\phi_{u}\left(f\right)} & \le\norm f_{L^{\infty}}\cdot\norm u^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $f\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{R}\right)$
+\end_inset
+
+ choose 
+\begin_inset Formula $\varphi_{n}\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi_{n}\to f$
+\end_inset
+
+ converges point-wise and 
+\begin_inset Formula $\norm{\varphi_{n}}_{\infty}\le\norm f_{\infty}$
+\end_inset
+
+.
+ (Approximate 
+\begin_inset Formula $f$
+\end_inset
+
+ by step-functions and then approximate the step functions by continuous
+ functions.)
+\begin_inset Newline newline
+\end_inset
+
+Due to 
+\begin_inset Formula $\abs{\varphi_{n}}\le C$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+\int_{\sigma\left(A\right)}C\dd\mu_{u} & =C\mu_{u}\left(\sigma\left(A\right)\right)=C\left\langle u,\Phi\left(1\right)u\right\rangle =C\left\langle u,\mathbbm{1}u\right\rangle =C\norm u^{2}<\infty
+\end{align*}
+
+\end_inset
+
+we can use the dominated convergence theorem: 
+\begin_inset Formula 
+\begin{align*}
+\abs{\int_{\sigma\left(A\right)}f\dd\mu_{u}} & \sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\abs{\int_{\sigma\left(A\right)}^{\infty}\varphi_{n}\dd\mu_{n}}=\lim_{n\to\infty}\abs{\left\langle u,\Phi\left(\varphi_{n}\right)u\right\rangle }\le\\
+ & \le\lim_{n\to\infty}\norm u^{2}\cdot\norm{\Phi\left(\varphi_{n}\right)}=\lim_{n\to\infty}\norm u^{2}\cdot\norm{\varphi_{n}}\le\norm f\cdot\norm u^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Phi_{u}\left(f\right) & :=\left\langle u,\Phi\left(f\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+By polarization we get: 
+\begin_inset Formula 
+\begin{align*}
+B_{f}\left(u,v\right) & =\Phi_{\frac{u+v}{2}}\left(f\right)-\Phi_{\frac{u-v}{2}}\left(f\right)-\ii\Phi_{\frac{u+\ii v}{2}}\left(f\right)+\ii\Phi_{\frac{u-\ii v}{2}}\left(f\right)
+\end{align*}
+
+\end_inset
+
+Alternatively define for 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\Phi_{u,v}\left(f\right) & :=\left\langle u,\Phi\left(f\right)v\right\rangle =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u,v}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B_{f}\left(u,v\right) & :=\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u,v}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd\mu_{u,v}$
+\end_inset
+
+ is a only a 
+\emph on
+complex-valued,
+\emph default
+ bounded, regular Borel measure.
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{f}\left(u,v\right)$
+\end_inset
+
+ is a 
+\emph on
+sesquilinear form
+\emph default
+, i.e.
+ linear in the second and anti-linear in the first argument, and it holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{B_{f}\left(u,v\right)} & \le\norm f\cdot\norm u\cdot\norm v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+This follows from the polarization formula and Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-phiu"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $B$
+\end_inset
+
+ be a bounded sesquilinear form, i.e.:
+\begin_inset Formula 
+\begin{align*}
+\abs{B\left(u,v\right)} & \le C\cdot\norm u\cdot\norm v\qquad\fall_{u,v\in H}
+\end{align*}
+
+\end_inset
+
+Then there is a unique operator 
+\begin_inset Formula $D\in L\left(H\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\opnorm D\le C$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Dv\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ the map
+\begin_inset Formula 
+\begin{align*}
+\psi & :=\overline{B\left(.,v\right)}
+\end{align*}
+
+\end_inset
+
+is a bounded linear form.
+ According to the Fréchet-Riesz theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Frechet-Riesz"
+
+\end_inset
+
+ there exists a 
+\begin_inset Formula $w\in H$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\psi\left(u\right) & =\left\langle w,u\right\rangle 
+\end{align*}
+
+\end_inset
+
+Then follows:
+\begin_inset Formula 
+\begin{align*}
+B\left(u,v\right) & =\overline{\left\langle w,u\right\rangle }=\left\langle u,w\right\rangle 
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $D$
+\end_inset
+
+ is uniquely determined by 
+\begin_inset Formula $Dv=w$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $D:H\to H$
+\end_inset
+
+ is linear and bounded by the open mapping principle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Open-mapping"
+
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $D\in L\left(H\right)$
+\end_inset
+
+ and for all 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Dv\right\rangle 
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $u=Dv$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\begin{align*}
+B\left(Dv,v\right) & =\left\langle Dv,Dv\right\rangle =\norm{Dv}^{2}\\
+ & \le C\cdot\norm{Dv}\cdot\norm v
+\end{align*}
+
+\end_inset
+
+Therefore we have for all 
+\begin_inset Formula $v\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{Dv} & \le C\cdot\norm v\\
+\opnorm D & \le C
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We conclude: For 
+\begin_inset Formula $f\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+ we construct 
+\begin_inset Formula $B_{f}\left(u,v\right)$
+\end_inset
+
+.
+ Then there exists a 
+\begin_inset Formula $\Phi\left(f\right)\in L\left(H\right)$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\Phi\left(f\right)v\right\rangle  & =B_{f}\left(u,v\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\Phi:\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)\to L\left(H\right)$
+\end_inset
+
+ gives a functional calculus on 
+\begin_inset Formula $\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+, i.e.
+ we can calculate 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ for an arbitrary Borel function.
 \end_layout
 
 \begin_layout Part*
