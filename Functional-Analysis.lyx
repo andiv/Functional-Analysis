@@ -9,10 +9,9 @@
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
 \usetikzlibrary{external}
 \tikzexternalize
-\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
+\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm,subfig}
 \usepackage[explicit]{titlesec}
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
-\usepackage{subfigure}
 
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
@@ -3652,7 +3651,7 @@ status open
 
 
 \backslash
-subfigure[konvex set]{
+subfloat[convex set]{
 \end_layout
 
 \end_inset
@@ -3731,7 +3730,7 @@ status open
 
 
 \backslash
-subfigure[concave set]{
+subfloat[concave set]{
 \end_layout
 
 \end_inset
@@ -28966,7 +28965,7 @@ qqed
  Formally we can compute:
 \begin_inset Formula 
 \begin{align*}
-\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi}_{\Omega}\left(A\right)=\chi_{\Omega}\left(A\right)\\
+\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi_{\Omega}}\left(A\right)=\chi_{\Omega}\left(A\right)\\
 \chi_{\Omega}\left(A\right)\chi_{\Omega}\left(A\right) & =\chi_{\Omega}^{2}\left(A\right)=\chi_{\Omega}\left(A\right)
 \end{align*}
 
@@ -29013,7 +29012,7 @@ f & \mapsto\left\langle u,\Phi\left(f\right)u\right\rangle
 
 \begin_inset Formula 
 \begin{align*}
-\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\norm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
+\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\opnorm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
 \end{align*}
 
 \end_inset
@@ -29028,7 +29027,11 @@ Thus
 
 .
  According to the Riesz representation theorem there exists a unique regular
- bounded Borel measure such that:
+ bounded Borel measure 
+\begin_inset Formula $\mu_{u}$
+\end_inset
+
+ such that:
 \begin_inset Formula 
 \begin{align*}
 \left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
@@ -29037,7 +29040,7 @@ Thus
 \end_inset
 
 The measure 
-\begin_inset Formula $\dd\mu_{u}$
+\begin_inset Formula $\mu_{u}$
 \end_inset
 
  is even positive, because if 
@@ -29242,7 +29245,11 @@ qqed
 \end_layout
 
 \begin_layout Standard
-Define:
+Define using the Fréchet-Riesz theorem the unique Operator 
+\begin_inset Formula $\Phi\left(f\right)$
+\end_inset
+
+ by:
 \end_layout
 
 \begin_layout Standard
@@ -29548,6 +29555,1030 @@ So
 \end_inset
 
  for an arbitrary Borel function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 10.1.13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(Spectral theorem in functional calculus form)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric.
+ Then there is a unique mapping 
+\begin_inset Formula $\Phi:\mathcal{B}\left(\sigma\left(A\right)\right)\to L\left(H\right)$
+\end_inset
+
+ with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is an involutive algebra homomorphism, i.e.:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f\right)\cdot\Phi\left(g\right) & =\Phi\left(f\cdot g\right)\\
+\Phi\left(f\right)^{*} & =\Phi\left(\,\overline{f}\,\right)
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f\right)$
+\end_inset
+
+ agrees with the corresponding operator of the continuous functional calculus.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\opnorm{\Phi\left(f\right)}\le\norm f_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ converges point-wise and it holds 
+\begin_inset Formula $\norm{f_{n}}_{\infty}<C$
+\end_inset
+
+, then 
+\begin_inset Formula $\Phi\left(f_{n}\right)\to\Phi\left(f\right)$
+\end_inset
+
+ converges strongly, i.e.
+ for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ converges in 
+\begin_inset Formula $H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f_{n}\right)u & \to\Phi\left(f\right)u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From 
+\begin_inset Formula $Au=\lambda u$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f\right)u & =f\left(\lambda\right)u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f\ge0$
+\end_inset
+
+ holds, then 
+\begin_inset Formula $\Phi\left(f\right)\ge0$
+\end_inset
+
+ is positive semidefinite.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $B\in L\left(H\right)$
+\end_inset
+
+ commutes with 
+\begin_inset Formula $A$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\left[A,B\right]=AB-BA=0$
+\end_inset
+
+, then 
+\begin_inset Formula $\left[B,\Phi\left(f\right)\right]=0$
+\end_inset
+
+.
+ We write also 
+\begin_inset Formula $f\left(A\right)=\Phi\left(f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Note:
+\emph default
+ There is no spectral mapping theorem.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Prove the homomorphism property by approximation:
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+First step:
+\emph default
+ Assume 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $g\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+.
+ Then there exists a series 
+\begin_inset Formula $g_{n}\in C^{0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $g_{n}\to g$
+\end_inset
+
+ converges point-wise and 
+\begin_inset Formula $\norm{g_{n}}_{\infty}<C$
+\end_inset
+
+.
+ Then follows the point-wise convergence:
+\begin_inset Formula 
+\begin{align*}
+fg_{n} & \to fg
+\end{align*}
+
+\end_inset
+
+We use the notation:
+\begin_inset Formula 
+\begin{align*}
+\phi_{u,v}\left(h\right) & :=\left\langle u,\Phi\left(h\right)v\right\rangle \\
+\Rightarrow\qquad\phi_{u,u}\left(h\right) & =\phi_{u}\left(h\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\mu_{u}$
+\end_inset
+
+ is a regular bounded Borel measure, we can apply the dominated convergence
+ theorem:
+\begin_inset Formula 
+\begin{align*}
+\phi_{u,u}\left(f\cdot g\right) & \stackrel{\text{Definition}}{=}\int_{\sigma\left(A\right)}f\cdot g\dd\mu_{u}\sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\int_{\sigma\left(A\right)}f\cdot g_{n}\dd\mu_{u}=\lim_{n\to\infty}\phi_{u,u}\left(f,g_{n}\right)=\\
+ & =\lim_{n\to\infty}\left\langle u,\Phi\left(f\cdot g_{n}\right)u\right\rangle =\lim_{n\to\infty}\left\langle u,f\left(A\right)\cdot g_{n}\left(A\right)u\right\rangle =\\
+ & =\lim_{n\to\infty}\left\langle \left(f\left(A\right)\right)^{*}u,g_{n}\left(A\right)u\right\rangle =\lim_{n\to\infty}\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g_{n}\right)
+\end{align*}
+
+\end_inset
+
+We know for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ using dominated convergence (see above):
+\begin_inset Formula 
+\begin{align*}
+\phi_{u,u}\left(g_{n}\right) & \to\phi_{u,u}\left(g\right)
+\end{align*}
+
+\end_inset
+
+By polarization follows for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\phi_{v,u}\left(g_{n}\right) & \to\phi_{v,u}\left(g\right)
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+\phi_{u,u}\left(f\cdot g\right) & =\lim_{n\to\infty}\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g_{n}\right)=\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g\right)=\left\langle \left(f\left(A\right)\right)^{*}u,\Phi\left(g\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\quad\left\langle u,\Phi\left(f\cdot g\right)u\right\rangle  & =\left\langle u,f\left(A\right)\cdot g\left(A\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+Polarization yields:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(fg\right) & =\Phi\left(f\right)\cdot\Phi\left(g\right)
+\end{align*}
+
+\end_inset
+
+
+\emph on
+Second Step:
+\emph default
+ Consider 
+\begin_inset Formula $f,g\in\mathcal{B}$
+\end_inset
+
+.
+ We choose 
+\begin_inset Formula $f_{n}\in C^{0}$
+\end_inset
+
+ with 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{f_{n}}<C$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $f_{n}\cdot g\to f\cdot g$
+\end_inset
+
+ converges point-wise.
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\Phi\left(f\cdot g\right)u\right\rangle  & \sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\left\langle u,\Phi\left(f_{n}\cdot g\right)u\right\rangle \sr ={\text{First step}}{}\lim_{n\to\infty}\left\langle u,\Phi\left(f_{n}\right)\cdot\Phi\left(g\right)u\right\rangle =\\
+ & =\lim_{n\to\infty}\phi_{u,g\left(A\right)u}\left(f_{n}\right)=\phi_{u,g\left(A\right)u}\left(f\right)=\left\langle u,f\left(A\right)g\left(A\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\left\langle u,\left(\Phi\left(fg\right)-\Phi\left(f\right)\Phi\left(g\right)\right)u\right\rangle  & =0\qquad\fall_{u\in H}
+\end{align*}
+
+\end_inset
+
+By polarization follows:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(fg\right) & =\Phi\left(f\right)\Phi\left(g\right)
+\end{align*}
+
+\end_inset
+
+The involution property follows similarly.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[iii)]
+\end_layout
+
+\end_inset
+
+Claim: From point-wise convergence 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{f_{n}}<C$
+\end_inset
+
+ follows strong convergence 
+\begin_inset Formula $f_{n}\left(A\right)\to f\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+alph*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+From the dominated convergence theorem it is clear that holds:
+\begin_inset Formula 
+\begin{align*}
+\phi_{u}\left(f_{n}\right) & \to\phi_{u}\left(f\right)\\
+\left\langle u,f_{n}\left(A\right)u\right\rangle  & \to\left\langle u,f\left(A\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+Polarization gives for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,f_{n}\left(A\right)v\right\rangle  & \to\left\langle u,f\left(A\right)v\right\rangle 
+\end{align*}
+
+\end_inset
+
+In other words for all 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(A\right)v & \rightharpoondown f\left(A\right)v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+It holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{f_{n}\left(A\right)v}^{2} & =\left\langle f_{n}\left(A\right)v,f_{n}\left(A\right)v\right\rangle =\left\langle v,\left(f_{n}\left(A\right)\right)^{*}f_{n}\left(A\right)v\right\rangle =\\
+ & =\left\langle v,\overline{f_{n}}\left(A\right)f_{n}\left(A\right)v\right\rangle =\left\langle v,\abs{f_{n}\left(A\right)}^{2}v\right\rangle \sr{\to}{\text{dominated}}{\text{convergence}}\left\langle v,\abs f^{2}\left(A\right)v\right\rangle =\\
+ & =\left\langle v,\overline{f}\left(A\right)f\left(A\right)v\right\rangle =\left\langle f\left(A\right)v,f\left(A\right)v\right\rangle =\norm{f\left(A\right)v}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Now apply the following general Lemma:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Lemma: 
+\begin_inset Formula $u_{n}\rightharpoondown u$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{u_{n}}\to\norm u$
+\end_inset
+
+ imply 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Proof: 
+\begin_inset Formula 
+\begin{align*}
+\norm{u-u_{n}} & =\left\langle u-u_{n},u-u_{n}\right\rangle =\\
+ & =\norm u^{2}-2\text{Re}\underbrace{\left\langle u,u_{n}\right\rangle }_{\sr{}{\to\left\langle u,u\right\rangle }{\text{because }u\rightharpoondown u_{n}}}+\underbrace{\norm{u_{n}}^{2}}_{\sr{}{\to\norm u^{2}}{\text{because }\norm{u_{n}}\to\norm u}}\to\norm u^{2}-2\norm u^{2}+\norm u^{2}=0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Lemma]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+This gives:
+\begin_inset Formula 
+\begin{align*}
+f_{n}\left(A\right)v & \to f\left(A\right)v
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate-Resume
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[ii)]
+\end_layout
+
+\end_inset
+
+Claim: 
+\begin_inset Formula $\norm{f\left(A\right)}\le\norm f_{\infty}$
+\end_inset
+
+ for 
+\begin_inset Formula $f\in\mathcal{B}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Choose 
+\begin_inset Formula $f_{n}\in C^{0}$
+\end_inset
+
+ which converge point-wise to 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $\norm{f_{n}}_{\infty}<\norm f$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{f\left(A\right)u} & \stackrel{\text{iii)}}{=}\lim_{n\to\infty}\norm{f_{n}\left(A\right)u}\le\lim_{n\to\infty}\underbrace{\opnorm{f_{n}\left(A\right)}}_{=\norm{f_{n}}_{\infty}}\cdot\norm u=\lim_{n\to\infty}\norm{f_{n}}_{\infty}\cdot\norm u=\norm f_{\infty}\cdot\norm u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\opnorm{f\left(A\right)} & \le\norm f_{\infty}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[
+\backslash
+roman{enumi})]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[iv) - vi)]
+\end_layout
+
+\end_inset
+
+follow immediately by approximation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Remark
+\end_layout
+
+\begin_layout Standard
+So far we considered Borel measures on 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\mathbb{R}$
+\end_inset
+
+.
+ These measures can be extended to Borel measures on 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ by defining for a Borel set 
+\begin_inset Formula $\Omega\in\mathfrak{M}\left(\mathbb{R}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\Omega\right) & :=\mu\left(\Omega\cap\sigma\left(A\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\Omega\cap\sigma\left(A\right)$
+\end_inset
+
+ is a Borel set of 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+, since 
+\begin_inset Formula $\sigma\left(A\right)$
+\end_inset
+
+ is closed.
+\end_layout
+
+\begin_layout Standard
+Now let 
+\begin_inset Formula $M\subseteq\mathfrak{M}\left(\mathbb{R}\right)$
+\end_inset
+
+ be a Borel set.
+ 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ is well defined for any 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{R}\right)$
+\end_inset
+
+.
+ With the characteristic function 
+\begin_inset Formula $\chi_{M}$
+\end_inset
+
+ of 
+\begin_inset Formula $M$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+E_{M} & :=\chi_{M}\left(A\right)
+\end{align*}
+
+\end_inset
+
+Then we get:
+\begin_inset Formula 
+\begin{align*}
+E_{M}^{*} & =\overline{\chi_{M}}\left(A\right)=\chi_{M}\left(A\right)=E_{M}\\
+E_{M}^{2} & =\chi_{M}\left(A\right)\cdot\chi_{M}\left(A\right)=\left(\chi_{M}\cdot\chi_{M}\right)\left(A\right)=\chi_{M}\left(A\right)=E_{M}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $E_{M}$
+\end_inset
+
+ is symmetric and idempotent, in other words 
+\begin_inset Formula $E_{M}$
+\end_inset
+
+ is a projection operator.
+\end_layout
+
+\begin_layout Standard
+The mapping 
+\begin_inset Formula $M\mapsto E_{M}$
+\end_inset
+
+ is the spectral measure.
+\end_layout
+
+\begin_layout Subsection
+Definition 
+\series medium
+(projection operator, spectral measure)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Def-Spectral-measure"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\in L\left(H\right)$
+\end_inset
+
+ is a 
+\emph on
+projection operator
+\emph default
+ if 
+\begin_inset Formula $P^{2}=P=P^{*}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+An operator-valued 
+\emph on
+spectral measure
+\emph default
+ 
+\begin_inset Formula $E$
+\end_inset
+
+ is a mapping
+\begin_inset Formula 
+\begin{align*}
+E:\mathfrak{M}\left(\mathbb{R}^{n}\right) & \to L\left(H\right)\\
+M & \mapsto E_{M}:=E\left(M\right)
+\end{align*}
+
+\end_inset
+
+with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $E_{M}$
+\end_inset
+
+ is a projection operator for all 
+\begin_inset Formula $M\in\mathfrak{M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E_{\emptyset}=0$
+\end_inset
+
+, 
+\begin_inset Formula $E_{\mathbb{R}^{n}}=\mathbbm{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $M=\bcupd_{n=1}^{\infty}M_{n}$
+\end_inset
+
+ the operator 
+\begin_inset Formula $E_{M}$
+\end_inset
+
+ is the strong limes of the partial sums 
+\begin_inset Formula ${\displaystyle \sum_{n=1}^{k}E_{M_{n}}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+E_{M} & =\underset{k\to\infty}{\text{s-lim}}\sum_{n=1}^{k}E_{M_{n}}
+\end{align*}
+
+\end_inset
+
+This means that for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+E_{M}u & =\sum_{n=1}^{\infty}\left(E_{M_{n}}u\right)
+\end{align*}
+
+\end_inset
+
+The series does not necessarily converge in the operator norm!
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E_{M}\cdot E_{N}=E_{M\cap N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+, the mapping 
+\begin_inset Formula $M\mapsto\left\langle u,E_{M}u\right\rangle \in\mathbb{R}$
+\end_inset
+
+ is a (real) bounded regular Borel measure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{supp}\left(E\right)$
+\end_inset
+
+ is the complement of the largest open set 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ with 
+\begin_inset Formula $E_{\Omega}=0$
+\end_inset
+
+, which exists due to the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additivity.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $E$
+\end_inset
+
+ is called a 
+\emph on
+compact
+\emph default
+ spectral measure if 
+\begin_inset Formula $\text{supp}\left(E\right)$
+\end_inset
+
+ is compact.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric.
+ Then the mapping
+\begin_inset Formula 
+\begin{align*}
+E:M & \mapsto\chi_{M}\left(A\right)
+\end{align*}
+
+\end_inset
+
+is a spectral measure on 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ with 
+\begin_inset Formula $\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+We have to show the properties from the definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Def-Spectral-measure"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+i) is clear.
+\begin_inset Formula 
+\begin{align*}
+\chi_{\emptyset}\left(A\right) & =0\left(A\right)=0\\
+\chi_{\mathbb{R}}\left(A\right) & =\Phi\left(1\right)=\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+So ii) is shown.
+\end_layout
+
+\begin_layout Standard
+iv) follows from:
+\begin_inset Formula 
+\begin{align*}
+\chi_{M}\left(A\right)\cdot\chi_{N}\left(A\right) & =\left(\chi_{M}\cdot\chi_{N}\right)\left(A\right)=\chi_{M\cap N}\left(A\right)
+\end{align*}
+
+\end_inset
+
+For v) consider:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,E_{M}u\right\rangle  & =\left\langle u,\chi_{M}\left(A\right)u\right\rangle =\phi_{u}\left(\chi_{M}\right)=\int\chi_{M}\dd\mu_{u}=\mu_{u}\left(M\right)
+\end{align*}
+
+\end_inset
+
+It remains to show iii) and 
+\begin_inset Formula $\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Part*

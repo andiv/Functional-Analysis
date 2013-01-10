@@ -46,10 +46,9 @@
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
 \usetikzlibrary{external}
 \tikzexternalize
-\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm}
+\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm,subfig}
 \usepackage[explicit]{titlesec}
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
-\usepackage{subfigure}
 
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
@@ -826,12 +825,12 @@ and $\tau\in\left[0,1\right]$:
 
 
 \begin{figure}[H]
-\hfill{}\subfigure[konvex set]{\begin{tikzpicture}[scale=2]
+\hfill{}\subfloat[convex set]{\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
   \draw (0,-0.5) -- (0.5,0.5);
   \draw (0,-0.5) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (0.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
-\end{tikzpicture}}\hfill{}\subfigure[concave set]{\begin{tikzpicture}[scale=2]
+\end{tikzpicture}}\hfill{}\subfloat[concave set]{\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (0.2,-0.2) (-1,0)};
   \draw (-0.4,-0.3) -- (0.4,0.6);
   \draw (-0.4,-0.3) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
@@ -6392,7 +6391,7 @@ $\chi_{\Omega}\left(A\right)$ would be the projector onto the invariant
 subspace corresponding to the spectrum in~$\Omega$. Formally we
 can compute:
 \begin{align*}
-\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi}_{\Omega}\left(A\right)=\chi_{\Omega}\left(A\right)\\
+\left(\chi_{\Omega}\left(A\right)\right)^{*} & =\overline{\chi_{\Omega}}\left(A\right)=\chi_{\Omega}\left(A\right)\\
 \chi_{\Omega}\left(A\right)\chi_{\Omega}\left(A\right) & =\chi_{\Omega}^{2}\left(A\right)=\chi_{\Omega}\left(A\right)
 \end{align*}
 This motivates, why we would like to form $f\left(A\right)$ for a
@@ -6407,15 +6406,15 @@ Let $A\in L\left(H\right)$ be symmetric. Choose a $u\in H$ (fixed).
 f & \mapsto\left\langle u,\Phi\left(f\right)u\right\rangle 
 \end{align*}
 \begin{align*}
-\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\norm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
+\abs{\Phi_{u}\left(f\right)} & =\abs{\left\langle u,\Phi\left(f\right)u\right\rangle }\le\opnorm{\Phi\left(f\right)}\cdot\norm u^{2}=\norm f_{C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)}\cdot\norm u^{2}
 \end{align*}
 Thus $\phi_{u}$ is a bounded linear functional on $C^{0}\left(\sigma\left(A\right),\mathbb{R}\right)$.
 According to the Riesz representation theorem there exists a unique
-regular bounded Borel measure such that:
+regular bounded Borel measure $\mu_{u}$ such that:
 \begin{align*}
 \left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
 \end{align*}
-The measure $\dd\mu_{u}$ is even positive, because if $f\ge0$, set
+The measure $\mu_{u}$ is even positive, because if $f\ge0$, set
 $g=\sqrt{f}$ to get:
 \begin{align*}
 \int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)=\left\langle u,f\left(A\right)u\right\rangle  & =\left\langle g\left(A\right)u,g\left(A\right)u\right\rangle \ge0\qquad\fall_{f\in C^{0}\left(\sigma\left(A\right),\mathbb{R}\right),\ f\ge0}
@@ -6470,7 +6469,8 @@ we can use the dominated convergence theorem:
 \end{align*}
 \qqed
 
-Define:
+Define using the Fréchet-Riesz theorem the unique Operator $\Phi\left(f\right)$
+by:
 
 \begin{align*}
 \Phi_{u}\left(f\right) & :=\left\langle u,\Phi\left(f\right)u\right\rangle 
@@ -6561,6 +6561,251 @@ such that for all $u,v\in H$ holds:
 So $\Phi:\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)\to L\left(H\right)$
 gives a functional calculus on $\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$,
 i.e. we can calculate $f\left(A\right)$ for an arbitrary Borel function.
+
+%DATE: Do 10.1.13
+
+
+\subsection{Theorem \textmd{(Spectral theorem in functional calculus form)}}
+
+Let $A\in L\left(H\right)$ be symmetric. Then there is a unique mapping
+$\Phi:\mathcal{B}\left(\sigma\left(A\right)\right)\to L\left(H\right)$
+with the following properties:
+\begin{enumerate}[label=\roman*)]
+\item $\Phi$ is an involutive algebra homomorphism, i.e.:
+\begin{align*}
+\Phi\left(f\right)\cdot\Phi\left(g\right) & =\Phi\left(f\cdot g\right)\\
+\Phi\left(f\right)^{*} & =\Phi\left(\,\overline{f}\,\right)
+\end{align*}
+If $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$, then
+$\Phi\left(f\right)$ agrees with the corresponding operator of the
+continuous functional calculus.
+\item $\opnorm{\Phi\left(f\right)}\le\norm f_{\infty}$
+\item If $f_{n}\to f$ converges point-wise and it holds $\norm{f_{n}}_{\infty}<C$,
+then $\Phi\left(f_{n}\right)\to\Phi\left(f\right)$ converges strongly,
+i.e. for all $u\in H$ converges in $H$:
+\begin{align*}
+\Phi\left(f_{n}\right)u & \to\Phi\left(f\right)u
+\end{align*}
+
+\item From $Au=\lambda u$ follows:
+\begin{align*}
+\Phi\left(f\right)u & =f\left(\lambda\right)u
+\end{align*}
+
+\item If $f\ge0$ holds, then $\Phi\left(f\right)\ge0$ is positive semidefinite.
+\item If $B\in L\left(H\right)$ commutes with $A$, i.e. $\left[A,B\right]=AB-BA=0$,
+then $\left[B,\Phi\left(f\right)\right]=0$. We write also $f\left(A\right)=\Phi\left(f\right)$.
+\end{enumerate}
+\emph{Note:} There is no spectral mapping theorem.
+
+
+\subsubsection*{Proof}
+\begin{enumerate}[label=\roman*)]
+\item Prove the homomorphism property by approximation:\\
+\emph{First step:} Assume $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+and $g\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$.
+Then there exists a series $g_{n}\in C^{0}$ such that $g_{n}\to g$
+converges point-wise and $\norm{g_{n}}_{\infty}<C$. Then follows
+the point-wise convergence:
+\begin{align*}
+fg_{n} & \to fg
+\end{align*}
+We use the notation:
+\begin{align*}
+\phi_{u,v}\left(h\right) & :=\left\langle u,\Phi\left(h\right)v\right\rangle \\
+\Rightarrow\qquad\phi_{u,u}\left(h\right) & =\phi_{u}\left(h\right)
+\end{align*}
+Since $\mu_{u}$ is a regular bounded Borel measure, we can apply
+the dominated convergence theorem:
+\begin{align*}
+\phi_{u,u}\left(f\cdot g\right) & \stackrel{\text{Definition}}{=}\int_{\sigma\left(A\right)}f\cdot g\dd\mu_{u}\sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\int_{\sigma\left(A\right)}f\cdot g_{n}\dd\mu_{u}=\lim_{n\to\infty}\phi_{u,u}\left(f,g_{n}\right)=\\
+ & =\lim_{n\to\infty}\left\langle u,\Phi\left(f\cdot g_{n}\right)u\right\rangle =\lim_{n\to\infty}\left\langle u,f\left(A\right)\cdot g_{n}\left(A\right)u\right\rangle =\\
+ & =\lim_{n\to\infty}\left\langle \left(f\left(A\right)\right)^{*}u,g_{n}\left(A\right)u\right\rangle =\lim_{n\to\infty}\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g_{n}\right)
+\end{align*}
+We know for all $u\in H$ using dominated convergence (see above):
+\begin{align*}
+\phi_{u,u}\left(g_{n}\right) & \to\phi_{u,u}\left(g\right)
+\end{align*}
+By polarization follows for all $u,v\in H$:
+\begin{align*}
+\phi_{v,u}\left(g_{n}\right) & \to\phi_{v,u}\left(g\right)
+\end{align*}
+This gives:
+\begin{align*}
+\phi_{u,u}\left(f\cdot g\right) & =\lim_{n\to\infty}\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g_{n}\right)=\phi_{\left(f\left(A\right)\right)^{*}u,u}\left(g\right)=\left\langle \left(f\left(A\right)\right)^{*}u,\Phi\left(g\right)u\right\rangle 
+\end{align*}
+\begin{align*}
+\Rightarrow\quad\left\langle u,\Phi\left(f\cdot g\right)u\right\rangle  & =\left\langle u,f\left(A\right)\cdot g\left(A\right)u\right\rangle 
+\end{align*}
+Polarization yields:
+\begin{align*}
+\Phi\left(fg\right) & =\Phi\left(f\right)\cdot\Phi\left(g\right)
+\end{align*}
+\emph{Second Step:} Consider $f,g\in\mathcal{B}$. We choose $f_{n}\in C^{0}$
+with $f_{n}\to f$ and $\norm{f_{n}}<C$. Then $f_{n}\cdot g\to f\cdot g$
+converges point-wise.
+\begin{align*}
+\left\langle u,\Phi\left(f\cdot g\right)u\right\rangle  & \sr ={\text{dominated}}{\text{convergence}}\lim_{n\to\infty}\left\langle u,\Phi\left(f_{n}\cdot g\right)u\right\rangle \sr ={\text{First step}}{}\lim_{n\to\infty}\left\langle u,\Phi\left(f_{n}\right)\cdot\Phi\left(g\right)u\right\rangle =\\
+ & =\lim_{n\to\infty}\phi_{u,g\left(A\right)u}\left(f_{n}\right)=\phi_{u,g\left(A\right)u}\left(f\right)=\left\langle u,f\left(A\right)g\left(A\right)u\right\rangle 
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\left\langle u,\left(\Phi\left(fg\right)-\Phi\left(f\right)\Phi\left(g\right)\right)u\right\rangle  & =0\qquad\fall_{u\in H}
+\end{align*}
+By polarization follows:
+\begin{align*}
+\Phi\left(fg\right) & =\Phi\left(f\right)\Phi\left(g\right)
+\end{align*}
+The involution property follows similarly.\qqed[\roman{enumi})]
+\item [iii)]Claim: From point-wise convergence $f_{n}\to f$ and $\norm{f_{n}}<C$
+follows strong convergence $f_{n}\left(A\right)\to f\left(A\right)$.
+
+\begin{enumerate}[label=\alph*)]
+\item From the dominated convergence theorem it is clear that holds:
+\begin{align*}
+\phi_{u}\left(f_{n}\right) & \to\phi_{u}\left(f\right)\\
+\left\langle u,f_{n}\left(A\right)u\right\rangle  & \to\left\langle u,f\left(A\right)u\right\rangle 
+\end{align*}
+Polarization gives for all $u,v\in H$:
+\begin{align*}
+\left\langle u,f_{n}\left(A\right)v\right\rangle  & \to\left\langle u,f\left(A\right)v\right\rangle 
+\end{align*}
+In other words for all $v\in H$ holds:
+\begin{align*}
+f_{n}\left(A\right)v & \rightharpoondown f\left(A\right)v
+\end{align*}
+
+\item It holds:
+\begin{align*}
+\norm{f_{n}\left(A\right)v}^{2} & =\left\langle f_{n}\left(A\right)v,f_{n}\left(A\right)v\right\rangle =\left\langle v,\left(f_{n}\left(A\right)\right)^{*}f_{n}\left(A\right)v\right\rangle =\\
+ & =\left\langle v,\overline{f_{n}}\left(A\right)f_{n}\left(A\right)v\right\rangle =\left\langle v,\abs{f_{n}\left(A\right)}^{2}v\right\rangle \sr{\to}{\text{dominated}}{\text{convergence}}\left\langle v,\abs f^{2}\left(A\right)v\right\rangle =\\
+ & =\left\langle v,\overline{f}\left(A\right)f\left(A\right)v\right\rangle =\left\langle f\left(A\right)v,f\left(A\right)v\right\rangle =\norm{f\left(A\right)v}^{2}
+\end{align*}
+
+\item Now apply the following general Lemma:
+
+\begin{description}
+\item [{Lemma:}] $u_{n}\rightharpoondown u$ and $\norm{u_{n}}\to\norm u$
+imply $u_{n}\to u$.
+\item [{Proof:}] 
+\begin{align*}
+\norm{u-u_{n}} & =\left\langle u-u_{n},u-u_{n}\right\rangle =\\
+ & =\norm u^{2}-2\text{Re}\underbrace{\left\langle u,u_{n}\right\rangle }_{\sr{}{\to\left\langle u,u\right\rangle }{\text{because }u\rightharpoondown u_{n}}}+\underbrace{\norm{u_{n}}^{2}}_{\sr{}{\to\norm u^{2}}{\text{because }\norm{u_{n}}\to\norm u}}\to\norm u^{2}-2\norm u^{2}+\norm u^{2}=0
+\end{align*}
+\qqed[Lemma]
+\end{description}
+\end{enumerate}
+\begin{enumerate}[resume]
+\item This gives:
+\begin{align*}
+f_{n}\left(A\right)v & \to f\left(A\right)v
+\end{align*}
+\qqed[\roman{enumi})]
+\end{enumerate}
+\end{enumerate}
+\begin{enumerate}[resume]
+\item [ii)]Claim: $\norm{f\left(A\right)}\le\norm f_{\infty}$ for $f\in\mathcal{B}$.\\
+Choose $f_{n}\in C^{0}$ which converge point-wise to $f$ and $\norm{f_{n}}_{\infty}<\norm f$.
+\begin{align*}
+\norm{f\left(A\right)u} & \stackrel{\text{iii)}}{=}\lim_{n\to\infty}\norm{f_{n}\left(A\right)u}\le\lim_{n\to\infty}\underbrace{\opnorm{f_{n}\left(A\right)}}_{=\norm{f_{n}}_{\infty}}\cdot\norm u=\lim_{n\to\infty}\norm{f_{n}}_{\infty}\cdot\norm u=\norm f_{\infty}\cdot\norm u
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\opnorm{f\left(A\right)} & \le\norm f_{\infty}
+\end{align*}
+\qqed[\roman{enumi})]
+\item [iv) - vi)]follow immediately by approximation.
+\end{enumerate}
+\qqed
+
+
+\subsection{Remark}
+
+So far we considered Borel measures on $\sigma\left(A\right)\subseteq\mathbb{R}$.
+These measures can be extended to Borel measures on $\mathbb{R}$
+by defining for a Borel set $\Omega\in\mathfrak{M}\left(\mathbb{R}\right)$:
+\begin{align*}
+\mu\left(\Omega\right) & :=\mu\left(\Omega\cap\sigma\left(A\right)\right)
+\end{align*}
+$\Omega\cap\sigma\left(A\right)$ is a Borel set of $\sigma\left(A\right)$,
+since $\sigma\left(A\right)$ is closed.
+
+Now let $M\subseteq\mathfrak{M}\left(\mathbb{R}\right)$ be a Borel
+set. $f\left(A\right)$ is well defined for any $f\in\mathcal{B}\left(\mathbb{R}\right)$.
+With the characteristic function $\chi_{M}$ of $M$ define:
+\begin{align*}
+E_{M} & :=\chi_{M}\left(A\right)
+\end{align*}
+Then we get:
+\begin{align*}
+E_{M}^{*} & =\overline{\chi_{M}}\left(A\right)=\chi_{M}\left(A\right)=E_{M}\\
+E_{M}^{2} & =\chi_{M}\left(A\right)\cdot\chi_{M}\left(A\right)=\left(\chi_{M}\cdot\chi_{M}\right)\left(A\right)=\chi_{M}\left(A\right)=E_{M}
+\end{align*}
+Thus $E_{M}$ is symmetric and idempotent, in other words $E_{M}$
+is a projection operator.
+
+The mapping $M\mapsto E_{M}$ is the spectral measure.
+
+
+\subsection{Definition \textmd{(projection operator, spectral measure)\label{sub:Def-Spectral-measure}}}
+
+$P\in L\left(H\right)$ is a \emph{projection operator} if $P^{2}=P=P^{*}$.\\
+An operator-valued \emph{spectral measure} $E$ is a mapping
+\begin{align*}
+E:\mathfrak{M}\left(\mathbb{R}^{n}\right) & \to L\left(H\right)\\
+M & \mapsto E_{M}:=E\left(M\right)
+\end{align*}
+with the following properties:
+\begin{enumerate}[label=\roman*)]
+\item $E_{M}$ is a projection operator for all $M\in\mathfrak{M}$.
+\item $E_{\emptyset}=0$, $E_{\mathbb{R}^{n}}=\mathbbm{1}$
+\item For $M=\bcupd_{n=1}^{\infty}M_{n}$ the operator $E_{M}$ is the strong
+limes of the partial sums ${\displaystyle \sum_{n=1}^{k}E_{M_{n}}}$:
+\begin{align*}
+E_{M} & =\underset{k\to\infty}{\text{s-lim}}\sum_{n=1}^{k}E_{M_{n}}
+\end{align*}
+This means that for all $u\in H$ holds:
+\begin{align*}
+E_{M}u & =\sum_{n=1}^{\infty}\left(E_{M_{n}}u\right)
+\end{align*}
+The series does not necessarily converge in the operator norm!
+\item $E_{M}\cdot E_{N}=E_{M\cap N}$
+\item For all $u\in H$, the mapping $M\mapsto\left\langle u,E_{M}u\right\rangle \in\mathbb{R}$
+is a (real) bounded regular Borel measure.
+\end{enumerate}
+$\text{supp}\left(E\right)$ is the complement of the largest open
+set $\Omega$ with $E_{\Omega}=0$, which exists due to the $\sigma$-additivity.\\
+$E$ is called a \emph{compact} spectral measure if $\text{supp}\left(E\right)$
+is compact.
+
+
+\subsection{Theorem}
+
+Let $A\in L\left(H\right)$ be symmetric. Then the mapping
+\begin{align*}
+E:M & \mapsto\chi_{M}\left(A\right)
+\end{align*}
+is a spectral measure on $\mathbb{R}$ with $\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$.
+
+
+\subsubsection*{Proof}
+
+We have to show the properties from the definition \ref{sub:Def-Spectral-measure}.
+
+i) is clear.
+\begin{align*}
+\chi_{\emptyset}\left(A\right) & =0\left(A\right)=0\\
+\chi_{\mathbb{R}}\left(A\right) & =\Phi\left(1\right)=\mathbbm{1}
+\end{align*}
+So ii) is shown.
+
+iv) follows from:
+\begin{align*}
+\chi_{M}\left(A\right)\cdot\chi_{N}\left(A\right) & =\left(\chi_{M}\cdot\chi_{N}\right)\left(A\right)=\chi_{M\cap N}\left(A\right)
+\end{align*}
+For v) consider:
+\begin{align*}
+\left\langle u,E_{M}u\right\rangle  & =\left\langle u,\chi_{M}\left(A\right)u\right\rangle =\phi_{u}\left(\chi_{M}\right)=\int\chi_{M}\dd\mu_{u}=\mu_{u}\left(M\right)
+\end{align*}
+It remains to show iii) and $\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$.
 
 
 \part*{Appendix\thispagestyle{empty}}
