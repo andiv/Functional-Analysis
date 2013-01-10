@@ -15907,9 +15907,57 @@ Proof
 \end_layout
 
 \begin_layout Standard
+Let 
+\begin_inset Formula $x_{n}\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
 
-\color green
-TODO: Proof from exercises
+ converge to 
+\begin_inset Formula $x\in H$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{*}x_{n}\to y\in H$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $z\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle x,Az\right\rangle  & \stackrel{\left\langle .,.\right\rangle \text{ continuous}}{=}\lim_{n\to\infty}\left\langle x_{n},Az\right\rangle =\lim_{n\to\infty}\left\langle A^{*}x_{n},z\right\rangle \stackrel{\left\langle .,.\right\rangle \text{ continuous}}{=}\left\langle y,z\right\rangle 
+\end{align*}
+
+\end_inset
+
+This shows 
+\begin_inset Formula $x\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{*}x=y$
+\end_inset
+
+, so 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is closed.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -15949,9 +15997,29 @@ Proof
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\text{graph}\left(S\right) & =\left\{ \left(v,w\right)\in\mathcal{D}\left(S\right)\times H\bigg|Sv=w\right\} =\\
+ & =\left\{ \left(v,w\right)\in\mathcal{D}\left(S\right)\times H\bigg|\fall_{u\in\mathcal{D}\left(A\right)}\left\langle Au,v\right\rangle =\left\langle u,w\right\rangle \right\} =\\
+ & =\left\{ \left(v,w\right)\in H\times H\bigg|\fall_{u\in\mathcal{D}\left(A\right)}\left\langle v,Au\right\rangle =\left\langle w,u\right\rangle \right\} =\text{graph}\left(A^{*}\right)
+\end{align*}
 
-\color green
-TODO: Proof from exercises
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

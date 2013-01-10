@@ -3459,7 +3459,14 @@ $A^{*}$ is closed.
 
 \subsubsection*{Proof}
 
-\textcolor{green}{TODO: Proof from exercises}
+Let $x_{n}\in\mathcal{D}\left(A^{*}\right)$ converge to $x\in H$
+and $A^{*}x_{n}\to y\in H$. For $z\in\mathcal{D}\left(A\right)$
+holds:
+\begin{align*}
+\left\langle x,Az\right\rangle  & \stackrel{\left\langle .,.\right\rangle \text{ continuous}}{=}\lim_{n\to\infty}\left\langle x_{n},Az\right\rangle =\lim_{n\to\infty}\left\langle A^{*}x_{n},z\right\rangle \stackrel{\left\langle .,.\right\rangle \text{ continuous}}{=}\left\langle y,z\right\rangle 
+\end{align*}
+This shows $x\in\mathcal{D}\left(A^{*}\right)$ and $A^{*}x=y$, so
+$A^{*}$ is closed.\qqed
 
 
 \subsection{Theorem}
@@ -3474,7 +3481,12 @@ property that for all $u\in\mathcal{D}\left(A\right)$ and $v\in\mathcal{D}\left(
 
 \subsubsection*{Proof}
 
-\textcolor{green}{TODO: Proof from exercises}
+\begin{align*}
+\text{graph}\left(S\right) & =\left\{ \left(v,w\right)\in\mathcal{D}\left(S\right)\times H\bigg|Sv=w\right\} =\\
+ & =\left\{ \left(v,w\right)\in\mathcal{D}\left(S\right)\times H\bigg|\fall_{u\in\mathcal{D}\left(A\right)}\left\langle Au,v\right\rangle =\left\langle u,w\right\rangle \right\} =\\
+ & =\left\{ \left(v,w\right)\in H\times H\bigg|\fall_{u\in\mathcal{D}\left(A\right)}\left\langle v,Au\right\rangle =\left\langle w,u\right\rangle \right\} =\text{graph}\left(A^{*}\right)
+\end{align*}
+\qqed
 
 
 \section{Symmetric and self-adjoint densely defined operators}
