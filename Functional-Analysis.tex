@@ -297,7 +297,7 @@ Therefore it is recommended \emph{strongly} to attend the lecture.
 
 \subsubsection*{Copyright Notice}
 
-Copyright © 2012 \noun{Andreas Völklein}
+Copyright © 2012-2013 \noun{Andreas Völklein}
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -6577,7 +6577,7 @@ i.e. we can calculate $f\left(A\right)$ for an arbitrary Borel function.
 %DATE: Do 10.1.13
 
 
-\subsection{Theorem \textmd{(Spectral theorem in functional calculus form)}}
+\subsection{Theorem \textmd{(Spectral theorem in functional calculus form)\label{sub:Thm-Spectral-theorem-functional-calculus}}}
 
 Let $A\in L\left(H\right)$ be symmetric. Then there is a unique mapping
 $\Phi:\mathcal{B}\left(\sigma\left(A\right)\right)\to L\left(H\right)$
@@ -6818,6 +6818,263 @@ For v) consider:
 \left\langle u,E_{M}u\right\rangle  & =\left\langle u,\chi_{M}\left(A\right)u\right\rangle =\phi_{u}\left(\chi_{M}\right)=\int\chi_{M}\dd\mu_{u}=\mu_{u}\left(M\right)
 \end{align*}
 It remains to show iii) and $\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$.
+
+%DATE: Fr 11.1.13
+
+For the later consider $\Omega\subseteq\varrho\left(A\right)$:
+\begin{align*}
+E_{\Omega} & =\chi_{\Omega}\left(A\right)=\Phi\left(\chi_{\Omega}\right)\sr ={\text{extension to }\mathcal{B}\left(\mathbb{R}\right)}{}\Phi\left(\chi_{\Omega}\chi_{\sigma\left(A\right)}\right)=\Phi\left(\chi_{\Omega\cap\sigma\left(A\right)}\right)=\Phi\left(0\right)=0
+\end{align*}
+Now show iii): From
+\begin{align*}
+M & =\bcupd_{j=1}^{\infty}M_{j}
+\end{align*}
+follows with ponit-wise convergence:
+\begin{align*}
+\chi_{M} & =\sum_{j=1}^{\infty}\chi_{M_{j}}
+\end{align*}
+Theorem \ref{sub:Thm-Spectral-theorem-functional-calculus} iii) yields:
+\begin{align*}
+\underset{n\to\infty}{\text{s-lim}}\sum_{j=1}^{n}\underbrace{\chi_{M_{j}}\left(A\right)}_{=E_{M_{j}}} & =\underbrace{\chi_{M}\left(A\right)}_{=E_{M}}
+\end{align*}
+\qqed
+
+
+\subsubsection*{Notation}
+
+$M\mapsto E_{M}$ is the spectral measure, which is projection operator
+valued.\\
+$M\mapsto\left\langle u,E_{M}u\right\rangle =\mu_{u}\left(M\right)=\mu_{u,u}\left(M\right)$
+is the real, bounded, regular Borel measure.\\
+$M\mapsto\left\langle u,E_{M}v\right\rangle =\mu_{u,v}\left(M\right)$
+is the complex, bounded, regular Borel measure.\\
+Consider the integral:
+\begin{align*}
+\int_{\mathbb{R}}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+\begin{align*}
+\dd\mu_{u}\left(\lambda\right) & =\dd\left\langle u,E_{\lambda}u\right\rangle \\
+\dd\mu_{u,v}\left(\lambda\right) & =\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+
+
+\subsection{Lemma\label{sub:Lem-E_lambdaE_M}}
+
+Let $E$ be a spectral measure on $\mathbb{R}^{n}$ and $M\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$.
+Then holds for all $u,v\in H$:
+\begin{align*}
+\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle =\dd\left\langle E_{M}u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+For all $f\in\mathcal{B}\left(\mathbb{R}^{n}\right)$ we have to show:
+\begin{align*}
+\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\cdot\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+By approximation, it suffices to show for all $\Omega\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$:
+\begin{align*}
+\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+Since $\int\chi_{M}\left(x\right)\dd\mu\left(x\right)=\mu\left(M\right)$,
+we get:
+\begin{align*}
+\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\left\langle u,E_{\Omega}E_{M}v\right\rangle \stackrel{\text{property iv)}}{=}\left\langle u,E_{\Omega\cap M}v\right\rangle =\\
+ & =\int_{\mathbb{R}^{n}}\chi_{\Omega\cap M}\left\langle u,\dd E_{\lambda}v\right\rangle =\int_{\mathbb{R}^{n}}\chi_{\Omega}\chi_{M}\left\langle u,\dd E_{\lambda}v\right\rangle 
+\end{align*}
+\qqed
+
+We write:
+\begin{align*}
+\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle  & =:\left\langle u,\left(\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda}\right)v\right\rangle 
+\end{align*}
+We will use this to define integration in $L\left(H\right)$.
+
+
+\subsection{Theorem}
+
+Let $E$ be a spectral measure on $\mathbb{R}^{n}$ and $f\in\mathcal{B}\left(\mathbb{R}^{n}\right)$.
+Then the relations
+\begin{align*}
+\int f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle  & =\left\langle u,Av\right\rangle \qquad\fall_{u,v\in H}
+\end{align*}
+define a unique normal operator $A\in L\left(H\right)$, which we
+also denote by:
+\begin{align*}
+A & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+Moreover:
+\begin{align*}
+A^{*} & =\int\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+We define a bilinear form $B:H\times H\to\mathbb{C}$ by:
+\begin{align*}
+B\left(u,v\right) & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+Then we have:
+\begin{align*}
+\abs{B\left(u,u\right)} & \le\int_{\mathbb{R}^{n}}\abs{f\left(\lambda\right)}\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{\text{positive measure}}\le\norm f_{\infty}\cdot\left\langle u,\underbrace{E_{\mathbb{R}^{n}}}_{=\mathbbm{1}}u\right\rangle =\norm f_{\infty}\cdot\norm u^{2}
+\end{align*}
+Polarization and estimation yields:
+\begin{align*}
+\abs{B\left(u,v\right)} & \le\norm f_{\infty}\norm u\cdot\norm v
+\end{align*}
+Thus by the Fréchet-Riesz theorem, there is a unique $A\in L\left(H\right)$
+with:
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Av\right\rangle 
+\end{align*}
+\begin{align*}
+\left\langle u,Av\right\rangle  & =\int f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle \\
+\left\langle u,A^{*}v\right\rangle =\left\langle v,Au\right\rangle  & =\int\overline{f\left(\lambda\right)}\dd\left\langle u,E_{\lambda}v\right\rangle \\
+\Rightarrow\qquad A^{*} & =\int\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+\qqed
+
+
+\subsection{Theorem\label{sub:Thm-Product-of-Integrals}}
+
+Let $E$ be a spectral measure on $\mathbb{R}^{n}$ and $f,g\in\mathcal{B}\left(\mathbb{R}^{n}\right)$.
+Then holds:
+\begin{align*}
+\left(\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda}\right)\left(\int_{\mathbb{R}^{n}}g\left(\lambda'\right)\dd E_{\lambda'}\right) & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)g\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+By approximation it suffices to consider the case $g=\chi_{M}$ for
+$M\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$.
+\begin{align*}
+A & :=\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda} & E_{M} & =\int_{\mathbb{R}^{n}}\chi_{M}\dd E_{\lambda}
+\end{align*}
+For all $u,v\in H$ holds:
+\begin{align*}
+\left\langle u,A\cdot E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle \stackrel{\eqref{sub:Lem-E_lambdaE_M}}{=}\int_{\mathbb{R}^{n}}f\left(\lambda\right)\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle =\\
+ & =\left\langle u,\int_{\mathbb{R}^{n}}\left(f\cdot\chi_{M}\right)\left(\lambda\right)\dd E_{\lambda}v\right\rangle 
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad A\cdot E_{M} & =\int_{\mathbb{R}^{n}}f\cdot\chi_{M}\dd E_{\lambda}
+\end{align*}
+\qqed
+
+Physicists write:
+\begin{align*}
+E_{\lambda}\cdot E_{\mu} & =\delta_{\lambda-\mu}E_{\lambda}
+\end{align*}
+This follows, because $E_{\lambda}$ is idempotent and for $\lambda\not=\mu$
+holds:
+\begin{align*}
+E_{\lambda}E_{\mu}=E_{\left\{ \lambda\right\} }\cdot E_{\left\{ \mu\right\} } & =E_{\left\{ \lambda\right\} \cap\left\{ \mu\right\} }=E_{\emptyset}=0
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(spectral decomposition of a bounded symmetric operator)\label{sub:Thm-spectral-decomposition}}}
+
+There is a one-to-one correspondence between bounded symmetric operators
+$A\in L\left(H\right)$ and compact spectral measures $E$ on $\mathbb{R}$
+by:
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}
+\end{align*}
+This means for a given $A$ with corresponding spectral measure $E_{M}=\chi_{M}\left(A\right)$
+holds this equation. Conversely, if $E$ is a compact spectral measure,
+then this equation defines a bounded symmetric Operator and $E_{M}=\chi_{M}\left(A\right)$.
+
+Moreover holds:
+\begin{enumerate}[label=\roman*)]
+\item $f\left(A\right)=\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+\item $\sigma\left(A\right)=\text{supp}\left(E\right)$
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+For a given $A$, let $E_{M}=\chi_{M}\left(A\right)$ be the corresponding
+spectral measure. Then holds for all $u,v\in H$ by construction:
+\begin{align*}
+\left\langle u,f\left(A\right)v\right\rangle  & =\int_{\mathbb{R}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+By the definition of $\int f\left(\lambda\right)\dd E_{\lambda}$
+follows:
+\begin{align*}
+f\left(A\right) & =\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+For the polynomial $f\left(\lambda\right)=\lambda$, i.e. $f\left(A\right)=A$,
+this gives:
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}
+\end{align*}
+If $E$ is a compact spectral measure, $\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+defines a normal operator with:
+\begin{align*}
+\left(\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}\right)^{*} & =\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+The compatibility with the spectral calculus follows from theorem
+\ref{sub:Thm-Product-of-Integrals}.
+
+Thus it remains to show $\sigma\left(A\right)\subseteq\text{supp}\left(E\right)$.
+Consider $\mu\not\in\text{supp}\left(E\right)$. We want to show $\mu\in\varrho\left(A\right)$.
+Define the following bounded real function:
+\begin{align*}
+g\left(\lambda\right) & :=\frac{1}{\lambda-\mu}\chi_{\text{supp}\left(E\right)}\\
+f\left(\lambda\right) & :=\lambda-\mu
+\end{align*}
+\begin{align*}
+B & :=\int_{\mathbb{R}}g\dd E_{\lambda}\in L\left(H\right)
+\end{align*}
+is a well-defined integral.
+\begin{align*}
+\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda} & =A-\mu\mathbbm{1}\\
+\left(A-\mu\mathbbm{1}\right)B & =\left(\int_{\mathbb{R}}f\left(\lambda'\right)\dd E_{\lambda'}\right)\left(\int_{\mathbb{R}}g\left(\lambda\right)\dd E_{\lambda}\right)=\int_{\mathbb{R}}f\cdot g\dd E_{\lambda}=\\
+ & =\int_{\mathbb{R}}\chi_{\text{supp}\left(E\right)}\underbrace{\dd E_{\lambda}}_{=0\text{ outside of }\text{supp}\left(E\right)}=\int_{\mathbb{R}}\dd E_{\lambda}=\mathbbm{1}
+\end{align*}
+Thus $B=\left(A-\mu\mathbbm{1}\right)^{-1}$ and therefore $\mu\in\varrho\left(A\right)$.\qqed
+
+
+\subsection{Corollary}
+
+For $f\in\mathcal{B}\left(\mathbb{R}\right)$ holds:
+\begin{align*}
+\norm{f\left(A\right)} & =\underset{\sigma\left(A\right)}{\text{sup\,\ ess}}\abs f
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+„$\le$“ was already proved in theorem \ref{sub:Thm-Spectral-theorem-functional-calculus}
+ii).
+
+To prove equality, we first note that $f\left(A\right)$ is a normal
+operator, because it holds:
+\begin{align*}
+f\left(A\right) & =\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda} & \left(f\left(A\right)\right)^{*} & =\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+\begin{align*}
+f\left(A\right)\cdot\left(f\left(A\right)\right)^{*} & =\left(\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}\right)\left(\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}\right)=\\
+ & =\int_{\mathbb{R}}f\left(\lambda\right)\overline{f\left(\lambda\right)}\dd E_{\lambda}=\int_{\mathbb{R}}\overline{f\left(\lambda\right)}f\left(\lambda\right)\dd E_{\lambda}=\left(f\left(A\right)\right)^{*}f\left(A\right)
+\end{align*}
+For a normal operator $B$ holds:
+\begin{align*}
+\opnorm B & =r\left(B\right)=\sup_{x\in\sigma\left(B\right)}\abs x
+\end{align*}
+Now follows by theorem \ref{sub:Thm-spectral-decomposition} ii):
+\begin{align*}
+\opnorm{f\left(A\right)} & =\sup_{x\in\sigma\left(f\left(A\right)\right)}\abs x=\sup\left(\text{supp}\left(f\left(E\right)\right)\right)=\underset{\lambda\in\text{supp}\left(E\right)}{\text{sup\,\ ess}}\abs{f\left(\lambda\right)}
+\end{align*}
+
+
+\qqed
 
 
 \part*{Appendix\thispagestyle{empty}}

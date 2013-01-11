@@ -1151,7 +1151,7 @@ Copyright Notice
 \end_layout
 
 \begin_layout Standard
-Copyright © 2012 
+Copyright © 2012-2013 
 \noun on
 Andreas Völklein
 \end_layout
@@ -29643,6 +29643,13 @@ status open
 Theorem 
 \series medium
 (Spectral theorem in functional calculus form)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Spectral-theorem-functional-calculus"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30647,6 +30654,835 @@ It remains to show iii) and
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 11.1.13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the later consider 
+\begin_inset Formula $\Omega\subseteq\varrho\left(A\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+E_{\Omega} & =\chi_{\Omega}\left(A\right)=\Phi\left(\chi_{\Omega}\right)\sr ={\text{extension to }\mathcal{B}\left(\mathbb{R}\right)}{}\Phi\left(\chi_{\Omega}\chi_{\sigma\left(A\right)}\right)=\Phi\left(\chi_{\Omega\cap\sigma\left(A\right)}\right)=\Phi\left(0\right)=0
+\end{align*}
+
+\end_inset
+
+Now show iii): From
+\begin_inset Formula 
+\begin{align*}
+M & =\bcupd_{j=1}^{\infty}M_{j}
+\end{align*}
+
+\end_inset
+
+follows with ponit-wise convergence:
+\begin_inset Formula 
+\begin{align*}
+\chi_{M} & =\sum_{j=1}^{\infty}\chi_{M_{j}}
+\end{align*}
+
+\end_inset
+
+Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Spectral-theorem-functional-calculus"
+
+\end_inset
+
+ iii) yields:
+\begin_inset Formula 
+\begin{align*}
+\underset{n\to\infty}{\text{s-lim}}\sum_{j=1}^{n}\underbrace{\chi_{M_{j}}\left(A\right)}_{=E_{M_{j}}} & =\underbrace{\chi_{M}\left(A\right)}_{=E_{M}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Notation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M\mapsto E_{M}$
+\end_inset
+
+ is the spectral measure, which is projection operator valued.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $M\mapsto\left\langle u,E_{M}u\right\rangle =\mu_{u}\left(M\right)=\mu_{u,u}\left(M\right)$
+\end_inset
+
+ is the real, bounded, regular Borel measure.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $M\mapsto\left\langle u,E_{M}v\right\rangle =\mu_{u,v}\left(M\right)$
+\end_inset
+
+ is the complex, bounded, regular Borel measure.
+\begin_inset Newline newline
+\end_inset
+
+Consider the integral:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\dd\mu_{u}\left(\lambda\right) & =\dd\left\langle u,E_{\lambda}u\right\rangle \\
+\dd\mu_{u,v}\left(\lambda\right) & =\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-E_lambdaE_M"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a spectral measure on 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $M\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+.
+ Then holds for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle =\dd\left\langle E_{M}u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For all 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+ we have to show:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\cdot\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+By approximation, it suffices to show for all 
+\begin_inset Formula $\Omega\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\int\chi_{M}\left(x\right)\dd\mu\left(x\right)=\mu\left(M\right)$
+\end_inset
+
+, we get:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{n}}\chi_{\Omega}\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle  & =\left\langle u,E_{\Omega}E_{M}v\right\rangle \stackrel{\text{property iv)}}{=}\left\langle u,E_{\Omega\cap M}v\right\rangle =\\
+ & =\int_{\mathbb{R}^{n}}\chi_{\Omega\cap M}\left\langle u,\dd E_{\lambda}v\right\rangle =\int_{\mathbb{R}^{n}}\chi_{\Omega}\chi_{M}\left\langle u,\dd E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We write:
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle  & =:\left\langle u,\left(\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda}\right)v\right\rangle 
+\end{align*}
+
+\end_inset
+
+We will use this to define integration in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a spectral measure on 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+.
+ Then the relations
+\begin_inset Formula 
+\begin{align*}
+\int f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle  & =\left\langle u,Av\right\rangle \qquad\fall_{u,v\in H}
+\end{align*}
+
+\end_inset
+
+define a unique normal operator 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+, which we also denote by:
+\begin_inset Formula 
+\begin{align*}
+A & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+Moreover:
+\begin_inset Formula 
+\begin{align*}
+A^{*} & =\int\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+We define a bilinear form 
+\begin_inset Formula $B:H\times H\to\mathbb{C}$
+\end_inset
+
+ by:
+\begin_inset Formula 
+\begin{align*}
+B\left(u,v\right) & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+Then we have:
+\begin_inset Formula 
+\begin{align*}
+\abs{B\left(u,u\right)} & \le\int_{\mathbb{R}^{n}}\abs{f\left(\lambda\right)}\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{\text{positive measure}}\le\norm f_{\infty}\cdot\left\langle u,\underbrace{E_{\mathbb{R}^{n}}}_{=\mathbbm{1}}u\right\rangle =\norm f_{\infty}\cdot\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Polarization and estimation yields:
+\begin_inset Formula 
+\begin{align*}
+\abs{B\left(u,v\right)} & \le\norm f_{\infty}\norm u\cdot\norm v
+\end{align*}
+
+\end_inset
+
+Thus by the Fréchet-Riesz theorem, there is a unique 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+B\left(u,v\right) & =\left\langle u,Av\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,Av\right\rangle  & =\int f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle \\
+\left\langle u,A^{*}v\right\rangle =\left\langle v,Au\right\rangle  & =\int\overline{f\left(\lambda\right)}\dd\left\langle u,E_{\lambda}v\right\rangle \\
+\Rightarrow\qquad A^{*} & =\int\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-Product-of-Integrals"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E$
+\end_inset
+
+ be a spectral measure on 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $f,g\in\mathcal{B}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\left(\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda}\right)\left(\int_{\mathbb{R}^{n}}g\left(\lambda'\right)\dd E_{\lambda'}\right) & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)g\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+By approximation it suffices to consider the case 
+\begin_inset Formula $g=\chi_{M}$
+\end_inset
+
+ for 
+\begin_inset Formula $M\in\mathfrak{M}\left(\mathbb{R}^{n}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+A & :=\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd E_{\lambda} & E_{M} & =\int_{\mathbb{R}^{n}}\chi_{M}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+For all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,A\cdot E_{M}v\right\rangle  & =\int_{\mathbb{R}^{n}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}E_{M}v\right\rangle \stackrel{\eqref{sub:Lem-E_lambdaE_M}}{=}\int_{\mathbb{R}^{n}}f\left(\lambda\right)\chi_{M}\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle =\\
+ & =\left\langle u,\int_{\mathbb{R}^{n}}\left(f\cdot\chi_{M}\right)\left(\lambda\right)\dd E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad A\cdot E_{M} & =\int_{\mathbb{R}^{n}}f\cdot\chi_{M}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Physicists write:
+\begin_inset Formula 
+\begin{align*}
+E_{\lambda}\cdot E_{\mu} & =\delta_{\lambda-\mu}E_{\lambda}
+\end{align*}
+
+\end_inset
+
+This follows, because 
+\begin_inset Formula $E_{\lambda}$
+\end_inset
+
+ is idempotent and for 
+\begin_inset Formula $\lambda\not=\mu$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+E_{\lambda}E_{\mu}=E_{\left\{ \lambda\right\} }\cdot E_{\left\{ \mu\right\} } & =E_{\left\{ \lambda\right\} \cap\left\{ \mu\right\} }=E_{\emptyset}=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(spectral decomposition of a bounded symmetric operator)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Thm-spectral-decomposition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a one-to-one correspondence between bounded symmetric operators
+ 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ and compact spectral measures 
+\begin_inset Formula $E$
+\end_inset
+
+ on 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ by:
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+This means for a given 
+\begin_inset Formula $A$
+\end_inset
+
+ with corresponding spectral measure 
+\begin_inset Formula $E_{M}=\chi_{M}\left(A\right)$
+\end_inset
+
+ holds this equation.
+ Conversely, if 
+\begin_inset Formula $E$
+\end_inset
+
+ is a compact spectral measure, then this equation defines a bounded symmetric
+ Operator and 
+\begin_inset Formula $E_{M}=\chi_{M}\left(A\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Moreover holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $f\left(A\right)=\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sigma\left(A\right)=\text{supp}\left(E\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+For a given 
+\begin_inset Formula $A$
+\end_inset
+
+, let 
+\begin_inset Formula $E_{M}=\chi_{M}\left(A\right)$
+\end_inset
+
+ be the corresponding spectral measure.
+ Then holds for all 
+\begin_inset Formula $u,v\in H$
+\end_inset
+
+ by construction:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,f\left(A\right)v\right\rangle  & =\int_{\mathbb{R}}f\left(\lambda\right)\dd\left\langle u,E_{\lambda}v\right\rangle 
+\end{align*}
+
+\end_inset
+
+By the definition of 
+\begin_inset Formula $\int f\left(\lambda\right)\dd E_{\lambda}$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right) & =\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+For the polynomial 
+\begin_inset Formula $f\left(\lambda\right)=\lambda$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $f\left(A\right)=A$
+\end_inset
+
+, this gives:
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $E$
+\end_inset
+
+ is a compact spectral measure, 
+\begin_inset Formula $\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+\end_inset
+
+ defines a normal operator with:
+\begin_inset Formula 
+\begin{align*}
+\left(\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}\right)^{*} & =\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+The compatibility with the spectral calculus follows from theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Product-of-Integrals"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus it remains to show 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\text{supp}\left(E\right)$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\mu\not\in\text{supp}\left(E\right)$
+\end_inset
+
+.
+ We want to show 
+\begin_inset Formula $\mu\in\varrho\left(A\right)$
+\end_inset
+
+.
+ Define the following bounded real function:
+\begin_inset Formula 
+\begin{align*}
+g\left(\lambda\right) & :=\frac{1}{\lambda-\mu}\chi_{\text{supp}\left(E\right)}\\
+f\left(\lambda\right) & :=\lambda-\mu
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+B & :=\int_{\mathbb{R}}g\dd E_{\lambda}\in L\left(H\right)
+\end{align*}
+
+\end_inset
+
+is a well-defined integral.
+\begin_inset Formula 
+\begin{align*}
+\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda} & =A-\mu\mathbbm{1}\\
+\left(A-\mu\mathbbm{1}\right)B & =\left(\int_{\mathbb{R}}f\left(\lambda'\right)\dd E_{\lambda'}\right)\left(\int_{\mathbb{R}}g\left(\lambda\right)\dd E_{\lambda}\right)=\int_{\mathbb{R}}f\cdot g\dd E_{\lambda}=\\
+ & =\int_{\mathbb{R}}\chi_{\text{supp}\left(E\right)}\underbrace{\dd E_{\lambda}}_{=0\text{ outside of }\text{supp}\left(E\right)}=\int_{\mathbb{R}}\dd E_{\lambda}=\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $B=\left(A-\mu\mathbbm{1}\right)^{-1}$
+\end_inset
+
+ and therefore 
+\begin_inset Formula $\mu\in\varrho\left(A\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Corollary
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{R}\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{f\left(A\right)} & =\underset{\sigma\left(A\right)}{\text{sup\,\ ess}}\abs f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\le$
+\end_inset
+
+“ was already proved in theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-Spectral-theorem-functional-calculus"
+
+\end_inset
+
+ ii).
+\end_layout
+
+\begin_layout Standard
+To prove equality, we first note that 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ is a normal operator, because it holds:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right) & =\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda} & \left(f\left(A\right)\right)^{*} & =\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)\cdot\left(f\left(A\right)\right)^{*} & =\left(\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}\right)\left(\int_{\mathbb{R}}\overline{f\left(\lambda\right)}\dd E_{\lambda}\right)=\\
+ & =\int_{\mathbb{R}}f\left(\lambda\right)\overline{f\left(\lambda\right)}\dd E_{\lambda}=\int_{\mathbb{R}}\overline{f\left(\lambda\right)}f\left(\lambda\right)\dd E_{\lambda}=\left(f\left(A\right)\right)^{*}f\left(A\right)
+\end{align*}
+
+\end_inset
+
+For a normal operator 
+\begin_inset Formula $B$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm B & =r\left(B\right)=\sup_{x\in\sigma\left(B\right)}\abs x
+\end{align*}
+
+\end_inset
+
+Now follows by theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Thm-spectral-decomposition"
+
+\end_inset
+
+ ii):
+\begin_inset Formula 
+\begin{align*}
+\opnorm{f\left(A\right)} & =\sup_{x\in\sigma\left(f\left(A\right)\right)}\abs x=\sup\left(\text{supp}\left(f\left(E\right)\right)\right)=\underset{\lambda\in\text{supp}\left(E\right)}{\text{sup\,\ ess}}\abs{f\left(\lambda\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
