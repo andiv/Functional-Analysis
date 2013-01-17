@@ -4080,7 +4080,7 @@ So the first block is nilpotent. If it has $k$ dimensions this means:
 So $k$ is the length of the Jordan chain.
 
 
-\section{Theorem}
+\section{Theorem\label{sec:Thm-compact-operator-approximation}}
 
 Let $A\in L\left(H\right)$ be compact and $H$ be a separable Hilbert
 space.\\
@@ -6770,7 +6770,7 @@ with the following properties:
 \item $E_{M}$ is a projection operator for all $M\in\mathfrak{M}$.
 \item $E_{\emptyset}=0$, $E_{\mathbb{R}^{n}}=\mathbbm{1}$
 \item For $M=\bcupd_{n=1}^{\infty}M_{n}$ the operator $E_{M}$ is the strong
-limes of the partial sums ${\displaystyle \sum_{n=1}^{k}E_{M_{n}}}$:
+limit of the partial sums ${\displaystyle \sum_{n=1}^{k}E_{M_{n}}}$:
 \begin{align*}
 E_{M} & =\underset{k\to\infty}{\text{s-lim}}\sum_{n=1}^{k}E_{M_{n}}
 \end{align*}
@@ -7075,6 +7075,482 @@ Now follows by theorem \ref{sub:Thm-spectral-decomposition} ii):
 
 
 \qqed
+
+%DATE: Do 17.01.13
+
+
+\section{Simple Examples}
+
+
+\subsection{Example: finite dimensions}
+
+Consider $H=\mathbb{C}^{n}$ and a symmetric operator $A\in L\left(\mathbb{C}^{n}\right)$.
+Choose an orthonormal eigenvector basis such that $A$ has the matrix
+representation:
+\begin{align*}
+A & =\left(\begin{array}{ccc}
+\lambda_{1} &  & 0\\
+ & \ddots\\
+0 &  & \lambda_{n}
+\end{array}\right)
+\end{align*}
+The eigenvalues $\lambda_{i}\in\mathbb{R}$ are real, but there can
+be degeneracies, i.e. $\lambda_{i}=\lambda_{j}$ for some $i\not=j$.
+\begin{align*}
+A^{2} & =\left(\begin{array}{ccc}
+\lambda_{1}^{2} &  & 0\\
+ & \ddots\\
+0 &  & \lambda_{n}^{2}
+\end{array}\right)
+\end{align*}
+Similarly we can compute polynomials of $A$.\\
+The Stone-Weierstraß approximation yields for $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$:
+\begin{align*}
+f\left(A\right) & =\left(\begin{array}{ccc}
+f\left(\lambda_{1}\right) &  & 0\\
+ & \ddots\\
+0 &  & f\left(\lambda_{n}\right)
+\end{array}\right)
+\end{align*}
+Since the spectrum
+\begin{align*}
+\sigma\left(A\right) & =\left\{ \lambda_{1},\ldots,\lambda_{n}\right\} 
+\end{align*}
+is a finite set, we have $C^{0}\left(\sigma\left(A\right)\right)=\mathcal{B}\left(\sigma\left(A\right)\right)$.
+The spectral measure for $\Omega\subseteq\mathbb{C}$ is:
+\begin{align*}
+E_{\Omega} & :=\chi_{\Omega}\left(A\right)=\left(\begin{array}{ccc}
+\chi_{\Omega}\left(\lambda_{1}\right) &  & 0\\
+ & \ddots\\
+0 &  & \chi_{\Omega}\left(\lambda_{n}\right)
+\end{array}\right)
+\end{align*}
+Thus $E_{\Omega}$ is the projection operator on the eigenspaces,
+for which the eigenvalues $\lambda$ lie in $\Omega$.
+\begin{align*}
+\int f\left(\lambda\right)\dd E_{\lambda} & =\sum_{j=1}^{n}f\left(\lambda_{j}\right)E_{\left\{ \lambda_{j}\right\} }
+\end{align*}
+More specifically, let $u_{j}$ be an orthonormal eigenvector basis,
+$Au_{j}=\lambda_{j}u_{j}$ and $\left\langle u_{i},u_{j}\right\rangle =\delta_{ij}$.
+Then for any $v\in\mathbb{C}^{n}$ let $u^{\left(k\right)}$ be all
+eigenvectors with the eigenvalue $\lambda$, so
+\begin{align*}
+E_{\left\{ \lambda\right\} }v & =\sum_{k}u^{\left(k\right)}\left\langle u^{\left(k\right)},v\right\rangle 
+\end{align*}
+is the projection on the eigenspace $\left\langle u^{\left(k\right)}\right\rangle $.
+
+
+\subsection{Example: compact operator}
+
+Let $H$ be an infinite-dimensional Hilbert space and $A\in L\left(H\right)$
+be symmetric and compact. According to the Hilbert-Schmidt theorem,
+there is an orthonormal eigenvector basis $\left(u_{n}\right)$, i.e.:
+\begin{align*}
+Au_{n} & =\lambda_{n}u_{n}
+\end{align*}
+Then $\lambda_{n}\to0$, because $A$ is compact. The $\lambda_{n}$
+have finite-dimensional eigenspaces.
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-2,0) -- (2,0) node[right] {$\lambda$};
+  \draw (0,0.05) -- (0,-0.05) node [below] {$0$};
+  \foreach \t in {-1.5,-1,-0.7,-0.5,-0.4,0.3,0.5,0.6,0.8,1.2,1.7}     \draw[blue] (\t,0)  +(0.05,0.05) -- +(-0.05,-0.05) +(-0.05,0.05) -- +(0.05,-0.05);
+  \foreach \t in {-0.21,-0.14,-0.07,0.21,0.14,0.07}     \draw[blue,fill=blue] (\t,0) circle (0.02);
+  \node[blue] at (1,0.3) {$\sigma(A)$};
+\end{tikzpicture}\caption{$\sigma\left(A\right)$ has only zero as limit point}
+\end{figure}
+
+
+\begin{align*}
+A^{2}u_{n} & =\lambda_{n}^{2}u_{n}\\
+p\left(A\right)u_{n} & =p\left(\lambda_{n}\right)u_{n}
+\end{align*}
+This holds for any polynomial $p$. The Stone-Weierstraß approximation
+yields for $f\in C^{0}\left(\sigma\left(A\right)\right)$:
+\begin{align*}
+f\left(A\right)u_{n} & =f\left(\lambda_{n}\right)
+\end{align*}
+The Riesz representation theorem gives
+\begin{align*}
+f\left(A\right)u_{n} & =f\left(\lambda_{n}\right)
+\end{align*}
+for all $f\in\mathcal{B}\left(\sigma\left(A\right)\right)$ or even
+$f\in\mathcal{B}\left(\mathbb{R}\right)$. Then follows:
+\begin{align*}
+E_{\Omega}u_{n} & :=\chi_{\Omega}\left(A\right)u_{n}=\chi_{\Omega}\left(\lambda_{n}\right)u_{n}
+\end{align*}
+Thus $E_{\Omega}$ is the projection operator to all eigenspaces whose
+eigenvalues $\lambda$ lie in $\Omega$. But $E_{\left(-\varepsilon,\varepsilon\right)}$
+has infinite rank for all $\varepsilon>0$.
+\begin{align*}
+A & =\sum_{\lambda\in\sigma\left(A\right)}\lambda E_{\left\{ \lambda\right\} }
+\end{align*}
+\begin{align*}
+A_{N} & :=\sum_{\sr{}{\lambda\in\sigma\left(A\right)}{\abs{\lambda}>\frac{1}{N}}}\lambda E_{\left\{ \lambda\right\} }
+\end{align*}
+is a finite-dimensional approximation of $A$ (cf. \ref{sec:Thm-compact-operator-approximation})
+in the sense:
+\begin{align*}
+\norm{A-A_{N}} & \xrightarrow{N\to\infty}0
+\end{align*}
+More precisely we have:
+\begin{align*}
+\norm{A-A_{N}} & \le\frac{1}{N}
+\end{align*}
+Now consider:
+\begin{align*}
+\mathbbm{1} & =\sum_{\lambda\in\sigma\left(A\right)}E_{\left\{ \lambda\right\} }\\
+E_{N} & :=\sum_{\sr{}{\lambda\in\sigma\left(A\right)}{\abs{\lambda}>\frac{1}{N}}}E_{\left\{ \lambda\right\} }
+\end{align*}
+This converges strongly, but it does not converge in the operator
+norm: 
+\begin{align*}
+\norm{E-E_{N}} & =\norm{E_{\left[-\frac{1}{N},\frac{1}{N}\right]}}=1
+\end{align*}
+
+
+
+\subsection{Example: continuous spectrum}
+
+Consider the Hilbert space $H=L^{2}\left(\mathbb{R}\right)$ and the
+function:
+\begin{align*}
+g\left(t\right) & :=\begin{cases}
+t & \text{for }0<t<1\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}
+ \begin{axis}[width=10cm, axis equal image,
+			axis x line=middle, axis y line=middle,
+			ymin=0, ymax=1.25,
+			xmin =-1.15 , xmax=1.65,
+			xlabel=$t$, ylabel=$g(t)$]
+  \addplot[domain=0:1] {x};
+  \draw[dashed] (axis cs:1,1) -- (axis cs:1,0);
+ \end{axis}
+\end{tikzpicture}\caption{Plot of $g\left(t\right)$}
+\end{figure}
+
+
+$A\in L\left(H\right)$ defined by
+\begin{align*}
+\left(Au\right)\left(t\right) & :=g\left(t\right)\cdot u\left(t\right)=\left(T_{g}\cdot u\right)\left(t\right)
+\end{align*}
+for $u\in H$ is a multiplication operator. From $\abs{g\left(t\right)}\le1$
+follows $\norm A\le1$. As before we get:
+\begin{align*}
+A^{2} & =T_{g^{2}}\\
+p\left(A\right) & =T_{p\left(g\right)}\qquad\fall_{\text{polynomial }p}\\
+f\left(A\right) & =T_{f\left(g\right)}\qquad\fall_{f\,\in\,\mathcal{B}\left(\mathbb{R}\right)}
+\end{align*}
+Therefore we get:
+\begin{align*}
+E_{\Omega} & =T_{\chi_{\Omega}\left(g\right)}
+\end{align*}
+\begin{align*}
+\left(\chi_{\Omega}\left(g\right)\right)\left(t\right) & =\begin{cases}
+1 & \text{if }g\left(t\right)\in\Omega\\
+0 & \text{otherwise}
+\end{cases}\\
+ & =\chi_{g^{-1}\left(\Omega\right)}
+\end{align*}
+In general for multiplication operators holds:
+\begin{align*}
+T_{\chi_{\Omega}\left(g\right)} & =T_{\chi_{g^{-1}\left(\Omega\right)}}
+\end{align*}
+For $\Omega=\left(a,b\right)\subseteq\left(0,1\right)$ we get $g^{-1}\left(\Omega\right)=\Omega$
+and thus $E_{\Omega}u=\chi_{\Omega}\cdot u$. If on the other hand
+$\Omega=\left\{ 0\right\} $, then holds:
+\begin{align*}
+g^{-1}\left(\Omega\right) & =\mathbb{R}\setminus\left(0,1\right)=(-\infty,0]\cup[1,\infty)
+\end{align*}
+Thus we get:
+\begin{align*}
+E_{\left\{ 0\right\} }u & =\chi_{\mathbb{R}\setminus\left(0,1\right)}u
+\end{align*}
+The spectrum of $A$ is $\sigma\left(A\right)=\left[0,1\right]$.
+(Remember that the spectrum is always closed!)
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-1,0) -- (2,0) node[right] {$\lambda$};
+  \draw (0.05,0.1) -- (0,0.1) -- (0,-0.1) node[below] {$0$} -- (0.05,-0.1);
+  \draw (0.95,0.1) -- (1,0.1) -- (1,-0.1) node[below] {$1$} -- (0.95,-0.1);
+    \draw[blue, very thick] (0,0) -- (1,0);
+  \node[blue] at (0.5,0.25) {$\sigma(A)$};
+  \draw[blue,fill=blue] (0,0) circle (0.03);
+  \draw[blue,fill=blue] (1,0) circle (0.03);
+\end{tikzpicture}\caption{Continuous spectrum $\sigma\left(A\right)$ of $A$}
+\end{figure}
+
+
+Zero is an eigenvalue corresponding to an infinite-dimensional eigenspace,
+$Au=0$ for $u\big|_{\left[0,1\right]}=0$. Any $\lambda\in(0,1]$
+is \emph{not} an eigenvalue:
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}
+ \begin{axis}[width=10cm, axis equal image,
+			axis x line=middle, axis y line=middle,
+			ymin=-0.4, ymax=1.25,
+			xmin =-1.15 , xmax=1.65,
+			xlabel=$t$, ylabel=$h(t)$]
+  \addplot[domain=0:1] {x-0.3};
+  \addplot[domain=-1.15:0] {-0.3};
+  \addplot[domain=1:1.65] {-0.3};
+  \draw[dashed] (axis cs:1,0.7) -- (axis cs:1,-0.3);
+  \draw (axis cs:0.3,0.1) -- (axis cs:0.3,-0.1) node[below]{$\lambda$};
+ \end{axis}
+\end{tikzpicture}\caption{Plot of $g\left(t\right)-\lambda$}
+\end{figure}
+
+
+\begin{align*}
+\left(A-\lambda\right)u & =T_{g-\lambda}u
+\end{align*}
+\begin{align*}
+h & :=g-\lambda
+\end{align*}
+\begin{align*}
+h\left(x\right)\cdot u\left(x\right) & =0\\
+\Leftrightarrow\qquad u & =0\quad\fall_{x\in\mathbb{R},\ h\left(x\right)\not=0}\\
+\Leftrightarrow\qquad u & =0\quad\text{almost everywhere}\\
+\Leftrightarrow\qquad u & =0\in L^{2}\left(\mathbb{R}\right)
+\end{align*}
+Thus the eigenvalue equation only has the trivial solution.
+
+
+\subsection{Example}
+
+Consider $H=L^{2}\left(\mathbb{R}\right)$ and the multiplication
+operator $A=T_{g}$ for $g\in C_{0}^{0}\left(\mathbb{R}\right)$.
+Then follows $E_{\Omega}=T_{g^{-1}\left(\Omega\right)}$ as before
+and $\sigma\left(A\right)=g\left(\mathbb{R}\right)$.
+
+That $\lambda\in\sigma\left(A\right)$ is an eigenvalue is equivalent
+to $g^{-1}\left(\left\{ \lambda\right\} \right)$ is a set of strictly
+positive Borel measure.
+
+
+\section{Essential and discrete spectrum}
+
+Let $A\in L\left(H\right)$ be symmetric. (The definitions are similar
+for normal operators or for unbounded self-adjoint operators). Let
+$E$ be the corresponding spectral measure.
+
+
+\subsection{Definition \textmd{(essential and discrete spectrum)}}
+
+The essential spectrum $\sigma_{\text{ess}}\left(A\right)$ contains
+all $\lambda\in\mathbb{C}$ for which $\text{rg}\left(E_{B_{\varepsilon}\left(\lambda\right)}\right)=\infty$
+for all $\varepsilon\in\mathbb{R}_{>0}$.
+
+The discrete spectrum $\sigma_{\text{disc}}\left(A\right)$ contains
+all $\lambda\in\sigma\left(A\right)$ for which exists a $\varepsilon\in\mathbb{R}_{>0}$
+such that the rank of $E_{B_{\varepsilon}\left(\lambda\right)}$ is
+finite.
+
+\emph{Note:} $\lambda\in\sigma_{\text{ess}}\left(A\right)$ implies
+$\lambda\in\text{supp}\left(E\right)=\sigma\left(A\right)$. Thus
+$\sigma\left(A\right)=\sigma_{\text{ess}}\left(A\right)\dot{\cup}\,\sigma_{\text{disc}}\left(A\right)$.
+
+
+\subsection{Example}
+
+Let $A$ be a compact symmetric operator of infinite rank.
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-2,0) -- (2,0) node[right] {$\lambda$};
+  \draw (0,0.05) -- (0,-0.05) node [below] {$0$};
+  \foreach \t in {-1.5,-1,-0.7,-0.5,-0.4,0.3,0.5,0.6,0.8,1.2,1.7}     \draw[blue] (\t,0)  +(0.05,0.05) -- +(-0.05,-0.05) +(-0.05,0.05) -- +(0.05,-0.05);
+  \foreach \t in {-0.21,-0.14,-0.07,0.21,0.14,0.07}     \draw[blue,fill=blue] (\t,0) circle (0.02);
+  \node[blue] at (1,0.3) {$\sigma(A)$};
+\end{tikzpicture}\caption{$\sigma\left(A\right)$ has only zero as limit point}
+\end{figure}
+
+
+Here we have:
+\begin{align*}
+\sigma_{\text{disc}} & =\sigma\left(A\right)\setminus\left\{ 0\right\}  & \sigma_{\text{ess}} & =\left\{ 0\right\} 
+\end{align*}
+
+
+
+\subsection{Theorem \textmd{(condition for discrete spectrum)}\label{sub:Thm-condition-discrete-spectrum}}
+
+$\lambda\in\sigma_{\text{disc}}\left(A\right)$ holds if and only
+if both of the following conditions are satisfied:
+\begin{enumerate}[label=\roman*)]
+\item $\lambda$ is an isolated point of $\sigma\left(A\right)$, i.e.
+there exists a $\varepsilon\in\mathbb{R}_{>0}$ such that $B_{\varepsilon}\left(\lambda\right)\cap\sigma\left(A\right)=\left\{ \lambda\right\} $.
+\item $ $$\lambda$ is an eigenvalue of finite multiplicity, i.e. $\ker\left(A-\lambda\right)$
+is finite-dimensional.
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+„$\Leftarrow$“: If i) and ii) hold, then for an appropriately chosen
+$\varepsilon\in\mathbb{R}_{>0}$
+\begin{align*}
+E_{B_{\varepsilon}\left(\lambda\right)} & =E_{\left\{ \lambda\right\} }
+\end{align*}
+is the projection operator on the finite-dimensional eigenspace.
+
+„$\Rightarrow$“: Consider $\lambda\in\sigma_{\text{disc}}\left(A\right)$.
+\begin{enumerate}[label=\roman*)]
+\item Choose $\varepsilon\in\mathbb{R}_{>0}$ such that $E_{B_{\varepsilon}\left(\lambda\right)}$
+has finite rank.
+\begin{align*}
+J & :=E_{B_{\varepsilon}\left(\lambda\right)}\left(H\right)
+\end{align*}
+is a finite-dimensional subspace of $H$. For $u\in J$ holds:
+\begin{align*}
+Au & =AE_{B_{\varepsilon}\left(\lambda\right)}u=E_{B_{\varepsilon}\left(\lambda\right)}Au
+\end{align*}
+Therefore follows $Au\in J$ and thus $A\big|_{J}:J\to J$ is a symmetric
+operator on a finite-dimensional Hilbert space. Diagonalize as in
+linear algebra:
+\begin{align*}
+\sigma\left(A\big|_{J}\right) & =\left\{ \lambda_{1},\ldots,\lambda_{n}\right\} =\sigma\left(A\right)\cap B_{\varepsilon}\left(\lambda\right)
+\end{align*}
+The $\lambda_{i}$ lie discrete and thus are isolated.
+\item follows, because the eigenspace of $A$ is the same as that of $A\big|_{J}$,
+which is finite-dimensional.
+\end{enumerate}
+\qqed
+
+
+\subsection{Theorem \textmd{(Weyl criterion)}}
+\begin{enumerate}[label=\roman*)]
+\item $\lambda\in\sigma\left(A\right)$ holds if and only if there exists
+a sequence $\left(u_{n}\right)_{n\in\mathbb{N}}$ in $H$ such that
+for all $n\in\mathbb{N}$ holds $\norm{u_{n}}=1$ and:
+\begin{align*}
+\left(A-\lambda\right)u_{n} & \xrightarrow{n\to\infty}0
+\end{align*}
+One also says, that $\lambda$ is an \emph{approximate eigenvalue},
+because this can also be expressed as follows: For any $\varepsilon\in\mathbb{R}_{>0}$
+there exists a $u\in H$ with $\norm u=1$ and $\norm{\left(A-\lambda\right)u}\le\varepsilon$.
+\item $\lambda\in\sigma_{\text{ess}}\left(A\right)$ holds if and only if
+the $\left(u_{n}\right)$ from above can be chosen as an orthonormal
+basis.
+\end{enumerate}
+
+\subsubsection*{Proof}
+\begin{enumerate}[label=\roman*)]
+\item For $\lambda\in\varrho\left(A\right)$ the operator $A-\lambda$
+is continuously invertible, i.e. $\left(A-\lambda\right)^{-1}\in L\left(H\right)$.
+So for all $u\in H$ holds:
+\begin{align*}
+\norm{\left(A-\lambda\right)^{-1}u} & \le C\norm u
+\end{align*}
+Since $A-\lambda$ is bijective, this is equivalent to:
+\begin{align*}
+\norm v & \le C\norm{\left(A-\lambda\right)v}\qquad\fall_{v\in H}
+\end{align*}
+This gives:
+\begin{align*}
+\norm{\left(A-\lambda\right)v} & \ge\frac{1}{C}\norm v\\
+\norm{\left(A-\lambda\right)u_{n}} & \ge\frac{1}{C}\norm{u_{n}}=\frac{1}{C}
+\end{align*}
+Thus $\left(A-\lambda\right)u_{n}$ cannot converge to zero and thus
+$\lambda$ is no approximate eigenvalue.\\
+For $\lambda\in\sigma\left(A\right)$ the operator $\left(A-\lambda\right)$
+has no bounded inverse. Then either $\left(A-\lambda\right)$ has
+a non-trivial kernel, i.e. there exists a $u\in H$ with $\norm u=1$
+and:
+\begin{align*}
+\left(A-\lambda\right)u & =0
+\end{align*}
+In this case one can choose $u_{n}:=u$.\\
+If on the other hand $\left(A-\lambda\right)$ is injective, but has
+no bounded inverse, then exists a sequence $\left(u_{n}\right)$ with
+$\norm{\left(A-\lambda\right)u_{n}}\le\frac{1}{n}\norm{u_{n}}$. This
+means that $\lambda$ is an approximate eigenvalue.
+\item This follows directly from theorem \ref{sub:Thm-condition-discrete-spectrum}.
+\end{enumerate}
+\qqed
+
+
+\section{The Stone Formula}
+
+Let $A\in L\left(H\right)$ be symmetric, so we have $\sigma\left(A\right)\subseteq\mathbb{R}$.
+Thus for any $\lambda\in\mathbb{C}\setminus\mathbb{R}$ the resolvent
+\begin{align*}
+R_{\lambda} & :=\left(A-\lambda\right)^{-1}\in L\left(H\right)
+\end{align*}
+exists.
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-2,0) -- (2,0) node[right]{$\mathbb{R}$};
+%  \foreach \t in {-0.3,0.3} {
+%    \draw (0,\t) +(0.05,0.05) -- +(-0.05,-0.05) +(-0.05,0.05) -- +(0.05,-0.05);}
+  \draw (1,0.5) node[right]{$\lambda$}  +(0.05,0.05) -- +(-0.05,-0.05) +(-0.05,0.05) -- +(0.05,-0.05);
+%    \draw[<->] (0,0) -- node[right]{$\varepsilon$} (0,0.3);
+\end{tikzpicture}\caption{$\lambda\not\in\mathbb{R}$}
+\end{figure}
+
+
+\begin{align*}
+A & =\int_{\mathbb{R}}\mu\cdot\dd E_{\mu} & R_{\lambda} & =\int_{\mathbb{R}}\frac{1}{\mu-\lambda}\dd E_{\mu}
+\end{align*}
+$\frac{1}{\mu-\lambda}\in\mathcal{B}\left(\mathbb{R}\right)$ holds,
+because the pole is away from the real axis.
+\begin{align*}
+\left(A-\lambda\right)R_{\lambda} & =\left(\int_{\mathbb{R}}\left(\mu-\lambda\right)\dd E_{\mu}\right)\left(\int_{\mathbb{R}}\frac{1}{\mu-\lambda}\dd E_{\mu}\right)=\int_{\mathbb{R}}\frac{\mu-\lambda}{\mu-\lambda}\dd E_{\mu}=\int_{\mathbb{R}}\dd E_{\mu}=E_{\mathbb{R}}=\mathbbm{1}
+\end{align*}
+
+
+
+\subsection{Theorem}
+
+For $\lambda\in\mathbb{R}$ and $\varepsilon\in\mathbb{R}_{>0}$ holds:
+\begin{align*}
+\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda & =\frac{1}{2}\left(E_{\left(a,b\right)}+E_{\left[a,b\right]}\right)
+\end{align*}
+This is a convenient method for computing the spectral measure or
+the projection operator on eigenspaces.
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
+  \draw[->] (-2,0) -- (2,0);
+  \foreach \x/\y in {-0.3/-0.3, 0.3/-0.3, -0.3/0.3, 0.3/0.3} {
+    \draw (\x,\y) +(0.05,0.05) -- +(-0.05,-0.05) +(-0.05,0.05) -- +(0.05,-0.05);}
+  \draw (-0.3,-0.3) -- (0.3,-0.3) (-0.3,0.3) -- (0.3,0.3);
+  \draw[<->] (0.3,0) -- node[right]{$\varepsilon$} (0.3,0.3);
+  \draw (0,0.1) -- node[below]{$\lambda\in\sigma_{\text{disc}}$} (0,-0.1);
+  \node at (0.3,0.3) [above right] {$\lambda+\delta+\ii \cdot \varepsilon$};
+\end{tikzpicture}\caption{Calculating the spectral measure for a $\lambda\in\sigma_{\text{disc}}$}
+\end{figure}
+
+
+\begin{align*}
+\underset{\delta\searrow0}{\text{s-lim}}\:\underset{\varepsilon\searrow0}{\text{s-lim}}\,\frac{1}{2\pi\ii}\int_{\lambda-\delta}^{\lambda+\delta}\left(R_{\mu+\ii\varepsilon}-R_{\mu-\ii\varepsilon}\right)\dd\mu & =E_{\left\{ \lambda\right\} }
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Let $a<b\in\mathbb{R}$ be given.
+\begin{align*}
+\phi_{\varepsilon}\left(\mu\right) & :=\frac{1}{2\pi\ii}\int_{a}^{b}\left(\frac{1}{\mu-\lambda+\ii\varepsilon}-\frac{1}{\mu-\lambda-\ii\varepsilon}\right)\dd\lambda
+\end{align*}
+Then holds $\phi_{\varepsilon}:\mathbb{R}\to\mathbb{C}$ and:
+\begin{align*}
+\phi_{\varepsilon}\left(A\right) & =\int_{\mathbb{R}}\phi_{\varepsilon}\left(\mu\right)\dd E_{\mu}=\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda
+\end{align*}
+\begin{align*}
+\phi_{\varepsilon}\left(\mu\right) & =\frac{-1}{2\pi\ii}\left(\ln\left(\lambda-\mu+\ii\varepsilon\right)-\ln\left(\lambda-\mu-\ii\varepsilon\right)\right)\bigg|_{a}^{b}
+\end{align*}
+The logarithm is cut at the negative real axis.
 
 
 \part*{Appendix\thispagestyle{empty}}
