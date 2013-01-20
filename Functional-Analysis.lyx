@@ -16937,10 +16937,10 @@ Take
 \begin_inset Formula $\mathbbm{1}+\left(A-\lambda\right)^{-1}\left(\lambda-\mu\right)$
 \end_inset
 
- is continously invertible using the Neumann series if:
+ is continuously invertible using the Neumann series if:
 \begin_inset Formula 
 \begin{align*}
-\abs{\lambda-\mu} & <\frac{1}{\norm{\left(A-\lambda\right)^{-1}}}
+\abs{\lambda-\mu} & <\frac{1}{\opnorm{\left(A-\lambda\right)^{-1}}}
 \end{align*}
 
 \end_inset
@@ -31397,7 +31397,7 @@ For
  holds:
 \begin_inset Formula 
 \begin{align*}
-\norm{f\left(A\right)} & =\underset{\sigma\left(A\right)}{\text{sup\,\ ess}}\abs f
+\opnorm{f\left(A\right)} & =\underset{\sigma\left(A\right)}{\text{sup\,\ ess}}\abs f
 \end{align*}
 
 \end_inset
@@ -32139,7 +32139,7 @@ E_{\Omega} & =T_{\chi_{\Omega}\left(g\right)}
 In general for multiplication operators holds:
 \begin_inset Formula 
 \begin{align*}
-T_{\chi_{\Omega}\left(g\right)} & =T_{\chi_{g^{-1}\left(\Omega\right)}}
+E_{\Omega}=T_{\chi_{\Omega}\left(g\right)} & =T_{\chi_{g^{-1}\left(\Omega\right)}}
 \end{align*}
 
 \end_inset
@@ -33369,7 +33369,7 @@ For
  holds:
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda & =\frac{1}{2}\left(E_{\left(a,b\right)}+E_{\left[a,b\right]}\right)
+\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda & =\frac{1}{2}\left(E_{\left(a,b\right)}+E_{\left[a,b\right]}\right)=\int_{a}^{b}\frac{1}{\mu-\lambda}\dd E_{\mu}
 \end{align*}
 
 \end_inset
@@ -33528,7 +33528,7 @@ Let
  be given.
 \begin_inset Formula 
 \begin{align*}
-\phi_{\varepsilon}\left(\mu\right) & :=\frac{1}{2\pi\ii}\int_{a}^{b}\left(\frac{1}{\mu-\lambda+\ii\varepsilon}-\frac{1}{\mu-\lambda-\ii\varepsilon}\right)\dd\lambda
+\phi_{\varepsilon}\left(\mu\right) & :=\frac{1}{2\pi\ii}\int_{a}^{b}\left(\frac{1}{\mu-\lambda-\ii\varepsilon}-\frac{1}{\mu-\lambda+\ii\varepsilon}\right)\dd\lambda
 \end{align*}
 
 \end_inset
@@ -33540,7 +33540,282 @@ Then holds
  and:
 \begin_inset Formula 
 \begin{align*}
-\phi_{\varepsilon}\left(A\right) & =\int_{\mathbb{R}}\phi_{\varepsilon}\left(\mu\right)\dd E_{\mu}=\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda
+\phi_{\varepsilon}\left(A\right) & =\int_{\mathbb{R}}\phi_{\varepsilon}\left(\mu\right)\dd E_{\mu}=\frac{1}{2\pi\ii}\int_{a}^{b}\int_{\mathbb{R}}\bigg(\underbrace{\frac{\dd E_{\mu}}{\mu-\lambda-\ii\varepsilon}}_{=R_{\lambda+\ii\varepsilon}}-\underbrace{\frac{\dd E_{\mu}}{\mu-\lambda+\ii\varepsilon}}_{=R_{\lambda-\ii\varepsilon}}\bigg)\dd\lambda=\\
+ & =\frac{1}{2\pi\ii}\int_{a}^{b}\left(R_{\lambda+\ii\varepsilon}-R_{\lambda-\ii\varepsilon}\right)\dd\lambda
+\end{align*}
+
+\end_inset
+
+Now analyze the limit 
+\begin_inset Formula $\varepsilon\to0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\phi_{\varepsilon}\left(\mu\right) & =\frac{-1}{2\pi\ii}\left(\ln\left(\lambda-\mu+\ii\varepsilon\right)-\ln\left(\lambda-\mu-\ii\varepsilon\right)\right)\bigg|_{\lambda=a}^{\lambda=b}
+\end{align*}
+
+\end_inset
+
+The logarithm is cut at the negative real axis.
+\begin_inset Formula 
+\begin{align*}
+\ln\left(z\right) & =\ln\left(\abs z\right)+\ii\arg\left(z\right) & z & =\abs ze^{\ii\arg\left(z\right)}
+\end{align*}
+
+\end_inset
+
+The argument of 
+\begin_inset Formula $z$
+\end_inset
+
+ lies in the range 
+\begin_inset Formula $\left(-\pi,\pi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (-2,0) -- (2,0) node[right]{Re$(z)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (0,-2) -- (0,2) node[above]{Im$(z)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[fill=black] (-1,0.5) circle (2pt) node[above] {$
+\backslash
+lambda - 
+\backslash
+mu + 
+\backslash
+ii 
+\backslash
+varepsilon$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[fill=black] (-1,-0.5) circle (2pt) node[below] {$
+\backslash
+lambda - 
+\backslash
+mu - 
+\backslash
+ii 
+\backslash
+varepsilon$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw (0,0) -- (-1,0.5) (0.5,0) arc (0:154:0.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node (arg) at (0.3,0.3) [above right]{arg$(
+\backslash
+lambda - 
+\backslash
+mu + 
+\backslash
+ii 
+\backslash
+varepsilon)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw ($(arg.190) + (0.1,0.1)$) -- (0.15,0.15);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\pi<\arg\left(z\right)<\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus we get:
+\begin_inset Formula 
+\begin{align*}
+\lim_{\varepsilon\searrow0}\left(\ln\left(\lambda-\mu+\ii\varepsilon\right)-\ln\left(\lambda-\mu-\ii\varepsilon\right)\right) & =\begin{cases}
+\;\;0 & \text{if }\lambda-\mu>0\\
+\:\pi\ii & \text{if }\lambda-\mu=0\\
+2\pi\ii & \text{if }\lambda-\mu<0
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Then follows:
+\begin_inset Formula 
+\begin{align*}
+\phi\left(\mu\right) & :=\lim_{\varepsilon\searrow0}\phi_{\varepsilon}\left(\mu\right)=\frac{-1}{2\pi\ii}\begin{cases}
+\quad0 & \text{if }\mu\not\in\left[a,b\right]\\
+\ -\pi\ii & \text{if }\mu\in\left\{ a,b\right\} \\
+-2\pi\ii & \text{if }\mu\in\left(a,b\right)
+\end{cases}=\begin{cases}
+0 & \text{if }\mu\not\in\left[a,b\right]\\
+\frac{1}{2} & \text{if }\mu\in\left\{ a,b\right\} \\
+1 & \text{if }\mu\in\left(a,b\right)
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\phi_{\varepsilon}\left(\mu\right)\to\phi\left(\mu\right)$
+\end_inset
+
+ converges point-wise.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Idea:
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+\phi_{\varepsilon}\left(A\right) & \to\phi\left(A\right)=\frac{1}{2}\left(E_{\left[a,b\right]}+E_{\left(a,b\right)}\right)
+\end{align*}
+
+\end_inset
+
+But how does this converge?
+\begin_inset Newline newline
+\end_inset
+
+Consider weak convergence:
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\phi_{\varepsilon}\left(A\right)u\right\rangle  & =\int_{\mathbb{R}}\phi_{\varepsilon}\left(\mu\right)\underbrace{\dd\left\langle u,E_{\mu}u\right\rangle }_{=\dd\mu_{u}=\dd\mu_{u,u}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd\mu_{u}$
+\end_inset
+
+ is a bounded regular real Borel measure.
+ From 
+\begin_inset Formula $\abs{\phi\left(\mu\right)}\le1$
+\end_inset
+
+ follows for small enough 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+ now 
+\begin_inset Formula $\abs{\phi_{\varepsilon}\left(\mu\right)}\le2$
+\end_inset
+
+.
+ Because our Borel measure is bounded, 2 is an integrable function, i.e.
+ 
+\begin_inset Formula $2\in L^{1}\left(\mathbb{R},\dd\mu_{u}\right)$
+\end_inset
+
+.
+ Therefore we can use the bounded convergence theorem to get:
+\begin_inset Formula 
+\begin{align*}
+\lim_{\varepsilon\searrow0}\int_{\mathbb{R}}\phi_{\varepsilon}\left(\mu\right)\dd\left\langle u,E_{\mu}u\right\rangle  & =\int_{\mathbb{R}}\phi\left(\mu\right)\dd\left\langle u,E_{\mu}u\right\rangle =\left\langle u,\phi_{u}\left(A\right)u\right\rangle 
+\end{align*}
+
+\end_inset
+
+What about strong convergence?
+\begin_inset Newline newline
+\end_inset
+
+We want to show for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ the convergence 
+\begin_inset Formula $\phi_{\varepsilon}\left(A\right)u\to\phi\left(A\right)u$
+\end_inset
+
+ in 
+\begin_inset Formula $H$
+\end_inset
+
+, or equivalently:
+\begin_inset Formula 
+\begin{align*}
+\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u & \to0\\
+\Leftrightarrow\qquad\norm{\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u} & \to0
 \end{align*}
 
 \end_inset
@@ -33548,12 +33823,780 @@ Then holds
 
 \begin_inset Formula 
 \begin{align*}
-\phi_{\varepsilon}\left(\mu\right) & =\frac{-1}{2\pi\ii}\left(\ln\left(\lambda-\mu+\ii\varepsilon\right)-\ln\left(\lambda-\mu-\ii\varepsilon\right)\right)\bigg|_{a}^{b}
+\norm{\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u}^{2} & =\left\langle \left(\phi_{\varepsilon}-\phi\right)\left(A\right)u,\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u\right\rangle =\left\langle u,\left(\left(\phi_{\varepsilon}-\phi\right)\left(A\right)\right)^{*}\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u\right\rangle =\\
+ & =\left\langle u,\left(\overline{\phi}_{\varepsilon}-\overline{\phi}\right)\left(A\right)\left(\phi_{\varepsilon}-\phi\right)\left(A\right)u\right\rangle =\left\langle u,\abs{\phi_{\varepsilon}-\phi}^{2}\left(A\right)u\right\rangle =\\
+ & =\int_{\mathbb{R}}\underbrace{\abs{\phi_{\varepsilon}-\phi}^{2}\left(\mu\right)}_{\to0\ \text{point-wise}}\underbrace{\dd\left\langle u,E_{\mu}u\right\rangle }_{\sr{}{\text{point-wise regular}}{\text{Borel measure}}}\xrightarrow[\sr{}{\text{dominated}}{\text{convergence}}]{\varepsilon\searrow0}0
 \end{align*}
 
 \end_inset
 
-The logarithm is cut at the negative real axis.
+Therefore it converges strongly.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Spectral Theorem for bounded normal operators
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ is normal if it commutes with its adjoint, i.e.
+ 
+\begin_inset Formula $\left[A,A^{*}\right]=0$
+\end_inset
+
+.
+ Before we considered symmetric 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+.
+ Then for a complex valued function 
+\begin_inset Formula $f$
+\end_inset
+
+ the operator 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ is normal, but in general not symmetric, because:
+\begin_inset Formula 
+\begin{align*}
+\left(f\left(A\right)\right)^{*} & =\overline{f}\left(A\right)\stackrel{\text{in general}}{\not=}f\left(A\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)\cdot\left(f\left(A\right)\right)^{*} & =\left(f\cdot\overline{f}\right)\left(A\right)=\left(\overline{f}\cdot f\right)\left(A\right)=\left(f\left(A\right)\right)^{*}\cdot f\left(A\right)
+\end{align*}
+
+\end_inset
+
+The basic idea is:
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\left(A+A^{*}\right) & =:B & \frac{1}{2\ii}\left(A-A^{*}\right) & =:C
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $A=B+\ii C$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ are symmetric and 
+\begin_inset Formula $\left[B,C\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-Spectral-theorem-commuting-operators"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be a complex separable Hilbert space, 
+\begin_inset Formula $A_{i}\in L\left(H\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ be symmetric operators, which commute pair wise, i.e.
+ 
+\begin_inset Formula $\left[A_{i},A_{j}\right]=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i,j\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+K & :=\prod_{i=1}^{n}\underbrace{\left[-\opnorm{A_{i}},\opnorm{A_{i}}\right]}_{\supseteq\sigma\left(A_{i}\right)}\subseteq\mathbb{R}^{n}
+\end{align*}
+
+\end_inset
+
+be compact.
+ Then there is a mapping
+\begin_inset Formula 
+\begin{align*}
+\phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+(notation: 
+\begin_inset Formula $\phi\left(f\right)=f\left(A_{1},\ldots,A_{n}\right)$
+\end_inset
+
+) with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\phi$
+\end_inset
+
+ is an involutive algebra homomorphism.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\opnorm{\phi\left(f\right)}\le\norm f_{\infty}=\sup_{K}\abs f$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\phi\left(\text{pr}_{i}\right)=A_{i}$
+\end_inset
+
+ for the projection maps:
+\begin_inset Formula 
+\begin{align*}
+\text{pr}_{i}:\mathbb{R}^{n} & \to\mathbb{R}\\
+\left(x_{1},\ldots,x_{n}\right) & \mapsto x_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ be the spectral measure of the operator 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+E_{i}\left(M\right) & =\chi_{M}\left(A_{i}\right)
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $M\subseteq K$
+\end_inset
+
+ be a cube, i.e.
+ 
+\begin_inset Formula $M=M_{1}\times\ldots\times M_{n}$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+\chi_{M}\left(A_{1},\ldots,A_{n}\right) & :=\chi_{M_{1}}\left(A_{1}\right)\cdot\ldots\cdot\chi_{M_{n}}\left(A_{M_{n}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now holds 
+\begin_inset Formula $\left[\chi_{M_{i}}\left(A_{i}\right),\chi_{M_{j}}\left(A_{j}\right)\right]=0$
+\end_inset
+
+, because from
+\begin_inset Formula 
+\begin{align*}
+\left[A_{i},A_{j}\right] & =0
+\end{align*}
+
+\end_inset
+
+follows via induction for any polynomials 
+\begin_inset Formula $p,q$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left[p\left(A_{i}\right),q\left(A_{j}\right)\right] & =0
+\end{align*}
+
+\end_inset
+
+With the Stone-Weierstraß and the Riesz representation theorem follows for
+ all Borel functions 
+\begin_inset Formula $f,g\in\mathcal{B}\left(\mathbb{R}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left[f\left(A_{i}\right),g\left(A_{j}\right)\right] & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\chi_{M}\left(A_{1},\ldots,A_{n}\right)$
+\end_inset
+
+ is a projection operator.
+\begin_inset Formula 
+\begin{align*}
+\left(\chi_{M}\left(A_{1},\ldots,A_{n}\right)\right)^{*} & =\overline{\chi_{M_{n}}}\left(A_{n}\right)\cdot\ldots\cdot\overline{\chi_{M_{1}}}\left(A_{1}\right)=\\
+ & =\chi_{M_{1}}\left(A_{1}\right)\cdot\ldots\cdot\chi_{M_{n}}\left(A_{n}\right)=\chi_{M}\left(A_{1},\ldots,A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+ & \chi_{M}\left(A_{1},\ldots,A_{n}\right)\cdot\chi_{M'}\left(A_{1},\ldots,A_{n}\right)\\
+ & \qquad\qquad=\chi_{M_{1}}\left(A_{1}\right)\cdot\ldots\cdot\chi_{M_{n}}\left(A_{n}\right)\cdot\chi_{M_{1}'}\left(A_{1}\right)\cdot\ldots\cdot\chi_{M_{n}'}\left(A_{n}\right)=\\
+ & \qquad\qquad=\chi_{M_{1}\cap M_{1}'}\left(A_{1}\right)\cdot\ldots\cdot\chi_{M_{n}\cap M_{n}'}\left(A_{n}\right)=\chi_{M\cap M'}\left(A_{1},\ldots,A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $f=\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}$
+\end_inset
+
+ be a step function, meaning that the 
+\begin_inset Formula $M_{\alpha}$
+\end_inset
+
+ are disjoint cubes and 
+\begin_inset Formula $a_{\alpha}\in\mathbb{C}$
+\end_inset
+
+.
+ Define:
+\begin_inset Formula 
+\begin{align*}
+\phi\left(f\right) & =\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\left(A_{1},\ldots,A_{n}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Claim: This definition is well-defined, i.e.
+ it does not depend on the decomposition of 
+\begin_inset Formula $f$
+\end_inset
+
+ into cells.
+\end_layout
+
+\begin_layout Description
+Proof: Suppose we have:
+\begin_inset Formula 
+\begin{align*}
+f & =\sum_{\alpha=1}^{N}a_{\alpha}\chi_{M_{\alpha}}=\sum_{\beta=1}^{\tilde{N}}\tilde{a}_{\beta}\chi_{\tilde{M}_{\beta}}
+\end{align*}
+
+\end_inset
+
+Choose a joint refinement.
+ In fact, it suffices to consider the case that 
+\begin_inset Formula $\tilde{M}_{\beta}$
+\end_inset
+
+ is already a refinement of 
+\begin_inset Formula $M_{\alpha}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $M_{\alpha}=\bcupd_{\beta\in I_{\alpha}}M_{\beta}$
+\end_inset
+
+ and the 
+\begin_inset Formula $I_{\alpha}$
+\end_inset
+
+ form a partition of 
+\begin_inset Formula $\left\{ 1,\ldots,\tilde{N}\right\} $
+\end_inset
+
+.
+ Using the properties of the 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, a direct computation gives:
+\begin_inset Formula 
+\begin{align*}
+\chi_{M_{\alpha}} & =\sum_{\beta\in I_{\alpha}}\chi_{\tilde{M}_{\alpha}}
+\end{align*}
+
+\end_inset
+
+Substitute this in the formula for 
+\begin_inset Formula $f$
+\end_inset
+
+ and reoreder the sums, to the that the definition is well-defined.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Verify the properties i) and ii) for step functions: By direct computation
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\left(\phi\left(f\right)\right)^{*} & =\phi\left(\overline{f}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\phi\left(f\right)\cdot\phi\left(g\right) & =\left(\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\right)\left(\sum_{\beta}a_{\beta}\chi_{M_{\beta}}\right)\stackrel{\text{as above}}{=}\sum_{\alpha,\beta}a_{\alpha}b_{\beta}\chi_{M_{\alpha}\cap M_{\beta}}=\phi\left(f\cdot g\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{\phi\left(f\right)} & =\norm{\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}}\le\left(\max_{\alpha}\abs{a_{\alpha}}\right)\cdot\underbrace{\norm{\sum_{\alpha}\chi_{M_{\alpha}}}}_{\le1}\le\norm f_{\infty}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now consider 
+\begin_inset Formula $f\in C^{0}\left(K,\mathbb{C}\right)$
+\end_inset
+
+.
+ There is a sequence of step functions 
+\begin_inset Formula $f_{k}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{k}\rightrightarrows f$
+\end_inset
+
+ converges uniformly.
+\begin_inset Formula 
+\begin{align*}
+\norm{\phi\left(f_{k}\right)-\phi\left(f_{l}\right)} & =\phi\left(f_{k}-f_{l}\right)\stackrel{\text{ii)}}{\le}\sup\abs{f_{k}-f_{l}}\xrightarrow{k,l\to\infty}0
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $H$
+\end_inset
+
+ is complete, 
+\begin_inset Formula $\phi\left(f_{k}\right)$
+\end_inset
+
+ converges in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+ and we define 
+\begin_inset Formula $\phi\left(f\right):=\lim_{k\to\infty}\phi\left(f_{k}\right)$
+\end_inset
+
+.
+ Then the properties i) and ii) remain true by continuity.
+\end_layout
+
+\begin_layout Itemize
+Compute 
+\begin_inset Formula $\phi\left(\text{pr}_{i}\right)$
+\end_inset
+
+.
+ For this let 
+\begin_inset Formula $f_{k}=\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}$
+\end_inset
+
+ be a step function with 
+\begin_inset Formula $f_{k}\left(x\right)\rightrightarrows x$
+\end_inset
+
+ and set 
+\begin_inset Formula $\text{pr}_{i}^{k}\left(x\right)=f_{k}\left(x_{i}\right)$
+\end_inset
+
+, which implies 
+\begin_inset Formula $\text{pr}_{i}^{k}\rightrightarrows\text{pr}_{i}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\phi\left(\text{pr}_{i}^{k}\right) & =\sum_{\alpha}a_{\alpha}\chi_{\mathbb{R}\times\ldots\times\underbrace{M_{\alpha}}_{i\text{-th position}}\times\ldots\times\mathbb{R}}\left(A_{1},\ldots,A_{n}\right)=\\
+ & =\prod_{j\not=i}\underbrace{\chi_{\mathbb{R}}\left(A_{j}\right)}_{=\mathbbm{1}}\cdot\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\left(A_{i}\right)=\chi_{f_{k}}\left(A_{i}\right)\xrightarrow{\text{in }L\left(H\right)}A_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+Now let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be normal, i.e.
+ 
+\begin_inset Formula $\left[A,A^{*}\right]=0$
+\end_inset
+
+, and define the symmetric bounded operators:
+\begin_inset Formula 
+\begin{align*}
+A_{1} & :=\frac{1}{2}\left(A+A^{*}\right) & A_{2} & :=\frac{1}{2\ii}\left(A-A^{*}\right)
+\end{align*}
+
+\end_inset
+
+Then follows 
+\begin_inset Formula $A=A_{1}+\ii A_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left[A_{1},A_{2}\right]=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+K & :=\left[-\opnorm{A_{1}},\opnorm{A_{1}}\right]\times\left[-\opnorm{A_{2}},\opnorm{A_{2}}\right]\subseteq\mathbb{C}
+\end{align*}
+
+\end_inset
+
+Then there exists exactly one map
+\begin_inset Formula 
+\begin{align*}
+\phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+with the following properties:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\phi$
+\end_inset
+
+ is an involutive algebra homomorphism.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\opnorm{\phi\left(f\right)}\le\norm f_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f\left(z\right)=z$
+\end_inset
+
+ for 
+\begin_inset Formula $z\in K$
+\end_inset
+
+ already implies 
+\begin_inset Formula $\phi\left(f\right)=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Au=\lambda u$
+\end_inset
+
+ implies 
+\begin_inset Formula $\phi\left(f\right)u=f\left(\lambda\right)u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f$
+\end_inset
+
+ is real-valued and 
+\begin_inset Formula $A$
+\end_inset
+
+ symmetric, then 
+\begin_inset Formula $\phi\left(f\right)$
+\end_inset
+
+ is symmetric.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f\ge0$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+ symmetric implies 
+\begin_inset Formula $\phi\left(f\right)\ge0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For a 
+\begin_inset Formula $T\in L\left(H\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\left[T,A\right]=\left[T,A^{*}\right]=0$
+\end_inset
+
+ follows for all 
+\begin_inset Formula $f\in C^{0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left[T,\phi\left(f\right)\right] & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $\phi$
+\end_inset
+
+ as in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-Spectral-theorem-commuting-operators"
+
+\end_inset
+
+ for the commuting operators 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+.
+ Then i), ii), iii) and v) follow immediately.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[vi)]
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $f\ge0$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $g\in C^{0}\left(K,\mathbb{R}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $f=g^{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,\phi\left(f\right)u\right\rangle  & =\left\langle u,\phi\left(g\right)\cdot\phi\left(g\right)u\right\rangle =\left\langle \phi\left(g\right)u,\phi\left(g\right)u\right\rangle \ge0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[vii)]
+\end_layout
+
+\end_inset
+
+From 
+\begin_inset Formula $\left[T,A_{1}\right]=0=\left[T,A_{2}\right]$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\left[T,\chi_{M}\left(A_{1}\right)\right] & =0=\left[T,\chi_{M}\left(A_{2}\right)\right]
+\end{align*}
+
+\end_inset
+
+This gives by approximation
+\begin_inset Formula 
+\begin{align*}
+\left[T,\chi_{M}\left(A_{1},A_{2}\right)\right] & =0
+\end{align*}
+
+\end_inset
+
+for all 
+\begin_inset Formula $M\subseteq\mathbb{R}^{2}\stackrel{\sim}{=}\mathbb{C}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Part*
