@@ -42,19 +42,19 @@
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{tikz,pgfplots}
-%\usepackage{tikz-3dplot,cancel,polynom}
+%\usepackage{tikz-3dplot,cancel,polynom,tocbasic}
 \usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
 \usetikzlibrary{external}
 \tikzexternalize
-\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm,subfig}
-\usepackage[explicit]{titlesec}
+\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm,subfig,framed,booktabs,esvect,scrhack,calc}
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
+\usepackage[explicit]{titlesec}
+\usepackage[activate]{pdfcprot}
+
+\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 % Inhaltsverzeichnis
 \usepackage[subfigure]{tocloft}
-\usepackage{tocbasic,scrhack}
-
-\pgfkeys{/pgf/number format/dec sep={\text{,}}}
 
 \tocloftpagestyle{fancy}
 
@@ -82,6 +82,7 @@
 
 % Rotieren
 \newcommand{\Rotate}[1]{
+\tikzset{external/export next=false}
 \begin{tikzpicture}
 \node[rotate=90] {\ensuremath{#1}};
 \end{tikzpicture}
@@ -108,16 +109,6 @@
 % Für Z/2Z, um nicht soviel schreiben zu müssen
 \newcommand{\modloT}[2]{\moduloT{ \mathbb{#1}}{#2\mathbb{#1}}}
 
-%Laplace-Beltrami-Operator
-\newcommand{\LBO}{
-\begin{minipage}{6mm}
- \begin{tikzpicture}
-   \node at (0,0){$\Delta$};
-   \draw[line width=0.75] (0.25,-0.13) -- (0.1,0.15);
- \end{tikzpicture}
-\end{minipage}
-}
-
 %Die Modulo-Kommandos in klein, für die Darstellungen unter Quantoren.
 \newcommand{\moduloScriptT}[2]{
 \mbox{\raisebox{0.4ex}{\scriptsize\ensuremath{\displaystyle #1}}
@@ -132,19 +123,6 @@
 }}
 
 \newcommand{\modloScriptT}[2]{\moduloScriptT{ \mathbb{#1}}{#2\mathbb{#1}}}
-
-% stehendes Winkelzeichen
-\newcommand{\winkel}{
-\begin{tikzpicture}[scale=0.25]
-\draw ({-2+3^(1/2)},0) -- (0,1) -- ({2-3^(1/2)},0);
-\draw ($(0,1) + ({cos(235)*0.7},{sin(315)*0.7})$) arc (235:315:0.7);
-\end{tikzpicture}}
-
-% Wurzel mit Häkchen
-\newcommand{\hsqrt}[2][{}]{\setbox0=\hbox{$\sqrt[#1]{\phantom{|}\!\! #2\hspace*{1pt}}$}\dimen0=\ht0
-  \advance\dimen0-0.2\ht0
-  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}
-  {\box0\lower0.4pt\box2}}
 
 % Damit nicht immer "Kapitel 1" etc. über der Kapitelüberschrift steht
 \titleformat{\chapter}
@@ -162,6 +140,9 @@
 % Schriften auf Serif umstellen
 \addtokomafont{descriptionlabel}{\rmfamily}
 \addtokomafont{disposition}{\rmfamily}
+
+% Zeilenumbrüche in Gleichungen
+ \allowdisplaybreaks
 
 % Kopf- und Fußzeile
 % Höhe der Kopfzeile
@@ -7660,14 +7641,14 @@ K & :=\prod_{i=1}^{n}\underbrace{\left[-\opnorm{A_{i}},\opnorm{A_{i}}\right]}_{\
 \end{align*}
 be compact. Then there is a mapping
 \begin{align*}
-\phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
+\Phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
 \end{align*}
-(notation: $\phi\left(f\right)=f\left(A_{1},\ldots,A_{n}\right)$)
+(notation: $\Phi\left(f\right)=f\left(A_{1},\ldots,A_{n}\right)$)
 with the following properties:
 \begin{enumerate}[label=\roman*)]
-\item $\phi$ is an involutive algebra homomorphism.
-\item $\opnorm{\phi\left(f\right)}\le\norm f_{\infty}=\sup_{K}\abs f$
-\item $\phi\left(\text{pr}_{i}\right)=A_{i}$ for the projection maps:
+\item $\Phi$ is an involutive algebra homomorphism.
+\item $\opnorm{\Phi\left(f\right)}\le\norm f_{\infty}=\sup_{K}\abs f$
+\item $\Phi\left(\text{pr}_{i}\right)=A_{i}$ for the projection maps:
 \begin{align*}
 \text{pr}_{i}:\mathbb{R}^{n} & \to\mathbb{R}\\
 \left(x_{1},\ldots,x_{n}\right) & \mapsto x_{i}
@@ -7718,7 +7699,7 @@ for all Borel functions $f,g\in\mathcal{B}\left(\mathbb{R}\right)$:
 meaning that the $M_{\alpha}$ are disjoint cubes and $a_{\alpha}\in\mathbb{C}$.
 Define:
 \begin{align*}
-\phi\left(f\right) & =\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\left(A_{1},\ldots,A_{n}\right)
+\Phi\left(f\right) & =\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\left(A_{1},\ldots,A_{n}\right)
 \end{align*}
 
 
@@ -7743,36 +7724,64 @@ the that the definition is well-defined.\qqed[Claim]
 \item Verify the properties i) and ii) for step functions: By direct computation
 follows:
 \begin{align*}
-\left(\phi\left(f\right)\right)^{*} & =\phi\left(\overline{f}\right)
+\left(\Phi\left(f\right)\right)^{*} & =\Phi\left(\overline{f}\right)
 \end{align*}
 \begin{align*}
-\phi\left(f\right)\cdot\phi\left(g\right) & =\left(\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\right)\left(\sum_{\beta}a_{\beta}\chi_{M_{\beta}}\right)\stackrel{\text{as above}}{=}\sum_{\alpha,\beta}a_{\alpha}b_{\beta}\chi_{M_{\alpha}\cap M_{\beta}}=\phi\left(f\cdot g\right)
+\Phi\left(f\right)\cdot\Phi\left(g\right) & =\left(\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\right)\left(\sum_{\beta}a_{\beta}\chi_{M_{\beta}}\right)\stackrel{\text{as above}}{=}\sum_{\alpha,\beta}a_{\alpha}b_{\beta}\chi_{M_{\alpha}\cap M_{\beta}}=\Phi\left(f\cdot g\right)
 \end{align*}
 \begin{align*}
-\norm{\phi\left(f\right)} & =\norm{\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}}\le\left(\max_{\alpha}\abs{a_{\alpha}}\right)\cdot\underbrace{\norm{\sum_{\alpha}\chi_{M_{\alpha}}}}_{\le1}\le\norm f_{\infty}
+\norm{\Phi\left(f\right)} & =\norm{\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}}\le\left(\max_{\alpha}\abs{a_{\alpha}}\right)\cdot\underbrace{\norm{\sum_{\alpha}\chi_{M_{\alpha}}}}_{\le1}\le\norm f_{\infty}
 \end{align*}
 
 \item Now consider $f\in C^{0}\left(K,\mathbb{C}\right)$. There is a sequence
 of step functions $f_{k}$ such that $f_{k}\rightrightarrows f$ converges
 uniformly.
 \begin{align*}
-\norm{\phi\left(f_{k}\right)-\phi\left(f_{l}\right)} & =\phi\left(f_{k}-f_{l}\right)\stackrel{\text{ii)}}{\le}\sup\abs{f_{k}-f_{l}}\xrightarrow{k,l\to\infty}0
+\norm{\Phi\left(f_{k}\right)-\Phi\left(f_{l}\right)} & =\Phi\left(f_{k}-f_{l}\right)\stackrel{\text{ii)}}{\le}\sup\abs{f_{k}-f_{l}}\xrightarrow{k,l\to\infty}0
 \end{align*}
-Since $H$ is complete, $\phi\left(f_{k}\right)$ converges in $L\left(H\right)$
-and we define $\phi\left(f\right):=\lim_{k\to\infty}\phi\left(f_{k}\right)$.
+Since $H$ is complete, $\Phi\left(f_{k}\right)$ converges in $L\left(H\right)$
+and we define $\Phi\left(f\right):=\lim_{k\to\infty}\phi\left(f_{k}\right)$.
 Then the properties i) and ii) remain true by continuity.
-\item Compute $\phi\left(\text{pr}_{i}\right)$. For this let $f_{k}=\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}$
+\item Compute $\Phi\left(\text{pr}_{i}\right)$. For this let $f_{k}=\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}$
 be a step function with $f_{k}\left(x\right)\rightrightarrows x$
 and set $\text{pr}_{i}^{k}\left(x\right)=f_{k}\left(x_{i}\right)$,
 which implies $\text{pr}_{i}^{k}\rightrightarrows\text{pr}_{i}$.
 \begin{align*}
-\phi\left(\text{pr}_{i}^{k}\right) & =\sum_{\alpha}a_{\alpha}\chi_{\mathbb{R}\times\ldots\times\underbrace{M_{\alpha}}_{i\text{-th position}}\times\ldots\times\mathbb{R}}\left(A_{1},\ldots,A_{n}\right)=\\
+\Phi\left(\text{pr}_{i}^{k}\right) & =\sum_{\alpha}a_{\alpha}\chi_{\mathbb{R}\times\ldots\times\underbrace{M_{\alpha}}_{i\text{-th position}}\times\ldots\times\mathbb{R}}\left(A_{1},\ldots,A_{n}\right)=\\
  & =\prod_{j\not=i}\underbrace{\chi_{\mathbb{R}}\left(A_{j}\right)}_{=\mathbbm{1}}\cdot\sum_{\alpha}a_{\alpha}\chi_{M_{\alpha}}\left(A_{i}\right)=\chi_{f_{k}}\left(A_{i}\right)\xrightarrow{\text{in }L\left(H\right)}A_{i}
 \end{align*}
 
 \end{itemize}
 \qqed
 
+We know $\text{supp}\left(\chi\left(A_{j}\right)\right)=\sigma\left(A_{j}\right)\subseteq\left[-\opnorm{A_{j}},\opnorm{A_{j}}\right]$.
+\begin{align*}
+K & :=\left[-\opnorm{A_{1}},\opnorm{A_{1}}\right]\times\left[-\opnorm{A_{2}},\opnorm{A_{2}}\right]\subseteq\mathbb{C}
+\end{align*}
+\emph{Goal}: Construct a spectral measure $\chi_{M}\left(A_{1},A_{2}\right)$
+on $K$.
+\begin{itemize}
+\item For $M=M_{1}\times M_{2}$ (``cubes'') we set:
+\begin{align*}
+\chi_{M_{1}\times M_{2}}\left(A_{1},A_{2}\right) & =\chi_{M_{1}}\left(A\right)\cdot\chi_{M_{2}}\left(A_{2}\right)
+\end{align*}
+
+\item For step functions
+\begin{align*}
+f & =\sum_{\alpha=1}^{N}c_{\alpha}\chi_{M_{1}^{\alpha}\times M_{2}^{\alpha}}
+\end{align*}
+we set:
+\begin{align*}
+\Phi\left(f\right) & =\sum_{\alpha=1}^{N}c_{\alpha}\chi_{M_{1}^{\alpha}\times M_{2}^{\alpha}}\left(A_{1},A_{2}\right)
+\end{align*}
+
+\item For $f\in C^{0}\left(K\right)$ we choose step functions $f_{n}$
+such that $f_{n}\rightrightarrows f$ converges on $K$.
+\begin{align*}
+\Phi\left(f\right) & :=\lim_{n\to\infty}\Phi\left(f_{n}\right)
+\end{align*}
+This convergence is in $L\left(H\right)$.
+\end{itemize}
 
 \section{Theorem}
 
@@ -7781,36 +7790,55 @@ and define the symmetric bounded operators:
 \begin{align*}
 A_{1} & :=\frac{1}{2}\left(A+A^{*}\right) & A_{2} & :=\frac{1}{2\ii}\left(A-A^{*}\right)
 \end{align*}
-Then follows $A=A_{1}+\ii A_{2}$ and $\left[A_{1},A_{2}\right]=0$.
+Then follows $A=A_{1}+\ii A_{2}$ and $\left[A_{1},A_{2}\right]=0$,
+which implies $\left[\chi_{M_{1}}\left(A_{1}\right),\chi_{M_{2}}\left(A_{2}\right)\right]=0$
+for all sets $M_{1},M_{2}\subseteq\mathbb{R}$.
 \begin{align*}
 K & :=\left[-\opnorm{A_{1}},\opnorm{A_{1}}\right]\times\left[-\opnorm{A_{2}},\opnorm{A_{2}}\right]\subseteq\mathbb{C}
 \end{align*}
 Then there exists exactly one map
 \begin{align*}
-\phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
+\Phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
 \end{align*}
 with the following properties:
 \begin{enumerate}
-\item $\phi$ is an involutive algebra homomorphism.
-\item $\opnorm{\phi\left(f\right)}\le\norm f_{\infty}$
-\item $f\left(z\right)=z$ for $z\in K$ already implies $\phi\left(f\right)=A$.
-\item $Au=\lambda u$ implies $\phi\left(f\right)u=f\left(\lambda\right)u$
-\item If $f$ is real-valued and $A$ symmetric, then $\phi\left(f\right)$
-is symmetric.
-\item $f\ge0$ and $A$ symmetric implies $\phi\left(f\right)\ge0$.
+\item $\Phi$ is an involutive algebra homomorphism.
+\item $\opnorm{\Phi\left(f\right)}\le\norm f_{\infty}$
+\item $f\left(z\right)=z$ for $z\in K$ already implies $\Phi\left(f\right)=A$.
+\item $Au=\lambda u$ implies $\Phi\left(f\right)u=f\left(\lambda\right)u$
+\item If $f$ is real-valued, then $\Phi\left(f\right)$ is symmetric.
+\item $f\ge0$ implies $\Phi\left(f\right)\ge0$.
 \item For a $T\in L\left(H\right)$ with $\left[T,A\right]=\left[T,A^{*}\right]=0$
 follows for all $f\in C^{0}$:
 \begin{align*}
-\left[T,\phi\left(f\right)\right] & =0
+\left[T,\Phi\left(f\right)\right] & =0
 \end{align*}
 
 \end{enumerate}
 
 \subsubsection*{Proof}
 
-Choose $\phi$ as in Theorem \ref{sec:Thm-Spectral-theorem-commuting-operators}
-for the commuting operators $A_{1}$ and $A_{2}$. Then i), ii), iii)
-and v) follow immediately.
+\begin{align*}
+\text{pr}_{1}\left(x_{1},x_{2}\right) & =x_{1}\\
+\Phi\left(\text{pr}_{1}\right) & =A_{1}
+\end{align*}
+
+
+Choose step functions $f_{n}$ of one variable, such that $f_{n}\left(x\right)\rightrightarrows x$
+on $\left[-\opnorm{A_{1}},\opnorm{A_{1}}\right]$. Then the functions
+\begin{align*}
+g_{n}\left(x_{1},x_{2}\right) & :=f_{n}\left(x_{1}\right)
+\end{align*}
+converge uniformly to $\text{pr}_{1}$ on $K$.
+\begin{align*}
+\Phi\left(g_{n}\right) & =\sum_{\alpha=1}^{N}c_{\alpha}\underbrace{\chi_{M_{1}^{\alpha}\times\left[-\opnorm{A_{2}},\opnorm{A_{2}}\right]}}_{=\chi_{M_{1}^{\alpha}}\left(A_{1}\right)\cdot\underbrace{\chi_{\left[-\opnorm{A_{2}},\opnorm{A_{2}}\right]}\left(A_{2}\right)}_{=\mathbbm{1}}}=\sum_{\alpha=1}^{N}c_{\alpha}\chi_{M_{1}^{\alpha}}\left(A_{1}\right)=f_{n}\left(A_{1}\right)\to A_{1}
+\end{align*}
+This converges follows from the functional calculus for \emph{a symmetric
+operator}.
+
+Choose $\Phi$ as in Theorem \ref{sec:Thm-Spectral-theorem-commuting-operators}
+for the commuting operators $A_{1}$ and $A_{2}$. Then i), ii) and
+v) follow immediately.
 \begin{enumerate}
 \item [vi)]For $f\ge0$ there exists a $g\in C^{0}\left(K,\mathbb{R}\right)$
 with $f=g^{2}$.
@@ -7826,10 +7854,295 @@ This gives by approximation
 \begin{align*}
 \left[T,\chi_{M}\left(A_{1},A_{2}\right)\right] & =0
 \end{align*}
-for all $M\subseteq\mathbb{R}^{2}\stackrel{\sim}{=}\mathbb{C}$.
+for all $M\subseteq\mathbb{R}^{2}\stackrel{\sim}{=}\mathbb{C}$.%DATE: Do 24.1.13
+\item [iii)]From $f\left(z\right)=z$ follows $\Phi\left(f\right)=A$.
+\begin{align*}
+z & =x_{1}+\ii x_{2}\\
+f\left(x_{1},x_{2}\right) & =x_{1}+\ii x_{2}
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\Phi\left(f\right) & =\Phi\left(\text{pr}_{1}\right)+\ii\Phi\left(\text{pr}_{2}\right)=A_{1}+\ii A_{2}=A
+\end{align*}
+
+\item [iv)]We want to show $Au=\lambda u$ implies $\Phi\left(f\right)u=f\left(\lambda\right)u$.
+Consider $u\in H$ with $Au=\lambda u$.
+
+\begin{description}
+\item [{Claim:}] $A^{*}u=\overline{\lambda}u$
+\item [{Proof:}] It holds:
+\begin{align*}
+A\left(A^{*}u\right) & =A^{*}Au=A^{*}\lambda u=\lambda\left(A^{*}u\right)
+\end{align*}
+Thus $A^{*}$ maps the eigenspace $\ker\left(A-\lambda\right)$ to
+itself, which implies:
+\begin{align*}
+A^{*}u-\overline{\lambda}u & \in\ker\left(A-\lambda\right)
+\end{align*}
+For $v\in\ker\left(A-\lambda\right)$ holds:
+\begin{align*}
+\left\langle v,\left(A^{*}-\overline{\lambda}\right)u\right\rangle  & =\left\langle \left(A-\lambda\right)v,u\right\rangle =0
+\end{align*}
+Thus we get $\left(A^{*}-\overline{\lambda}\right)u\in\ker\left(A-\lambda\right)\cap\left(\ker\left(A-\lambda\right)\right)^{\perp}=\left\{ 0\right\} $.
+Now we have:
+\begin{align*}
+\left(A^{*}-\overline{\lambda}\right)u & =0
+\end{align*}
+\qqed[Claim]
+\end{description}
+
+So we have:
+\begin{align*}
+A_{1}u & =\lambda_{1}u & A_{2}u & =\lambda_{2}u & \lambda & =\lambda_{1}+\ii\lambda_{2}
+\end{align*}
+So $\Phi\left(p\right)u=p\left(\lambda\right)u$ holds for all polynomials
+$p$. The Stone-Weierstraß theorem in two dimensions gives the result.
+
+\end{enumerate}
+\qqed
+
+Now apply the Riesz representation theorem to extend the functional
+calculus to bounded Borel functions $\mathcal{B}\left(K\right)$.
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be normal. Then there exists a map
+\begin{align*}
+\Phi:\mathcal{B}\left(K,\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+with the following properties:
+\begin{enumerate}
+\item $\Phi$ is an involutive algebra homomorphism.
+\item $\opnorm{\Phi\left(f\right)}\le\norm f_{L^{\infty}\left(K\right)}$
+\item For $f\in C^{0}$, $\Phi\left(f\right)$ coincides with the continuous
+functional calculus.
+\item For point-wise converging $f_{n}\to f$ with $\norm f_{\infty}<C$
+converges $\Phi\left(f_{n}\right)\to\Phi\left(f\right)$ strongly.
+\item $Au=\lambda u$ implies $\Phi\left(f\right)u=f\left(\lambda\right)u$
+\item If $f$ is real-valued, then $\Phi\left(f\right)$ is symmetric.\\
+$f\ge0$ and implies $\Phi\left(f\right)\ge0$.
+\item For a $T\in L\left(H\right)$ with $\left[T,A\right]=\left[T,A^{*}\right]=0$
+follows for all $f\in C^{0}$:
+\begin{align*}
+\left[T,\Phi\left(f\right)\right] & =0
+\end{align*}
+
 \end{enumerate}
 
-\part*{Appendix\thispagestyle{empty}}
+\subsubsection*{Proof}
+
+The proof is the same as for the symmetric case.\qqed
+
+
+\section{Theorem \textmd{(spectral theorem for bounded normal operators)}}
+
+There is a one-to-one correspondence between bounded normal operators
+on $H$ and compact spectral measures via:
+\begin{align*}
+A & =\int_{\mathbb{R}^{2}\stackrel{\sim}{=}\mathbb{C}}\lambda\dd E_{\lambda}
+\end{align*}
+Moreover holds:
+\begin{enumerate}[label=\roman*)]
+\item $f\left(A\right)=\Phi\left(f\right)=\int_{\mathbb{R}^{2}}f\left(\lambda\right)\dd E_{\lambda}$
+\item $\sigma\left(A\right)=\text{supp}\left(E\right)\subseteq\mathbb{R}^{2}\stackrel{\sim}{=}\mathbb{C}$
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+The proof is just as in the symmetric case, except for the property
+ii).
+
+„$\text{supp}\left(E\right)\supseteq\sigma\left(A\right)$“: Consider
+$\mu\not\in\text{supp}\left(E\right)$. Then
+\begin{align*}
+g\left(\lambda\right) & :=\frac{1}{\lambda-\mu}\cdot\chi_{\text{supp}\left(E\right)}
+\end{align*}
+is a bounded Borel function, since $\abs{g\left(\lambda\right)}\le\frac{1}{\varepsilon}$,
+where $B_{\varepsilon}\left(\mu\right)\cap\text{supp}\left(E\right)=\emptyset$
+and:
+\begin{align*}
+g\left(A\right)\cdot\left(A-\mu\right) & =\int_{\mathbb{R}^{2}}\frac{\lambda-\mu}{\lambda-\mu}\dd E_{\lambda}=\mathbbm{1}
+\end{align*}
+
+
+\begin{figure}[H]
+\noindent \begin{centering}
+\begin{tikzpicture}[scale=1.5]
+  % Axen
+  \draw[->] (-2,0) -- (2,0) node[right]{$\textnormal{Re}(z)$};
+  \draw[->] (0,-1.3) -- (0,2) node[above]{$\textnormal{Im}(z)$};
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.75,-0.3) (1.7,0) (0.9,1.9) (-0.5,1.5) (-0.3,0.3) (-1,-0.5)};
+  \node at (1.7,2) {$\textnormal{supp}(E)$};
+  \draw (-0.8,0.5) node[left]{$\mu$} +(0.1,0.1) -- +(-0.1,-0.1) +(-0.1,0.1) -- +(0.1,-0.1);
+  \draw[red] (-0.8,0.5) circle (0.45) ;
+  \draw[red] (-0.8,0.5) -- node[right=-3pt]{$\varepsilon$} (-0.8,0.95);
+\end{tikzpicture}
+\par\end{centering}
+
+\caption{$B_{\varepsilon}\left(\mu\right)\cap\text{supp}\left(E\right)=\emptyset$}
+\end{figure}
+
+
+Hence $\left(A-\lambda\right)$ has a bounded inverse and therefore
+$\lambda\not\in\sigma\left(A\right)$.
+
+„$\text{supp}\left(E\right)\subseteq\sigma\left(A\right)$“: For $\mu_{0}\in\varrho\left(A\right)$
+we show $\mu_{0}\not\in\text{supp}\left(E\right)$.\\
+Since $\varrho\left(A\right)$ is open, there exists a $\varepsilon\in\mathbb{R}_{>0}$
+with $B_{\varepsilon}\left(\mu_{0}\right)\subseteq\varrho\left(A\right)$.
+
+\begin{figure}[H]
+\noindent \begin{centering}
+\begin{tikzpicture}[scale=1.5]
+  % Axen
+  \draw[->] (-2,0) -- (2,0) node[right]{$\textnormal{Re}(z)$};
+  \draw[->] (0,-1.3) -- (0,2) node[above]{$\textnormal{Im}(z)$};
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.75,-0.3) (1.7,0) (0.9,1.9) (-0.5,1.5) (-0.3,0.3) (-1,-0.5)};
+  \node at (1.5,1.8) {$\sigma(A)$};
+  \draw (-0.8,0.5) node[left]{$\mu_0$} +(0.1,0.1) -- +(-0.1,-0.1) +(-0.1,0.1) -- +(0.1,-0.1);
+  \draw[red] (-0.8,0.5) circle (0.45) ;
+  \draw[red] (-0.8,0.5) -- node[right=-3pt]{$\varepsilon$} (-0.8,0.95);
+\end{tikzpicture}
+\par\end{centering}
+
+\caption{$B_{\varepsilon}\left(\mu_{0}\right)\subseteq\varrho\left(A\right)$}
+\end{figure}
+
+\begin{description}
+\item [{Lemma:}] Let $B\in L\left(H\right)$ be an operator with bounded
+inverse and $B_{n}\in L\left(H\right)$ a sequence with $B_{n}\to B$
+in $L\left(H\right)$. Then $B_{n}^{-1}$ exists for large enough
+$n$ and $B_{n}^{-1}\to B$ converges in $L\left(H\right)$.
+\item [{Proof:}] Use the Neumann series:
+\begin{align*}
+B_{n}^{-1} & =\left(B+\left(B_{n}-B\right)\right)^{-1}=\left(\mathbbm{1}+B^{-1}\left(B_{n}-B\right)\right)B^{-1}=\sum_{k=0}^{\infty}\left(-B^{-1}\left(B_{n}-B\right)\right)^{k}B^{-1}
+\end{align*}
+This converges absolutely, if $\opnorm{B_{n}-B}$ is sufficiently
+small. Therefore holds:
+\begin{align*}
+\opnorm{B_{n}^{-1}-B^{-1}} & \le\sum_{k=1}^{\infty}\opnorm{B^{-1}}^{k+1}\cdot\opnorm{B_{n}-B}^{k}\xrightarrow{\opnorm{B_{n}\to B}}0
+\end{align*}
+\qqed[Lemma]
+\end{description}
+In particular, for $\mu_{n}\xrightarrow{n\to\infty}\mu_{0}$ converges
+also $\left(A-\mu_{n}\right)^{-1}\to\left(A-\mu_{0}\right)^{-1}$
+in $L\left(H\right)$.\\
+Consider now $\mu\in B_{r}\left(\mu_{0}\right)$ for any $r\in\mathbb{R}_{>0}$
+and define:
+\begin{align*}
+B & :=\left(A-\mu\right)\cdot\left(A^{*}-\overline{\mu}\right)=\int\abs{\lambda-\mu}^{2}\dd E_{\lambda}
+\end{align*}
+Now choose a $\delta\in\mathbb{R}_{>0}$ to get:
+\begin{align*}
+B+\delta & =\int\left(\abs{\lambda-\mu}^{2}+\delta\right)\dd E_{\lambda}\\
+\Rightarrow\qquad\left(B+\delta\right)^{-1} & =\int\frac{1}{\abs{\lambda-\mu}^{2}+\delta}\dd E_{\lambda}\in L\left(H\right)
+\end{align*}
+Similarly follows:
+\begin{align*}
+B^{p} & =\int\abs{\lambda-\mu}^{2p}\dd E_{\lambda}\\
+\left(B+\delta\right)^{-p} & =\int\left(\abs{\lambda-\mu}^{2}+\delta\right)^{-p}\dd E_{\lambda}
+\end{align*}
+For $u\in H$ with $\norm u=1$ holds:
+\begin{align*}
+\left\langle u,\left(B+\delta\right)^{-p}u\right\rangle  & =\int_{\mathbb{R}^{2}}\frac{1}{\left(\abs{\lambda-\mu}^{2}+\delta\right)^{p}}\dd\left\langle u,E_{\lambda}u\right\rangle 
+\end{align*}
+$\dd\left\langle u,E_{\lambda}u\right\rangle $ is a point-wise bounded
+Borel measure.
+\begin{align*}
+\abs{\left\langle u,\left(B+\delta\right)^{-p}u\right\rangle } & \le\underbrace{\norm u^{2}}_{=1}\cdot\norm{\left(B+\delta\right)^{-1}\left(B+\delta\right)^{-\left(p-1\right)}}\le\\
+ & \le\ldots\le\opnorm{\left(B+\delta\right)^{-1}}^{p}\stackrel{\text{choose }r<\varepsilon}{\le}\opnorm{B^{-1}}^{p}
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\liminf_{\delta}\abs{\left\langle u,\left(B+\delta\right)^{-p}u\right\rangle } & \le\norm{B^{-1}}^{p}
+\end{align*}
+Remember Fatou's lemma:
+\begin{align*}
+\int\liminf_{\delta}f_{\delta} & \le\liminf_{\delta}\int f_{\delta}
+\end{align*}
+holds if $\lim_{\delta\searrow0}f_{\delta}$ exists point-wise. (cf.
+\noun{Rudin}: \emph{Real and complex analysis})
+
+Applying Fatou's lemma gives:
+\begin{align*}
+\int_{\mathbb{R}^{2}}\liminf_{\delta}\frac{1}{\left(\abs{\lambda-\mu}^{2}+\delta\right)^{p}}\dd\left\langle u,E_{\lambda}u\right\rangle  & =\int_{\mathbb{R}^{2}}\frac{1}{\abs{\lambda-\mu}^{2p}}\dd\left\langle u,E_{\lambda}u\right\rangle \le\\
+ & \le\liminf_{\delta}\int_{\mathbb{R}^{2}}\frac{1}{\left(\abs{\lambda-\mu}^{2}+\delta\right)^{p}}\dd\left\langle u,E_{\lambda}u\right\rangle \le\opnorm{B^{-1}}^{p}
+\end{align*}
+Thus we get:
+\begin{align*}
+\left(\int\frac{1}{\abs{\lambda-\mu}^{2p}}\dd\left\langle u,E_{\lambda}u\right\rangle \right)^{\frac{1}{p}} & \le\opnorm{B^{-1}}
+\end{align*}
+In other words, setting $g\left(\lambda\right)=\frac{1}{\abs{\lambda-\mu}^{2}}$,
+we know for all $p\in\mathbb{N}_{\ge1}$ and all $\mu\in B_{\frac{\varepsilon}{2}}\left(\mu_{0}\right)$:
+\begin{align*}
+\norm g_{L^{p}\left(\dd\left\langle u,E_{\lambda}u\right\rangle \right)} & \le\opnorm{B^{-1}}
+\end{align*}
+This implies that there exists an $\varepsilon'\in\mathbb{R}_{>0}$
+such that $B_{\varepsilon'}\left(\mu_{0}\right)$ is a set with measure
+zero with respect to $\dd\left\langle u,E_{\lambda}u\right\rangle $,
+since otherwise:
+\begin{align*}
+\left(\int\frac{1}{\abs{\lambda-\mu}^{2p}}\dd\left\langle u,E_{\lambda}u\right\rangle \right)^{\frac{1}{p}} & \ge\inf_{\lambda\in B_{\varepsilon'}\left(\mu_{0}\right)}\frac{1}{\abs{\lambda-\mu}^{2}}\cdot\underbrace{\left(\left\langle u,\dd E_{B_{\varepsilon'}\left(\mu_{0}\right)}u\right\rangle \right)^{\frac{1}{p}}}_{>0}\xrightarrow{p\to\infty}\inf_{\lambda\in B_{\varepsilon'}\left(\mu_{0}\right)}\frac{1}{\abs{\mu-\lambda}^{2}}
+\end{align*}
+Since $u$ is arbitrary (and $\varepsilon'$ can be chosen uniformly
+in $u$) it follows that $E_{B_{\varepsilon'}\left(\mu_{0}\right)}=0$
+and thus $\mu_{0}\not\in\text{supp}\left(E\right)$.\qqed
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be normal and $E$ the corresponding spectral
+measure. Then holds for all $\varepsilon\in\mathbb{R}_{>0}$:
+\begin{align*}
+\lambda\in\sigma\left(A\right) & \quad\Leftrightarrow\quad E_{B_{\varepsilon}\left(\lambda\right)}\not=0
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+\begin{align*}
+\lambda\in\sigma\left(A\right) & \quad\Leftrightarrow\quad\lambda\in\text{supp}\left(E\right)\quad\stackrel{\text{definition of }\text{supp}\left(E\right)}{\Leftrightarrow}\quad E_{B_{\varepsilon}\left(\lambda\right)}\not=0
+\end{align*}
+\qqed
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be normal and $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$.
+Then $\sigma\left(f\left(A\right)\right)=f\left(\sigma\left(A\right)\right)$.
+
+\emph{Note}: This is not true in general for $f\in\mathcal{B}\left(\sigma\left(A\right),\mathbb{C}\right)$.
+
+
+\subsubsection*{Proof}
+\begin{enumerate}[label=\roman*)]
+\item „$\sigma\left(f\left(A\right)\right)\subseteq f\left(\sigma\left(A\right)\right)$“:
+Since $\sigma\left(A\right)$ is compact and $f$ continuous and therefore
+maps compact sets to compact sets, follows:
+\begin{align*}
+f\left(\sigma\left(A\right)\right) & =\overline{f\left(\sigma\left(A\right)\right)}
+\end{align*}
+We show more generally:
+\begin{align*}
+\sigma\left(f\left(A\right)\right) & \subseteq\overline{f\left(\sigma\left(A\right)\right)}
+\end{align*}
+for any \emph{Borel} function $f\in\mathcal{B}\left(\sigma\left(A\right)\right)$.
+Consider $\mu\not\in\overline{f\left(\sigma\left(A\right)\right)}$
+and set:
+\begin{align*}
+g\left(\lambda\right) & =\frac{1}{f\left(\lambda\right)-\mu}\cdot\chi_{\sigma\left(A\right)}
+\end{align*}
+This is a bounded Borel function. Thus follows:
+\begin{align*}
+g\left(A\right)\cdot\left(f\left(A\right)-\mu\right) & =\int_{\mathbb{R}^{2}}\frac{f\left(\lambda\right)-\mu}{f\left(\lambda\right)-\mu}\chi_{\sigma\left(A\right)}\dd E_{\lambda}\stackrel{\sigma\left(A\right)=\text{supp}\left(E\right)}{=}\mathbbm{1}
+\end{align*}
+Hence $f\left(A\right)-\mu$ has a bounded inverse $g\left(A\right)$
+and thus $\mu\in\varrho\left(f\left(A\right)\right)$, i.e. $\mu\not\in\sigma\left(f\left(A\right)\right)$.\qqed[\roman{enumi})]
+\item „$f\left(\sigma\left(A\right)\right)\subseteq\sigma\left(f\left(A\right)\right)$“:
+Consider $\mu\in\sigma\left(A\right)$ and show $f\left(\mu\right)\in\sigma\left(f\left(A\right)\right)$.
+\end{enumerate}
+
+\part*{Appendix \thispagestyle{empty}}
 
 \addcontentsline{toc}{part}{Appendix}
 
