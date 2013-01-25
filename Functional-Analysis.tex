@@ -5863,7 +5863,7 @@ For $\left(*\right)$ consider:
 \qqed[Claim]
 \end{description}
 \end{itemize}
-\qqed
+\qqed[\ref{sub:Thm-Riesz-representation}]
 
 
 \subsubsection*{Remarks}
@@ -6143,8 +6143,7 @@ Now follows:
 
 \subsection{Lemma \textmd{(spectral mapping theorem for polynomials)}\label{sub:Lem-spectral-mapping-thm_polynomials}}
 
-For $p\in\mathfrak{P}\left(\mathbb{C}\right)$, i.e. $p$ is a complex
-polynomial, holds:
+For a complex polynomial $p\in\mathbb{P}_{\mathbb{C}}$ holds:
 \begin{align*}
 \sigma\left(p\left(A\right)\right) & =p\left(\sigma\left(A\right)\right)
 \end{align*}
@@ -6198,7 +6197,7 @@ follows:
 \end{itemize}
 \qqed
 
-Let $p\in\mathfrak{P}\left(\mathbb{C}\right)$ be a complex polynomial.
+Let $p\in\mathbb{P}_{\mathbb{C}}$ be a complex polynomial.
 \begin{align*}
 \left(p\left(A\right)\right)^{*} & =\overline{p}\left(A\right)
 \end{align*}
@@ -6268,7 +6267,7 @@ This gives:
 
 \subsection{Lemma}
 
-Let $A\in L\left(H\right)$ be symmetric and $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+Let $A\in L\left(H\right)$ be symmetric and $p\in\mathbb{P}_{\mathbb{C}}$
 a complex polynomial. Then holds:
 \begin{align*}
 \opnorm{p\left(A\right)} & =\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}
@@ -6293,8 +6292,8 @@ Then holds:
 \begin{align*}
 \opnorm{\Phi\left(p\right)}=\opnorm{p\left(A\right)} & =r\left(p\left(A\right)\right)=\sup_{\lambda\in\sigma\left(A\right)}\abs{p\left(\lambda\right)}=\norm p_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}
 \end{align*}
-Thus $\Phi:\mathfrak{P}\left(\mathbb{C}\right)\to L\left(H\right)$
-is an isometry. ($\mathfrak{P}\left(\mathbb{C}\right)\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$)\\
+Thus $\Phi:\mathbb{P}_{\mathbb{C}}\to L\left(H\right)$ is an isometry.
+($\mathbb{P}_{\mathbb{C}}\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$)\\
 \emph{Remark:} If we had considered $C^{0}\left(\left[a,b\right],\mathbb{C}\right)$
 with
 \begin{align*}
@@ -6319,9 +6318,9 @@ extends to an isometry:
 \end{align*}
 This yields i), ii), iii), vii).
 \item More specifically, consider $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$.
-Then there exist $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$ such
-that $p_{n}\rightrightarrows f$ on $\sigma\left(A\right)$. ($K=\sigma\left(A\right)$
-is a compact metric space.) This means:
+Then there exist $p_{n}\in\mathbb{P}_{\mathbb{C}}$ such that $p_{n}\rightrightarrows f$
+on $\sigma\left(A\right)$. ($K=\sigma\left(A\right)$ is a compact
+metric space.) This means:
 \begin{align*}
 \norm{p_{n}-f}_{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)} & =\sup_{z\in\sigma\left(A\right)}\abs{p_{n}\left(z\right)-f\left(z\right)}\xrightarrow{n\to\infty}0
 \end{align*}
@@ -6355,7 +6354,7 @@ Now follows:
 So $f\left(A\right)-\mu\mathbbm{1}$ has a bounded inverse in contradiction
 to the assumption $\mu\in\sigma\left(f\left(A\right)\right)$.\\
 „$\supseteq$“: Consider $\lambda\in\sigma\left(A\right)$. Choose
-polynomials $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$ with $p_{n}\rightrightarrows f$.
+polynomials $p_{n}\in\mathbb{P}_{\mathbb{C}}$ with $p_{n}\rightrightarrows f$.
 Then converges in $L\left(H\right)$:
 \begin{align*}
 p_{n}\left(A\right)-p_{n}\left(\lambda\right)\mathbbm{1} & \xrightarrow{n\to\infty}f\left(A\right)-f\left(\lambda\right)\mathbbm{1}
@@ -6378,8 +6377,10 @@ and $f=g^{2}$.
 \begin{align*}
 \left\langle u,\Phi\left(f\right)u\right\rangle  & =\left\langle u,\Phi\left(g^{2}\right)u\right\rangle =\left\langle u,\Phi\left(g\right)\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(\overline{g}\right)u,\Phi\left(g\right)u\right\rangle =\left\langle \Phi\left(g\right)u,\Phi\left(g\right)u\right\rangle \ge0
 \end{align*}
-\qqed
+
 \end{enumerate}
+\qqed[\ref{sub:Thm-spectral-mapping-theorem}]
+
 $\chi_{\Omega}\left(A\right)$ would be the projector onto the invariant
 subspace corresponding to the spectrum in~$\Omega$. Formally we
 can compute:
@@ -6692,7 +6693,7 @@ imply $u_{n}\to u$.
 \begin{align*}
 f_{n}\left(A\right)v & \to f\left(A\right)v
 \end{align*}
-\qqed[\roman{enumi})]
+\qqed[iii)]
 \end{enumerate}
 \end{enumerate}
 \begin{enumerate}[resume]
@@ -6704,7 +6705,7 @@ Choose $f_{n}\in C^{0}$ which converge point-wise to $f$ and $\norm{f_{n}}_{\inf
 \begin{align*}
 \Rightarrow\qquad\opnorm{f\left(A\right)} & \le\norm f_{\infty}
 \end{align*}
-\qqed[\roman{enumi})]
+\qqed[ii)]
 \item [iv) - vi)]follow immediately by approximation.
 \end{enumerate}
 \qqed
@@ -7801,7 +7802,7 @@ Then there exists exactly one map
 \Phi:C^{0}\left(K,\mathbb{C}\right) & \to L\left(H\right)
 \end{align*}
 with the following properties:
-\begin{enumerate}
+\begin{enumerate}[label=\roman*)]
 \item $\Phi$ is an involutive algebra homomorphism.
 \item $\opnorm{\Phi\left(f\right)}\le\norm f_{\infty}$
 \item $f\left(z\right)=z$ for $z\in K$ already implies $\Phi\left(f\right)=A$.
@@ -7904,14 +7905,14 @@ Now apply the Riesz representation theorem to extend the functional
 calculus to bounded Borel functions $\mathcal{B}\left(K\right)$.
 
 
-\section{Theorem}
+\section{Theorem\label{sec:Thm-normal-functional-calculus}}
 
 Let $A\in L\left(H\right)$ be normal. Then there exists a map
 \begin{align*}
 \Phi:\mathcal{B}\left(K,\mathbb{C}\right) & \to L\left(H\right)
 \end{align*}
 with the following properties:
-\begin{enumerate}
+\begin{enumerate}[label=\roman*)]
 \item $\Phi$ is an involutive algebra homomorphism.
 \item $\opnorm{\Phi\left(f\right)}\le\norm f_{L^{\infty}\left(K\right)}$
 \item For $f\in C^{0}$, $\Phi\left(f\right)$ coincides with the continuous
@@ -8008,22 +8009,11 @@ with $B_{\varepsilon}\left(\mu_{0}\right)\subseteq\varrho\left(A\right)$.
 \caption{$B_{\varepsilon}\left(\mu_{0}\right)\subseteq\varrho\left(A\right)$}
 \end{figure}
 
-\begin{description}
-\item [{Lemma:}] Let $B\in L\left(H\right)$ be an operator with bounded
-inverse and $B_{n}\in L\left(H\right)$ a sequence with $B_{n}\to B$
-in $L\left(H\right)$. Then $B_{n}^{-1}$ exists for large enough
-$n$ and $B_{n}^{-1}\to B$ converges in $L\left(H\right)$.
-\item [{Proof:}] Use the Neumann series:
-\begin{align*}
-B_{n}^{-1} & =\left(B+\left(B_{n}-B\right)\right)^{-1}=\left(\mathbbm{1}+B^{-1}\left(B_{n}-B\right)\right)B^{-1}=\sum_{k=0}^{\infty}\left(-B^{-1}\left(B_{n}-B\right)\right)^{k}B^{-1}
-\end{align*}
-This converges absolutely, if $\opnorm{B_{n}-B}$ is sufficiently
-small. Therefore holds:
-\begin{align*}
-\opnorm{B_{n}^{-1}-B^{-1}} & \le\sum_{k=1}^{\infty}\opnorm{B^{-1}}^{k+1}\cdot\opnorm{B_{n}-B}^{k}\xrightarrow{\opnorm{B_{n}\to B}}0
-\end{align*}
-\qqed[Lemma]
-\end{description}
+
+Lemma \ref{sec:Lemma-approximate-inverse} states: Let $B\in L\left(H\right)$
+be an operator with bounded inverse and $B_{n}\in L\left(H\right)$
+a sequence with $B_{n}\to B$ in $L\left(H\right)$. Then $B_{n}^{-1}$
+exists for large enough $n$ and $B_{n}^{-1}\to B$ converges in $L\left(H\right)$.\\
 In particular, for $\mu_{n}\xrightarrow{n\to\infty}\mu_{0}$ converges
 also $\left(A-\mu_{n}\right)^{-1}\to\left(A-\mu_{0}\right)^{-1}$
 in $L\left(H\right)$.\\
@@ -8088,6 +8078,28 @@ in $u$) it follows that $E_{B_{\varepsilon'}\left(\mu_{0}\right)}=0$
 and thus $\mu_{0}\not\in\text{supp}\left(E\right)$.\qqed
 
 
+\section{Lemma\label{sec:Lemma-approximate-inverse}}
+
+Let $B\in L\left(H\right)$ be an operator with bounded inverse and
+$B_{n}\in L\left(H\right)$ a sequence with $B_{n}\to B$ in $L\left(H\right)$.
+Then $B_{n}^{-1}$ exists for large enough $n$ and $B_{n}^{-1}\to B$
+converges in $L\left(H\right)$.
+
+
+\subsubsection*{Proof}
+
+Use the Neumann series:
+\begin{align*}
+B_{n}^{-1} & =\left(B+\left(B_{n}-B\right)\right)^{-1}=\left(\mathbbm{1}+B^{-1}\left(B_{n}-B\right)\right)B^{-1}=\sum_{k=0}^{\infty}\left(-B^{-1}\left(B_{n}-B\right)\right)^{k}B^{-1}
+\end{align*}
+This converges absolutely, if $\opnorm{B_{n}-B}$ is sufficiently
+small. Therefore holds:
+\begin{align*}
+\opnorm{B_{n}^{-1}-B^{-1}} & \le\sum_{k=1}^{\infty}\opnorm{B^{-1}}^{k+1}\cdot\opnorm{B_{n}-B}^{k}\xrightarrow{\opnorm{B_{n}\to B}}0
+\end{align*}
+\qqed[Lemma]
+
+
 \section{Theorem}
 
 Let $A\in L\left(H\right)$ be normal and $E$ the corresponding spectral
@@ -8106,7 +8118,7 @@ measure. Then holds for all $\varepsilon\in\mathbb{R}_{>0}$:
 \qqed
 
 
-\section{Theorem}
+\section{Theorem \textmd{(spectral mapping theorem for normal operators)}}
 
 Let $A\in L\left(H\right)$ be normal and $f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$.
 Then $\sigma\left(f\left(A\right)\right)=f\left(\sigma\left(A\right)\right)$.
@@ -8139,8 +8151,335 @@ g\left(A\right)\cdot\left(f\left(A\right)-\mu\right) & =\int_{\mathbb{R}^{2}}\fr
 Hence $f\left(A\right)-\mu$ has a bounded inverse $g\left(A\right)$
 and thus $\mu\in\varrho\left(f\left(A\right)\right)$, i.e. $\mu\not\in\sigma\left(f\left(A\right)\right)$.\qqed[\roman{enumi})]
 \item „$f\left(\sigma\left(A\right)\right)\subseteq\sigma\left(f\left(A\right)\right)$“:
-Consider $\mu\in\sigma\left(A\right)$ and show $f\left(\mu\right)\in\sigma\left(f\left(A\right)\right)$.
+Consider $\mu\in\sigma\left(A\right)$ and show $f\left(\mu\right)\in\sigma\left(f\left(A\right)\right)$.\\
+%DATE: Fr 25.1.13\\
+From $\sigma\left(A\right)=\text{supp}\left(E\right)$ follows for
+all $\varepsilon\in\mathbb{R}_{>0}$:
+\begin{align*}
+E_{B_{\varepsilon}\left(\mu\right)} & \not=0
+\end{align*}
+Thus we may choose $u\not=0$ with:
+\begin{align*}
+E_{B_{\varepsilon}\left(\mu\right)}u & =u
+\end{align*}
+Then holds:
+\begin{align*}
+\norm{\left(f\left(A\right)-f\left(\mu\right)\right)u}^{2} & =\left\langle \left(f\left(A\right)-f\left(\mu\right)\right)u,\left(f\left(A\right)-f\left(\mu\right)\right)u\right\rangle =\\
+ & =\left\langle u,\left(\overline{f}\left(A\right)-\overline{f}\left(\mu\right)\right)\left(f\left(A\right)-f\left(\mu\right)\right)u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle E_{B_{\varepsilon}\left(\mu\right)}u,E_{\lambda}E_{B_{\varepsilon}\left(\mu\right)}u\right\rangle =\\
+ & =\int_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle \le\\
+ & \le\sup_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\int_{\mathbb{R}^{2}}\dd\left\langle u,E_{\lambda}u\right\rangle \le\\
+ & \le\sup_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\norm u^{2}
+\end{align*}
+Since $f$ is continuous, there exists a sequence $u_{n}\in H$ with
+$\norm{u_{n}}=1$ such that holds:
+\begin{align*}
+\norm{\left(f\left(A\right)-f\left(\mu\right)\right)u_{n}} & \to0
+\end{align*}
+Hence $f\left(A\right)-f\left(\mu\right)$ has no bounded inverse
+and therefore follows $\mu\in\sigma\left(f\left(A\right)\right)$.
 \end{enumerate}
+\qqed
+
+
+\section{Corollary}
+
+For a normal $A\in L\left(H\right)$ and a $f\in C^{0}\left(\sigma\left(A\right)\right)$
+holds:
+\begin{align*}
+\opnorm{f\left(A\right)} & =\norm f_{L^{\infty}\left(\sigma\left(A\right)\right)}
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+From $\left(f\left(A\right)\right)^{*}=\overline{f}\left(A\right)$
+follows:
+\begin{align*}
+\left(f\left(A\right)\right)^{*}f\left(A\right) & =\abs f^{2}\left(A\right)=f\left(A\right)\left(f\left(A\right)\right)^{*}
+\end{align*}
+Hence the operator $f\left(A\right)$ is normal.
+\begin{align*}
+\opnorm{f\left(A\right)} & =r\left(f\left(A\right)\right)=\sup\left\{ \abs{\mu}\big|\mu\in\sigma\left(f\left(A\right)\right)\right\} =\\
+ & =\sup\left\{ \abs{\mu}\big|\mu\in f\left(\sigma\left(A\right)\right)\right\} =\sup\left\{ \abs{f\left(\lambda\right)}\big|\lambda\in\sigma\left(A\right)\right\} =\norm f_{L^{\infty}\left(\sigma\left(A\right)\right)}
+\end{align*}
+\qqed
+
+Thus the mapping
+\begin{align*}
+\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+is preserving the norm. Be careful to remember that
+\begin{align*}
+\Phi:C^{0}\left(\mathbb{R}^{2},\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+is \emph{not} preserving the norm. Instead holds:
+\begin{align*}
+\opnorm{f\left(A\right)} & \le\norm f_{L^{\infty}\left(\mathbb{R}\right)}
+\end{align*}
+
+
+
+\section{Theorem}
+
+Let $A\in L\left(H\right)$ be normal and $E$ the corresponding spectral
+measure. Then $\mu$ is an eigenvalue of $A$ if and only if $E_{\left\{ \mu\right\} }\not=0$.
+
+
+\subsubsection*{Proof}
+
+„$\Leftarrow$“: Assume that $E_{\left\{ \mu\right\} }\not=0$. Now
+choose a vector $u\not=0$ with $E_{\left\{ \mu\right\} }u=u$. Then
+holds:
+\begin{align*}
+\norm{\left(A-\mu\right)u}^{2} & =\int_{\mathbb{R}^{2}}\abs{\lambda-\mu}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle =\int_{\mathbb{R}^{2}}\abs{\lambda-\mu}^{2}\dd\left\langle E_{\left\{ \mu\right\} }u,E_{\lambda}E_{\left\{ \mu\right\} }u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\underbrace{\abs{\lambda-\mu}^{2}\chi_{\left\{ \mu\right\} }\left(\lambda\right)}_{=0}\dd\left\langle u,E_{\lambda}u\right\rangle =0
+\end{align*}
+„$\Rightarrow$“: Let $u$ be an eigenvector.
+\begin{align*}
+Au & =\mu u
+\end{align*}
+Then holds for all $f\in\mathcal{B}\left(\mathbb{R}^{2}\right)$ after
+theorem \ref{sec:Thm-normal-functional-calculus} v):
+\begin{align*}
+f\left(A\right)u & =f\left(\mu\right)u
+\end{align*}
+Choose $f=\chi_{\left\{ \mu\right\} }$ to get:
+\begin{align*}
+f\left(A\right) & =\chi_{\left\{ \mu\right\} }\left(A\right)=E_{\left\{ \mu\right\} }
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad E_{\left\{ \mu\right\} }u & =u
+\end{align*}
+Hence follows $E_{\left\{ \mu\right\} }\not=0$.\qqed
+
+
+\chapter{Cyclic vectors, the spectral theorem in its multiplicative form}
+
+Let $A\in L\left(H\right)$ be normal.
+
+
+\section{Definition \textmd{(cyclic vector)}}
+
+A vector $u\in H$ is called \emph{cyclic} (with respect to $A$)
+if holds:
+\begin{align*}
+\overline{\left\{ f\left(A\right)u\bigg|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
+\end{align*}
+
+
+
+\section{Theorem\label{sec:Thm-cyclic-vector_unitary-operator}}
+
+Let $u\in H$ be a cyclic vector. Then there exists a unitary operator
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\big(\sigma\left(A\right),\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{=\dd\mu_{u}}\big)
+\end{align*}
+such that for $f\in L^{2}\left(\sigma\left(A\right),\dd\left\langle u,E_{\lambda}u\right\rangle \right)$
+and $g\left(\lambda\right)=\lambda$ holds:
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =g\cdot f
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+\begin{align*}
+\alpha\left(f\left(A\right)u\right)+\beta\left(g\left(A\right)u\right) & =\left(\alpha f+\beta g\right)\left(A\right)u
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad K & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
+\end{align*}
+By assumption, $K$ is dense in $H$. Define
+\begin{align*}
+\mathcal{U}:K & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\end{align*}
+by:
+\begin{align*}
+\mathcal{U}\left(f\left(A\right)u\right) & =f
+\end{align*}
+This is well-defined and an isometry, because:
+\begin{align*}
+\left\langle f\left(A\right)u,f\left(A\right)u\right\rangle  & =\int\abs{f\left(\lambda\right)}^{2}\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{=\dd\mu_{u}}=\left\langle f,f\right\rangle _{L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)}
+\end{align*}
+Moreover, the image of $\mathcal{U}$ is $C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+and this is dense in $L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)$.
+Therefore $\mathcal{U}$ can be uniquely extended by continuity to
+an unitary operator:
+\begin{align*}
+\mathcal{U}:H=\overline{K} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\end{align*}
+Compute now $\mathcal{U}A\mathcal{U}^{-1}$:
+\begin{align*}
+\mathcal{U}\left(f\left(A\right)u\right) & =f
+\end{align*}
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =\mathcal{U}\underbrace{A}_{=g\left(A\right)}\left(f\left(A\right)u\right)=\mathcal{U}\left(\left(g\cdot f\right)\left(A\right)u\right)=g\cdot f
+\end{align*}
+Using a density argument, this holds for any $f\in L^{2}$.\qqed
+
+
+\section{Examples}
+\begin{enumerate}
+\item Let $H$ be finite-dimensional and $A$ symmetric with simple eigenvalues
+$\lambda_{1},\ldots,\lambda_{n}$. In an eigenvector basis holds:
+\begin{align*}
+A & =\left(\begin{array}{ccc}
+\lambda_{1} &  & 0\\
+ & \ddots\\
+0 &  & \lambda_{n}
+\end{array}\right)
+\end{align*}
+For $v=\left(1,0,\ldots,0\right)^{\TT}$ follows:
+\begin{align*}
+f\left(A\right)v & =\left(\begin{array}{ccc}
+f\left(\lambda_{1}\right) &  & 0\\
+ & \ddots\\
+0 &  & f\left(\lambda_{n}\right)
+\end{array}\right)v=f\left(\lambda_{1}\right)v
+\end{align*}
+Therefore this $v$ is not cyclic. Choose $u=\left(1,\ldots,1\right)^{\TT}$
+to get:
+\begin{align*}
+f\left(A\right)u & =\left(\begin{array}{c}
+f\left(\lambda_{1}\right)\\
+\vdots\\
+f\left(\lambda_{n}\right)
+\end{array}\right)
+\end{align*}
+There are $f_{i}\in C^{0}\left(\sigma\left(A\right)\right)$ such
+that $f_{i}\left(\lambda_{i}\right)=1$ and $f_{j}\left(\lambda_{i}\right)=0$
+for $i\not=j$$ $, since $\lambda_{i}\not=\lambda_{j}$ for $i\not=j$.
+With this holds $f_{i}\left(A\right)u=e_{i}$. Therefore holds:
+\begin{align*}
+\left\{ f\left(A\right)u\big|f\in C^{0}\right\}  & =H
+\end{align*}
+
+\item Let $A$ be as in 1., but with the degeneracy $\lambda_{1}=\lambda_{2}$
+and $u=\left(u_{1},\ldots,u_{n}\right)^{\TT}$. Then follows:
+\begin{align*}
+f\left(A\right)u & =\left(\begin{array}{c}
+f\left(\lambda_{1}\right)u_{1}\\
+\vdots\\
+f\left(\lambda_{n}\right)u_{n}
+\end{array}\right)
+\end{align*}
+Then the vector $v=\left(v_{1},v_{2},0,\ldots,0\right)^{\TT}$ with
+\begin{align*}
+\left(\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right) & \not\parallel\left(\begin{array}{c}
+u_{1}\\
+u_{2}
+\end{array}\right)
+\end{align*}
+is not in:
+\begin{align*}
+\left\{ f\left(A\right)u\big|f\in C^{0}\right\} 
+\end{align*}
+Hence there is no cyclic vector.
+\end{enumerate}
+\emph{Question}: What can we do if there is a cyclic vector?
+
+
+\section{Lemma}
+
+Let $A\in L\left(H\right)$ be normal and $A$ symmetric. Then there
+exists an orthogonal decomposition
+\begin{align*}
+H & =\bigoplus_{j\in J}H_{j}
+\end{align*}
+with a finite or countable $J$ and to every $j\in J$ there is a
+cyclic vector $u_{j}\in H_{j}$, i.e.:
+\begin{align*}
+H_{j} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} }
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Let $\left(e_{i}\right)_{i\in\mathbb{N}}$ be an orthonormal Hilbert
+basis. Choose $u_{1}=e_{1}$ and define:
+\begin{align*}
+H_{1} & :=\overline{\left\{ f\left(A\right)u_{1}\big|f\in C^{0}\right\} }\subseteq H
+\end{align*}
+If $H_{1}=H$, we are done. Otherwise, let $i_{0}\in\mathbb{N}$ be
+the smallest number such that $e_{i_{0}}\not\in H_{1}$ and set:
+\begin{align*}
+v_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
+H_{2} & :=\overline{\left\{ f\left(A\right)u_{2}\big|f\in C^{0}\right\} }\subseteq H
+\end{align*}
+For $H=\left\langle H_{1},H_{2}\right\rangle $ we stop the procedure.
+Otherwise choose $i_{1}$ as the smallest number such that $e_{i_{1}}\not\in\left\langle H_{1},H_{2}\right\rangle $,
+and so on.\\
+Proceeding inductively, we obtain that $J=\left\{ i_{k}\right\} $
+is finite or countable and for $j\in J$:
+\begin{align*}
+H_{j} & =\overline{\left\{ f\left(A\right)u_{j}\big|f\in C^{0}\right\} }
+\end{align*}
+
+\begin{itemize}
+\item $H_{i}\perp H_{j}$ for $i\not=j$:
+\begin{align*}
+\left\langle f\left(A\right)u_{i},g\left(A\right)u_{j}\right\rangle  & =\big\langle\underbrace{\left(\overline{g}\cdot f\right)\left(A\right)u_{i}}_{\in H_{i}},u_{j}\big\rangle\stackrel{u_{j}\in H_{i}^{\perp}}{=}0
+\end{align*}
+The result follows by using that $\left\{ f\left(A\right)u_{i}\right\} $
+and $\left\{ g\left(A\right)u_{j}\right\} $ are dense in $H_{i}$
+respectively $H_{j}$.
+\item The $H_{i}$ generate a dense subset of $H$: By construction we have:
+\begin{align*}
+e_{i_{k}} & \in\left\langle H_{1},H_{2},\ldots,H_{k+2}\right\rangle 
+\end{align*}
+Since $i_{k}\ge k$ holds, every basis vector $e_{i}$ is contained
+in $\left\langle H_{1},H_{2},\ldots,H_{i+2}\right\rangle $. Hence
+the algebraic span of the $\left(e_{i}\right)$ is contained in the
+span of the $\left(H_{i}\right)_{i\in J}$.
+\end{itemize}
+\qqed
+
+
+\section{Theorem \textmd{(spectral theorem in its multiplicative form)}}
+
+Let $A\in L\left(H\right)$ be normal and $H$ separable. Then there
+is a $\sigma$-compact measure space $\Omega$ with a finite measure
+$\mu$ and a unitary operator
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+such that for $g\in L^{\infty}\left(\Omega,\mu\right)$ holds:
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =g\cdot f
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+Decompose
+\begin{align*}
+H & =\bigoplus_{i\in J}H_{i}
+\end{align*}
+and choose cyclic $u_{i}\in H_{i}$. Then holds:
+\begin{align*}
+H_{i} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\right\} }
+\end{align*}
+We rescale $u_{i}$ such that $\norm{u_{i}}=2^{-i}$ holds.
+\begin{align*}
+\mathcal{U}_{i}:H_{i} & \to L^{2}\bigg(\sigma\left(A\right),\underbrace{\dd\mu_{u_{i}}}_{=\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }\bigg)\\
+f\left(A\right)u_{i} & \mapsto f
+\end{align*}
+This is just as before in theorem \ref{sec:Thm-cyclic-vector_unitary-operator}.
+Now define:
+\begin{align*}
+\Omega & :=\sigma\left(A\right)\times J & \dd\mu & :=\sum_{i\in J}\dd\mu_{u_{i}}
+\end{align*}
+
+
 
 \part*{Appendix \thispagestyle{empty}}
 

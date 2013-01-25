@@ -26891,7 +26891,9 @@ status open
 
 
 \backslash
-qqed
+qqed[
+\backslash
+ref{sub:Thm-Riesz-representation}]
 \end_layout
 
 \end_inset
@@ -28050,16 +28052,11 @@ name "sub:Lem-spectral-mapping-thm_polynomials"
 \end_layout
 
 \begin_layout Standard
-For 
-\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+For a complex polynomial 
+\begin_inset Formula $p\in\mathbb{P}_{\mathbb{C}}$
 \end_inset
 
-, i.e.
- 
-\begin_inset Formula $p$
-\end_inset
-
- is a complex polynomial, holds:
+ holds:
 \begin_inset Formula 
 \begin{align*}
 \sigma\left(p\left(A\right)\right) & =p\left(\sigma\left(A\right)\right)
@@ -28240,7 +28237,7 @@ qqed
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+\begin_inset Formula $p\in\mathbb{P}_{\mathbb{C}}$
 \end_inset
 
  be a complex polynomial.
@@ -28542,7 +28539,7 @@ Let
 \end_inset
 
  be symmetric and 
-\begin_inset Formula $p\in\mathfrak{P}\left(\mathbb{C}\right)$
+\begin_inset Formula $p\in\mathbb{P}_{\mathbb{C}}$
 \end_inset
 
  a complex polynomial.
@@ -28622,12 +28619,12 @@ For complex polynomials, we set
 \end_inset
 
 Thus 
-\begin_inset Formula $\Phi:\mathfrak{P}\left(\mathbb{C}\right)\to L\left(H\right)$
+\begin_inset Formula $\Phi:\mathbb{P}_{\mathbb{C}}\to L\left(H\right)$
 \end_inset
 
  is an isometry.
  (
-\begin_inset Formula $\mathfrak{P}\left(\mathbb{C}\right)\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\begin_inset Formula $\mathbb{P}_{\mathbb{C}}\subseteq C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
 \end_inset
 
 )
@@ -28698,7 +28695,7 @@ More specifically, consider
 
 .
  Then there exist 
-\begin_inset Formula $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$
+\begin_inset Formula $p_{n}\in\mathbb{P}_{\mathbb{C}}$
 \end_inset
 
  such that 
@@ -28863,7 +28860,7 @@ So
 
 .
  Choose polynomials 
-\begin_inset Formula $p_{n}\in\mathfrak{P}\left(\mathbb{C}\right)$
+\begin_inset Formula $p_{n}\in\mathbb{P}_{\mathbb{C}}$
 \end_inset
 
  with 
@@ -28989,6 +28986,9 @@ Let
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -28996,7 +28996,9 @@ status open
 
 
 \backslash
-qqed
+qqed[
+\backslash
+ref{sub:Thm-spectral-mapping-theorem}]
 \end_layout
 
 \end_inset
@@ -30170,9 +30172,7 @@ status open
 
 
 \backslash
-qqed[
-\backslash
-roman{enumi})]
+qqed[iii)]
 \end_layout
 
 \end_inset
@@ -30240,9 +30240,7 @@ status open
 
 
 \backslash
-qqed[
-\backslash
-roman{enumi})]
+qqed[ii)]
 \end_layout
 
 \end_inset
@@ -34498,6 +34496,28 @@ with the following properties:
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -34946,6 +34966,13 @@ Now apply the Riesz representation theorem to extend the functional calculus
 
 \begin_layout Section
 Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-normal-functional-calculus"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34966,6 +34993,28 @@ with the following properties:
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -35469,8 +35518,15 @@ end{tikzpicture}
 
 \end_layout
 
-\begin_layout Description
-Lemma: Let 
+\begin_layout Standard
+Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Lemma-approximate-inverse"
+
+\end_inset
+
+ states: Let 
 \begin_inset Formula $B\in L\left(H\right)$
 \end_inset
 
@@ -35504,47 +35560,9 @@ Lemma: Let
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Description
-Proof: Use the Neumann series:
-\begin_inset Formula 
-\begin{align*}
-B_{n}^{-1} & =\left(B+\left(B_{n}-B\right)\right)^{-1}=\left(\mathbbm{1}+B^{-1}\left(B_{n}-B\right)\right)B^{-1}=\sum_{k=0}^{\infty}\left(-B^{-1}\left(B_{n}-B\right)\right)^{k}B^{-1}
-\end{align*}
-
+\begin_inset Newline newline
 \end_inset
 
-This converges absolutely, if 
-\begin_inset Formula $\opnorm{B_{n}-B}$
-\end_inset
-
- is sufficiently small.
- Therefore holds:
-\begin_inset Formula 
-\begin{align*}
-\opnorm{B_{n}^{-1}-B^{-1}} & \le\sum_{k=1}^{\infty}\opnorm{B^{-1}}^{k+1}\cdot\opnorm{B_{n}-B}^{k}\xrightarrow{\opnorm{B_{n}\to B}}0
-\end{align*}
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-qqed[Lemma]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 In particular, for 
 \begin_inset Formula $\mu_{n}\xrightarrow{n\to\infty}\mu_{0}$
 \end_inset
@@ -35756,6 +35774,96 @@ qqed
 \end_layout
 
 \begin_layout Section
+Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Lemma-approximate-inverse"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $B\in L\left(H\right)$
+\end_inset
+
+ be an operator with bounded inverse and 
+\begin_inset Formula $B_{n}\in L\left(H\right)$
+\end_inset
+
+ a sequence with 
+\begin_inset Formula $B_{n}\to B$
+\end_inset
+
+ in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $B_{n}^{-1}$
+\end_inset
+
+ exists for large enough 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{n}^{-1}\to B$
+\end_inset
+
+ converges in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Use the Neumann series:
+\begin_inset Formula 
+\begin{align*}
+B_{n}^{-1} & =\left(B+\left(B_{n}-B\right)\right)^{-1}=\left(\mathbbm{1}+B^{-1}\left(B_{n}-B\right)\right)B^{-1}=\sum_{k=0}^{\infty}\left(-B^{-1}\left(B_{n}-B\right)\right)^{k}B^{-1}
+\end{align*}
+
+\end_inset
+
+This converges absolutely, if 
+\begin_inset Formula $\opnorm{B_{n}-B}$
+\end_inset
+
+ is sufficiently small.
+ Therefore holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{B_{n}^{-1}-B^{-1}} & \le\sum_{k=1}^{\infty}\opnorm{B^{-1}}^{k+1}\cdot\opnorm{B_{n}-B}^{k}\xrightarrow{\opnorm{B_{n}\to B}}0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Lemma]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Theorem
 \end_layout
 
@@ -35813,7 +35921,9 @@ qqed
 \end_layout
 
 \begin_layout Section
-Theorem
+Theorem 
+\series medium
+(spectral mapping theorem for normal operators)
 \end_layout
 
 \begin_layout Standard
@@ -35978,6 +36088,1060 @@ roman{enumi})]
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 25.1.13
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+From 
+\begin_inset Formula $\sigma\left(A\right)=\text{supp}\left(E\right)$
+\end_inset
+
+ follows for all 
+\begin_inset Formula $\varepsilon\in\mathbb{R}_{>0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+E_{B_{\varepsilon}\left(\mu\right)} & \not=0
+\end{align*}
+
+\end_inset
+
+Thus we may choose 
+\begin_inset Formula $u\not=0$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+E_{B_{\varepsilon}\left(\mu\right)}u & =u
+\end{align*}
+
+\end_inset
+
+Then holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(f\left(A\right)-f\left(\mu\right)\right)u}^{2} & =\left\langle \left(f\left(A\right)-f\left(\mu\right)\right)u,\left(f\left(A\right)-f\left(\mu\right)\right)u\right\rangle =\\
+ & =\left\langle u,\left(\overline{f}\left(A\right)-\overline{f}\left(\mu\right)\right)\left(f\left(A\right)-f\left(\mu\right)\right)u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle E_{B_{\varepsilon}\left(\mu\right)}u,E_{\lambda}E_{B_{\varepsilon}\left(\mu\right)}u\right\rangle =\\
+ & =\int_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle \le\\
+ & \le\sup_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\int_{\mathbb{R}^{2}}\dd\left\langle u,E_{\lambda}u\right\rangle \le\\
+ & \le\sup_{B_{\varepsilon}\left(\mu\right)}\abs{f\left(\lambda\right)-f\left(\mu\right)}^{2}\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f$
+\end_inset
+
+ is continuous, there exists a sequence 
+\begin_inset Formula $u_{n}\in H$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{u_{n}}=1$
+\end_inset
+
+ such that holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(f\left(A\right)-f\left(\mu\right)\right)u_{n}} & \to0
+\end{align*}
+
+\end_inset
+
+Hence 
+\begin_inset Formula $f\left(A\right)-f\left(\mu\right)$
+\end_inset
+
+ has no bounded inverse and therefore follows 
+\begin_inset Formula $\mu\in\sigma\left(f\left(A\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Corollary
+\end_layout
+
+\begin_layout Standard
+For a normal 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ and a 
+\begin_inset Formula $f\in C^{0}\left(\sigma\left(A\right)\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{f\left(A\right)} & =\norm f_{L^{\infty}\left(\sigma\left(A\right)\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+From 
+\begin_inset Formula $\left(f\left(A\right)\right)^{*}=\overline{f}\left(A\right)$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\left(f\left(A\right)\right)^{*}f\left(A\right) & =\abs f^{2}\left(A\right)=f\left(A\right)\left(f\left(A\right)\right)^{*}
+\end{align*}
+
+\end_inset
+
+Hence the operator 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ is normal.
+\begin_inset Formula 
+\begin{align*}
+\opnorm{f\left(A\right)} & =r\left(f\left(A\right)\right)=\sup\left\{ \abs{\mu}\big|\mu\in\sigma\left(f\left(A\right)\right)\right\} =\\
+ & =\sup\left\{ \abs{\mu}\big|\mu\in f\left(\sigma\left(A\right)\right)\right\} =\sup\left\{ \abs{f\left(\lambda\right)}\big|\lambda\in\sigma\left(A\right)\right\} =\norm f_{L^{\infty}\left(\sigma\left(A\right)\right)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus the mapping
+\begin_inset Formula 
+\begin{align*}
+\Phi:C^{0}\left(\sigma\left(A\right),\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+is preserving the norm.
+ Be careful to remember that
+\begin_inset Formula 
+\begin{align*}
+\Phi:C^{0}\left(\mathbb{R}^{2},\mathbb{C}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+is 
+\emph on
+not
+\emph default
+ preserving the norm.
+ Instead holds:
+\begin_inset Formula 
+\begin{align*}
+\opnorm{f\left(A\right)} & \le\norm f_{L^{\infty}\left(\mathbb{R}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be normal and 
+\begin_inset Formula $E$
+\end_inset
+
+ the corresponding spectral measure.
+ Then 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is an eigenvalue of 
+\begin_inset Formula $A$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $E_{\left\{ \mu\right\} }\not=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Assume that 
+\begin_inset Formula $E_{\left\{ \mu\right\} }\not=0$
+\end_inset
+
+.
+ Now choose a vector 
+\begin_inset Formula $u\not=0$
+\end_inset
+
+ with 
+\begin_inset Formula $E_{\left\{ \mu\right\} }u=u$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(A-\mu\right)u}^{2} & =\int_{\mathbb{R}^{2}}\abs{\lambda-\mu}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle =\int_{\mathbb{R}^{2}}\abs{\lambda-\mu}^{2}\dd\left\langle E_{\left\{ \mu\right\} }u,E_{\lambda}E_{\left\{ \mu\right\} }u\right\rangle =\\
+ & =\int_{\mathbb{R}^{2}}\underbrace{\abs{\lambda-\mu}^{2}\chi_{\left\{ \mu\right\} }\left(\lambda\right)}_{=0}\dd\left\langle u,E_{\lambda}u\right\rangle =0
+\end{align*}
+
+\end_inset
+
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Let 
+\begin_inset Formula $u$
+\end_inset
+
+ be an eigenvector.
+\begin_inset Formula 
+\begin{align*}
+Au & =\mu u
+\end{align*}
+
+\end_inset
+
+Then holds for all 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{R}^{2}\right)$
+\end_inset
+
+ after theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-normal-functional-calculus"
+
+\end_inset
+
+ v):
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)u & =f\left(\mu\right)u
+\end{align*}
+
+\end_inset
+
+Choose 
+\begin_inset Formula $f=\chi_{\left\{ \mu\right\} }$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right) & =\chi_{\left\{ \mu\right\} }\left(A\right)=E_{\left\{ \mu\right\} }
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad E_{\left\{ \mu\right\} }u & =u
+\end{align*}
+
+\end_inset
+
+Hence follows 
+\begin_inset Formula $E_{\left\{ \mu\right\} }\not=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Cyclic vectors, the spectral theorem in its multiplicative form
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be normal.
+\end_layout
+
+\begin_layout Section
+Definition 
+\series medium
+(cyclic vector)
+\end_layout
+
+\begin_layout Standard
+A vector 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ is called 
+\emph on
+cyclic
+\emph default
+ (with respect to 
+\begin_inset Formula $A$
+\end_inset
+
+) if holds:
+\begin_inset Formula 
+\begin{align*}
+\overline{\left\{ f\left(A\right)u\bigg|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-cyclic-vector_unitary-operator"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ be a cyclic vector.
+ Then there exists a unitary operator
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\big(\sigma\left(A\right),\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{=\dd\mu_{u}}\big)
+\end{align*}
+
+\end_inset
+
+such that for 
+\begin_inset Formula $f\in L^{2}\left(\sigma\left(A\right),\dd\left\langle u,E_{\lambda}u\right\rangle \right)$
+\end_inset
+
+ and 
+\begin_inset Formula $g\left(\lambda\right)=\lambda$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =g\cdot f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\alpha\left(f\left(A\right)u\right)+\beta\left(g\left(A\right)u\right) & =\left(\alpha f+\beta g\right)\left(A\right)u
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad K & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
+\end{align*}
+
+\end_inset
+
+By assumption, 
+\begin_inset Formula $K$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Define
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:K & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\end{align*}
+
+\end_inset
+
+by:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}\left(f\left(A\right)u\right) & =f
+\end{align*}
+
+\end_inset
+
+This is well-defined and an isometry, because:
+\begin_inset Formula 
+\begin{align*}
+\left\langle f\left(A\right)u,f\left(A\right)u\right\rangle  & =\int\abs{f\left(\lambda\right)}^{2}\underbrace{\dd\left\langle u,E_{\lambda}u\right\rangle }_{=\dd\mu_{u}}=\left\langle f,f\right\rangle _{L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)}
+\end{align*}
+
+\end_inset
+
+Moreover, the image of 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ is 
+\begin_inset Formula $C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)$
+\end_inset
+
+ and this is dense in 
+\begin_inset Formula $L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ can be uniquely extended by continuity to an unitary operator:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:H=\overline{K} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\end{align*}
+
+\end_inset
+
+Compute now 
+\begin_inset Formula $\mathcal{U}A\mathcal{U}^{-1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}\left(f\left(A\right)u\right) & =f
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =\mathcal{U}\underbrace{A}_{=g\left(A\right)}\left(f\left(A\right)u\right)=\mathcal{U}\left(\left(g\cdot f\right)\left(A\right)u\right)=g\cdot f
+\end{align*}
+
+\end_inset
+
+Using a density argument, this holds for any 
+\begin_inset Formula $f\in L^{2}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $H$
+\end_inset
+
+ be finite-dimensional and 
+\begin_inset Formula $A$
+\end_inset
+
+ symmetric with simple eigenvalues 
+\begin_inset Formula $\lambda_{1},\ldots,\lambda_{n}$
+\end_inset
+
+.
+ In an eigenvector basis holds:
+\begin_inset Formula 
+\begin{align*}
+A & =\left(\begin{array}{ccc}
+\lambda_{1} &  & 0\\
+ & \ddots\\
+0 &  & \lambda_{n}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $v=\left(1,0,\ldots,0\right)^{\TT}$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)v & =\left(\begin{array}{ccc}
+f\left(\lambda_{1}\right) &  & 0\\
+ & \ddots\\
+0 &  & f\left(\lambda_{n}\right)
+\end{array}\right)v=f\left(\lambda_{1}\right)v
+\end{align*}
+
+\end_inset
+
+Therefore this 
+\begin_inset Formula $v$
+\end_inset
+
+ is not cyclic.
+ Choose 
+\begin_inset Formula $u=\left(1,\ldots,1\right)^{\TT}$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)u & =\left(\begin{array}{c}
+f\left(\lambda_{1}\right)\\
+\vdots\\
+f\left(\lambda_{n}\right)
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+There are 
+\begin_inset Formula $f_{i}\in C^{0}\left(\sigma\left(A\right)\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $f_{i}\left(\lambda_{i}\right)=1$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{j}\left(\lambda_{i}\right)=0$
+\end_inset
+
+ for 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+
+\begin_inset Formula $ $
+\end_inset
+
+, since 
+\begin_inset Formula $\lambda_{i}\not=\lambda_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+.
+ With this holds 
+\begin_inset Formula $f_{i}\left(A\right)u=e_{i}$
+\end_inset
+
+.
+ Therefore holds:
+\begin_inset Formula 
+\begin{align*}
+\left\{ f\left(A\right)u\big|f\in C^{0}\right\}  & =H
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be as in 1., but with the degeneracy 
+\begin_inset Formula $\lambda_{1}=\lambda_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $u=\left(u_{1},\ldots,u_{n}\right)^{\TT}$
+\end_inset
+
+.
+ Then follows:
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right)u & =\left(\begin{array}{c}
+f\left(\lambda_{1}\right)u_{1}\\
+\vdots\\
+f\left(\lambda_{n}\right)u_{n}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Then the vector 
+\begin_inset Formula $v=\left(v_{1},v_{2},0,\ldots,0\right)^{\TT}$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+\left(\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right) & \not\parallel\left(\begin{array}{c}
+u_{1}\\
+u_{2}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+is not in:
+\begin_inset Formula 
+\begin{align*}
+\left\{ f\left(A\right)u\big|f\in C^{0}\right\} 
+\end{align*}
+
+\end_inset
+
+Hence there is no cyclic vector.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Question
+\emph default
+: What can we do if there is a cyclic vector?
+\end_layout
+
+\begin_layout Section
+Lemma
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be normal and 
+\begin_inset Formula $A$
+\end_inset
+
+ symmetric.
+ Then there exists an orthogonal decomposition
+\begin_inset Formula 
+\begin{align*}
+H & =\bigoplus_{j\in J}H_{j}
+\end{align*}
+
+\end_inset
+
+with a finite or countable 
+\begin_inset Formula $J$
+\end_inset
+
+ and to every 
+\begin_inset Formula $j\in J$
+\end_inset
+
+ there is a cyclic vector 
+\begin_inset Formula $u_{j}\in H_{j}$
+\end_inset
+
+, i.e.:
+\begin_inset Formula 
+\begin{align*}
+H_{j} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} }
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(e_{i}\right)_{i\in\mathbb{N}}$
+\end_inset
+
+ be an orthonormal Hilbert basis.
+ Choose 
+\begin_inset Formula $u_{1}=e_{1}$
+\end_inset
+
+ and define:
+\begin_inset Formula 
+\begin{align*}
+H_{1} & :=\overline{\left\{ f\left(A\right)u_{1}\big|f\in C^{0}\right\} }\subseteq H
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $H_{1}=H$
+\end_inset
+
+, we are done.
+ Otherwise, let 
+\begin_inset Formula $i_{0}\in\mathbb{N}$
+\end_inset
+
+ be the smallest number such that 
+\begin_inset Formula $e_{i_{0}}\not\in H_{1}$
+\end_inset
+
+ and set:
+\begin_inset Formula 
+\begin{align*}
+v_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
+H_{2} & :=\overline{\left\{ f\left(A\right)u_{2}\big|f\in C^{0}\right\} }\subseteq H
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $H=\left\langle H_{1},H_{2}\right\rangle $
+\end_inset
+
+ we stop the procedure.
+ Otherwise choose 
+\begin_inset Formula $i_{1}$
+\end_inset
+
+ as the smallest number such that 
+\begin_inset Formula $e_{i_{1}}\not\in\left\langle H_{1},H_{2}\right\rangle $
+\end_inset
+
+, and so on.
+\begin_inset Newline newline
+\end_inset
+
+Proceeding inductively, we obtain that 
+\begin_inset Formula $J=\left\{ i_{k}\right\} $
+\end_inset
+
+ is finite or countable and for 
+\begin_inset Formula $j\in J$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+H_{j} & =\overline{\left\{ f\left(A\right)u_{j}\big|f\in C^{0}\right\} }
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H_{i}\perp H_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle f\left(A\right)u_{i},g\left(A\right)u_{j}\right\rangle  & =\big\langle\underbrace{\left(\overline{g}\cdot f\right)\left(A\right)u_{i}}_{\in H_{i}},u_{j}\big\rangle\stackrel{u_{j}\in H_{i}^{\perp}}{=}0
+\end{align*}
+
+\end_inset
+
+The result follows by using that 
+\begin_inset Formula $\left\{ f\left(A\right)u_{i}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ g\left(A\right)u_{j}\right\} $
+\end_inset
+
+ are dense in 
+\begin_inset Formula $H_{i}$
+\end_inset
+
+ respectively 
+\begin_inset Formula $H_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $H_{i}$
+\end_inset
+
+ generate a dense subset of 
+\begin_inset Formula $H$
+\end_inset
+
+: By construction we have:
+\begin_inset Formula 
+\begin{align*}
+e_{i_{k}} & \in\left\langle H_{1},H_{2},\ldots,H_{k+2}\right\rangle 
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $i_{k}\ge k$
+\end_inset
+
+ holds, every basis vector 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is contained in 
+\begin_inset Formula $\left\langle H_{1},H_{2},\ldots,H_{i+2}\right\rangle $
+\end_inset
+
+.
+ Hence the algebraic span of the 
+\begin_inset Formula $\left(e_{i}\right)$
+\end_inset
+
+ is contained in the span of the 
+\begin_inset Formula $\left(H_{i}\right)_{i\in J}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(spectral theorem in its multiplicative form)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be normal and 
+\begin_inset Formula $H$
+\end_inset
+
+ separable.
+ Then there is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-compact measure space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ with a finite measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and a unitary operator
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+such that for 
+\begin_inset Formula $g\in L^{\infty}\left(\Omega,\mu\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}f & =g\cdot f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+Decompose
+\begin_inset Formula 
+\begin{align*}
+H & =\bigoplus_{i\in J}H_{i}
+\end{align*}
+
+\end_inset
+
+and choose cyclic 
+\begin_inset Formula $u_{i}\in H_{i}$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+H_{i} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\right\} }
+\end{align*}
+
+\end_inset
+
+We rescale 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\norm{u_{i}}=2^{-i}$
+\end_inset
+
+ holds.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}_{i}:H_{i} & \to L^{2}\bigg(\sigma\left(A\right),\underbrace{\dd\mu_{u_{i}}}_{=\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }\bigg)\\
+f\left(A\right)u_{i} & \mapsto f
+\end{align*}
+
+\end_inset
+
+This is just as before in theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-cyclic-vector_unitary-operator"
+
+\end_inset
+
+.
+ Now define:
+\begin_inset Formula 
+\begin{align*}
+\Omega & :=\sigma\left(A\right)\times J & \dd\mu & :=\sum_{i\in J}\dd\mu_{u_{i}}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
