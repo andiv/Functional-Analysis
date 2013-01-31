@@ -9,7 +9,6 @@
 \pagestyle{fancy}
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
-\usepackage{color}
 \usepackage{babel}
 \usepackage{float}
 \usepackage{textcomp}
@@ -168,8 +167,8 @@
 
 
 
-%Shell-Kommando für Tikz-Externalize:
-%pdflatex -shell-escape Functional-Analysis.tex 
+% Shell-Kommando für Tikz-Externalize:
+% pdflatex -shell-escape Functional-Analysis.tex 
 
 \global\long\def\norm#1{\left\lVert #1\right\rVert }
 
@@ -825,12 +824,12 @@ and $\tau\in\left[0,1\right]$:
 Geometric question:
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
   \draw (1.5,0.5) node[right]{$y$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw[thick,red] (1,1.5) -- (2,-0.5) node[right]{$\mathcal{H}$};
   \node at (0.9,-0.7) {$K$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{not intersecting hyperplane}
+\end{tikzpicture}\caption{not intersecting hyperplane}
 \end{figure}
 
 
@@ -862,10 +861,10 @@ First introduce a suitable sublinear functional. Without loss of generality,
 assume $0\in K$ (otherwise shift $K$).
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
   \draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$0\in K$}
+\end{tikzpicture}\caption{$0\in K$}
 \end{figure}
 
 
@@ -885,13 +884,13 @@ p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in K
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
   \draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (1.5,0.8) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (0.5,0.2666) node[below right]{$\tau x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw[dashed] (1.5,0.8) -- (-0.75,-0.4);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$x\not\in K,\ \tau x\in K$}
+\end{tikzpicture}\caption{$x\not\in K,\ \tau x\in K$}
 \end{figure}
 
 
@@ -1142,7 +1141,7 @@ such that holds:
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw (0,0) node[above]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (0.542,-0.84) node[right]{$z$} circle (0.5) node[below=30]{$\overline{B}_{\frac{1}{2}}(z)$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw  (-1,0.3) -- (3,-0.9) node[above]{$Y$};
@@ -1150,7 +1149,7 @@ such that holds:
   \draw[dashed]  (0.542,-0.84) -- node[below]{$\frac{1}{2}$} (0.042,-0.84);
   \draw (2.5,-1) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (0.2,-0.31) node[left]{$z'$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\overline{B_{\frac{1}{2}}\left(z\right)}\cap Y=\emptyset$}
+\end{tikzpicture}\caption{$\overline{B_{\frac{1}{2}}\left(z\right)}\cap Y=\emptyset$}
 \end{figure}
 
 
@@ -1476,7 +1475,7 @@ Then $E$ is of second category.
 \subsubsection*{Proof}
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   % n=1
   \draw (0,0) circle (4);
   \node at (3.1,3.1) {$\overline{B_1}$};
@@ -1492,7 +1491,7 @@ Then $E$ is of second category.
   % n --> Infinity
   \draw[red] (0.7,1.8) node[right]{$x_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (0.9,1.9) circle (0.5) node[above right=6] {$\overline{B_3}$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$B_{n}\cap M_{n}=\emptyset$}
+\end{tikzpicture}\caption{$B_{n}\cap M_{n}=\emptyset$}
 \end{figure}
 
 
@@ -1558,13 +1557,13 @@ and thus there are $u_{0}\in E$ and $r\in\mathbb{R}_{>0}$ such that
 $B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=0.5]
+\noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$u_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw[dotted] (0,0) -- node[above right]{$r$} (-1.41,1.41);
   \draw (0.5,-1) node[right]{$v$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (-5,-4) -- (4,-4) node[below right]{$M_{n_0}\subseteq E$} -- (5,4) -- (-4,4) -- cycle;
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$}
+\end{tikzpicture}\caption{$B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$}
 \end{figure}
 
 
@@ -1700,13 +1699,13 @@ Since $0\in A\left(B_{1}\left(0\right)\right)$, there is a $\varepsilon\in\mathb
 such that $B_{\varepsilon}\left(0\right)\subseteq A\left(B_{1}\left(0\right)\right)$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=0.5]
+\noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw[dotted] (0,0) -- node[above right]{$\varepsilon$} (-1.41,1.41);
   \draw plot[smooth cycle] coordinates {(-3,-1) (-1,-3) (2,-4) (3,-1) (2,2) (1,3) (-1,3) (-2,2)};
   \node at (5,0) {$A(B_1(0))$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$B_{\varepsilon}\left(0\right)\subseteq A\left(B_{1}\left(0\right)\right)$}
+\end{tikzpicture}\caption{$B_{\varepsilon}\left(0\right)\subseteq A\left(B_{1}\left(0\right)\right)$}
 \end{figure}
 
 
@@ -1750,13 +1749,13 @@ According to Baire's theorem there is a $n\in\mathbb{N}$ such that
 $\overline{A\left(B_{n}\left(0\right)\right)}^{\,\circ}\not=\emptyset$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=0.5]
+\noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$y_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw[dotted] (0,0) -- node[above right]{$\varepsilon$} (-1.41,1.41);
   \draw plot[smooth cycle] coordinates {(-3,-1) (-1,-3) (2,-4) (3,-1) (2,2) (1,3) (-1,3) (-2,2)};
   \node at (5.5,0) {$\overline{A(B_n(0))}\subseteq F$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$B_{\varepsilon}\left(y_{0}\right)\subseteq\overline{A\left(B_{n}\left(0\right)\right)}$}
+\end{tikzpicture}\caption{$B_{\varepsilon}\left(y_{0}\right)\subseteq\overline{A\left(B_{n}\left(0\right)\right)}$}
 \end{figure}
 
 
@@ -1852,13 +1851,13 @@ x & \mapsto\frac{1}{x}
 in $\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\times\mathbb{R}$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm, axis x line=middle, axis y line=middle,
 			xtick={0}, ytick={0}, ymax=7, ymin=-7, xlabel=$x$, ylabel=$\ y$, domain=-7:7,samples=500]
   \addplot[mark=none] {1/x};
   \addlegendentry{$f(x)$}
  \end{axis}
-\end{tikzpicture} \hfill{}\hspace*{1mm}\caption{$f$ is not continuous, but $\text{graph}f$ is closed.}
+\end{tikzpicture} \caption{$f$ is not continuous, but $\text{graph}f$ is closed.}
 \end{figure}
 
 
@@ -2066,14 +2065,14 @@ is:
 
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   \draw[->] (0,0) -- node[left]{$u$} (2,2);
   \draw[->] (0,0) -- node[below]{$v$} (2,-3);
   \draw[->] (2,-3) -- node[above right]{$u-v$} (2,2);
   \draw[->] (0,0) -- (4,-1) node[right]{$u+v$};
   \draw[dashed] (2,2) -- (4,-1);
   \draw[dashed] (2,-3) -- (4,-1);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{parallelogram}
+\end{tikzpicture}\caption{parallelogram}
 \end{figure}
 
 
@@ -2187,7 +2186,7 @@ u,v & \in K & w & \in H\setminus K
 We want to find a vector $v$ such that $\norm{v-w}=\inf_{u\in K}\norm{u-w}$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   \draw[rotate=30] (0,0) ellipse (2 and 1);
   \node at (0,0) {$K$};
   \draw (2,-1) node[right]{$w$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2196,7 +2195,7 @@ We want to find a vector $v$ such that $\norm{v-w}=\inf_{u\in K}\norm{u-w}$.
   \draw[dashed] (1.25,-0.3) -- (2,-1);
   \draw (1,-0.54) arc [radius=0.35,start angle=225,delta angle=90];
   \draw[fill] (1.25,-0.5) circle (0.03);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\norm{v-w}=\inf_{u\in K}\norm{u-w}$}
+\end{tikzpicture}\caption{$\norm{v-w}=\inf_{u\in K}\norm{u-w}$}
 \end{figure}
 
 
@@ -2214,14 +2213,14 @@ Choose a convergent subsequence $u_{i_{l}}\to v$. Then by continuity:
 The main application are closed subspaces $K\subseteq H$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   \draw (0,0) -- (3,3) node [above right]{$K$};
   \draw (3,-1) node[right]{$w$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (1,1) node[right]{$v$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw[dashed] (1,1) -- (3,-1);
   \draw (0.75,0.75) arc [radius=0.35,start angle=225,delta angle=90];
   \draw[fill] (1,0.8) circle (0.03);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$v-w\perp K$}
+\end{tikzpicture}\caption{$v-w\perp K$}
 \end{figure}
 
 
@@ -2289,7 +2288,7 @@ w & =v+x
 with $v\in M$ and $x\in M^{\perp}$. We write $H=M\oplus M^{\perp}$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (-1,-1) -- (3,3) node [above right]{$M$};
   \draw (4,0) node[right]{$w$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (2,2) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2298,7 +2297,7 @@ with $v\in M$ and $x\in M^{\perp}$. We write $H=M\oplus M^{\perp}$.
   \draw[arr] (2,2) -- node[right]{$x$} (4,0);
   \draw (1.75,1.75) arc [radius=0.35,start angle=225,delta angle=90];
   \draw[fill] (2,1.8) circle (0.03);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$w=v+x$}
+\end{tikzpicture}\caption{$w=v+x$}
 \end{figure}
 
 
@@ -2388,7 +2387,7 @@ with $u_{n}\to u$ holds:
 So $u\in\ker\varphi$.
 
 \begin{figure}[h]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (-1,-1) -- (3,3) node [above right]{$M$};
   \draw (4,0) node[right]{$u$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (2,2) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2397,7 +2396,7 @@ So $u\in\ker\varphi$.
   \draw[arr] (2,2) -- node[right]{$x$} (4,0);
   \draw (1.75,1.75) arc [radius=0.35,start angle=225,delta angle=90];
   \draw[fill] (2,1.8) circle (0.03);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$u=v+x$}
+\end{tikzpicture}\caption{$u=v+x$}
 \end{figure}
 
 \begin{itemize}
@@ -3152,7 +3151,7 @@ with $\eta\in C_{0}^{\infty}\left(\mathbb{R}\right)$ and $\eta\big|_{\left[-1,1\
 Then $\norm{u_{n}}<\infty$ and $\norm{Au_{n}}\xrightarrow{n\to\infty}\infty$.
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[height=7cm, axis x line=middle, axis y line=middle,
 			x tick label style={/pgf/number format/dec sep={,}},
 			xtick={0}, ytick={0}, xlabel=$x$, ylabel=$y$, samples=300, ymax=1.2, ymin=-0.07]
@@ -3161,7 +3160,7 @@ Then $\norm{u_{n}}<\infty$ and $\norm{Au_{n}}\xrightarrow{n\to\infty}\infty$.
    \addplot[domain=1.01:2.99] {exp(-1/(3-x)^2)/(exp(-1/(3-x)^2)+exp(-1/(x-1)^2))};
   \addlegendentry{$\eta$}
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\eta\in C_{0}^{\infty}\left(\mathbb{R}\right)$ with $\eta\big|_{\left[-1,1\right]}=1$}
+\end{tikzpicture}\caption{$\eta\in C_{0}^{\infty}\left(\mathbb{R}\right)$ with $\eta\big|_{\left[-1,1\right]}=1$}
 \end{figure}
 
 
@@ -4207,12 +4206,12 @@ is defined by:
 r\left(A\right) & =\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}\in\mathbb{R}_{\ge0}\cup\left\{ \infty\right\} 
 \end{align*}
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
 \draw (0,0) circle (3);
 \draw plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (-0.3,0.3) (-1,0)};
 \node at (0.5,1) {$\sigma(A)$};
 \draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\sigma\left(A\right)\subseteq\overline{B_{r\left(A\right)}\left(0\right)}$}
+\end{tikzpicture}\caption{$\sigma\left(A\right)\subseteq\overline{B_{r\left(A\right)}\left(0\right)}$}
 \end{figure}
 
 
@@ -4272,8 +4271,7 @@ is thus defined by:
 R & :=\frac{1}{\limsup_{n\to\infty}\abs{a_{n}}^{\frac{1}{n}}}
 \end{align*}
 If $\abs z<R$ the sum converges absolutely and if $\abs z>R$ the
-sum diverges.\textcolor{green}{}
-
+sum diverges.\\
 In our setting for $A=0$ is nothing to prove. For $\lambda\in\varrho\left(A\right)\setminus\left\{ 0\right\} $
 we make a formal expansion:
 \begin{align*}
@@ -4308,7 +4306,7 @@ If $\frac{1}{\abs{\lambda}}>R$
 diverges.
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (0,0) circle (3);
   \draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
   \draw (0,0) circle (5);
@@ -4320,7 +4318,7 @@ diverges.
   \draw (0.7,4) -- node[above]{$\delta$} (0,4);
   \draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
   \draw (1,4.1) node[above]{$\nu$} +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\frac{1}{R}>r\left(A\right)$ ?}
+\end{tikzpicture}\caption{$\frac{1}{R}>r\left(A\right)$ ?}
 \end{figure}
 Why is $r$ not smaller than $\frac{1}{R}$?\\
 Assume that $r<\frac{1}{R}$ and choose $\lambda$ with $r<\abs{\lambda}<\frac{1}{R}$.
@@ -4342,7 +4340,7 @@ Furthermore for $\abs{\lambda}>\frac{1}{R}$ holds:
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
+\noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (0,0) circle (3.5);
   \draw (0,0) circle (2.33);
   \draw[arr] (0,0) -- node[left]{r(A)} (0,-2.33);
@@ -4355,7 +4353,7 @@ Furthermore for $\abs{\lambda}>\frac{1}{R}$ holds:
   \draw[thick] (0,0) circle (4) node[above=115]{$C$};
   \draw[thick,arr] (0,4) -- (-0.1,4);
   \draw[red] (2.25,0.5) -- node[above]{$\delta$} (2.92,0.65);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Contours $\Gamma$ and $C$ for integration}
+\end{tikzpicture}\caption{Contours $\Gamma$ and $C$ for integration}
 \end{figure}
 
 
@@ -4568,7 +4566,7 @@ Ritz, Galerkin: Finite element method\\
 Example: Helium molecule wave function in $H=L^{2}\left(\mathbb{R}^{3},\mathbb{C}\right)$
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   \draw[fill=black] (-1,0) circle (0.1);
   \draw[fill=black] (1,0) circle (0.1);
   \draw (-2,-0.3) -- (-2.5,-0.8) -- (-2.75,1) -- (-2,-0.3) -- (-1.8,2) -- (-2.75,1);
@@ -4576,7 +4574,7 @@ Example: Helium molecule wave function in $H=L^{2}\left(\mathbb{R}^{3},\mathbb{C
   \draw (-1.5,-0.8) -- (-2.5,-0.8);
   \draw (-1.5,-0.8) -- (-0.5,0) -- (-0.8,1) -- (0.5,0.7) -- (-0.5,0) -- (0.8,-0.8) -- (2,-0.3) -- (0.5,0.7);
   \draw (0.5,0.7) -- (0.8,-0.8);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{finite lattice for numerical approximation}
+\end{tikzpicture}\caption{finite lattice for numerical approximation}
 \end{figure}
 \begin{align*}
 A & =-\frac{\hbar^{2}}{2m}\Delta-\frac{ze^{2}}{\norm{x-x_{1}}}-\frac{ze^{2}}{\norm{x-x_{2}}}
@@ -4641,7 +4639,7 @@ f\left(x\right) & =\begin{cases}
 This $f$ is \emph{not} continuous.
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle, xmax=1.15, ymax=1.15,
 			xlabel=$x$, ylabel=$y$,samples=300]
@@ -4653,7 +4651,7 @@ This $f$ is \emph{not} continuous.
   \addplot[domain=0.5:1.15,red,thick] {0};
  \end{axis}
  \draw[red, thick, dashed,scale=7.34] (0.5,0) -- (0.5,0.83);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$f_{n}\left(x\right)$ is continuous, but not $f\left(x\right)$}
+\end{tikzpicture}\caption{$f_{n}\left(x\right)$ is continuous, but not $f\left(x\right)$}
 \end{figure}
 
 
@@ -4906,15 +4904,14 @@ converges uniformly.
 Example: $f\left(x\right)=10x\cdot e^{-3x}+\frac{1}{5}\cos\left(\left(4x\right)^{2}\right)$
 \begin{align*}
 B_{4}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{4}+5,2\cdot x\cdot\left(1-x\right)^{3}+5,9\cdot x^{2}\cdot\left(1-x\right)^{2}+2,4\cdot x^{3}\cdot\left(1-x\right)+0,3\cdot x^{4}\\
-B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+\\
- & \qquad+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+\\
- & \qquad+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+\\
- & \qquad+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
+B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+\\
+ & \qquad+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+\\
+ & \qquad+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
 \end{align*}
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0,
 			xlabel=$x$, ylabel=$y$,samples=300,domain=0:1]
@@ -4933,7 +4930,7 @@ B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\lef
   \addplot[mark=*, samples=10, only marks, green] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
   \addplot[mark=triangle*, samples=4, only marks, red] {10*exp(-3*x)*x+0.2*cos(16*x^2 r)};
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Approximation of $f\left(x\right)$ by $B_{n}f\left(x\right)$}
+\end{tikzpicture}\caption{Approximation of $f\left(x\right)$ by $B_{n}f\left(x\right)$}
 \end{figure}
 
 
@@ -5124,7 +5121,7 @@ and for all $y\in\overline{\mathcal{A}}$ holds:
 g\left(y\right) & \le f\left(y\right)+\varepsilon
 \end{align*}
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle, xmax=1.15, ymin=0, ymax=1.15,
 			samples=300,domain=0:1]
@@ -5137,7 +5134,7 @@ g\left(y\right) & \le f\left(y\right)+\varepsilon
  \end{axis}
   \draw[dashed] (5.05,0) -- (5.05,4.6);
   \draw (5.05,0) -- (5.05,-0.1) node[below] {$x$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$g\left(x\right)\le f\left(x\right)+\varepsilon$}
+\end{tikzpicture}\caption{$g\left(x\right)\le f\left(x\right)+\varepsilon$}
 \end{figure}
 To show this, choose for any $z\in E$ a $h_{z}\in\overline{\mathcal{A}}$
 with $h_{z}\left(x\right)=f\left(x\right)$ and $h_{z}\left(z\right)\le f\left(z\right)+\frac{\varepsilon}{2}$,
@@ -5145,7 +5142,7 @@ which is possible after iv).\\
 Since $h_{z}$ is continuous, there is a neighborhood $U_{z}$ of
 $z$ such that $h_{z}\le f+\varepsilon$ on $U_{z}$.
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle,
 			xmax=1.15, ymin=0, ymax=1.15, xtick={0,0.5,1},
@@ -5163,7 +5160,7 @@ $z$ such that $h_{z}\le f+\varepsilon$ on $U_{z}$.
   \draw (0.8,0) -- (0.8,-0.1) node[below] {$z$};
   \draw[red,thick] (0.2,0) -- node[above right]{$U_z$} (1.6,0);
   \draw[red,thick] (0.2,0.1) -- (0.2,-0.1) (1.6,0.1) -- (1.6,-0.1);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$h_{z}\le f+\varepsilon$ on $U_{z}$}
+\end{tikzpicture}\caption{$h_{z}\le f+\varepsilon$ on $U_{z}$}
 \end{figure}
 Since $E$ is compact, we can cover it by a finite number of such
 neighborhoods $U_{z_{1}},\ldots,U_{z_{N}}$. Define:
@@ -5537,7 +5534,7 @@ Let $\alpha:\left[0,1\right]\to\mathbb{R}$ be monotonically increasing
 (not necessarily continuous).
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle,
 			ymin=0, ymax=1.25,
@@ -5550,7 +5547,7 @@ Let $\alpha:\left[0,1\right]\to\mathbb{R}$ be monotonically increasing
   \draw[dashed] (axis cs:0.5,0.45) -- (axis cs:0.5,0.6);
   \draw[dashed] (axis cs:0.7,0.8) -- (axis cs:0.7,0.9);
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\alpha$ is monotonically increasing, but not continuous}
+\end{tikzpicture}\caption{$\alpha$ is monotonically increasing, but not continuous}
 \end{figure}
 
 
@@ -5618,7 +5615,7 @@ Totalvariation}), $\alpha\in\mathcal{BV}\left(\left[0,1\right]\right)$,
 if $\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle,
 			ymin=-0.1, ymax=1.05, xtick=0,
@@ -5635,7 +5632,7 @@ if $\left(\text{TV}\left(f\right)\right)\left(1\right)<\infty$.
   \draw[dashed] (axis cs:1,0) -- (axis cs:1,0.74);
   \draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$x_N$};
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{total variation of $\alpha$}
+\end{tikzpicture}\caption{total variation of $\alpha$}
 \end{figure}
 
 
@@ -5764,7 +5761,7 @@ Define $\alpha:\left[0,1\right]\to\mathbb{R}$ by:
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=8cm,
 			axis x line=middle, axis y line=middle,
 			ymin=-0.1, ymax=1.15, xtick=0,
@@ -5774,7 +5771,7 @@ Define $\alpha:\left[0,1\right]\to\mathbb{R}$ by:
   \draw[dashed] (axis cs:0.7,0) -- (axis cs:0.7,1);
   \draw[thick] (axis cs:0.7,0.025) -- (axis cs:0.7,-0.025) node[below]{$x$};
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\chi_{[0,x)}$}
+\end{tikzpicture}\caption{$\chi_{[0,x)}$}
 \end{figure}
 
 
@@ -5828,7 +5825,7 @@ f\left(1\right) & \text{if }x=1
 \end{cases}
 \end{align*}
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm,
 			axis x line=middle, axis y line=middle,
 			ymin=-0.2, ymax=1.6, xtick=0,
@@ -5848,7 +5845,7 @@ f\left(1\right) & \text{if }x=1
   \draw[dashed] (axis cs:1,0) -- (axis cs:1,1.23);
   \draw[thick] (axis cs:1,0.025) -- (axis cs:1,-0.025) node[below]{$\frac{n}{n}=1$};
  \end{axis}
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{Approximation of $f$ by $f\left(\frac{i}{n}\right)$ for $n=5$}
+\end{tikzpicture}\caption{Approximation of $f$ by $f\left(\frac{i}{n}\right)$ for $n=5$}
 \end{figure}
 Since $f_{n}$ is uniformly continuous, i.e. $f_{n}\rightrightarrows f$,
 we get:
@@ -6007,7 +6004,7 @@ b & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle
 
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}[scale=2]
+\noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw[->] (-1,0) -- (2,0) node[right] {$\lambda$};
   \draw (-0.65,0.1) -- (-0.7,0.1) -- (-0.7,-0.1) node[below] {$a$} -- (-0.65,-0.1);
   \draw (1.65,0.1) -- (1.7,0.1) -- (1.7,-0.1) node[below] {$b$} -- (1.65,-0.1);
@@ -6015,7 +6012,7 @@ b & :=\sup_{\norm u=1}\left\langle u,Au\right\rangle
   \draw[blue, very thick] (1,0) -- (1.7,0) (-0.5,0) -- (0.5,0);
   \draw[blue,fill=blue] (-0.7,0) circle (0.03);
   \draw[blue,fill=blue] (1.7,0) circle (0.03);
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$\sigma\left(A\right)\subseteq\left[a,b\right]$ and $a,b\in\sigma\left(A\right)$}
+\end{tikzpicture}\caption{$\sigma\left(A\right)\subseteq\left[a,b\right]$ and $a,b\in\sigma\left(A\right)$}
 \end{figure}
 
 
@@ -6214,12 +6211,12 @@ $A\in L\left(H\right)$ is called \emph{normal}, if $\left[A,A^{*}\right]=0$.
 For a normal $A\in L\left(H\right)$ holds $r\left(A\right)=\opnorm A$.
 
 \begin{figure}[H]
-\hspace*{1mm}\hfill{}\begin{tikzpicture}
+\noindent \centering{}\begin{tikzpicture}
   \draw (0,0) circle (2);
   \draw[->] (0,0) -- node[above]{$r(A)$} (-2,0);
   \draw plot[smooth cycle,tension=.7] coordinates{(1.2,-1.2) (1,-1.6) (0,-1.1) (0.2,0) (0.2,0.5) (-0.2,0.7) (-0.5,1.4) (1,1)};
   \node at (0.7,-0.2) {$\sigma(A)$};
-\end{tikzpicture}\hfill{}\hspace*{1mm}\caption{$r\left(A\right)=\opnorm A$}
+\end{tikzpicture}\caption{$r\left(A\right)=\opnorm A$}
 \end{figure}
 
 
@@ -7114,12 +7111,13 @@ for which the eigenvalues $\lambda$ lie in $\Omega$.
 \end{align*}
 More specifically, let $u_{j}$ be an orthonormal eigenvector basis,
 $Au_{j}=\lambda_{j}u_{j}$ and $\left\langle u_{i},u_{j}\right\rangle =\delta_{ij}$.
-Then for any $v\in\mathbb{C}^{n}$ let $u^{\left(k\right)}$ be all
-eigenvectors with the eigenvalue $\lambda$, so
+Then for any $v\in\mathbb{C}^{n}$ let $u_{1}^{\left(\lambda\right)},\ldots,u_{\mu}^{\left(\lambda\right)}$
+be all eigenvectors with the eigenvalue $\lambda$, i.e. $Au_{k}^{\left(\lambda\right)}=\lambda u_{k}^{\left(\lambda\right)}$,
+so
 \begin{align*}
-E_{\left\{ \lambda\right\} }v & =\sum_{k}u^{\left(k\right)}\left\langle u^{\left(k\right)},v\right\rangle 
+E_{\left\{ \lambda\right\} }v & =\sum_{k=1}^{\mu}u_{k}^{\left(\lambda\right)}\left\langle u_{k}^{\left(\lambda\right)},v\right\rangle 
 \end{align*}
-is the projection on the eigenspace $\left\langle u^{\left(k\right)}\right\rangle $.
+ is the projection on the eigenspace $\left\langle u^{\left(k\right)}\right\rangle $.
 
 
 \subsection{Example: compact operator}
@@ -8266,7 +8264,7 @@ Let $A\in L\left(H\right)$ be normal.
 A vector $u\in H$ is called \emph{cyclic} (with respect to $A$)
 if holds:
 \begin{align*}
-\overline{\left\{ f\left(A\right)u\bigg|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
+\overline{\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
 \end{align*}
 
 
@@ -8291,11 +8289,11 @@ and $g\left(\lambda\right)=\lambda$ holds:
 \alpha\left(f\left(A\right)u\right)+\beta\left(g\left(A\right)u\right) & =\left(\alpha f+\beta g\right)\left(A\right)u
 \end{align*}
 \begin{align*}
-\Rightarrow\qquad K & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
+\Rightarrow\qquad I_{u} & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
 \end{align*}
-By assumption, $K$ is dense in $H$. Define
+By assumption, $I_{u}$ is dense in $H$. Define
 \begin{align*}
-\mathcal{U}:K & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\mathcal{U}:I_{u} & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
 \end{align*}
 by:
 \begin{align*}
@@ -8310,7 +8308,7 @@ and this is dense in $L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)$.
 Therefore $\mathcal{U}$ can be uniquely extended by continuity to
 an unitary operator:
 \begin{align*}
-\mathcal{U}:H=\overline{K} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\mathcal{U}:H=\overline{I_{u}} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
 \end{align*}
 Compute now $\mathcal{U}A\mathcal{U}^{-1}$:
 \begin{align*}
@@ -8319,7 +8317,7 @@ Compute now $\mathcal{U}A\mathcal{U}^{-1}$:
 \begin{align*}
 \mathcal{U}A\mathcal{U}^{-1}f & =\mathcal{U}\underbrace{A}_{=g\left(A\right)}\left(f\left(A\right)u\right)=\mathcal{U}\left(\left(g\cdot f\right)\left(A\right)u\right)=g\cdot f
 \end{align*}
-Using a density argument, this holds for any $f\in L^{2}$.\qqed
+Using a density argument one shows that this holds for any $f\in L^{2}$.\qqed
 
 
 \section{Examples}
@@ -8350,16 +8348,16 @@ f\left(\lambda_{1}\right)\\
 f\left(\lambda_{n}\right)
 \end{array}\right)
 \end{align*}
-There are $f_{i}\in C^{0}\left(\sigma\left(A\right)\right)$ such
-that $f_{i}\left(\lambda_{i}\right)=1$ and $f_{j}\left(\lambda_{i}\right)=0$
-for $i\not=j$$ $, since $\lambda_{i}\not=\lambda_{j}$ for $i\not=j$.
-With this holds $f_{i}\left(A\right)u=e_{i}$. Therefore holds:
+Since $\lambda_{i}\not=\lambda_{j}$ holds for $i\not=j$, there are
+$f_{i}\in C^{0}\left(\sigma\left(A\right)\right)$ such that $f_{i}\left(\lambda_{i}\right)=1$
+and $f_{i}\left(\lambda_{j}\right)=0$ for $i\not=j$$ $. With this
+holds $f_{i}\left(A\right)u=e_{i}$. Therefore holds:
 \begin{align*}
 \left\{ f\left(A\right)u\big|f\in C^{0}\right\}  & =H
 \end{align*}
 
 \item Let $A$ be as in 1., but with the degeneracy $\lambda_{1}=\lambda_{2}$
-and $u=\left(u_{1},\ldots,u_{n}\right)^{\TT}$. Then follows:
+and $u=\left(u_{1},\ldots,u_{n}\right)^{\TT}$. Then follows
 \begin{align*}
 f\left(A\right)u & =\left(\begin{array}{c}
 f\left(\lambda_{1}\right)u_{1}\\
@@ -8367,12 +8365,12 @@ f\left(\lambda_{1}\right)u_{1}\\
 f\left(\lambda_{n}\right)u_{n}
 \end{array}\right)
 \end{align*}
-Then the vector $v=\left(v_{1},v_{2},0,\ldots,0\right)^{\TT}$ with
+and the vector $v=\left(v_{1},v_{2},0,\ldots,0\right)^{\TT}$ with
 \begin{align*}
 \left(\begin{array}{c}
 v_{1}\\
 v_{2}
-\end{array}\right) & \not\parallel\left(\begin{array}{c}
+\end{array}\right) & \nparallel\left(\begin{array}{c}
 u_{1}\\
 u_{2}
 \end{array}\right)
@@ -8409,16 +8407,16 @@ basis. Choose $u_{1}=e_{1}$ and define:
 H_{1} & :=\overline{\left\{ f\left(A\right)u_{1}\big|f\in C^{0}\right\} }\subseteq H
 \end{align*}
 If $H_{1}=H$, we are done. Otherwise, let $i_{0}\in\mathbb{N}$ be
-the smallest number such that $e_{i_{0}}\not\in H_{1}$ and set:
+the smallest number with $e_{i_{0}}\not\in H_{1}$ and set:
 \begin{align*}
-v_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
+u_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
 H_{2} & :=\overline{\left\{ f\left(A\right)u_{2}\big|f\in C^{0}\right\} }\subseteq H
 \end{align*}
 For $H=\left\langle H_{1},H_{2}\right\rangle $ we stop the procedure.
 Otherwise choose $i_{1}$ as the smallest number such that $e_{i_{1}}\not\in\left\langle H_{1},H_{2}\right\rangle $,
 and so on.\\
-Proceeding inductively, we obtain that $J=\left\{ i_{k}\right\} $
-is finite or countable and for $j\in J$:
+Proceeding inductively, we obtain that $J=\left\{ i_{k}\big|k\in\mathbb{N}\right\} $
+is finite or countable and for $j\in J$ we have:
 \begin{align*}
 H_{j} & =\overline{\left\{ f\left(A\right)u_{j}\big|f\in C^{0}\right\} }
 \end{align*}
@@ -8460,25 +8458,276 @@ such that for $g\in L^{\infty}\left(\Omega,\mu\right)$ holds:
 
 \subsubsection*{Proof}
 
-Decompose
+Choose an orthogonal decomposition
 \begin{align*}
 H & =\bigoplus_{i\in J}H_{i}
 \end{align*}
-and choose cyclic $u_{i}\in H_{i}$. Then holds:
+with cyclic $u_{i}\in H_{i}$. The subspaces
 \begin{align*}
 H_{i} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\right\} }
 \end{align*}
-We rescale $u_{i}$ such that $\norm{u_{i}}=2^{-i}$ holds.
+are invariant under $A$, i.e. $A_{i}:=A\big|_{H_{i}}:H_{i}\to H_{i}$.
+Now we rescale $u_{i}$ to get $\norm{u_{i}}=2^{-i}$. 
 \begin{align*}
-\mathcal{U}_{i}:H_{i} & \to L^{2}\bigg(\sigma\left(A\right),\underbrace{\dd\mu_{u_{i}}}_{=\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }\bigg)\\
+\mathcal{U}_{i}:H_{i} & \to L^{2}\big(\sigma\left(A\right),\underbrace{\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }_{=\dd\mu_{u_{i}}}\big)\\
 f\left(A\right)u_{i} & \mapsto f
 \end{align*}
-This is just as before in theorem \ref{sec:Thm-cyclic-vector_unitary-operator}.
+This is just as before in theorem \ref{sec:Thm-cyclic-vector_unitary-operator}
+unitary and for $g_{i}\left(\lambda\right)=\lambda$ holds:
+\begin{align*}
+\mathcal{U}_{i}A_{i}\mathcal{U}_{i}^{-1}f_{i} & =g_{i}f_{i}
+\end{align*}
 Now define:
 \begin{align*}
-\Omega & :=\sigma\left(A\right)\times J & \dd\mu & :=\sum_{i\in J}\dd\mu_{u_{i}}
+\Omega & :=\sigma\left(A\right)\times J & \Omega_{i} & =\sigma\left(A\right)\times\left\{ i\right\} 
+\end{align*}
+%DATE: Do 31.1.13
+
+Thus holds:
+\begin{align*}
+\Omega & =\bcupd_{i\in J}\Omega_{i}
+\end{align*}
+Define a measure:
+\begin{align*}
+\mu:\Omega_{i} & \to\mathbb{R}_{0}^{+}\\
+\mu\left(U\times\left\{ i\right\} \right) & :=\mu_{u_{i}}\left(U\right)
+\end{align*}
+Extend $\mu$ by $\sigma$-additivity to a unique measure on $\Omega$.
+For $U\subseteq\Omega$ we write with appropriate $U_{i}\subseteq\Omega_{i}$:
+\begin{align*}
+U & =\bcupd_{i\in I}U_{i}
 \end{align*}
 
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}[scale=1.5]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (-0.6,0.7) (-1,0)};
+  \node at (0,1.5) {$\sigma(A) \times \{1\}$};
+  \draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-0.5) (0.3,-0.2) (0.7,0) (0.5,0.4) (0,0.5) (-0.3,0.2) (-0.5,0)} node[right=5pt]{$U_1$};
+  \begin{scope}[xshift=80]
+    \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8) (0,1) (-0.6,0.7) (-1,0)};
+  \node at (0,1.5) {$\sigma(A) \times \{2\}$};
+    \draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-0.6) (0.2,-0.2) (0.4,0) (0.6,0.4) (0,0.8) (-0.6,0.2) (-0.5,-0.5)} node[above right]{$U_2$};
+  \end{scope}
+\end{tikzpicture}\caption{${\displaystyle U=\bcupd_{i\in I}U_{i}}$}
+\end{figure}
+
+
+Define ${\displaystyle \mu\left(U\right):=\sum_{i\in J}\mu\left(U_{i}\right)}$.
+\begin{align*}
+\mu\left(\Omega_{i}\right) & =\mu_{u_{i}}\left(\sigma\left(A\right)\right)=\big\langle u_{i},\underbrace{E_{\sigma\left(A\right)}}_{=\mathbbm{1}}u_{i}\big\rangle=\norm{u_{i}}^{2}=2^{-2i}
+\end{align*}
+\begin{align*}
+\mu\left(\Omega\right) & =\sum_{i\in J}\mu\left(\Omega_{i}\right)=\sum_{i\in J}2^{-2i}\le1
+\end{align*}
+Thus $\mu$ is a bounded Borel measure.
+\begin{align*}
+\mathcal{U} & :=\bigoplus_{i\in J}\mathcal{U}_{i}:H\to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+is unitary.
+\begin{align*}
+L^{2}\left(\Omega,\dd\mu\right) & =\bigoplus_{i\in J}L^{2}\left(\Omega_{i},\dd\mu_{i}\right)\\
+\mathcal{U}\uparrow\qquad & \qquad\qquad\quad\uparrow\mathcal{U}_{i}\\
+H\qquad & =\qquad\bigoplus_{i\in J}H_{i}
+\end{align*}
+\begin{align*}
+\left(\mathcal{U}A\mathcal{U}^{-1}\right)f & =\bigoplus_{i\in J}g_{i}\underbrace{f_{i}}_{\in L^{2}\left(\Omega_{i},\dd\mu_{i}\right)}
+\end{align*}
+Here $g_{i}\left(\left\{ \lambda\right\} \times\left\{ i\right\} \right)=\lambda$.
+Now
+\begin{align*}
+g & :=\bigoplus_{i\in J}g_{i}
+\end{align*}
+is a bounded function:
+\begin{align*}
+\norm g_{L^{\infty}} & \le\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=r\left(A\right)
+\end{align*}
+\qqed
+
+
+\section{The pure point spectrum and the absolutely continuous spectrum}
+
+Let $A\in L\left(H\right)$ be symmetric and $H$ separable. Then
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+gave the decomposition:
+\begin{align*}
+\sigma\left(A\right) & =\sigma_{\text{disc}}\left(A\right)\dot{\cup}\sigma_{\text{ess}}\left(A\right)
+\end{align*}
+The spectral theorem in its multiplicative form gives another decomposition
+of the spectrum.\\
+There exists a operator
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+with $\mathcal{U}A\mathcal{U}^{-1}$ is the operator of multiplication
+by $g\in L^{\infty}\left(\Omega,\dd\mu\right)$ and $\dd\mu$ is a
+positive finite Borel measure on $\Omega=\sigma\left(A\right)\times J$.
+Since the spectrum is compact, it holds $\sigma\left(A\right)\subseteq\left[a,b\right]\subseteq\mathbb{R}$.
+
+On $\Omega$ we also have the Lebesgue measure $\dd x$. According
+to the Raden-Nikodym theorem (that we use without proof), $\dd\mu$
+can be decomposed as:
+\begin{align*}
+\dd\mu & =\dd\mu_{\text{pp}}+\dd\mu_{\text{ac}}+\dd\mu_{\text{sing}}
+\end{align*}
+$\dd\mu_{\text{pp}}$ is the \emph{pure point}, $\dd\mu_{\text{ac}}$
+the \emph{absolutely continuous} and $\dd\mu_{\text{sing}}$ the \emph{singular}
+measure. It holds
+\begin{align*}
+\dd\mu_{\text{ac}} & =f\left(x\right)\dd x
+\end{align*}
+for a $f\in L^{2}\left(\Omega,\dd x\right)$. $\dd\mu_{\text{pp}}$
+is a weighted counting measure, i.e. there is a countable set $K$
+and $c_{j}\in\mathbb{R}_{>0}$ for $j\in K$ with:
+\begin{align*}
+\dd\mu_{\text{pp}}\left(\Omega\right) & =\sum_{j\in K}c_{j}\delta_{x_{j}}\\
+\sum_{j\in K}c_{j} & <\infty
+\end{align*}
+This gives rise to a decomposition of the Hilbert spaces.
+\begin{align*}
+L^{2}\left(\Omega,\dd\mu\right) & =L^{2}\left(\Omega,\dd\mu_{\text{pp}}\right)\oplus L^{2}\left(\Omega,\dd\mu_{\text{ac}}\right)\oplus L^{2}\left(\Omega,\dd\mu_{\text{sing}}\right)
+\end{align*}
+Applying $\mathcal{U}^{-1}$ gives the corresponding decomposition:
+\begin{align*}
+H & =H_{\text{pp}}+H_{\text{ac}}+H_{\text{sing}}
+\end{align*}
+\begin{align*}
+A\big|_{H_{\text{pp}}}:H_{\text{pp}} & \to H_{\text{pp}} & \sigma_{\text{pp}}\left(A\right) & :=\sigma\left(A|_{H_{\text{pp}}}\right)\\
+A\big|_{H_{\text{ac}}}:H_{\text{ac}} & \to H_{\text{ac}} & \sigma_{\text{ac}}\left(A\right) & :=\sigma\left(A|_{H_{\text{ac}}}\right)\\
+A\big|_{H_{\text{sing}}}:H_{\text{sing}} & \to H_{\text{sing}} & \sigma_{\text{sing}}\left(A\right) & :=\sigma\left(A|_{H_{\text{sing}}}\right)
+\end{align*}
+
+
+
+\chapter{The Spectral Theorem for Unbounded Self-Adjoint Operators}
+
+Let $A:\mathcal{D}\left(A\right)\to H$ be a densely defined linear
+operator with domain of definition $\mathcal{D}\left(A\right)\stackrel{\text{dense}}{\subseteq}H$.
+
+\emph{Recall}:
+\begin{itemize}
+\item $A$ is \emph{symmetric} if $\left\langle u,Av\right\rangle =\left\langle Au,v\right\rangle $
+for all $u,v\in\mathcal{D}\left(A\right)$. (also called \emph{formally
+self-adjoint})
+\item $A$ is \emph{self-adjoint} if $A^{*}=A$, or equivalently:
+\begin{align*}
+\left(\fall_{u\in\mathcal{D}\left(A\right)}:\left\langle Au,v\right\rangle =\left\langle u,w\right\rangle \right) &  & \Rightarrow\qquad & \left(\left(w\in\mathcal{D}\left(A\right)\right)\vphantom{\big|}\wedge\vphantom{\big|}\left(Av=w\right)\right)
+\end{align*}
+
+\end{itemize}
+
+\section{Theorem \textmd{(The basic criterion for self-adjointness)}}
+
+Let $A$ be a symmetric operator with dense domain of definition $\mathcal{D}\left(A\right)$.
+Then the following statements are equivalent.
+\begin{enumerate}[label=\roman*)]
+\item $A$ is self-adjoint.
+\item $A$ is closed and $\ker\left(A^{*}\pm\ii\right)=\left\{ 0\right\} $
+(for $+$ and $-$).
+\item $\text{im}\left(A\pm\ii\right)=H$ (for $+$ and $-$)
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+„i) $\Rightarrow$ ii)“: Let $A$ be self-adjoint, i.e. $A=A^{*}$.
+Since $A^{*}$ is always closed, it follows that $A$ is closed. Let
+$\varphi\in\mathcal{D}\left(A^{*}\right)=\mathcal{D}\left(A\right)$
+be in the kernel of $A^{*}\pm\ii$, i.e. $\mp\ii\varphi=A^{*}\varphi=A\varphi$.
+Then follows:
+\begin{align*}
+\mp\ii\left\langle \varphi,\varphi\right\rangle  & =\left\langle \varphi,A\varphi\right\rangle =\left\langle A\varphi,\varphi\right\rangle =\pm\ii\left\langle \varphi,\varphi\right\rangle 
+\end{align*}
+This shows $\norm{\varphi}=0$ and thus $\varphi=0$.
+
+„ii) $\Rightarrow$ iii)“: Let $A$ be closed and $\ker\left(A\pm\ii\right)=\left\{ 0\right\} $
+be trivial.
+\begin{itemize}
+\item $\text{im}\left(A\pm\ii\right)$ is dense in $H$. Assume conversely
+that there exists a $u\not=0$ in $\left(\text{im}\left(A\pm\ii\right)\right)^{\perp}$.
+Then follows for all $v\in\mathcal{D}\left(A\right)$:
+\begin{align*}
+0 & =\left\langle \left(A\pm\ii\right)v,u\right\rangle 
+\end{align*}
+So $u\in\mathcal{D}\left(\left(A\pm\ii\right)^{*}\right)=\mathcal{D}\left(A^{*}\right)$
+and $\left(A^{*}\mp\ii\right)u=0$ in contradiction to $\ker\left(A^{*}\mp\ii\right)=\left\{ 0\right\} $.
+\item $\text{im}\left(A\pm\ii\right)$ is closed in $H$. Let $\psi\in\overline{\text{im}\left(A\pm\ii\right)}$
+lie in the closure of the image. Then there exist $\varphi_{n}\in\mathcal{D}\left(A\right)$
+such that:
+\begin{align*}
+\left(A\pm\ii\right)\varphi_{n} & \to\psi
+\end{align*}
+For any $\varphi\in\mathcal{D}\left(A\right)$ holds:
+\begin{align*}
+\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A} is symmetric}}
+\end{align*}
+Especially for $\varphi=\varphi_{n}-\varphi_{m}$ holds:
+\begin{align*}
+\underbrace{\norm{A\left(\varphi_{n}-\varphi_{m}\right)}^{2}}_{\ge0}+\underbrace{\norm{\varphi_{n}-\varphi_{m}}^{2}}_{\ge0} & =\norm{\left(A\pm\ii\right)\left(\varphi_{n}-\varphi_{m}\right)}^{2}\xrightarrow[\left(A\pm\ii\right)\varphi_{n}\to\psi]{n,m\to\infty}0
+\end{align*}
+It follows:
+\begin{align*}
+\norm{\varphi_{n}-\varphi_{m}} & \to0 & \varphi_{n} & \to\varphi\\
+\norm{A\varphi_{n}-A\varphi_{m}} & \to0 & A\varphi_{n} & \to\psi\mp\ii\varphi
+\end{align*}
+Thus $\left(\varphi_{n},A\varphi_{n}\right)$ is a Cauchy sequence
+in $\text{graph}\left(A\right)\subseteq H\times H$.\\
+Since $A$ is closed, which means by definition that $\text{graph}\left(A\right)$
+is closed in $H\times H$, the limit point $\left(\varphi,\psi\mp\ii\varphi\right)$
+is in $\text{graph}\left(A\right)$. Then follows $\varphi\in\mathcal{D}\left(A\right)$
+and $A\varphi=\psi\mp\ii\varphi$, i.e. $\psi\in\text{im}\left(A\pm\ii\right)$.
+\end{itemize}
+„iii) $\Rightarrow$ i)“: Assume that $\text{im}\left(A\pm\ii\right)=H$.
+Consider $\varphi\in\mathcal{D}\left(A^{*}\right)$. Since $\text{im}\left(A\pm\ii\right)=H$,
+there is a $u\in\mathcal{D}\left(A\right)$ such that $\left(A\pm\ii\right)u=\left(A^{*}\pm\ii\right)\varphi$.
+From $\mathcal{D}\left(A\right)\subseteq\mathcal{D}\left(A^{*}\right)$
+(always true for symmetric operators) follows $\varphi-u\in\mathcal{D}\left(A^{*}\right)$
+and:
+\begin{align*}
+\left(A^{*}\pm\ii\right)\left(\varphi-u\right) & =0
+\end{align*}
+Consider $w\in\ker\left(A^{*}\pm\ii\right)\setminus\left\{ 0\right\} $.
+Then holds for all $\xi\in\mathcal{D}\left(A\right)$:
+\begin{align*}
+\left\langle \left(A^{*}\pm\ii\right)w,\xi\right\rangle  & =0\\
+\left\langle w,\left(A\mp\ii\right)\xi\right\rangle  & =0
+\end{align*}
+Using assumption $\text{im}\left(A\mp\ii\right)=H$ one can choose
+$\xi$ such that $\left(A\mp\ii\right)\xi=w$, which means $\left\langle w,w\right\rangle =0$,
+i.e. $w=0$. Thus holds:
+\begin{align*}
+\ker\left(A^{*}\pm\ii\right) & =\left\{ 0\right\} 
+\end{align*}
+This gives $\varphi=u\in\mathcal{D}\left(A\right)$, which implies
+$\varphi\in\mathcal{D}\left(A^{*}\right)$ and thus $A$ is self-adjoint.\qqed
+
+
+\section{Unbounded Multiplication Operators}
+
+Let $\left(M,\mu\right)$ be a measure space with a $\sigma$-finite
+measure $\mu$. (For example, $M$ is a $\sigma$-compact topological
+space and $\mu$ a positive Borel measure on $M$.)\\
+$L^{2}\left(M,\dd\mu\right)$ is our Hilbert space. Let $g:M\to\mathbb{R}$
+be measurable (and finite almost everywhere). We want to introduce
+$T_{g}$:
+\begin{align*}
+T_{g}f & =g\cdot f
+\end{align*}
+For $g\in L^{\infty}\left(M,\dd\mu\right)$, $T_{g}$ is a bounded
+symmetric operator. Suppose $g$ is unbounded. What is $\mathcal{D}\left(T_{g}\right)$?
+How to choose $\mathcal{D}\left(T_{g}\right)$ such that $T_{g}$
+becomes self-adjoint?
+
+
+\subsection{Lemma}
+
+Define:
+\begin{align*}
+\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(M,\dd\mu\right)\big|g\cdot f\in L^{2}\left(M,\dd\mu\right)\right\} \subseteq L^{2}\left(M,\dd\mu\right)
+\end{align*}
+Then $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(M,\dd\mu\right)$
+is self-adjoint and $\sigma_{\text{ess}}\left(T_{g}\right)=\text{im}\left(g\right)$.
 
 
 \part*{Appendix \thispagestyle{empty}}

@@ -671,12 +671,12 @@ status open
 
 \begin_layout Plain Layout
 
-%Shell-Kommando für Tikz-Externalize:
+% Shell-Kommando für Tikz-Externalize:
 \end_layout
 
 \begin_layout Plain Layout
 
-%pdflatex -shell-escape Functional-Analysis.tex 
+% pdflatex -shell-escape Functional-Analysis.tex 
 \end_layout
 
 \end_inset
@@ -3828,23 +3828,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -3892,23 +3877,6 @@ node at (0.9,-0.7) {$K$};
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -4110,23 +4078,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -4158,23 +4111,6 @@ draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -4279,23 +4215,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -4351,23 +4272,6 @@ draw[dashed] (1.5,0.8) -- (-0.75,-0.4);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -5295,23 +5199,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -5385,23 +5274,6 @@ draw (0.2,-0.31) node[left]{$z'$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -6835,23 +6707,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -6973,23 +6830,6 @@ overline{B_3}$};
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -7382,23 +7222,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -7451,23 +7276,6 @@ subseteq E$} -- (5,4) -- (-4,4) -- cycle;
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -8064,23 +7872,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -8134,23 +7927,6 @@ node at (5,0) {$A(B_1(0))$};
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -8352,23 +8128,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -8426,23 +8187,6 @@ subseteq F$};
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -8851,23 +8595,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -8918,23 +8647,6 @@ end{axis}
 
 \backslash
 end{tikzpicture} 
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -9748,23 +9460,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -9822,23 +9519,6 @@ draw[dashed] (2,-3) -- (4,-1);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -10259,23 +9939,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -10352,23 +10017,6 @@ end{tikzpicture}
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -10439,23 +10087,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -10513,23 +10146,6 @@ draw[fill] (1,0.8) circle (0.03);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -10799,23 +10415,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -10891,23 +10492,6 @@ draw[fill] (2,1.8) circle (0.03);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -11279,23 +10863,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -11371,23 +10940,6 @@ draw[fill] (2,1.8) circle (0.03);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -14503,23 +14055,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -14590,23 +14127,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -19348,23 +18868,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -19414,23 +18919,6 @@ draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -19635,359 +19123,9 @@ If
 \end_inset
 
  the sum diverges.
-\color green
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Therefore, if the resolvent 
-\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
-\end_inset
-
- exists, then for 
-\begin_inset Formula $\lambda\in\varrho\left(A\right)\subseteq\mathbb{C}$
-\end_inset
-
- holds 
-\begin_inset Formula $\frac{1}{\abs{\lambda}}\ge R$
-\end_inset
-
-, i.e.
- 
-\begin_inset Formula $\abs{\lambda}\le\frac{1}{R}$
-\end_inset
-
- (
-\begin_inset Formula $\abs{\lambda}<R$
-\end_inset
-
-).
- The Neumann series does 
-\emph on
-not
-\emph default
- (necessarily) converge.
- But 
-\begin_inset Formula $\lambda\in\varrho\left(A\right)$
-\end_inset
-
- and thus 
-\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
-\end_inset
-
- exists.
- As the resolvent is analytic in 
-\begin_inset Formula $\frac{1}{\lambda}$
-\end_inset
-
- it can be written as a power series in 
-\begin_inset Formula $\frac{1}{\lambda}$
-\end_inset
-
-, which is a contradiction.
-\end_layout
-
-\end_inset
-
-
-\color inherit
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with
- {
-\backslash
-arrow[thick]{>}}},postaction={decorate}}]
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw (0,0) circle (3);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw[arr] (0,0) -- node [below]{$r(A)$} (-3,0);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw (0,0) circle (4);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw[arr] (0,0) -- node [left]{$R$} (0,-4);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw[yshift=60,xshift=33] plot[smooth cycle,tension=.7,scale=2.85] coordinates{(0,
--0.8) (0.5,-0.3) (0.2,0) (-0.3,0.1) (-1,0)};
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-node at (0.7,1) {$
-\backslash
-sigma(A)$};
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw (0.2,3.5) node[right]{$x$} circle (0.4);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw (0.2,3.5) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-draw (0,0) +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset Formula $R>r\left(A\right)$
-\end_inset
-
- ?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-If 
-\begin_inset Formula $A=0$
-\end_inset
-
- nothing is to prove.
- For 
-\begin_inset Formula $\lambda\in\varrho\left(A\right)\setminus\left\{ 0\right\} $
-\end_inset
-
- holds:
-\begin_inset Formula 
-\begin{align*}
-\mathcal{R}_{\lambda}\left(A\right) & =\left(\lambda-A\right)^{-1}=\frac{1}{\lambda}\left(\mathbbm{1}-\frac{A}{\lambda}\right)^{-1}=\frac{1}{\lambda}\sum_{n=0}^{\infty}\left(\frac{A}{\lambda}\right)^{n}
-\end{align*}
-
-\end_inset
-
-The Neumann series is a power series in 
-\begin_inset Formula $\frac{1}{\lambda}$
-\end_inset
-
-.
- Its radius of convergence is:
-\begin_inset Formula 
-\begin{align*}
-R & =\frac{1}{{\displaystyle \limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}}}
-\end{align*}
-
-\end_inset
-
-This is just like the root criterion (
-\lang ngerman
-Wurzelkriterium
-\lang english
-) for a real or complex series.
 \begin_inset Newline newline
 \end_inset
 
-If 
-\begin_inset Formula $\frac{1}{\abs{\lambda}}<R$
-\end_inset
-
-, then the series converges absolutely and the resolvent exists and thus:
-\begin_inset Formula 
-\begin{align*}
-r\left(A\right) & \le\limsup_{n\to\infty}\opnorm{A^{n}}^{\frac{1}{n}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-If the resolvent 
-\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
-\end_inset
-
- exists there exists a 
-\begin_inset Formula $\lambda\in\varrho\left(A\right)\subseteq\mathbb{C}$
-\end_inset
-
- with 
-\begin_inset Formula $\abs{\lambda}\le R$
-\end_inset
-
-.
- The Neumann series does 
-\emph on
-not
-\emph default
- converge.
- But 
-\begin_inset Formula $\lambda\in\varrho\left(A\right)$
-\end_inset
-
- and thus 
-\begin_inset Formula $\mathcal{R}_{\lambda}\left(A\right)$
-\end_inset
-
- exists.
- As the resolvent is analytic in 
-\begin_inset Formula $\frac{1}{\lambda}$
-\end_inset
-
- it can be written as a power series in 
-\begin_inset Formula $\frac{1}{\lambda}$
-\end_inset
-
-, which is a contradiction.
- Thus:
-\begin_inset Formula 
-\begin{align*}
-r\left(A\right) & =\lim_{n\to\infty}\norm{A^{n}}^{\frac{1}{n}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-For 
-\begin_inset Formula $A^{*}=A$
-\end_inset
-
- holds:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\norm{A^{2}}=\norm A^{2}$
-\end_inset
-
-.
- From Schwarz inequality follows 
-\begin_inset Formula $\norm{A^{2}}\le\norm A^{2}$
-\end_inset
-
-.
- Conversely:
-\begin_inset Formula 
-\begin{align*}
-\norm A^{2} & =\sup_{u\in H,\norm u=1}\norm{Au}^{2}=\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{2}u\right\rangle \le\\
- & \le\sup_{\norm u=1}\norm u\cdot\norm{A^{2}u}=\norm{A^{2}}
-\end{align*}
-
-\end_inset
-
-More generally: 
-\begin_inset Formula $\norm{A^{p}}=\norm A^{p}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 In our setting for 
 \begin_inset Formula $A=0$
 \end_inset
@@ -20085,23 +19223,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -20213,23 +19336,6 @@ end{tikzpicture}
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -20335,23 +19441,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -20463,23 +19554,6 @@ delta$} (2.92,0.65);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -21278,23 +20352,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -21360,23 +20419,6 @@ draw (0.5,0.7) -- (0.8,-0.8);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -21593,23 +20635,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -21698,23 +20725,6 @@ draw[red, thick, dashed,scale=7.34] (0.5,0) -- (0.5,0.83);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -22406,10 +21416,9 @@ Example:
 \begin_inset Formula 
 \begin{align*}
 B_{4}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{4}+5,2\cdot x\cdot\left(1-x\right)^{3}+5,9\cdot x^{2}\cdot\left(1-x\right)^{2}+2,4\cdot x^{3}\cdot\left(1-x\right)+0,3\cdot x^{4}\\
-B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+\\
- & \qquad+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+\\
- & \qquad+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+\\
- & \qquad+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
+B_{10}f\left(x\right) & \approx0,2\cdot\left(1-x\right)^{10}+9,4\cdot x\cdot\left(1-x\right)^{9}+56,6\cdot x^{2}\cdot\left(1-x\right)^{8}+149,5\cdot x^{3}\cdot\left(1-x\right)^{7}+\\
+ & \qquad+217,9\cdot x^{4}\cdot\left(1-x\right)^{6}+248,2\cdot x^{5}\cdot\left(1-x\right)^{5}+244,7\cdot x^{6}\cdot\left(1-x\right)^{4}+\\
+ & \qquad+103,2\cdot x^{7}\cdot\left(1-x\right)^{3}+26,5\cdot x^{8}\cdot\left(1-x\right)^{2}+7,9\cdot x^{9}\cdot\left(1-x\right)+0,3\cdot x^{10}
 \end{align*}
 
 \end_inset
@@ -22425,23 +21434,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -22628,23 +21622,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -23415,23 +22392,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -23534,23 +22496,6 @@ end{tikzpicture}
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -23615,23 +22560,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -23763,23 +22693,6 @@ draw[red,thick] (0.2,0.1) -- (0.2,-0.1) (1.6,0.1) -- (1.6,-0.1);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -25449,23 +24362,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -25561,23 +24459,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -25784,23 +24665,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -25924,23 +24790,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -26324,23 +25173,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -26415,23 +25249,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -26619,23 +25436,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -26789,23 +25591,6 @@ end{axis}
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -27416,23 +26201,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -27501,23 +26271,6 @@ draw[blue,fill=blue] (1.7,0) circle (0.03);
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -28307,23 +27060,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset ERT
 status open
 
@@ -28370,23 +27108,6 @@ sigma(A)$};
 
 \backslash
 end{tikzpicture}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1mm}
 \end_layout
 
 \end_inset
@@ -31636,22 +30357,27 @@ More specifically, let
 \end_inset
 
  let 
-\begin_inset Formula $u^{\left(k\right)}$
+\begin_inset Formula $u_{1}^{\left(\lambda\right)},\ldots,u_{\mu}^{\left(\lambda\right)}$
 \end_inset
 
  be all eigenvectors with the eigenvalue 
 \begin_inset Formula $\lambda$
 \end_inset
 
+, i.e.
+ 
+\begin_inset Formula $Au_{k}^{\left(\lambda\right)}=\lambda u_{k}^{\left(\lambda\right)}$
+\end_inset
+
 , so
 \begin_inset Formula 
 \begin{align*}
-E_{\left\{ \lambda\right\} }v & =\sum_{k}u^{\left(k\right)}\left\langle u^{\left(k\right)},v\right\rangle 
+E_{\left\{ \lambda\right\} }v & =\sum_{k=1}^{\mu}u_{k}^{\left(\lambda\right)}\left\langle u_{k}^{\left(\lambda\right)},v\right\rangle 
 \end{align*}
 
 \end_inset
 
-is the projection on the eigenspace 
+ is the projection on the eigenspace 
 \begin_inset Formula $\left\langle u^{\left(k\right)}\right\rangle $
 \end_inset
 
@@ -36469,7 +35195,7 @@ cyclic
 ) if holds:
 \begin_inset Formula 
 \begin{align*}
-\overline{\left\{ f\left(A\right)u\bigg|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
+\overline{\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} } & =H
 \end{align*}
 
 \end_inset
@@ -36536,13 +35262,13 @@ Proof
 
 \begin_inset Formula 
 \begin{align*}
-\Rightarrow\qquad K & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
+\Rightarrow\qquad I_{u} & :=\left\{ f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\} =\left\langle f\left(A\right)u\big|f\in C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)\right\rangle 
 \end{align*}
 
 \end_inset
 
 By assumption, 
-\begin_inset Formula $K$
+\begin_inset Formula $I_{u}$
 \end_inset
 
  is dense in 
@@ -36553,7 +35279,7 @@ By assumption,
  Define
 \begin_inset Formula 
 \begin{align*}
-\mathcal{U}:K & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\mathcal{U}:I_{u} & \to L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
 \end{align*}
 
 \end_inset
@@ -36594,7 +35320,7 @@ Moreover, the image of
  can be uniquely extended by continuity to an unitary operator:
 \begin_inset Formula 
 \begin{align*}
-\mathcal{U}:H=\overline{K} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
+\mathcal{U}:H=\overline{I_{u}} & \to\overline{C^{0}\left(\sigma\left(A\right),\mathbb{C}\right)}=L^{2}\left(\sigma\left(A\right),\dd\mu_{u}\right)
 \end{align*}
 
 \end_inset
@@ -36619,7 +35345,7 @@ Compute now
 
 \end_inset
 
-Using a density argument, this holds for any 
+Using a density argument one shows that this holds for any 
 \begin_inset Formula $f\in L^{2}$
 \end_inset
 
@@ -36706,7 +35432,15 @@ f\left(\lambda_{n}\right)
 
 \end_inset
 
-There are 
+Since 
+\begin_inset Formula $\lambda_{i}\not=\lambda_{j}$
+\end_inset
+
+ holds for 
+\begin_inset Formula $i\not=j$
+\end_inset
+
+, there are 
 \begin_inset Formula $f_{i}\in C^{0}\left(\sigma\left(A\right)\right)$
 \end_inset
 
@@ -36715,7 +35449,7 @@ There are
 \end_inset
 
  and 
-\begin_inset Formula $f_{j}\left(\lambda_{i}\right)=0$
+\begin_inset Formula $f_{i}\left(\lambda_{j}\right)=0$
 \end_inset
 
  for 
@@ -36724,14 +35458,6 @@ There are
 
 
 \begin_inset Formula $ $
-\end_inset
-
-, since 
-\begin_inset Formula $\lambda_{i}\not=\lambda_{j}$
-\end_inset
-
- for 
-\begin_inset Formula $i\not=j$
 \end_inset
 
 .
@@ -36765,7 +35491,7 @@ Let
 \end_inset
 
 .
- Then follows:
+ Then follows
 \begin_inset Formula 
 \begin{align*}
 f\left(A\right)u & =\left(\begin{array}{c}
@@ -36777,7 +35503,7 @@ f\left(\lambda_{n}\right)u_{n}
 
 \end_inset
 
-Then the vector 
+and the vector 
 \begin_inset Formula $v=\left(v_{1},v_{2},0,\ldots,0\right)^{\TT}$
 \end_inset
 
@@ -36787,7 +35513,7 @@ Then the vector
 \left(\begin{array}{c}
 v_{1}\\
 v_{2}
-\end{array}\right) & \not\parallel\left(\begin{array}{c}
+\end{array}\right) & \nparallel\left(\begin{array}{c}
 u_{1}\\
 u_{2}
 \end{array}\right)
@@ -36890,14 +35616,14 @@ If
 \begin_inset Formula $i_{0}\in\mathbb{N}$
 \end_inset
 
- be the smallest number such that 
+ be the smallest number with 
 \begin_inset Formula $e_{i_{0}}\not\in H_{1}$
 \end_inset
 
  and set:
 \begin_inset Formula 
 \begin{align*}
-v_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
+u_{2} & :=e_{i_{0}}-\text{pr}_{H_{1}}\left(e_{i_{0}}\right)=\text{pr}_{H_{1}^{\perp}}\left(e_{i_{0}}\right)\\
 H_{2} & :=\overline{\left\{ f\left(A\right)u_{2}\big|f\in C^{0}\right\} }\subseteq H
 \end{align*}
 
@@ -36921,14 +35647,14 @@ For
 \end_inset
 
 Proceeding inductively, we obtain that 
-\begin_inset Formula $J=\left\{ i_{k}\right\} $
+\begin_inset Formula $J=\left\{ i_{k}\big|k\in\mathbb{N}\right\} $
 \end_inset
 
  is finite or countable and for 
 \begin_inset Formula $j\in J$
 \end_inset
 
-:
+ we have:
 \begin_inset Formula 
 \begin{align*}
 H_{j} & =\overline{\left\{ f\left(A\right)u_{j}\big|f\in C^{0}\right\} }
@@ -37087,7 +35813,7 @@ Proof
 \end_layout
 
 \begin_layout Standard
-Decompose
+Choose an orthogonal decomposition
 \begin_inset Formula 
 \begin{align*}
 H & =\bigoplus_{i\in J}H_{i}
@@ -37095,12 +35821,12 @@ H & =\bigoplus_{i\in J}H_{i}
 
 \end_inset
 
-and choose cyclic 
+with cyclic 
 \begin_inset Formula $u_{i}\in H_{i}$
 \end_inset
 
 .
- Then holds:
+ The subspaces
 \begin_inset Formula 
 \begin{align*}
 H_{i} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\right\} }
@@ -37108,18 +35834,29 @@ H_{i} & =\overline{\left\{ f\left(A\right)u_{i}\big|f\in C^{0}\right\} }
 
 \end_inset
 
-We rescale 
+are invariant under 
+\begin_inset Formula $A$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $A_{i}:=A\big|_{H_{i}}:H_{i}\to H_{i}$
+\end_inset
+
+.
+ Now we rescale 
 \begin_inset Formula $u_{i}$
 \end_inset
 
- such that 
+ to get 
 \begin_inset Formula $\norm{u_{i}}=2^{-i}$
 \end_inset
 
- holds.
+.
+ 
 \begin_inset Formula 
 \begin{align*}
-\mathcal{U}_{i}:H_{i} & \to L^{2}\bigg(\sigma\left(A\right),\underbrace{\dd\mu_{u_{i}}}_{=\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }\bigg)\\
+\mathcal{U}_{i}:H_{i} & \to L^{2}\big(\sigma\left(A\right),\underbrace{\dd\left\langle u_{i},E_{\lambda}u_{i}\right\rangle }_{=\dd\mu_{u_{i}}}\big)\\
 f\left(A\right)u_{i} & \mapsto f
 \end{align*}
 
@@ -37132,16 +35869,1145 @@ reference "sec:Thm-cyclic-vector_unitary-operator"
 
 \end_inset
 
-.
- Now define:
+ unitary and for 
+\begin_inset Formula $g_{i}\left(\lambda\right)=\lambda$
+\end_inset
+
+ holds:
 \begin_inset Formula 
 \begin{align*}
-\Omega & :=\sigma\left(A\right)\times J & \dd\mu & :=\sum_{i\in J}\dd\mu_{u_{i}}
+\mathcal{U}_{i}A_{i}\mathcal{U}_{i}^{-1}f_{i} & =g_{i}f_{i}
+\end{align*}
+
+\end_inset
+
+Now define:
+\begin_inset Formula 
+\begin{align*}
+\Omega & :=\sigma\left(A\right)\times J & \Omega_{i} & =\sigma\left(A\right)\times\left\{ i\right\} 
 \end{align*}
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Do 31.1.13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus holds:
+\begin_inset Formula 
+\begin{align*}
+\Omega & =\bcupd_{i\in J}\Omega_{i}
+\end{align*}
+
+\end_inset
+
+Define a measure:
+\begin_inset Formula 
+\begin{align*}
+\mu:\Omega_{i} & \to\mathbb{R}_{0}^{+}\\
+\mu\left(U\times\left\{ i\right\} \right) & :=\mu_{u_{i}}\left(U\right)
+\end{align*}
+
+\end_inset
+
+Extend 
+\begin_inset Formula $\mu$
+\end_inset
+
+ by 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-additivity to a unique measure on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $U\subseteq\Omega$
+\end_inset
+
+ we write with appropriate 
+\begin_inset Formula $U_{i}\subseteq\Omega_{i}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+U & =\bcupd_{i\in I}U_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=1.5]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8)
+ (0,1) (-0.6,0.7) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0,1.5) {$
+\backslash
+sigma(A) 
+\backslash
+times 
+\backslash
+{1
+\backslash
+}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-0.5) (0.3,-0.2) (0.7,0)
+ (0.5,0.4) (0,0.5) (-0.3,0.2) (-0.5,0)} node[right=5pt]{$U_1$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{scope}[xshift=80]
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.5,-0.3) (1,0) (0.5,0.8)
+ (0,1) (-0.6,0.7) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0,1.5) {$
+\backslash
+sigma(A) 
+\backslash
+times 
+\backslash
+{2
+\backslash
+}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-0.6) (0.2,-0.2) (0.4,0)
+ (0.6,0.4) (0,0.8) (-0.6,0.2) (-0.5,-0.5)} node[above right]{$U_2$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle U=\bcupd_{i\in I}U_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula ${\displaystyle \mu\left(U\right):=\sum_{i\in J}\mu\left(U_{i}\right)}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\Omega_{i}\right) & =\mu_{u_{i}}\left(\sigma\left(A\right)\right)=\big\langle u_{i},\underbrace{E_{\sigma\left(A\right)}}_{=\mathbbm{1}}u_{i}\big\rangle=\norm{u_{i}}^{2}=2^{-2i}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mu\left(\Omega\right) & =\sum_{i\in J}\mu\left(\Omega_{i}\right)=\sum_{i\in J}2^{-2i}\le1
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a bounded Borel measure.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U} & :=\bigoplus_{i\in J}\mathcal{U}_{i}:H\to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+is unitary.
+\begin_inset Formula 
+\begin{align*}
+L^{2}\left(\Omega,\dd\mu\right) & =\bigoplus_{i\in J}L^{2}\left(\Omega_{i},\dd\mu_{i}\right)\\
+\mathcal{U}\uparrow\qquad & \qquad\qquad\quad\uparrow\mathcal{U}_{i}\\
+H\qquad & =\qquad\bigoplus_{i\in J}H_{i}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left(\mathcal{U}A\mathcal{U}^{-1}\right)f & =\bigoplus_{i\in J}g_{i}\underbrace{f_{i}}_{\in L^{2}\left(\Omega_{i},\dd\mu_{i}\right)}
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $g_{i}\left(\left\{ \lambda\right\} \times\left\{ i\right\} \right)=\lambda$
+\end_inset
+
+.
+ Now
+\begin_inset Formula 
+\begin{align*}
+g & :=\bigoplus_{i\in J}g_{i}
+\end{align*}
+
+\end_inset
+
+is a bounded function:
+\begin_inset Formula 
+\begin{align*}
+\norm g_{L^{\infty}} & \le\sup_{\lambda\in\sigma\left(A\right)}\abs{\lambda}=r\left(A\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The pure point spectrum and the absolutely continuous spectrum
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in L\left(H\right)$
+\end_inset
+
+ be symmetric and 
+\begin_inset Formula $H$
+\end_inset
+
+ separable.
+ Then
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+gave the decomposition:
+\begin_inset Formula 
+\begin{align*}
+\sigma\left(A\right) & =\sigma_{\text{disc}}\left(A\right)\dot{\cup}\sigma_{\text{ess}}\left(A\right)
+\end{align*}
+
+\end_inset
+
+The spectral theorem in its multiplicative form gives another decomposition
+ of the spectrum.
+\begin_inset Newline newline
+\end_inset
+
+There exists a operator
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\mathcal{U}A\mathcal{U}^{-1}$
+\end_inset
+
+ is the operator of multiplication by 
+\begin_inset Formula $g\in L^{\infty}\left(\Omega,\dd\mu\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\dd\mu$
+\end_inset
+
+ is a positive finite Borel measure on 
+\begin_inset Formula $\Omega=\sigma\left(A\right)\times J$
+\end_inset
+
+.
+ Since the spectrum is compact, it holds 
+\begin_inset Formula $\sigma\left(A\right)\subseteq\left[a,b\right]\subseteq\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ we also have the Lebesgue measure 
+\begin_inset Formula $\dd x$
+\end_inset
+
+.
+ According to the Raden-Nikodym theorem (that we use without proof), 
+\begin_inset Formula $\dd\mu$
+\end_inset
+
+ can be decomposed as:
+\begin_inset Formula 
+\begin{align*}
+\dd\mu & =\dd\mu_{\text{pp}}+\dd\mu_{\text{ac}}+\dd\mu_{\text{sing}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\dd\mu_{\text{pp}}$
+\end_inset
+
+ is the 
+\emph on
+pure point
+\emph default
+, 
+\begin_inset Formula $\dd\mu_{\text{ac}}$
+\end_inset
+
+ the 
+\emph on
+absolutely continuous
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ and 
+\begin_inset Formula $\dd\mu_{\text{sing}}$
+\end_inset
+
+ the 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+singular
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ measure.
+ It holds
+\begin_inset Formula 
+\begin{align*}
+\dd\mu_{\text{ac}} & =f\left(x\right)\dd x
+\end{align*}
+
+\end_inset
+
+for a 
+\begin_inset Formula $f\in L^{2}\left(\Omega,\dd x\right)$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $\dd\mu_{\text{pp}}$
+\end_inset
+
+ is a weighted counting measure, i.e.
+ there is a countable set 
+\begin_inset Formula $K$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{j}\in\mathbb{R}_{>0}$
+\end_inset
+
+ for 
+\begin_inset Formula $j\in K$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+\dd\mu_{\text{pp}}\left(\Omega\right) & =\sum_{j\in K}c_{j}\delta_{x_{j}}\\
+\sum_{j\in K}c_{j} & <\infty
+\end{align*}
+
+\end_inset
+
+This gives rise to a decomposition of the Hilbert spaces.
+\begin_inset Formula 
+\begin{align*}
+L^{2}\left(\Omega,\dd\mu\right) & =L^{2}\left(\Omega,\dd\mu_{\text{pp}}\right)\oplus L^{2}\left(\Omega,\dd\mu_{\text{ac}}\right)\oplus L^{2}\left(\Omega,\dd\mu_{\text{sing}}\right)
+\end{align*}
+
+\end_inset
+
+Applying 
+\begin_inset Formula $\mathcal{U}^{-1}$
+\end_inset
+
+ gives the corresponding decomposition:
+\begin_inset Formula 
+\begin{align*}
+H & =H_{\text{pp}}+H_{\text{ac}}+H_{\text{sing}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+A\big|_{H_{\text{pp}}}:H_{\text{pp}} & \to H_{\text{pp}} & \sigma_{\text{pp}}\left(A\right) & :=\sigma\left(A|_{H_{\text{pp}}}\right)\\
+A\big|_{H_{\text{ac}}}:H_{\text{ac}} & \to H_{\text{ac}} & \sigma_{\text{ac}}\left(A\right) & :=\sigma\left(A|_{H_{\text{ac}}}\right)\\
+A\big|_{H_{\text{sing}}}:H_{\text{sing}} & \to H_{\text{sing}} & \sigma_{\text{sing}}\left(A\right) & :=\sigma\left(A|_{H_{\text{sing}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+The Spectral Theorem for Unbounded Self-Adjoint Operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ be a densely defined linear operator with domain of definition 
+\begin_inset Formula $\mathcal{D}\left(A\right)\stackrel{\text{dense}}{\subseteq}H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Recall
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+symmetric
+\emph default
+ if 
+\begin_inset Formula $\left\langle u,Av\right\rangle =\left\langle Au,v\right\rangle $
+\end_inset
+
+ for all 
+\begin_inset Formula $u,v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+.
+ (also called 
+\emph on
+formally self-adjoint
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+self-adjoint
+\emph default
+ if 
+\begin_inset Formula $A^{*}=A$
+\end_inset
+
+, or equivalently:
+\begin_inset Formula 
+\begin{align*}
+\left(\fall_{u\in\mathcal{D}\left(A\right)}:\left\langle Au,v\right\rangle =\left\langle u,w\right\rangle \right) &  & \Rightarrow\qquad & \left(\left(w\in\mathcal{D}\left(A\right)\right)\vphantom{\big|}\wedge\vphantom{\big|}\left(Av=w\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(The basic criterion for self-adjointness)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a symmetric operator with dense domain of definition 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+.
+ Then the following statements are equivalent.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ is closed and 
+\begin_inset Formula $\ker\left(A^{*}\pm\ii\right)=\left\{ 0\right\} $
+\end_inset
+
+ (for 
+\begin_inset Formula $+$
+\end_inset
+
+ and 
+\begin_inset Formula $-$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{im}\left(A\pm\ii\right)=H$
+\end_inset
+
+ (for 
+\begin_inset Formula $+$
+\end_inset
+
+ and 
+\begin_inset Formula $-$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+„i) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ ii)“: Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be self-adjoint, i.e.
+ 
+\begin_inset Formula $A=A^{*}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ is always closed, it follows that 
+\begin_inset Formula $A$
+\end_inset
+
+ is closed.
+ Let 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A^{*}\right)=\mathcal{D}\left(A\right)$
+\end_inset
+
+ be in the kernel of 
+\begin_inset Formula $A^{*}\pm\ii$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\mp\ii\varphi=A^{*}\varphi=A\varphi$
+\end_inset
+
+.
+ Then follows:
+\begin_inset Formula 
+\begin{align*}
+\mp\ii\left\langle \varphi,\varphi\right\rangle  & =\left\langle \varphi,A\varphi\right\rangle =\left\langle A\varphi,\varphi\right\rangle =\pm\ii\left\langle \varphi,\varphi\right\rangle 
+\end{align*}
+
+\end_inset
+
+This shows 
+\begin_inset Formula $\norm{\varphi}=0$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\varphi=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+„ii) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ iii)“: Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be closed and 
+\begin_inset Formula $\ker\left(A\pm\ii\right)=\left\{ 0\right\} $
+\end_inset
+
+ be trivial.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{im}\left(A\pm\ii\right)$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Assume conversely that there exists a 
+\begin_inset Formula $u\not=0$
+\end_inset
+
+ in 
+\begin_inset Formula $\left(\text{im}\left(A\pm\ii\right)\right)^{\perp}$
+\end_inset
+
+.
+ Then follows for all 
+\begin_inset Formula $v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+0 & =\left\langle \left(A\pm\ii\right)v,u\right\rangle 
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $u\in\mathcal{D}\left(\left(A\pm\ii\right)^{*}\right)=\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A^{*}\mp\ii\right)u=0$
+\end_inset
+
+ in contradiction to 
+\begin_inset Formula $\ker\left(A^{*}\mp\ii\right)=\left\{ 0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{im}\left(A\pm\ii\right)$
+\end_inset
+
+ is closed in 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\psi\in\overline{\text{im}\left(A\pm\ii\right)}$
+\end_inset
+
+ lie in the closure of the image.
+ Then there exist 
+\begin_inset Formula $\varphi_{n}\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\begin{align*}
+\left(A\pm\ii\right)\varphi_{n} & \to\psi
+\end{align*}
+
+\end_inset
+
+For any 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A} is symmetric}}
+\end{align*}
+
+\end_inset
+
+Especially for 
+\begin_inset Formula $\varphi=\varphi_{n}-\varphi_{m}$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\underbrace{\norm{A\left(\varphi_{n}-\varphi_{m}\right)}^{2}}_{\ge0}+\underbrace{\norm{\varphi_{n}-\varphi_{m}}^{2}}_{\ge0} & =\norm{\left(A\pm\ii\right)\left(\varphi_{n}-\varphi_{m}\right)}^{2}\xrightarrow[\left(A\pm\ii\right)\varphi_{n}\to\psi]{n,m\to\infty}0
+\end{align*}
+
+\end_inset
+
+It follows:
+\begin_inset Formula 
+\begin{align*}
+\norm{\varphi_{n}-\varphi_{m}} & \to0 & \varphi_{n} & \to\varphi\\
+\norm{A\varphi_{n}-A\varphi_{m}} & \to0 & A\varphi_{n} & \to\psi\mp\ii\varphi
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\left(\varphi_{n},A\varphi_{n}\right)$
+\end_inset
+
+ is a Cauchy sequence in 
+\begin_inset Formula $\text{graph}\left(A\right)\subseteq H\times H$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is closed, which means by definition that 
+\begin_inset Formula $\text{graph}\left(A\right)$
+\end_inset
+
+ is closed in 
+\begin_inset Formula $H\times H$
+\end_inset
+
+, the limit point 
+\begin_inset Formula $\left(\varphi,\psi\mp\ii\varphi\right)$
+\end_inset
+
+ is in 
+\begin_inset Formula $\text{graph}\left(A\right)$
+\end_inset
+
+.
+ Then follows 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $A\varphi=\psi\mp\ii\varphi$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\psi\in\text{im}\left(A\pm\ii\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+„iii) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ i)“: Assume that 
+\begin_inset Formula $\text{im}\left(A\pm\ii\right)=H$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\text{im}\left(A\pm\ii\right)=H$
+\end_inset
+
+, there is a 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left(A\pm\ii\right)u=\left(A^{*}\pm\ii\right)\varphi$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $\mathcal{D}\left(A\right)\subseteq\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ (always true for symmetric operators) follows 
+\begin_inset Formula $\varphi-u\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+\left(A^{*}\pm\ii\right)\left(\varphi-u\right) & =0
+\end{align*}
+
+\end_inset
+
+Consider 
+\begin_inset Formula $w\in\ker\left(A^{*}\pm\ii\right)\setminus\left\{ 0\right\} $
+\end_inset
+
+.
+ Then holds for all 
+\begin_inset Formula $\xi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(A^{*}\pm\ii\right)w,\xi\right\rangle  & =0\\
+\left\langle w,\left(A\mp\ii\right)\xi\right\rangle  & =0
+\end{align*}
+
+\end_inset
+
+Using assumption 
+\begin_inset Formula $\text{im}\left(A\mp\ii\right)=H$
+\end_inset
+
+ one can choose 
+\begin_inset Formula $\xi$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left(A\mp\ii\right)\xi=w$
+\end_inset
+
+, which means 
+\begin_inset Formula $\left\langle w,w\right\rangle =0$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $w=0$
+\end_inset
+
+.
+ Thus holds:
+\begin_inset Formula 
+\begin{align*}
+\ker\left(A^{*}\pm\ii\right) & =\left\{ 0\right\} 
+\end{align*}
+
+\end_inset
+
+This gives 
+\begin_inset Formula $\varphi=u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+, which implies 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+ and thus 
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Unbounded Multiplication Operators
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left(M,\mu\right)$
+\end_inset
+
+ be a measure space with a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-finite measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ (For example, 
+\begin_inset Formula $M$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-compact topological space and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ a positive Borel measure on 
+\begin_inset Formula $M$
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ is our Hilbert space.
+ Let 
+\begin_inset Formula $g:M\to\mathbb{R}$
+\end_inset
+
+ be measurable (and finite almost everywhere).
+ We want to introduce 
+\begin_inset Formula $T_{g}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+T_{g}f & =g\cdot f
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $g\in L^{\infty}\left(M,\dd\mu\right)$
+\end_inset
+
+, 
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ is a bounded symmetric operator.
+ Suppose 
+\begin_inset Formula $g$
+\end_inset
+
+ is unbounded.
+ What is 
+\begin_inset Formula $\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+? How to choose 
+\begin_inset Formula $\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ becomes self-adjoint?
+\end_layout
+
+\begin_layout Subsection
+Lemma
+\end_layout
+
+\begin_layout Standard
+Define:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(M,\dd\mu\right)\big|g\cdot f\in L^{2}\left(M,\dd\mu\right)\right\} \subseteq L^{2}\left(M,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+Then 
+\begin_inset Formula $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ is self-adjoint and 
+\begin_inset Formula $\sigma_{\text{ess}}\left(T_{g}\right)=\text{im}\left(g\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Part*
