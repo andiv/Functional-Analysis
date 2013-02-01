@@ -8618,7 +8618,7 @@ self-adjoint})
 
 \end{itemize}
 
-\section{Theorem \textmd{(The basic criterion for self-adjointness)}}
+\section{Theorem \textmd{(The basic criterion for self-adjointness)\label{sec:Thm-The-basic-criterion-self-for-adjointness}}}
 
 Let $A$ be a symmetric operator with dense domain of definition $\mathcal{D}\left(A\right)$.
 Then the following statements are equivalent.
@@ -8660,7 +8660,7 @@ such that:
 \end{align*}
 For any $\varphi\in\mathcal{D}\left(A\right)$ holds:
 \begin{align*}
-\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A} is symmetric}}
+\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A}is symmetric}}
 \end{align*}
 Especially for $\varphi=\varphi_{n}-\varphi_{m}$ holds:
 \begin{align*}
@@ -8705,29 +8705,266 @@ $\varphi\in\mathcal{D}\left(A^{*}\right)$ and thus $A$ is self-adjoint.\qqed
 
 \section{Unbounded Multiplication Operators}
 
-Let $\left(M,\mu\right)$ be a measure space with a $\sigma$-finite
-measure $\mu$. (For example, $M$ is a $\sigma$-compact topological
-space and $\mu$ a positive Borel measure on $M$.)\\
-$L^{2}\left(M,\dd\mu\right)$ is our Hilbert space. Let $g:M\to\mathbb{R}$
+Let $\left(\Omega,\mu\right)$ be a measure space with a $\sigma$-finite
+measure $\mu$. (For example, $\Omega$ is a $\sigma$-compact topological
+space and $\mu$ a positive Borel measure on $\Omega$.)\\
+$H=L^{2}\left(\Omega,\dd\mu\right)$ is our Hilbert space. Let $g:\Omega\to\mathbb{R}$
 be measurable (and finite almost everywhere). We want to introduce
 $T_{g}$:
 \begin{align*}
 T_{g}f & =g\cdot f
 \end{align*}
-For $g\in L^{\infty}\left(M,\dd\mu\right)$, $T_{g}$ is a bounded
+For $g\in L^{\infty}\left(\Omega,\dd\mu\right)$, $T_{g}$ is a bounded
 symmetric operator. Suppose $g$ is unbounded. What is $\mathcal{D}\left(T_{g}\right)$?
 How to choose $\mathcal{D}\left(T_{g}\right)$ such that $T_{g}$
 becomes self-adjoint?
 
 
-\subsection{Lemma}
+\subsection*{Lemma\label{sub:Lem-Unbounded_Multiplication_Operators}}
 
 Define:
 \begin{align*}
-\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(M,\dd\mu\right)\big|g\cdot f\in L^{2}\left(M,\dd\mu\right)\right\} \subseteq L^{2}\left(M,\dd\mu\right)
+\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(\Omega,\dd\mu\right)\big|g\cdot f\in L^{2}\left(\Omega,\dd\mu\right)\right\} \subseteq L^{2}\left(\Omega,\dd\mu\right)
 \end{align*}
-Then $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(M,\dd\mu\right)$
-is self-adjoint and $\sigma_{\text{ess}}\left(T_{g}\right)=\text{im}\left(g\right)$.
+Then $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(\Omega,\dd\mu\right)$
+is self-adjoint and $\sigma_{\text{ess}}\left(T_{g}\right)=g\left(\Omega\right)$.
+
+%DATE: Fr 1.2.13
+
+
+\subsubsection*{Proof}
+
+$T_{g}$ is symmetric:
+\begin{align*}
+\left\langle T_{g}f,h\right\rangle  & =\int_{\Omega}\overline{\left(T_{g}f\right)}h\dd\mu=\int_{\Omega}\overline{g\left(x\right)\cdot f\left(x\right)}h\left(x\right)\dd\mu\left(x\right)=\int_{\Omega}g\left(x\right)\cdot\overline{f}\left(x\right)h\left(x\right)\dd\mu\left(x\right)=\\
+ & =\int_{\Omega}\overline{f\left(x\right)}g\left(x\right)h\left(x\right)\dd\mu\left(x\right)=\left\langle f,T_{g}h\right\rangle 
+\end{align*}
+$T_{g}$ is self-adjoint: For $\psi\in\mathcal{D}\left(T_{g}^{*}\right)$
+we show $\psi\in\mathcal{D}\left(T_{g}\right)$. This is equivalent
+to the existence of a $v\in H$ such that for all $u\in\mathcal{D}\left(T_{g}\right)$
+holds
+\begin{align*}
+\left\langle T_{g}u,\psi\right\rangle  & =\left\langle u,v\right\rangle 
+\end{align*}
+and we have $v=T_{g}^{*}\psi$. Now we write
+\begin{align*}
+\Omega & =\bigcup_{N}K_{N}
+\end{align*}
+with $K_{N}\subseteq K_{N+1}$ having finite measure and set:
+\begin{align*}
+\chi_{N}\left(x\right) & =\begin{cases}
+1 & \text{if }\abs{g\left(x\right)}\le N\text{ and }x\in K_{N}\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+So $\chi_{N}\left(x\right)\nearrow1$ converges monotonously and it
+holds:
+\begin{align*}
+\norm{T_{g}^{*}\psi}_{L^{2}}^{2} & =\int_{\Omega}\abs{\left(T_{g}^{*}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)\sr ={\text{monotone}}{\text{convergence}}\lim_{N\to\infty}\int_{\Omega}\chi_{N}\left(x\right)\abs{\left(T_{g}^{*}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)=\\
+ & =\lim_{N\to\infty}\norm{\chi_{N}T_{g}^{*}\psi}^{2}
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\norm{T_{g}^{*}\psi}_{L^{2}} & =\lim_{N\to\infty}\norm{\chi_{N}T_{g}^{*}\psi}_{L^{2}}=\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle \varphi,\chi_{N}T_{g}^{*}\psi\right\rangle }=\\
+ & \stackrel{\star}{=}\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle T_{g}\chi_{N}\varphi,\psi\right\rangle }
+\end{align*}
+In $\star$ we used that $\chi_{N}\varphi$ is in $\mathcal{D}\left(T_{g}\right)$.
+This is really the case, since for $\chi_{N}\varphi\in L^{2}\left(\Omega,\dd\mu\right)$
+holds:
+\begin{align*}
+T_{g}\chi_{N}\varphi=\underbrace{g\cdot\chi_{N}}_{\text{is bounded}}\varphi & =T_{g\cdot\chi_{N}}\varphi\in L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+Since the function $g\cdot\chi_{N}$ is bounded, the multiplication
+operator $T_{g\cdot\chi_{N}}$ is bounded and thus follows:
+\begin{align*}
+\infty>\norm{T_{g}^{*}\psi} & =\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle \varphi,\chi_{N}\cdot g\cdot\psi\right\rangle }=\lim_{N\to\infty}\norm{\chi_{N}\cdot g\cdot\psi}=\\
+ & =\lim_{N\to\infty}\int_{\Omega}\chi_{N}\left(x\right)\abs{g\psi}^{2}\left(x\right)\dd\mu\left(x\right)\sr ={\text{monotone}}{\text{convergence}}\int_{\Omega}\abs{\left(g\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)
+\end{align*}
+So we have $g\psi\in L^{2}\left(\Omega,\dd\mu\right)$ and thus $\psi\in\mathcal{D}\left(T_{g}\right)$
+holds by definition of $\mathcal{D}\left(T_{g}\right)$.
+
+We omit the proof that $\sigma_{\text{ess}}\left(T_{g}\right)=g\left(\Omega\right)$.\qqed
+
+
+\section{Theorem \textmd{(The Spectral Theorem in its Multiplicative Form)}}
+
+Let $A:\mathcal{D}\left(H\right)\stackrel{\text{dense}}{\subseteq}H\to H$
+be a self-adjoint operator and $H$ separable. Then there is a finite
+measure space $\left(M,\mu\right)$, a unitary operator $\mathcal{U}:H\to L^{2}\left(M,\dd\mu\right)$
+and a measurable function $f:M\to\mathbb{R}$ such that holds:
+\begin{enumerate}[label=\alph*)]
+\item $\psi\in\mathcal{D}\left(A\right)\quad\Leftrightarrow\quad f\cdot\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$
+\item $ $$\varphi\in\mathcal{U}\left(\mathcal{D}\left(A\right)\right)$
+implies $\mathcal{U}A\mathcal{U}^{-1}\varphi=f\cdot\varphi=T_{f}\cdot\varphi$.
+\end{enumerate}
+Thus $A$ is unitarily equivalent to the multiplication $T_{f}$ on
+$L^{2}\left(M,\dd\mu\right)$ and as chosen in \ref{sub:Lem-Unbounded_Multiplication_Operators}:
+\begin{align*}
+\mathcal{U}\left(\mathcal{D}\left(A\right)\right) & =\mathcal{D}\left(T_{f}\right)=\left\{ \phi\in L^{2}\big|f\cdot\phi\in L^{2}\left(M,\dd\mu\right)\right\} 
+\end{align*}
+
+
+
+\subsubsection*{Proof}
+
+According to our basic criterion \ref{sec:Thm-The-basic-criterion-self-for-adjointness},
+the mapping
+\begin{align*}
+A\pm\ii:\mathcal{D}\left(A\right) & \to H
+\end{align*}
+is surjective (by property iii)) and injective (by property ii)),
+noting:
+\begin{align*}
+\left\{ 0\right\} =\ker\left(A^{*}\pm\ii\right) & =\ker\left(A\pm\ii\right)
+\end{align*}
+So $A\pm\ii$ is bijective and thus the inverse $\left(A\pm\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)\subseteq H$
+exists.\\
+The operators $\left(A\pm\ii\right)^{-1}$ are bounded, because for
+all $u\in\mathcal{D}\left(A\right)$ holds (cf. proof of \ref{sec:Thm-The-basic-criterion-self-for-adjointness}):
+\begin{align*}
+\norm{\left(A+\ii\right)u}^{2} & =\norm{Au}^{2}+\norm u^{2}
+\end{align*}
+Thus for $v:=\left(A+\ii\right)u$ follows:
+\begin{align*}
+\norm{\left(A+\ii\right)^{-1}v} & \le\norm v\\
+\opnorm{\left(A+\ii\right)^{-1}} & \le1
+\end{align*}
+The operators $\left(A\pm\ii\right)^{-1}$ are \emph{normal}: The
+resolvent identity gives:
+\begin{align*}
+\left(A+\ii\right)^{-1}-\left(A-\ii\right)^{-1} & =-2\ii\cdot\left(A+\ii\right)^{-1}\cdot\left(A-\ii\right)^{-1}\\
+\left(A-\ii\right)^{-1}-\left(A+\ii\right)^{-1} & =+2\ii\cdot\left(A-\ii\right)^{-1}\cdot\left(A+\ii\right)^{-1}
+\end{align*}
+Together this yields:
+\begin{align*}
+\left[\left(A+\ii\right)^{-1},\left(A-\ii\right)^{-1}\right] & =0
+\end{align*}
+Let us compute $\left(\left(A+\ii\right)^{-1}\right)^{*}$. For $u,v\in\mathcal{D}\left(A\right)$
+holds:
+\begin{align*}
+\left\langle \left(A-\ii\right)u,v\right\rangle  & \stackrel{A\text{ symmetric}}{=}\left\langle u,\left(A+\ii\right)v\right\rangle \\
+\Rotate{=}\qquad & \qquad\qquad\qquad\qquad\Rotate{=}\\
+\big\langle\underbrace{\left(A-\ii\right)u}_{=\psi},\left(A+\ii\right)^{-1}\underbrace{\left(A+\ii\right)v}_{=\varphi}\big\rangle & =\big\langle\left(A-\ii\right)^{-1}\underbrace{\left(A-\ii\right)u}_{=\psi},\underbrace{\left(A+\ii\right)v}_{=\varphi}\big\rangle
+\end{align*}
+\begin{align*}
+\left\langle \psi,\left(A+\ii\right)^{-1}\phi\right\rangle  & =\left\langle \left(A-\ii\right)^{-1}\psi,\phi\right\rangle 
+\end{align*}
+Since $\left(A-\ii\right)$ and $\left(A+\ii\right)$ are surjective,
+this holds for all $\psi,\phi\in H$ and thus follows:
+\begin{align*}
+\left(\left(A+\ii\right)^{-1}\right)^{*} & =\left(A-\ii\right)^{-1}
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\left[\left(A+\ii\right)^{-1},\left(\left(A+\ii\right)^{-1}\right)^{*}\right] & =0
+\end{align*}
+So $\left(A+\ii\right)^{-1}$ is normal and we can apply the spectral
+theorem in its multiplicative form to the operator $\left(A+\ii\right)^{-1}$.
+This gives:
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(M,\dd\mu\right)
+\end{align*}
+$\mu$ is a bounded positive Borel measure on the $\sigma$-compact
+topological space $M$.
+\begin{align*}
+M & =\sigma\left(\left(A+\ii\right)^{-1}\right)\times J
+\end{align*}
+And for $\varphi\in L^{2}\left(M,\dd\mu\right)$ holds
+\begin{align*}
+\left(\mathcal{U}\left(A+\ii\right)^{-1}\mathcal{U}^{-1}\right)\varphi & =g\cdot\varphi
+\end{align*}
+with a $g\in L^{\infty}\left(M,\dd\mu\right)$.\\
+Moreover, since $\left(A+\ii\right)^{-1}$ is injective, the function
+$g$ is non-zero almost everywhere: Assume conversely that there exists
+a $\Omega\subseteq M$ with $\mu\left(\Omega\right)\not=0$ and $g\big|_{\Omega}=0$.
+Then $\varphi:=\chi_{\Omega}$ is a non-zero vector in $L^{2}\left(M,\dd\mu\right)$
+with $g\cdot\varphi\not=0$.
+\begin{align*}
+\norm{\varphi}^{2} & =\int_{M}\chi_{\Omega}^{2}\dd\mu=\mu\left(\Omega\right)>0
+\end{align*}
+Thus $\mathcal{U}^{-1}\varphi$ is a non-trivial vector in the kernel
+of $\left(A+\ii\right)^{-1}$, which is a contradiction to the injectivity
+of $A$.
+\begin{enumerate}[label=\alph*)]
+\item Set $f=\frac{1}{g}-\ii$. This function is measurable and finite
+almost everywhere.\\
+„$\Rightarrow$“: Since $\left(A+\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)$
+is bijective, a $\psi\in\mathcal{D}\left(A\right)$ can be written
+uniquely as:
+\begin{align*}
+\psi & =\left(A+\ii\right)^{-1}\phi
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\mathcal{U}\psi & =\mathcal{U}\left(A+\ii\right)^{-1}\phi=\underbrace{\mathcal{U}\left(A+\ii\right)^{-1}\mathcal{U}^{-1}}_{=T_{g}}\mathcal{U}\phi=g\mathcal{U}\phi\\
+f\mathcal{U}\psi & =fg\mathcal{U}\phi=\underbrace{\left(1-\ii g\right)}_{\in L^{\infty}\left(M,\dd\mu\right)}\cdot\underbrace{\mathcal{U}\phi}_{\in L^{2}\left(M,\dd\mu\right)}\in L^{2}\left(M,\dd\mu\right)
+\end{align*}
+„$\Leftarrow$“: Assume $f\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$,
+which implies $\left(f+\ii\right)\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$.
+Now there exists a $\phi\in H$ such that holds:
+\begin{align*}
+\mathcal{U}\phi & =\left(f+\ii\right)\mathcal{U}\psi\qquad/\cdot g\\
+g\mathcal{U}\phi & =g\left(f+\ii\right)\mathcal{U}\psi=\mathcal{U}\psi\\
+\Rightarrow\qquad\psi & =\underbrace{\mathcal{U}^{-1}g\mathcal{U}}_{=\left(A+\ii\right)^{-1}}\phi=\left(A+\ii\right)^{-1}\phi
+\end{align*}
+Since $\left(A+\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)$ is
+bijective, $\psi\in\mathcal{D}\left(A\right)$ follows.
+\item We need to show for all $\varphi\in\mathcal{U}\left(\mathcal{D}\left(A\right)\right)$:
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}\varphi & =f\varphi
+\end{align*}
+Write $\psi\in\mathcal{D}\left(A\right)$ as $\psi=\left(A+\ii\right)^{-1}\varphi$
+to get just as in a) „$\Rightarrow$“:
+\begin{align*}
+\mathcal{U}\psi & =g\mathcal{U}\varphi\\
+\mathcal{U}\varphi & =\frac{1}{g}\mathcal{U}\psi\\
+\mathcal{U}\left(A+\ii\right)\psi & =\frac{1}{g}\mathcal{U}\psi\\
+\mathcal{U}A\psi & =\frac{1}{g}\mathcal{U}\psi-\ii\mathcal{U}\psi=\left(\frac{1}{g}-\ii\right)\mathcal{U}\psi=f\mathcal{U}\psi\\
+\mathcal{U}A\mathcal{U}^{-1}\chi & \stackrel{\chi=\mathcal{U}\psi}{=}f\cdot\chi
+\end{align*}
+
+\end{enumerate}
+Finally we show that $f$ is real-valued. For all $\psi\in\mathcal{D}\left(A\right)$
+holds, because $A$ is symmetric:
+\begin{align*}
+0 & =\text{Im}\left(\left\langle \psi,A\psi\right\rangle \right)=\text{Im}\left(\left\langle \psi,\mathcal{U}^{-1}f\mathcal{U}\psi\right\rangle \right)\stackrel{\mathcal{U}\text{ unitary}}{=}\text{Im}\left(\left\langle \mathcal{U}\psi,f\mathcal{U}\psi\right\rangle \right)=\\
+ & =\int_{M}\text{Im}\left(f\left(x\right)\right)\cdot\abs{\left(\mathcal{U}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)
+\end{align*}
+Since $\mathcal{U}\psi$ can be any $L^{2}$-function $\chi$ (just
+choose $\psi=\mathcal{U}^{-1}\chi$), it follows that $\text{Im}\left(f\right)=0$
+almost everywhere.\qqed
+
+
+\subsubsection*{Connection to the Cayley transformation}
+
+The operators
+\begin{align*}
+V & :=\left(A+\ii\right)\left(A-\ii\right)^{-1}\\
+V^{*} & =\left(A+\ii\right)^{-1}\left(A-\ii\right)
+\end{align*}
+are unitary, because it holds:
+\begin{align*}
+V\cdot V^{*} & =\left(A+\ii\right)\left(A-\ii\right)^{-1}\left(A+\ii\right)^{-1}\left(A-\ii\right)=\\
+ & =\left(A+\ii\right)\left(A+\ii\right)^{-1}\left(A-\ii\right)^{-1}\left(A-\ii\right)=\mathbbm{1}
+\end{align*}
+We worked here with $\left(A-\ii\right)^{-1}$.
+
+
+\section{The unbounded Functional Calculus, Projection-valued Spectral measures}
+
+\emph{Goal}: Suppose $E_{\lambda}$ is a spectral measure on $\mathbb{K}\in\left\{ \mathbb{R},\mathbb{C}\right\} $.
+\begin{align*}
+f\left(A\right) & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+So far we had $f\in\mathcal{B}\left(\mathbb{K}\right)$. This gave
+us a bounded linear operator. We want to calculate
+\begin{align*}
+f\left(A\right) & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+for any Borel function $f$, possibly unbounded. Then $f\left(A\right)$
+is a possibly unbounded operator. What is $\mathcal{D}\left(A\right)$
+and what is $\mathcal{D}\left(A^{*}\right)$?
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ u\in H\bigg|\int_{\mathbb{K}}\abs{f\left(\lambda\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+
 
 
 \part*{Appendix \thispagestyle{empty}}

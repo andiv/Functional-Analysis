@@ -36469,6 +36469,13 @@ self-adjoint
 Theorem 
 \series medium
 (The basic criterion for self-adjointness)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Thm-The-basic-criterion-self-for-adjointness"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -36702,7 +36709,7 @@ For any
  holds:
 \begin_inset Formula 
 \begin{align*}
-\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A} is symmetric}}
+\norm{\left(A\pm\ii\right)\varphi}^{2} & =\left\langle \left(A\pm\ii\right)\varphi,\left(A\pm\ii\right)\varphi\right\rangle =\norm{A\varphi}^{2}+\norm{\varphi}^{2}\pm\ii\underbrace{\left(\left\langle A\varphi,\varphi\right\rangle -\left\langle \varphi,A\varphi\right\rangle \right)}_{=0\text{, since \ensuremath{A}is symmetric}}
 \end{align*}
 
 \end_inset
@@ -36903,7 +36910,7 @@ Unbounded Multiplication Operators
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\left(M,\mu\right)$
+\begin_inset Formula $\left(\Omega,\mu\right)$
 \end_inset
 
  be a measure space with a 
@@ -36916,7 +36923,7 @@ Let
 
 .
  (For example, 
-\begin_inset Formula $M$
+\begin_inset Formula $\Omega$
 \end_inset
 
  is a 
@@ -36928,7 +36935,7 @@ Let
 \end_inset
 
  a positive Borel measure on 
-\begin_inset Formula $M$
+\begin_inset Formula $\Omega$
 \end_inset
 
 .)
@@ -36936,12 +36943,12 @@ Let
 \end_inset
 
 
-\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\begin_inset Formula $H=L^{2}\left(\Omega,\dd\mu\right)$
 \end_inset
 
  is our Hilbert space.
  Let 
-\begin_inset Formula $g:M\to\mathbb{R}$
+\begin_inset Formula $g:\Omega\to\mathbb{R}$
 \end_inset
 
  be measurable (and finite almost everywhere).
@@ -36958,7 +36965,7 @@ T_{g}f & =g\cdot f
 \end_inset
 
 For 
-\begin_inset Formula $g\in L^{\infty}\left(M,\dd\mu\right)$
+\begin_inset Formula $g\in L^{\infty}\left(\Omega,\dd\mu\right)$
 \end_inset
 
 , 
@@ -36986,28 +36993,895 @@ For
  becomes self-adjoint?
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsection*
 Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lem-Unbounded_Multiplication_Operators"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Define:
 \begin_inset Formula 
 \begin{align*}
-\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(M,\dd\mu\right)\big|g\cdot f\in L^{2}\left(M,\dd\mu\right)\right\} \subseteq L^{2}\left(M,\dd\mu\right)
+\mathcal{D}\left(T_{g}\right) & =\left\{ f\in L^{2}\left(\Omega,\dd\mu\right)\big|g\cdot f\in L^{2}\left(\Omega,\dd\mu\right)\right\} \subseteq L^{2}\left(\Omega,\dd\mu\right)
 \end{align*}
 
 \end_inset
 
 Then 
-\begin_inset Formula $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(M,\dd\mu\right)$
+\begin_inset Formula $T_{g}:\mathcal{D}\left(T_{g}\right)\to L^{2}\left(\Omega,\dd\mu\right)$
 \end_inset
 
  is self-adjoint and 
-\begin_inset Formula $\sigma_{\text{ess}}\left(T_{g}\right)=\text{im}\left(g\right)$
+\begin_inset Formula $\sigma_{\text{ess}}\left(T_{g}\right)=g\left(\Omega\right)$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE: Fr 1.2.13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ is symmetric:
+\begin_inset Formula 
+\begin{align*}
+\left\langle T_{g}f,h\right\rangle  & =\int_{\Omega}\overline{\left(T_{g}f\right)}h\dd\mu=\int_{\Omega}\overline{g\left(x\right)\cdot f\left(x\right)}h\left(x\right)\dd\mu\left(x\right)=\int_{\Omega}g\left(x\right)\cdot\overline{f}\left(x\right)h\left(x\right)\dd\mu\left(x\right)=\\
+ & =\int_{\Omega}\overline{f\left(x\right)}g\left(x\right)h\left(x\right)\dd\mu\left(x\right)=\left\langle f,T_{g}h\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ is self-adjoint: For 
+\begin_inset Formula $\psi\in\mathcal{D}\left(T_{g}^{*}\right)$
+\end_inset
+
+ we show 
+\begin_inset Formula $\psi\in\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+.
+ This is equivalent to the existence of a 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u\in\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+ holds
+\begin_inset Formula 
+\begin{align*}
+\left\langle T_{g}u,\psi\right\rangle  & =\left\langle u,v\right\rangle 
+\end{align*}
+
+\end_inset
+
+and we have 
+\begin_inset Formula $v=T_{g}^{*}\psi$
+\end_inset
+
+.
+ Now we write
+\begin_inset Formula 
+\begin{align*}
+\Omega & =\bigcup_{N}K_{N}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $K_{N}\subseteq K_{N+1}$
+\end_inset
+
+ having finite measure and set:
+\begin_inset Formula 
+\begin{align*}
+\chi_{N}\left(x\right) & =\begin{cases}
+1 & \text{if }\abs{g\left(x\right)}\le N\text{ and }x\in K_{N}\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\chi_{N}\left(x\right)\nearrow1$
+\end_inset
+
+ converges monotonously and it holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{T_{g}^{*}\psi}_{L^{2}}^{2} & =\int_{\Omega}\abs{\left(T_{g}^{*}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)\sr ={\text{monotone}}{\text{convergence}}\lim_{N\to\infty}\int_{\Omega}\chi_{N}\left(x\right)\abs{\left(T_{g}^{*}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)=\\
+ & =\lim_{N\to\infty}\norm{\chi_{N}T_{g}^{*}\psi}^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\norm{T_{g}^{*}\psi}_{L^{2}} & =\lim_{N\to\infty}\norm{\chi_{N}T_{g}^{*}\psi}_{L^{2}}=\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle \varphi,\chi_{N}T_{g}^{*}\psi\right\rangle }=\\
+ & \stackrel{\star}{=}\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle T_{g}\chi_{N}\varphi,\psi\right\rangle }
+\end{align*}
+
+\end_inset
+
+In 
+\begin_inset Formula $\star$
+\end_inset
+
+ we used that 
+\begin_inset Formula $\chi_{N}\varphi$
+\end_inset
+
+ is in 
+\begin_inset Formula $\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+.
+ This is really the case, since for 
+\begin_inset Formula $\chi_{N}\varphi\in L^{2}\left(\Omega,\dd\mu\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+T_{g}\chi_{N}\varphi=\underbrace{g\cdot\chi_{N}}_{\text{is bounded}}\varphi & =T_{g\cdot\chi_{N}}\varphi\in L^{2}\left(\Omega,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+Since the function 
+\begin_inset Formula $g\cdot\chi_{N}$
+\end_inset
+
+ is bounded, the multiplication operator 
+\begin_inset Formula $T_{g\cdot\chi_{N}}$
+\end_inset
+
+ is bounded and thus follows:
+\begin_inset Formula 
+\begin{align*}
+\infty>\norm{T_{g}^{*}\psi} & =\lim_{N\to\infty}\sup_{\norm{\varphi}=1}\abs{\left\langle \varphi,\chi_{N}\cdot g\cdot\psi\right\rangle }=\lim_{N\to\infty}\norm{\chi_{N}\cdot g\cdot\psi}=\\
+ & =\lim_{N\to\infty}\int_{\Omega}\chi_{N}\left(x\right)\abs{g\psi}^{2}\left(x\right)\dd\mu\left(x\right)\sr ={\text{monotone}}{\text{convergence}}\int_{\Omega}\abs{\left(g\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)
+\end{align*}
+
+\end_inset
+
+So we have 
+\begin_inset Formula $g\psi\in L^{2}\left(\Omega,\dd\mu\right)$
+\end_inset
+
+ and thus 
+\begin_inset Formula $\psi\in\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+ holds by definition of 
+\begin_inset Formula $\mathcal{D}\left(T_{g}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We omit the proof that 
+\begin_inset Formula $\sigma_{\text{ess}}\left(T_{g}\right)=g\left(\Omega\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(The Spectral Theorem in its Multiplicative Form)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(H\right)\stackrel{\text{dense}}{\subseteq}H\to H$
+\end_inset
+
+ be a self-adjoint operator and 
+\begin_inset Formula $H$
+\end_inset
+
+ separable.
+ Then there is a finite measure space 
+\begin_inset Formula $\left(M,\mu\right)$
+\end_inset
+
+, a unitary operator 
+\begin_inset Formula $\mathcal{U}:H\to L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ and a measurable function 
+\begin_inset Formula $f:M\to\mathbb{R}$
+\end_inset
+
+ such that holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+alph*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)\quad\Leftrightarrow\quad f\cdot\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\varphi\in\mathcal{U}\left(\mathcal{D}\left(A\right)\right)$
+\end_inset
+
+ implies 
+\begin_inset Formula $\mathcal{U}A\mathcal{U}^{-1}\varphi=f\cdot\varphi=T_{f}\cdot\varphi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula $A$
+\end_inset
+
+ is unitarily equivalent to the multiplication 
+\begin_inset Formula $T_{f}$
+\end_inset
+
+ on 
+\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ and as chosen in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lem-Unbounded_Multiplication_Operators"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}\left(\mathcal{D}\left(A\right)\right) & =\mathcal{D}\left(T_{f}\right)=\left\{ \phi\in L^{2}\big|f\cdot\phi\in L^{2}\left(M,\dd\mu\right)\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+According to our basic criterion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-The-basic-criterion-self-for-adjointness"
+
+\end_inset
+
+, the mapping
+\begin_inset Formula 
+\begin{align*}
+A\pm\ii:\mathcal{D}\left(A\right) & \to H
+\end{align*}
+
+\end_inset
+
+is surjective (by property iii)) and injective (by property ii)), noting:
+\begin_inset Formula 
+\begin{align*}
+\left\{ 0\right\} =\ker\left(A^{*}\pm\ii\right) & =\ker\left(A\pm\ii\right)
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $A\pm\ii$
+\end_inset
+
+ is bijective and thus the inverse 
+\begin_inset Formula $\left(A\pm\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)\subseteq H$
+\end_inset
+
+ exists.
+\begin_inset Newline newline
+\end_inset
+
+The operators 
+\begin_inset Formula $\left(A\pm\ii\right)^{-1}$
+\end_inset
+
+ are bounded, because for all 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds (cf.
+ proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-The-basic-criterion-self-for-adjointness"
+
+\end_inset
+
+):
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(A+\ii\right)u}^{2} & =\norm{Au}^{2}+\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Thus for 
+\begin_inset Formula $v:=\left(A+\ii\right)u$
+\end_inset
+
+ follows:
+\begin_inset Formula 
+\begin{align*}
+\norm{\left(A+\ii\right)^{-1}v} & \le\norm v\\
+\opnorm{\left(A+\ii\right)^{-1}} & \le1
+\end{align*}
+
+\end_inset
+
+The operators 
+\begin_inset Formula $\left(A\pm\ii\right)^{-1}$
+\end_inset
+
+ are 
+\emph on
+normal
+\emph default
+: The resolvent identity gives:
+\begin_inset Formula 
+\begin{align*}
+\left(A+\ii\right)^{-1}-\left(A-\ii\right)^{-1} & =-2\ii\cdot\left(A+\ii\right)^{-1}\cdot\left(A-\ii\right)^{-1}\\
+\left(A-\ii\right)^{-1}-\left(A+\ii\right)^{-1} & =+2\ii\cdot\left(A-\ii\right)^{-1}\cdot\left(A+\ii\right)^{-1}
+\end{align*}
+
+\end_inset
+
+Together this yields:
+\begin_inset Formula 
+\begin{align*}
+\left[\left(A+\ii\right)^{-1},\left(A-\ii\right)^{-1}\right] & =0
+\end{align*}
+
+\end_inset
+
+Let us compute 
+\begin_inset Formula $\left(\left(A+\ii\right)^{-1}\right)^{*}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $u,v\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \left(A-\ii\right)u,v\right\rangle  & \stackrel{A\text{ symmetric}}{=}\left\langle u,\left(A+\ii\right)v\right\rangle \\
+\Rotate{=}\qquad & \qquad\qquad\qquad\qquad\Rotate{=}\\
+\big\langle\underbrace{\left(A-\ii\right)u}_{=\psi},\left(A+\ii\right)^{-1}\underbrace{\left(A+\ii\right)v}_{=\varphi}\big\rangle & =\big\langle\left(A-\ii\right)^{-1}\underbrace{\left(A-\ii\right)u}_{=\psi},\underbrace{\left(A+\ii\right)v}_{=\varphi}\big\rangle
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle \psi,\left(A+\ii\right)^{-1}\phi\right\rangle  & =\left\langle \left(A-\ii\right)^{-1}\psi,\phi\right\rangle 
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\left(A-\ii\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A+\ii\right)$
+\end_inset
+
+ are surjective, this holds for all 
+\begin_inset Formula $\psi,\phi\in H$
+\end_inset
+
+ and thus follows:
+\begin_inset Formula 
+\begin{align*}
+\left(\left(A+\ii\right)^{-1}\right)^{*} & =\left(A-\ii\right)^{-1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\left[\left(A+\ii\right)^{-1},\left(\left(A+\ii\right)^{-1}\right)^{*}\right] & =0
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\left(A+\ii\right)^{-1}$
+\end_inset
+
+ is normal and we can apply the spectral theorem in its multiplicative form
+ to the operator 
+\begin_inset Formula $\left(A+\ii\right)^{-1}$
+\end_inset
+
+.
+ This gives:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}:H & \to L^{2}\left(M,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a bounded positive Borel measure on the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-compact topological space 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+M & =\sigma\left(\left(A+\ii\right)^{-1}\right)\times J
+\end{align*}
+
+\end_inset
+
+And for 
+\begin_inset Formula $\varphi\in L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ holds
+\begin_inset Formula 
+\begin{align*}
+\left(\mathcal{U}\left(A+\ii\right)^{-1}\mathcal{U}^{-1}\right)\varphi & =g\cdot\varphi
+\end{align*}
+
+\end_inset
+
+with a 
+\begin_inset Formula $g\in L^{\infty}\left(M,\dd\mu\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Moreover, since 
+\begin_inset Formula $\left(A+\ii\right)^{-1}$
+\end_inset
+
+ is injective, the function 
+\begin_inset Formula $g$
+\end_inset
+
+ is non-zero almost everywhere: Assume conversely that there exists a 
+\begin_inset Formula $\Omega\subseteq M$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu\left(\Omega\right)\not=0$
+\end_inset
+
+ and 
+\begin_inset Formula $g\big|_{\Omega}=0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\varphi:=\chi_{\Omega}$
+\end_inset
+
+ is a non-zero vector in 
+\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $g\cdot\varphi\not=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\norm{\varphi}^{2} & =\int_{M}\chi_{\Omega}^{2}\dd\mu=\mu\left(\Omega\right)>0
+\end{align*}
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\mathcal{U}^{-1}\varphi$
+\end_inset
+
+ is a non-trivial vector in the kernel of 
+\begin_inset Formula $\left(A+\ii\right)^{-1}$
+\end_inset
+
+, which is a contradiction to the injectivity of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+alph*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Set 
+\begin_inset Formula $f=\frac{1}{g}-\ii$
+\end_inset
+
+.
+ This function is measurable and finite almost everywhere.
+\begin_inset Newline newline
+\end_inset
+
+„
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“: Since 
+\begin_inset Formula $\left(A+\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)$
+\end_inset
+
+ is bijective, a 
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ can be written uniquely as:
+\begin_inset Formula 
+\begin{align*}
+\psi & =\left(A+\ii\right)^{-1}\phi
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\mathcal{U}\psi & =\mathcal{U}\left(A+\ii\right)^{-1}\phi=\underbrace{\mathcal{U}\left(A+\ii\right)^{-1}\mathcal{U}^{-1}}_{=T_{g}}\mathcal{U}\phi=g\mathcal{U}\phi\\
+f\mathcal{U}\psi & =fg\mathcal{U}\phi=\underbrace{\left(1-\ii g\right)}_{\in L^{\infty}\left(M,\dd\mu\right)}\cdot\underbrace{\mathcal{U}\phi}_{\in L^{2}\left(M,\dd\mu\right)}\in L^{2}\left(M,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+„
+\begin_inset Formula $\Leftarrow$
+\end_inset
+
+“: Assume 
+\begin_inset Formula $f\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+, which implies 
+\begin_inset Formula $\left(f+\ii\right)\mathcal{U}\psi\in L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+.
+ Now there exists a 
+\begin_inset Formula $\phi\in H$
+\end_inset
+
+ such that holds:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}\phi & =\left(f+\ii\right)\mathcal{U}\psi\qquad/\cdot g\\
+g\mathcal{U}\phi & =g\left(f+\ii\right)\mathcal{U}\psi=\mathcal{U}\psi\\
+\Rightarrow\qquad\psi & =\underbrace{\mathcal{U}^{-1}g\mathcal{U}}_{=\left(A+\ii\right)^{-1}}\phi=\left(A+\ii\right)^{-1}\phi
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\left(A+\ii\right)^{-1}:H\to\mathcal{D}\left(A\right)$
+\end_inset
+
+ is bijective, 
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ follows.
+\end_layout
+
+\begin_layout Enumerate
+We need to show for all 
+\begin_inset Formula $\varphi\in\mathcal{U}\left(\mathcal{D}\left(A\right)\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}A\mathcal{U}^{-1}\varphi & =f\varphi
+\end{align*}
+
+\end_inset
+
+Write 
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ as 
+\begin_inset Formula $\psi=\left(A+\ii\right)^{-1}\varphi$
+\end_inset
+
+ to get just as in a) „
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+“:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{U}\psi & =g\mathcal{U}\varphi\\
+\mathcal{U}\varphi & =\frac{1}{g}\mathcal{U}\psi\\
+\mathcal{U}\left(A+\ii\right)\psi & =\frac{1}{g}\mathcal{U}\psi\\
+\mathcal{U}A\psi & =\frac{1}{g}\mathcal{U}\psi-\ii\mathcal{U}\psi=\left(\frac{1}{g}-\ii\right)\mathcal{U}\psi=f\mathcal{U}\psi\\
+\mathcal{U}A\mathcal{U}^{-1}\chi & \stackrel{\chi=\mathcal{U}\psi}{=}f\cdot\chi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally we show that 
+\begin_inset Formula $f$
+\end_inset
+
+ is real-valued.
+ For all 
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds, because 
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric:
+\begin_inset Formula 
+\begin{align*}
+0 & =\text{Im}\left(\left\langle \psi,A\psi\right\rangle \right)=\text{Im}\left(\left\langle \psi,\mathcal{U}^{-1}f\mathcal{U}\psi\right\rangle \right)\stackrel{\mathcal{U}\text{ unitary}}{=}\text{Im}\left(\left\langle \mathcal{U}\psi,f\mathcal{U}\psi\right\rangle \right)=\\
+ & =\int_{M}\text{Im}\left(f\left(x\right)\right)\cdot\abs{\left(\mathcal{U}\psi\right)\left(x\right)}^{2}\dd\mu\left(x\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\mathcal{U}\psi$
+\end_inset
+
+ can be any 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+-function 
+\begin_inset Formula $\chi$
+\end_inset
+
+ (just choose 
+\begin_inset Formula $\psi=\mathcal{U}^{-1}\chi$
+\end_inset
+
+), it follows that 
+\begin_inset Formula $\text{Im}\left(f\right)=0$
+\end_inset
+
+ almost everywhere.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Connection to the Cayley transformation
+\end_layout
+
+\begin_layout Standard
+The operators
+\begin_inset Formula 
+\begin{align*}
+V & :=\left(A+\ii\right)\left(A-\ii\right)^{-1}\\
+V^{*} & =\left(A+\ii\right)^{-1}\left(A-\ii\right)
+\end{align*}
+
+\end_inset
+
+are unitary, because it holds:
+\begin_inset Formula 
+\begin{align*}
+V\cdot V^{*} & =\left(A+\ii\right)\left(A-\ii\right)^{-1}\left(A+\ii\right)^{-1}\left(A-\ii\right)=\\
+ & =\left(A+\ii\right)\left(A+\ii\right)^{-1}\left(A-\ii\right)^{-1}\left(A-\ii\right)=\mathbbm{1}
+\end{align*}
+
+\end_inset
+
+We worked here with 
+\begin_inset Formula $\left(A-\ii\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The unbounded Functional Calculus, Projection-valued Spectral measures
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Goal
+\emph default
+: Suppose 
+\begin_inset Formula $E_{\lambda}$
+\end_inset
+
+ is a spectral measure on 
+\begin_inset Formula $\mathbb{K}\in\left\{ \mathbb{R},\mathbb{C}\right\} $
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right) & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+So far we had 
+\begin_inset Formula $f\in\mathcal{B}\left(\mathbb{K}\right)$
+\end_inset
+
+.
+ This gave us a bounded linear operator.
+ We want to calculate
+\begin_inset Formula 
+\begin{align*}
+f\left(A\right) & =\int f\left(\lambda\right)\dd E_{\lambda}
+\end{align*}
+
+\end_inset
+
+for any Borel function 
+\begin_inset Formula $f$
+\end_inset
+
+, possibly unbounded.
+ Then 
+\begin_inset Formula $f\left(A\right)$
+\end_inset
+
+ is a possibly unbounded operator.
+ What is 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+ and what is 
+\begin_inset Formula $\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+?
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ u\in H\bigg|\int_{\mathbb{K}}\abs{f\left(\lambda\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
