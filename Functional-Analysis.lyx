@@ -36906,6 +36906,13 @@ qqed
 
 \begin_layout Section
 Unbounded Multiplication Operators
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Unbounded-Multiplication-Operators"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -37882,10 +37889,1088 @@ for any Borel function
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%DATE Do 7.2.13
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left(UAU^{-1}\right)f & =gf
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula $g:\Omega\to\mathbb{R}$
+\end_inset
+
+ is measurable.
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ U^{-1}\varphi\big|\varphi\in L^{2}\left(\Omega,\dd\mu\right)\wedge gf\in L^{2}\left(\Omega,\dd\mu\right)\right\} =\\
+ & =U^{-1}\mathcal{D}\left(UAU^{-1}\right)U
+\end{align*}
+
+\end_inset
+
+The spectral calculus yields:
+\begin_inset Formula 
+\begin{align*}
+UA^{2}U^{-1} & =\left(UAU^{-1}\right)^{2}=g^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Rightarrow\qquad\mathcal{D}\left(A^{2}\right) & =\left\{ U^{-1}\varphi\big|\varphi\in L^{2}\left(\Omega,\dd\mu\right)\wedge g^{2}f\in L^{2}\left(\Omega,\dd\mu\right)\right\} 
+\end{align*}
+
+\end_inset
+
+So the domain of definition changes.
+\end_layout
+
+\begin_layout Subsection
+Theorem 
+\series medium
+(The spectral theorem in functional calculus form)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\subseteq H\to H$
+\end_inset
+
+ be self-adjoint.
+ Then there is a unique mapping
+\begin_inset Formula 
+\begin{align*}
+\Phi:\mathcal{B}\left(\mathbb{R}\right) & \to L\left(H\right)
+\end{align*}
+
+\end_inset
+
+such that the following holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is an involutive algebra homomorphism.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\norm{\Phi\left(f\right)}_{L\left(H\right)}\le\norm f_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $g_{n}\in\mathcal{B}\left(\mathbb{R}\right)$
+\end_inset
+
+ be the elements of a sequence such that 
+\begin_inset Formula $g_{n}\to g$
+\end_inset
+
+ converges point-wise and 
+\begin_inset Formula $\abs{g_{n}\left(x\right)}\le\abs x$
+\end_inset
+
+ holds.
+ Then for every 
+\begin_inset Formula $\psi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ converges: 
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(g_{n}\right)\psi & \to\Phi\left(g\right)\psi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $g_{n}\to g$
+\end_inset
+
+ converges point-wise with 
+\begin_inset Formula $\abs{g_{n}\left(x\right)}<C$
+\end_inset
+
+, then holds for all 
+\begin_inset Formula $\psi\in H$
+\end_inset
+
+ converges:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(g_{n}\right)\psi & \to\Phi\left(g\right)\psi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $A\psi=\lambda\psi$
+\end_inset
+
+ follows 
+\begin_inset Formula $\Phi\left(f\right)\psi=f\left(\lambda\right)\psi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $h\ge0$
+\end_inset
+
+ holds 
+\begin_inset Formula $\Phi\left(h\right)\ge0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+After a unitary transformation with the operator 
+\begin_inset Formula $U$
+\end_inset
+
+ from the spectral theorem in its multiplicative form, we can assume 
+\begin_inset Formula $H=L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ and:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ \varphi\in L^{2}\left(M,\dd\mu\right)\big|g\varphi\in L^{2}\left(M,\dd\mu\right)\right\} \\
+A\varphi & =g\varphi\\
+\left(\Phi\left(f\right)\varphi\right)\left(x\right) & =f\left(g\left(x\right)\right)\cdot\varphi\left(x\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f\left(g\right)\in L^{\infty}$
+\end_inset
+
+ holds, define for any 
+\begin_inset Formula $\varphi\in L^{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f\right)\varphi & :=f\left(g\right)\varphi\in L^{2}
+\end{align*}
+
+\end_inset
+
+This defines an operator in 
+\begin_inset Formula $L\left(H\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+The properties i) and ii) are obvious.
+ iii) and iv) follow from dominated convergence:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[iii)]
+\end_layout
+
+\end_inset
+
+It holds:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(f_{n}\right)\varphi & =f_{n}\left(g\right)\cdot\varphi\\
+\Phi\left(f\right)\varphi & =f\left(g\right)\varphi\\
+f_{n}\left(g\right) & \xrightarrow{\text{point-wise}}f\left(g\right)
+\end{align*}
+
+\end_inset
+
+By assumption holds 
+\begin_inset Formula $\abs{f_{n}\left(g\right)}\le\abs g$
+\end_inset
+
+ and by our formula for 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+ follows for all 
+\begin_inset Formula $\varphi\in\mathcal{D}\left(A\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\abs{f_{n}\left(g\right)\varphi},\abs{f\left(g\right)\varphi} & \le\abs g\cdot\abs{\varphi}\in L^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+iv) follows similarly and v) and vi) are obvious.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Uniqueness of 
+\begin_inset Formula $\Phi$
+\end_inset
+
+
+\emph default
+: Let 
+\begin_inset Formula $K\subseteq\mathbb{R}$
+\end_inset
+
+ be compact and 
+\begin_inset Formula $\varphi\in L^{2}\left(K,\dd\mu\right)$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(g\cdot\chi_{K}\right)\varphi & =\underbrace{\Phi\left(g\right)}_{=A}\cdot\Phi\left(\chi_{K}\right)\varphi=A\Phi\left(\chi_{K}\right)\varphi
+\end{align*}
+
+\end_inset
+
+On 
+\begin_inset Formula $K$
+\end_inset
+
+ we can approximate 
+\begin_inset Formula $g$
+\end_inset
+
+ using Stone-Weierstraß.
+ Then choose a sequence 
+\begin_inset Formula $K_{1}\subseteq K_{2}\subseteq\ldots$
+\end_inset
+
+ of compact 
+\begin_inset Formula $K_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $\bigcup_{n\in\mathbb{N}}K_{n}=\mathbb{R}$
+\end_inset
+
+.
+ Now take the limit 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ and use property iii) to get 
+\begin_inset Formula $\Phi\left(g\right)\varphi=A\varphi$
+\end_inset
+
+, which shows the uniqueness of 
+\begin_inset Formula $\Phi$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we write 
+\begin_inset Formula $\Phi\left(f\right)=:f\left(A\right)$
+\end_inset
+
+.
+ We can again introduce the spectral measure:
+\begin_inset Formula 
+\begin{align*}
+E_{\Omega} & :=\Phi\left(\chi_{\Omega}\right)=\chi_{\Omega}\left(A\right)
+\end{align*}
+
+\end_inset
+
+After a unitary transformation holds:
+\begin_inset Formula 
+\begin{align*}
+E_{\Omega}\varphi & =\chi_{\Omega}\left(g\right)\cdot\varphi
+\end{align*}
+
+\end_inset
+
+This shows:
+\begin_inset Formula 
+\begin{align*}
+E_{\Omega}^{*} & =E_{\Omega}=E_{\Omega}^{2}\\
+E_{U}\cdot E_{V} & =E_{U\cap V}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle \varphi,E_{\Omega}\varphi\right\rangle  & =\int_{\mathbb{R}}\abs{\varphi}^{2}\chi_{\Omega}\left(g\right)\dd\mu\\
+\left\langle \varphi,f\left(A\right)\varphi\right\rangle  & =\int_{\mathbb{R}}\abs{\varphi}^{2}f\left(g\right)\dd\mu=\int_{\mathbb{R}}f\dd\left\langle \varphi,E_{\lambda}\varphi\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theorem
+\end_layout
+
+\begin_layout Standard
+There is a one-to-one correspondence between self-adjoint operators and
+ projection-valued spectral measures (not necessarily with compact support)
+ given by:
+\begin_inset Formula 
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}\\
+\mathcal{D}\left(A\right) & =\left\{ u\in H\bigg|\int_{\mathbb{R}}\lambda^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+
+\end_inset
+
+Moreover holds:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+roman*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $f\left(A\right)=\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+\end_inset
+
+ holds for all bounded Borel functions 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f$
+\end_inset
+
+ is an unbounded Borel function, we set:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}_{f} & =\left\{ u\in H\bigg|\int_{\mathbb{R}}\abs f^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+
+\end_inset
+
+The set 
+\begin_inset Formula $\mathcal{D}_{f}\subseteq H$
+\end_inset
+
+ is dense and
+\begin_inset Formula 
+\begin{align*}
+B & :=\int_{\mathbb{R}}f\dd E_{\lambda}:\mathcal{D}_{f}\to H
+\end{align*}
+
+\end_inset
+
+is a densely defined closed operator with:
+\begin_inset Formula 
+\begin{align*}
+B^{*}=\int_{\mathbb{R}}\overline{f}\dd E_{\lambda}:\mathcal{D}_{f} & \to H
+\end{align*}
+
+\end_inset
+
+(In particular, if 
+\begin_inset Formula $f$
+\end_inset
+
+ is real-valued, the operator 
+\begin_inset Formula $B$
+\end_inset
+
+ is again self-adjoint.)
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{D}_{f}$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H$
+\end_inset
+
+: After a unitary transformation we identify 
+\begin_inset Formula $H$
+\end_inset
+
+ with 
+\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+ and define:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}_{f} & =\left\{ \varphi\in L^{2}\left(M,\dd\mu\right)\bigg|\int\abs{f\left(g\right)}^{2}\cdot\abs{\varphi}^{2}\dd\mu<\infty\right\} 
+\end{align*}
+
+\end_inset
+
+(Recall 
+\begin_inset Formula $f\left(A\right)=f\left(g\right)$
+\end_inset
+
+.) For 
+\begin_inset Formula $\psi\in L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+, we want to show 
+\begin_inset Formula $\psi\in\overline{\mathcal{D}_{f}}$
+\end_inset
+
+.
+ To this end we set:
+\begin_inset Formula 
+\begin{align*}
+\psi_{n}\left(x\right) & :=\begin{cases}
+\psi\left(x\right) & \text{if }\abs{f\left(g\left(x\right)\right)}\le n\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+Then holds:
+\begin_inset Formula 
+\begin{align*}
+\int\abs{f\left(g\right)}^{2}\cdot\abs{\psi_{n}}^{2}\dd\mu & \le n^{2}\int\abs{\psi_{n}}^{2}\dd\mu\le n^{2}\int\abs{\psi}^{2}\dd\mu<\infty
+\end{align*}
+
+\end_inset
+
+Hence follows 
+\begin_inset Formula $\psi_{n}\in\mathcal{D}_{f}$
+\end_inset
+
+.
+ Obviously 
+\begin_inset Formula $\psi_{n}\to\psi$
+\end_inset
+
+ converges point-wise and it holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{\psi_{n}} & \le\abs{\psi}\in L^{2}\left(M,\dd\mu\right)
+\end{align*}
+
+\end_inset
+
+Thus dominated convergence yields 
+\begin_inset Formula $\psi_{n}\to\psi$
+\end_inset
+
+ in 
+\begin_inset Formula $L^{2}\left(M,\dd\mu\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Next, 
+\begin_inset Formula $B\varphi=f\left(g\right)\varphi$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(B\right) & =\left\{ \varphi\in L^{2}\big|f\left(g\right)\varphi\in L^{2}\right\} 
+\end{align*}
+
+\end_inset
+
+is an unbounded multiplication operator.
+ Its adjoint can be computed as in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Unbounded-Multiplication-Operators"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Examples, Construction of Self-Adjoint extensions
+\end_layout
+
+\begin_layout Standard
+The (interesting) operator 
+\begin_inset Formula $H=-\Delta_{\mathbb{R}^{3}}+V\left(x\right)$
+\end_inset
+
+ requires Sobolev spaces and Fourier transform.
+ This is discussed in the lecture partial differential equations I.
+\end_layout
+
+\begin_layout Standard
+Here we only consider more simple, one-dimensional examples.
+\end_layout
+
+\begin_layout Section
+Example
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $A=\ii\frac{\dd}{\dd x}$
+\end_inset
+
+ on 
+\begin_inset Formula $H=L^{2}\left(\mathbb{R},\dd x\right)$
+\end_inset
+
+ with domain of definition:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A\right) & =C_{0}^{\infty}\left(\mathbb{R}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric: For 
+\begin_inset Formula $\psi,\phi\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \psi,A\phi\right\rangle  & =\int_{\mathbb{R}}\overline{\psi\left(x\right)}\ii\left(\frac{\dd}{\dd x}\phi\left(x\right)\right)\dd x=\\
+ & \sr ={\text{integration}}{\text{by parts}}\underbrace{\overline{\psi\left(x\right)}\cdot\ii\phi\left(x\right)\big|_{-\infty}^{\infty}}_{=0,\ \text{(compact support)}}\int_{\mathbb{R}}\left(-\ii\right)\left(\frac{\dd}{\dd x}\overline{\psi\left(x\right)}\right)\phi\left(x\right)\dd x=\\
+ & =\int_{\mathbb{R}}\overline{\left(\ii\frac{\dd}{\dd x}\psi\left(x\right)\right)}\phi\left(x\right)\dd x=\left\langle A\psi,\phi\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ self-adjoint: If 
+\begin_inset Formula $A$
+\end_inset
+
+ were self-adjoint, the following computation would hold:
+\begin_inset Formula 
+\begin{align*}
+\fall_{u\in\mathcal{D}\left(A\right)}:\left\langle Au,v\right\rangle  & =\left\langle u,w\right\rangle \quad\Rightarrow\quad\left(v\in\mathcal{D}\left(A\right)\right)\wedge\left(Av=w\right)
+\end{align*}
+
+\end_inset
+
+Any 
+\begin_inset Formula $v\in C_{0}^{1}\left(\mathbb{R}\right)\setminus C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ is a counter example.
+\begin_inset Newline newline
+\end_inset
+
+We could even satisfy the condition on the left by choosing 
+\begin_inset Formula $v\in C^{1}\left(\mathbb{R}\right)$
+\end_inset
+
+.
+ (We need no decay assumption, since it suffices that one function has compact
+ support).
+ Thus follows:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A^{*}\right) & \subseteq C^{1}\left(\mathbb{R}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (1,-0.7) (2,0) (1,0.8)
+ (0,1) (-0.5,1.3) (-1,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (0,0) {$
+\backslash
+mathcal{D}(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw plot[smooth cycle,tension=.7] coordinates{(0,-1.5) (2,-1) (3,0) (2,2)
+ (0,3) (-1,4) (-3,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (-0.8,3) {$
+\backslash
+mathcal{D}(A^*)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-1.3) (1,-1.1) (2.7,0)
+ (1.2,1.6) (0,1.8) (-2,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[red] at (1,1.2) {$
+\backslash
+mathcal{D'}(A)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[blue] plot[smooth cycle,tension=.7] coordinates{(0,-1.4) (1.5,-1) (2.8,0)
+ (1.5,1.7) (0,2.2) (-1,2.5) (-2.5,0)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[blue] at (-0.75,2) {$
+\backslash
+mathcal{D'}(A^*)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The large 
+\begin_inset Formula $\mathcal{D}'\left(A\right)\supseteq\mathcal{D}\left(A\right)$
+\end_inset
+
+, the smaller is 
+\begin_inset Formula $\mathcal{D}'\left(A^{*}\right)\subseteq\mathcal{D}\left(A^{*}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ is essentially self-adjoint: This means that 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ with 
+\begin_inset Formula $\text{graph}\left(\overline{A}\right):=\overline{\text{graph}\left(A\right)}$
+\end_inset
+
+ is self-adjoint.
+\begin_inset Newline newline
+\end_inset
+
+According to the basic criterion for self-adjointness (Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Thm-The-basic-criterion-self-for-adjointness"
+
+\end_inset
+
+), we know:
+\begin_inset Formula 
+\begin{align*}
+A\text{ self-adjoint} & \quad\Leftrightarrow\quad\text{im}\left(A\pm\ii\right)=H
+\end{align*}
+
+\end_inset
+
+Therefore, for essential self-adjointness it suffices to show that 
+\begin_inset Formula $\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\mathbb{R}\right)\right)\subseteq H=L^{2}$
+\end_inset
+
+ is dense.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Claim: For all 
+\begin_inset Formula $v\in H$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left(u,v\right)\in\overline{\text{graph}\left(A\pm\ii\right)}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+(In other words, 
+\begin_inset Formula $\overline{A}\pm\ii$
+\end_inset
+
+ is surjective.)
+\end_layout
+
+\begin_layout Description
+Proof: Since 
+\begin_inset Formula $\left(A\pm\ii\right)\left(C_{0}^{\infty}\right)\subseteq H$
+\end_inset
+
+ is dense, there exists a sequence of 
+\begin_inset Formula $u_{n}\in C_{0}^{\infty}$
+\end_inset
+
+ such that with 
+\begin_inset Formula $w_{n}:=Au_{n}$
+\end_inset
+
+ converges:
+\begin_inset Formula 
+\begin{align*}
+\left(A\pm\ii\right)u_{n} & =w_{n}\pm\ii u_{n}\to v
+\end{align*}
+
+\end_inset
+
+The estimates from the proof of the basic criterion imply:
+\begin_inset Formula 
+\begin{align*}
+w_{n}=Au_{n} & \to w & u_{n} & \to u
+\end{align*}
+
+\end_inset
+
+This yields that 
+\begin_inset Formula $\left(u_{n},w_{n}\right)\to\left(u,w\right)$
+\end_inset
+
+ converges.
+ From 
+\begin_inset Formula $\left(u_{n},w_{n}\right)\in\text{graph}\left(A\right)$
+\end_inset
+
+ follows 
+\begin_inset Formula $\left(u,w\right)\in\overline{\text{graph}\left(A\right)}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Claim: 
+\begin_inset Formula $\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\mathbb{R}\right)\right)$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Proof: The vectors in the image of 
+\begin_inset Formula $A\pm\ii$
+\end_inset
+
+ are of the form:
+\begin_inset Formula 
+\begin{align*}
+\ii\frac{\dd}{\dd x}u\pm\ii u & =:v
+\end{align*}
+
+\end_inset
+
+From 
+\begin_inset Formula $u\in C_{0}^{\infty}$
+\end_inset
+
+ follows 
+\begin_inset Formula $v\in C_{0}^{\infty}$
+\end_inset
+
+.
+ Multiply by 
+\begin_inset Formula $e^{\mp x}$
+\end_inset
+
+ and integrate by parts to get:
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\mp x}v\left(x\right)\dd x & =\ii\int_{-\infty}^{\infty}e^{\mp x}\left(\left(\frac{\dd}{\dd x}\pm1\right)u\left(x\right)\right)\dd x=\\
+ & \sr ={\text{integrate}}{\text{by parts}}-\ii\int_{-\infty}^{\infty}u\left(x\right)\left(\left(\frac{\dd}{\dd x}\pm1\right)e^{\mp x}\right)\dd x=\\
+ & =-\ii\int_{-\infty}^{\infty}u\left(x\right)\underbrace{\left(\mp e^{\mp x}\pm e^{\mp x}\right)}_{=0}\dd x=0
+\end{align*}
+
+\end_inset
+
+Thus the functions in the image of 
+\begin_inset Formula $A\pm\ii$
+\end_inset
+
+ satisfy the condition:
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\mp x}v\left(x\right)\dd x & =0
+\end{align*}
+
+\end_inset
+
+Conversely, if a function 
+\begin_inset Formula $v\left(x\right)$
+\end_inset
+
+ satisfies this condition for 
+\begin_inset Formula $+$
+\end_inset
+
+ and 
+\begin_inset Formula $-$
+\end_inset
+
+, then follows:
+\begin_inset Formula 
+\begin{align*}
+u\left(x\right) & :=\int_{-\infty}^{x}e^{\mp t}v\left(t\right)\dd t
+\end{align*}
+
+\end_inset
+
+is in 
+\begin_inset Formula $C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A\pm\ii\right)u=v$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Part*
-Appendix 
+Appendix
 \begin_inset ERT
 status open
 

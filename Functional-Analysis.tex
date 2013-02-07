@@ -8703,7 +8703,7 @@ This gives $\varphi=u\in\mathcal{D}\left(A\right)$, which implies
 $\varphi\in\mathcal{D}\left(A^{*}\right)$ and thus $A$ is self-adjoint.\qqed
 
 
-\section{Unbounded Multiplication Operators}
+\section{Unbounded Multiplication Operators\label{sec:Unbounded-Multiplication-Operators}}
 
 Let $\left(\Omega,\mu\right)$ be a measure space with a $\sigma$-finite
 measure $\mu$. (For example, $\Omega$ is a $\sigma$-compact topological
@@ -8964,10 +8964,299 @@ and what is $\mathcal{D}\left(A^{*}\right)$?
 \begin{align*}
 \mathcal{D}\left(A\right) & =\left\{ u\in H\bigg|\int_{\mathbb{K}}\abs{f\left(\lambda\right)}^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
 \end{align*}
+%DATE Do 7.2.13
+
+
+\subsubsection*{Example}
+
+\begin{align*}
+\left(UAU^{-1}\right)f & =gf
+\end{align*}
+and $g:\Omega\to\mathbb{R}$ is measurable.
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ U^{-1}\varphi\big|\varphi\in L^{2}\left(\Omega,\dd\mu\right)\wedge gf\in L^{2}\left(\Omega,\dd\mu\right)\right\} =\\
+ & =U^{-1}\mathcal{D}\left(UAU^{-1}\right)U
+\end{align*}
+The spectral calculus yields:
+\begin{align*}
+UA^{2}U^{-1} & =\left(UAU^{-1}\right)^{2}=g^{2}
+\end{align*}
+\begin{align*}
+\Rightarrow\qquad\mathcal{D}\left(A^{2}\right) & =\left\{ U^{-1}\varphi\big|\varphi\in L^{2}\left(\Omega,\dd\mu\right)\wedge g^{2}f\in L^{2}\left(\Omega,\dd\mu\right)\right\} 
+\end{align*}
+So the domain of definition changes.
+
+
+\subsection{Theorem \textmd{(The spectral theorem in functional calculus form)}}
+
+Let $A:\mathcal{D}\left(A\right)\subseteq H\to H$ be self-adjoint.
+Then there is a unique mapping
+\begin{align*}
+\Phi:\mathcal{B}\left(\mathbb{R}\right) & \to L\left(H\right)
+\end{align*}
+such that the following holds:
+\begin{enumerate}[label=\roman*)]
+\item $\Phi$ is an involutive algebra homomorphism.
+\item $\norm{\Phi\left(f\right)}_{L\left(H\right)}\le\norm f_{\infty}$
+\item Let $g_{n}\in\mathcal{B}\left(\mathbb{R}\right)$ be the elements
+of a sequence such that $g_{n}\to g$ converges point-wise and $\abs{g_{n}\left(x\right)}\le\abs x$
+holds. Then for every $\psi\in\mathcal{D}\left(A\right)$ converges:
+\begin{align*}
+\Phi\left(g_{n}\right)\psi & \to\Phi\left(g\right)\psi
+\end{align*}
+
+\item If $g_{n}\to g$ converges point-wise with $\abs{g_{n}\left(x\right)}<C$,
+then holds for all $\psi\in H$ converges:
+\begin{align*}
+\Phi\left(g_{n}\right)\psi & \to\Phi\left(g\right)\psi
+\end{align*}
+
+\item For $A\psi=\lambda\psi$ follows $\Phi\left(f\right)\psi=f\left(\lambda\right)\psi$
+\item For $h\ge0$ holds $\Phi\left(h\right)\ge0$.
+\end{enumerate}
+
+\subsubsection*{Proof}
+
+After a unitary transformation with the operator $U$ from the spectral
+theorem in its multiplicative form, we can assume $H=L^{2}\left(M,\dd\mu\right)$
+and:
+\begin{align*}
+\mathcal{D}\left(A\right) & =\left\{ \varphi\in L^{2}\left(M,\dd\mu\right)\big|g\varphi\in L^{2}\left(M,\dd\mu\right)\right\} \\
+A\varphi & =g\varphi\\
+\left(\Phi\left(f\right)\varphi\right)\left(x\right) & =f\left(g\left(x\right)\right)\cdot\varphi\left(x\right)
+\end{align*}
+Since $f\left(g\right)\in L^{\infty}$ holds, define for any $\varphi\in L^{2}$:
+\begin{align*}
+\Phi\left(f\right)\varphi & :=f\left(g\right)\varphi\in L^{2}
+\end{align*}
+This defines an operator in $L\left(H\right)$.\\
+The properties i) and ii) are obvious. iii) and iv) follow from dominated
+convergence:
+\begin{enumerate}
+\item [iii)]It holds:
+\begin{align*}
+\Phi\left(f_{n}\right)\varphi & =f_{n}\left(g\right)\cdot\varphi\\
+\Phi\left(f\right)\varphi & =f\left(g\right)\varphi\\
+f_{n}\left(g\right) & \xrightarrow{\text{point-wise}}f\left(g\right)
+\end{align*}
+By assumption holds $\abs{f_{n}\left(g\right)}\le\abs g$ and by our
+formula for $\mathcal{D}\left(A\right)$ follows for all $\varphi\in\mathcal{D}\left(A\right)$:
+\begin{align*}
+\abs{f_{n}\left(g\right)\varphi},\abs{f\left(g\right)\varphi} & \le\abs g\cdot\abs{\varphi}\in L^{2}
+\end{align*}
+
+\end{enumerate}
+iv) follows similarly and v) and vi) are obvious.
+
+\emph{Uniqueness of $\Phi$}: Let $K\subseteq\mathbb{R}$ be compact
+and $\varphi\in L^{2}\left(K,\dd\mu\right)$. Then holds:
+\begin{align*}
+\Phi\left(g\cdot\chi_{K}\right)\varphi & =\underbrace{\Phi\left(g\right)}_{=A}\cdot\Phi\left(\chi_{K}\right)\varphi=A\Phi\left(\chi_{K}\right)\varphi
+\end{align*}
+On $K$ we can approximate $g$ using Stone-Weierstraß. Then choose
+a sequence $K_{1}\subseteq K_{2}\subseteq\ldots$ of compact $K_{n}$
+with $\bigcup_{n\in\mathbb{N}}K_{n}=\mathbb{R}$. Now take the limit
+$n\to\infty$ and use property iii) to get $\Phi\left(g\right)\varphi=A\varphi$,
+which shows the uniqueness of $\Phi$.\qqed
+
+Now we write $\Phi\left(f\right)=:f\left(A\right)$. We can again
+introduce the spectral measure:
+\begin{align*}
+E_{\Omega} & :=\Phi\left(\chi_{\Omega}\right)=\chi_{\Omega}\left(A\right)
+\end{align*}
+After a unitary transformation holds:
+\begin{align*}
+E_{\Omega}\varphi & =\chi_{\Omega}\left(g\right)\cdot\varphi
+\end{align*}
+This shows:
+\begin{align*}
+E_{\Omega}^{*} & =E_{\Omega}=E_{\Omega}^{2}\\
+E_{U}\cdot E_{V} & =E_{U\cap V}
+\end{align*}
+\begin{align*}
+\left\langle \varphi,E_{\Omega}\varphi\right\rangle  & =\int_{\mathbb{R}}\abs{\varphi}^{2}\chi_{\Omega}\left(g\right)\dd\mu\\
+\left\langle \varphi,f\left(A\right)\varphi\right\rangle  & =\int_{\mathbb{R}}\abs{\varphi}^{2}f\left(g\right)\dd\mu=\int_{\mathbb{R}}f\dd\left\langle \varphi,E_{\lambda}\varphi\right\rangle 
+\end{align*}
 
 
 
-\part*{Appendix \thispagestyle{empty}}
+\subsection{Theorem}
+
+There is a one-to-one correspondence between self-adjoint operators
+and projection-valued spectral measures (not necessarily with compact
+support) given by:
+\begin{align*}
+A & =\int_{\mathbb{R}}\lambda\dd E_{\lambda}\\
+\mathcal{D}\left(A\right) & =\left\{ u\in H\bigg|\int_{\mathbb{R}}\lambda^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+Moreover holds:
+\begin{enumerate}[label=\roman*)]
+\item $f\left(A\right)=\int_{\mathbb{R}}f\left(\lambda\right)\dd E_{\lambda}$
+holds for all bounded Borel functions $f$.
+\item If $f$ is an unbounded Borel function, we set:
+\begin{align*}
+\mathcal{D}_{f} & =\left\{ u\in H\bigg|\int_{\mathbb{R}}\abs f^{2}\dd\left\langle u,E_{\lambda}u\right\rangle <\infty\right\} 
+\end{align*}
+The set $\mathcal{D}_{f}\subseteq H$ is dense and
+\begin{align*}
+B & :=\int_{\mathbb{R}}f\dd E_{\lambda}:\mathcal{D}_{f}\to H
+\end{align*}
+is a densely defined closed operator with:
+\begin{align*}
+B^{*}=\int_{\mathbb{R}}\overline{f}\dd E_{\lambda}:\mathcal{D}_{f} & \to H
+\end{align*}
+(In particular, if $f$ is real-valued, the operator $B$ is again
+self-adjoint.)
+\end{enumerate}
+
+\subsubsection*{Proof}
+\begin{itemize}
+\item $\mathcal{D}_{f}$ is dense in $H$: After a unitary transformation
+we identify $H$ with $L^{2}\left(M,\dd\mu\right)$ and define:
+\begin{align*}
+\mathcal{D}_{f} & =\left\{ \varphi\in L^{2}\left(M,\dd\mu\right)\bigg|\int\abs{f\left(g\right)}^{2}\cdot\abs{\varphi}^{2}\dd\mu<\infty\right\} 
+\end{align*}
+(Recall $f\left(A\right)=f\left(g\right)$.) For $\psi\in L^{2}\left(M,\dd\mu\right)$,
+we want to show $\psi\in\overline{\mathcal{D}_{f}}$. To this end
+we set:
+\begin{align*}
+\psi_{n}\left(x\right) & :=\begin{cases}
+\psi\left(x\right) & \text{if }\abs{f\left(g\left(x\right)\right)}\le n\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+Then holds:
+\begin{align*}
+\int\abs{f\left(g\right)}^{2}\cdot\abs{\psi_{n}}^{2}\dd\mu & \le n^{2}\int\abs{\psi_{n}}^{2}\dd\mu\le n^{2}\int\abs{\psi}^{2}\dd\mu<\infty
+\end{align*}
+Hence follows $\psi_{n}\in\mathcal{D}_{f}$. Obviously $\psi_{n}\to\psi$
+converges point-wise and it holds:
+\begin{align*}
+\abs{\psi_{n}} & \le\abs{\psi}\in L^{2}\left(M,\dd\mu\right)
+\end{align*}
+Thus dominated convergence yields $\psi_{n}\to\psi$ in $L^{2}\left(M,\dd\mu\right)$.
+\item Next, $B\varphi=f\left(g\right)\varphi$ with
+\begin{align*}
+\mathcal{D}\left(B\right) & =\left\{ \varphi\in L^{2}\big|f\left(g\right)\varphi\in L^{2}\right\} 
+\end{align*}
+is an unbounded multiplication operator. Its adjoint can be computed
+as in section \ref{sec:Unbounded-Multiplication-Operators}.
+\end{itemize}
+\qqed
+
+
+\chapter{Examples, Construction of Self-Adjoint extensions}
+
+The (interesting) operator $H=-\Delta_{\mathbb{R}^{3}}+V\left(x\right)$
+requires Sobolev spaces and Fourier transform. This is discussed in
+the lecture partial differential equations I.
+
+Here we only consider more simple, one-dimensional examples.
+
+
+\section{Example}
+
+Consider $A=\ii\frac{\dd}{\dd x}$ on $H=L^{2}\left(\mathbb{R},\dd x\right)$
+with domain of definition:
+\begin{align*}
+\mathcal{D}\left(A\right) & =C_{0}^{\infty}\left(\mathbb{R}\right)
+\end{align*}
+
+\begin{itemize}
+\item $A$ is symmetric: For $\psi,\phi\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+holds:
+\begin{align*}
+\left\langle \psi,A\phi\right\rangle  & =\int_{\mathbb{R}}\overline{\psi\left(x\right)}\ii\left(\frac{\dd}{\dd x}\phi\left(x\right)\right)\dd x=\\
+ & \sr ={\text{integration}}{\text{by parts}}\underbrace{\overline{\psi\left(x\right)}\cdot\ii\phi\left(x\right)\big|_{-\infty}^{\infty}}_{=0,\ \text{(compact support)}}\int_{\mathbb{R}}\left(-\ii\right)\left(\frac{\dd}{\dd x}\overline{\psi\left(x\right)}\right)\phi\left(x\right)\dd x=\\
+ & =\int_{\mathbb{R}}\overline{\left(\ii\frac{\dd}{\dd x}\psi\left(x\right)\right)}\phi\left(x\right)\dd x=\left\langle A\psi,\phi\right\rangle 
+\end{align*}
+
+\item $A$ is \emph{not} self-adjoint: If $A$ were self-adjoint, the following
+computation would hold:
+\begin{align*}
+\fall_{u\in\mathcal{D}\left(A\right)}:\left\langle Au,v\right\rangle  & =\left\langle u,w\right\rangle \quad\Rightarrow\quad\left(v\in\mathcal{D}\left(A\right)\right)\wedge\left(Av=w\right)
+\end{align*}
+Any $v\in C_{0}^{1}\left(\mathbb{R}\right)\setminus C_{0}^{\infty}\left(\mathbb{R}\right)$
+is a counter example.\\
+We could even satisfy the condition on the left by choosing $v\in C^{1}\left(\mathbb{R}\right)$.
+(We need no decay assumption, since it suffices that one function
+has compact support). Thus follows:
+\begin{align*}
+\mathcal{D}\left(A^{*}\right) & \subseteq C^{1}\left(\mathbb{R}\right)
+\end{align*}
+
+
+
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (1,-0.7) (2,0) (1,0.8) (0,1) (-0.5,1.3) (-1,0)};
+  \node at (0,0) {$\mathcal{D}(A)$};
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1.5) (2,-1) (3,0) (2,2) (0,3) (-1,4) (-3,0)};
+  \node at (-0.8,3) {$\mathcal{D}(A^*)$};
+  \draw[red] plot[smooth cycle,tension=.7] coordinates{(0,-1.3) (1,-1.1) (2.7,0) (1.2,1.6) (0,1.8) (-2,0)};
+  \node[red] at (1,1.2) {$\mathcal{D'}(A)$};
+  \draw[blue] plot[smooth cycle,tension=.7] coordinates{(0,-1.4) (1.5,-1) (2.8,0) (1.5,1.7) (0,2.2) (-1,2.5) (-2.5,0)};
+  \node[blue] at (-0.75,2) {$\mathcal{D'}(A^*)$};
+\end{tikzpicture}\caption{The large $\mathcal{D}'\left(A\right)\supseteq\mathcal{D}\left(A\right)$,
+the smaller is $\mathcal{D}'\left(A^{*}\right)\subseteq\mathcal{D}\left(A^{*}\right)$.}
+\end{figure}
+
+
+\item $A:\mathcal{D}\left(A\right)\to H$ is essentially self-adjoint: This
+means that $\overline{A}$ with $\text{graph}\left(\overline{A}\right):=\overline{\text{graph}\left(A\right)}$
+is self-adjoint.\\
+According to the basic criterion for self-adjointness (Theorem \ref{sec:Thm-The-basic-criterion-self-for-adjointness}),
+we know:
+\begin{align*}
+A\text{ self-adjoint} & \quad\Leftrightarrow\quad\text{im}\left(A\pm\ii\right)=H
+\end{align*}
+Therefore, for essential self-adjointness it suffices to show that
+$\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\mathbb{R}\right)\right)\subseteq H=L^{2}$
+is dense.
+
+\begin{description}
+\item [{Claim:}] For all $v\in H$ there exists a $u\in H$ such that $\left(u,v\right)\in\overline{\text{graph}\left(A\pm\ii\right)}$.\\
+(In other words, $\overline{A}\pm\ii$ is surjective.)
+\item [{Proof:}] Since $\left(A\pm\ii\right)\left(C_{0}^{\infty}\right)\subseteq H$
+is dense, there exists a sequence of $u_{n}\in C_{0}^{\infty}$ such
+that with $w_{n}:=Au_{n}$ converges:
+\begin{align*}
+\left(A\pm\ii\right)u_{n} & =w_{n}\pm\ii u_{n}\to v
+\end{align*}
+The estimates from the proof of the basic criterion imply:
+\begin{align*}
+w_{n}=Au_{n} & \to w & u_{n} & \to u
+\end{align*}
+This yields that $\left(u_{n},w_{n}\right)\to\left(u,w\right)$ converges.
+From $\left(u_{n},w_{n}\right)\in\text{graph}\left(A\right)$ follows
+$\left(u,w\right)\in\overline{\text{graph}\left(A\right)}$.\qqed[Claim]
+\item [{Claim:}] $\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\mathbb{R}\right)\right)$
+is dense in $L^{2}$.
+\item [{Proof:}] The vectors in the image of $A\pm\ii$ are of the form:
+\begin{align*}
+\ii\frac{\dd}{\dd x}u\pm\ii u & =:v
+\end{align*}
+From $u\in C_{0}^{\infty}$ follows $v\in C_{0}^{\infty}$. Multiply
+by $e^{\mp x}$ and integrate by parts to get:
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\mp x}v\left(x\right)\dd x & =\ii\int_{-\infty}^{\infty}e^{\mp x}\left(\left(\frac{\dd}{\dd x}\pm1\right)u\left(x\right)\right)\dd x=\\
+ & \sr ={\text{integrate}}{\text{by parts}}-\ii\int_{-\infty}^{\infty}u\left(x\right)\left(\left(\frac{\dd}{\dd x}\pm1\right)e^{\mp x}\right)\dd x=\\
+ & =-\ii\int_{-\infty}^{\infty}u\left(x\right)\underbrace{\left(\mp e^{\mp x}\pm e^{\mp x}\right)}_{=0}\dd x=0
+\end{align*}
+Thus the functions in the image of $A\pm\ii$ satisfy the condition:
+\begin{align*}
+\int_{-\infty}^{\infty}e^{\mp x}v\left(x\right)\dd x & =0
+\end{align*}
+Conversely, if a function $v\left(x\right)$ satisfies this condition
+for $+$ and $-$, then follows:
+\begin{align*}
+u\left(x\right) & :=\int_{-\infty}^{x}e^{\mp t}v\left(t\right)\dd t
+\end{align*}
+is in $C_{0}^{\infty}\left(\mathbb{R}\right)$ and $\left(A\pm\ii\right)u=v$.
+\end{description}
+\end{itemize}
+
+\part*{Appendix\thispagestyle{empty}}
 
 \addcontentsline{toc}{part}{Appendix}
 
