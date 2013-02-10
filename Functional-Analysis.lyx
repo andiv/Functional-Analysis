@@ -38949,7 +38949,7 @@ Conversely, if a function
 \begin_inset Formula $-$
 \end_inset
 
-, then follows:
+, then
 \begin_inset Formula 
 \begin{align*}
 u\left(x\right) & :=\int_{-\infty}^{x}e^{\mp t}v\left(t\right)\dd t
@@ -38966,9 +38966,1231 @@ is in
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+Now we need to show:
+\begin_inset Formula 
+\begin{align*}
+\overline{\left\{ v\in C_{0}^{\infty}\left(\mathbb{R}\right)\bigg|\int e^{\pm x}v\left(x\right)\dd x=0\right\} } & =H
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H$
+\end_inset
+
+, we only need to prove that 
+\begin_inset Formula $\psi\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ is an element of the left set.
+ We look for 
+\begin_inset Formula $v_{n}\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+\int e^{\pm x}v_{n}\left(x\right)\dd x & =0
+\end{align*}
+
+\end_inset
+
+such that 
+\begin_inset Formula $v_{n}\to\psi$
+\end_inset
+
+ converges in 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Choose 
+\begin_inset Formula $\eta\in C_{0}^{\infty}\left(\left[0,1\right]\right)$
+\end_inset
+
+ and use the ansatz:
+\begin_inset Formula 
+\begin{align*}
+v_{n} & =\psi+c_{+}\eta\left(x-L\right)+c_{-}\eta\left(x+L\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{axis}[width=17cm, height = 10cm, axis x line=middle, axis y line=middle,
+\end_layout
+
+\begin_layout Plain Layout
+
+		xtick={0}, ytick={0}, xlabel=$q$,
+\end_layout
+
+\begin_layout Plain Layout
+
+        extra x ticks={-2,-1.5,1.5,2}, extra x tick labels={$-L$, $-L+1$,
+ $L$, $L+1$},
+\end_layout
+
+\begin_layout Plain Layout
+
+		xmin=-2.5, xmax=2.5, ymin=-0.2, ymax=1.3, samples=300]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red, mark=none, domain=-1.2:1.2] {0.6*(1 + 5*x^2 - x^4+ 2*x^3)*exp(-4*(x)^4
+)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$v_n $}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[thick, dashed, mark=none, domain=-1.2:1.2] {0.6*(1 + 5*x^2 - x^4+ 2*x^3)*ex
+p(-4*(x)^4)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addlegendentry{$
+\backslash
+psi $}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red, mark=none, domain=1.5:2] {((x-1.75)^2-0.0625) * exp(-1/(10*(2.01-x))^2-
+1/(10*(x-1.49))^2)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (axis cs: 1.75,0.15) {$c_+ 
+\backslash
+eta (x-L)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+addplot[red, mark=none, domain=-2:-1.5] {-1.7*((x+1.75)^2-0.0625) * exp(-1/(10*(2.01+
+x))^2-1/(10*(-x-1.49))^2)};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node at (axis cs: -1.75,0.15) {$c_- 
+\backslash
+eta (x+L)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Approximation of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ with the 
+\begin_inset Formula $v_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Then holds:
+\begin_inset Formula 
+\begin{align*}
+0 & \stackrel{!}{=}\int_{-\infty}^{\infty}e^{\pm x}v_{n}\left(x\right)\dd x=\\
+ & =\int_{-\infty}^{\infty}\psi\left(x\right)\dd x+c_{+}\underbrace{\int_{-\infty}^{\infty}e^{\pm x}\eta\left(x-L\right)\dd x}_{\sim e^{\pm L}}+c_{-}\underbrace{\int_{-\infty}^{\infty}e^{\pm x}\eta\left(x+L\right)\dd x}_{\sim e^{\mp L}}
+\end{align*}
+
+\end_inset
+
+We have two conditions and two free parameters.
+ One sees that 
+\begin_inset Formula $c_{+},c_{-}$
+\end_inset
+
+ are proportional to 
+\begin_inset Formula $e^{-L}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $v_{n}\to\psi$
+\end_inset
+
+ converges in 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed[Claim]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Thus 
+\begin_inset Formula $\overline{A}$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{D}\left(\overline{A}\right)$
+\end_inset
+
+ (which can be described in detail) is self-adjoint.
+\begin_inset Formula 
+\begin{align*}
+\overline{A} & =\int_{-\infty}^{\infty}\lambda\dd E_{\lambda} &  & \text{spectral theorem}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Example
+\end_layout
+
+\begin_layout Standard
+On the Hilbert space 
+\begin_inset Formula $H=L^{2}\left(\left[0,1\right],\dd x\right)$
+\end_inset
+
+ consider the operator 
+\begin_inset Formula $A:=\frac{\dd}{\dd x}$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{D}\left(A\right)=C_{0}^{\infty}\left(\left(0,1\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+alph*)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ essentially self-adjoint.
+ Just as in the previous example, 
+\begin_inset Formula $A$
+\end_inset
+
+ being essentially self-adjoint is equivalent to
+\begin_inset Formula 
+\begin{align*}
+\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\left(0,1\right)\right)\right) & \subseteq H
+\end{align*}
+
+\end_inset
+
+being dense, or equivalently
+\begin_inset Formula 
+\begin{align*}
+M & :=\left\{ v\in C_{0}^{\infty}\left(\left(0,1\right)\right)\bigg|0=\int_{0}^{1}e^{\pm x}v\left(x\right)\dd x\right\} \subseteq H
+\end{align*}
+
+\end_inset
+
+being dense.
+ For 
+\begin_inset Formula $\psi\left(x\right)=e\left(x\right)\in H$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $v\in M$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left\langle \psi,v\right\rangle  & =\int_{0}^{1}\psi\left(x\right)v\left(x\right)\dd x=\int_{0}^{1}e^{x}v\left(x\right)\dd x=0
+\end{align*}
+
+\end_inset
+
+Therefore holds 
+\begin_inset Formula $0\not=\psi\in M^{\perp}$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ dense in 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $f\in C_{0}^{\infty}\left(\left[0,1\right]\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $n\in\mathbb{Z}$
+\end_inset
+
+ define:
+\begin_inset Formula 
+\begin{align*}
+c_{n} & :=\int_{0}^{1}f\left(x\right)e^{2\pi\ii nx}\dd x
+\end{align*}
+
+\end_inset
+
+This gives rise to a unitary transformation (Plancherel theorem):
+\begin_inset Formula 
+\begin{align*}
+U:L^{2}\left(\left[0,1\right]\right) & \to\ell_{2}\\
+f & \mapsto\left(c_{n}\right)_{n\in\mathbb{Z}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}\abs f^{2}\dd x & =\sum_{n\in\mathbb{Z}}\abs{c_{n}}^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\hat{A}\left(c_{n}\right) & =\left(U\ii\frac{\dd}{\dd x}U^{-1}\right)\left(c_{n}\right)=\left(-2\pi nc_{n}\right)_{n}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is a multiplication operator with:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(\hat{A}\right) & =\left\{ \left(c_{n}\right)_{n}\in\ell^{2}\big|\left(nc_{n}\right)_{n}\in\ell^{2}\right\} \subseteq\ell^{2}
+\end{align*}
+
+\end_inset
+
+Then
+\begin_inset Formula 
+\begin{align*}
+\hat{A}:\mathcal{D}\left(\hat{A}\right) & \to\ell^{2}
+\end{align*}
+
+\end_inset
+
+is self-adjoint.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+A:\mathcal{D}\left(A\right):=U^{-1}\mathcal{D}\left(\hat{A}\right) & \to L^{2}
+\end{align*}
+
+\end_inset
+
+is self-adjoint.
+\end_layout
+
+\begin_layout Section
+Example
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Example-Friedrich-Kato"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $H=L^{2}\left(\mathbb{R},\dd x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $A=\ii\frac{\dd}{\dd x}$
+\end_inset
+
+ and 
+\begin_inset Formula $T=T_{g}$
+\end_inset
+
+ with a real valued 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\left(A+T\right)\psi\left(x\right) & =\ii\frac{\dd}{\dd x}\psi\left(x\right)+g\left(x\right)\psi\left(x\right)
+\end{align*}
+
+\end_inset
+
+How to choose 
+\begin_inset Formula $\mathcal{D}\left(A+T\right)$
+\end_inset
+
+ in order to make the operator self-adjoint?
+\end_layout
+
+\begin_layout Standard
+There are two solutions:
+\end_layout
+
+\begin_layout Itemize
+Friedrichs extension (by K.
+ O.
+ Friedrichs) for semi-bounded operators.
+\end_layout
+
+\begin_layout Itemize
+Katos's method
+\end_layout
+
+\begin_layout Section
+Theorem 
+\series medium
+(Kato-Rellich)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A:\mathcal{D}\left(A\right)\to H$
+\end_inset
+
+ be self-adjoint and 
+\begin_inset Formula $T$
+\end_inset
+
+ symmetric with 
+\begin_inset Formula $\mathcal{D}\left(T\right)\supseteq\mathcal{D}\left(A\right)$
+\end_inset
+
+.
+ Moreover, assume that there are constants 
+\begin_inset Formula $a,b\in\mathbb{R}_{\ge0}$
+\end_inset
+
+ with 
+\begin_inset Formula $b<1$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align}
+\norm{Tu}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{Au}^{2}\label{eq:Tu-inequality}
+\end{align}
+
+\end_inset
+
+Then 
+\begin_inset Formula $A+T$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(A+T\right) & =\mathcal{D}\left(A\right)
+\end{align*}
+
+\end_inset
+
+is self-adjoint.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T$
+\end_inset
+
+ is 
+\emph on
+relatively bounded with respect to 
+\begin_inset Formula $A$
+\end_inset
+
+
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Proof
+\end_layout
+
+\begin_layout Standard
+The inequality 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Tu-inequality"
+
+\end_inset
+
+ implies:
+\begin_inset Formula 
+\begin{align*}
+\norm{Tu} & \le a\norm u+b\norm{Au}
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ holds:
+\begin_inset Formula 
+\begin{align*}
+Au & =\left(A+T\right)u-Tu
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\norm{Au} & \le\norm{\left(A+T\right)u}+\norm{Tu}\le\\
+ & \le\norm{\left(A+T\right)u}+a\norm u+b\norm{Au}
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align}
+\norm{Au} & \le\frac{1}{1-b}\left(\norm{\left(A+T\right)u}+a\norm u\right)\label{eq:normAu}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(A+T\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{D}\left(A+T\right):=\mathcal{D}\left(A\right)$
+\end_inset
+
+ is closed: Choose 
+\begin_inset Formula $u_{n}\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $u_{n}\to u$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A+T\right)u_{n}\to w$
+\end_inset
+
+ converge.
+ We want to show 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A+T\right)u=w$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:normAu"
+
+\end_inset
+
+ implies:
+\begin_inset Formula 
+\begin{align*}
+\norm{A\left(u_{n}-u_{m}\right)} & \le\frac{1}{1-b}\underbrace{\norm{\left(A+T\right)\left(u_{n}-u_{m}\right)}}_{\to0}+\frac{a}{1-b}\underbrace{\norm{u_{n}-u_{m}}}_{\to0}
+\end{align*}
+
+\end_inset
+
+This gives 
+\begin_inset Formula $A\left(u_{n}-u_{m}\right)\to0$
+\end_inset
+
+ and thus 
+\begin_inset Formula $Au_{n}\to v$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint, it is closed, implying that 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $Au=v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It remains to be showed that 
+\begin_inset Formula $\frac{A+T}{c}\pm\ii$
+\end_inset
+
+ is surjective for any 
+\begin_inset Formula $c\in\mathbb{R}_{>0}$
+\end_inset
+
+.
+ This is equivalent to 
+\begin_inset Formula $A+T\pm\ii c$
+\end_inset
+
+ being surjective.
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint, we know that
+\begin_inset Formula 
+\begin{align*}
+A\pm\ii c:\mathcal{D}\left(A\right) & \to H
+\end{align*}
+
+\end_inset
+
+is bijective with:
+\begin_inset Formula 
+\begin{align*}
+\left(A\pm\ii c\right)^{-1}:H & \to\mathcal{D}\left(A\right)
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+\left(A+T+\ii c\right) & =\underbrace{\left(T\left(A+\ii c\right)^{-1}+\mathbbm{1}\right)}_{\text{to show that this is invertible}}\underbrace{\left(A+\ii c\right)}_{\text{invertible}}
+\end{align*}
+
+\end_inset
+
+We show that 
+\begin_inset Formula $\norm{T\left(A+\ii c\right)^{-1}}<1$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\mathbbm{1}+T\left(A+\ii c\right)^{-1}$
+\end_inset
+
+ has a bounded inverse in terms of the Neumann series.
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $u\in H$
+\end_inset
+
+ define 
+\begin_inset Formula $v:=\left(A+\ii c\right)^{-1}u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+, so it holds:
+\begin_inset Formula 
+\begin{align}
+u & =\left(A+\ii c\right)v\nonumber \\
+\norm u^{2} & =\norm{Av}^{2}+c^{2}\norm v^{2}\nonumber \\
+\norm v^{2} & \le\frac{1}{c^{2}}\norm u^{2}\label{eq:v}\\
+\norm{Av}^{2} & \le\norm u^{2}\label{eq:Av}
+\end{align}
+
+\end_inset
+
+We get:
+\begin_inset Formula 
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}u}^{2} & =\norm{Tv}^{2}\le a^{2}\norm v^{2}+b^{2}\norm{Av}^{2}\le\\
+ & \stackrel{\eqref{eq:Av}}{\le}a^{2}\norm v^{2}+b^{2}\norm u^{2}\le\\
+ & \stackrel{\eqref{eq:v}}{\le}\frac{a^{2}}{c^{2}}\norm u^{2}+b^{2}\norm u^{2}=\left(\frac{a^{2}}{c^{2}}+b^{2}\right)\norm u^{2}
+\end{align*}
+
+\end_inset
+
+By choosing 
+\begin_inset Formula $c$
+\end_inset
+
+ sufficiently large, we can arrange that with 
+\begin_inset Formula $\tilde{c}<1$
+\end_inset
+
+ holds for all 
+\begin_inset Formula $u\in H$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}u}^{2} & \le\tilde{c}\norm u^{2}
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}} & <1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qqed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Back to example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Example-Friedrich-Kato"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=-\ii\frac{\dd}{\dd x}$
+\end_inset
+
+ is self-adjoint with 
+\begin_inset Formula $\mathcal{D}\left(A\right)$
+\end_inset
+
+ being the domain of definition of the closure of 
+\begin_inset Formula $A:C_{0}^{\infty}\left(\mathbb{R}\right)\to\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $T=T_{g}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\emph on
+Kato's condition
+\emph default
+ is fulfilled, i.e.
+ for all 
+\begin_inset Formula $u\in\mathcal{D}\left(A\right)$
+\end_inset
+
+ the inequality
+\begin_inset Formula 
+\begin{align*}
+\norm{T_{g}u}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{Au}^{2}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $a,b\in\mathbb{R}_{>0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b<1$
+\end_inset
+
+ holds, then 
+\begin_inset Formula $A+T$
+\end_inset
+
+ is also self-adjoint.
+\end_layout
+
+\begin_layout Standard
+For which 
+\begin_inset Formula $g$
+\end_inset
+
+ is Kato's condition satisfied?
+\begin_inset Formula 
+\begin{align*}
+\norm{Au}^{2} & =\int_{-\infty}^{\infty}\abs{u'\left(x\right)}^{2}\dd x
+\end{align*}
+
+\end_inset
+
+(Let us assume 
+\begin_inset Formula $u\in C_{0}^{\infty}$
+\end_inset
+
+.)
+\begin_inset Formula 
+\begin{align*}
+\abs{u\left(x\right)-u\left(y\right)} & =\abs{\int_{x}^{y}1\cdot u'\left(t\right)\dd t}\stackrel{\text{Schwarz}}{\le}\left(\int_{x}^{y}1^{2}\dd t\right)^{\frac{1}{2}}\cdot\left(\int_{x}^{y}\abs{u'\left(t\right)}^{2}\dd t\right)^{\frac{1}{2}}\le\\
+ & \le\abs{x-y}^{\frac{1}{2}}\cdot\norm{Au}
+\end{align*}
+
+\end_inset
+
+Moreover, the mean value theorem (Mittelwertungleichung) gives for all 
+\begin_inset Formula $a\in\mathbb{R}$
+\end_inset
+
+ the existence of a 
+\begin_inset Formula $y\in\left[a-\frac{1}{2},a+\frac{1}{2}\right]$
+\end_inset
+
+ such that holds:
+\begin_inset Formula 
+\begin{align*}
+\abs{u\left(y\right)} & \le\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}\abs{u\left(\tau\right)}\dd\tau\stackrel{\text{Schwarz}}{\le}\underbrace{\left(\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}1^{2}\dd t\right)^{\frac{1}{2}}}_{=1}\cdot\left(\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}\abs{u\left(t\right)}^{2}\dd t\right)^{\frac{1}{2}}\le\norm u_{L^{2}}
+\end{align*}
+
+\end_inset
+
+This gives:
+\begin_inset Formula 
+\begin{align*}
+\abs{u\left(x\right)} & \le\abs{u\left(y\right)}+\abs{u\left(x\right)-u\left(y\right)}\le\norm u+\norm{Au}
+\end{align*}
+
+\end_inset
+
+Consider now different cases:
+\end_layout
+
+\begin_layout Enumerate
+case: 
+\begin_inset Formula $g$
+\end_inset
+
+ is bounded, i.e.
+ 
+\begin_inset Formula $\norm g_{\infty}\le c\in\mathbb{R}_{\ge0}$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{T_{g}u}^{2} & =\int_{\mathbb{R}}\abs{g\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd x\le c^{2}\norm u^{2}\\
+\Rightarrow\qquad\norm{T_{g}u} & \le c\norm u
+\end{align*}
+
+\end_inset
+
+Thus Kato's condition is satisfied with 
+\begin_inset Formula $b=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+case: 
+\begin_inset Formula $g$
+\end_inset
+
+ is not bounded and 
+\begin_inset Formula $\norm g_{L^{2}}<1$
+\end_inset
+
+.
+ Then holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{T_{g}u}^{2} & =\int_{\mathbb{R}}\abs{g\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd x\le\sup_{x\in\mathbb{R}}\abs{u\left(x\right)}^{2}\cdot\norm g_{L^{2}}^{2}\\
+\Rightarrow\qquad\norm{T_{g}u} & \le\left(\norm u+\norm{Au}\right)\norm g_{L^{2}}=\norm g_{L^{2}}\cdot\norm u+\norm g_{L^{2}}\cdot\norm{Au}
+\end{align*}
+
+\end_inset
+
+Kato's condition is again satisfied.
+\end_layout
+
+\begin_layout Enumerate
+case: 
+\begin_inset Formula $g\in L^{2}\left(\mathbb{R}\right)$
+\end_inset
+
+, but no bound on 
+\begin_inset Formula $\norm g_{L^{2}}$
+\end_inset
+
+.
+ Decompose 
+\begin_inset Formula $g=g_{1}+g_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+g_{1}^{\left(L\right)} & :=g\cdot\chi_{\left[-L,L\right]}\in L^{\infty}\\
+g_{2}^{\left(L\right)} & :=g-g_{1}
+\end{align*}
+
+\end_inset
+
+From the dominated convergence theorem follows:
+\begin_inset Formula 
+\begin{align*}
+\norm{g_{2}^{\left(L\right)}}_{L^{2}} & \xrightarrow{L\to\infty}0
+\end{align*}
+
+\end_inset
+
+Thus there exists a 
+\begin_inset Formula $L\in\mathbb{R}_{>0}$
+\end_inset
+
+ with 
+\begin_inset Formula $\norm{g_{2}^{\left(L\right)}}<1$
+\end_inset
+
+.
+ Combining case 1 for 
+\begin_inset Formula $g_{1}^{\left(L\right)}$
+\end_inset
+
+ and case 2 for 
+\begin_inset Formula $g_{2}^{\left(L\right)}$
+\end_inset
+
+ shows that 
+\begin_inset Formula $A+T_{g}$
+\end_inset
+
+ is again self-adjoint.
+\end_layout
+
+\begin_layout Section
+Example
+\end_layout
+
+\begin_layout Standard
+Consider the operator
+\begin_inset Formula 
+\begin{align*}
+H & =-\Delta_{\mathbb{R}^{3}}+V
+\end{align*}
+
+\end_inset
+
+on 
+\begin_inset Formula $L^{2}\left(\mathbb{R}^{3}\right)$
+\end_inset
+
+ with:
+\begin_inset Formula 
+\begin{align*}
+V\left(x\right) & =\begin{cases}
+\frac{c}{\norm x} & \text{Coulomb potential}\\
+c\cdot\frac{e^{-\norm x}}{\norm x} & \text{Yukawa potential}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+The goal is to find 
+\begin_inset Formula $\mathcal{D}\left(H\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $H$
+\end_inset
+
+ is self-adjoint.
+\end_layout
+
+\begin_layout Standard
+Consider the 
+\begin_inset Quotes eld
+\end_inset
+
+unperturbed operator
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $-\Delta_{\mathbb{R}^{3}}$
+\end_inset
+
+ on 
+\begin_inset Formula $L^{2}\left(\mathbb{R}^{3}\right)$
+\end_inset
+
+ and use a Fourier transformation
+\begin_inset Formula 
+\begin{align*}
+\hat{A} & :=U\left(-\Delta_{\mathbb{R}^{3}}\right)U^{-1}f=T_{g}f
+\end{align*}
+
+\end_inset
+
+with:
+\begin_inset Formula 
+\begin{align*}
+\left(T_{g}f\right)\left(k\right) & =\norm k^{2}f\left(k\right)
+\end{align*}
+
+\end_inset
+
+Define:
+\begin_inset Formula 
+\begin{align*}
+\mathcal{D}\left(\hat{A}\right) & :=\left\{ f\in L^{2}\left(\mathbb{R}^{3}\right)\big|\norm k^{2}f\left(k\right)\in L^{2}\left(\mathbb{R}^{3}\right)\right\} \\
+\mathcal{D}\left(-\Delta_{\mathbb{R}^{3}}\right) & :=U^{-1}\left(\mathcal{D}\left(\hat{A}\right)\right)=W^{2,2}\left(\mathbb{R}\right)
+\end{align*}
+
+\end_inset
+
+Here 
+\begin_inset Formula $W^{k,p}\left(\mathbb{R}\right)$
+\end_inset
+
+ is a Sobolov space and the special case 
+\begin_inset Formula $W^{k,2}\left(\mathbb{R}\right)$
+\end_inset
+
+ is also a Hilbert space.
+ The norm of 
+\begin_inset Formula $W^{2,2}\left(\mathbb{R}\right)$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\begin{align*}
+\norm f_{W^{2,2}}^{2} & =\int\left(\abs f^{2}+\norm{\nabla f}^{2}+\abs{\nabla^{2}f}^{2}\right)\left(x\right)\dd^{3}x
+\end{align*}
+
+\end_inset
+
+Functions in 
+\begin_inset Formula $W^{2,2}$
+\end_inset
+
+ are only weakly differentiable.
+ With elliptic estimates follows:
+\begin_inset Formula 
+\begin{align*}
+\norm u_{W^{2,2}} & \le\left(1+\varepsilon\right)\norm{\Delta u}^{2}+c\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Also the 
+\emph on
+Sobolov inequality
+\emph default
+ and the 
+\emph on
+Sobolov embedding theorem
+\emph default
+ holds:
+\begin_inset Formula 
+\begin{align*}
+\norm u_{L^{2p}} & \le\varepsilon\norm{\Delta u}^{2}+c\left(\varepsilon\right)\norm u^{2}
+\end{align*}
+
+\end_inset
+
+Kato's condition is:
+\begin_inset Formula 
+\begin{align*}
+\norm{Vu}_{L^{2}}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{\Delta u}^{2}
+\end{align*}
+
+\end_inset
+
+With
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1
+\end{align*}
+
+\end_inset
+
+holds:
+\begin_inset Formula 
+\begin{align*}
+\norm{Vu}_{L^{2}}^{2} & ?\int_{\mathbb{R}^{3}}\abs{V\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd^{3}x\le\norm V_{2q}\cdot\underbrace{\norm u_{2p}}_{\text{Sobolev inequality}}\le\\
+ & \le\norm V_{2q}\left(\varepsilon\norm{\Delta u}^{2}+c\left(\varepsilon\right)\norm u^{2}\right)
+\end{align*}
+
+\end_inset
+
+Now holds 
+\begin_inset Formula $b:=\varepsilon\norm V_{2q}^{2}<1$
+\end_inset
+
+ for sufficiently small 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, provided that 
+\begin_inset Formula $\norm V_{L^{2q}}<\infty$
+\end_inset
+
+.
+ This is satisfied for the Yukawa potential, but for the Coulomb potential
+ one must work a bit harder.
+\end_layout
+
 \begin_layout Part*
 Appendix
 \begin_inset ERT

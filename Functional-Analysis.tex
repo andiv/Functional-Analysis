@@ -9248,13 +9248,349 @@ Thus the functions in the image of $A\pm\ii$ satisfy the condition:
 \int_{-\infty}^{\infty}e^{\mp x}v\left(x\right)\dd x & =0
 \end{align*}
 Conversely, if a function $v\left(x\right)$ satisfies this condition
-for $+$ and $-$, then follows:
+for $+$ and $-$, then
 \begin{align*}
 u\left(x\right) & :=\int_{-\infty}^{x}e^{\mp t}v\left(t\right)\dd t
 \end{align*}
-is in $C_{0}^{\infty}\left(\mathbb{R}\right)$ and $\left(A\pm\ii\right)u=v$.
+is in $C_{0}^{\infty}\left(\mathbb{R}\right)$ and $\left(A\pm\ii\right)u=v$.\\
+Now we need to show:
+\begin{align*}
+\overline{\left\{ v\in C_{0}^{\infty}\left(\mathbb{R}\right)\bigg|\int e^{\pm x}v\left(x\right)\dd x=0\right\} } & =H
+\end{align*}
+Since $C_{0}^{\infty}\left(\mathbb{R}\right)$ is dense in $H$, we
+only need to prove that $\psi\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+is an element of the left set. We look for $v_{n}\in C_{0}^{\infty}\left(\mathbb{R}\right)$
+with
+\begin{align*}
+\int e^{\pm x}v_{n}\left(x\right)\dd x & =0
+\end{align*}
+such that $v_{n}\to\psi$ converges in $L^{2}$.\\
+Choose $\eta\in C_{0}^{\infty}\left(\left[0,1\right]\right)$ and
+use the ansatz:
+\begin{align*}
+v_{n} & =\psi+c_{+}\eta\left(x-L\right)+c_{-}\eta\left(x+L\right)
+\end{align*}
+\begin{figure}[H]
+\noindent \centering{}\begin{tikzpicture}
+ \begin{axis}[width=17cm, height = 10cm, axis x line=middle, axis y line=middle,
+		xtick={0}, ytick={0}, xlabel=$q$,
+        extra x ticks={-2,-1.5,1.5,2}, extra x tick labels={$-L$, $-L+1$, $L$, $L+1$},
+		xmin=-2.5, xmax=2.5, ymin=-0.2, ymax=1.3, samples=300]
+  \addplot[red, mark=none, domain=-1.2:1.2] {0.6*(1 + 5*x^2 - x^4+ 2*x^3)*exp(-4*(x)^4)};
+  \addlegendentry{$v_n $}
+  \addplot[thick, dashed, mark=none, domain=-1.2:1.2] {0.6*(1 + 5*x^2 - x^4+ 2*x^3)*exp(-4*(x)^4)};
+  \addlegendentry{$\psi $}
+  \addplot[red, mark=none, domain=1.5:2] {((x-1.75)^2-0.0625) * exp(-1/(10*(2.01-x))^2-1/(10*(x-1.49))^2)};
+  \node at (axis cs: 1.75,0.15) {$c_+ \eta (x-L)$};
+  \addplot[red, mark=none, domain=-2:-1.5] {-1.7*((x+1.75)^2-0.0625) * exp(-1/(10*(2.01+x))^2-1/(10*(-x-1.49))^2)};
+  \node at (axis cs: -1.75,0.15) {$c_- \eta (x+L)$};
+ \end{axis}
+\end{tikzpicture} \caption{Approximation of $\psi$ with the $v_{n}$}
+\end{figure}
+Then holds:
+\begin{align*}
+0 & \stackrel{!}{=}\int_{-\infty}^{\infty}e^{\pm x}v_{n}\left(x\right)\dd x=\\
+ & =\int_{-\infty}^{\infty}\psi\left(x\right)\dd x+c_{+}\underbrace{\int_{-\infty}^{\infty}e^{\pm x}\eta\left(x-L\right)\dd x}_{\sim e^{\pm L}}+c_{-}\underbrace{\int_{-\infty}^{\infty}e^{\pm x}\eta\left(x+L\right)\dd x}_{\sim e^{\mp L}}
+\end{align*}
+We have two conditions and two free parameters. One sees that $c_{+},c_{-}$
+are proportional to $e^{-L}$. Thus $v_{n}\to\psi$ converges in $L^{2}$.\qqed[Claim]
 \end{description}
 \end{itemize}
+Thus $\overline{A}$ with $\mathcal{D}\left(\overline{A}\right)$
+(which can be described in detail) is self-adjoint.
+\begin{align*}
+\overline{A} & =\int_{-\infty}^{\infty}\lambda\dd E_{\lambda} &  & \text{spectral theorem}
+\end{align*}
+
+
+
+\section{Example}
+
+On the Hilbert space $H=L^{2}\left(\left[0,1\right],\dd x\right)$
+consider the operator $A:=\frac{\dd}{\dd x}$ with $\mathcal{D}\left(A\right)=C_{0}^{\infty}\left(\left(0,1\right)\right)$.
+\begin{enumerate}[label=\alph*)]
+\item $A$ is \emph{not} essentially self-adjoint. Just as in the previous
+example, $A$ being essentially self-adjoint is equivalent to
+\begin{align*}
+\left(A\pm\ii\right)\left(C_{0}^{\infty}\left(\left(0,1\right)\right)\right) & \subseteq H
+\end{align*}
+being dense, or equivalently
+\begin{align*}
+M & :=\left\{ v\in C_{0}^{\infty}\left(\left(0,1\right)\right)\bigg|0=\int_{0}^{1}e^{\pm x}v\left(x\right)\dd x\right\} \subseteq H
+\end{align*}
+being dense. For $\psi\left(x\right)=e\left(x\right)\in H$ holds
+for all $v\in M$:
+\begin{align*}
+\left\langle \psi,v\right\rangle  & =\int_{0}^{1}\psi\left(x\right)v\left(x\right)\dd x=\int_{0}^{1}e^{x}v\left(x\right)\dd x=0
+\end{align*}
+Therefore holds $0\not=\psi\in M^{\perp}$ and $M$ is \emph{not}
+dense in $H$.
+\item For $f\in C_{0}^{\infty}\left(\left[0,1\right]\right)$ and $n\in\mathbb{Z}$
+define:
+\begin{align*}
+c_{n} & :=\int_{0}^{1}f\left(x\right)e^{2\pi\ii nx}\dd x
+\end{align*}
+This gives rise to a unitary transformation (Plancherel theorem):
+\begin{align*}
+U:L^{2}\left(\left[0,1\right]\right) & \to\ell_{2}\\
+f & \mapsto\left(c_{n}\right)_{n\in\mathbb{Z}}
+\end{align*}
+\begin{align*}
+\int_{0}^{1}\abs f^{2}\dd x & =\sum_{n\in\mathbb{Z}}\abs{c_{n}}^{2}
+\end{align*}
+\begin{align*}
+\hat{A}\left(c_{n}\right) & =\left(U\ii\frac{\dd}{\dd x}U^{-1}\right)\left(c_{n}\right)=\left(-2\pi nc_{n}\right)_{n}
+\end{align*}
+$\hat{A}$ is a multiplication operator with:
+\begin{align*}
+\mathcal{D}\left(\hat{A}\right) & =\left\{ \left(c_{n}\right)_{n}\in\ell^{2}\big|\left(nc_{n}\right)_{n}\in\ell^{2}\right\} \subseteq\ell^{2}
+\end{align*}
+Then
+\begin{align*}
+\hat{A}:\mathcal{D}\left(\hat{A}\right) & \to\ell^{2}
+\end{align*}
+is self-adjoint. Thus
+\begin{align*}
+A:\mathcal{D}\left(A\right):=U^{-1}\mathcal{D}\left(\hat{A}\right) & \to L^{2}
+\end{align*}
+is self-adjoint.
+\end{enumerate}
+
+\section{Example\label{sec:Example-Friedrich-Kato}}
+
+Consider $H=L^{2}\left(\mathbb{R},\dd x\right)$, $A=\ii\frac{\dd}{\dd x}$
+and $T=T_{g}$ with a real valued $g$.
+\begin{align*}
+\left(A+T\right)\psi\left(x\right) & =\ii\frac{\dd}{\dd x}\psi\left(x\right)+g\left(x\right)\psi\left(x\right)
+\end{align*}
+How to choose $\mathcal{D}\left(A+T\right)$ in order to make the
+operator self-adjoint?
+
+There are two solutions:
+\begin{itemize}
+\item Friedrichs extension (by K. O. Friedrichs) for semi-bounded operators.
+\item Katos's method
+\end{itemize}
+
+\section{Theorem \textmd{(Kato-Rellich)}}
+
+Let $A:\mathcal{D}\left(A\right)\to H$ be self-adjoint and $T$ symmetric
+with $\mathcal{D}\left(T\right)\supseteq\mathcal{D}\left(A\right)$.
+Moreover, assume that there are constants $a,b\in\mathbb{R}_{\ge0}$
+with $b<1$ such that for all $u\in\mathcal{D}\left(A\right)$ holds:
+\begin{align}
+\norm{Tu}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{Au}^{2}\label{eq:Tu-inequality}
+\end{align}
+Then $A+T$ with
+\begin{align*}
+\mathcal{D}\left(A+T\right) & =\mathcal{D}\left(A\right)
+\end{align*}
+is self-adjoint.
+
+$T$ is \emph{relatively bounded with respect to $A$}.
+
+
+\subsubsection*{Proof}
+
+The inequality \eqref{eq:Tu-inequality} implies:
+\begin{align*}
+\norm{Tu} & \le a\norm u+b\norm{Au}
+\end{align*}
+For $u\in\mathcal{D}\left(A\right)$ holds:
+\begin{align*}
+Au & =\left(A+T\right)u-Tu
+\end{align*}
+\begin{align*}
+\norm{Au} & \le\norm{\left(A+T\right)u}+\norm{Tu}\le\\
+ & \le\norm{\left(A+T\right)u}+a\norm u+b\norm{Au}
+\end{align*}
+This gives:
+\begin{align}
+\norm{Au} & \le\frac{1}{1-b}\left(\norm{\left(A+T\right)u}+a\norm u\right)\label{eq:normAu}
+\end{align}
+
+\begin{itemize}
+\item $\left(A+T\right)$ with $\mathcal{D}\left(A+T\right):=\mathcal{D}\left(A\right)$
+is closed: Choose $u_{n}\in\mathcal{D}\left(A\right)$ such that $u_{n}\to u$
+and $\left(A+T\right)u_{n}\to w$ converge. We want to show $u\in\mathcal{D}\left(A\right)$
+and $\left(A+T\right)u=w$. \eqref{eq:normAu} implies:
+\begin{align*}
+\norm{A\left(u_{n}-u_{m}\right)} & \le\frac{1}{1-b}\underbrace{\norm{\left(A+T\right)\left(u_{n}-u_{m}\right)}}_{\to0}+\frac{a}{1-b}\underbrace{\norm{u_{n}-u_{m}}}_{\to0}
+\end{align*}
+This gives $A\left(u_{n}-u_{m}\right)\to0$ and thus $Au_{n}\to v$.
+Since $A$ is self-adjoint, it is closed, implying that $u\in\mathcal{D}\left(A\right)$
+and $Au=v$.
+\item It remains to be showed that $\frac{A+T}{c}\pm\ii$ is surjective
+for any $c\in\mathbb{R}_{>0}$. This is equivalent to $A+T\pm\ii c$
+being surjective. Since $A$ is self-adjoint, we know that
+\begin{align*}
+A\pm\ii c:\mathcal{D}\left(A\right) & \to H
+\end{align*}
+is bijective with:
+\begin{align*}
+\left(A\pm\ii c\right)^{-1}:H & \to\mathcal{D}\left(A\right)
+\end{align*}
+This gives:
+\begin{align*}
+\left(A+T+\ii c\right) & =\underbrace{\left(T\left(A+\ii c\right)^{-1}+\mathbbm{1}\right)}_{\text{to show that this is invertible}}\underbrace{\left(A+\ii c\right)}_{\text{invertible}}
+\end{align*}
+We show that $\norm{T\left(A+\ii c\right)^{-1}}<1$. Then $\mathbbm{1}+T\left(A+\ii c\right)^{-1}$
+has a bounded inverse in terms of the Neumann series.\\
+For $u\in H$ define $v:=\left(A+\ii c\right)^{-1}u\in\mathcal{D}\left(A\right)$,
+so it holds:
+\begin{align}
+u & =\left(A+\ii c\right)v\nonumber \\
+\norm u^{2} & =\norm{Av}^{2}+c^{2}\norm v^{2}\nonumber \\
+\norm v^{2} & \le\frac{1}{c^{2}}\norm u^{2}\label{eq:v}\\
+\norm{Av}^{2} & \le\norm u^{2}\label{eq:Av}
+\end{align}
+We get:
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}u}^{2} & =\norm{Tv}^{2}\le a^{2}\norm v^{2}+b^{2}\norm{Av}^{2}\le\\
+ & \stackrel{\eqref{eq:Av}}{\le}a^{2}\norm v^{2}+b^{2}\norm u^{2}\le\\
+ & \stackrel{\eqref{eq:v}}{\le}\frac{a^{2}}{c^{2}}\norm u^{2}+b^{2}\norm u^{2}=\left(\frac{a^{2}}{c^{2}}+b^{2}\right)\norm u^{2}
+\end{align*}
+By choosing $c$ sufficiently large, we can arrange that with $\tilde{c}<1$
+holds for all $u\in H$:
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}u}^{2} & \le\tilde{c}\norm u^{2}
+\end{align*}
+This gives:
+\begin{align*}
+\norm{T\left(A+\ii c\right)^{-1}} & <1
+\end{align*}
+
+\end{itemize}
+\qqed
+
+
+\subsubsection*{Back to example \ref{sec:Example-Friedrich-Kato}}
+
+$A=-\ii\frac{\dd}{\dd x}$ is self-adjoint with $\mathcal{D}\left(A\right)$
+being the domain of definition of the closure of $A:C_{0}^{\infty}\left(\mathbb{R}\right)\to\mathbb{R}$
+and $T=T_{g}$.
+
+If \emph{Kato's condition} is fulfilled, i.e. for all $u\in\mathcal{D}\left(A\right)$
+the inequality
+\begin{align*}
+\norm{T_{g}u}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{Au}^{2}
+\end{align*}
+with $a,b\in\mathbb{R}_{>0}$ and $b<1$ holds, then $A+T$ is also
+self-adjoint.
+
+For which $g$ is Kato's condition satisfied?
+\begin{align*}
+\norm{Au}^{2} & =\int_{-\infty}^{\infty}\abs{u'\left(x\right)}^{2}\dd x
+\end{align*}
+(Let us assume $u\in C_{0}^{\infty}$.)
+\begin{align*}
+\abs{u\left(x\right)-u\left(y\right)} & =\abs{\int_{x}^{y}1\cdot u'\left(t\right)\dd t}\stackrel{\text{Schwarz}}{\le}\left(\int_{x}^{y}1^{2}\dd t\right)^{\frac{1}{2}}\cdot\left(\int_{x}^{y}\abs{u'\left(t\right)}^{2}\dd t\right)^{\frac{1}{2}}\le\\
+ & \le\abs{x-y}^{\frac{1}{2}}\cdot\norm{Au}
+\end{align*}
+Moreover, the mean value theorem (Mittelwertungleichung) gives for
+all $a\in\mathbb{R}$ the existence of a $y\in\left[a-\frac{1}{2},a+\frac{1}{2}\right]$
+such that holds:
+\begin{align*}
+\abs{u\left(y\right)} & \le\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}\abs{u\left(\tau\right)}\dd\tau\stackrel{\text{Schwarz}}{\le}\underbrace{\left(\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}1^{2}\dd t\right)^{\frac{1}{2}}}_{=1}\cdot\left(\int_{a-\frac{1}{2}}^{a+\frac{1}{2}}\abs{u\left(t\right)}^{2}\dd t\right)^{\frac{1}{2}}\le\norm u_{L^{2}}
+\end{align*}
+This gives:
+\begin{align*}
+\abs{u\left(x\right)} & \le\abs{u\left(y\right)}+\abs{u\left(x\right)-u\left(y\right)}\le\norm u+\norm{Au}
+\end{align*}
+Consider now different cases:
+\begin{enumerate}
+\item case: $g$ is bounded, i.e. $\norm g_{\infty}\le c\in\mathbb{R}_{\ge0}$.
+Then holds:
+\begin{align*}
+\norm{T_{g}u}^{2} & =\int_{\mathbb{R}}\abs{g\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd x\le c^{2}\norm u^{2}\\
+\Rightarrow\qquad\norm{T_{g}u} & \le c\norm u
+\end{align*}
+Thus Kato's condition is satisfied with $b=0$.
+\item case: $g$ is not bounded and $\norm g_{L^{2}}<1$. Then holds:
+\begin{align*}
+\norm{T_{g}u}^{2} & =\int_{\mathbb{R}}\abs{g\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd x\le\sup_{x\in\mathbb{R}}\abs{u\left(x\right)}^{2}\cdot\norm g_{L^{2}}^{2}\\
+\Rightarrow\qquad\norm{T_{g}u} & \le\left(\norm u+\norm{Au}\right)\norm g_{L^{2}}=\norm g_{L^{2}}\cdot\norm u+\norm g_{L^{2}}\cdot\norm{Au}
+\end{align*}
+Kato's condition is again satisfied.
+\item case: $g\in L^{2}\left(\mathbb{R}\right)$, but no bound on $\norm g_{L^{2}}$.
+Decompose $g=g_{1}+g_{2}$:
+\begin{align*}
+g_{1}^{\left(L\right)} & :=g\cdot\chi_{\left[-L,L\right]}\in L^{\infty}\\
+g_{2}^{\left(L\right)} & :=g-g_{1}
+\end{align*}
+From the dominated convergence theorem follows:
+\begin{align*}
+\norm{g_{2}^{\left(L\right)}}_{L^{2}} & \xrightarrow{L\to\infty}0
+\end{align*}
+Thus there exists a $L\in\mathbb{R}_{>0}$ with $\norm{g_{2}^{\left(L\right)}}<1$.
+Combining case 1 for $g_{1}^{\left(L\right)}$ and case 2 for $g_{2}^{\left(L\right)}$
+shows that $A+T_{g}$ is again self-adjoint.
+\end{enumerate}
+
+\section{Example}
+
+Consider the operator
+\begin{align*}
+H & =-\Delta_{\mathbb{R}^{3}}+V
+\end{align*}
+on $L^{2}\left(\mathbb{R}^{3}\right)$ with:
+\begin{align*}
+V\left(x\right) & =\begin{cases}
+\frac{c}{\norm x} & \text{Coulomb potential}\\
+c\cdot\frac{e^{-\norm x}}{\norm x} & \text{Yukawa potential}
+\end{cases}
+\end{align*}
+The goal is to find $\mathcal{D}\left(H\right)$ such that $H$ is
+self-adjoint.
+
+Consider the ``unperturbed operator'' $-\Delta_{\mathbb{R}^{3}}$
+on $L^{2}\left(\mathbb{R}^{3}\right)$ and use a Fourier transformation
+\begin{align*}
+\hat{A} & :=U\left(-\Delta_{\mathbb{R}^{3}}\right)U^{-1}f=T_{g}f
+\end{align*}
+with:
+\begin{align*}
+\left(T_{g}f\right)\left(k\right) & =\norm k^{2}f\left(k\right)
+\end{align*}
+Define:
+\begin{align*}
+\mathcal{D}\left(\hat{A}\right) & :=\left\{ f\in L^{2}\left(\mathbb{R}^{3}\right)\big|\norm k^{2}f\left(k\right)\in L^{2}\left(\mathbb{R}^{3}\right)\right\} \\
+\mathcal{D}\left(-\Delta_{\mathbb{R}^{3}}\right) & :=U^{-1}\left(\mathcal{D}\left(\hat{A}\right)\right)=W^{2,2}\left(\mathbb{R}\right)
+\end{align*}
+Here $W^{k,p}\left(\mathbb{R}\right)$ is a Sobolov space and the
+special case $W^{k,2}\left(\mathbb{R}\right)$ is also a Hilbert space.
+The norm of $W^{2,2}\left(\mathbb{R}\right)$ is:
+\begin{align*}
+\norm f_{W^{2,2}}^{2} & =\int\left(\abs f^{2}+\norm{\nabla f}^{2}+\abs{\nabla^{2}f}^{2}\right)\left(x\right)\dd^{3}x
+\end{align*}
+Functions in $W^{2,2}$ are only weakly differentiable. With elliptic
+estimates follows:
+\begin{align*}
+\norm u_{W^{2,2}} & \le\left(1+\varepsilon\right)\norm{\Delta u}^{2}+c\norm u^{2}
+\end{align*}
+Also the \emph{Sobolov inequality} and the \emph{Sobolov embedding
+theorem} holds:
+\begin{align*}
+\norm u_{L^{2p}} & \le\varepsilon\norm{\Delta u}^{2}+c\left(\varepsilon\right)\norm u^{2}
+\end{align*}
+Kato's condition is:
+\begin{align*}
+\norm{Vu}_{L^{2}}^{2} & \le a^{2}\norm u^{2}+b^{2}\norm{\Delta u}^{2}
+\end{align*}
+With
+\begin{align*}
+\frac{1}{p}+\frac{1}{q} & =1
+\end{align*}
+holds:
+\begin{align*}
+\norm{Vu}_{L^{2}}^{2} & ?\int_{\mathbb{R}^{3}}\abs{V\left(x\right)}^{2}\abs{u\left(x\right)}^{2}\dd^{3}x\le\norm V_{2q}\cdot\underbrace{\norm u_{2p}}_{\text{Sobolev inequality}}\le\\
+ & \le\norm V_{2q}\left(\varepsilon\norm{\Delta u}^{2}+c\left(\varepsilon\right)\norm u^{2}\right)
+\end{align*}
+Now holds $b:=\varepsilon\norm V_{2q}^{2}<1$ for sufficiently small
+$\varepsilon$, provided that $\norm V_{L^{2q}}<\infty$. This is
+satisfied for the Yukawa potential, but for the Coulomb potential
+one must work a bit harder.
+
 
 \part*{Appendix\thispagestyle{empty}}
 
