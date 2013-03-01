@@ -3966,10 +3966,10 @@ interior point
 \end_inset
 
  such that 
-\begin_inset Formula $x_{0}+tu\in X$
+\begin_inset Formula $x_{0}+tu\in K$
 \end_inset
 
- for all 
+ holds for all 
 \begin_inset Formula $t\in\left(-\varepsilon,\varepsilon\right)$
 \end_inset
 
