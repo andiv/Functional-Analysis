@@ -1041,6 +1041,8 @@ vspace*{3mm}
 \begin_inset Newline newline
 \end_inset
 
+
+\size normal
 Last changed: 
 \begin_inset ERT
 status open
@@ -1054,6 +1056,8 @@ today
 
 \end_inset
 
+
+\size default
 
 \begin_inset Newline newline
 \end_inset
@@ -1085,14 +1089,6 @@ status open
 
 \backslash
 fancyhead[R]{License}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setcounter{page}{2} % sonst gibt es aus irgendeinem Grund zweimal die Seite
- 1!?
 \end_layout
 
 \end_inset
@@ -2575,15 +2571,8 @@ Let
 \emph on
 real
 \emph default
- vector space (without topology) and 
-\begin_inset Formula $l:X\to\mathbb{R}$
-\end_inset
-
- linear.
-\begin_inset Newline newline
-\end_inset
-
-
+ vector space (without topology).
+ 
 \begin_inset Formula $p:X\to\mathbb{R}$
 \end_inset
 
@@ -2599,7 +2588,7 @@ sublinear
 \begin_inset Formula $a\in\mathbb{R}_{>0}$
 \end_inset
 
-:
+ holds:
 \end_layout
 
 \begin_layout Enumerate
