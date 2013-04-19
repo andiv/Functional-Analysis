@@ -41,11 +41,11 @@
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{tikz,pgfplots}
-%\usepackage{tikz-3dplot,cancel,polynom,tocbasic}
-\usetikzlibrary{matrix,arrows,calc,decorations.markings,snakes,intersections}
+%\usepackage{tikz-3dplot,cancel,polynom}
+\usetikzlibrary{matrix,arrows,calc,decorations.markings,decorations.pathmorphing,intersections}
 \usetikzlibrary{external}
 \tikzexternalize
-\usepackage{latexsym,stmaryrd,stackrel,icomma,braket,bbm,subfig,framed,booktabs,esvect,scrhack,calc}
+\usepackage{latexsym,stmaryrd,stackrel,braket,bbm,subfig,framed,esvect,scrhack,calc}
 \usepackage [OMLmathrm,OMLmathbf,sfdefault=fav]{isomath}
 \usepackage[explicit]{titlesec}
 \usepackage[activate]{pdfcprot}
@@ -189,9 +189,6 @@
 
 
 \global\long\def\mins{\text{-}}
-
-
-\global\long\def\LB{\LBO}
 
 
 \global\long\def\exs{\exsop}
@@ -535,7 +532,7 @@ $\lambda,\mu\in\mathbb{K}$ and $u\in E$ define:
 \end{align*}
 Define also a norm on $L\left(E,F\right)$, which is called \emph{sup-norm}:
 \begin{align*}
-\norm A & :=\sup_{u\in E,\norm u_{E}\le1}\norm{Au}_{F}
+\opnorm A & :=\sup_{u\in E,\norm u_{E}\le1}\norm{Au}_{F}
 \end{align*}
 
 
@@ -588,7 +585,8 @@ chain has an upper bound. Then there is a maximal element.
 
 \subsubsection*{Proof}
 
-This follows from the axiom of choice, see e.g. Kowalsky: Linear algebra.
+This follows from the axiom of choice, see e.g. \noun{Kowalsky}: \emph{Linear
+algebra}.
 
 
 \section{Definition \textmd{(sublinear)}}
@@ -760,19 +758,22 @@ or complex), $Y\subseteq X$ a subspace. Let $\varphi$ be a continuous
 linear functional from $Y$ to $\mathbb{K}$, i.e. for all $y\in Y$
 holds:
 \begin{align*}
-\abs{\varphi\left(y\right)} & \le\norm{\varphi}\cdot\norm y
+\abs{\varphi\left(y\right)} & \le\opnorm{\varphi}\cdot\norm y
 \end{align*}
-Then $\varphi$ can be continued to all of $X$ with the same supnorm,
+Then $\varphi$ can be continued to all of $X$ with the same sup-norm,
 i. e.:
 \begin{align*}
-\norm{\tilde{\varphi}} & :=\sup_{x\in X,\norm x\le1}\abs{\varphi\left(x\right)}=\norm{\varphi}:=\sup_{y\in Y,\norm y\le1}\abs{\varphi\left(y\right)}
+\opnorm{\tilde{\varphi}} & :=\sup_{x\in X,\norm x\le1}\abs{\varphi\left(x\right)}=\opnorm{\varphi}:=\sup_{y\in Y,\norm y\le1}\abs{\varphi\left(y\right)}
 \end{align*}
 
 
 
 \subsubsection*{Proof}
 
-Apply the Hahn-Banach theorem with $\tilde{\varphi}:=\norm{\varphi}\cdot\norm x$.\qqed
+Apply the Hahn-Banach theorem with $l=\varphi$ and $p\left(x\right):=\opnorm{\varphi}\cdot\norm x$,
+to get a $\tilde{\varphi}:=\tilde{l}$ with $\tilde{\varphi}\left(x\right)\le\opnorm{\varphi}\cdot\norm x$
+for all $x\in X$ and $\tilde{\varphi}\big|_{Y}=\varphi$. So $\tilde{\varphi}$
+and $\varphi$ have the same sup-norm.\qqed
 
 
 \section{Corollary}
@@ -781,16 +782,16 @@ Let $X$ be a normed space and $u_{0}\in X$ with $\norm{u_{0}}=1$.
 Then there exists a linear functional $\varphi:X\to\mathbb{K}$ such
 that:
 \begin{align*}
-\varphi\left(u_{0}\right) & =1 & \norm{\varphi} & =1
+\varphi\left(u_{0}\right) & =1 & \opnorm{\varphi} & =1
 \end{align*}
 
 
 
 \subsubsection*{Proof}
 
-Let $Y:=\left\langle u_{0}\right\rangle $ and define $\varphi_{0}:\left\langle u_{0}\right\rangle \to\mathbb{K}$
-by $\varphi_{0}\left(u_{0}\right)=1$. Extend $\varphi_{0}$ by the
-Hahn-Banach theorem \ref{sec:Thm-HahnBanach-normedSpace}.\qqed
+For $Y:=\left\langle u_{0}\right\rangle $ define $\varphi_{0}:\left\langle u_{0}\right\rangle \to\mathbb{K}$
+by $\varphi_{0}\left(u_{0}\right)=1$. Extend $\varphi_{0}$ using
+the Hahn-Banach theorem \ref{sec:Thm-HahnBanach-normedSpace}.\qqed
 
 The Hahn-Banach theorem also has a geometric formulation. Consider
 only the real case:\\
@@ -848,35 +849,43 @@ that $x_{0}+tu\in K$ holds for all $t\in\left(-\varepsilon,\varepsilon\right)$.
 \section{Theorem \textmd{(geometric Hahn-Banach)}\label{sec:Thm-HahnBanach-Geometric}}
 
 Let $K\not=\emptyset$ be convex and all points of $K$ be interior
-points. Let $y\not\in K$. Then there is a linear functional $l:X\to\mathbb{R}$
-such that $l\left(x\right)<1$ for all $x\in K$ and $l\left(y\right)=1$.\\
-$\mathcal{H}:=\left\{ x\in X\big|l\left(x\right)=1\right\} $ defines
-a hyperplane. Now $y\in\mathcal{H}$ and $l\big|_{K}<1$ mean that
+points. Let $y\not\in K$. Then there is a $c\in\mathbb{R}$ and a
+linear functional $l:X\to\mathbb{R}$ such that $l\left(x\right)<c$
+for all $x\in K$ and $l\left(y\right)=c$.\\
+$\mathcal{H}:=\left\{ x\in X\big|l\left(x\right)=c\right\} $ defines
+a hyperplane. Now $y\in\mathcal{H}$ and $l\big|_{K}<c$ mean that
 $K$ lies in one half-space.
 
-First introduce a suitable sublinear functional. Without loss of generality,
-assume $0\in K$ (otherwise shift $K$).
+First introduce a suitable sublinear functional. Now choose a $x_{0}\in K$
+and define $\tilde{K}:=K-x_{0}$ and $\tilde{y}:=y-x_{0}$. From $x_{0}\in K$
+follows $0\in\tilde{K}$.
 
 \begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[scale=2]
   \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
-  \draw (0,0) node[below]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
-\end{tikzpicture}\caption{$0\in K$}
+  \draw (0,0) node[below=3pt]{$0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \node at (0.5,0.25) {$\tilde{K}$};
+ \begin{scope}[xshift=2cm,yshift=1cm]
+  \draw plot[smooth cycle,tension=.7] coordinates{(0,-1) (0.8,-0.6) (1,0) (0.5,0.8) (-0.3,0.5) (-0.5,0)};
+  \draw (0,0) node[below=3pt]{$x_0$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
+  \node at (0.5,0.25) {$K$};
+ \end{scope}
+\end{tikzpicture}\caption{$0\in\tilde{K}$}
 \end{figure}
 
 
-The functional $p:K\to\mathbb{R}_{\ge0}$ with
+The functional $p:\tilde{K}\to\mathbb{R}_{\ge0}$ with
 \begin{align*}
-p\left(x\right) & :=\text{inf}\left\{ a\in\mathbb{R}_{>0}\bigg|\frac{x}{a}\in K\right\} 
+p\left(x\right) & :=\text{inf}\left\{ a\in\mathbb{R}_{>0}\bigg|\frac{x}{a}\in\tilde{K}\right\} 
 \end{align*}
 is called gauge (\foreignlanguage{ngerman}{Eichung}).\\
-Since $x\in K$ is an interior point, we know that $\frac{x}{a}\in K$
+Since every $x\in\tilde{K}$ is an interior point, we know $\frac{x}{a}\in\tilde{K}$
 if $a>1-\varepsilon\left(x\right)$.\\
-$p$ is even defined on all of $X$, because for $x\in X$, now $\tau x\in K$
-if $\abs{\tau}$ is sufficiently small, because $0\in K$ is an interior
-point.
+$p$ is even defined on all of $X$, because for $x\in X$, now $\tau x\in\tilde{K}$
+if $\abs{\tau}$ is sufficiently small, because $0\in\tilde{K}$ is
+an interior point.
 \begin{align*}
-p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in K
+p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in\tilde{K}
 \end{align*}
 
 
@@ -887,7 +896,7 @@ p\left(x\right)<1 & \quad\Leftrightarrow\quad x\in K
   \draw (1.5,0.8) node[right]{$x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw (0.5,0.2666) node[below right]{$\tau x$} +(-0.05,-0.05) -- +(0.05,0.05) +(0.05,-0.05) -- +(-0.05,0.05);
   \draw[dashed] (1.5,0.8) -- (-0.75,-0.4);
-\end{tikzpicture}\caption{$x\not\in K,\ \tau x\in K$}
+\end{tikzpicture}\caption{$x\not\in\tilde{K},\ \tau x\in\tilde{K}$}
 \end{figure}
 
 
@@ -899,47 +908,48 @@ $p$ is sublinear.
 
 \subsubsection*{Proof}
 
-The homogeneity is clear from the definition.
-
-sub-additivity (triangle equation):\\
-Take $x,y\in K$ and choose $a,b\in\mathbb{R}_{>0}$ such that $\frac{x}{a},\frac{y}{b}\in K$.
-The convexity of $K$ implies for all $\tau\in\left[0,1\right]$:
+The homogeneity is clear from the definition. Show the sub-additivity
+(triangle equation):\\
+Take $x,y\in\tilde{K}$ and choose $a,b\in\mathbb{R}_{>0}$ such that
+$\frac{x}{a},\frac{y}{b}\in\tilde{K}$. The convexity of $\tilde{K}$
+implies for all $\tau\in\left[0,1\right]$:
 \begin{align*}
-\tau\frac{x}{a}+\left(1-\tau\right)\frac{y}{b} & \in K
+\tau\frac{x}{a}+\left(1-\tau\right)\frac{y}{b} & \in\tilde{K}
 \end{align*}
 Choose ${\displaystyle \tau=\frac{a}{a+b}}$, then holds ${\displaystyle 1-\tau=\frac{b}{a+b}}$,
 which gives:
 \begin{align*}
-\Rightarrow\quad\frac{1}{a+b}\left(x+y\right) & \in K
+\frac{1}{a+b}\left(x+y\right) & \in\tilde{K}
 \end{align*}
 \begin{align*}
+\Rightarrow\qquad p\left(\frac{x+y}{a+b}\right) & \le1\\
 p\left(x+y\right) & \le a+b
 \end{align*}
 Taking the infimum over $a$ and $b$ gives $p\left(x+y\right)\le p\left(x\right)+p\left(y\right)$:
 \begin{align*}
-p\left(x+y\right) & =\inf\underbrace{\left\{ c\in\mathbb{R}_{>0}\bigg|\frac{x+y}{c}\in K\right\} }_{\ni a+b}\le a+b
+p\left(x+y\right) & =\inf\underbrace{\left\{ c\in\mathbb{R}_{>0}\bigg|\frac{x+y}{c}\in\tilde{K}\right\} }_{\ni a+b}\le a+b
 \end{align*}
 \begin{align*}
-p\left(x\right) & =\inf\left\{ a\bigg|\frac{x}{a}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{a\in\mathbb{R}_{>0}}:p\left(x\right)\ge a-\varepsilon\\
-p\left(y\right) & =\inf\left\{ b\bigg|\frac{x}{b}\in K\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{b\in\mathbb{R}_{>0}}:p\left(y\right)\ge b-\varepsilon
+p\left(x\right) & =\inf\left\{ a\bigg|\frac{x}{a}\in\tilde{K}\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{a\in\mathbb{R}_{>0}}:p\left(x\right)\ge a-\varepsilon\\
+p\left(y\right) & =\inf\left\{ b\bigg|\frac{x}{b}\in\tilde{K}\right\} \quad\Rightarrow\quad\fall_{\varepsilon>0}\exs_{b\in\mathbb{R}_{>0}}:p\left(y\right)\ge b-\varepsilon
 \end{align*}
 \qqed
 
 
 \section{Lemma}
 
-$p\left(x\right)<1\Leftrightarrow x\in K$
+$p\left(x\right)<1\Leftrightarrow x\in\tilde{K}$
 
 
 \subsubsection*{Proof}
 
-If $x\not\in K$ then $\frac{1}{a}x\not\in K$ for all $0<a<1$ and
-so $p\left(x\right)\ge1$.
+If $x\not\in\tilde{K}$ then $\frac{1}{a}x\not\in\tilde{K}$ for all
+$0<a<1$ and so $p\left(x\right)\ge1$.
 
 For all $x\in K$ exists an $\varepsilon=\varepsilon\left(x\right)\in\mathbb{R}_{>0}$
-with $\left(1+t\right)x\in K$ for all $t\in\left(-\varepsilon,\varepsilon\right)$.
+with $\left(1+t\right)x\in\tilde{K}$ for all $t\in\left(-\varepsilon,\varepsilon\right)$.
 \begin{align*}
-\Rightarrow\quad & \left(1+\frac{\varepsilon}{2}\right)x\in K\\
+\Rightarrow\quad & \left(1+\frac{\varepsilon}{2}\right)x\in\tilde{K}\\
 \Rightarrow\quad & p\left(x\right)\le\frac{1}{1+\frac{\varepsilon}{2}}<1
 \end{align*}
 \qqed
@@ -947,25 +957,31 @@ with $\left(1+t\right)x\in K$ for all $t\in\left(-\varepsilon,\varepsilon\right)
 
 \subsubsection*{Proof of Theorem \ref{sec:Thm-HahnBanach-Geometric}}
 
-Introduce $l$ on $\left\langle y\right\rangle $ by $l\left(y\right)=1$.
-(Assume again that $0\in K$ and so $y\not=0$.)\\
-Write $z=ay\in\left\langle y\right\rangle $ with $a\in\mathbb{R}$.
+Introduce $l$ on $\left\langle \tilde{y}\right\rangle $ by $l\left(\tilde{y}\right)=1$.
+From $0\in\tilde{K}$ and $\tilde{y}\not\in\tilde{K}$ follows $\tilde{y}\not=0$.
+Write $z=a\tilde{y}\in\left\langle \tilde{y}\right\rangle $ with
+$a\in\mathbb{R}$.
 \begin{itemize}
-\item If $a<0$, then $l\left(z\right)=a\cdot l\left(y\right)=a<0$ but
-$p\left(z\right)\ge0$ and thus the inequality $l\left(z\right)\le p\left(z\right)$
+\item If $a<0$, then $l\left(z\right)=a\cdot l\left(\tilde{y}\right)=a<0$
+but $p\left(z\right)\ge0$ and thus the inequality $l\left(z\right)\le p\left(z\right)$
 is trivially satisfied.
 \item If $a>0$ it holds:
 \begin{align*}
-l\left(z\right) & =a\sr{\le}{y\not\in K}{\Rightarrow p\left(y\right)\ge1}a\cdot p\left(y\right)\sr ={\text{positive}}{\text{homogeneity}}p\left(ay\right)=p\left(z\right)
+l\left(z\right) & =a\sr{\le}{\tilde{y}\not\in\tilde{K}}{\Rightarrow p\left(\tilde{y}\right)\ge1}a\cdot p\left(\tilde{y}\right)\sr ={\text{positive}}{\text{homogeneity}}p\left(a\tilde{y}\right)=p\left(z\right)
 \end{align*}
 
 \end{itemize}
-So for all $z\in\left\langle y\right\rangle $ holds $l\left(z\right)\le p\left(z\right)$.\\
+So for all $z\in\left\langle \tilde{y}\right\rangle $ holds $l\left(z\right)\le p\left(z\right)$.\\
 The Hahn-Banach Theorem yields an extension $l:X\to\mathbb{R}$ such
 that $l\left(x\right)\le p\left(x\right)$ for all $x\in X$. Therefore
-for all $x\in K$ we have:
+for all $x\in\tilde{K}$ we have:
 \begin{align*}
 l\left(x\right) & \le p\left(x\right)<1
+\end{align*}
+Due to the linearity of $l$ follows for $x\in K$, i.e. $\tilde{x}:=x-x_{0}\in\tilde{K}$:
+\begin{align*}
+l\left(x\right) & =l\left(\tilde{x}+x_{0}\right)=l\left(\tilde{x}\right)+l\left(x_{0}\right)<1+l\left(x_{0}\right)=:c\\
+l\left(y\right) & =l\left(\tilde{y}+x_{0}\right)=l\left(\tilde{y}\right)+l\left(x_{0}\right)=1+l\left(x_{0}\right)=c
 \end{align*}
 \qqed[\ref{sec:Thm-HahnBanach-Geometric}]
 
@@ -973,6 +989,9 @@ l\left(x\right) & \le p\left(x\right)<1
 
 
 \chapter{Normed Spaces}
+
+\setcounter{subsection}{0}
+\subpdfbookmark{\thechapter\ Normed Spaces}{Normed_Spaces}
 
 Let $\left(E,\norm .\right)$ be a normed space and let the open balls
 $B_{\varepsilon}\left(x\right)=\left\{ y\big|\norm{x-y}<\varepsilon\right\} $
@@ -1200,7 +1219,7 @@ exists a $C\in\mathbb{R}_{>0}$ such that for all $u\in E$ holds:
 Denote by $L\left(E,F\right)$ the normed space of all bounded linear
 maps from $E$ to $F$ and define:
 \begin{align*}
-\norm A & :=\sup_{\norm u\le1}\norm{Au}=\sup_{\norm u=1}\norm{Au}
+\opnorm A & :=\sup_{\norm u\le1}\norm{Au}=\sup_{\norm u=1}\norm{Au}
 \end{align*}
 
 
@@ -1210,8 +1229,8 @@ maps from $E$ to $F$ and define:
 If $B\in L\left(E,F\right)$ and $A\in L\left(F,G\right)$ then Schwarz
 inequality or Kato inequality holds:
 \begin{align*}
-\norm{A\cdot B} & \le\norm A\cdot\norm B\\
-\norm{Au} & \le\norm A\cdot\norm u
+\opnorm{A\cdot B} & \le\opnorm A\cdot\opnorm B\\
+\norm{Au} & \le\opnorm A\cdot\norm u
 \end{align*}
 
 
@@ -1258,29 +1277,29 @@ into $E^{**}$.
 
 For $u\in E$ holds:
 \begin{align*}
-\norm{\iota\left(u\right)} & :=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\left(\iota\left(u\right)\right)\left(\varphi\right)}=\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)}\stackrel{?}{=}\norm u
+\norm{\iota\left(u\right)} & :=\sup_{\varphi\in E^{*},\opnorm{\varphi}=1}\norm{\left(\iota\left(u\right)\right)\left(\varphi\right)}=\sup_{\varphi\in E^{*},\opnorm{\varphi}=1}\norm{\varphi\left(u\right)}\stackrel{?}{=}\norm u
 \end{align*}
 \begin{align*}
-\norm{\varphi} & =\sup_{v\in E,\norm v=1}\abs{\varphi\left(v\right)}
+\opnorm{\varphi} & =\sup_{v\in E,\norm v=1}\abs{\varphi\left(v\right)}
 \end{align*}
 \begin{align*}
-\norm{\varphi\left(u\right)} & \le\norm{\varphi}\cdot\norm u\stackrel{\norm{\varphi}=1}{=}\norm u\\
-\Rightarrow\quad\sup_{\varphi\in E^{*},\norm{\varphi}=1}\norm{\varphi\left(u\right)} & \le\norm u
+\norm{\varphi\left(u\right)} & \le\opnorm{\varphi}\cdot\norm u\stackrel{\opnorm{\varphi}=1}{=}\norm u\\
+\Rightarrow\quad\sup_{\varphi\in E^{*},\opnorm{\varphi}=1}\norm{\varphi\left(u\right)} & \le\norm u
 \end{align*}
 To prove $\norm{\iota\left(u\right)}\ge\norm u$ apply the Hahn-Banach
 theorem:\\
 Let $l:\left\langle u\right\rangle \to\mathbb{R}$ be the linear map
 with $l\left(u\right)=\norm u$, thus:
 \begin{align*}
-\norm l & =\sup_{v\in\left\langle u\right\rangle ,\norm v=1}\left(l\left(v\right)\right)=\sup\left(l\left(\pm\frac{u}{\norm u}\right)\right)=1
+\opnorm l & =\sup_{v\in\left\langle u\right\rangle ,\norm v=1}\left(l\left(v\right)\right)=\sup\left(l\left(\pm\frac{u}{\norm u}\right)\right)=1
 \end{align*}
 By the Hahn-Banach theorem we can extend $l$ to
 \begin{align*}
 \tilde{l}:E & \to\mathbb{R}
 \end{align*}
-with $\norm{\tilde{l}}=1$ and then holds:
+with $\opnorm{\tilde{l}}=1$ and then holds:
 \begin{align*}
-\sup_{\varphi\in E^{*},\norm{\varphi}=1}\varphi\left(u\right) & \stackrel{\norm{\tilde{l}}=1}{\ge}\tilde{l}\left(u\right)=\norm u
+\sup_{\varphi\in E^{*},\opnorm{\varphi}=1}\varphi\left(u\right) & \stackrel{\opnorm{\tilde{l}}=1}{\ge}\tilde{l}\left(u\right)=\norm u
 \end{align*}
 Therefore $\iota$ is injective, because from $\iota\left(u\right)=0$
 follows $\norm u_{E}=\norm{\iota\left(u\right)}=0$ and therefore
@@ -1311,7 +1330,7 @@ and define $\Lambda\in\ell_{1}^{*}$:
 \end{align*}
 Thus $\Lambda$ is bounded and:
 \begin{align*}
-\norm{\Lambda} & =\sup_{n\in\mathbb{N}}\abs{\lambda_{n}}
+\opnorm{\Lambda} & =\sup_{n\in\mathbb{N}}\abs{\lambda_{n}}
 \end{align*}
 %DATE: Fr 26.10.12
 \begin{description}
@@ -1321,7 +1340,7 @@ form, i.e. $\ell_{1}^{*}=\ell_{\infty}$.
 by $u_{l}=\left(0,\ldots,0,1,0,\ldots\right)$ with a one at the $l$-th
 position. Setting $\lambda_{l}:=\Lambda\left(u_{l}\right)$ gives:
 \begin{align*}
-\abs{\lambda_{l}} & =\abs{\Lambda\left(u_{l}\right)}\le\underbrace{\norm{\Lambda}}_{<\infty}\cdot\underbrace{\norm{u_{l}}}_{=1}\le\norm{\Lambda}<\infty
+\abs{\lambda_{l}} & =\abs{\Lambda\left(u_{l}\right)}\le\opnorm{\Lambda}\cdot\underbrace{\norm{u_{l}}}_{=1}=\opnorm{\Lambda}<\infty
 \end{align*}
 So $\left(\lambda_{l}\right)\in\ell_{\infty}$.\\
 Let $\left(a_{k}\right)$ be a finite sequence, with only zeros for
@@ -1344,7 +1363,7 @@ is \emph{not} reflexive.
 Let $E$ be a Banach space and $\left(u_{n}\right)$ a sequence in
 $E$.
 
-Normal convergence: $u_{n}\to u$ if and only if $\norm{u-u_{n}}\xrightarrow{n\to\infty}0$.
+Normal convergence: ${\displaystyle u_{n}\to u\ \Leftrightarrow\ \norm{u-u_{n}}\xrightarrow{n\to\infty}0}$ 
 
 
 \subsection{Definition \textmd{(weak convergence, weak Cauchy sequence)}}
@@ -1352,7 +1371,8 @@ Normal convergence: $u_{n}\to u$ if and only if $\norm{u-u_{n}}\xrightarrow{n\to
 A sequence $\left(u_{n}\right)$ in $E$ \emph{converges weakly} to
 $u$, written as $u_{n}\rightharpoondown u$, if for all $\varphi\in E^{*}$
 the sequence $\varphi\left(u_{n}\right)$ converges to $\varphi\left(u\right)$,
-i.e. $\varphi\left(u_{n}\right)\to\varphi\left(u\right)$.
+i.e. $\varphi\left(u_{n}\right)\to\varphi\left(u\right)$. In this
+case $u$ is called \emph{weak limit} of $\left(u_{n}\right)$.
 
 $\left(u_{n}\right)$ is a \emph{weak Cauchy sequence} if for all
 $\varphi\in E^{*}$ the sequence $\varphi\left(u_{n}\right)$ is a
@@ -1394,9 +1414,9 @@ Every convergent sequence converges weakly.
 
 \subsubsection{Proof}
 
-Suppose that $u_{n}\to u$. For $\varphi\in E^{*}$ follows:
+For $u_{n}\to u$ and $\varphi\in E^{*}$ follows:
 \begin{align*}
-\abs{\varphi\left(u_{n}\right)-\varphi\left(u\right)} & =\abs{\varphi\left(u_{n}-u\right)}\le\underbrace{\norm{\varphi}}_{\in\mathbb{R}}\cdot\norm{u_{n}-u}\to0
+\abs{\varphi\left(u_{n}\right)-\varphi\left(u\right)} & =\abs{\varphi\left(u_{n}-u\right)}\le\underbrace{\opnorm{\varphi}}_{\in\mathbb{R}}\cdot\norm{u_{n}-u}\to0
 \end{align*}
 \begin{align*}
 \Rightarrow\quad\varphi\left(u_{n}\right) & \to\varphi\left(u\right)\\
@@ -1421,21 +1441,21 @@ $\varphi\in E^{*}$ can be represented with $\left(\lambda_{k}\right)\in\ell_{1}$
 as (see exercises):
 \begin{align*}
 \varphi\left(\left(a_{n}\right)\right) & =\sum_{k}\lambda_{k}a_{k}\\
-\norm{\varphi} & =\sum_{k=1}^{\infty}\abs{\lambda_{k}}<\infty
+\opnorm{\varphi} & =\sum_{k=1}^{\infty}\abs{\lambda_{k}}<\infty
 \end{align*}
 \begin{align*}
 \varphi\left(u_{n}\right) & =\sum_{k=1}^{\infty}\lambda_{k}\delta_{kn}=\lambda_{n}\xrightarrow{n\to\infty}0
 \end{align*}
 From $\left(\lambda_{n}\right)\in\ell_{1}$ follows $\lambda_{n}\to0$.
-This means that $u_{k}\rightharpoondown0$.\\
+This means $u_{k}\rightharpoondown0$.\\
 This is used in the lectures on partial differential equations.\\
-From $\mathscr{S}\left(u_{n}\right)\to\inf\mathscr{S}$ follows not
-necessarily $u_{n}\to u$, but $u_{n}\rightharpoondown u$.
+From $\mathscr{S}\left(u_{n}\right)\to\inf\left(\mathscr{S}\right)$
+follows not necessarily $u_{n}\to u$, but $u_{n}\rightharpoondown u$.
 
 Consider $A_{n}\in L\left(E,F\right)$.
 \begin{itemize}
 \item \emph{norm convergence}: $A_{n}\to A$ in $L\left(E,F\right)$ means
-$\norm{A_{n}-A}\to0$.
+$\opnorm{A_{n}-A}\to0$.
 \item \emph{strong convergence}: $A_{n}u\to Au$ in $F$ for all $u\in E$.
 \item \emph{weak convergence}: $A_{n}u\rightharpoondown Au$ for all $u\in E$,
 i.e. for all $\varphi\in F^{*}$ holds $\varphi\left(A_{n}u\right)\to\varphi\left(Au\right)$.
@@ -1449,7 +1469,7 @@ Let $E$ be a metric space (e.g. a normed space).
 \subsection{Definition \textmd{(nowhere dense, set of first/second category)}}
 
 A subset $A\subseteq E$ is called \emph{nowhere dense} (\foreignlanguage{ngerman}{nirgends
-dicht}) if $\overline{A}^{\circ}=\emptyset$.\\
+dicht}) if $\left(\overline{A}\right)^{\circ}=\emptyset$.\\
 $A$ is called \emph{of first category} (or \emph{meager}) if it can
 be written as a countable union of nowhere dense sets. Otherwise it
 is \emph{of second category}.
@@ -1460,7 +1480,7 @@ is \emph{of second category}.
 \item $\mathbb{N}\subseteq\mathbb{R}$ is nowhere dense: $\overline{\mathbb{N}}=\mathbb{N}$,
 $\mathbb{N}^{\circ}\:=\emptyset$
 \item $\mathbb{Q}\subseteq\mathbb{R}$ is dense: $\overline{\mathbb{Q}}=\mathbb{R}$,
-$\overline{\mathbb{Q}}^{\circ}=\mathbb{R}^{\circ}=\mathbb{R}$
+$\left(\overline{\mathbb{Q}}\right)^{\circ}=\mathbb{R}^{\circ}=\mathbb{R}$
 \end{itemize}
 
 \subsection{Theorem \textmd{(René Baire, 1899)\label{sub:Thm-Baire}}}
@@ -1471,23 +1491,27 @@ Then $E$ is of second category.
 
 \subsubsection*{Proof}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}
+  \draw (0,0) node[right]{$x_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw (0,0) circle (6);
+  \node at (4.7,4.7) {$\overline{B_1(x_0)}$};
   % n=1
-  \draw (0,0) circle (4);
-  \node at (3.1,3.1) {$\overline{B_1}$};
   \draw (-4, -5) -- (7,-3) node[right]{$M_1$};
-  \draw (2.5,-1) node[right]{$x_1$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw (1,1) circle (2.9);
+  \draw (1,1) node[below right]{$x_1$} +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw[dotted] (1,1) -- node[above]{$r_1$} (-1.9,1);
+  \node at (1.8,4.1) {$\overline{B_1}$};
   % n=2
-  \draw (1,1) circle (2);
-  \draw (1,1)  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
-  \draw[dotted] (1,1) -- node[above]{$r_2$} (-1,1);
-  \node at (2,3) {$\overline{B_2}$};
-  \draw (-4, -2) -- (7,-2) node[right]{$M_2$};
-  \draw (1.7,1.3) node[right]{$x_2$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \draw (-6, -1.5) -- (7,-1.5) node[right]{$M_2$};
+  \draw (1.5,2) circle (1.4);
+  \draw (1.5,2) node[below right]{$x_2$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
+  \node at (1,3.6) {$\overline{B_2}$};
+  % n=3
+  \draw (-6, 2.5) -- (7,0.7) node[right]{$M_3$};
+  \draw (2.2,2.4) circle (0.5) node[above left=7] {$\overline{B_3}$};
   % n --> Infinity
-  \draw[red] (0.7,1.8) node[right]{$x_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
-  \draw (0.9,1.9) circle (0.5) node[above right=6] {$\overline{B_3}$};
+  \draw[red] (2,2.6) node[below right]{$x$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
 \end{tikzpicture}\caption{$B_{n}\cap M_{n}=\emptyset$}
 \end{figure}
 
@@ -1496,9 +1520,10 @@ Assume in contrast that $E=\bigcup_{n\in\mathbb{N}}M_{n}$ and the
 sets $M_{n}$ are nowhere dense. Without loss of generality assume
 that the $M_{n}$ are closed, since otherwise one can replace $M_{n}$
 by $\overline{M_{n}}$.\\
-We shall construct inductively balls $\overline{B_{n}}=\overline{B_{r_{n}}\left(x_{n}\right)}$
-such that $\overline{B_{n+1}}\subseteq\overline{B_{n}}$, $r_{n}<2^{-n}$
-and $\overline{B_{n}}\cap M_{n}=\emptyset$ for all $n$.
+We shall construct inductively balls $B_{n}=B_{r_{n}}\left(x_{n}\right)$
+for $n\in\mathbb{N}_{\ge}1$ such that $\overline{B_{n+1}}\subseteq\overline{B_{n}}$,
+$r_{n}<2^{-n}$ and $\overline{B_{n}}\cap M_{n}=\emptyset$ for all
+$n$.
 
 Then the points $x_{n}$ form a Cauchy sequence, because for all $n<m\in\mathbb{N}$
 we have $x_{n+1}\in B_{n}$ and so $\norm{x_{n}-x_{n+1}}<r_{n}<2^{-n}$:
@@ -1506,19 +1531,20 @@ we have $x_{n+1}\in B_{n}$ and so $\norm{x_{n}-x_{n+1}}<r_{n}<2^{-n}$:
 \norm{x_{n}-x_{m}} & \le\norm{x_{n}-x_{n+1}}+\norm{x_{n+1}-x_{m}}\le\ldots\le\\
  & \le2^{-n}+2^{-\left(n+1\right)}+\ldots+2^{-\left(m-1\right)}\le2^{-n}\left(1+\frac{1}{2}+\frac{1}{4}+\ldots\right)\le2\cdot2^{-n}
 \end{align*}
-Since $E$ is complete, $x_{n}\to x_{0}\in E$ converges. Then $x_{0}\in\overline{B_{n}}$
-for all $n$, which implies $x_{0}\not\in M_{n}$ and thus the contradiction
-$x_{0}\not\in\bigcup_{n}M_{n}=E$ follows.
+Since $E$ is complete, $x_{n}\to x\in E$ converges. Then $x\in\overline{B_{n}}$
+holds for all $n$, which implies $x\not\in M_{n}$ and thus the contradiction
+$x\not\in\bigcup_{n}M_{n}=E$ follows.
 
-Construction of the balls $\overline{B_{n}}$:\\
-$M_{1}$ is nowhere dense and therefore $B_{1}\left(0\right)\not\subseteq M_{1}$.
-So there exists a $x_{1}\in B_{1}\left(0\right)\setminus M_{1}$.
-Since $M_{1}$ is closed, $B_{1}\left(0\right)\setminus M_{1}$ is
-open and therefore there exists a radius $r_{1}$ such that $B_{2r_{1}}\left(x_{1}\right)$
-is contained in $B_{1}\left(0\right)\setminus M_{1}$ and thus $\overline{B_{r_{1}}\left(x_{1}\right)}\cap M_{1}=\emptyset$.
+Construction of the balls $B_{n}$:\\
+Choose $x_{0}\in E$. Then follows $B_{1}\left(x_{0}\right)\not\subseteq M_{1}$,
+because $M_{1}$ is nowhere dense. So there exists a $x_{1}\in B_{1}\left(x_{0}\right)\setminus M_{1}$.
+Since $M_{1}$ is closed, $B_{1}\left(x_{0}\right)\setminus M_{1}$
+is open and therefore there exists a radius $r_{1}<2^{-1}$ such that
+for $B_{1}:=B_{r_{1}}\left(x_{1}\right)$ holds $\overline{B_{1}}\subseteq B_{1}\left(x_{0}\right)\setminus M_{1}$
+and thus $\overline{B_{1}}\cap M_{1}=\emptyset$.
 
-Suppose $\overline{B_{n}}$ has been constructed. $M_{n+1}$ is nowhere
-dense and closed and so there exists a $x_{n+1}\in\overline{B_{n}}\setminus M_{n+1}$
+Suppose $B_{n}$ has been constructed. $M_{n+1}$ is nowhere dense
+and closed and so there exists a $x_{n+1}\in\overline{B_{n}}\setminus M_{n+1}$
 and $r_{n+1}<2^{-\left(n+1\right)}$ such that $B_{2r_{n+1}}\left(x_{n+1}\right)\subseteq\overline{B_{n}}\setminus M_{n+1}$.
 Then follows $\overline{B_{r_{n+1}}\left(x_{n+1}\right)}\cap M_{n+1}=\emptyset$.\qqed
 
@@ -1526,18 +1552,19 @@ Then follows $\overline{B_{r_{n+1}}\left(x_{n+1}\right)}\cap M_{n+1}=\emptyset$.
 \subsection{Theorem \textmd{(Uniform boundedness principle, }\foreignlanguage{ngerman}{\textmd{Prinzip
 der gleichmäßigen Beschränktheit}}\textmd{)\label{sub:Thm-Uniform-boundedness}}}
 
-Let $E$ be a Banach space and $F$ a normed space. Let $T_{i}$ be
-a sequence in $L\left(E,F\right)$ which is point-wise bounded, i.e.
-for all $u\in E$:
+Let $E$ be a Banach space and $F$ a normed space. Let $\left(T_{i}\right)_{i\in\mathbb{N}}$
+be a sequence in $L\left(E,F\right)$ which is point-wise bounded,
+i.e. for all $u\in E$ holds:
 \begin{align*}
 \sup_{i}\norm{T_{i}u} & \le C\left(u\right)<\infty
 \end{align*}
-Then sup-norms of $T_{i}$ are bounded:
+Then the sup-norms of the $T_{i}$ are bounded:
 \begin{align*}
-\sup_{i}\norm{T_{i}} & =\sup_{i}\sup_{\norm u=1}\norm{T_{i}u}\le\tilde{C}<\infty
+\sup_{i}\opnorm{T_{i}} & =\sup_{i}\sup_{\norm u=1}\norm{T_{i}u}\le\tilde{C}<\infty
 \end{align*}
-(Thus there exists a constant $C\in\mathbb{R}_{>0}$ such that $\norm{T_{i}u}\le C$
-for all $i\in\mathbb{N}$ and for all $u\in E$ with $\norm u=1$.)
+(Thus there exists a constant $\tilde{C}\in\mathbb{R}_{>0}$ such
+that $\norm{T_{i}u}\le\tilde{C}$ for all $i\in\mathbb{N}$ and for
+all $u\in E$ with $\norm u=1$.)
 
 
 \subsubsection*{Proof}
@@ -1549,11 +1576,11 @@ $E=\bigcup_{n}M_{n}$, because for any $u\in E$, $\sup_{i}\norm{T_{i}u}<\infty$
 and thus $u\in M_{n}$ for $n>\sup_{i}\norm{T_{i}u}$.\\
 If all the sets $M_{n}$ had empty interior, we would get a contradiction
 to Baire's theorem.\\
-So there exists an $n_{0}\in\mathbb{N}$ such that $\stackrel{\circ}{M_{n_{0}}}\not=\emptyset$
+So there exists an $n_{0}\in\mathbb{N}$ such that $M_{n_{0}}^{\circ}\not=\emptyset$
 and thus there are $u_{0}\in E$ and $r\in\mathbb{R}_{>0}$ such that
 $B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$u_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -1564,26 +1591,26 @@ $B_{r}\left(u_{0}\right)\subseteq M_{n_{0}}$.
 \end{figure}
 
 
-For all $v\in B_{r}\left(u_{0}\right)$ we know that $\sup_{i}\norm{T_{i}v}\le n_{0}$
+For all $v\in B_{r}\left(u_{0}\right)$ we know $\sup_{i}\norm{T_{i}v}\le n_{0}$,
 which is equivalent to:
 \begin{align*}
 \sup_{v\in B_{r}\left(u_{0}\right)}\norm{T_{i}v} & \le n_{0}\qquad\fall_{i\in\mathbb{N}}
 \end{align*}
-Let $w\in B_{r}\left(0\right)$ be arbitrary. Then $v:=u_{0}+w\in B_{r}\left(u_{0}\right)$.
+Let $w\in B_{r}\left(0\right)$ be arbitrary and define $v:=u_{0}+w\in B_{r}\left(u_{0}\right)$.
 \begin{align*}
 T_{i}w & \stackrel{T_{i}\text{ linear}}{=}T_{i}v-T_{i}u_{0}
 \end{align*}
 \begin{align*}
-\norm{T_{i}w} & \le\norm{T_{i}v}+\norm{T_{i}u_{0}}\le n_{0}+\sup_{i}\norm{T_{i}u_{0}}<\infty
+\norm{T_{i}w} & \le\norm{T_{i}v}+\norm{T_{i}u_{0}}\le n_{0}+\sup_{i}\norm{T_{i}u_{0}}=:C<\infty
 \end{align*}
-Here $\sup_{i}\norm{T_{i}u_{0}}<\infty$, because the $T_{i}$ are
-point-wise bounded.
+Here holds $\sup_{i}\norm{T_{i}u_{0}}<\infty$, because the $T_{i}$
+are point-wise bounded.
 \begin{align*}
 \Rightarrow\quad\norm{T_{i}w} & \le C\qquad\fall_{w\in B_{r}\left(0\right)}\\
 \Rightarrow\quad\norm{T_{i}\tilde{w}} & \le\tilde{C}=\frac{C}{r}\qquad\fall_{\tilde{w}\in\overline{B_{1}\left(0\right)}}
 \end{align*}
-So $\norm{T_{i}}\le\tilde{C}$ for all $i\in\mathbb{N}$ and so $\norm{T_{i}}$
-is bounded.\qqed
+This gives $\opnorm{T_{i}}\le\tilde{C}$ for all $i\in\mathbb{N}$
+and so $\opnorm{T_{i}}$ is bounded.\qqed
 
 
 \subsection{Corollary}
@@ -1607,9 +1634,10 @@ is a Cauchy sequence and thus bounded:
 \begin{align*}
 \Rightarrow\quad\abs{\varphi\left(u_{n}\right)} & <C\left(\varphi\right)
 \end{align*}
-Applying theorem \ref{sub:Thm-Uniform-boundedness} yields:
+Applying theorem \ref{sub:Thm-Uniform-boundedness} yields a constant
+$C\in\mathbb{R}_{>0}$ with:
 \begin{align*}
-\abs{\varphi\left(u_{n}\right)} & <C\quad\fall_{\varphi\text{ with }\norm{\varphi}=1}\\
+\abs{\varphi\left(u_{n}\right)} & <C\quad\fall_{\varphi\in E^{*},\norm{\varphi}=1}\\
 \Leftrightarrow\quad\sup_{n\in\mathbb{N}}\ \sup_{\varphi\in E^{*},\norm{\varphi}=1}\abs{\varphi\left(u_{n}\right)} & <C
 \end{align*}
 For any $v\in E$ we have
@@ -1630,7 +1658,7 @@ Thus we get $\sup_{n}\norm{u_{n}}<C$.\qqed
 
 
 \subsection{Corollary and Definition \textmd{(Banach-Steinhaus, equicontinuous,
-uniformly continuous)}}
+uni\-form\-ly continuous)}}
 
 Let $E,F$ be Banach spaces and $T_{i}\in L\left(E,F\right)$.
 
@@ -1645,38 +1673,38 @@ Let $f:\mathbb{R}\to\mathbb{R}$ be a real-valued function.
 
 Continuity:
 \begin{align*}
-\fall_{x_{0}\in\mathbb{R}}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}:\quad & \abs{x-x_{0}}<\delta\quad\Rightarrow\quad\abs{f\left(x\right)-f\left(x_{0}\right)}<\varepsilon
+\fall_{x_{0}\in\mathbb{R}}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}\ \fall_{x\in\mathbb{R}}:\quad & \abs{x-x_{0}}<\delta\quad\Rightarrow\quad\abs{f\left(x\right)-f\left(x_{0}\right)}<\varepsilon
 \end{align*}
- $f$ is called \emph{uniformly continuous} (\foreignlanguage{ngerman}{gleichmäßig
+$f$ is called \emph{uniformly continuous} (\foreignlanguage{ngerman}{gleichmäßig
 stetig}) if:
 \begin{align*}
-\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}: & \quad\norm{x-y}<\delta\quad\Rightarrow\quad\norm{f\left(x\right)-f\left(y\right)}<\varepsilon
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}\ \fall_{x,y\in\mathbb{R}}: & \quad\abs{x-y}<\delta\quad\Rightarrow\quad\abs{f\left(x\right)-f\left(y\right)}<\varepsilon
 \end{align*}
 Let $f_{n}:\mathbb{R}\to\mathbb{R}$ be a series of real-valued functions.
 $\left(f_{n}\right)$ is called \emph{equicontinuous} if: 
 \begin{align*}
-\fall_{x_{0}\in\mathbb{R}}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}\ \fall_{n\in\mathbb{N}}: & \quad\norm{x-x_{0}}<\delta\quad\Rightarrow\quad\norm{f_{n}\left(x\right)-f_{n}\left(x_{0}\right)}<\varepsilon
+\fall_{x_{0}\in\mathbb{R}}\ \fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}\ \fall_{n\in\mathbb{N}}\ \fall_{x\in\mathbb{R}}: & \quad\abs{x-x_{0}}<\delta\quad\Rightarrow\quad\abs{f_{n}\left(x\right)-f_{n}\left(x_{0}\right)}<\varepsilon
 \end{align*}
 For a linear map $A\in L\left(E,F\right)$ holds:
 \begin{align*}
-\norm{Au} & \le\norm A\norm u\\
-\norm{Au-Au_{0}} & \le\norm A\norm{u-u_{0}}
+\norm{Au} & \le\opnorm A\cdot\norm u\\
+\norm{Au-Au_{0}} & \le\opnorm A\cdot\norm{u-u_{0}}
 \end{align*}
-Therefore choose $\delta=\frac{\varepsilon}{2\norm A}$, i.e.:
+Therefore choose $\delta=\frac{\varepsilon}{2\opnorm A}$, i.e.:
 \begin{align*}
-\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}: & \quad\norm u<\delta\quad\Rightarrow\quad\norm{Au}<\varepsilon
+\fall_{\varepsilon\in\mathbb{R}_{>0}}\ \exs_{\delta\in\mathbb{R}_{>0}}\ \fall_{u\in E}: & \quad\norm u<\delta\quad\Rightarrow\quad\norm{Au}<\varepsilon
 \end{align*}
 
 
 
-\subsubsection*{Proof}
+\subsubsection*{Proof of Corollary}
 
-Since $\left(T_{i}\right)$ is point-wise bounded there is a $C\in\mathbb{R}_{>0}$
-such that for all $i\in\mathbb{N}$ holds $\norm{T_{i}}\le C$ due
+Since $\left(T_{i}\right)$ is point-wise bounded, there is a $C\in\mathbb{R}_{>0}$
+such that for all $i\in\mathbb{N}$ holds $\opnorm{T_{i}}\le C$ due
 to the principle of uniform boundedness \ref{sub:Thm-Uniform-boundedness}.
 So for all $i\in\mathbb{N}$ holds:
 \begin{align*}
-\norm{T_{i}u} & \le\norm{T_{i}}\norm u\le C\norm u
+\norm{T_{i}u} & \le\opnorm{T_{i}}\cdot\norm u\le C\norm u
 \end{align*}
 Choose $\delta=\frac{\varepsilon}{2C}$ shows that the $T_{i}$ is
 equicontinuous.\qqed
@@ -1692,10 +1720,10 @@ then ``$A$ open'' is equivalent to ``$A^{-1}$ continuous''.)
 
 Let $A$ be linear and open. $B_{1}\left(0\right)\subseteq E$ is
 open, so $A\left(B_{1}\left(0\right)\right)\subseteq F$ is open.\\
-Since $0\in A\left(B_{1}\left(0\right)\right)$, there is a $\varepsilon\in\mathbb{R}_{>0}$
-such that $B_{\varepsilon}\left(0\right)\subseteq A\left(B_{1}\left(0\right)\right)$.
+Since $0=A\left(0\right)$ is an element of $A\left(B_{1}\left(0\right)\right)$,
+there is a $\varepsilon\in\mathbb{R}_{>0}$ such that $B_{\varepsilon}\left(0\right)\subseteq A\left(B_{1}\left(0\right)\right)$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -1745,7 +1773,7 @@ E & =\bigcup_{n\in\mathbb{N}}B_{n}\left(0\right)\\
 According to Baire's theorem there is a $n\in\mathbb{N}$ such that
 $\overline{A\left(B_{n}\left(0\right)\right)}^{\,\circ}\not=\emptyset$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[scale=0.5]
   \draw (0,0) circle (2);
   \draw (0,0) node[right]{$y_0$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -1810,11 +1838,11 @@ A\left(\sum_{j=1}^{n}x_{j}\right) & \xrightarrow[\text{continuity of }A]{n\to\in
 For a function $f:\mathbb{R}\to\mathbb{R}$ the \emph{graph} is defined
 as:
 \begin{align*}
-\text{graph}f & :=\left\{ \left(x,f\left(x\right)\right)\big|x\in\mathbb{R}\right\} \subseteq\mathbb{R}\times\mathbb{R}
+\text{graph}\left(f\right) & :=\left\{ \left(x,f\left(x\right)\right)\big|x\in\mathbb{R}\right\} \subseteq\mathbb{R}\times\mathbb{R}
 \end{align*}
 For $A:E\to F$ the \emph{graph} is:
 \begin{align*}
-\text{graph}A & :=\left\{ \left(u,Au\right)\big|u\in E\right\} \subseteq E\times F
+\text{graph}\left(A\right) & :=\left\{ \left(u,Au\right)\big|u\in E\right\} \subseteq E\times F
 \end{align*}
 Here $E\times F$ is a product of normed spaces which has the norm:
 \begin{align*}
@@ -1825,16 +1853,16 @@ Here $E\times F$ is a product of normed spaces which has the norm:
 
 \subsubsection{Lemma}
 
-If $A$ is continuous, then $\text{graph}A$ is closed.
+If $A$ is continuous, then $\text{graph}\left(A\right)$ is closed.
 
 
 \subsubsection{Proof}
 
-Let $\left(u_{n},Au_{n}\right)\in\text{graph}A$ be a Cauchy sequence
-in $E\times F$ for Banach spaces $E$ and $F$, i.e. $u_{n}\to u$.
-Since $A$ is continuous, it follows:
+Let $\left(u_{n},Au_{n}\right)\in\text{graph}\left(A\right)$ be a
+Cauchy sequence in $E\times F$ for Banach spaces $E$ and $F$, i.e.
+$u_{n}\to u$. Since $A$ is continuous, it follows:
 \begin{align*}
-Au_{n} & \to v:=Au
+Au_{n} & \to Au:=v
 \end{align*}
 Therefore $\left(u,v\right)\in\text{graph}\left(A\right)$ and so
 the graph is closed.\qqed[Lemma]
@@ -1847,20 +1875,20 @@ x & \mapsto\frac{1}{x}
  $f$ is not continuous, but $\text{graph}\left(f\right)$ is closed
 in $\left(\mathbb{R}\setminus\left\{ 0\right\} \right)\times\mathbb{R}$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}
  \begin{axis}[width=10cm, axis x line=middle, axis y line=middle,
 			xtick={0}, ytick={0}, ymax=7, ymin=-7, xlabel=$x$, ylabel=$\ y$, domain=-7:7,samples=500]
   \addplot[mark=none] {1/x};
   \addlegendentry{$f(x)$}
  \end{axis}
-\end{tikzpicture} \caption{$f$ is not continuous, but $\text{graph}f$ is closed.}
+\end{tikzpicture} \caption{$f$ is not continuous, but $\text{graph}\left(f\right)$ is closed.}
 \end{figure}
 
 
 
 \subsection{Theorem \textmd{(Closed graph theorem, }\foreignlanguage{ngerman}{\textmd{Satz
-vom abgeschlossenen Graphen}}\textmd{)\label{sub:Thm-Closed-graph}}}
+vom abgeschlossenen Graph}}\textmd{)\label{sub:Thm-Closed-graph}}}
 
 Suppose a linear map $A:E\to F$ between Banach spaces $E$ and $F$
 has a closed graph. Then $A$ is continuous.
@@ -1890,8 +1918,7 @@ $u,\tilde{u}\in E$ holds:
 \lambda\left(u,Au\right)+\left(\tilde{u},A\tilde{u}\right) & =\left(\lambda u+\tilde{u},\lambda Au+A\tilde{u}\right)\stackrel{A\text{ linear}}{=}\left(\lambda u+\tilde{u},A\left(\lambda u+\tilde{u}\right)\right)\in G
 \end{align*}
 So $G$ is complete and therefore a Banach space, since we assumed
-it to be closed.\\
-Define:
+it to be closed. Define:
 \begin{align*}
 P:G & \to E\\
 \left(u,Au\right) & \mapsto u
@@ -1920,7 +1947,6 @@ Therefore $A$ is continuous.\qqed
 \section{Neumann series}
 
 Let $E$ be a Banach space and $A\in L\left(E,E\right)=:L\left(E\right)$.
-
 When is $A$ continuously invertible?\\
 Remember that for $x\in\mathbb{K}$ with $\abs x<1$ holds:
 \begin{align*}
@@ -1931,7 +1957,7 @@ This is the geometric series.\\
 
 \emph{Ansatz}: ${\displaystyle A^{-1}:=\sum_{n=0}^{\infty}B^{n}}$
 
-This works indeed if $\norm B<1$.
+This works indeed if $\opnorm B<1$.
 
 
 \subsection{Lemma and Definition \textmd{(Neumann series)}}
@@ -1940,9 +1966,10 @@ The series
 \begin{align*}
 C & :=\sum_{n=0}^{\infty}B^{n}
 \end{align*}
-is called Neumann series (\foreignlanguage{ngerman}{Neumannsche Reihe}).
+is called \emph{Neumann series} (\foreignlanguage{ngerman}{Neumannsche
+Reihe}).
 
-If $\norm B<1$, then $C$ defines an element of $L\left(E,E\right)$,
+If $\opnorm B<1$, then $C$ defines an element of $L\left(E,E\right)$,
 i.e. the Neumann series converges absolutely.
 
 
@@ -1956,7 +1983,7 @@ Since $L\left(E,E\right)$ is a Banach space, it is enough to show
 that $S_{n}$ is a Cauchy series. Without loss of generality assume
 $m>n$:
 \begin{align*}
-\norm{S_{n}-S_{m}} & =\norm{\sum_{k=n}^{m}B^{k}}\stackrel{\Delta\text{ inequality}}{\le}\sum_{k=n}^{m}\norm{B^{k}}\stackrel{\text{Schwarz}}{\le}\sum_{k=n}^{m}\norm B^{k}<c\norm B^{n}\to0
+\opnorm{S_{n}-S_{m}} & =\opnorm{\sum_{k=n}^{m}B^{k}}\stackrel{\Delta\text{ inequality}}{\le}\sum_{k=n}^{m}\opnorm{B^{k}}\stackrel{\text{Schwarz}}{\le}\sum_{k=n}^{m}\opnorm B^{k}\stackrel{\opnorm B<1}{\le}c\opnorm B^{n}\xrightarrow{n\to\infty}0
 \end{align*}
 \qqed
 
@@ -1974,7 +2001,8 @@ C & =\left(\mathbbm{1}-B\right)^{-1}
 \subsubsection*{Proof}
 
 \begin{align*}
-\left(\mathbbm{1}-B\right)C & =\left(\mathbbm{1}-B\right)\sum_{n=0}^{\infty}B^{n}=\left(\mathbbm{1}+B+B^{2}+\ldots\right)-\left(B+B^{2}+\ldots\right)=\mathbbm{1}
+\left(\mathbbm{1}-B\right)C & =\left(\mathbbm{1}-B\right)\sum_{n=0}^{\infty}B^{n}=\left(\mathbbm{1}+B+B^{2}+\ldots\right)-\left(B+B^{2}+\ldots\right)=\mathbbm{1}\\
+C\left(\mathbbm{1}-B\right) & =\sum_{n=0}^{\infty}B^{n}\left(\mathbbm{1}-B\right)=\left(\mathbbm{1}+B+B^{2}+\ldots\right)-\left(B+B^{2}+\ldots\right)=\mathbbm{1}
 \end{align*}
 
 
@@ -1991,17 +2019,17 @@ The set of all continuously invertible mappings is open in $L\left(E\right)$.
 Assume that $A\in L\left(E\right)$ is continuously invertible, i.e.
 $A^{-1}$ exists and $A^{-1}\in L\left(E\right)$. Set:
 \begin{align*}
-\varepsilon & =\frac{1}{2\norm{A^{-1}}}
+\varepsilon & :=\frac{1}{2\opnorm{A^{-1}}}
 \end{align*}
 Let us show, that every element of $B_{\varepsilon}\left(A\right)\subseteq L\left(E\right)$
 is continuously invertible:\\
-Let $C\in B_{\varepsilon}\left(A\right)$, i.e. $\norm{A-C}<\varepsilon$.
+Let $C\in B_{\varepsilon}\left(A\right)$, i.e. $\opnorm{A-C}<\varepsilon$.
 \begin{align*}
 C & =A-\left(A-C\right)=A\big(\mathbbm{1}-\underbrace{A^{-1}\left(A-C\right)}_{=:B}\big)
 \end{align*}
 Then holds:
 \begin{align*}
-\norm B & \le\norm{A^{-1}}\cdot\norm{A-C}<\norm{A^{-1}}\cdot\frac{1}{2\norm{A^{-1}}}=\frac{1}{2}<1
+\opnorm B & \le\opnorm{A^{-1}}\cdot\opnorm{A-C}<\opnorm{A^{-1}}\cdot\frac{1}{2\opnorm{A^{-1}}}=\frac{1}{2}<1
 \end{align*}
 Hence $\mathbbm{1}-B$ is continuously invertible by the Neumann series
 and therefore
@@ -2011,9 +2039,10 @@ C^{-1} & =\left(\mathbbm{1}-B\right)^{-1}\cdot A^{-1}
 is continuous.\qqed
 
 
-\chapter{Hilbert spaces}
+\chapter{Hilbert Spaces}
 
 \setcounter{subsection}{0}
+\subpdfbookmark{\thechapter\ Hilbert Spaces}{Hilbert_Spaces}
 
 
 \subsubsection{Definition \textmd{(scalar product)}}
@@ -2061,7 +2090,7 @@ is:
 \end{align*}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}
   \draw[->] (0,0) -- node[left]{$u$} (2,2);
   \draw[->] (0,0) -- node[below]{$v$} (2,-3);
@@ -2103,17 +2132,19 @@ called \emph{orthonormal} if:
 Let $\left(u_{i}\right)_{1\le i\le N}$ be an orthonormal family.
 Then for all $u\in H$ holds:
 \begin{align*}
-\norm u^{2} & =\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2}\\
-\norm u^{2} & \ge\sum_{i=1}^{N}\left\langle u_{i},u\right\rangle ^{2}
+\norm u^{2} & =\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}+\norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2}\\
+\norm u^{2} & \ge\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}
 \end{align*}
 
 
 
 \subsubsection*{Proof}
 
+It remains to prove the equality:
 \begin{align*}
 \norm{u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle }^{2} & =\left\langle u-\sum_{i=1}^{N}u_{i}\left\langle u_{i},u\right\rangle ,u-\sum_{j=1}^{N}u_{j}\left\langle u_{j},u\right\rangle \right\rangle =\\
- & =\left\langle u,u\right\rangle -\sum_{j=1}^{N}\left\langle u,u_{j}\right\rangle \left\langle u_{j},u\right\rangle -\sum_{i=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{i},u\right\rangle +\sum_{i,j=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{j},u\right\rangle \underbrace{\left\langle u_{i},u_{j}\right\rangle }_{=\delta_{ij}}=\\
+ & =\left\langle u,u\right\rangle -\sum_{j=1}^{N}\left\langle u,u_{j}\right\rangle \left\langle u_{j},u\right\rangle -\\
+ & \qquad-\sum_{i=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{i},u\right\rangle +\sum_{i,j=1}^{N}\overline{\left\langle u_{i},u\right\rangle }\left\langle u_{j},u\right\rangle \underbrace{\left\langle u_{i},u_{j}\right\rangle }_{=\delta_{ij}}=\\
  & =\norm u^{2}-2\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}+\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}=\\
  & =\norm u^{2}-\sum_{i=1}^{N}\abs{\left\langle u_{i},u\right\rangle }^{2}
 \end{align*}
@@ -2182,7 +2213,7 @@ u,v & \in K & w & \in H\setminus K
 \end{align*}
 We want to find a vector $v$ such that $\norm{v-w}=\inf_{u\in K}\norm{u-w}$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}
   \draw[rotate=30] (0,0) ellipse (2 and 1);
   \node at (0,0) {$K$};
@@ -2196,7 +2227,7 @@ We want to find a vector $v$ such that $\norm{v-w}=\inf_{u\in K}\norm{u-w}$.
 \end{figure}
 
 
-If $K$ were compact, then choose minimizing sequence (\foreignlanguage{ngerman}{Minimalfolge}),
+For a compact $K$ we can choose a minimizing sequence (\foreignlanguage{ngerman}{Minimalfolge}),
 i.e.:
 \begin{align*}
 \norm{u_{i}-w} & \to\inf_{u\in K}\norm{u-w}
@@ -2209,7 +2240,7 @@ Choose a convergent subsequence $u_{i_{l}}\to v$. Then by continuity:
 
 The main application are closed subspaces $K\subseteq H$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}
   \draw (0,0) -- (3,3) node [above right]{$K$};
   \draw (3,-1) node[right]{$w$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2258,7 +2289,7 @@ Since $K$ is convex and $u_{i},u_{j}\in K$, we know:
 \begin{align*}
 \Rightarrow\quad\norm{\frac{u_{i}+u_{j}}{2}-w} & \ge d
 \end{align*}
-Thus:
+Thus holds:
 \begin{align*}
 \norm{u_{i}-u_{j}}^{2} & \le2\left(\norm{u_{i}-w}^{2}+\norm{w-u_{j}}^{2}-2d^{2}\right)\xrightarrow{i,j\to\infty}2\left(d^{2}+d^{2}-2d^{2}\right)=0
 \end{align*}
@@ -2284,7 +2315,7 @@ w & =v+x
 \end{align*}
 with $v\in M$ and $x\in M^{\perp}$. We write $H=M\oplus M^{\perp}$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (-1,-1) -- (3,3) node [above right]{$M$};
   \draw (4,0) node[right]{$w$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2383,7 +2414,7 @@ with $u_{n}\to u$ holds:
 \end{align*}
 So $u\in\ker\varphi$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \noindent \centering{}\begin{tikzpicture}[arr/.style={decoration={markings,mark=at position 1 with {\arrow[thick]{>}}},postaction={decorate}}]
   \draw (-1,-1) -- (3,3) node [above right]{$M$};
   \draw (4,0) node[right]{$u$}  +(-0.1,-0.1) -- +(0.1,0.1) +(0.1,-0.1) -- +(-0.1,0.1);
@@ -2604,7 +2635,7 @@ span is the vector space of \emph{finite} linear combinations:
 \left\langle \left(e_{i}\right)\right\rangle  & =\left\{ \sum_{i=1}^{N}\lambda_{i}e_{i}\big|N\in\mathbb{N},\lambda_{i}\in\mathbb{K}\right\} 
 \end{align*}
 This is a subspace of $H$. Now the subspace $\overline{\left\langle \left(e_{i}\right)\right\rangle }\subseteq H$
-is called \emph{Hilbert space span} (\foreignlanguage{ngerman}{Hilbertraumerzeugnis}).
+is called \emph{Hilbert space span} (\foreignlanguage{ngerman}{Hilbert\-raum\-erzeugnis}).
 
 An orthonormal system $\left(e_{i}\right)$ is called a \emph{orthonormal
 Hilbert space basis} if $\overline{\left\langle \left(e_{i}\right)\right\rangle }=H$.
@@ -2635,6 +2666,7 @@ Question: Is there a solution which ``decays at infinity''?
 \begin{enumerate}
 \item Weak formulation:\\
 Suppose we have a solution $u\in\mathcal{C}^{2}\left(\mathbb{R}^{n}\right)$
+of:
 \begin{align*}
 -\Delta u+Vu-f & =0
 \end{align*}
@@ -2661,7 +2693,7 @@ with the scalar product:
 \left\langle u,v\right\rangle  & =\int_{\mathbb{R}^{n}}uv\dd^{n}x
 \end{align*}
 \begin{align*}
-u_{n}\left(x\right) & :=e^{-\abs x^{2}}\sin\left(nx_{1}\right)
+u_{n}\left(x\right) & :=e^{-\norm x^{2}}\sin\left(nx_{1}\right)
 \end{align*}
 Then for all $n\in\mathbb{N}$ holds:
 \begin{align*}
@@ -3110,9 +3142,10 @@ for all $n\in\mathbb{N}$. Then there exists a measure $\mu$ such
 that $\mu_{n_{l}}\to\mu$ converges as a measure.
 
 
-\chapter{Operators on Hilbert spaces}
+\chapter{Operators on Hilbert Spaces}
 
 \setcounter{subsection}{0}
+\subpdfbookmark{\thechapter\ Operators on Hilbert Spaces}{Operators_on_Hilbert_Spaces}
 
 Let $H$ be a Hilbert space.
 \begin{align*}
@@ -3218,9 +3251,9 @@ $u\in H$ and therefore $A\in L\left(H\right)$.\qqed
 
 \subsection{Definition \textmd{(isometric operator)}}
 
-A operator $V:\mathcal{D}\left(V\right)\to H$ with dense domain $\mathcal{D}\left(V\right)\subseteq H$
-is called \emph{isometric} if for all $u\in\mathcal{D}\left(V\right)$
-holds:
+An operator $V:\mathcal{D}\left(V\right)\to H$ with dense domain
+$\mathcal{D}\left(V\right)\subseteq H$ is called \emph{isometric}
+if for all $u\in\mathcal{D}\left(V\right)$ holds:
 \begin{align*}
 \left\langle Vu,Vu\right\rangle  & =\left\langle u,u\right\rangle 
 \end{align*}
@@ -3288,18 +3321,19 @@ be a densely defined linear operator.
 \end{align*}
 Try to realize this as the graph of a new operator $\overline{A}$.
 \begin{align*}
-\mathcal{D}\left(\overline{A}\right) & :=\text{pr}_{1}\left(\overline{\text{graph}A}\right)=\left\{ u\bigg|\exs_{v\in F}:\left(u,v\right)\in\overline{\text{graph}A}\right\} 
+\mathcal{D}\left(\overline{A}\right) & :=\text{pr}_{1}\left(\overline{\text{graph}\left(A\right)}\right)=\left\{ u\bigg|\exs_{v\in F}:\left(u,v\right)\in\overline{\text{graph}\left(A\right)}\right\} 
 \end{align*}
-For $u\in\mathcal{D}\left(\overline{A}\right)$ and $\left(u,v\right)\in\overline{\text{graph}A}$
+For $u\in\mathcal{D}\left(\overline{A}\right)$ and $\left(u,v\right)\in\overline{\text{graph}\left(A\right)}$
 define:
 \begin{align*}
 \overline{A}u & :=v
 \end{align*}
 $v$ exists by definition of $\mathcal{D}\left(\overline{A}\right)$.
 Is $v$ unique?\\
-Suppose $\left(u,v\right)\in\overline{\text{graph}A}$. Then there
-exists a sequence $\left(u_{n},v_{n}\right)\in\text{graph}\left(A\right)$,
-with $\left(u_{n},v_{n}\right)\to\left(u,v\right)$. Equivalently:
+Suppose $\left(u,v\right)\in\overline{\text{graph}\left(A\right)}$,
+so there is a sequence $\left(u_{n},v_{n}\right)\in\text{graph}\left(A\right)$,
+with $\left(u_{n},v_{n}\right)\to\left(u,v\right)$. Equivalently
+holds:
 \begin{align*}
 \fall_{n\in\mathbb{N}}\ \exs_{u_{n}\in\mathcal{D}\left(A\right)}: & \left(u_{n}\to u\right)\wedge\left(Au_{n}\to v\right)
 \end{align*}
@@ -3312,15 +3346,16 @@ $Au_{n}\to v$ and $A\tilde{u}_{n}\to\tilde{v}\not=v$.
 
 \subsection{Definition \textmd{(closable operator)}}
 
-A densely defined operator $A$ is called closable (\foreignlanguage{ngerman}{abschließbar})
-if $\overline{\text{graph}A}$ is the graph of an operator $B$.\\
+A densely defined operator $A$ is called \emph{closable} (\foreignlanguage{ngerman}{abschließbar})
+if $\overline{\text{graph}\left(A\right)}$ is the graph of an operator
+$B$.\\
 $B$ is called the \emph{closure} of $A$, symbolically $B=\overline{A}$.
 
 
 \subsection{Definition \textmd{(closed)}}
 
-$A$ is called \emph{closed} if $\text{graph}A$ is a closed subset
-of $E\times F$.
+$A$ is called \emph{closed} if $\text{graph}\left(A\right)$ is a
+closed subset of $E\times F$.
 
 
 \subsection{Theorem \textmd{(closed graph theorem)}}
@@ -3343,8 +3378,8 @@ f & \mapsto f'
 \end{align*}
 $A$ is a densely defined, unbounded operator. Is $A$ closed?
 
-Consider $\left(u,v\right)\in\overline{\text{graph}A}$, i.e. there
-exists a sequence $\left(u_{n}\right)\subseteq\mathcal{D}\left(A\right)$
+Consider $\left(u,v\right)\in\overline{\text{graph}\left(A\right)}$,
+i.e. there exists a sequence $\left(u_{n}\right)\subseteq\mathcal{D}\left(A\right)$
 with $u_{n}\to u$ and $Au_{n}\to v$.\\
 $u_{n}\to u$ means uniform convergence of $u_{n}\rightrightarrows u$,
 so $u$ is continuous as a uniform limit of continuous functions.\\
@@ -3360,7 +3395,7 @@ This is a Banach space.
 \subsubsection*{Remark}
 
 The closure of a closable operator is always closed.\\
-This is obvious, because $\text{graph}\overline{A}\stackrel{\text{def.}}{=}\overline{\text{graph}A}$,
+This is obvious, because $\text{graph}\left(\overline{A}\right)\stackrel{\text{def.}}{=}\overline{\text{graph}\left(A\right)}$,
 which is closed.
 
 
@@ -3376,9 +3411,12 @@ $A$ is closable if and only if:
 \subsubsection*{Proof}
 
 ``$\Rightarrow$'': Suppose $A$ is closable. Thus there is an operator
-$\overline{A}$ such that $\text{graph}\overline{A}=\overline{\text{graph}A}$.\\
+$\overline{A}$ such that $\text{graph}\left(\overline{A}\right)=\overline{\text{graph}\left(A\right)}$.\\
 Suppose that $u_{n}\in\mathcal{D}\left(A\right)$, $u_{n}\to0$ and
-$Au_{n}\to v$. Then $\left(u_{n},Au_{n}\right)\to\left(0,v\right)\in\overline{\text{graph}A}=\text{graph}\overline{A}$
+$Au_{n}\to v$. Then converges
+\begin{align*}
+\left(u_{n},Au_{n}\right)\to\left(0,v\right) & \in\overline{\text{graph}\left(A\right)}=\text{graph}\left(\overline{A}\right)
+\end{align*}
 and thus $v=\overline{A}\left(0\right)=0$.
 
 ``$\Leftarrow$'': Suppose that the implication
@@ -3449,7 +3487,8 @@ $A^{*}$ is closed.\qqed
 \subsection{Theorem}
 
 $A^{*}$ is the maximal, i.e. not extensible, operator $S$ with the
-property that for all $u\in\mathcal{D}\left(A\right)$ and $v\in\mathcal{D}\left(S\right)$:
+property that for all $u\in\mathcal{D}\left(A\right)$ and $v\in\mathcal{D}\left(S\right)$
+holds:
 \begin{align*}
 \left\langle Au,v\right\rangle  & =\left\langle u,Sv\right\rangle 
 \end{align*}
@@ -3694,7 +3733,7 @@ analytic on $\varrho\left(A\right)$.
 
 We have the \emph{resolvent equation} (\foreignlanguage{ngerman}{Resolventengleichung}):
 \begin{align*}
-\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =-\left(\lambda-\mu\right)\mathcal{R}_{\lambda}\cdot\mathcal{R}_{\mu}
+\mathcal{R}_{\lambda}-\mathcal{R}_{\mu} & =\left(\mu-\lambda\right)\cdot\mathcal{R}_{\mu}\mathcal{R}_{\lambda}
 \end{align*}
 
 
@@ -4583,10 +4622,10 @@ Now minimize
 on a finite subspace of $H$.
 
 
-\chapter{A few (technical) results}
+\chapter{A few (technical) Results}
 
 
-\section{Dini's theorem}
+\section{Dini's Theorem}
 
 Let $E$ be a metric space and $f_{n}:E\to\mathbb{R}$ a sequence
 of real valued functions.
@@ -4731,7 +4770,7 @@ So for all $n\in\mathbb{N}_{\ge N}$ holds:
 \qqed
 
 
-\section{Stone-Weierstraß theorem}
+\section{Stone-Weierstraß Theorem}
 
 We follow the nice (since constructive) proof by Bernstein.
 
@@ -5409,7 +5448,7 @@ and for all $f\in C^{0}\left(K\right)$ holds:
 \begin{align*}
 \abs{l\left(f\right)} & \le C\norm f
 \end{align*}
-This means $f$ is bounded or equivalently continuous.
+This means $l$ is bounded or equivalently continuous.
 
 
 \subsection{Examples}
@@ -5885,7 +5924,7 @@ Then we can write:
 
 \end{itemize}
 
-\chapter{The Spectral Theorem for symmetric bounded operators}
+\chapter{The Spectral Theorem for Symmetric Bound\-ed Operators}
 
 Let $A\in L\left(H\right)$ be symmetric and $H$ be a separable Hilbert
 space. Let $p\left(A\right)$ be a polynomial in $A$, for example
@@ -5897,8 +5936,9 @@ Then for
 \begin{align*}
 \left\langle u,f\left(A\right)u\right\rangle  & =:l\left(f\right)
 \end{align*}
-holds $l\in C^{0}\left(\sigma\left(A\right)\right)^{*}$. Using the
-Riesz representation theorem we can write:
+holds $l\in C^{0}\left(\sigma\left(A\right)\right)^{*}$. $\sigma\left(A\right)$
+is compact, since it is closed and bounded, because $A$ is a bounded
+operator. Using the Riesz representation theorem we can write:
 \begin{align*}
 \left\langle u,f\left(A\right)u\right\rangle  & =\int_{\sigma\left(A\right)}f\left(\lambda\right)\dd\mu_{u}\left(\lambda\right)
 \end{align*}
@@ -5913,7 +5953,7 @@ A & =\int_{\sigma\left(A\right)}\lambda\dd E_{\lambda}
 
 
 
-\section{The Spectrum of symmetric bounded operators}
+\section{The Spectrum of symmetric bounded Operators}
 
 Let $A\in L\left(H\right)$ be symmetric, i.e. $\left\langle u,Av\right\rangle =\left\langle Au,v\right\rangle $
 for all $u,v\in H$. The resolvent set is:
@@ -6078,7 +6118,7 @@ limit point of the spectrum of $A$. Since $\sigma\left(A\right)$
 is closed, it follows that $b\in\sigma\left(A\right)$.\qqed
 
 
-\section{The continuous functional calculus}
+\section{The continuous Functional Calculus}
 
 
 \subsection{Theorem \textmd{(continuous functions of operators)}\label{sub:Thm-spectral-mapping-theorem}}
@@ -6239,7 +6279,8 @@ is symmetric and thus:
 \end{align*}
 With 
 \begin{align*}
-\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{A\text{ normal}}{=}\sup_{\norm u=1}\left\langle u,AA^{*}u\right\rangle =\sup_{\norm u=1}\left\langle A^{*}u,A^{*}u\right\rangle =\opnorm{A^{*}}^{2}
+\opnorm A^{2} & =\sup_{\norm u=1}\left\langle Au,Au\right\rangle =\sup_{\norm u=1}\left\langle u,A^{*}Au\right\rangle \stackrel{A\text{ normal}}{=}\sup_{\norm u=1}\left\langle u,AA^{*}u\right\rangle =\\
+ & =\sup_{\norm u=1}\left\langle A^{*}u,A^{*}u\right\rangle =\opnorm{A^{*}}^{2}
 \end{align*}
 we get:
 \begin{align*}
@@ -7607,7 +7648,7 @@ in $H$, or equivalently:
 Therefore it converges strongly.\qqed
 
 
-\chapter{Spectral Theorem for bounded normal operators}
+\chapter{Spectral Theorem for Bounded Normal Operators}
 
 $A\in L\left(H\right)$ is normal if it commutes with its adjoint,
 i.e. $\left[A,A^{*}\right]=0$. Before we considered symmetric $A\in L\left(H\right)$.
@@ -8251,7 +8292,7 @@ f\left(A\right) & =\chi_{\left\{ \mu\right\} }\left(A\right)=E_{\left\{ \mu\righ
 Hence follows $E_{\left\{ \mu\right\} }\not=0$.\qqed
 
 
-\chapter{Cyclic vectors, the spectral theorem in its multiplicative form}
+\chapter{Cyclic Vectors, the Spectral Theorem in its Multiplicative Form}
 
 Let $A\in L\left(H\right)$ be normal.
 
@@ -8383,8 +8424,8 @@ Hence there is no cyclic vector.
 
 \section{Lemma}
 
-Let $A\in L\left(H\right)$ be normal and $A$ symmetric. Then there
-exists an orthogonal decomposition
+Let $A\in L\left(H\right)$ be normal. Then there exists an orthogonal
+decomposition
 \begin{align*}
 H & =\bigoplus_{j\in J}H_{j}
 \end{align*}
@@ -9142,7 +9183,7 @@ as in section \ref{sec:Unbounded-Multiplication-Operators}.
 \qqed
 
 
-\chapter{Examples, Construction of Self-Adjoint extensions}
+\chapter{Examples, Construction of Self-Adjoint Extensions}
 
 The (interesting) operator $H=-\Delta_{\mathbb{R}^{3}}+V\left(x\right)$
 requires Sobolev spaces and Fourier transform. This is discussed in
@@ -9599,7 +9640,7 @@ one must work a bit harder.
 
 \chapter*{Acknowledgements}
 
-\addcontentsline{toc}{section}{\hspace*{2.7em}Acknowledgements}
+\addcontentsline{toc}{chapter}{\hspace*{2.7em}Acknowledgements}
 
 \fancyhead[R]{Acknowledgements}
 
